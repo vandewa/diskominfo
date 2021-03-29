@@ -6,14 +6,15 @@ use App\Models\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use App\Models\Posting;
 
 class HomeController extends Controller
 {
-    
+
     public function profil()
     {
-        $posting = DB::table('posting') 
+
+     $profil = DB::table('posting') 
     ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
     ->join('users', 'created_by', '=', 'users.id')
     ->select('posting.*','attachment.*', 'users.*')
@@ -21,62 +22,52 @@ class HomeController extends Controller
     ->get();
 
 
-    return view('home.profil', compact('posting'));
+    return view('home.profil', compact('profil'));
     }
 
     public function visimisi()
     {
-        $posting = DB::table('posting') 
+        $visimisi = DB::table('posting') 
         ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
         ->join('users', 'created_by', '=', 'users.id')
         ->select('posting.*','attachment.*', 'users.*')
         ->where('judul_posting', '=', 'Visi & Misi')
         ->get();
-    
-        return view('home.visimisi', compact('posting'));
+
+        return view('home.visimisi', compact('visimisi'));
     }
 
     public function struktur()
     {
 
-        $posting = DB::table('posting') 
-        ->leftJoin('attachment', 'id_posting', '=', 'attachment.id_tabel')
-        ->leftJoin('users', 'created_by', '=', 'users.id')
-        ->select('judul_posting', 'isi_posting','name','posting.created_at', 'file_name')
+        $struktur = Posting::with(['personil', 'nama'])
         ->where('created_by', '=', '577')
         ->where('kata_kunci', '=', 'Personil')
-        
         ->get();
     
-        return view('home.struktur', compact('posting'));
+        return view('home.struktur', compact('struktur'));
     }
 
     public function tupoksi()
     {
 
-       
-        $posting = DB::table('posting') 
+        $tupoksi = DB::table('posting') 
         ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
         ->join('users', 'created_by', '=', 'users.id')
         ->select('posting.*','attachment.*', 'users.*')
         ->where('keterangan', '=', 'Tupoksi')
         ->get();
-        
-    
-        return view('home.tupoksi', compact('posting'));
+
+        return view('home.tupoksi', compact('tupoksi'));
     }
 
     public function detail($post)
     {
-
-        $posting = DB::table('posting') 
-        ->leftJoin('attachment', 'id_posting', '=', 'attachment.id_tabel')
-        ->leftJoin('users', 'created_by', '=', 'users.id')
-        ->select('posting.*','attachment.*', 'users.*')
+        $detail = Posting::with(['attachment', 'gambarMuka', 'nama'])
         ->where('id_posting', '=', $post)
         ->get();
-    
-        return view('home.detail', compact('posting'));
+
+        return view('home.detail', compact('detail'));
     }
 
     /**
@@ -86,23 +77,25 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $posting2 = Posting::with(['attachment', 'gambarMuka'])->orderBy('created_at', 'desc')->paginate(7);
+        $postingg = Posting::with(['attachment', 'gambarMuka', 'nama'])
+        ->where('posisi', '=', 'highlight')
+        ->get();
+
         $posting = DB::table('posting') 
         ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
         ->join('users', 'created_by', '=', 'users.id')
         ->select('posting.*','attachment.*', 'users.*')
-        ->orderBy('posting.created_at', 'desc')
-        ->paginate(5);
-        
-        $postingg = DB::table('posting') 
-        ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
-        ->join('users', 'created_by', '=', 'users.id')
-        ->select('posting.*','attachment.*', 'users.*')
-        ->where('posisi', '=', 'highlight')
-        ->get();
+        ->orderBy('posting.created_at', 'desc');
 
-        $home = Home::paginate(7);
-    
-        return view('home.index', compact('postingg', 'home','posting'));
+        // $postingg = DB::table('posting') 
+        // ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
+        // ->join('users', 'created_by', '=', 'users.id')
+        // ->select('posting.*','attachment.*', 'users.*')
+        // ->where('posisi', '=', 'highlight')
+        // ->get();
+
+        return view('home.index', compact('posting2', 'posting', 'postingg'));
     }
 
     /**

@@ -9,42 +9,64 @@
 <span class="breadcrumb-item active">Management User</span>
 @endsection
 
+@section('tambah_data')
+@if (auth()->user()->level=='superadmin')
+<a href="/user/create" class="btn btn-primary">
+<i class="icon-file-plus mr-2"></i>
+Tambah User
+</a>
+@endif
+@endsection
+
 @section('container')
 
+@if(session('status'))
+<div class="alert bg-success text-white alert-styled-left alert-dismissible mt-1" >
+    <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+    {{ session('status') }}
+</div>
+@endif
+                  
 <!-- Content area -->
-<center><a href="/user/create" class="btn btn-primary mt-2">Tambah Data User</a></center>
 <div class="content">
-
     <!-- Basic datatable -->
-
     <div class="card">
-
         <table class="table datatable-button-html5-basic">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Nama User</th>
                     <th>Email</th>
-                    <th>Status</th>
+                    <th>Level</th>
+                    @if (auth()->user()->level=='superadmin')
                     <th class="text-center">Aksi</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
             @foreach($user as $user)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <td>{{ $user->name }}</td>
+                    <td>{{ ucwords($user->name) }}</td>
                     <td>{{ $user->email }}</td>
-                    <td><span class="badge badge-success">Active</span></td>
+                    <td>{{ ucwords($user->level) }}</td>
+                    @if (auth()->user()->level=='superadmin')
                     <td>
                     <center>
                     <div class="list-icons">
-                        <a href="user/{{$user->id}}/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                        <a href="#" class="list-icons-item text-danger-600"><i class="icon-trash"></i></a>
-                        <a href="#" class="list-icons-item text-teal-600"><i class="icon-cog6"></i></a>
+
+                    <a href="user/{{$user->id}}/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+
+                    <form action="user/{{$user->id }}" method="post">
+                        @method('delete')
+                        @csrf
+                       <button type="submit"  class="list-icons-item text-danger-600"><i? class="icon-trash"></i?</button>
+                    </form>
+                       
                     </div>
                     </center>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

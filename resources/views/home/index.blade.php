@@ -114,40 +114,36 @@
                 "dotsClass": 
                 "slick-pagination slick-pagination-white slick-pagination-vertical position-absolute bottom-0 right-0 mb-8 mr-3"
               }'>
-              @foreach ($postingg as $postingg)
+          @foreach ($postingg as $highlight)
            <article>
-         
-            <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7" href="/detail/{{$postingg->id_posting}}" style="background-image: url(upload/{{$postingg->file_name}}); height:400px;">
+            <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7" href="/detail/{{$highlight->id_posting}}" style="background-image: url(uploads/{{$highlight->gambarMuka->file_name}}); height:400px;">
               <div class="card-header border-0 bg-transparent w-100">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm avatar-circle mr-3">
                     <img class="avatar-img" src="front/assets/img/100x100/img3.jpg" alt="Image Description">
                   </span>
                   <div class="media-body">
-                    <span class="d-inline-block text-white font-weight-bold">{{$postingg->name}}</span>
-                    <small class="d-block text-white-70">{{  Carbon\Carbon::parse($postingg->created_at)->isoFormat('dddd, D MMMM Y') }}</small>
+                    <span class="d-inline-block text-white font-weight-bold">{{$highlight->nama->name}}</span>
+                    <small class="d-block text-white-70">{{  Carbon\Carbon::parse($highlight->created_at)->isoFormat('dddd, D MMMM Y') }}</small>
                   </div>
                 </div>
               </div>
 
               <div class="card-footer border-0 bg-transparent mt-auto">
-                <h3 class="h2 text-white">{{$postingg->judul_posting}}</h3>
-                <p class="text-white-70 mb-0">{{$postingg->keterangan}}</p>
+                <h3 class="h2 text-white">{{$highlight->judul_posting}}</h3>
+                <p class="text-white-70 mb-0">{{$highlight->keterangan}}</p>
               </div>
             </a>
           </article>
           @endforeach
             </div>
-          
-          <!-- End Blog -->
 
-          
-            
-@foreach ($posting as $post)
+          <!-- End Blog -->
+@foreach ($posting2 as $post)
           <!-- Blog -->
           <article class="row mb-7">
             <div class="col-md-5">
-              <img class="card-img" src="upload/{{ $post->file_name }}" alt="Image Description" style="height:100%">
+              <img class="card-img" src="{{ asset ('uploads') }}/{{ $post->gambarMuka->file_name??'' }}" alt="Image Description" style="height:100%">
             </div>
             <div class="col-md-7">
               <div class="card-body d-flex flex-column h-100 px-0">
@@ -173,9 +169,7 @@
           <!-- End Blog -->
           @endforeach
 
-          {{ $posting->links() }}
-
-          
+          {{ $posting2->links() }}
 
           <!-- Sticky Block End Point -->
           <div id="stickyBlockEndPoint"></div>
@@ -253,7 +247,58 @@
       <!-- End Pagination -->
     </div>
     <!-- End Blogs Section -->
+
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col" style="overflow: auto; height: 500px;">
+        <a class="twitter-timeline" href="https://twitter.com/diskominfo_wsb"></a>
+        </div>
+        <div class="col">
+        <div class="fb-page"
+              data-href="https://www.facebook.com/diskominfo.wsb"
+              data-tabs="timeline"
+              data-width="500"
+              data-height="500">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm mt-5">
+      <div class="embedsocial-hashtag" data-ref="bb16a42d2a16b5311a20d00662216be8b7d0507a" ></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialHashtagScript"));</script>
+      </div>
+      </div>
+
+      <div class="container js-slick-carousel slick"
+     data-hs-slick-carousel-options='{
+       "prevArrow": "<span class=\"fas fa-arrow-left slick-arrow slick-arrow-soft-white slick-arrow-left slick-arrow-centered-y rounded-circle ml-sm-2 ml-xl-4\"></span>",
+       "nextArrow": "<span class=\"fas fa-arrow-right slick-arrow slick-arrow-soft-white slick-arrow-right slick-arrow-centered-y rounded-circle mr-sm-2 mr-xl-4\"></span>",
+       "fade": true,
+       "autoplay": true,
+       "autoplaySpeed": 7000,
+       "infinite": true,
+       "responsive": [{
+         "breakpoint": 768,
+         "settings": {
+           "arrows": false
+         }
+       }]
+     }'>
+      <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
+      <iframe  src="https://www.youtube.com/embed/AuJf0nFJHNY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>  
+
+      <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
+      <iframe  src="https://www.youtube.com/embed/8wy_IxEjDqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>  
+
+      <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
+      <iframe  src="https://www.youtube.com/embed/d7uBeYW56gc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>  
+      
+      </div>
+      
+
   </main>
+  
   <!-- ========== END MAIN ========== -->
 
           

@@ -546,11 +546,12 @@ var SweetAlert = function () {
         // Warning alert
         $('#sweet_warning').on('click', function() {
             swal({
-                title: 'Are you sure?',
-                text: 'You will not be able to recover this imaginary file!',
+                title: 'Apakah Anda yakin?',
+                text: '',
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Yes!'
+                
             });
         });
 

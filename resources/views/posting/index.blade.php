@@ -4,26 +4,25 @@
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
 
-
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
 <span class="breadcrumb-item active">Data Posting</span>
 @endsection
 
+@section('tambah_data')
+<a href="/posting/create" class="btn btn-primary">
+<i class="icon-file-plus mr-2"></i>
+Tambah Posting
+</a>
+@endsection
+
 @section('container')
-
-
-
 <!-- Content area -->
-<center><a href="/posting/create" class="btn btn-primary mt-2">Tambah Data Posting</a></center>
 <div class="content">
-
     <!-- Basic datatable -->
-
     <div class="card">
-    <div class="card-body">
-    
-    <table class="table  damar">
+    <div class="card-body">    
+    <table class="table datatable-basic damar">
             <thead>
                 <tr>
                     <th>No</th>
@@ -31,24 +30,20 @@
                     <th>Kata Kunci</th>
                     <th>Keterangan</th>
                     <th>Tanggal</th>
-                    <th>Status</th>
+                    <th>Posisi</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-            
             </tbody>
         </table>
     </div>
-
     </div>
     <!-- /basic datatable -->
 </div>
 @endsection
 @push('js')
-<script type="text/javascript">
-	
-			
+<script type="text/javascript">			
 			var table = $('.damar').DataTable({
 				processing: true,
 				serverSide: true,
@@ -59,7 +54,7 @@
                     {data: 'kata_kunci', },
 					{data: 'keterangan', },
 					{data: 'created_at', },
-					{data: 'status', },
+					{data: 'posisi', },
 					{
 						data: 'action', 
 						name: 'action', 
@@ -68,8 +63,6 @@
 					},
 				]
 			});
-			
-		
 </script>
 @endpush
 

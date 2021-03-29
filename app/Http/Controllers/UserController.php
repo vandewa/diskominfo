@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
-
+use App\Models\Users;
+use App\Http\Requests\UsercreateValidation;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -29,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -38,9 +39,16 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsercreateValidation $request)
     {
-        //
+          Users::create([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'level' => $request->level
+          ]);
+
+          return redirect ('user')->with('status', 'Data user berhasil ditambahkan');
     }
 
     /**
@@ -74,7 +82,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // User::where('id', $user->id)
+        // ->update ([
+        //     'name' => $request->nama,
+        //     'email' => $request->email,
+        //     'p'
+
+
+        // ]);
     }
 
     /**
@@ -85,6 +100,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Users::destroy($id);
+        
+        return redirect ('/user/')->with('status', 'Data user berhasil dihapus');
     }
 }

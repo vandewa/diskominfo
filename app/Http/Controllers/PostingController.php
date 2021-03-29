@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Posting;
+use App\Models\Attachment;
+use App\Models\Position;
 use DataTables;
+use Carbon\Carbon;
 
 
 class PostingController extends Controller
@@ -18,6 +22,7 @@ class PostingController extends Controller
      */
     public function index()
     {
+        
         $posting= Posting::orderBy('created_at','desc')->get();
        
         return view('posting.index', compact('posting'));
@@ -32,8 +37,9 @@ class PostingController extends Controller
      */
     public function create()
     {
-        
-        return view('posting.create');
+        $position = Position::all();
+
+        return view('posting.create', compact('position'));
     }
 
     /**
@@ -47,17 +53,37 @@ class PostingController extends Controller
         $request->validate([
             'judul_posting' => 'required',
             'kata_kunci' =>'required',
-            'keterangan' => 'required'
-        ], 
+            'keterangan' => 'required',
+
+        ],
         [
             'judul_posting.required' => 'Judul harus diisi.',
             'kata_kunci.required' =>'Kata Kunci harus diisi.',
-            'keterangan.required' => 'Keterangan harus diisi.'
+            'keterangan.required' => 'Keterangan harus diisi.',
+
         ]);
 
-        Posting::create($request->all());
+        $b= Posting::create($request->except(['file_name']));
+        
+        $by = $request->created_by;
+        $files = $request->file('file_name');
+        $prefix = date('Ymdhis');
+        $no = 1;
+        foreach($files as $a){
+            $extension = $a->extension();
+            $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
+            $a->move(public_path('/uploads'), $filename);
+            $attachment = new Attachment() ;
+            $attachment->id_tabel = $b->id_posting;
+            $attachment->file_name = $filename;
+            $attachment->save();
 
-        return $request;
+            $no++;
+        }
+
+        return redirect ( url('posting'));
+
+
     }
 
     /**
@@ -79,7 +105,8 @@ class PostingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $a = Posting::with(['attachment'])->find($id);
+        return $a;
     }
 
     /**
@@ -113,9 +140,8 @@ class PostingController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = '
                     <div class="list-icons">
-                    <a href="#" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="posting/'.$row->id_posting.'/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
                     <a href="#" class="list-icons-item text-danger-600"><i class="icon-trash"></i></a>
-                    <a href="#" class="list-icons-item text-teal-600"><i class="icon-cog6"></i></a>
                 </div>';
                     return $actionBtn;
                 })
@@ -128,8 +154,20 @@ class PostingController extends Controller
                     return \Carbon\Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y');
                     // return date('d F Y', strtotime($a->created_at));
                 })
+                ->editColumn('posisi', function($a){
+                    return ucwords(str_replace('_', ' ', $a->posisi));
+                })
                 ->rawColumns(['action', 'status'])
                 ->make(true);
         
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    
+    }
+    
+
 }

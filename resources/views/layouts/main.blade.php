@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 
+  <meta property="og:url" content="http://localhost:8080">  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Front">
+  <meta property="og:description" content="Your description">
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
@@ -16,6 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- CSS Implementing Plugins -->
+  <link href="{{ url ('limitless/Template/global_assets/css/icons/icomoon/styles.css ')}}" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/fontawesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/slick-carousel/slick/slick.css')}}">
@@ -24,6 +29,27 @@
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
 </head>
 <body>
+<script src="//platform.twitter.com/widgets.js" charset="utf-8" async></script>
+<script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '211814435920978',
+        xfbml: true,
+        version: 'v2.8'
+      });
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 
 
   <!-- ========== HEADER ========== -->
@@ -59,8 +85,6 @@
             </span>
           </button>
           <!-- End Responsive Toggle Button -->
-
-          
 
           <!-- Navigation -->
           <div id="navBar" class="collapse navbar-collapse">
@@ -237,12 +261,41 @@
     <div class="container">
       <div class="space-top-2 space-bottom-1 space-bottom-lg-2">
         <div class="row justify-content-lg-between">
-          <div class="col-lg-3 ml-lg-auto mb-5 mb-lg-0">
+
+        <div class="col-12 col-md-6 col-lg mb-5 mb-lg-0">
+        <div class="mb-4">
+            <h5 class="text-white">Statistik Pengunjung</h5>
+            </div>
+            <!-- End Nav Link -->
+            <ul class="nav nav-sm nav-x-0 nav-white flex-column">
+              <li class="nav-item">
+                <a class="nav-link media" href="javascript:;">
+                    <span class="media">
+                      <span class="icon-stats-bars2 mt-1 mr-2"></span>
+                      <span class="media-body">
+                     Total Pembaca :
+                      </span>
+                    </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link media" href="tel:1-062-109-9222">
+                    <span class="media">
+                      <span class="icon-stats-bars2 mt-1 mr-2"></span>
+                      <span class="media-body">
+                      Total Pengunjung :
+                      </span>
+                    </span>
+                </a>
+              </li>
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-6 col-lg mb-5 mb-lg-0">
             <!-- Logo -->
             <div class="mb-4">
-              <a href="index.html" aria-label="Front">
-                <img class="brand" src="{{ url ('front/assets/svg/logos/logo-white.svg')}}" alt="Logo">
-              </a>
+            <h5 class="text-white">Hubungi Kami</h5>
             </div>
             <!-- End Logo -->
 
@@ -251,9 +304,9 @@
               <li class="nav-item">
                 <a class="nav-link media" href="javascript:;">
                     <span class="media">
-                      <span class="fas fa-location-arrow mt-1 mr-2"></span>
+                      <span class="icon-office mt-1 mr-2"></span>
                       <span class="media-body">
-                        153 Williamson Plaza, Maggieberg
+                      Jl. Sabuk Alu No. 2A
                       </span>
                     </span>
                 </a>
@@ -261,9 +314,19 @@
               <li class="nav-item">
                 <a class="nav-link media" href="tel:1-062-109-9222">
                     <span class="media">
-                      <span class="fas fa-phone-alt mt-1 mr-2"></span>
+                      <span class="icon-phone mt-1 mr-2"></span>
                       <span class="media-body">
-                        +1 (062) 109-9222
+                      (0286) 325112
+                      </span>
+                    </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link media" href="tel:1-062-109-9222">
+                    <span class="media">
+                      <span class="icon-mail5 mt-1 mr-2"></span>
+                      <span class="media-body">
+                      diskominfo@wonosobokab.go.id
                       </span>
                     </span>
                 </a>
@@ -272,38 +335,16 @@
             <!-- End Nav Link -->
           </div>
 
-          <div class="col-6 col-md-3 col-lg mb-5 mb-lg-0">
-            <h5 class="text-white"></h5>
+          
 
+          <div class="col-12 col-md-6 col-lg mb-5 mb-lg-0">
+          <div class="mb-4">
+            <h5 class="text-white">Lokasi Kantor</h5>
+            </div>
             <!-- Nav Link -->
-            <ul class="nav nav-sm nav-x-0 nav-white flex-column">
-              <li class="nav-item"><a class="nav-link" href="#"></a></li>
-              <li class="nav-item"><a class="nav-link" href="#"> <span class="badge badge-primary ml-1">We're hiring</span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#"></a></li>
-              <li class="nav-item"><a class="nav-link" href="#"></a></li>
-              <li class="nav-item"><a class="nav-link" href="#"></a></li>
-            </ul>
+            <iframe frameborder="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3385.06784745028!2d109.90367091432174!3d-7.356778574425257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aa1e023aaf2df%3A0x3fa1aea0b0ca3abc!2sDINAS%20KOMINFO!5e1!3m2!1sid!2sid!4v1616939396651!5m2!1sid!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             <!-- End Nav Link -->
-          </div>
-
-          <div class="col-6 col-md-3 col-lg mb-5 mb-lg-0">
-            <h5 class="text-white">Features</h5>
-
-            <!-- Nav Link -->
-            <ul class="nav nav-sm nav-x-0 nav-white flex-column">
-              <li class="nav-item"><a class="nav-link" href="#">Press</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Release notes</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Integrations</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-            </ul>
-            <!-- End Nav Link -->
-          </div>
-
-          <div class="col-6 col-md-3 col-lg">
-
-          </div>
-
-          <div class="col-6 col-md-3 col-lg">
+         
           </div>
         </div>
       </div>
@@ -311,38 +352,6 @@
       <hr class="opacity-xs my-0">
 
       <div class="space-1">
-        <div class="row align-items-md-center mb-7">
-          <div class="col-md-6 mb-4 mb-md-0">
-          </div>
-
-          <div class="col-md-6 text-md-right">
-            <ul class="list-inline mb-0">
-              <!-- Social Networks -->
-              <li class="list-inline-item">
-                <a class="btn btn-xs btn-icon btn-soft-light" href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn btn-xs btn-icon btn-soft-light" href="#">
-                  <i class="fab fa-google"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn btn-xs btn-icon btn-soft-light" href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn btn-xs btn-icon btn-soft-light" href="#">
-                  <i class="fab fa-github"></i>
-                </a>
-              </li>
-              <!-- End Social Networks -->
-            </ul>
-          </div>
-        </div>
-
         <!-- Copyright -->
 
         <div class="w-md-75 text-lg-center mx-lg-auto">
@@ -481,7 +490,7 @@
 
   <!-- IE Support -->
   <script>
-    if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{ url ('front/assets/vendor/babel-polyfill/dist/polyfill.js')}}"><\/script>');
+    // if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{ url ('front/assets/vendor/babel-polyfill/dist/polyfill.js')}}"><\/script>');
   </script>
 </body>
 </html>

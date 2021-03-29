@@ -128,7 +128,7 @@ var NotyJgrowl = function() {
         $('#noty_top_center').on('click', function() {
             new Noty({
                 layout: 'topCenter',
-                text: 'Best check yourself, you\'re not looking too good.',
+                text: 'Data berhasil di hapus.',
                 type: 'alert'
             }).show();
         });

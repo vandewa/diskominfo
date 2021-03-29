@@ -15,7 +15,7 @@
 <i class="fas fa-user-circle fa-lg" style="color:black"></i>
 @endsection
 
-@foreach ($posting as $post)
+@foreach ($detail as $detail)
 <br>
   <!-- ========== MAIN ========== -->
   <main id="content" role="main">
@@ -35,8 +35,8 @@
                   <img class="avatar-img" src="{{ url ('front/assets/img/100x100/img11.jpg')}}" alt="Image Description">
                 </div>
                 <div class="media-body font-size-1 ml-3">
-                  <span class="h6"><a href="blog-profile.html">{{ $post->name }}</a> <button type="button" class="btn btn-xs btn-soft-primary font-weight-bold transition-3d-hover py-1 px-2 ml-1">Follow</button></span>
-                  <span class="d-block text-muted">{{ Carbon\Carbon::parse($post->created_at)->isoFormat('dddd, D MMMM Y') }}</span>
+                  <span class="h6"><a href="blog-profile.html">{{ $detail->nama->name }}</a> <button type="button" class="btn btn-xs btn-soft-primary font-weight-bold transition-3d-hover py-1 px-2 ml-1">Follow</button></span>
+                  <span class="d-block text-muted">{{ Carbon\Carbon::parse($detail->created_at)->isoFormat('dddd, D MMMM Y') }}</span>
                 </div>
               </div>
             </div>
@@ -61,22 +61,26 @@
           </div>
         </div>
 
-        <center><h1 class="h2">{{ $post->judul_posting}}</h1>
+        <center><h1 class="h2">{{ $detail->judul_posting}}</h1>
         <br>
 
         <div class="js-slick-carousel slick "
-     data-hs-slick-carousel-options='{
-       "fade": true,
-       "infinite": true,
-       "autoplay": true,
-       "autoplaySpeed": 4000,
-       "dots": true,
-       "dotsAsProgressLine": true,
-       "dotsClass": "slick-dots mt-n4"
-     }'>
+          data-hs-slick-carousel-options='{
+            "fade": true,
+            "infinite": true,
+            "autoplay": true,
+            "autoplaySpeed": 4000,
+            "dots": true,
+            "dotsAsProgressLine": true,
+            "dotsClass": "slick-dots mt-n4"
+          }'>
+  @foreach($detail->attachment as $slide)
   <div class="js-slide">
-    <img class="img-fluid w-100" src="../upload/{{$post->file_name}}" alt="Image Description">
+  <a href="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}">
+    <img class="img-fluid w-100 transition-zoom-hover" src="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}" alt="Image Description" height="150px;">
+    </a>
   </div>
+  @endforeach
 </div>
 </center>
 <br>
@@ -86,7 +90,7 @@
             text-align:justify;  
             text-justify:auto;
         ">
-        {!! $post->isi_posting !!}
+        {!! $detail->isi_posting !!}
         </div>
       </div>
 
