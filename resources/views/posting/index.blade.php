@@ -10,27 +10,36 @@
 @endsection
 
 @section('tambah_data')
+@if (auth()->user()->level=='superadmin'||'admin')
 <a href="/posting/create" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah Posting
 </a>
+@endif
 @endsection
 
 @section('container')
+
+@if(session('status'))
+<div class="alert bg-success text-white alert-styled-left alert-dismissible mt-1" >
+    <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+    {{ session('status') }}
+</div>
+@endif
 <!-- Content area -->
 <div class="content">
     <!-- Basic datatable -->
     <div class="card">
     <div class="card-body">    
-    <table class="table datatable-basic damar">
+    <table class="table datatable-basic devan">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Judul Posting</th>
-                    <th>Kata Kunci</th>
-                    <th>Keterangan</th>
-                    <th>Tanggal</th>
+                    <th>Kategori</th>
                     <th>Posisi</th>
+                    <th>Oleh</th>
+                    <th>Tanggal</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -44,17 +53,18 @@ Tambah Posting
 @endsection
 @push('js')
 <script type="text/javascript">			
-			var table = $('.damar').DataTable({
+			var table = $('.devan').DataTable({
 				processing: true,
 				serverSide: true,
 				ajax: "{{ route('posting.list') }}",
 				columns: [
 					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
 					{data: 'judul_posting'},
-                    {data: 'kata_kunci', },
-					{data: 'keterangan', },
-					{data: 'created_at', },
+                    {data: 'kategori', },
 					{data: 'posisi', },
+                    {data: 'oleh', },
+                    {data: 'created_at', },
+                    // {data: 'created_by', },
 					{
 						data: 'action', 
 						name: 'action', 

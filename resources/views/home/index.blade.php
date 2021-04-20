@@ -1,5 +1,5 @@
 
-@section('title', 'Dinas Kominfo Wonosobo')
+@section('title', 'Dinas Kominfo Wonosobo | Beranda')
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')
@@ -11,9 +11,8 @@
 
 @endsection
 
-
 @section('kondisi2')
-<i class="fas fa-user-circle fa-lg" style="color:white"></i>
+<i class="fas fa-user-circle fa-lg" style="color:blue"></i>
 @endsection
 
  <!-- ========== MAIN ========== -->
@@ -41,7 +40,7 @@
            ]
          }'>
 
-        <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem" style="background-image: url(front/assets/images/kominfo.jpg);">
+        <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem" style="background-image: url(front/assets/images/kominfo.jpg);" data-aos="zoom-out">
           <!-- News Block -->
           <div class="container d-flex align-items-center min-h-620rem">
             <div class="w-lg-40 mr-5">
@@ -116,15 +115,15 @@
               }'>
           @foreach ($postingg as $highlight)
            <article>
-            <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7" href="/detail/{{$highlight->id_posting}}" style="background-image: url(uploads/{{$highlight->gambarMuka->file_name}}); height:400px;">
+            <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7" href="/detail/{{$highlight->id_posting}}" style="background-image: url(uploads/{{$highlight->gambarMuka->file_name}}); height:400px;" >
               <div class="card-header border-0 bg-transparent w-100">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm avatar-circle mr-3">
-                    <img class="avatar-img" src="front/assets/img/100x100/img3.jpg" alt="Image Description">
+                    <img class="avatar-img " src="{{ asset('uploads/'. $highlight->nama->profile_photo_path) }}" alt="Image Description">
                   </span>
                   <div class="media-body">
                     <span class="d-inline-block text-white font-weight-bold">{{$highlight->nama->name}}</span>
-                    <small class="d-block text-white-70">{{  Carbon\Carbon::parse($highlight->created_at)->isoFormat('dddd, D MMMM Y') }}</small>
+                    <small class="d-block text-white"><span class="badge bg-dark">{{  Carbon\Carbon::parse($highlight->created_at)->isoFormat('dddd, D MMMM Y') }}</span></small>
                   </div>
                 </div>
               </div>
@@ -141,26 +140,29 @@
           <!-- End Blog -->
 @foreach ($posting2 as $post)
           <!-- Blog -->
-          <article class="row mb-7">
+          <article class="row mb-7" data-aos="zoom-out-right">
             <div class="col-md-5">
-              <img class="card-img" src="{{ asset ('uploads') }}/{{ $post->gambarMuka->file_name??'' }}" alt="Image Description" style="height:100%">
+            <a href="/detail/{{$post->id_posting}}">
+              <img class="card-img transition-zoom-hover"  src="{{ asset ('uploads') }}/{{ $post->gambarMuka->file_name??'' }}" alt="Image Description" style="height:100%"   >
+              </a>
             </div>
             <div class="col-md-7">
-              <div class="card-body d-flex flex-column h-100 px-0">
+              <div class="card-body d-flex flex-column h-100 px-0"> 
                 <span class="d-block mb-2">
-                  <a class="font-weight-bold" href="#">Seputar Wonosobo</a>
+                  <a class="font-weight-bold" href="/kategori/{{$post->id_kategori}}">{{ $post->kategori->nama_kategori }}</a>
                 </span>
                 <h3><a class="text-inherit" href="/detail/{{$post->id_posting}}">{{ $post->judul_posting }}</a></h3>
                 <p>{{ $post->keterangan }}</p>
                 <div class="media align-items-center mt-auto">
-                  <a class="avatar avatar-sm avatar-circle mr-3" href="blog-profile.html">
-                    <img class="avatar-img" src="front/assets/img/100x100/img1.jpg" alt="Image Description">
+                  <a class="avatar avatar-sm avatar-circle mr-3">
+                    <img class="avatar-img" src="{{ asset('uploads/'. $post->nama->profile_photo_path) }}" alt="Image Description">
                   </a>
                   <div class="media-body">
                     <span class="text-dark">
-                      <a class="d-inline-block text-inherit font-weight-bold" href="blog-profile.html">{{ $post->name }}</a>
+                      <a class="d-inline-block text-inherit font-weight-bold">{{ $post->nama->name }}</a>
                     </span>
-                    <small class="d-block">{{  Carbon\Carbon::parse($post->created_at)->isoFormat('dddd, D MMMM Y') }} </small>
+                    <!-- isoFormat('dddd, D MMMM Y H') -->
+                    <small class="d-block">{{  Carbon\Carbon::parse($post->created_at)->isoFormat('LLLL') }} WIB</small>
                   </div>
                 </div>
               </div>
@@ -176,10 +178,8 @@
         </div>
 
         <div class="col-lg-3">
-
           <!-- Sticky Block Start Point -->
           <div id="stickyBlockStartPoint"></div>
-
           <div class="js-sticky-block"
                data-hs-sticky-block-options='{
                  "parentSelector": "#stickyBlockStartPoint",
@@ -190,48 +190,54 @@
                  "stickyOffsetBottom": 20
                }'>
             <div class="mb-7">
-              <div class="mb-3">
-                <h3>Front culture</h3>
+      
+              <div class="mb-2">
+                <h3 >Cari Berita</h3>
               </div>
 
+            <form class="input-group input-group-sm input-group-merge input-group-flush mb-3" action="/search" method="get">
+            
+            <input name="q" type="search" class="form-control" placeholder="Masukkan kata kunci" aria-label="Search articles" aria-describedby="searchLabel">
+            <div class="input-group-append">
+              <div class="input-group-text" id="searchLabel">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+          </form>
+
+              <div class="position-relative bg-primary overflow-hidden">
+                <div class=" text-left position-relative">
+                  <h3 class="container text-white text-center font-weight-semi-bold ">BERITA POPULER</h3>
+                </div>
+            <!-- SVG Shapes -->
+                <figure class="mb-n1">
+                  <svg class="position-absolute top-0 right-0 bottom-0 h-100" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920" height="100%">
+                    <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z"/>
+                  </svg>
+                </figure>
+                <!-- End SVG Shapes -->
+              </div>
+
+              
+
+
+              @foreach($populer as $populer)
               <!-- Blog -->
-              <article class="mb-5">
+              <article class="mb-5 mt-3" data-aos="zoom-out-right">
                 <div class="media align-items-center text-inherit">
                   <div class="avatar avatar-lg mr-3">
-                    <img class="avatar-img" src="front/assets/img/320x320/img1.jpg" alt="Image Description">
+                  <a href="/detail/{{$post->id_posting}}">
+                    <img class="avatar-img transition-zoom-hover" src="{{ asset('uploads/'.$populer->gambarMuka->file_name) }}" alt="Image Description" >
+                  </a>
                   </div>
                   <div class="media-body">
-                    <h4 class="h6 mb-0"><a class="text-inherit" href="#">Announcing a free plan for small teams</a></h4>
+                    <h4 class="h6 mb-0"><a class="text-inherit" href="/detail/{{$populer->id_posting}}">{{ $populer->judul_posting }}</a></h4>
                   </div>
                 </div>
               </article>
               <!-- End Blog -->
 
-              <!-- Blog -->
-              <article class="mb-5">
-                <div class="media align-items-center text-inherit">
-                  <div class="avatar avatar-lg mr-3">
-                    <img class="avatar-img" src="front/assets/img/320x320/img10.jpg" alt="Image Description">
-                  </div>
-                  <div class="media-body">
-                    <h4 class="h6 mb-0"><a class="text-inherit" href="#">Mapping the first family tree for Front office</a></h4>
-                  </div>
-                </div>
-              </article>
-              <!-- End Blog -->
-
-              <!-- Blog -->
-              <article class="mb-5">
-                <div class="media align-items-center text-inherit">
-                  <div class="avatar avatar-lg mr-3">
-                    <img class="avatar-img" src="front/assets/img/320x320/img9.jpg" alt="Image Description">
-                  </div>
-                  <div class="media-body">
-                    <h4 class="h6 mb-0"><a class="text-inherit" href="#">Felline eyeing first major Classic win in 2018</a></h4>
-                  </div>
-                </div>
-              </article>
-              <!-- End Blog -->
+             @endforeach
             </div>
 
             <div class="mb-7">

@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="front/assets/images/pemda.ico">
+    <link rel="shortcut icon" href="{{ asset('front/assets/images/pemda.ico')}}">
     <!-- Title -->
     <title>@yield('title')</title>
 
@@ -44,12 +44,10 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/touchspin.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/maxlength.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/formatter.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/uniform.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/jszip/jszip.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/buttons.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/uniform.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_inputs.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js ')}}"></script>
@@ -57,40 +55,29 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/uploader_bootstrap.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/notifications/jgrowl.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/notifications/noty.min.js')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/editors/summernote/summernote.min.js')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/editor_summernote.js')}}"></script>
 
 	
 	<script src="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/js/app.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/dashboard.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/editor_ckeditor.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_floating_labels.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_inputs.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/datatables_extension_buttons_html5.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_select2.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/extra_jgrowl_noty.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/notifications/sweet_alert.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switchery.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/extra_sweetalert.js ')}}"></script>
-
+	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/widgets_stats.js ')}}"></script>
 	<!-- /theme JS files -->
 
     <!-- Theme JS files Datatable-->
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/datatables.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/select2.min.js ')}}"></script>
     <script src="{{ url ('limitless/Template/global_assets/js/demo_pages/datatables_basic.js ')}}"></script>
     <script src="{{ url ('limitless/Template/global_assets/js/demo_pages/table_elements.js ')}}"></script>
     <script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/uniform.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switchery.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/select2.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/touchspin.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/contextmenu.js ')}}"></script>
-	
 
-	
     <!-- /theme JS files Datatable-->
 
 
@@ -101,7 +88,7 @@
 	<!-- Main navbar -->
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
-			<a href="index.html" class="d-inline-block">
+			<a href="{{ url('dashboard') }}" class="d-inline-block">
 				<img src="{{ url ('front\assets\images\logo.png ')}}">
 			</a>
 		</div>
@@ -136,7 +123,7 @@
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="/account" class="dropdown-item"><i class="icon-cog5"></i> Setting Akun</a>
+						<a href="/account/{{ auth()->user()->id  }}/edit" class="dropdown-item"><i class="icon-cog5"></i> Setting Akun</a>
 						<a href="/posting/logout" class="dropdown-item"><i class="icon-switch2" id="sweet_warning"></i> Logout</a>
 				</li>
 			</ul>
@@ -174,7 +161,7 @@
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="{{ url('admin') }}" class="nav-link @yield('kondisi1')">
+							<a href="{{ url('dashboard') }}" class="nav-link @yield('kondisi1')">
 								<i class="icon-home4"></i>
 								<span>
 									Dashboard
@@ -187,14 +174,25 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
 								<li class="nav-item"><a href="{{ url('/posting') }}" class="nav-link">Data Posting</a></li>
 								<li class="nav-item"><a href="{{ url('/category') }}" class="nav-link">Kategori</a></li>
+								<li class="nav-item"><a href="{{ url('/lampirans') }}" class="nav-link">Lampiran</a></li>
 							</ul>
 						</li>
+						
 						<li class="nav-item nav-item-submenu @yield('kondisi3')">
 							<a href="#" class="nav-link"><i class="icon-user"></i> <span>User</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="User">
 								<li class="nav-item"><a href="{{url('/user')}}" class="nav-link ">Management User</a></li>
 							</ul>
+						</li>
+
+						<li class="nav-item @yield('kondisi4')">
+							<a href="{{ url('/komentar') }}" class="nav-link @yield('kondisi4')">
+								<i class="icon-bubble-dots4"></i>
+								<span>
+									Komentar
+								</span>
+							</a>
 						</li>
 						<!-- /main -->
 					</ul>
@@ -225,7 +223,7 @@
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
-							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+							<a href="{{ url('dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
 							@yield('halaman')
 							
 						</div>

@@ -20,11 +20,12 @@
 					</div>
 
 					<div class="card-body">
-						<form method="POST" action="/posting" enctype="multipart/form-data" >
+						<form method="POST" action="/posting/{{ $posting->id_posting }}" enctype="multipart/form-data" >
+						@method('patch')
 						@csrf
 
 						<input type="hidden" name ="posisi" value="highlight">
-						<input type="hidden" name ="created_by" value="{{auth()->user()->id}}">
+						<input type="hidden" name ="updated_by" value="{{auth()->user()->id}}">
 
                        	 		<div class="form-group row">
 									<label class="col-form-label col-lg-2">Judul Posting</label>
@@ -45,10 +46,32 @@
 											<option value="">- Pilih -</option>
 											<option value="highlight" {{$posting->posisi == 'highlight' ? "selected": ""}}>Highlight</option>
 											<option value="menu_atas" {{$posting->posisi == 'menu_atas' ? "selected": ""}}>Menu Atas</option>
+											<option value="menu_samping" {{$posting->posisi == 'menu_samping' ? "selected": ""}}>Menu Samping</option>
 										</select>
-										
+											@error('posisi')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
 									</div>
 								</div>
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Kategori</label>
+									<div class="col-lg-10">
+									<select name="id_kategori" class="form-control select @error('kategori') is-invalid @enderror" data-fouc>
+									@foreach($kategori as $categori)
+										<option value="{{ $posting->id_kategori }}" {{$posting->id_kategori == $categori->id  ? 'selected' : ''}}>{{ $categori->nama_kategori}}</option>
+									@endforeach
+										</select>
+											@error('kategori')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror										
+									</div>
+								</div>
+
 
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">Kata Kunci</label>
@@ -77,11 +100,9 @@
 								<div class="form-group row mt-2">
 									<label class="col-form-label col-lg-2">Sampul Halaman</label>
 									<div class="col-lg-10">
-									@foreach($)
-                                    <img src="{{asset($posting->attachment->file_name)"}} >
-									@endforeach
+										<input type="file" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
 									</div>
-							</div>
+								</div>
 
 							<div class="mb-4">
 								<label>Isi Halaman</label>
@@ -92,8 +113,7 @@
 					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 				            </div>
 			            </form>
-					</div>
-				</div>
+					
 				<!-- /CKEditor default -->
     </div>
     @endsection

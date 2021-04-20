@@ -41,6 +41,19 @@ class UserController extends Controller
      */
     public function store(UsercreateValidation $request)
     {
+
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'level' => 'required'
+        ],
+        [
+            'nama.required' => 'Nama harus diisi.',
+            'email.required' =>'Email harus diisi.',
+            'level.required' => 'Level harus dipilih.
+            '
+        ]);
+
           Users::create([
             'name' => $request->nama,
             'email' => $request->email,
@@ -80,16 +93,33 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsercreateValidation $request, $id)
     {
-        // User::where('id', $user->id)
-        // ->update ([
-        //     'name' => $request->nama,
-        //     'email' => $request->email,
-        //     'p'
 
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'level' => 'required'
+        ],
+        [
+            'nama.required' => 'Nama harus diisi.',
+            'email.required' =>'Email harus diisi.',
+            'level.required' => 'Level harus dipilih.'
+        ]);
 
-        // ]);
+        Users::find($id)->update([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'level' => $request->level
+        ]);
+
+        if($request->filled('password')){
+            Users::find($id)->update([
+                'password' => Hash::make($request->password)
+            ]);
+        }
+
+        return redirect('user')->with('status', 'Data user berhasil diubah.');
     }
 
     /**
@@ -102,6 +132,6 @@ class UserController extends Controller
     {
         Users::destroy($id);
         
-        return redirect ('/user/')->with('status', 'Data user berhasil dihapus');
+        return redirect ('/user/')->with('status', 'Data user berhasil dihapus.');
     }
 }

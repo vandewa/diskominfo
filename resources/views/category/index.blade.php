@@ -10,7 +10,7 @@
 @endsection
 
 @section('tambah_data')
-@if (auth()->user()->level=='superadmin')
+@if (auth()->user()->level=='superadmin'||'admin')
 <a href="/category/create" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah Kategori
@@ -36,7 +36,7 @@ Tambah Kategori
                 <tr>
                     <th>No</th>
                     <th>Nama Kategori</th>
-                    @if (auth()->user()->level=='superadmin')
+                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
                     @endif
                 </tr>
@@ -47,7 +47,7 @@ Tambah Kategori
                     <th>{{ $loop->iteration }}</th>
                     <td>{{ $category->nama_kategori }}</td>
         
-                    @if (auth()->user()->level=='superadmin')
+                    @if (auth()->user()->level=='superadmin'||'admin')
                     <td>
                     <center>
                     <div class="list-icons">

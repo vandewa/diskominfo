@@ -1,5 +1,5 @@
 
-@section('title', 'Dinas Kominfo Wonosobo')
+@section('title', 'Dinas Kominfo Wonosobo  | Visi & Misi')
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')
@@ -14,7 +14,7 @@
 <i class="fas fa-user-circle fa-lg" style="color:black"></i>
 @endsection
 
-@foreach ($visimisi as $visimisi)
+
 <br>
   <!-- ========== MAIN ========== -->
   <main id="content" role="main">
@@ -22,26 +22,10 @@
     <div class="container space-top-1 space-bottom-2">
       <div class="w-lg-60 mx-lg-auto">
         <div class="mb-4">
-         
         </div>
-
         <!-- Author -->
         <br>
-
-        <div class="js-slick-carousel slick "
-     data-hs-slick-carousel-options='{
-       "fade": true,
-       "infinite": true,
-       "autoplay": true,
-       "autoplaySpeed": 4000,
-       "dots": true,
-       "dotsAsProgressLine": true,
-       "dotsClass": "slick-dots mt-n4"
-     }'>
-  <div class="js-slide">
-    <img class="img-fluid w-100" src="upload/{{$visimisi->file_name}}" alt="Image Description">
-  </div>
-</div>
+    <img class="img-fluid w-100" src="uploads/{{$visimisi->file_name??''}}" alt="Image Description">
 </center>
 <br>
 
@@ -66,5 +50,5 @@
   </main>
   <!-- ========== END MAIN ========== -->
 
-  @endforeach
+
 @endsection

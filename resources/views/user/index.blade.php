@@ -49,7 +49,7 @@ Tambah User
                     <th>{{ $loop->iteration }}</th>
                     <td>{{ ucwords($user->name) }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ ucwords($user->level) }}</td>
+                    <td><span class="badge badge-flat border-primary text-primary-600">{{ ucwords($user->level) }}</span></td>
                     @if (auth()->user()->level=='superadmin')
                     <td>
                     <center>

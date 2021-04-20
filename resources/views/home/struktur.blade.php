@@ -1,5 +1,5 @@
 
-@section('title', 'Dinas Kominfo Wonosobo')
+@section('title', 'Dinas Kominfo Wonosobo | Struktur Organisasi')
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')

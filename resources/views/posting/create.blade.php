@@ -56,6 +56,23 @@
 								</div>
 
 								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Kategori</label>
+									<div class="col-lg-10">
+										<select name="id_kategori" class="form-control select @error('posisi') is-invalid @enderror" data-fouc>
+											<option value="">- Pilih -</option>
+											@foreach ($category as $kategori)
+											<option value = "{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+											@endforeach
+										</select>
+										@error('kategori')
+										<div class="invalid-feedback">
+										{{ $message }}
+										</div>
+										@enderror
+									</div>
+								</div>
+
+								<div class="form-group row">
 									<label class="col-form-label col-lg-2">Kata Kunci</label>
 									<div class="col-lg-10">
 										<input type="text" name="kata_kunci"  class="form-control @error('kata_kunci') is-invalid @enderror" placeholder="Kata kunci" value="{{ old('kata_kunci') }}">
@@ -82,9 +99,9 @@
 								<div class="form-group row mt-2">
 									<label class="col-form-label col-lg-2">Sampul Halaman</label>
 									<div class="col-lg-10">
-										<input type="file" value="{{ old('file_name') }}" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
+										<input type="file" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
 									</div>
-							</div>
+								</div>
 
 							<div class="mb-4">
 								<label>Isi Halaman</label>

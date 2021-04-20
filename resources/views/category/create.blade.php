@@ -1,6 +1,6 @@
 @section('title', 'Tambah Kategori')
 @section('menu','Kategori')
-@section('submenu','Data ')
+@section('submenu','Tambah Data ')
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
 
@@ -28,6 +28,11 @@
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="nama_kategori" class="form-control" placeholder="Masukkan Nama Kategori" value="{{ old('nama_kategori') }}">
+											@error('nama_kategori')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
 											<div class="form-control-feedback form-control-feedback-lg">
 											<i class="icon-pencil"></i>
 											</div>

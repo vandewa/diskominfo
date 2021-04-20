@@ -11,40 +11,46 @@
 
 
 @endsection
+
 @section('kondisi2')
 <i class="fas fa-user-circle fa-lg" style="color:black"></i>
 @endsection
 
-@foreach ($detail as $detail)
-<br>
-  <!-- ========== MAIN ========== -->
-  <main id="content" role="main">
-    <!-- Article Description Section -->
-    <div class="container space-top-1 space-bottom-2">
-      <div class="w-lg-60 mx-lg-auto">
-        <div class="mb-4">
-         
-        </div>
+ <!-- ========== MAIN ========== -->
+ <main id="content" role="main">
+    <!-- Blogs Section -->
+    <div class="container space-2 space-lg-2">
+      <div class="row justify-content-lg-between">
+      
+        <div class="col-lg-8 mt-2">
 
-        <!-- Author -->
-        <div class="border-top border-bottom py-4 mb-5">
+        <div class="border-top border-bottom py-4 mb-5 mt-4">
           <div class="row align-items-md-center">
-            <div class="col-md-7 mb-5 mb-md-0">
-              <div class="media align-items-center">
-                <div class="avatar avatar-circle">
-                  <img class="avatar-img" src="{{ url ('front/assets/img/100x100/img11.jpg')}}" alt="Image Description">
+             <div class="col-md-7 mb-5 mb-md-0">
+            <div class="media align-items-center">
+            <div class="avatar avatar-circle">
+                  <img class="avatar-img" src="{{ asset('uploads/'.$detail->nama->profile_photo_path) }}" alt="Image Description">
                 </div>
                 <div class="media-body font-size-1 ml-3">
-                  <span class="h6"><a href="blog-profile.html">{{ $detail->nama->name }}</a> <button type="button" class="btn btn-xs btn-soft-primary font-weight-bold transition-3d-hover py-1 px-2 ml-1">Follow</button></span>
-                  <span class="d-block text-muted">{{ Carbon\Carbon::parse($detail->created_at)->isoFormat('dddd, D MMMM Y') }}</span>
+                  <span class="h6">{{ $detail->nama->name }}</span>
+                  <span class="d-block text-muted">{{ Carbon\Carbon::parse($detail->created_at)->isoFormat('LLLL') }} WIB</span>
                 </div>
               </div>
-            </div>
-            <div class="col-md-5">
+              </div>
+
+               <div class="col-md-5">
               <div class="d-flex justify-content-md-end align-items-center">
+              <span class="d-block small font-weight-bold text-cap mr-2">
+              <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </span>
+                 <span class="d-block small font-weight-bold text-cap mr-1">{{ $detail->views }}</span>
+                  <span class="d-block small font-weight-bold text-cap mr-2">views</span>
+                  <span class="d-block small font-weight-bold text-cap mr-2">|</span>
                 <span class="d-block small font-weight-bold text-cap mr-2">Share:</span>
 
-                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="#">
+                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="https://www.facebook.com/sharer/sharer.php?u=https://127.0.0.1:8000/detail/{{$detail->id_posting}}&display=popup"">
                   <i class="fab fa-facebook-f"></i>
                 </a>
                 <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="#">
@@ -58,13 +64,13 @@
                 </a>
               </div>
             </div>
-          </div>
+           </div>
         </div>
 
-        <center><h1 class="h2">{{ $detail->judul_posting}}</h1>
-        <br>
 
-        <div class="js-slick-carousel slick "
+         <center><h1 class="h2">{{ $detail->judul_posting}}</h1>
+
+         <div class="js-slick-carousel mb-3 slick "
           data-hs-slick-carousel-options='{
             "fade": true,
             "infinite": true,
@@ -73,38 +79,93 @@
             "dots": true,
             "dotsAsProgressLine": true,
             "dotsClass": "slick-dots mt-n4"
-          }'>
-  @foreach($detail->attachment as $slide)
-  <div class="js-slide">
-  <a href="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}">
-    <img class="img-fluid w-100 transition-zoom-hover" src="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}" alt="Image Description" height="150px;">
-    </a>
-  </div>
-  @endforeach
-</div>
-</center>
-<br>
+          }' >
+            @foreach($detail->attachment as $slide)
+            <div class="js-slide">
+            <a href="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}">
+                <img class="img-fluid transition-zoom-hover width: 100%;height: 100%;object-fit: scale-down" src="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}" alt="Image Description" height="150px;">
+                </a>
+            </div>
+            @endforeach
+            </div>
 
-        <!-- End Author -->
-        <div style="
-            text-align:justify;  
-            text-justify:auto;
-        ">
+
+         <!-- End Author -->
+        <div class="mt-5" style="text-align:justify; text-justify:auto;text-indent: 40px;">
         {!! $detail->isi_posting !!}
+         </div>
+
+   
+          <!-- Sticky Block End Point -->
+          <div id="stickyBlockEndPoint"></div>
+        </div>
+
+        <div class="col-lg-4">
+          <!-- Sticky Block Start Point -->
+          <div id="stickyBlockStartPoint"></div>
+          <div class="js-sticky-block"
+               data-hs-sticky-block-options='{
+                 "parentSelector": "#stickyBlockStartPoint",
+                 "breakpoint": "lg",
+                 "startPoint": "#stickyBlockStartPoint",
+                 "endPoint": "#stickyBlockEndPoint",
+                 "stickyOffsetTop": 40,
+                 "stickyOffsetBottom": 20
+               }'>
+            <div class="mb-7 mt-3">
+
+           <div class="mb-1 mt-4">
+              <div class="position-relative bg-info overflow-hidden space-0">
+                <div class=" text-left position-relative">
+                  <h3 class="container text-white text-center font-weight-semi-bold ">BERITA TERKAIT</h3>
+                </div>
+            <!-- SVG Shapes -->
+                <figure class="position-absolute right-0 bottom-0 left-0 mb-n1">
+        <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1920 100.1">
+          <path fill="#fff" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"/>
+        </svg>
+      </figure>
+                <!-- End SVG Shapes -->
+          </div>
+
+            @foreach($kategori as $beritaterkait)
+           <div class="card-body p-4" data-aos="zoom-out-right">
+            <!-- Project -->
+            <a class="card text-body transition-3d-hover mb-2 bg-info" href="/detail/{{$beritaterkait->id_posting}}">
+            <img class="card-img-top" src="/uploads/{{$beritaterkait->gambarMuka->file_name??''}}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
+            <div class="card-body text-left">
+            <small>
+            <p class="mb-0 text-white text-left" style="font-size:11px;"><b>{{ Carbon\Carbon::parse($beritaterkait->created_at)->isoFormat('LLLL') }} WIB</b></p>
+            <p class="mb-0 text-white">{{ $beritaterkait->judul_posting }}</p>
+            </small>
+            </div>
+            </a>
+            <!-- End Project -->
+            </div>
+            @endforeach
+
+
+            <div class="mb-7">
+              <div class="mb-3">
+                <h3></h3>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="w-lg-60 mx-lg-auto">
-        
-      <div class="w-lg-60 mx-lg-auto">
-               
-      <div class="w-lg-40 mx-lg-auto">
-
-      </div>
+      <!-- Pagination -->
+      <!-- End Pagination -->
     </div>
-    <!-- End Subscribe Section -->
+    <!-- End Blogs Section -->
+
+    <div class="container">
+      <div class="row mb-5">
+        
+        </div>
+        </div>
+
   </main>
+  
   <!-- ========== END MAIN ========== -->
 
-  @endforeach
 @endsection

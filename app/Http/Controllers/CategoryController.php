@@ -38,6 +38,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_kategori' => 'required',
+        ],
+        [
+            'nama_kategori.required' => 'Nama kategori harus diisi.',
+        ]);
+
         Category::create(
             [
                 'nama_kategori' => ucwords($request->nama_kategori)
@@ -67,9 +74,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -81,7 +88,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate([
+            'nama_kategori' => 'required',
+        ],
+        [
+            'nama_kategori.required' => 'Nama kategori harus diisi.',
+        ]);
+
+
+        Category::find($id)->update([
+            'nama_kategori' => $request->nama_kategori
+        ]);
+
+        return redirect ('category')->with('status', 'Data kategori berhasil diubah');
     }
 
     /**

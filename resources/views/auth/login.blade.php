@@ -10,6 +10,13 @@
 
         <x-jet-validation-errors class="mb-4" />
 
+        @if(session('statuss'))
+        <div class="alert bg-success text-white alert-styled-left alert-dismissible mt-1" >
+            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+            {{ session('statuss') }}
+        </div>
+        @endif
+
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
                 {{ session('status') }}

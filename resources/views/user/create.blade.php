@@ -28,6 +28,11 @@
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="nama" class="form-control" placeholder="Masukkan Nama" value="{{ old('nama') }}">
+											@error('nama')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
 											<div class="form-control-feedback form-control-feedback-lg">
 											<i class="icon-vcard"></i>
 											</div>
@@ -40,6 +45,11 @@
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="email" class="form-control" placeholder="Masukkkan Email" value="{{ old('email') }}">
+											@error('nama')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
 											<div class="form-control-feedback form-control-feedback-lg">
 												<i class="icon-envelope"></i>
 											</div>
@@ -56,6 +66,11 @@
 											<option data-icon="icon-wrench3" value="superadmin" >Superadmin</option>
 											<option data-icon="icon-wrench3" value="admin" >Admin</option>
 									</select>
+											@error('level')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
 										<div class="form-control-feedback form-control-feedback-lg">
 												<i class="icon-wrench3"></i>
 											</div>

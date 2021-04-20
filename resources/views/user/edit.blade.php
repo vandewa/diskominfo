@@ -20,7 +20,7 @@
 					</div>
 
 					<div class="card-body">
-						<form method="POST" action="/user/{{ $user->id }}" >
+						<form method="POST" action="/user/{{ $user->id }}/edit" >
 						@csrf
 
                         <div class="form-group row">
@@ -28,6 +28,11 @@
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="nama" class="form-control" placeholder="Judul berita" value="{{ $user->name }}">
+											@error('nama')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
 											<div class="form-control-feedback form-control-feedback-lg">
 											<i class="icon-vcard"></i>
 											</div>
@@ -40,6 +45,11 @@
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="email" class="form-control" placeholder="Keterangan" value="{{ $user->email }}">
+											@error('email')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
 											<div class="form-control-feedback form-control-feedback-lg">
 												<i class="icon-envelope"></i>
 											</div>
@@ -56,6 +66,11 @@
 											<option data-icon="icon-wrench3" value="superadmin" {{$user->level == 'superadmin' ? "selected": ""}}>Superadmin</option>
 											<option data-icon="icon-wrench3" value="admin" {{$user->level == 'admin' ? "selected": ""}}>Admin</option>
 										</select>
+											@error('level')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
 										<div class="form-control-feedback form-control-feedback-lg">
 												<i class="icon-wrench3"></i>
 											</div>
@@ -69,7 +84,7 @@
 									<label class="col-form-label col-lg-2">Password Baru</label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
-											<input name="password_baru" type="password" class="form-control form-control-lg" id="pass">
+											<input name="password" type="password" class="form-control form-control-lg" id="pass">
 											<div class="form-control-feedback form-control-feedback-lg">
 											<span id="mybutton" onclick="change()"><i class="icon-eye"></i></span>
 											</div>
@@ -81,7 +96,7 @@
 									<label class="col-form-label col-lg-2">Konfirmasi Password</label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
-											<input name="konfirmasi_password" type="password" class="form-control form-control-lg" id="passs">
+											<input name="password_confirmation" type="password" class="form-control form-control-lg" id="passs">
 											<div class="form-control-feedback form-control-feedback-lg">
 											<span id="mybutton2" onclick="change2()"><i class="icon-eye"></i></span>
 											</div>
@@ -135,3 +150,7 @@
          }
 	</script>
     @endsection
+
+@push('js')
+{!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}
+@endpush

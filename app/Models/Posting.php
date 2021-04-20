@@ -10,7 +10,7 @@ class Posting extends Model
     use HasFactory;
     protected $primaryKey = 'id_posting';
     protected $table ='posting';
-    protected $fillable = ['posisi', 'judul_posting','isi_posting', 'kata_kunci','created_by', 'keterangan'];
+    protected $fillable = ['posisi', 'judul_posting','isi_posting', 'kata_kunci', 'id_kategori', 'keterangan'];
 
     public function attachment(){
         return $this->hasMany(Attachment::class, 'id_tabel');
@@ -30,4 +30,10 @@ class Posting extends Model
     {
         return $this->hasOne(Attachment::class, 'id_tabel');
     }
+    public function kategori()
+    {
+        return $this->belongsTo(Category::class, 'id_kategori');
+    }
+
+
 }

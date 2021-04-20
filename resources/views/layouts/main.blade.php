@@ -24,6 +24,9 @@
   <link rel="stylesheet" href="{{ url('front/assets/vendor/fontawesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/slick-carousel/slick/slick.css')}}">
+  <link rel="stylesheet" href="{{ url('front/assets/vendor/aos/dist/aos.css')}}">
+  <link rel="stylesheet" href="{{ url('front/assets/vendor/cubeportfolio/css/cubeportfolio.min.css')}}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet"></link>
 
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
@@ -50,6 +53,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   </script>
+  
 
 
   <!-- ========== HEADER ========== -->
@@ -93,7 +97,7 @@
 
               <!-- Profil -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu">Beranda</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Beranda</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -106,7 +110,7 @@
 
                 <!-- Profil -->
                 <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/profil" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu">Profil</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/profil" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Profil</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -118,7 +122,7 @@
 
                 <!-- Visi Misi -->
                 <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/visimisi" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu">Visi & Misi</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/visimisi" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Visi & Misi</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -130,7 +134,7 @@
 
                     <!-- Struktur -->
                     <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/struktur" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu">Struktur Organisasi</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/struktur" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Struktur Organisasi</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -142,7 +146,7 @@
 
                 <!-- Tupoksi -->
                 <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/tupoksi" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu">Tupoksi</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/tupoksi" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Tupoksi</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -151,6 +155,30 @@
                   <!-- End Pages - Submenu -->
                 </li>
                 <!-- End Tupoksi -->
+
+                 <!-- Lampiran -->
+                 <li class="hs-has-sub-menu navbar-nav-item">
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/lampiran" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Lampiran</a>
+
+                  <!-- Pages - Submenu -->
+                  <div class="hs-sub-menu ">
+
+                  </div>
+                  <!-- End Pages - Submenu -->
+                </li>
+                <!-- End Lampiran -->
+
+                <!-- Buku Tamu -->
+                 <li class="hs-has-sub-menu navbar-nav-item">
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/hubungikami" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Hubungi Kami</a>
+
+                  <!-- Pages - Submenu -->
+                  <div class="hs-sub-menu ">
+
+                  </div>
+                  <!-- End Pages - Submenu -->
+                </li>
+                <!-- End Tamu -->
 
                 <!-- Blog -->
                 <!-- <li class="hs-has-sub-menu navbar-nav-item">
@@ -177,7 +205,7 @@
                         "maxWidth": "260px"
                       }
                     }'>
-                  <a id="docsMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="javascript:;" aria-haspopup="true" aria-expanded="false">Galeri</a>
+                  <a id="docsMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="javascript:;" aria-haspopup="true" aria-expanded="false" @yield('warna')>Galeri</a>
 
                   <!-- Docs - Submenu -->
                   <div class="hs-mega-menu dropdown-menu" aria-labelledby="docsMegaMenu" style="min-width: 330px;">
@@ -192,20 +220,6 @@
                               <span class="badge badge-primary badge-pill ml-1">v3.3</span>
                             </span>
                             <small class="navbar-promo-text">Development guides</small>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <!-- End Promo Item -->
-
-                    <!-- Promo Item -->
-                    <div class="navbar-promo-item">
-                      <a class="navbar-promo-link" href="{{ url('front/snippets/index.html')}}">
-                        <div class="media align-items-center">
-                          <img class="navbar-promo-icon" src="{{url('front/assets/svg/icons/icon-1.svg')}}" alt="SVG">
-                          <div class="media-body">
-                            <span class="navbar-promo-title">Snippets</span>
-                            <small class="navbar-promo-text">Start building</small>
                           </div>
                         </div>
                       </a>
@@ -259,27 +273,27 @@
   <!-- ========== FOOTER ========== -->
   <footer class="bg-primary">
     <div class="container">
-      <div class="space-top-2 space-bottom-1 space-bottom-lg-2">
+      <div class="space-top-2 space-bottom-lg-1">
         <div class="row justify-content-lg-between">
 
-        <div class="col-12 col-md-6 col-lg mb-5 mb-lg-0">
+        <div class="col-12 col-md-6 col-lg">
         <div class="mb-4">
             <h5 class="text-white">Statistik Pengunjung</h5>
             </div>
             <!-- End Nav Link -->
             <ul class="nav nav-sm nav-x-0 nav-white flex-column">
               <li class="nav-item">
-                <a class="nav-link media" href="javascript:;">
+                <a class="nav-link media">
                     <span class="media">
                       <span class="icon-stats-bars2 mt-1 mr-2"></span>
                       <span class="media-body">
-                     Total Pembaca :
+                     Total Pembaca : {{ $key }}
                       </span>
                     </span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link media" href="tel:1-062-109-9222">
+                <a class="nav-link media">
                     <span class="media">
                       <span class="icon-stats-bars2 mt-1 mr-2"></span>
                       <span class="media-body">
@@ -302,7 +316,7 @@
             <!-- Nav Link -->
             <ul class="nav nav-sm nav-x-0 nav-white flex-column">
               <li class="nav-item">
-                <a class="nav-link media" href="javascript:;">
+                <a class="nav-link media">
                     <span class="media">
                       <span class="icon-office mt-1 mr-2"></span>
                       <span class="media-body">
@@ -312,7 +326,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link media" href="tel:1-062-109-9222">
+                <a class="nav-link media" href="tel:(0286) 325112">
                     <span class="media">
                       <span class="icon-phone mt-1 mr-2"></span>
                       <span class="media-body">
@@ -322,7 +336,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link media" href="tel:1-062-109-9222">
+                <a class="nav-link media" href="mailto:diskominfo@wonosobokab.go.id">
                     <span class="media">
                       <span class="icon-mail5 mt-1 mr-2"></span>
                       <span class="media-body">
@@ -402,13 +416,21 @@
   <script src="{{ url ('front/assets/vendor/dzsparallaxer/dzsparallaxer.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/typed.js/lib/typed.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/aos/dist/aos.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/hs-show-animation/dist/hs-show-animation.min.js')}}"></script>
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
 
   <!-- JS Front -->
   <script src="{{ url ('front/assets/js/theme.min.js')}}"></script>
 
+
   <!-- JS Plugins Init. -->
   <script>
     $(document).on('ready', function () {
+
       // INITIALIZATION OF HEADER
       // =======================================================
       var header = new HSHeader($('#header')).init();
@@ -427,11 +449,27 @@
       // =======================================================
       var unfold = new HSUnfold('.js-hs-unfold-invoker').init();
 
+       // INITIALIZATION OF SHOW ANIMATIONS
+      // =======================================================
+      $('.js-animation-link').each(function () {
+        var showAnimation = new HSShowAnimation($(this)).init();
+      });
+
 
       // INITIALIZATION OF FORM VALIDATION
       // =======================================================
       $('.js-validate').each(function () {
         var validation = $.HSCore.components.HSValidation.init($(this));
+      });
+
+       // INITIALIZATION OF CUBEPORTFOLIO
+      // =======================================================
+      $('.cbp').each(function () {
+        var cbp = $.HSCore.components.HSCubeportfolio.init($(this), {
+          layoutMode: 'grid',
+          filters: '#filterControls',
+          displayTypeSpeed: 0
+        });
       });
 
 
@@ -479,6 +517,11 @@
       // =======================================================
       var typed = $.HSCore.components.HSTyped.init(".js-text-animation");
 
+      AOS.init({
+        duration: 650,
+        once: true
+      });
+
 
       // INITIALIZATION OF GO TO
       // =======================================================
@@ -486,11 +529,14 @@
         var goTo = new HSGoTo($(this)).init();
       });
     });
+
+
   </script>
 
   <!-- IE Support -->
   <script>
     // if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{ url ('front/assets/vendor/babel-polyfill/dist/polyfill.js')}}"><\/script>');
   </script>
+  @stack('js')
 </body>
 </html>

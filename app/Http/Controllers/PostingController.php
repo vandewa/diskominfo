@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Posting;
 use App\Models\Attachment;
 use App\Models\Position;
+use App\Models\Category;
 use DataTables;
 use Carbon\Carbon;
 
@@ -38,8 +39,9 @@ class PostingController extends Controller
     public function create()
     {
         $position = Position::all();
+        $category = Category::all();
 
-        return view('posting.create', compact('position'));
+        return view('posting.create', compact('position', 'category'));
     }
 
     /**
@@ -52,12 +54,16 @@ class PostingController extends Controller
     {
         $request->validate([
             'judul_posting' => 'required',
+            'posisi' => 'required',
+            'id_kategori' => 'required',
             'kata_kunci' =>'required',
             'keterangan' => 'required',
 
         ],
         [
             'judul_posting.required' => 'Judul harus diisi.',
+            'posisi.required' =>'Posisi harus dipilih.',
+            'id_kategori.required' =>'Kategori harus dipilih.',
             'kata_kunci.required' =>'Kata Kunci harus diisi.',
             'keterangan.required' => 'Keterangan harus diisi.',
 
@@ -69,6 +75,7 @@ class PostingController extends Controller
         $files = $request->file('file_name');
         $prefix = date('Ymdhis');
         $no = 1;
+
         foreach($files as $a){
             $extension = $a->extension();
             $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
@@ -81,7 +88,7 @@ class PostingController extends Controller
             $no++;
         }
 
-        return redirect ( url('posting'));
+        return redirect ( url('posting'))->with('status', 'Data posting berhasil ditambahkan.');
 
 
     }
@@ -105,8 +112,11 @@ class PostingController extends Controller
      */
     public function edit($id)
     {
-        $a = Posting::with(['attachment'])->find($id);
-        return $a;
+        $posting = Posting::with(['attachment','kategori'])->find($id);
+
+        $kategori = Category::all();
+        
+        return view('posting.edit', compact('posting', 'kategori'));
     }
 
     /**
@@ -118,7 +128,41 @@ class PostingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate([
+            'judul_posting' => 'required',
+            'posisi' => 'required',
+            'id_kategori' => 'required',
+            'kata_kunci' =>'required',
+            'keterangan' => 'required',
+
+        ],
+        [
+            'judul_posting.required' => 'Judul harus diisi.',
+            'posisi.required' =>'Posisi harus dipilih.',
+            'id_kategori.required' =>'Kategori harus dipilih.',
+            'kata_kunci.required' =>'Kata Kunci harus diisi.',
+            'keterangan.required' => 'Keterangan harus diisi.',
+
+        ]);
+
+       Posting::find($id)
+       ->update([
+           'posisi' => $request->posisi,
+           'judul_posting' => $request->judul_posting,
+           'isi_posting' => $request->isi_posting,
+           'kata_kunci' => $request->kata_kunci,
+           'id_kategori' => $request->id_kategori,
+           'updated_by' => $request->updated_by,
+           'keterangan' => $request->keterangan
+       ]);
+
+    //    if($request->filled('file_name')){
+
+    //     }
+
+        return redirect ( url('posting'))->with('status', 'Data berhasil diubah.');
+
     }
 
     /**
@@ -140,7 +184,7 @@ class PostingController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = '
                     <div class="list-icons">
-                    <a href="posting/'.$row->id_posting.'/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="/posting/'.$row->id_posting.'/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
                     <a href="#" class="list-icons-item text-danger-600"><i class="icon-trash"></i></a>
                 </div>';
                     return $actionBtn;
@@ -156,6 +200,16 @@ class PostingController extends Controller
                 })
                 ->editColumn('posisi', function($a){
                     return ucwords(str_replace('_', ' ', $a->posisi));
+                })
+                ->editColumn('kategori', function($a)
+                {
+                    Posting::with(['kategori']);
+                    return $a->kategori->nama_kategori;
+                })
+                ->editColumn('oleh', function($a)
+                {
+                    Posting::with(['nama']);
+                    return $a->nama->name;
                 })
                 ->rawColumns(['action', 'status'])
                 ->make(true);
