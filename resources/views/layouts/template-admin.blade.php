@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="csrf-token" content="{{csrf_token()}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('front/assets/images/pemda.ico')}}">
@@ -79,6 +80,13 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/contextmenu.js ')}}"></script>
 
     <!-- /theme JS files Datatable-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js" integrity="sha512-CrNI25BFwyQ47q3MiZbfATg0ZoG6zuNh2ANn/WjyqvN4ShWfwPeoCOi9pjmX4DoNioMQ5gPcphKKF+oVz3UjRw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.js" integrity="sha512-ZYvPGKyKaVHwZFJldzOuYineKWIBiHZliZCcfa2dq4IYJe/w7k4WOUYa22jNAUAC+fxlXB1blBq1cgGQrV7DGg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js" integrity="sha512-jQxNe7fqaqehR3t/JfoxC8y2dwkEIL/7a6JWbs6sQdSCI/6Kd0t2okI9nhuKeSUgM5JDTDgdUzLzSPovB2lOBQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.css" integrity="sha512-IThEP8v8WRHuDqEKg3D6V0jROeRcQXGu/02HzCudtHKlLSzl6F6EycdHw34M3gsBA5zsUyR4ynW6j5vS1qE4wQ==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.js" integrity="sha512-pCY6IoVbjV1hvVawzGdzKCAVB0UXiOacncL59KETWUSkEPiDkvXTrXjGjpAQF6YCqxTcoa3YIV9SGGnFkb8evg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.css" integrity="sha512-/D4S05MnQx/q7V0+15CCVZIeJcV+Z+ejL1ZgkAcXE1KZxTE4cYDvu+Fz+cQO9GopKrDzMNNgGK+dbuqza54jgw==" crossorigin="anonymous" />
+
 
 
 </head>
@@ -123,8 +131,8 @@
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="/account/{{ auth()->user()->id  }}/edit" class="dropdown-item"><i class="icon-cog5"></i> Setting Akun</a>
-						<a href="/posting/logout" class="dropdown-item"><i class="icon-switch2" id="sweet_warning"></i> Logout</a>
+						<a href="{{url('/account')}}/{{auth()->user()->id}}/edit" class="dropdown-item"><i class="icon-cog5"></i> Setting Akun</a>
+						<a href="{{route('logout')}}" class="dropdown-item"><i class="icon-switch2" id="sweet_warning"></i> Logout</a>
 				</li>
 			</ul>
 		</div>
@@ -161,20 +169,33 @@
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="{{ url('dashboard') }}" class="nav-link @yield('kondisi1')">
+							<a href="{{ route('dashboard') }}" class="nav-link @yield('kondisi1')">
 								<i class="icon-home4"></i>
 								<span>
 									Dashboard
 								</span>
 							</a>
 						</li>
+
+						<li class="nav-item nav-item-submenu @yield('kondisi5')">
+							<a href="#" class="nav-link"><i class="icon-menu7"></i> <span>Menu Depan</span></a>
+
+							<ul class="nav nav-group-sub" data-submenu-title="Posting">
+								<li class="nav-item"><a href="{{ route('menuberanda.index') }}" class="nav-link">Menu</a></li>
+								<li class="nav-item"><a href="{{ route('youtube.index') }}" class="nav-link">Youtube</a></li>
+								<li class="nav-item"><a href="{{ route('gallery.index') }}" class="nav-link">Galeri</a></li>
+							</ul>
+						</li>
+				
+			
+
 						<li class="nav-item nav-item-submenu @yield('kondisi2')">
 							<a href="#" class="nav-link"><i class="icon-newspaper"></i> <span>Posting</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ url('/posting') }}" class="nav-link">Data Posting</a></li>
-								<li class="nav-item"><a href="{{ url('/category') }}" class="nav-link">Kategori</a></li>
-								<li class="nav-item"><a href="{{ url('/lampirans') }}" class="nav-link">Lampiran</a></li>
+								<li class="nav-item"><a href="{{ route('posting.index') }}" class="nav-link">Data Posting</a></li>
+								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Kategori</a></li>
+								<li class="nav-item"><a href="{{ route('lampirans.index') }}" class="nav-link">Lampiran</a></li>
 							</ul>
 						</li>
 						
@@ -182,12 +203,12 @@
 							<a href="#" class="nav-link"><i class="icon-user"></i> <span>User</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="User">
-								<li class="nav-item"><a href="{{url('/user')}}" class="nav-link ">Management User</a></li>
+								<li class="nav-item"><a href="{{route('user.index')}}" class="nav-link ">Management User</a></li>
 							</ul>
 						</li>
 
 						<li class="nav-item @yield('kondisi4')">
-							<a href="{{ url('/komentar') }}" class="nav-link @yield('kondisi4')">
+							<a href="{{ route('komentar.index') }}" class="nav-link @yield('kondisi4')">
 								<i class="icon-bubble-dots4"></i>
 								<span>
 									Komentar
@@ -223,7 +244,7 @@
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
-							<a href="{{ url('dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+							<a href="{{ route('dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
 							@yield('halaman')
 							
 						</div>
@@ -268,8 +289,50 @@
 	<!-- /page content -->
 
 	<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+	<script>
+		$(document).on('click', '.delete-data-table', function(a){
+            a.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you realy want to delete this records? This process cannot be undone.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Delete!'
+            }).then((result) => {
+                if (result.value) {
+                    a.preventDefault();
+                    var url = $(this).attr('href');
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        url: url,
+                        method: 'delete',
+                        success: function () {
+                            Swal.fire(
+                                'Deleted!',
+                                'data has been deleted.',
+                                'success'
+                            )
+                            table.ajax.reload();
+                            if(typeof table2){
+                                table2.ajax.reload();
+                            }
+                        }
+                    })
+                }
+            })
+        });
+	</script>
 
 @stack('js')
+
+
 
 </body>
 </html>

@@ -11,6 +11,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LampiranController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KomentarController;
+use App\Http\Controllers\MenuBerandaController;
+use App\Http\Controllers\YoutubeController;
+use App\Http\Controllers\GalleryController;
 use Carbon\Carbon;
 
 /*
@@ -23,41 +26,39 @@ use Carbon\Carbon;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/profil', [HomeController::class, 'profil']);
-Route::get('/visimisi', [HomeController::class, 'visimisi']);
-Route::get('/struktur', [HomeController::class, 'struktur']);
-Route::get('/tupoksi', [HomeController::class, 'tupoksi']);
-Route::get('/lampiran', [HomeController::class, 'lampiran']);
-Route::get('/hubungikami', [HomeController::class, 'hubungikami']);
-Route::post('/hubungikami/simpan', [HomeController::class, 'simpan']);
-Route::get('/lampiran/list', [HomeController::class, 'getLampiran'])->name('lampiran.list');
-Route::get('/detail/{post}', [HomeController::class, 'detail']);
-Route::get('/search', [HomeController::class, 'cari']);
-Route::get('/kategori/{post}', [HomeController::class, 'kategori']);
-Route::get('/posting/list', [PostingController::class, 'getPosting'])->name('posting.list');
-Route::get('/posting/logout', [PostingController::class, 'logout']);
-Route::resource('posting', PostingController::class);
-Route::resource('category', CategoryController::class);
-Route::get('/category/delete/{id}', [CategoryController::class, 'destroy']);
-Route::post('/category/{id}/edit', [CategoryController::class, 'update']);
-Route::resource('lampirans', LampiranController::class);
-Route::get('/lampirans/delete/{id}', [LampiranController::class, 'destroy']);
-Route::post('/lampirans/{id}/edit', [LampiranController::class, 'update']);
-Route::resource('komentar', KomentarController::class);
-Route::get('/komentar/delete/{id}', [ KomentarController::class, 'destroy']);
-Route::post('/komentar/{id}/edit', [ KomentarController::class, 'update']);
-Route::resource('user', UserController::class);
-Route::get('/user/delete/{id}', [UserController::class, 'destroy']);
-Route::post('/user/{id}/edit', [UserController::class, 'update']);
 Route::resource('home', HomeController::class);
-Route::post('/account/{id}/edit', [AccountController::class, 'update']);
-Route::resource('account', AccountController::class);
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
+Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
+Route::get('/struktur', [HomeController::class, 'struktur'])->name('struktur');
+Route::get('/tupoksi', [HomeController::class, 'tupoksi'])->name('tupoksi');
+Route::get('/lampiran', [HomeController::class, 'lampiran'])->name('lampiran');
+Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
+Route::get('/hubungikami', [HomeController::class, 'hubungikami'])->name('hubungikami');
+Route::post('/hubungikami/simpan', [HomeController::class, 'simpan'])->name('hubungikami.simpan');
+Route::get('/lampiran/list', [HomeController::class, 'getLampiran'])->name('lampiran.list');
+Route::get('/detail/{post}', [HomeController::class, 'detail'])->name('detail.posting');
+Route::get('/search', [HomeController::class, 'cari'])->name('search');
+Route::get('/kategori/{post}', [HomeController::class, 'kategori'])->name('kategori.posting');
+Route::get('/uploadby/{post}', [HomeController::class, 'uploadby'])->name('uploadby.posting');
+Route::get('/posting/list', [PostingController::class, 'getPosting'])->name('posting.list');
+Route::get('/posting/logout', [PostingController::class, 'logout'])->name('logout');
 
-Route::get('/admin', function() {
-    return view('admin');
+Route::group(['middleware' => ['auth']], function(){
+    Route::resource('posting', PostingController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('menuberanda', MenuBerandaController::class);
+    Route::resource('youtube', YoutubeController::class);
+    Route::resource('lampirans', LampiranController::class);
+    Route::resource('komentar', KomentarController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('account', AccountController::class);
+    Route::resource('gallery', GalleryController::class);
 });
+
+// Route::get('/admin', function() {
+//     return view('admin');
+// });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'], function () {
     return view('dashboard');})->name('dashboard');

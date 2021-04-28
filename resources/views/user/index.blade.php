@@ -11,7 +11,7 @@
 
 @section('tambah_data')
 @if (auth()->user()->level=='superadmin')
-<a href="/user/create" class="btn btn-primary">
+<a href="{{route('user.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah User
 </a>
@@ -35,7 +35,7 @@ Tambah User
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama User</th>
+                    <th>Nama</th>
                     <th>Email</th>
                     <th>Level</th>
                     @if (auth()->user()->level=='superadmin')

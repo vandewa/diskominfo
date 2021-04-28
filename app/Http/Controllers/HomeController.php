@@ -11,6 +11,8 @@ use App\Models\Category;
 use App\Models\Users;
 use App\Models\Lampiran;
 use App\Models\Komentar;
+use App\Models\Youtube;
+use App\Models\Gallery;
 use DataTables;
 
 use PHPUnit\Framework\Constraint\Count;
@@ -31,6 +33,8 @@ class HomeController extends Controller
 
     return view('home.profil', compact('profil'));
     }
+
+    
 
     public function visimisi()
     {
@@ -119,6 +123,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $youtube =  Youtube::orderBy('created_at', 'desc')
+        ->limit(3)
+        ->get();
 
         $cek_highlight = Posting::where('posisi', '=', 'highlight')
         ->count();
@@ -142,7 +149,7 @@ class HomeController extends Controller
         $posting2 = Posting::with(['attachment', 'gambarMuka','nama', 'kategori'])
         ->where('posisi', '=', 'menu_atas')
         ->orderBy('created_at', 'desc')
-        ->paginate(7);
+        ->paginate(5);
 
         $postingg = Posting::with(['attachment', 'gambarMuka', 'nama'])
         ->where('posisi', '=', 'highlight')
@@ -155,7 +162,7 @@ class HomeController extends Controller
         ->select('posting.*','attachment.*', 'users.*')
         ->orderBy('posting.created_at', 'desc');
 
-        return view('home.index', compact('posting2', 'posting', 'postingg', 'populer'));
+        return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube'));
     }
 
     /**
@@ -179,7 +186,14 @@ class HomeController extends Controller
         ->paginate(5)
         ->appends(['q' => $request->q]);
 
-        return view ('home.cari', compact('posting', 'cari', 'posting_samping'));
+        $jumlah = Posting::with(['kategori', 'nama'])
+        ->where('judul_posting', 'like', "%".$cari."%")
+        ->select('judul_posting', 'id_posting', 'id_kategori', 'created_by', 'isi_posting')
+        ->paginate(5)
+        ->appends(['q' => $request->q])
+        ->count();
+
+        return view ('home.cari', compact('posting', 'cari', 'posting_samping','jumlah'));
     }
 
 
@@ -199,6 +213,24 @@ class HomeController extends Controller
          
 
         return view('home.kategori', compact('kategori','populers'));
+    }
+
+    public function uploadby($post)
+    {
+
+        $populers = Posting::with(['gambarMuka'])
+        ->orderBy('views', 'desc')
+        ->limit(3)
+        ->get();
+        
+        $uploadby = Posting::with(['gambarMuka','kategori'])
+        ->where('created_by',$post)
+        ->orderBy('created_at','desc')
+        ->paginate(12);
+
+         
+
+        return view('home.uploadby', compact('uploadby','populers'));
     }
 
     public function hubungikami()
@@ -229,9 +261,12 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function galeri()
     {
-        //
+        $galeri= Gallery::orderBy('created_at','desc')
+        ->paginate(10);
+
+        return view('home.galeri', compact('galeri'));
     }
 
     /**

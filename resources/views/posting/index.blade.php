@@ -11,7 +11,7 @@
 
 @section('tambah_data')
 @if (auth()->user()->level=='superadmin'||'admin')
-<a href="/posting/create" class="btn btn-primary">
+<a href="{{route('posting.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah Posting
 </a>
@@ -58,7 +58,7 @@ Tambah Posting
 				serverSide: true,
 				ajax: "{{ route('posting.list') }}",
 				columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
 					{data: 'judul_posting'},
                     {data: 'kategori', },
 					{data: 'posisi', },

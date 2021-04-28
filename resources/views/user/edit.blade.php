@@ -20,11 +20,12 @@
 					</div>
 
 					<div class="card-body">
-						<form method="POST" action="/user/{{ $user->id }}/edit" >
+						<form method="POST" action="{{route('user.update', $user->id)}}" >
+						@method('patch')
 						@csrf
 
                         <div class="form-group row">
-									<label class="col-form-label col-lg-2">Nama</label>
+									<label class="col-form-label col-lg-2">Nama<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="nama" class="form-control" placeholder="Judul berita" value="{{ $user->name }}">
@@ -41,7 +42,7 @@
 								</div>
 
                                 <div class="form-group row">
-									<label class="col-form-label col-lg-2">Email</label>
+									<label class="col-form-label col-lg-2">Email<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="email" class="form-control" placeholder="Keterangan" value="{{ $user->email }}">
@@ -58,7 +59,7 @@
 								</div>
 
 								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Level</label>
+									<label class="col-form-label col-lg-2">Level<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 									<div class="form-group form-group-feedback form-group-feedback-left">
 									<select name="level" class="form-control select-icons @error('level') is-invalid @enderror" data-fouc>
@@ -81,7 +82,7 @@
 								<legend class="text-uppercase font-size-sm font-weight-bold">Ganti Password</legend>
 
 								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Password Baru</label>
+									<label class="col-form-label col-lg-2">Password Baru<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input name="password" type="password" class="form-control form-control-lg" id="pass">
@@ -93,7 +94,7 @@
 								</div>
 
 								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Konfirmasi Password</label>
+									<label class="col-form-label col-lg-2">Konfirmasi Password<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input name="password_confirmation" type="password" class="form-control form-control-lg" id="passs">

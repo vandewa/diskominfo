@@ -20,11 +20,11 @@
 				</div>
 
 					<div class="card-body">
-						<form method="POST" action="{{ url ('/category') }}" >
+						<form method="POST" action="{{route('category.store')}}" >
 						@csrf
 
 						<div class="form-group row">
-									<label class="col-form-label col-lg-2">Nama Kategori</label>
+									<label class="col-form-label col-lg-2">Nama Kategori<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="nama_kategori" class="form-control" placeholder="Masukkan Nama Kategori" value="{{ old('nama_kategori') }}">

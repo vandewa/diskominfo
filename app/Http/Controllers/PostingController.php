@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostingcreateValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,7 @@ use DataTables;
 use Carbon\Carbon;
 
 
+
 class PostingController extends Controller
 {
     /**
@@ -24,9 +26,9 @@ class PostingController extends Controller
     public function index()
     {
         
-        $posting= Posting::orderBy('created_at','desc')->get();
+        // $posting= Posting::orderBy('created_at','desc')->get();
        
-        return view('posting.index', compact('posting'));
+        return view('posting.index');
 
         
     }
@@ -39,7 +41,8 @@ class PostingController extends Controller
     public function create()
     {
         $position = Position::all();
-        $category = Category::all();
+        $category = Category::wherenotin('id',[0,2])
+        ->get();
 
         return view('posting.create', compact('position', 'category'));
     }
@@ -50,14 +53,14 @@ class PostingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostingcreateValidation $request)
     {
         $request->validate([
             'judul_posting' => 'required',
             'posisi' => 'required',
             'id_kategori' => 'required',
             'kata_kunci' =>'required',
-            'keterangan' => 'required',
+            'keterangan' => 'required'
 
         ],
         [
@@ -65,27 +68,34 @@ class PostingController extends Controller
             'posisi.required' =>'Posisi harus dipilih.',
             'id_kategori.required' =>'Kategori harus dipilih.',
             'kata_kunci.required' =>'Kata Kunci harus diisi.',
-            'keterangan.required' => 'Keterangan harus diisi.',
+            'keterangan.required' => 'Keterangan harus diisi.'
 
         ]);
 
         $b= Posting::create($request->except(['file_name']));
         
+
+        if($request->hasFile('file_name')){
         $by = $request->created_by;
         $files = $request->file('file_name');
         $prefix = date('Ymdhis');
         $no = 1;
+            foreach($files as $a){
+                $extension = $a->extension();
+                $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
+                $a->move(public_path('/uploads'), $filename);
+                $attachment = new Attachment() ;
+                $attachment->id_tabel = $b->id_posting;
+                $attachment->file_name = $filename;
+                $attachment->save();
 
-        foreach($files as $a){
-            $extension = $a->extension();
-            $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
-            $a->move(public_path('/uploads'), $filename);
+                $no++;
+                }
+        } else {
             $attachment = new Attachment() ;
             $attachment->id_tabel = $b->id_posting;
-            $attachment->file_name = $filename;
+            $attachment->file_name = 'diskominfo.jpg';
             $attachment->save();
-
-            $no++;
         }
 
         return redirect ( url('posting'))->with('status', 'Data posting berhasil ditambahkan.');
@@ -114,7 +124,8 @@ class PostingController extends Controller
     {
         $posting = Posting::with(['attachment','kategori'])->find($id);
 
-        $kategori = Category::all();
+        $kategori = Category::wherenotin('id',[0,2])
+        ->get();
         
         return view('posting.edit', compact('posting', 'kategori'));
     }
@@ -157,9 +168,21 @@ class PostingController extends Controller
            'keterangan' => $request->keterangan
        ]);
 
-    //    if($request->filled('file_name')){
-
-    //     }
+       if($request->hasfile('file_name')){
+        $by = $request->created_by;
+        $files = $request->file('file_name');
+        $prefix = date('Ymdhis');
+        $no = 1;
+            foreach($files as $a){
+                $extension = $a->extension();
+                $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
+                $a->move(public_path('/uploads'), $filename);
+                $attachment = Attachment::where('id_tabel',$id);
+                $attachment
+                ->update(['file_name' => $filename]);
+                $no++;
+                }
+        }
 
         return redirect ( url('posting'))->with('status', 'Data berhasil diubah.');
 
@@ -173,19 +196,20 @@ class PostingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Posting::destroy($id);
+
     }
 
     public function getPosting(Request $request)
     {
-            $data = Posting::latest()->get();
+            $data = Posting::select('*')->latest();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '
                     <div class="list-icons">
                     <a href="/posting/'.$row->id_posting.'/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                    <a href="#" class="list-icons-item text-danger-600"><i class="icon-trash"></i></a>
+                    <a href="'.route('posting.destroy', $row->id_posting ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
                 </div>';
                     return $actionBtn;
                 })

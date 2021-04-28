@@ -18,7 +18,7 @@
 					</div>
 
 					<div class="card-body">
-						<form method="POST" action="/account/{{ auth()->user()->id }}" enctype="multipart/form-data">
+						<form method="POST" action="{{route('account.update', auth()->user()->id)}}" enctype="multipart/form-data">
 						@method('patch')
 						@csrf
 

@@ -20,7 +20,7 @@
 				</div>
 
 					<div class="card-body">
-						<form method="POST" action="/lampirans/{{ $lampiran->id }}" enctype="multipart/form-data" >
+						<form method="POST" action="{{route('lampirans.update', $lampiran->id)}}" enctype="multipart/form-data" >
 						@method('patch')
                         @csrf
 

@@ -11,7 +11,7 @@
 
 @section('tambah_data')
 @if (auth()->user()->level=='superadmin'||'admin')
-<a href="/lampirans/create" class="btn btn-primary">
+<a href="{{route('lampirans.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah Lampiran
 </a>

@@ -41,7 +41,7 @@
        "dotsClass": "slick-dots mt-n4"
      }'>
   <div class="js-slide">
-    <img class="img-fluid w-100" src="upload/{{$struktur->personil->file_name}}" alt="Image Description">
+    <img class="img-fluid w-100" src="uploads/{{$struktur->personil->file_name}}" alt="Image Description">
   </div>
 </div>
 </center>
@@ -51,6 +51,9 @@
         <div style="
             text-align:justify;  
             text-justify:auto;
+             color:black;
+             text-indent: 40px;
+             
         ">
         {!! $struktur->isi_posting !!}
         </div>

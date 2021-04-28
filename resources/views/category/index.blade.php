@@ -11,7 +11,7 @@
 
 @section('tambah_data')
 @if (auth()->user()->level=='superadmin'||'admin')
-<a href="/category/create" class="btn btn-primary">
+<a href="{{route('category.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah Kategori
 </a>

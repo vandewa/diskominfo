@@ -1,5 +1,5 @@
 
-@section('title', 'Dinas Kominfo Wonosobo | Profil')
+@section('title', 'Dinas Kominfo Wonosobo | Kategori')
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')

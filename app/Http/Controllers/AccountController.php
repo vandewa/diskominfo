@@ -90,7 +90,7 @@ class AccountController extends Controller
             $prefix = $request->name;
             $extension = $a->extension();
             $filename = $prefix.'.'.$extension;
-           $c= $request->file('profile_photo_path')->move(public_path('/uploads'), $filename);
+            $c= $request->file('profile_photo_path')->move(public_path('/uploads'), $filename);
 
             Users::find($id)->update([
                 'profile_photo_path' => $filename

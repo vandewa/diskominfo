@@ -25,7 +25,7 @@ style="color:blue"
     <!-- Blogs Section -->
     <div class="container space-2 space-lg-2 mt-5">
 
-            <h3>Hasil Pencarian : "{{ $cari }}"</h3> 
+            <h3>Hasil Pencarian : "{{ $cari }}" ({{ $jumlah}}) found.</h3> 
 
       <div class="row justify-content-lg-between mt-4">
         <div class="col-lg-8">
@@ -55,7 +55,7 @@ style="color:blue"
                     <span class="text-dark">
                       <a class="d-inline-block text-inherit font-weight-bold">{{ $post->nama->name }}</a>
                     </span>
-                    <small class="d-block">{{  Carbon\Carbon::parse($post->created_at)->isoFormat('dddd, D MMMM Y') }} </small>
+                    <small class="d-block">{{  Carbon\Carbon::parse($post->created_at)->isoFormat('LLLL') }} WIB </small>
                   </div>
                 </div>
               </div>

@@ -20,7 +20,7 @@
 					</div>
 
 					<div class="card-body">
-						<form method="POST" action="/posting/{{ $posting->id_posting }}" enctype="multipart/form-data" >
+						<form method="POST" action="{{route('posting.update', $posting->id_posting)}}" enctype="multipart/form-data" >
 						@method('patch')
 						@csrf
 
@@ -28,7 +28,7 @@
 						<input type="hidden" name ="updated_by" value="{{auth()->user()->id}}">
 
                        	 		<div class="form-group row">
-									<label class="col-form-label col-lg-2">Judul Posting</label>
+									<label class="col-form-label col-lg-2">Judul Posting<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<input type="text" name="judul_posting" class="form-control @error('judul_posting') is-invalid @enderror" placeholder="Judul berita" value="{{ $posting->judul_posting }}">
 										@error('judul_posting')
@@ -40,7 +40,7 @@
 								</div>
 
 								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Posisi</label>
+									<label class="col-form-label col-lg-2">Posisi<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 									<select name="posisi" class="form-control select @error('posisi') is-invalid @enderror" data-fouc>
 											<option value="">- Pilih -</option>
@@ -57,7 +57,7 @@
 								</div>
 
 								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Kategori</label>
+									<label class="col-form-label col-lg-2">Kategori<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 									<select name="id_kategori" class="form-control select @error('kategori') is-invalid @enderror" data-fouc>
 									@foreach($kategori as $categori)
@@ -74,7 +74,7 @@
 
 
 								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Kata Kunci</label>
+									<label class="col-form-label col-lg-2">Kata Kunci<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<input type="text" name="kata_kunci"  class="form-control @error('kata_kunci') is-invalid @enderror" placeholder="Kata kunci" value="{{ $posting->kata_kunci }}">
 										@error('kata_kunci')
@@ -86,7 +86,7 @@
 								</div>
 
                                 <div class="form-group row">
-									<label class="col-form-label col-lg-2">Keterangan</label>
+									<label class="col-form-label col-lg-2">Keterangan<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<input type="text"  name="keterangan" class="form-control @error('keterangan') is-invalid @enderror" placeholder="Keterangan" value="{{ $posting->keterangan }}">
 										@error('keterangan')
@@ -98,14 +98,14 @@
 								</div>
 
 								<div class="form-group row mt-2">
-									<label class="col-form-label col-lg-2">Sampul Halaman</label>
+									<label class="col-form-label col-lg-2">Sampul Halaman<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<input type="file" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
 									</div>
 								</div>
 
 							<div class="mb-4">
-								<label>Isi Halaman</label>
+								<label>Isi Halaman <span class="text-danger">*</span><small>(*wajib diisi)</small></label>
 								<textarea name="isi_posting" id="editor-full" >{{$posting->isi_posting}}</textarea>
 				            </div>
 

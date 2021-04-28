@@ -15,11 +15,12 @@
 				<!-- CKEditor default -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-                    <h5 >EDIT USER</h5>
+                    <h5 >EDIT KOMENTAR</h5>
 					</div>
 
 					<div class="card-body">
-						<form method="POST" action="/komentar/{{ $komentar->id }}/edit" >
+						<form method="POST" action="{{route('komentar.update', $komentar->id)}}" >
+						@method('patch')
 						@csrf
 
                                 <div class="form-group row">

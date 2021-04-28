@@ -16,16 +16,16 @@
 				<!-- CKEditor default -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-                    <h5 >TAMBAH KATEGORI</h5>
+                    <h5 >EDIT KATEGORI</h5>
 				</div>
 
 					<div class="card-body">
-						<form method="POST" action="/category/{{ $category->id }}" >
+						<form method="POST" action="{{route('category.update', $category->id)}}" >
 						@method('patch')
 						@csrf
 
 						<div class="form-group row">
-									<label class="col-form-label col-lg-2">Nama Kategori</label>
+									<label class="col-form-label col-lg-2">Nama Kategori<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="nama_kategori" class="form-control" placeholder="Masukkan Nama Kategori" value="{{ $category->nama_kategori }}">

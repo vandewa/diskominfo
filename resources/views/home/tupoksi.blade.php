@@ -24,7 +24,7 @@
         </div>
         <!-- Author -->
         <br>
-    <img class="img-fluid w-100" src="upload/{{$tupoksi->file_name}}" alt="Image Description">
+    <img class="img-fluid w-100" src="uploads/{{$tupoksi->file_name}}" alt="Image Description">
 </center>
 <br>
 
@@ -32,6 +32,8 @@
         <div style="
             text-align:justify;  
             text-justify:auto;
+             color:black;
+             text-indent: 40px;
         ">
         {!! $tupoksi->isi_posting !!}
         </div>

@@ -33,6 +33,8 @@
         <div style="
             text-align:justify;  
             text-justify:auto;
+            color:black;
+            text-indent: 40px;
         ">
         {!! $visimisi->isi_posting !!}
         </div>

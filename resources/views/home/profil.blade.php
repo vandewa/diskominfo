@@ -13,6 +13,7 @@
 @section('kondisi2')
 <i class="fas fa-user-circle fa-lg" style="color:black"></i>
 @endsection
+ 
 
 <br>
   <!-- ========== MAIN ========== -->
@@ -24,8 +25,7 @@
         </div>
         <!-- Author -->
         <br>
-      <img class="img-fluid w-100" src="uploads/{{$profil->file_name??''}}" alt="Image Description">
-
+    <img class="img-fluid w-100" src="uploads/{{$profil->file_name??''}}" alt="Image Description">
 </center>
 <br>
 
@@ -33,6 +33,8 @@
         <div style="
             text-align:justify;  
             text-justify:auto;
+            color:black;
+            text-indent: 40px;
         ">
         {!! $profil->isi_posting !!}
         </div>
@@ -49,5 +51,6 @@
     <!-- End Subscribe Section -->
   </main>
   <!-- ========== END MAIN ========== -->
+
 
 @endsection

@@ -97,7 +97,7 @@
 
               <!-- Profil -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Beranda</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('index')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Beranda</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -110,7 +110,7 @@
 
                 <!-- Profil -->
                 <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/profil" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Profil</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('profil')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Profil</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -122,7 +122,7 @@
 
                 <!-- Visi Misi -->
                 <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/visimisi" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Visi & Misi</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('visimisi')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Visi & Misi</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -134,7 +134,7 @@
 
                     <!-- Struktur -->
                     <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/struktur" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Struktur Organisasi</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('struktur')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Struktur Organisasi</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -146,7 +146,7 @@
 
                 <!-- Tupoksi -->
                 <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/tupoksi" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Tupoksi</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('tupoksi')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Tupoksi</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -158,7 +158,7 @@
 
                  <!-- Lampiran -->
                  <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/lampiran" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Lampiran</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Lampiran</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -170,7 +170,7 @@
 
                 <!-- Buku Tamu -->
                  <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="/hubungikami" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Hubungi Kami</a>
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('hubungikami')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Hubungi Kami</a>
 
                   <!-- Pages - Submenu -->
                   <div class="hs-sub-menu ">
@@ -202,48 +202,27 @@
                     data-hs-mega-menu-item-options='{
                       "desktop": {
                         "position": "right",
-                        "maxWidth": "260px"
+                        "maxWidth": "200px"
                       }
                     }'>
                   <a id="docsMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="javascript:;" aria-haspopup="true" aria-expanded="false" @yield('warna')>Galeri</a>
 
                   <!-- Docs - Submenu -->
-                  <div class="hs-mega-menu dropdown-menu" aria-labelledby="docsMegaMenu" style="min-width: 330px;">
+                  <div class="hs-mega-menu dropdown-menu" aria-labelledby="docsMegaMenu" style="min-width: 250px;">
                     <!-- Promo Item -->
                     <div class="navbar-promo-item">
-                      <a class="navbar-promo-link" href="{{ url('front/documentation/index.html')}}">
+                      <a class="navbar-promo-link" href="{{ route('galeri')}}">
                         <div class="media align-items-center">
                           <img class="navbar-promo-icon" src="{{ url('front/assets/svg/icons/icon-2.svg')}}" alt="SVG">
                           <div class="media-body">
                             <span class="navbar-promo-title">
                               Documentation
-                              <span class="badge badge-primary badge-pill ml-1">v3.3</span>
                             </span>
-                            <small class="navbar-promo-text">Development guides</small>
                           </div>
                         </div>
                       </a>
                     </div>
                     <!-- End Promo Item -->
-
-                    <div class="navbar-promo-footer">
-                      <!-- List -->
-                      <div class="row no-gutters">
-                        <div class="col-6">
-                          <div class="navbar-promo-footer-item">
-                            <span class="navbar-promo-footer-text">Check what's new</span>
-                            <a class="navbar-promo-footer-text" href="{{url('front/documentation/changelog.html')}}"> Changelog</a>
-                          </div>
-                        </div>
-                        <div class="col-6 navbar-promo-footer-ver-divider">
-                          <div class="navbar-promo-footer-item">
-                            <span class="navbar-promo-footer-text">Have a question?</span>
-                            <a class="navbar-promo-footer-text" href="http://htmlstream.com/contact-us"> Contact us</a>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End List -->
-                    </div>
                   </div>
                   <!-- End Docs - Submenu -->
                 </li>
@@ -251,7 +230,7 @@
                  <!-- Account Login -->
              <li class="list-inline-item">
               <div class="hs-unfold">
-                <a class="js-hs-unfold-invoker btn btn-icon btn-xs btn-ghost-secondary" href="/login" >
+                <a class="js-hs-unfold-invoker btn btn-icon btn-xs btn-ghost-secondary" href="{{ route('login')}}" >
                   @yield('kondisi2')
                 </a>
               </div>
@@ -295,7 +274,7 @@
               <li class="nav-item">
                 <a class="nav-link media">
                     <span class="media">
-                      <span class="icon-stats-bars2 mt-1 mr-2"></span>
+                      <span class="icon-stats-growth mt-1 mr-2"></span>
                       <span class="media-body">
                       Total Pengunjung :
                       </span>
@@ -353,12 +332,52 @@
 
           <div class="col-12 col-md-6 col-lg mb-5 mb-lg-0">
           <div class="mb-4">
-            <h5 class="text-white">Lokasi Kantor</h5>
+            <h5 class="text-white">Link Terkait</h5>
             </div>
-            <!-- Nav Link -->
-            <iframe frameborder="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3385.06784745028!2d109.90367091432174!3d-7.356778574425257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aa1e023aaf2df%3A0x3fa1aea0b0ca3abc!2sDINAS%20KOMINFO!5e1!3m2!1sid!2sid!4v1616939396651!5m2!1sid!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            <!-- End Nav Link -->
-         
+            
+              <ul class="nav nav-sm nav-x-0 nav-white flex-column">
+                <li class="nav-item">
+                  <a class="nav-link media" href="https://dashboard-smartcity.wonosobokab.go.id">
+                      <span class="media">
+                        <span class="icon-seven-segment-1 mt-1 mr-2"></span>
+                        <span class="media-body">
+                      Dashboard Smartcity
+                        </span>
+                      </span>
+                  </a>
+                </li>
+                  <li class="nav-item">
+                  <a class="nav-link media" href="https://website.wonosobokab.go.id/">
+                      <span class="media">
+                        <span class="icon-seven-segment-2 mt-1 mr-2"></span>
+                        <span class="media-body">
+                      Website Wonosobo
+                        </span>
+                      </span>
+                  </a>
+                </li>
+                  <li class="nav-item">
+                  <a class="nav-link media" href="https://www.kominfo.go.id/">
+                      <span class="media">
+                        <span class="icon-seven-segment-3 mt-1 mr-2"></span>
+                        <span class="media-body">
+                      Kementerian Komunikasi dan Informatika
+                        </span>
+                      </span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link media" href="https://satudata.wonosobokab.go.id/">
+                      <span class="media">
+                        <span class="icon-seven-segment-4 mt-1 mr-2"></span>
+                        <span class="media-body">
+                     Satu Data Wonosobo
+                        </span>
+                      </span>
+                  </a>
+                </li>
+              </ul>
+
           </div>
         </div>
       </div>
@@ -417,9 +436,6 @@
   <script src="{{ url ('front/assets/vendor/typed.js/lib/typed.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/aos/dist/aos.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-show-animation/dist/hs-show-animation.min.js')}}"></script>
-
-  
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
 
 

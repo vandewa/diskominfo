@@ -40,14 +40,14 @@
            ]
          }'>
 
-        <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem" style="background-image: url(front/assets/images/kominfo.jpg);" data-aos="zoom-out">
+        <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem" style="background-image: url({{ asset('front/assets/images/kominfo.jpg')}});" data-aos="zoom-out">
           <!-- News Block -->
           <div class="container d-flex align-items-center min-h-620rem">
             <div class="w-lg-40 mr-5">
               <!-- Author -->
               <div class="media align-items-center mb-3">
                 <div class="avatar avatar-sm avatar-circle mr-3">
-                  <img class="avatar-img" src="front/assets/images/diskominfo_ig.jpg" alt="Image Description">
+                  <img class="avatar-img" src="{{asset('front/assets/images/diskominfo_ig.jpg')}}" alt="Image Description">
                 </div>
                 <div class="media-body">
                   <a class="text-white" href="">Diskominfo Wonosobo</a>
@@ -115,7 +115,7 @@
               }'>
           @foreach ($postingg as $highlight)
            <article>
-            <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7" href="/detail/{{$highlight->id_posting}}" style="background-image: url(uploads/{{$highlight->gambarMuka->file_name}}); height:400px;" >
+            <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7" href="/detail/{{$highlight->id_posting}}" style="background-image: url(uploads/{{$highlight->gambarMuka->file_name??''}}); height:400px;" >
               <div class="card-header border-0 bg-transparent w-100">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm avatar-circle mr-3">
@@ -159,7 +159,7 @@
                   </a>
                   <div class="media-body">
                     <span class="text-dark">
-                      <a class="d-inline-block text-inherit font-weight-bold">{{ $post->nama->name }}</a>
+                      <a class="d-inline-block text-inherit font-weight-bold" href="/uploadby/{{$post->created_by}}">{{ $post->nama->name }}</a>
                     </span>
                     <!-- isoFormat('dddd, D MMMM Y H') -->
                     <small class="d-block">{{  Carbon\Carbon::parse($post->created_at)->isoFormat('LLLL') }} WIB</small>
@@ -269,7 +269,7 @@
         </div>
       </div>
       <div class="col-sm mt-5">
-      <div class="embedsocial-hashtag" data-ref="bb16a42d2a16b5311a20d00662216be8b7d0507a" ></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialHashtagScript"));</script>
+      <!-- <div class="embedsocial-hashtag" data-ref="bb16a42d2a16b5311a20d00662216be8b7d0507a" ></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialHashtagScript"));</script> -->
       </div>
       </div>
 
@@ -288,25 +288,13 @@
          }
        }]
      }'>
+    @foreach($youtube as $yt)
       <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
-      <iframe  src="https://www.youtube.com/embed/AuJf0nFJHNY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe  src="{{ $yt->link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>  
-
-      <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
-      <iframe  src="https://www.youtube.com/embed/8wy_IxEjDqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>  
-
-      <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
-      <iframe  src="https://www.youtube.com/embed/d7uBeYW56gc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>  
-      
+    @endforeach
       </div>
-      
-
   </main>
-  
-  <!-- ========== END MAIN ========== -->
-
-          
-          @endsection
+  <!-- ========== END MAIN ========== --> 
+@endsection
 

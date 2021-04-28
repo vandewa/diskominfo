@@ -20,13 +20,13 @@
 				</div>
 
 					<div class="card-body">
-						<form method="POST" action="{{ url ('/lampirans') }}" enctype="multipart/form-data" >
+						<form method="POST" action="{{route('lampirans.store')}}" enctype="multipart/form-data" >
 						@csrf
 
                                 <input type="hidden" name ="created_by" value="{{auth()->user()->id}}">
 
 					            <div class="form-group row">
-									<label class="col-form-label col-lg-2">File Lampiran</label>
+									<label class="col-form-label col-lg-2">File Lampiran<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<input type="file" name="nama_lampiran" class="form-control" multiple="multiple">
 										<span class="form-text text-muted">File extensi: .pdf .docx .xlsx .rar .zip</span>
@@ -36,7 +36,7 @@
 								
 
                                 <div class="form-group row">
-									<label class="col-form-label col-lg-2">Keterangan</label>
+									<label class="col-form-label col-lg-2">Keterangan<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="keterangan" class="form-control" placeholder="Masukkan Keterangan" value="{{ old('keterangan') }}">

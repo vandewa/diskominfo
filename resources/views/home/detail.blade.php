@@ -91,7 +91,7 @@
 
 
          <!-- End Author -->
-        <div class="mt-5" style="text-align:justify; text-justify:auto;text-indent: 40px;">
+        <div class="mt-5" style="text-align:justify; text-justify:auto;text-indent: 40px;  color:black;">
         {!! $detail->isi_posting !!}
          </div>
 
