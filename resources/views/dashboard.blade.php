@@ -32,7 +32,7 @@
 					</div>
 
 					<div class="col-sm-6 col-xl-3">
-						<a href="{{ url('/category') }}">
+						<a href="{{ url('/komentar') }}">
 						<div class="card card-body bg-danger-400 has-bg-image">
 							<div class="media">
 								<div class="media-body">
@@ -70,12 +70,12 @@
 						<div class="card card-body bg-indigo-400 has-bg-image">
 							<div class="media">
 								<div class="mr-3 align-self-center">
-									<i class="icon-users4 icon-3x opacity-75"></i>
+									<i class="icon-bubble-lines4 icon-3x opacity-75"></i>
 								</div>
 
 								<div class="media-body text-right">
-									<h3 class="mb-0">{{ $jml_user }}</h3>
-									<span class="text-uppercase font-size-xs">total user</span>
+									<h3 class="mb-0">{{ $jml_pengaduan }}</h3>
+									<span class="text-uppercase font-size-xs">total pengaduan </span>
 								</div>
 							</div>
 						</div>

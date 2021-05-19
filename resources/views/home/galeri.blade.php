@@ -40,7 +40,7 @@
            @foreach($galeri as $galerinya)
         <!-- Item -->
         <div class="cbp-item rounded-lg branding mb-2">
-          <a class="cbp-caption" href="{{ asset ('/uploads') }}/{{ $galerinya->file_name??'' }}">
+          <a class="cbp-caption" href="{{ asset ('/uploads') }}/{{ $galerinya->file_name??'' }}" target="_blank">
             <div class="cbp-caption-defaultWrap mb-5">
               <img class="rounded-lg" src="{{ asset ('uploads') }}/{{ $galerinya->file_name??'' }}" alt="Image Description" style="height:200px;">
             </div>

@@ -6,6 +6,7 @@ use App\Models\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Posting;
 use App\Models\Category;
 use App\Models\Users;
@@ -13,6 +14,10 @@ use App\Models\Lampiran;
 use App\Models\Komentar;
 use App\Models\Youtube;
 use App\Models\Gallery;
+use App\Models\Attachmentt;
+use App\Models\Pengumuman;
+use App\Models\Pengaduan;
+use App\Models\Sampul;
 use DataTables;
 
 use PHPUnit\Framework\Constraint\Count;
@@ -30,11 +35,8 @@ class HomeController extends Controller
     ->where('keterangan', '=', 'Profil')
     ->first();
 
-
     return view('home.profil', compact('profil'));
     }
-
-    
 
     public function visimisi()
     {
@@ -77,17 +79,14 @@ class HomeController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
-                    $actionBtn = '<a href="uploads/lampiran/'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm">Download</a>';
+                    $actionBtn = '<a href="uploads/lampiran/'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Download</a>';
                     return $actionBtn;
                 })
                 ->editColumn('keterangan', function($data)
                 {
                     return $data->keterangan;
                 })
-                // ->editColumn('nama_lampiran', function($data)
-                // {
-                //     return $data->nama_lampiran;
-                // })
+
                 ->rawColumns(['action', 'status'])
                 ->make(true);
 
@@ -99,6 +98,7 @@ class HomeController extends Controller
         return view('home.lampiran');
     }
 
+
     public function detail($post)
     {
 
@@ -109,11 +109,32 @@ class HomeController extends Controller
         ->first();
 
         $kategori = Posting::where('id_kategori',$detail->id_kategori)
-        ->inRandomOrder()
+        ->wherenotin('id_posting', [$post])
+         ->orderBy('created_at', 'desc')
         ->limit(2)
         ->get();       
 
         return view('home.detail', compact('detail','kategori'));
+    }
+
+     public function details($post)
+    {
+
+        Pengumuman::find($post);
+
+        $details = Pengumuman::with(['attachments'])
+        ->where('id', '=', $post)
+        ->first();
+
+
+        $pengumuman = Pengumuman::with(['gambarMuka'])
+        ->wherenotin('id', [$post])
+        ->orderBy('created_at', 'desc')
+        ->limit(2)
+        ->get();  
+        
+
+        return view('home.details', compact('details','pengumuman'));
     }
 
     /**
@@ -162,7 +183,10 @@ class HomeController extends Controller
         ->select('posting.*','attachment.*', 'users.*')
         ->orderBy('posting.created_at', 'desc');
 
-        return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube'));
+        $sampul = Sampul::where('id',1)
+        ->first();
+
+        return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul'));
     }
 
     /**
@@ -210,9 +234,14 @@ class HomeController extends Controller
         ->orderBy('created_at','desc')
         ->paginate(12);
 
-         
+        $jumlah = Posting::where('id_kategori',$post)
+        ->count();
 
-        return view('home.kategori', compact('kategori','populers'));
+        $kategorinya = Posting::with(['kategori'])
+        ->where('id_kategori',$post)
+        ->first();
+
+        return view('home.kategori', compact('kategori','populers','jumlah', 'kategorinya'));
     }
 
     public function uploadby($post)
@@ -228,9 +257,15 @@ class HomeController extends Controller
         ->orderBy('created_at','desc')
         ->paginate(12);
 
-         
+        $upload = Posting::with(['gambarMuka','kategori'])
+        ->where('created_by',$post)
+        ->first();
 
-        return view('home.uploadby', compact('uploadby','populers'));
+        $jml_post = Posting::where('created_by', $post)
+        ->orderBy('created_at','desc')
+        ->count();        
+
+        return view('home.uploadby', compact('uploadby','populers','upload','jml_post'));
     }
 
     public function hubungikami()
@@ -240,15 +275,16 @@ class HomeController extends Controller
 
      public function simpan(Request $request)
     {
+        
 
            Komentar::create(
             [
                 'nama' => $request->nama,
                 'nomor' => $request->nomor,
                 'email' => $request->email,
-                'isi' => $request->isi
+                'isi' => $request->isi,
+                'status' => 0
             ]
-
         );
 
         return redirect('hubungikami')->with('status', 'Oke');
@@ -269,15 +305,28 @@ class HomeController extends Controller
         return view('home.galeri', compact('galeri'));
     }
 
+       public function pengumuman()
+    {
+        $pengumuman= Pengumuman::orderBy('created_at','desc')
+        ->get();
+
+        return view('home.pengumuman', compact('pengumuman'));
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function pengaduan()
     {
-        //
+        $pengaduan= Pengaduan::with(['namanya','childs.namanya'])
+        ->orderBy('created_at','desc')
+        ->where('publish',1)
+        ->paginate(5);;
+
+        return view('home.pengaduan',compact('pengaduan'));
     }
 
     /**
@@ -286,9 +335,12 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function getWebsite()
     {
-        //
+        $website= Posting::where('id_kategori','website')
+        ->first();
+
+        return view('home.website', compact('website'));
     }
 
     /**

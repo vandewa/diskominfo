@@ -31,40 +31,45 @@ Tambah Link
 <div class="content">
     <!-- Basic datatable -->
     <div class="card">
-        <table class="table datatable-button-html5-basic">
+    <div class="card-body">
+        <table class="table datatable-basic devan">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Link Youtube</th>
+                    <th>Youtube</th>
+                    <th>Link</th>
                     @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
                     @endif
                 </tr>
             </thead>
             <tbody>
-            @foreach($youtube as $yt)
-                <tr>
-                    <th>{{ $loop->iteration }}</th>
-                    <td>{{ $yt->link }}</td>
-        
-                    @if (auth()->user()->level=='superadmin'||'admin')
-                    <td>
-                    <center>
-                    <div class="list-icons">
-
-                    <a href="youtube/{{$yt->id}}/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                    <a href="{{route('youtube.destroy',$yt->id)}}"  class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
-                   
-                       
-                    </div>
-                    </center>
-                    </td>
-                    @endif
-                </tr>
-                @endforeach
             </tbody>
         </table>
+    </div>
     </div>
     <!-- /basic datatable -->
 </div>
 @endsection
+
+@push('js')
+<script type="text/javascript">			
+		var table = $('.devan').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('youtube.list') }}",
+        columns: [
+					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'link', },
+                    {data: 'url', },
+					{
+						data: 'action', 
+						name: 'action', 
+						orderable: true, 
+						searchable: true
+            },
+        ]
+    });
+
+</script>
+@endpush

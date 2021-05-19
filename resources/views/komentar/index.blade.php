@@ -21,50 +21,47 @@
 <div class="content">
     <!-- Basic datatable -->
     <div class="card">
-        <table class="table datatable-button-html5-basic">
+    <div class="card-body">
+        <table class="table datatable-basic devan">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Tanggal</th>
                     <th>Nama</th>
-                    <th>No Telpon</th>
-                    <th>Komentar</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
+                    <th>Rincian informasi yang diinginkan</th>
+                    <th>Dibaca</th>
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>
-            @foreach($komentar as $komentarnya)
-                <tr>
-                    <th>{{ $loop->iteration }}</th>
-                    <td>{{  Carbon\Carbon::parse($komentarnya->created_at)->isoFormat('D MMMM Y') }}</td>
-                    <td>{{ $komentarnya->nama }}</td>
-                    <td>{{ $komentarnya->nomor }}</td>
-                    <td>{{ $komentarnya->isi }}</td>
-        
-                    @if (auth()->user()->level=='superadmin'||'admin')
-                    <td>
-                    <center>
-                    <div class="list-icons">
-
-                    <a href="komentar/{{$komentarnya->id}}/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-
-                    <form action="komentar/{{$komentarnya->id}}" method="post">
-                        @method('delete')
-                        @csrf
-                       <button type="submit"  class="list-icons-item text-danger-600"><i? class="icon-trash"></i?</button>
-                    </form>
-                       
-                    </div>
-                    </center>
-                    </td>
-                    @endif
-                </tr>
-                @endforeach
             </tbody>
         </table>
+    </div>
     </div>
     <!-- /basic datatable -->
 </div>
 @endsection
+
+@push('js')
+<script type="text/javascript">			
+		var table = $('.devan').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('komentar.list') }}",
+        columns: [
+					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'created_at', },
+                    {data: 'nama', },
+                    {data: 'isi', },
+                    {data: 'status', },
+					{
+						data: 'action', 
+						name: 'action', 
+						orderable: true, 
+						searchable: true
+            },
+        ]
+    });
+
+</script>
+@endpush

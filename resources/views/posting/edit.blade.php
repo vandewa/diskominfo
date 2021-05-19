@@ -27,6 +27,8 @@
 						<input type="hidden" name ="posisi" value="highlight">
 						<input type="hidden" name ="updated_by" value="{{auth()->user()->id}}">
 
+						
+
                        	 		<div class="form-group row">
 									<label class="col-form-label col-lg-2">Judul Posting<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
@@ -45,8 +47,7 @@
 									<select name="posisi" class="form-control select @error('posisi') is-invalid @enderror" data-fouc>
 											<option value="">- Pilih -</option>
 											<option value="highlight" {{$posting->posisi == 'highlight' ? "selected": ""}}>Highlight</option>
-											<option value="menu_atas" {{$posting->posisi == 'menu_atas' ? "selected": ""}}>Menu Atas</option>
-											<option value="menu_samping" {{$posting->posisi == 'menu_samping' ? "selected": ""}}>Menu Samping</option>
+											<option value="menu_atas" {{$posting->posisi == 'menu_atas' ? "selected": ""}}>Biasa</option>
 										</select>
 											@error('posisi')
 											<div class="invalid-feedback">
@@ -98,11 +99,35 @@
 								</div>
 
 								<div class="form-group row mt-2">
-									<label class="col-form-label col-lg-2">Sampul Halaman<span class="text-danger">*</span></label>
+									<label class="col-form-label col-lg-2">Sampul Halaman</label>
 									<div class="col-lg-10">
-										<input type="file" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
+									<input type="file" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
+										<span class="form-text text-muted">*Klik browse untuk menambah foto</span>
 									</div>
 								</div>
+								
+						<div class="row">
+								<!-- Multiple titles -->
+								@foreach($posting->attachment as $data)
+						<div class="card col-2">
+							<div class="card-header d-flex justify-content-between">
+							</div>
+
+							<div class="card">
+							<a href="{{asset('uploads/'.$data->file_name) }}" target="_blank">
+							<img class="img-fluid" src="{{asset('uploads/'.$data->file_name) }}" alt="">
+							</a>
+							</div>
+
+							<div class="card bg-transparent d-flex justify-content-between">
+
+						     <a href="{{route('posting.gambar.hapus',$data->id_attachment)}}" type="button"  class="btn btn-danger rounded-round" onclick="return confirm('Are you sure?')">Delete</a>
+								<!-- class="deletee" untuk sweetalert -->
+							</div>
+						</div>
+						@endforeach
+						<!-- /multiple titles -->
+						</div>
 
 							<div class="mb-4">
 								<label>Isi Halaman <span class="text-danger">*</span><small>(*wajib diisi)</small></label>

@@ -14,7 +14,6 @@
 @section('kondisi2')
 <i class="fas fa-user-circle fa-lg" style="color:blue"></i>
 @endsection
-
  <!-- ========== MAIN ========== -->
  <main id="content" role="main">
     <!-- Hero Section -->
@@ -40,7 +39,7 @@
            ]
          }'>
 
-        <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem" style="background-image: url({{ asset('front/assets/images/kominfo.jpg')}});" data-aos="zoom-out">
+        <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem" style="background-image: url({{ asset('front/assets/images/'.$sampul->file_name)}});" data-aos="zoom-out">
           <!-- News Block -->
           <div class="container d-flex align-items-center min-h-620rem">
             <div class="w-lg-40 mr-5">
@@ -98,8 +97,8 @@
 
 
     <!-- Blogs Section -->
-    <div class="container space-2 space-lg-2">
-      <div class="row justify-content-lg-between">
+    <div class="container space-2 space-lg-2" id="pagenya">
+      <div class="row justify-content-lg-between" >
         <div class="col-lg-8">
 
            <!-- Blog -->
@@ -140,8 +139,8 @@
           <!-- End Blog -->
 @foreach ($posting2 as $post)
           <!-- Blog -->
-          <article class="row mb-7" data-aos="zoom-out-right">
-            <div class="col-md-5">
+          <article class="row mb-7" data-aos="zoom-out-right" >
+            <div class="col-md-5" >
             <a href="/detail/{{$post->id_posting}}">
               <img class="card-img transition-zoom-hover"  src="{{ asset ('uploads') }}/{{ $post->gambarMuka->file_name??'' }}" alt="Image Description" style="height:100%"   >
               </a>
@@ -173,6 +172,11 @@
 
           {{ $posting2->links() }}
 
+          <button onclick="myFunction()">scroll
+          </button>
+
+          
+
           <!-- Sticky Block End Point -->
           <div id="stickyBlockEndPoint"></div>
         </div>
@@ -200,7 +204,7 @@
             <input name="q" type="search" class="form-control" placeholder="Masukkan kata kunci" aria-label="Search articles" aria-describedby="searchLabel">
             <div class="input-group-append">
               <div class="input-group-text" id="searchLabel">
-                <i class="fas fa-search"></i>
+                <button type="submit" class="no-border btn-transparent"><i class="fas fa-search"></i></button>
               </div>
             </div>
           </form>
@@ -298,3 +302,30 @@
   <!-- ========== END MAIN ========== --> 
 @endsection
 
+@push('css')
+<style>
+.no-border {
+    border: 0;
+    box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}
+</style>
+@endpush
+
+@push('js')
+<script>
+function myFunction() {
+  var elmnt = document.getElementById("pagenya");
+  elmnt.scrollIntoView();
+}
+ </script>
+
+<script>
+    $(document).ready(function(){
+      if (window.location.hash == "#moreInfo") {
+        $('html, body').animate({
+           scrollTop: $("#moreInfo").offset().top
+         }, 1000);
+      }
+   });
+    </script>
+ @endpush

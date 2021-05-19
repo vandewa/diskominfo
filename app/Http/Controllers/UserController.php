@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Users;
+use DataTables;
 use App\Http\Requests\UsercreateValidation;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,9 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user= User::orderBy('name','asc')->get();
        
-        return view('user.index', compact('user'));
+        return view('user.index');
     }
 
     /**
@@ -131,7 +131,44 @@ class UserController extends Controller
     public function destroy($id)
     {
         Users::destroy($id);
+    
+       
+    }
+
+     public function getUser(Request $request)
+    {
+            $data = User::orderBy('name','asc')->get();
+            
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($data){
+                    if(auth()->user()->level=='superadmin'){
+                    $actionBtn = '
+                    <div class="list-icons d-flex justify-content-center">
+                    <a href="'.route('user.edit', $data->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="'.route('user.destroy', $data->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    </div>';
+                    return $actionBtn;
+                    }
+                }
+                )
+                ->editColumn('nama', function($data)
+                {
+                    return $data->name;
+                })
+
+                ->editColumn('email', function($data)
+                {
+                    return $data->email;
+                })
+
+                ->editColumn('level', function($data)
+                {
+                    $level = '<span class="badge badge-flat border-primary text-primary-600">'.ucwords($data->level).'</span>';
+                    return $level;
+                })
+                ->rawColumns(['action', 'status','level'])
+                ->make(true);
         
-        return redirect ('/user/')->with('status', 'Data user berhasil dihapus.');
     }
 }

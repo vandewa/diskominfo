@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posting;
 use App\Models\Attachment;
-use App\Models\Position;
 use App\Models\Category;
 use DataTables;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File; 
+
 
 
 
@@ -25,8 +26,6 @@ class PostingController extends Controller
      */
     public function index()
     {
-        
-        // $posting= Posting::orderBy('created_at','desc')->get();
        
         return view('posting.index');
 
@@ -40,11 +39,10 @@ class PostingController extends Controller
      */
     public function create()
     {
-        $position = Position::all();
         $category = Category::wherenotin('id',[0,2])
         ->get();
 
-        return view('posting.create', compact('position', 'category'));
+        return view('posting.create', compact( 'category'));
     }
 
     /**
@@ -55,25 +53,7 @@ class PostingController extends Controller
      */
     public function store(PostingcreateValidation $request)
     {
-        $request->validate([
-            'judul_posting' => 'required',
-            'posisi' => 'required',
-            'id_kategori' => 'required',
-            'kata_kunci' =>'required',
-            'keterangan' => 'required'
-
-        ],
-        [
-            'judul_posting.required' => 'Judul harus diisi.',
-            'posisi.required' =>'Posisi harus dipilih.',
-            'id_kategori.required' =>'Kategori harus dipilih.',
-            'kata_kunci.required' =>'Kata Kunci harus diisi.',
-            'keterangan.required' => 'Keterangan harus diisi.'
-
-        ]);
-
         $b= Posting::create($request->except(['file_name']));
-        
 
         if($request->hasFile('file_name')){
         $by = $request->created_by;
@@ -92,9 +72,10 @@ class PostingController extends Controller
                 $no++;
                 }
         } else {
+
             $attachment = new Attachment() ;
             $attachment->id_tabel = $b->id_posting;
-            $attachment->file_name = 'diskominfo.jpg';
+            $attachment->file_name = 'diskominfowonosobo.jpg';
             $attachment->save();
         }
 
@@ -123,10 +104,8 @@ class PostingController extends Controller
     public function edit($id)
     {
         $posting = Posting::with(['attachment','kategori'])->find($id);
-
         $kategori = Category::wherenotin('id',[0,2])
         ->get();
-        
         return view('posting.edit', compact('posting', 'kategori'));
     }
 
@@ -140,23 +119,6 @@ class PostingController extends Controller
     public function update(Request $request, $id)
     {
 
-        $request->validate([
-            'judul_posting' => 'required',
-            'posisi' => 'required',
-            'id_kategori' => 'required',
-            'kata_kunci' =>'required',
-            'keterangan' => 'required',
-
-        ],
-        [
-            'judul_posting.required' => 'Judul harus diisi.',
-            'posisi.required' =>'Posisi harus dipilih.',
-            'id_kategori.required' =>'Kategori harus dipilih.',
-            'kata_kunci.required' =>'Kata Kunci harus diisi.',
-            'keterangan.required' => 'Keterangan harus diisi.',
-
-        ]);
-
        Posting::find($id)
        ->update([
            'posisi' => $request->posisi,
@@ -169,7 +131,7 @@ class PostingController extends Controller
        ]);
 
        if($request->hasfile('file_name')){
-        $by = $request->created_by;
+        $by = $request->updated_by;
         $files = $request->file('file_name');
         $prefix = date('Ymdhis');
         $no = 1;
@@ -178,13 +140,12 @@ class PostingController extends Controller
                 $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
                 $a->move(public_path('/uploads'), $filename);
                 $attachment = Attachment::where('id_tabel',$id);
-                $attachment
-                ->update(['file_name' => $filename]);
+                Attachment::create(['file_name' => $filename, 'id_tabel'=> $id]);
                 $no++;
                 }
         }
 
-        return redirect ( url('posting'))->with('status', 'Data berhasil diubah.');
+        return redirect ('posting')->with('status', 'Data berhasil diubah.');
 
     }
 
@@ -208,7 +169,7 @@ class PostingController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = '
                     <div class="list-icons">
-                    <a href="/posting/'.$row->id_posting.'/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="'.route('posting.edit', $row->id_posting ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
                     <a href="'.route('posting.destroy', $row->id_posting ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
                 </div>';
                     return $actionBtn;
@@ -223,7 +184,13 @@ class PostingController extends Controller
                     // return date('d F Y', strtotime($a->created_at));
                 })
                 ->editColumn('posisi', function($a){
-                    return ucwords(str_replace('_', ' ', $a->posisi));
+
+                    if($a->posisi == 'highlight' ){
+                        return 'Highlight';
+                    } else {
+                        return 'Biasa';
+                    }
+
                 })
                 ->editColumn('kategori', function($a)
                 {
@@ -240,11 +207,37 @@ class PostingController extends Controller
         
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('login');
-    
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('login');
+
+    }
+
+    public function hapus($id)
+    {
+
+        $oke = Attachment::where('id_attachment',$id)->first();
+
+
+        if($oke->file_name == 'diskominfowonosobo.jpg'){
+            Attachment::where('id_attachment',$id)->delete();
+            return redirect()->back();
+
+        } else {
+            
+            $path = public_path()."/uploads/".$oke->file_name;
+            File::delete($path);
+            Attachment::where('id_attachment',$id)->delete();
+            return redirect()->back();
+
+        }
+        
     }
     
 

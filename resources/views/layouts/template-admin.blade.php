@@ -28,6 +28,7 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
+	
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3_tooltip.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switchery.min.js ')}}"></script>
@@ -70,6 +71,9 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/notifications/sweet_alert.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/extra_sweetalert.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/widgets_stats.js ')}}"></script>
+
+	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_multiselect.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_actions.js ')}}"></script>
 	<!-- /theme JS files -->
 
     <!-- Theme JS files Datatable-->
@@ -96,7 +100,7 @@
 	<!-- Main navbar -->
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
-			<a href="{{ url('dashboard') }}" class="d-inline-block">
+			<a href="{{ route('index') }}" class="d-inline-block" target="_blank">
 				<img src="{{ url ('front\assets\images\logo.png ')}}">
 			</a>
 		</div>
@@ -180,10 +184,16 @@
 						<li class="nav-item nav-item-submenu @yield('kondisi5')">
 							<a href="#" class="nav-link"><i class="icon-menu7"></i> <span>Menu Depan</span></a>
 
-							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ route('menuberanda.index') }}" class="nav-link">Menu</a></li>
-								<li class="nav-item"><a href="{{ route('youtube.index') }}" class="nav-link">Youtube</a></li>
+							<ul class="nav nav-group-sub" data-submenu-title="Menu Depan">
 								<li class="nav-item"><a href="{{ route('gallery.index') }}" class="nav-link">Galeri</a></li>
+								<li class="nav-item"><a href="{{ route('lampirans.index') }}" class="nav-link">Lampiran</a></li>
+								<li class="nav-item"><a href="{{ route('menuberanda.index') }}" class="nav-link">Menu</a></li>
+								<li class="nav-item"><a href="{{ route('pengumumans.index') }}" class="nav-link">Pengumuman</a></li>
+								<li class="nav-item"><a href="{{ route('sampul.index') }}" class="nav-link">Sampul Beranda</a></li>
+								<li class="nav-item"><a href="{{ route('website.index') }}" class="nav-link">Website Kelurahan</a></li>
+								<li class="nav-item"><a href="{{ route('youtube.index') }}" class="nav-link">Youtube</a></li>
+								
+								
 							</ul>
 						</li>
 				
@@ -195,7 +205,6 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
 								<li class="nav-item"><a href="{{ route('posting.index') }}" class="nav-link">Data Posting</a></li>
 								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Kategori</a></li>
-								<li class="nav-item"><a href="{{ route('lampirans.index') }}" class="nav-link">Lampiran</a></li>
 							</ul>
 						</li>
 						
@@ -207,12 +216,23 @@
 							</ul>
 						</li>
 
+						<li class="nav-item @yield('kondisi6')">
+							<a href="{{ route('pengaduans.index') }}" class="nav-link @yield('kondisi6')">
+								<i class="icon-bubble-lines4"></i>
+								<span>
+									Pengaduan Masyarakat
+								</span>
+								<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_pengaduan}}</span>
+							</a>
+						</li>
+
 						<li class="nav-item @yield('kondisi4')">
 							<a href="{{ route('komentar.index') }}" class="nav-link @yield('kondisi4')">
 								<i class="icon-bubble-dots4"></i>
 								<span>
 									Komentar
 								</span>
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_komentar}}</span>
 							</a>
 						</li>
 						<!-- /main -->
@@ -325,6 +345,28 @@
                             }
                         }
                     })
+                }
+            })
+        });
+	</script>
+
+	<script>
+		$(document).on('click', '.deletee', function(a){
+            a.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you realy want to delete this records? This process cannot be undone.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Delete!'
+            }).then((result) => {
+                if (result.value) {
+                 
+                    var url = $(this).attr('href');
+					window.location.replace(url);
+   
                 }
             })
         });

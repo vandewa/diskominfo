@@ -9,6 +9,15 @@
 <span class="breadcrumb-item active">Menu</span>
 @endsection
 
+@section('tambah_data')
+@if (auth()->user()->level=='superadmin'||'admin')
+<a href="{{route('menuberanda.create')}}" class="btn btn-primary">
+<i class="icon-file-plus mr-2"></i>
+Tambah Menu
+</a>
+@endif
+@endsection
+
 @section('container')
 @if(session('status'))
 <div class="alert bg-success text-white alert-styled-left alert-dismissible mt-1" >
@@ -21,39 +30,50 @@
 <div class="content">
     <!-- Basic datatable -->
     <div class="card">
-        <table class="table datatable-button-html5-basic">
+    <div class="card-body">
+        <table class="table datatable-basic devan">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama Menu</th>
+                    <th>Menu</th>
+                    <th>URL</th>
+                    <th>Sub Menu</th>
+                    <th>Lampiran</th>
                     @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
                     @endif
                 </tr>
             </thead>
             <tbody>
-            @foreach($menuberanda as $menunya)
-                <tr>
-                    <th>{{ $loop->iteration }}</th>
-                    <td>{{ $menunya->judul_posting }}</td>
-        
-                    @if (auth()->user()->level=='superadmin'||'admin')
-                    <td>
-                    <center>
-                    <div class="list-icons">
-
-                    <a href="menuberanda/{{$menunya->id_posting}}/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-
-                       
-                    </div>
-                    </center>
-                    </td>
-                    @endif
-                </tr>
-                @endforeach
             </tbody>
         </table>
+    </div>
     </div>
     <!-- /basic datatable -->
 </div>
 @endsection
+
+@push('js')
+<script type="text/javascript">			
+		var table = $('.devan').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('menuberanda.list') }}",
+        columns: [
+					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'menu', },
+                    {data: 'url', },
+                     {data: 'submenu', },
+                      {data: 'lampiran', },
+					{
+						data: 'action', 
+						name: 'action', 
+						orderable: true, 
+						searchable: true
+            },
+        ]
+    });
+
+</script>
+@endpush
+

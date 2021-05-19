@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lampiran;
+use DataTables;
 use App\Http\Requests\LampirancreateValidation;
 
 class LampiranController extends Controller
@@ -15,11 +16,8 @@ class LampiranController extends Controller
      */
     public function index()
     {
-        $lampiran = Lampiran::with(['nama'])
-        ->orderBy('keterangan', 'asc')
-        ->get();
-        
-        return view('lampiran.index', compact('lampiran'));
+ 
+        return view('lampiran.index');
     }
 
     /**
@@ -114,6 +112,39 @@ class LampiranController extends Controller
     {
         Lampiran::destroy($id);
 
-        return redirect ('lampirans')-> with ('status', 'Data berhasil dihapus');
+    }
+
+    public function getLampirans(Request $request)
+    {
+            $data = Lampiran::orderBy('nama_lampiran', 'asc')->get();
+            
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($data){
+                    $actionBtn = '
+                    <div class="list-icons d-flex justify-content-center">
+                    <a href="'.route('lampirans.edit', $data->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="'.route('lampirans.destroy', $data->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                </div>';
+                    return $actionBtn;
+                }
+                )
+                ->editColumn('keterangan', function($data)
+                {
+                    return $data->keterangan;
+                })
+                
+               ->editColumn('nama_lampiran', function($data)
+                {
+                    $file = '<a href="'.asset('uploads/lampiran/'.$data->nama_lampiran).'" target="_blank">'.$data->nama_lampiran.'</a>';
+                    return $file;
+                })
+                ->editColumn('tanggal', function($data){
+                    return \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y');
+                    
+                })
+                ->rawColumns(['action', 'status','nama_lampiran'])
+                ->make(true);
+        
     }
 }

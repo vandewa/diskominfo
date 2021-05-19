@@ -7,6 +7,9 @@ use Illuminate\Pagination\Paginator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
+use App\Models\Menu;
+use App\Models\Pengaduan;
+use App\Models\Komentar;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,6 +40,36 @@ class AppServiceProvider extends ServiceProvider
         ->count();
 
         View::share('key', $total);
+      
 
+         $categories=Menu::with(['childs'])
+         ->where('parent', '=', '0') 
+         ->get();
+
+         View::share('menu_categories', $categories);
+
+
+          $categories=Menu::with(['childs'])
+         ->where('parent', '=', '9') 
+         ->get();
+
+         View::share('menu_categoriess', $categories);
+
+
+        $status_pengaduan=Pengaduan::where('status', '=', '0') 
+         ->count();
+
+         View::share('status_pengaduan', $status_pengaduan);
+
+         $status_komentar=Komentar::where('status', '=', '0') 
+         ->count();
+
+         View::share('status_komentar', $status_komentar);
+
+      
+
+          
     }
+
+
 }

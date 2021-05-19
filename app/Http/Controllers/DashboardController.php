@@ -17,9 +17,9 @@ class DashboardController extends Controller
         $jml_posting= DB::table('posting')->count();
         $jml_komentar= DB::table('komentar')->count();
         $jml_lampiran= DB::table('lampiran')->count();
-        $jml_user= DB::table('users')->count();
+        $jml_pengaduan= DB::table('pengaduan')->count();
 
-        return view('dashboard', compact('jml_posting', 'jml_komentar', 'jml_lampiran', 'jml_user'));
+        return view('dashboard', compact('jml_posting', 'jml_komentar', 'jml_lampiran', 'jml_pengaduan'));
     }
 
     /**

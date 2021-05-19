@@ -29,7 +29,7 @@
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback">
 											<input type="text" name="link" class="form-control" placeholder="Link Youtube" value="{{ $youtube->link }}">
-				
+											<span class="form-text text-muted">*Contoh format link ="https://www.youtube.com/embed/_DMhbJ3v4NM"</span>
 										</div>
 									</div>
 								</div>

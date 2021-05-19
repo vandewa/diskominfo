@@ -1,5 +1,5 @@
 
-@section('title', 'Dinas Kominfo Wonosobo | Profil')
+@section('title', 'Dinas Kominfo Wonosobo | Hubungi Kami')
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')
@@ -71,8 +71,8 @@
                    <div class="col-sm-12">
                     <!-- Form Group -->
                     <div class="js-form-message form-group">
-                      <label for="firstName" class="input-label">Nomor Telepon</label>
-                      <input type="text" class="form-control" name="nomor" id="firstName" placeholder="Contoh: 081xxxxxxxxx" aria-label="081xxxxxxxxx" required
+                      <label for="lastName" class="input-label">Nomor Telepon</label>
+                      <input type="text" class="form-control" name="nomor" id="lastName" placeholder="Contoh: 081xxxxxxxxx" aria-label="081xxxxxxxxx" required
                              data-msg="Masukkan nomor telepon">
                     </div>
                     <!-- End Form Group -->
@@ -81,8 +81,8 @@
                   <div class="col-sm-12">
                     <!-- Form Group -->
                     <div class="js-form-message form-group">
-                      <label for="emailAddress" class="input-label">Email address</label>
-                      <input type="email" class="form-control" name="email" id="emailAddress" placeholder="Contoh: email.anda@gmail.com" aria-label="emailanda@gmail.com"" required
+                      <label for="emailAddress" class="input-label">Email</label>
+                      <input type="email" class="form-control" name="email" id="emailAddress" placeholder="Contoh: diskominfo@gmail.com" aria-label="emailanda@gmail.com"" required
                              data-msg="Please enter a valid email address">
                     </div>
                     <!-- End Form Group -->
@@ -91,10 +91,10 @@
                   <div class="col-sm-12">
                     <!-- Form Group -->
                     <div class="js-form-message form-group">
-                      <label for="message" class="input-label">Komentar</label>
+                      <label for="message" class="input-label">Rincian informasi yang diinginkan:</label>
                       <div class="input-group">
-                        <textarea class="form-control" rows="4" name="isi" id="message" placeholder="Masukkan komentar anda" aria-label="Hi there, I would like to ..." required
-                                  data-msg="Masukkan komentar anda"></textarea>
+                        <textarea class="form-control" rows="4" name="isi" id="message" placeholder="Masukkan informasi yang diinginkan" aria-label="Hi there, I would like to ..." required
+                                  data-msg="Masukkan informasi yang diinginkan"></textarea>
                       </div>
                     </div>
                     <!-- End Form Group -->
@@ -115,6 +115,29 @@
 @endsection
 
 @push('js')
+<script type="text/javascript">
+function callbackThen(response){
+    // read HTTP status
+    console.log(response.status);
+ 
+    // read Promise object
+    response.json().then(function(data){
+        console.log(data);
+    });
+}
+function callbackCatch(error){
+    console.error('Error:', error)
+}
+</script>
+ 
+{!! htmlScriptTagJsApi([
+    'callback_then' => 'callbackThen',
+    'callback_catch' => 'callbackCatch'
+]) !!}
+@endpush
+
+
+@push('js')
  <script type="text/javascript">
   function sweetAlert() 
   {  
@@ -123,8 +146,10 @@
   'Pesan Anda telah dikirim.',
   'success')
   }
-  @if(session('status'))
+  
+@if(session('status'))
 sweetAlert();
 @endif
 </script>
 @endpush
+

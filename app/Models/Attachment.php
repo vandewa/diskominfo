@@ -10,5 +10,5 @@ class Attachment extends Model
     use HasFactory;
     protected $primaryKey = 'id_attachment';
     protected $table ='attachment';
-    protected $fillable = ['id_tabel','file_name'];
+    protected $guarded = [];
 }

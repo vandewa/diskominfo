@@ -78,7 +78,7 @@
 									<label class="col-form-label col-lg-2">Level</label>
 									<div class="col-lg-10">
 									<div class="form-group form-group-feedback form-group-feedback-left">
-									<select name="level" class="form-control select-icons">
+									<select name="level" class="form-control select-icons" >
 											<option value="{{ auth()->user()->level }}" >{{ ucwords(auth()->user()->level) }}</option>
 										</select>
 										@error('level')

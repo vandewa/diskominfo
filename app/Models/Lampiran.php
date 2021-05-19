@@ -10,7 +10,7 @@ class Lampiran extends Model
     use HasFactory;
     protected $table = 'lampiran';
     protected $primarykey ='id';
-    protected $fillable = ['id', 'nama_lampiran', 'keterangan', 'created_by'];
+    protected $guarded = [];
 
     public function nama()
     {

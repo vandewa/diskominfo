@@ -31,7 +31,8 @@ Tambah Galeri
 <div class="content">
     <!-- Basic datatable -->
     <div class="card">
-        <table class="table datatable-button-html5-basic">
+    <div class="card-body">
+        <table class="table datatable-basic devan">
             <thead>
                 <tr>
                     <th>No</th>
@@ -43,36 +44,32 @@ Tambah Galeri
                 </tr>
             </thead>
             <tbody>
-            @foreach($galeri as $galery)
-                <tr>
-                    <th>{{ $loop->iteration }}</th>
-                    <td><img src="{{ asset('uploads/'.$galery->file_name) }}" style="height:50px;"></td>
-                    <td>{{ $galery->keterangan }}</td>
-
-                    @if (auth()->user()->level=='superadmin'||'admin')
-                    <td>
-                    <center>
-                    <div class="list-icons">
-
-                    
-
-                    <a href="gallery/{{$galery->id}}/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-
-                    <form action="gallery/{{$galery->id}}" method="post">
-                        @method('delete')
-                        @csrf
-                       <button type="submit"  class="list-icons-item text-danger-600"><i? class="icon-trash"></i?</button>
-                    </form>
-                       
-                    </div>
-                    </center>
-                    </td>
-                    @endif
-                </tr>
-                @endforeach
             </tbody>
         </table>
+    </div>
     </div>
     <!-- /basic datatable -->
 </div>
 @endsection
+
+@push('js')
+<script type="text/javascript">			
+		var table = $('.devan').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('gallery.list') }}",
+        columns: [
+					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'foto', },
+                    {data: 'keterangan', },
+					{
+						data: 'action', 
+						name: 'action', 
+						orderable: true, 
+						searchable: true
+            },
+        ]
+    });
+
+</script>
+@endpush

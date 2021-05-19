@@ -29,7 +29,8 @@ class PostingcreateValidation extends FormRequest
             'id_kategori' => 'required',
             'kata_kunci' => 'required',
             'keterangan' => 'required',
-            'kata_kunci' => 'required'
+            'kata_kunci' => 'required',
+            'file_name[]'=>'max:2048|mimes:jpeg,png,jpg'
         ];
     }
 }

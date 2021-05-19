@@ -45,8 +45,6 @@
 									</div>
 								</div>
 
-                            
-			
 				            <div class="text-right">
 					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 				            </div>
@@ -57,3 +55,7 @@
     </div>
 	
     @endsection
+
+@push('js')
+{!! JsValidator::formRequest('App\Http\Requests\GallerycreateValidation') !!}
+@endpush

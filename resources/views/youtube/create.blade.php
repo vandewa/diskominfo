@@ -25,10 +25,11 @@
 						@csrf
 
 						<div class="form-group row">
-									<label class="col-form-label col-lg-2">Link Youtube<span class="text-danger">*</span></label>
+									<label class="col-form-label col-lg-2">Youtube<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="link" class="form-control" placeholder="Masukkan Link Youtube" value="{{ old('link') }}">
+											<span class="form-text text-muted">*Contoh format link ="https://www.youtube.com/embed/_DMhbJ3v4NM"</span>
 											<div class="form-control-feedback form-control-feedback-lg">
 											<i class="icon-pencil"></i>
 											</div>

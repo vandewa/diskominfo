@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Posting;
+use App\Models\Menu;
+use Illuminate\Support\Facades\DB;
+use DataTables;
 
 class MenuBerandaController extends Controller
 {
@@ -14,10 +16,8 @@ class MenuBerandaController extends Controller
      */
     public function index()
     {
-        $menuberanda = Posting::where('id_kategori',0)
-        ->get();
-
-        return view('menuberanda.index',compact('menuberanda'));
+       
+        return view('menuberanda.index');
     }
 
     /**
@@ -27,7 +27,10 @@ class MenuBerandaController extends Controller
      */
     public function create()
     {
-        //
+        $parentt = DB::table('menu')
+        ->get();
+
+        return view('menuberanda.create', compact('parentt'));
     }
 
     /**
@@ -38,8 +41,31 @@ class MenuBerandaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file_name;
+        $filename = $file->getClientOriginalName();
+
+        if($request->hasFile('file_name')){
+            $file->move(public_path('/uploads/lampiran'), $filename);
+            Menu::create([
+                'parent' => $request->parent,
+                'nama' => $request->nama,
+                'url' => 'uploads/lampiran/'.$filename,
+                'lampiran' => 'y'
+            ]);
+        } else {
+             Menu::create([
+                'parent' => $request->parent,
+                'nama' => $request->nama,
+                'lampiran' => 'n'
+            ]);
+
+        }
+
+        return redirect('menuberanda')->with('status', 'Data berhasil ditambahkan.');
+
+
     }
+
 
     /**
      * Display the specified resource.
@@ -60,9 +86,13 @@ class MenuBerandaController extends Controller
      */
     public function edit($id)
     {
-        $menuberanda = Posting::find($id);
+        $menuberanda = Menu::find($id);
 
-        return view('menuberanda.edit', compact('menuberanda'));
+        $parentt = DB::table('menu')
+        ->get();
+
+
+        return view('menuberanda.edit', compact('menuberanda','parentt'));
     }
 
     /**
@@ -74,26 +104,10 @@ class MenuBerandaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Posting::find($id)
+        Menu::find($id)
         ->update([
-            'isi_posting' => $request->isi_posting
+            'parent' => $request->parent
         ]);
-
-        if($request->hasfile('file_name')){
-        $by = $request->created_by;
-        $files = $request->file('file_name');
-        $prefix = date('Ymdhis');
-        $no = 1;
-            foreach($files as $a){
-                $extension = $a->extension();
-                $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
-                $a->move(public_path('/uploads'), $filename);
-                $attachment = Attachment::where('id_tabel',$id);
-                $attachment
-                ->update(['file_name' => $filename]);
-                $no++;
-                }
-        }
 
         return redirect ('menuberanda')->with('status', 'Data berhasil diubah');
     }
@@ -104,8 +118,59 @@ class MenuBerandaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+      public function getMenuBeranda(Request $request)
+    {
+            $data = Menu::with(['childs','parent'])
+            ->where('parent','!=','transparansi')
+            ->where('parent','!=','profil')
+            ->get();
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($data){
+                    $actionBtn = '
+                    <div class="list-icons d-flex justify-content-center">
+                    <a href="'.route('menuberanda.edit', $data->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="'.route('menuberanda.destroy', $data->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                </div>';
+                    return $actionBtn;
+                })
+               ->editColumn('menu', function($data)
+                {
+                    return $data->nama;
+                })
+                ->editColumn('url', function($data)
+                {
+                    $file = '<a href="'.$data->url.'" target="_blank">'.$data->url.'</a>';
+                    return $file;
+                })
+                ->editColumn('submenu', function($data)
+                {
+
+                    $a = '';
+                    foreach($data->childs as $menu){
+                        $b = $menu->nama??'';
+                        $a = $a.' '.$b;
+                    }
+                    return $a;
+                })
+                ->editColumn('lampiran', function($data)
+                {
+
+                    if($data->lampiran == 'y'){
+                        return '<div class="d-flex justify-content-center"><i class="icon-checkmark2"></i></div>';
+                    } else {
+                        return '<i class="icon-cross3"></i>';
+                    }
+                })
+                ->rawColumns(['action', 'status', 'lampiran','url'])
+                ->make(true);
+        
+    }
+
     public function destroy($id)
     {
-        //
+         Menu::destroy($id);
     }
 }

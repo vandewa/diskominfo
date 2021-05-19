@@ -21,24 +21,24 @@
     <!-- Blogs Section -->
     <div class="container space-2 space-lg-2">
       <div class="row justify-content-lg-between">
-      
         <div class="col-lg-8 mt-2">
-
         <div class="border-top border-bottom py-4 mb-5 mt-4">
           <div class="row align-items-md-center">
              <div class="col-md-7 mb-5 mb-md-0">
             <div class="media align-items-center">
-            <div class="avatar avatar-circle">
+              <div class="avatar avatar-circle">
                   <img class="avatar-img" src="{{ asset('uploads/'.$detail->nama->profile_photo_path) }}" alt="Image Description">
                 </div>
                 <div class="media-body font-size-1 ml-3">
-                  <span class="h6">{{ $detail->nama->name }}</span>
+                <a href="/uploadby/{{$detail->created_by}}" class="d-inline-block text-inherit font-weight-bold">
+                  {{ $detail->nama->name }}
+                  </a>
                   <span class="d-block text-muted">{{ Carbon\Carbon::parse($detail->created_at)->isoFormat('LLLL') }} WIB</span>
                 </div>
               </div>
               </div>
 
-               <div class="col-md-5">
+              <div class="col-md-5">
               <div class="d-flex justify-content-md-end align-items-center">
               <span class="d-block small font-weight-bold text-cap mr-2">
               <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2">
@@ -82,14 +82,12 @@
           }' >
             @foreach($detail->attachment as $slide)
             <div class="js-slide">
-            <a href="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}">
+            <a href="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}" target="_blank">
                 <img class="img-fluid transition-zoom-hover width: 100%;height: 100%;object-fit: scale-down" src="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}" alt="Image Description" height="150px;">
                 </a>
             </div>
             @endforeach
             </div>
-
-
          <!-- End Author -->
         <div class="mt-5" style="text-align:justify; text-justify:auto;text-indent: 40px;  color:black;">
         {!! $detail->isi_posting !!}

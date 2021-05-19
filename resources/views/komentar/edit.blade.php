@@ -1,4 +1,4 @@
-@section('title', 'Edit Komentar')
+@section('title', 'Komentar')
 @section('menu','Komentar')
 @section('submenu','Edit')
 @extends('layouts/template-admin')
@@ -9,25 +9,21 @@
 @endsection
 
 @section('container')
-
 <div class="content">
+			
+				<!-- Multiselect examples -->
+				
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card">
+							
+							<div class="card-body">
 
-				<!-- CKEditor default -->
-				<div class="card">
-					<div class="card-header header-elements-inline">
-                    <h5 >EDIT KOMENTAR</h5>
-					</div>
-
-					<div class="card-body">
-						<form method="POST" action="{{route('komentar.update', $komentar->id)}}" >
-						@method('patch')
-						@csrf
-
-                                <div class="form-group row">
+								<div class="form-group">
 									<label class="col-form-label col-lg-2">Nama</label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
-											<input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $komentar->nama }}">
+											<input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $komentar->nama }}" readonly>
 											@error('nama')
 											<div class="invalid-feedback">
 											{{ $message }}
@@ -40,12 +36,12 @@
 									</div>
 								</div>
 
-                                 <div class="form-group row">
-									<label class="col-form-label col-lg-2">Nomor Telepon</label>
+                                <div class="form-group">
+									<label class="col-form-label ">Nomor Telepon</label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
-											<input type="text" name="nomor" class="form-control" placeholder="Nama" value="{{ $komentar->nomor }}">
-											@error('nomor')
+											<input type="text" name="nomor" class="form-control" placeholder="Nomor Telepon" value="{{ $komentar->nomor }}" readonly>
+											@error('telp')
 											<div class="invalid-feedback">
 											{{ $message }}
 											</div>
@@ -57,11 +53,11 @@
 									</div>
 								</div>
 
-                                <div class="form-group row">
+                                <div class="form-group">
 									<label class="col-form-label col-lg-2">Email</label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
-											<input type="text" name="email" class="form-control" placeholder="Keterangan" value="{{ $komentar->email }}">
+											<input type="text" name="email" class="form-control" placeholder="Email" value="{{ $komentar->email }}" readonly>
 											@error('email')
 											<div class="invalid-feedback">
 											{{ $message }}
@@ -73,19 +69,26 @@
 										</div>
 									</div>
 								</div>
+							</div>
+						</div>
+					</div>
 
-                                <div class="mb-4">
-								<label>Komentar</label>
-								<textarea name="isi" id="editor-full" >{{$komentar->isi}}</textarea>
-				            </div>
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header header-elements-inline">
+								<h5 class="card-title">Komentar</h5>
+							</div>
 
-				            <div class="text-right">
-					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
-				            </div>
-			            </form>
+							<div class="card-body">
+
+							<div class="form-group">
+								<textarea name="isi" rows="6" cols="6" class="form-control" readonly>{{$komentar->isi}} </textarea>
+							</div>
+
+							</div>
+						</div>
 					</div>
 				</div>
-				<!-- /CKEditor default -->
-    </div>
+				<!-- /multiselect examples -->
 
     @endsection

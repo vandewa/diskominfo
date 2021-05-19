@@ -43,9 +43,8 @@
 									<div class="col-lg-10">
 										<select name="posisi" class="form-control select @error('posisi') is-invalid @enderror" data-fouc>
 											<option value="">- Pilih -</option>
-											@foreach ($position as $posisi)
-											<option value = "{{ $posisi->nama_posisi }}">{{ $posisi->nama_posisi }}</option>
-											@endforeach
+											<option value="highlight" @if (old('posisi') == 'highlight') selected="selected" @endif>Highlight</option>
+											<option value="menu_atas" @if (old('posisi') == 'menu_atas') selected="selected" @endif>Biasa</option>
 										</select>
 										@error('posisi')
 										<div class="invalid-feedback">
@@ -61,7 +60,11 @@
 										<select name="id_kategori" class="form-control select @error('posisi') is-invalid @enderror" data-fouc>
 											<option value="">- Pilih -</option>
 											@foreach ($category as $kategori)
-											<option value = "{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+												@if (old('id_kategori') == $kategori->id)
+													<option value="{{ $kategori->id }}" selected>{{ $kategori->nama_kategori }}</option>
+												@else
+													<option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+												@endif
 											@endforeach
 										</select>
 										@error('kategori')
@@ -101,7 +104,7 @@
 									<div class="col-lg-10">
 										<input type="file" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
 									</div>
-										@error('filename')
+										@error('file_name')
 										<div class="invalid-feedback">
 										{{ $message }}
 										</div>
@@ -110,7 +113,7 @@
 
 							<div class="mb-4">
 								<label>Isi Halaman <span class="text-danger">*</span><small>(*wajib diisi)</small></label>
-								<textarea name="isi_posting" id="editor-full" ></textarea>
+								<textarea name="isi_posting" id="editor-full">{{ old('isi_posting') }}</textarea>
 										@error('isi_posting')
 										<div class="invalid-feedback">
 										{{ $message }}
@@ -129,5 +132,6 @@
     @endsection
 
 @push('js')
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\PostingcreateValidation') !!}
 @endpush

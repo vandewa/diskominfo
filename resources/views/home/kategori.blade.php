@@ -18,9 +18,20 @@
  
   <!-- ========== MAIN ========== -->
   <main id="content" role="main">
-    <div class="container space-top-3 space-top-lg-3 space-bottom-2">
+    <div class="container space-top-2 space-top-lg-2 space-bottom-2">
      <div class="row justify-content-lg-between">
         <div class="col-lg-8">
+
+         <div class="d-flex justify-content-center">
+              <div class=" font-size-1 ml-3">
+              <span class="h4">{{$kategorinya->kategori->nama_kategori}}</span>
+              <span class="d-block text-muted"><b>{{ $jumlah }}</b> post</span>
+            </div>
+              
+          </div>
+          <hr>
+
+
       <!-- Content -->
       <div class="cbp"
            data-hs-cbp-options='{
@@ -35,7 +46,7 @@
                {"width": 480, "cols": 2},
                {"width": 380, "cols": 1}
              ]
-           }'>\
+           }'>
 
            @foreach($kategori as $kategorinya)
         <!-- Item -->

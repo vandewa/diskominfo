@@ -2,10 +2,10 @@
 @section('menu','Lampiran')
 @section('submenu','Tambah Data ')
 @extends('layouts/template-admin')
-@section('kondisi2','nav-item-expanded nav-item-open')
+@section('kondisi5','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Posting</span>
+<span class="breadcrumb-item active">Menu Depan</span>
 <span class="breadcrumb-item active">Lampiran</span>
 @endsection
 
@@ -28,7 +28,7 @@
 					            <div class="form-group row">
 									<label class="col-form-label col-lg-2">File Lampiran<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-										<input type="file" name="nama_lampiran" class="form-control" multiple="multiple">
+										<input type="file" name="nama_lampiran" class="form-control">
 										<span class="form-text text-muted">File extensi: .pdf .docx .xlsx .rar .zip</span>
 									</div>
 								

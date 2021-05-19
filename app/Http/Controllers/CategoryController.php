@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use DataTables;
 use Symfony\Component\HttpFoundation\Test\Constraint\RequestAttributeValueSame;
 
 class CategoryController extends Controller
@@ -15,9 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categorys = Category::orderBy('nama_kategori', 'asc')->get();
 
-        return view ('category.index', compact('categorys'));
+        return view ('category.index');
     }
 
     /**
@@ -36,6 +36,8 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     
     public function store(Request $request)
     {
         $request->validate([
@@ -110,10 +112,31 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     public function getCategory(Request $request)
+    {
+            $data = Category::orderBy('nama_kategori', 'asc')->get();
+            
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($data){
+                    $actionBtn = '
+                    <div class="list-icons d-flex justify-content-center">
+                    <a href="'.route('category.edit', $data->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="'.route('category.destroy', $data->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                </div>';
+                    return $actionBtn;
+                })
+               ->editColumn('nama_kategori', function($data)
+                {
+                    return $data->nama_kategori;
+                })
+                ->rawColumns(['action', 'status'])
+                ->make(true);
+        
+    }
+
     public function destroy($id)
     {
         Category::destroy($id);
-
-        return redirect ('category')-> with ('status', 'Data berhasil dihapus');
     }
 }

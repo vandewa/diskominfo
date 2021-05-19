@@ -2,10 +2,10 @@
 @section('menu','Lampiran')
 @section('submenu','Edit Data ')
 @extends('layouts/template-admin')
-@section('kondisi2','nav-item-expanded nav-item-open')
+@section('kondisi5','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Posting</span>
+<span class="breadcrumb-item active">Menu Depan</span>
 <span class="breadcrumb-item active">Lampiran</span>
 @endsection
 
@@ -38,8 +38,6 @@
 										</div>
 									</div>
 								</div>
-
-                            
 			
 				            <div class="text-right">
 					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>

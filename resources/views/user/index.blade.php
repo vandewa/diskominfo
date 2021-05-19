@@ -31,7 +31,8 @@ Tambah User
 <div class="content">
     <!-- Basic datatable -->
     <div class="card">
-        <table class="table datatable-button-html5-basic">
+    <div class="card-body">
+         <table class="table datatable-basic devan">
             <thead>
                 <tr>
                     <th>No</th>
@@ -44,34 +45,35 @@ Tambah User
                 </tr>
             </thead>
             <tbody>
-            @foreach($user as $user)
-                <tr>
-                    <th>{{ $loop->iteration }}</th>
-                    <td>{{ ucwords($user->name) }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td><span class="badge badge-flat border-primary text-primary-600">{{ ucwords($user->level) }}</span></td>
-                    @if (auth()->user()->level=='superadmin')
-                    <td>
-                    <center>
-                    <div class="list-icons">
-
-                    <a href="user/{{$user->id}}/edit" class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-
-                    <form action="user/{{$user->id }}" method="post">
-                        @method('delete')
-                        @csrf
-                       <button type="submit"  class="list-icons-item text-danger-600"><i? class="icon-trash"></i?</button>
-                    </form>
-                       
-                    </div>
-                    </center>
-                    </td>
-                    @endif
-                </tr>
-                @endforeach
             </tbody>
         </table>
+    </div>
     </div>
     <!-- /basic datatable -->
 </div>
 @endsection
+
+@push('js')
+<script type="text/javascript">			
+		var table = $('.devan').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('user.list') }}",
+        columns: [
+					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'nama', },
+                    {data: 'email', },
+                    {data: 'level', },
+                     @if (auth()->user()->level=='superadmin')
+					    {
+						data: 'action', 
+						name: 'action', 
+						orderable: true, 
+						searchable: true
+                         },
+            @endif
+        ]
+    });
+</script>
+@endpush
+
