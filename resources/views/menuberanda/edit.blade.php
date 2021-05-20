@@ -42,6 +42,42 @@
 										</select>									
 									</div>
 								</div>
+								
+								@if($menuberanda->isi_posting != null)
+								   <div class="form-group row mt-2">
+									<label class="col-form-label col-lg-2">Image</label>
+									<div class="col-lg-10">
+									<input type="file" name="file_name" class="file-input" data-fouc >
+										<span class="form-text text-muted">*Klik browse untuk mengganti foto</span>
+									</div>
+								</div>
+						
+								
+						<div class="row">
+								<!-- Multiple titles -->
+						<div class="card col-12">
+							<div class="card-header d-flex justify-content-between">
+							</div>
+
+							<div class="card">
+							<a href="{{asset('uploads/'.$menuberanda->file_name) }}" target="_blank">
+							<img class="img-fluid" src="{{asset('uploads/'.$menuberanda->file_name) }}" alt="">
+							</a>
+							</div>
+
+						</div>
+						<!-- /multiple titles -->
+						</div>
+
+								<div class="form-group row">
+								<label>Isi Halaman</label>
+								<textarea name="isi_posting" id="editor-full">{{$menuberanda->isi_posting}}</textarea>
+				                </div> 
+
+								@endif
+
+
+
 					
 
 				            <div class="text-right">

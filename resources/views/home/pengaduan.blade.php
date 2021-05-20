@@ -90,27 +90,25 @@
          @foreach($pengaduan as $dataaduan)
 
         <!-- Card -->
-          <div class="card card-bordered card-hover-shadow mb-5">
+          <div class="card card-bordered card-hover-shadow mb-5 ">
             <div class="card-body">
               <!-- Media -->
+              <div class="row">
               <div class="d-sm-flex">
                 <div class="media align-items-center align-items-sm-start mb-3">
-                  <img class="avatar avatar-sm mr-3" src="{{ asset('front/assets/images/icon-anonymous.png')}}" alt="Image Description">
+                  <img class="avatar avatar-sm ml-3 mr-1" src="{{ asset('front/assets/images/icon-anonymous.png')}}" alt="Image Description">
                   <div class="media-body d-sm-none">
-                    <h6 class="mb-0">
-                      <a class="text-dark" href="employer.html">Mailchimp</a>
-                      <img class="avatar avatar-xss ml-1" src="../assets/svg/illustrations/top-vendor.svg" alt="Review rating" data-toggle="tooltip" data-placement="top" title="Claimed profile">
-                    </h6>
                   </div>
                 </div>
+                </div>
                 
-                <div class="media-body"  style="color:black; text-align:justify;">
+                <div class="media-body col-sm-12" style="color:black; text-align:justify;">
                   <div class="row">
-                    <div class="col col-md-8">
+                    <div class="col col-md-8 col-sm-6 ">
                       <h4 class="mb-0">
                         <span class="text-dark">{{ucwords($dataaduan->nama)}}</span>
                       </h4>
-                      <div class="d-none d-sm-inline-block">
+                      <div class="d-sm-inline-block">
                           <p style="font-size:80%;" class="badge badge-pill badge-primary">{{  Carbon\Carbon::parse($dataaduan->created_at)->isoFormat('dddd, D MMMM Y') }}</p>
                       </div>
                     </div>
@@ -138,26 +136,24 @@
             
             <div class="card-footer">
              <!-- Media -->
+               <div class="row">
               <div class="d-sm-flex">
                 <div class="media align-items-center align-items-sm-start mb-3">
-                  <img class="avatar avatar-sm mr-3" src="{{ asset ('uploads/'.$child->namanya->profile_photo_path)}}">
+                  <img class="avatar avatar-sm ml-3 mr-1"  src="{{ asset ('uploads/'.$child->namanya->profile_photo_path)}}" alt="Image Description">
                   <div class="media-body d-sm-none">
-                    <h6 class="mb-0">
-                      <a class="text-dark" href="employer.html">Mailchimp</a>
-                      <img class="avatar avatar-xss ml-1" src="front/assets/svg/illustrations/top-vendor.svg" alt="Review rating" data-toggle="tooltip" data-placement="top" title="Claimed profile">
-                    </h6>
                   </div>
                 </div>
-                
+                </div>
+
+
                 <div class="media-body" style="color:black; text-align:justify;  ">
                   <div class="row">
                     <div class="col col-md-12">
-                    <span style="font-size:80%;" class="badge badge-pill badge-primary float-right mr-1 mt-2 ">{{  Carbon\Carbon::parse($child->created_at)->isoFormat('dddd, D MMMM Y') }}</span>
-                      <h4 class="mb-1 mt-1">
-                        <span class="text-dark" >{{$child->namanya->name}}</span>
-                          
+                    <span style="font-size:80%;" class="badge badge-pill badge-primary float-right mr-1 ">{{  Carbon\Carbon::parse($child->created_at)->isoFormat('dddd, D MMMM Y') }}</span>
+                       <h4 class="mb-1">
+                        <span class="text-dark ml-3">{{ucwords($child->namanya->name)}}</span>
                       </h4>
-                      <div class="d-none d-sm-inline-block">
+                      <div class="col col-sm col-md col-lg  d-sm-inline-block ">
                           {{$child->isi_aduan}}
                       </div>
                     </div>
@@ -278,7 +274,6 @@ sweetAlert();
 @endif
 </script>
 
-
 <script type="text/javascript">
 $(document).ready(function() {
 $("#basic-form").validate({
@@ -312,3 +307,10 @@ required: true,
 
 @endpush
 
+@push('js')
+<script>
+  <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+</script>
+@endpush

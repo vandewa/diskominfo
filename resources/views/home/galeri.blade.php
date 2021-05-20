@@ -69,3 +69,11 @@
   </main>
   <!-- ========== END MAIN ========== -->
 @endsection
+
+@push('js')
+<script>
+  <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+</script>
+@endpush

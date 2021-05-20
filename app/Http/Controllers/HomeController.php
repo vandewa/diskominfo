@@ -18,6 +18,7 @@ use App\Models\Attachmentt;
 use App\Models\Pengumuman;
 use App\Models\Pengaduan;
 use App\Models\Sampul;
+use App\Models\Menu;
 use DataTables;
 
 use PHPUnit\Framework\Constraint\Count;
@@ -28,11 +29,7 @@ class HomeController extends Controller
     public function profil()
     {
 
-     $profil = DB::table('posting') 
-    ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
-    ->join('users', 'created_by', '=', 'users.id')
-    ->select('posting.*','attachment.*', 'users.*')
-    ->where('keterangan', '=', 'Profil')
+     $profil = Menu::where('id',1)
     ->first();
 
     return view('home.profil', compact('profil'));
@@ -40,22 +37,17 @@ class HomeController extends Controller
 
     public function visimisi()
     {
-        $visimisi = DB::table('posting') 
-        ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
-        ->join('users', 'created_by', '=', 'users.id')
-        ->where('judul_posting', '=', 'Visi & Misi')
+        $visimisi = Menu::where('id',2)
         ->first();
 
         return view('home.visimisi', compact('visimisi'));
     }
 
-    public function struktur()
+    public function personil()
     {
 
-        $struktur = Posting::with(['personil', 'nama'])
-        ->where('created_by', '=', '577')
-        ->where('kata_kunci', '=', 'Personil')
-        ->get();
+        $struktur = Menu::where('id',6)
+        ->first();
     
         return view('home.struktur', compact('struktur'));
     }
@@ -63,10 +55,7 @@ class HomeController extends Controller
     public function tupoksi()
     {
 
-        $tupoksi = DB::table('posting') 
-        ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
-        ->join('users', 'created_by', '=', 'users.id')
-        ->where('keterangan', '=', 'Tupoksi')
+        $tupoksi = Menu::where('id',3)
         ->first();
 
         return view('home.tupoksi', compact('tupoksi'));
@@ -170,7 +159,7 @@ class HomeController extends Controller
         $posting2 = Posting::with(['attachment', 'gambarMuka','nama', 'kategori'])
         ->where('posisi', '=', 'menu_atas')
         ->orderBy('created_at', 'desc')
-        ->paginate(5);
+        ->simplePaginate(5);
 
         $postingg = Posting::with(['attachment', 'gambarMuka', 'nama'])
         ->where('posisi', '=', 'highlight')
@@ -232,7 +221,7 @@ class HomeController extends Controller
         $kategori = Posting::with(['gambarMuka','kategori'])
         ->where('id_kategori',$post)
         ->orderBy('created_at','desc')
-        ->paginate(12);
+        ->simplePaginate(12);
 
         $jumlah = Posting::where('id_kategori',$post)
         ->count();
@@ -255,7 +244,7 @@ class HomeController extends Controller
         $uploadby = Posting::with(['gambarMuka','kategori'])
         ->where('created_by',$post)
         ->orderBy('created_at','desc')
-        ->paginate(12);
+        ->simplePaginate(12);
 
         $upload = Posting::with(['gambarMuka','kategori'])
         ->where('created_by',$post)

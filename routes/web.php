@@ -40,7 +40,7 @@ Route::resource('home', HomeController::class);
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
-Route::get('/struktur', [HomeController::class, 'struktur'])->name('struktur');
+Route::get('/personil', [HomeController::class, 'personil'])->name('personil');
 Route::get('/tupoksi', [HomeController::class, 'tupoksi'])->name('tupoksi');
 Route::get('/lampiran', [HomeController::class, 'lampiran'])->name('lampiran');
 Route::get('/pengaduan', [HomeController::class, 'pengaduan'])->name('pengaduan');

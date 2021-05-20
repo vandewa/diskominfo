@@ -71,6 +71,8 @@
         <!-- End Item -->
         @endforeach
         </div>      
+
+        {{ $uploadby->links() }}
          <div id="stickyBlockEndPoint"></div>
       </div>
 
@@ -134,6 +136,8 @@
              @endforeach
             </div>
 
+
+
             <div class="mb-7">
               <div class="mb-3">
                 <h3></h3>
@@ -145,7 +149,7 @@
 
 
 
-        {{ $uploadby->links() }}
+        
         
     </div>
     <div>
@@ -156,3 +160,11 @@
   </main>
   <!-- ========== END MAIN ========== -->
 @endsection
+
+@push('js')
+<script>
+  <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+</script>
+@endpush

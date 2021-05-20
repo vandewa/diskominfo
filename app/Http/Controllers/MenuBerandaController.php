@@ -41,7 +41,7 @@ class MenuBerandaController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file_name;
+        $file = $request->file('file_name');
         $filename = $file->getClientOriginalName();
 
         if($request->hasFile('file_name')){
@@ -104,10 +104,38 @@ class MenuBerandaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Menu::find($id)
-        ->update([
+
+        if($request->hasFile('file_name')){
+            $file = $request->file('file_name');
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('/uploads'), $filename);
+             Menu::find($id)
+            ->update([
+            'url' => $request->url,
+            'parent' => $request->parent,
+            'isi_posting' => $request->isi_posting,
+            'file_name' => $filename
+            ]);
+        }
+
+        if($request->filled('isi_posting')){
+            Menu::find($id)
+            ->update([
+            'url' => $request->url,
+            'parent' => $request->parent,
+            'isi_posting' => $request->isi_posting
+            ]);
+        }
+
+        else {
+
+             Menu::find($id)
+            ->update([
+            'url' => $request->url,
             'parent' => $request->parent
         ]);
+
+        }
 
         return redirect ('menuberanda')->with('status', 'Data berhasil diubah');
     }

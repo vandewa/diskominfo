@@ -14,7 +14,6 @@
 <i class="fas fa-user-circle fa-lg" style="color:black"></i>
 @endsection
 
-@foreach ($struktur as $struktur)
 <br>
   <!-- ========== MAIN ========== -->
   <main id="content" role="main">
@@ -27,7 +26,7 @@
 
         <!-- Author -->
        
-        <center><h1 class="h2">{{ $struktur->judul_posting}}</h1>
+        <center><h1 class="h2">{{ $struktur->nama}}</h1>
         <br>
 
         <div class="js-slick-carousel slick "
@@ -41,7 +40,7 @@
        "dotsClass": "slick-dots mt-n4"
      }'>
   <div class="js-slide">
-    <img class="img-fluid w-100" src="uploads/{{$struktur->personil->file_name}}" alt="Image Description">
+    <img class="img-fluid w-100" src="uploads/{{$struktur->file_name}}" alt="Image Description">
   </div>
 </div>
 </center>
@@ -71,5 +70,13 @@
   </main>
   <!-- ========== END MAIN ========== -->
 
-  @endforeach
+
 @endsection
+
+@push('js')
+<script>
+  <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+</script>
+@endpush

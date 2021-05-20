@@ -170,10 +170,12 @@
           <!-- End Blog -->
           @endforeach
 
+        
           {{ $posting2->links() }}
+        
 
-          <button onclick="myFunction()">scroll
-          </button>
+          <!-- <button onclick="myFunction()">scroll
+          </button> -->
 
           
 
@@ -244,7 +246,7 @@
              @endforeach
             </div>
 
-            <div class="mb-7">
+            <div class="mb-5">
               <div class="mb-3">
                 <h3></h3>
               </div>
@@ -258,24 +260,28 @@
     </div>
     <!-- End Blogs Section -->
 
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col" style="overflow: auto; height: 500px;">
-        <a class="twitter-timeline" href="https://twitter.com/diskominfo_wsb"></a>
-        </div>
-        <div class="col">
-        <div class="fb-page"
-              data-href="https://www.facebook.com/diskominfo.wsb"
-              data-tabs="timeline"
-              data-width="500"
-              data-height="500">
-          </div>
-        </div>
-      </div>
-      <div class="col-sm mt-5">
-      <!-- <div class="embedsocial-hashtag" data-ref="bb16a42d2a16b5311a20d00662216be8b7d0507a" ></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialHashtagScript"));</script> -->
-      </div>
-      </div>
+<div class="container">
+  <div class="row">
+
+<div class="col col-lg col-md col-sm mb-6 d-flex justify-content-center">           
+  <div style="overflow: auto; height:500px; width:400px;">
+  <a class="twitter-timeline" href="https://twitter.com/diskominfo_wsb"></a>
+</div>
+</div>
+
+<div class="col col-lg col-md col-sm d-flex justify-content-center">           
+<div class="fb-page" 
+  data-href="https://www.facebook.com/diskominfo.wsb"
+ data-tabs="timeline"
+     data-width="400"
+     data-height="500"
+     
+     style="overflow: auto; width: 450px; height:600px;">
+</div>
+</div>
+
+  </div>
+</div>
 
       <div class="container js-slick-carousel slick"
      data-hs-slick-carousel-options='{
@@ -313,6 +319,9 @@
 
 @push('js')
 <script>
+  <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 function myFunction() {
   var elmnt = document.getElementById("pagenya");
   elmnt.scrollIntoView();
@@ -328,4 +337,5 @@ function myFunction() {
       }
    });
     </script>
+    
  @endpush

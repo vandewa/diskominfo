@@ -20,13 +20,15 @@
     <!-- Contact Form Section -->
     <div class="container space-top-3 space-top-lg-3 space-bottom-2">
       <div class="row">
-        <div class="col-lg-6 mb-9 mb-lg-0">
-          <div class="mb-5">
+        <div class="col-lg-6 col-sm-6 mb-9 mb-lg-0">
+          <div class="col-sm-6 ml-lg-5 mb-5">
             <h2>Lokasi Kantor</h2>
           </div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.974287430464!2d109.90367091432174!3d-7.356778574425257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aa1e023aaf2df%3A0x3fa1aea0b0ca3abc!2sDINAS%20KOMINFO!5e0!3m2!1sid!2sid!4v1618815033657!5m2!1sid!2sid" width="500" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <div class="embed-responsive embed-responsive-16by9 mb-4">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.974287430464!2d109.90367091432174!3d-7.356778574425257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aa1e023aaf2df%3A0x3fa1aea0b0ca3abc!2sDINAS%20KOMINFO!5e0!3m2!1sid!2sid!4v1618815033657!5m2!1sid!2sid" width="400" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
 
-            <div class="row mt-2">
+            <div class="row mt-5">
             <div class="col-sm-6">
               <div class="mb-3">
                 <span class="d-block h5 mb-1">Telephone:</span>
@@ -115,6 +117,10 @@
 @endsection
 
 @push('js')
+<script>
+  <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script type="text/javascript">
 function callbackThen(response){
     // read HTTP status
@@ -129,11 +135,15 @@ function callbackCatch(error){
     console.error('Error:', error)
 }
 </script>
- 
+ <script>
 {!! htmlScriptTagJsApi([
     'callback_then' => 'callbackThen',
     'callback_catch' => 'callbackCatch'
 ]) !!}
+
+</script>
+
+</script>
 @endpush
 
 
