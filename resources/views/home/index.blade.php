@@ -246,64 +246,191 @@
              @endforeach
             </div>
 
-            <div class="mb-5">
+            <div class="mb-">
               <div class="mb-3">
-                <h3></h3>
+
+               <div class="position-relative bg-primary overflow-hidden">
+                <div class=" text-left position-relative">
+                  <h3 class="container text-white text-center font-weight-semi-bold ">WEB TV </h3>
+                </div>
+            <!-- SVG Shapes -->
+                <figure class="mb-n1">
+                  <svg class="position-absolute top-0 right-0 bottom-0 h-100" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920" height="100%">
+                    <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z"/>
+                  </svg>
+                </figure>
+                <!-- End SVG Shapes -->
+              </div>
+
+                        
+                <div class=" js-slick-carousel slick"
+              data-hs-slick-carousel-options='{
+                "fade": true,
+                "autoplay": true,
+                "autoplaySpeed": 7000,
+                "infinite": true,
+                "responsive": [{
+                  "breakpoint": 768,
+                  "settings": {
+                    "arrows": false
+                  }
+                }]
+              }'>
+              @foreach($youtube as $yt)
+                <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
+                <iframe src="{{ $yt->link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>  
+              @endforeach
+                </div>
+
+             
               </div>
             </div>
+
+
+
+            <div class="mb-5">
+                        <div class="mb-3">
+
+                        <div class="position-relative bg-primary overflow-hidden">
+                          <div class=" text-left position-relative">
+                            <h3 class="container text-white text-center font-weight-semi-bold ">TWITTER</h3>
+                          </div>
+                      <!-- SVG Shapes -->
+                          <figure class="mb-n1">
+                            <svg class="position-absolute top-0 right-0 bottom-0 h-100" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920" height="100%">
+                              <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z"/>
+                            </svg>
+                          </figure>
+                          <!-- End SVG Shapes -->
+                        </div>
+
+                        
+                <div style="overflow: auto; height:200px;">
+                <a class="twitter-timeline" href="https://twitter.com/diskominfo_wsb"></a>
+              </div>
+
           </div>
+          </div>
+
+
+
+           <div class="mb-5">
+                        <div class="mb-3">
+
+                        <div class="position-relative bg-primary overflow-hidden">
+                          <div class=" text-left position-relative">
+                            <h3 class="container text-white text-center font-weight-semi-bold ">FACEBOOK</h3>
+                          </div>
+                      <!-- SVG Shapes -->
+                          <figure class="mb-n1">
+                            <svg class="position-absolute top-0 right-0 bottom-0 h-100" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920" height="100%">
+                              <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z"/>
+                            </svg>
+                          </figure>
+                          <!-- End SVG Shapes -->
+                        </div>
+
+                        <div class="fb-page" 
+            data-href="https://www.facebook.com/diskominfo.wsb"
+          data-tabs="timeline"
+              data-height="250"
+              
+              style="overflow: auto; height:250px;">
+          </div>
+
+          </div>
+          </div>
+
+
+
+          </div>          
         </div>
       </div>
+
+      
 
       <!-- Pagination -->
       <!-- End Pagination -->
     </div>
     <!-- End Blogs Section -->
 
-<div class="container">
-  <div class="row">
-
-<div class="col col-lg col-md col-sm mb-6 d-flex justify-content-center">           
-  <div style="overflow: auto; height:500px; width:400px;">
-  <a class="twitter-timeline" href="https://twitter.com/diskominfo_wsb"></a>
-</div>
+    <div class="text-center mb-3">
+  <span class="divider divider-text" >INFO GRAFIS</span>
 </div>
 
-<div class="col col-lg col-md col-sm d-flex justify-content-center">           
-<div class="fb-page" 
-  data-href="https://www.facebook.com/diskominfo.wsb"
- data-tabs="timeline"
-     data-width="400"
-     data-height="500"
-     
-     style="overflow: auto; width: 450px; height:600px;">
-</div>
+
+
+
+     <div class="container space-0 space-lg-0 ">
+      <div id="fancyboxGallery" class="js-fancybox"
+           data-hs-fancybox-options='{
+             "selector": "#fancyboxGallery .js-fancybox-item"
+           }'>
+      <div class="row">
+        @foreach($infografis as $grafis)
+        <div class="col-sm-6 col-md-3">
+          <!-- Card Info -->
+          <div class="card"  style="width: 18rem;">
+            <a class="js-fancybox-item d-block" href="javascript:;"
+                  data-src="{{ asset('uploads/'.$grafis->file_name??'')}}"
+                  data-caption="{{$grafis->judul}}">
+                <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block " src="{{ asset('uploads/'.$grafis->file_name??'')}}" alt="Image Description">
+              </a>
+            <div class="card-body">
+               <h5><a class="card-text">{{$grafis->judul}}</a></h5>
+              </div>
+          </div>
+          <!-- End Card Info -->
+        </div>
+       
+      @endforeach
+       <div class="container text-right mb-2">
+        <a class="btn btn-primary btn-sm" href="{{ route('infografis.detail')}}">Lihat Selengkapnya <i class="fas fa-angle-right fa-sm ml-1"></i></a>
+        </div>
+      
+        </div>
+       
+        </div>
+        </div>
+
+
+    <div class="text-center mb-3">
+  <span class="divider divider-text" >INFO HOAX</span>
 </div>
 
-  </div>
-</div>
+     <div class="container space-0 space-lg-0  ">
+      <div id="fancyboxGallery" class="js-fancybox"
+           data-hs-fancybox-options='{
+             "selector": "#fancyboxGallery .js-fancybox-item"
+           }'>
+      <div class="row">
 
-      <div class="container js-slick-carousel slick"
-     data-hs-slick-carousel-options='{
-       "prevArrow": "<span class=\"fas fa-arrow-left slick-arrow slick-arrow-soft-white slick-arrow-left slick-arrow-centered-y rounded-circle ml-sm-2 ml-xl-4\"></span>",
-       "nextArrow": "<span class=\"fas fa-arrow-right slick-arrow slick-arrow-soft-white slick-arrow-right slick-arrow-centered-y rounded-circle mr-sm-2 mr-xl-4\"></span>",
-       "fade": true,
-       "autoplay": true,
-       "autoplaySpeed": 7000,
-       "infinite": true,
-       "responsive": [{
-         "breakpoint": 768,
-         "settings": {
-           "arrows": false
-         }
-       }]
-     }'>
-    @foreach($youtube as $yt)
-      <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
-      <iframe  src="{{ $yt->link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>  
-    @endforeach
-      </div>
+      @foreach($infohoax as $hoax)
+         <div class="col-sm-6 col-md-3 ">
+          <!-- Card Info -->
+          <div class="card"  style="width: 18rem;">
+            <a href="/detail/{{$hoax->id_posting}}">
+                <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block "   src="{{ asset('uploads/'.$hoax->gambarMuka->file_name??'')}}" alt="Image Description">
+              </a>
+            <div class="card-body">
+               <h5><a href="/detail/{{$hoax->id_posting}}" class="card-text text-inherit ">{{$hoax->judul_posting}}</a></h5>
+              </div>
+          </div>
+          <!-- End Card Info -->
+        </div>
+
+        @endforeach
+
+          <div class="container text-right mb-2">
+        <a class="btn btn-primary btn-sm" href="{{ route('infohoax.daftar') }}">Lihat Selengkapnya <i class="fas fa-angle-right fa-sm ml-1"></i></a>
+        </div>
+
+       
+        </div>
+        </div>
+        </div>
+
   </main>
   <!-- ========== END MAIN ========== --> 
 @endsection
@@ -322,12 +449,13 @@
   <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-function myFunction() {
+  <script src="//platform.twitter.com/widgets.js" charset="utf-8" async></script>
+  <script>
+  function myFunction() {
   var elmnt = document.getElementById("pagenya");
   elmnt.scrollIntoView();
-}
- </script>
-
+}</script>
+ 
 <script>
     $(document).ready(function(){
       if (window.location.hash == "#moreInfo") {
@@ -337,5 +465,5 @@ function myFunction() {
       }
    });
     </script>
-    
+</script>    
  @endpush

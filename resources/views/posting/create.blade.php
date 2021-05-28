@@ -6,7 +6,7 @@
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
-<span class="breadcrumb-item active">Data Posting</span>
+<span class="breadcrumb-item active">Posting Berita</span>
 @endsection
 
 @section('container')
@@ -104,11 +104,6 @@
 									<div class="col-lg-10">
 										<input type="file" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
 									</div>
-										@error('file_name')
-										<div class="invalid-feedback">
-										{{ $message }}
-										</div>
-										@enderror
 								</div>
 
 							<div class="mb-4">
@@ -132,6 +127,10 @@
     @endsection
 
 @push('js')
+<script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\PostingcreateValidation') !!}
+</script>
 @endpush

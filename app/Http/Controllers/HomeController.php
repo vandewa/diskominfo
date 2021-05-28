@@ -19,6 +19,7 @@ use App\Models\Pengumuman;
 use App\Models\Pengaduan;
 use App\Models\Sampul;
 use App\Models\Menu;
+use App\Models\Infografis;
 use DataTables;
 
 use PHPUnit\Framework\Constraint\Count;
@@ -175,7 +176,19 @@ class HomeController extends Controller
         $sampul = Sampul::where('id',1)
         ->first();
 
-        return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul'));
+        $infohoax = Posting::with(['gambarMuka'])
+        ->where('id_kategori', 7)
+        ->orderBy('created_at', 'desc')
+        ->limit(4)
+        ->get();
+
+        $infografis = Infografis::orderBy('created_at', 'desc')
+        ->limit(4)
+        ->get();
+
+
+
+        return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul', 'infohoax', 'infografis'));
     }
 
     /**
@@ -196,6 +209,7 @@ class HomeController extends Controller
         $posting = Posting::with(['kategori', 'nama'])
         ->where('judul_posting', 'like', "%".$cari."%")
         ->select('judul_posting', 'id_posting', 'id_kategori', 'created_by', 'isi_posting')
+        ->orderBy('created_at','desc')
         ->paginate(5)
         ->appends(['q' => $request->q]);
 
@@ -262,10 +276,13 @@ class HomeController extends Controller
         return view('home.hubungikami');
     }
 
+    public function pengajuan()
+    {
+        return view('home.pengajuan');
+    }
+
      public function simpan(Request $request)
     {
-        
-
            Komentar::create(
             [
                 'nama' => $request->nama,
@@ -276,7 +293,7 @@ class HomeController extends Controller
             ]
         );
 
-        return redirect('hubungikami')->with('status', 'Oke');
+        return redirect('pengajuan')->with('status', 'Oke');
 
     }
 
@@ -339,9 +356,22 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Home $home)
+   public function detailInfografis()
     {
-        //
+        $infografis= Infografis::orderBy('created_at','desc')
+        ->get();
+
+        return view('home.infografis', compact('infografis'));
+    }
+
+    public function daftarInfohoax()
+    {
+        $infohoax= Posting::with(['gambarMuka'])
+        ->where('id_kategori',7)
+        ->orderBy('created_at','desc')
+        ->get();
+
+        return view('home.daftarinfohoax', compact('infohoax'));
     }
 
     /**
@@ -350,8 +380,5 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Home $home)
-    {
-        //
-    }
+
 }

@@ -6,7 +6,7 @@
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
-<span class="breadcrumb-item active">Data Posting</span>
+<span class="breadcrumb-item active">Posting Berita</span>
 @endsection
 
 @section('container')

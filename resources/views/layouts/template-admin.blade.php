@@ -197,13 +197,12 @@
 							</ul>
 						</li>
 				
-			
-
 						<li class="nav-item nav-item-submenu @yield('kondisi2')">
 							<a href="#" class="nav-link"><i class="icon-newspaper"></i> <span>Posting</span></a>
-
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ route('posting.index') }}" class="nav-link">Data Posting</a></li>
+								<li class="nav-item"><a href="{{ route('posting.index') }}" class="nav-link">Posting Berita</a></li>
+								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link">Info Hoax</a></li>
+								<li class="nav-item"><a href="{{ route('infografis.index') }}" class="nav-link">Info Grafis</a></li>
 								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Kategori</a></li>
 							</ul>
 						</li>

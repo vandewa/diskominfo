@@ -51,16 +51,17 @@ class PostingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostingcreateValidation $request)
+        public function store(PostingcreateValidation $request)
     {
+        
         $b= Posting::create($request->except(['file_name']));
+        $no = 1;
 
         if($request->hasFile('file_name')){
-        $by = $request->created_by;
-        $files = $request->file('file_name');
-        $prefix = date('Ymdhis');
-        $no = 1;
+                $files = $request->file('file_name'); 
             foreach($files as $a){
+                $prefix = date('Ymdhis');
+                $by = $request->created_by;
                 $extension = $a->extension();
                 $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
                 $a->move(public_path('/uploads'), $filename);
@@ -72,7 +73,6 @@ class PostingController extends Controller
                 $no++;
                 }
         } else {
-
             $attachment = new Attachment() ;
             $attachment->id_tabel = $b->id_posting;
             $attachment->file_name = 'diskominfowonosobo.jpg';
@@ -83,7 +83,6 @@ class PostingController extends Controller
 
 
     }
-
     /**
      * Display the specified resource.
      *
@@ -192,12 +191,13 @@ class PostingController extends Controller
                     }
 
                 })
-                ->editColumn('kategori', function($a)
+                
+                ->editColumn('id_kategori', function($a)
                 {
                     Posting::with(['kategori']);
                     return $a->kategori->nama_kategori;
                 })
-                ->editColumn('oleh', function($a)
+                ->editColumn('created_by', function($a)
                 {
                     Posting::with(['nama']);
                     return $a->nama->name;

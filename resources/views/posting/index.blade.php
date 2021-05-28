@@ -1,12 +1,12 @@
-@section('title', 'Data Posting')
+@section('title', 'Posting Berita')
 @section('menu','Posting')
-@section('submenu','Data Posting')
+@section('submenu','Posting Berita')
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
-<span class="breadcrumb-item active">Data Posting</span>
+<span class="breadcrumb-item active">Posting Berita</span>
 @endsection
 
 @section('tambah_data')
@@ -62,9 +62,9 @@ Tambah Posting
 				columns: [
 					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
 					{data: 'judul_posting'},
-                    {data: 'kategori', },
+                    {data: 'id_kategori', },
 					{data: 'posisi', },
-                    {data: 'oleh', },
+                    {data: 'created_by', },
                     {data: 'created_at', },
                     // {data: 'created_by', },
 					{

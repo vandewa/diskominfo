@@ -11,5 +11,6 @@ class Category extends Model
     protected $table = 'category';
     protected $primarykey ='id';
     protected $fillable = ['id', 'nama_kategori'];
+    
 }
 

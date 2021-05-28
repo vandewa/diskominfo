@@ -41,10 +41,10 @@ class MenuBerandaController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('file_name');
-        $filename = $file->getClientOriginalName();
-
+       
         if($request->hasFile('file_name')){
+            $file = $request->file('file_name');
+            $filename = $file->getClientOriginalName();
             $file->move(public_path('/uploads/lampiran'), $filename);
             Menu::create([
                 'parent' => $request->parent,
