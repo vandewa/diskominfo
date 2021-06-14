@@ -41,6 +41,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardCon
 Route::resource('home', HomeController::class);
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
+// PPID
+Route::get('/tugasppid', [HomeController::class, 'tugasppid'])->name('tugasppid');
+Route::get('/strukturppid', [HomeController::class, 'strukturppid'])->name('strukturppid');
+// END PPID
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/personil', [HomeController::class, 'personil'])->name('personil');
 Route::get('/tupoksi', [HomeController::class, 'tupoksi'])->name('tupoksi');
@@ -50,6 +54,7 @@ Route::get('/pengajuan', [HomeController::class, 'pengajuan'])->name('pengajuan'
 Route::post('/pengajuan/simpan', [HomeController::class, 'simpan'])->name('pengajuan.simpan');
 Route::get('/website/list', [HomeController::class, 'getWebsite'])->name('website.list');
 Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
+Route::get('/kominfo/{id}', [HomeController::class, 'kominfo'])->name('kominfo');
 Route::get('/detail/{post}', [HomeController::class, 'detail'])->name('detail.posting');
 Route::get('/details/{post}', [HomeController::class, 'details'])->name('details.pengumuman');
 Route::get('/search', [HomeController::class, 'cari'])->name('search');

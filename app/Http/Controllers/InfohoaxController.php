@@ -146,7 +146,9 @@ class InfohoaxController extends Controller
 
      public function getInfohoax(Request $request)
     {
-            $data = Posting::where('id_kategori', 7)->get();
+            $data = Posting::where('id_kategori', 7)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
 
             return DataTables::of($data)

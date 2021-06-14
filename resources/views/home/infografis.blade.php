@@ -37,8 +37,6 @@
              ]
            }'>
 
-           
-
            @foreach($infografis as $infografisnya)
         <!-- Item -->
         <div class="cbp-item rounded-lg branding mb-2 " id="fancyboxGallery1">

@@ -44,6 +44,24 @@ class HomeController extends Controller
         return view('home.visimisi', compact('visimisi'));
     }
 
+    public function tugasppid()
+    {
+        $tugasppid = Menu::where('id',45)
+        ->first();
+
+
+        return view('home.tugasppid', compact('tugasppid'));
+    }
+
+    public function strukturppid()
+    {
+        $strukturppid = Menu::where('id',46)
+        ->first();
+
+
+        return view('home.strukturppid', compact('strukturppid'));
+    }
+
     public function personil()
     {
 
@@ -86,6 +104,18 @@ class HomeController extends Controller
     public function lampiran()
     {
         return view('home.lampiran');
+    }
+
+     public function kominfo($id)
+    {
+
+        $kominfo = Menu::where('id', 1)
+        ->first();
+    
+
+        return view('home.kominfo', compact('kominfo'));
+
+
     }
 
 

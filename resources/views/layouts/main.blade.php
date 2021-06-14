@@ -127,8 +127,12 @@
                     <!-- Company -->
                      
                        @foreach($menu_categories as $category)
-                      <div class="hs-has-sub-menu">
-                    <a href="{{ url($category->url??'#') }}" id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif ">{{ $category->nama }}</a>
+                      <div class="hs-has-sub-menu"> 
+                     <a 
+                     @if(count($category->childs))href="/kominfo/{{$category->id}}"@endif
+              
+                    
+                       id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif ">{{ $category->nama }}</a>
                       <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($category->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
                       @if(count($category->childs))
                       @foreach($category->childs as $child)
@@ -155,15 +159,40 @@
                 </li>
                 <!-- End Pages -->
 
-                 <!-- Lampiran -->
-                 <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('pengumuman')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>PPID</a>
+                 <!-- Pages -->
+                <li class="hs-has-sub-menu navbar-nav-item">
+
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>PPID</a>
                   <!-- Pages - Submenu -->
-                  <div class="hs-sub-menu ">
+                  <div id="pagesSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu" style="min-width: 230px;">
+                    <!-- Company -->
+                    
+                       @foreach($ppid as $ppids)
+                      <div class="hs-has-sub-menu">
+                      <a href="{{ url($ppids->url??'#') }}" @if($ppids->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($ppids->childs))dropdown-item-toggle @endif">{{ $ppids->nama }}</a>
+                      <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($ppids->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
+                      @if(count($ppids->childs))
+                      @foreach($ppids->childs as $child)
+                      <div class="hs-has-sub-menu">
+                      <a href="{{ url($child->url??'#') }}" @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
+                      <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany">
+                      @if(count($child->childs))
+                      @foreach($child->childs as $child1)
+                      <a href="{{ url($child1->url??'#') }}" @if($child1->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
+                      @endforeach
+                      @endif
+                      </div>
+                      </div> 
+                      @endforeach 
+                      @endif
+                      </div>
+                    </div>
+                    <!-- Company -->
+                     @endforeach
                   </div>
                   <!-- End Pages - Submenu -->
                 </li>
-                <!-- End Lampiran -->
+                <!-- End Pages -->
 
                  <!-- Pages -->
                 <li class="hs-has-sub-menu navbar-nav-item">
@@ -254,7 +283,7 @@
                 </li>
                 <!-- End Blog -->
 
-                <!-- Lampiran -->
+                <!-- Pengumuman -->
                  <li class="hs-has-sub-menu navbar-nav-item">
                   <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('pengumuman')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Pengumuman</a>
                   <!-- Pages - Submenu -->
@@ -262,9 +291,7 @@
                   </div>
                   <!-- End Pages - Submenu -->
                 </li>
-                <!-- End Lampiran -->
-
-                
+                <!-- End Pengumuman -->
 
                  <!-- Lampiran -->
                  <li class="hs-has-sub-menu navbar-nav-item">
@@ -274,6 +301,16 @@
                   </div>
                   <!-- End Pages - Submenu -->
                 </li>
+                <!-- End Lampiran -->
+
+                 <!-- Lampiran -->
+                 <!-- <li class="hs-has-sub-menu navbar-nav-item">
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Sitemap</a> -->
+                  <!-- Pages - Submenu -->
+                  <!-- <div class="hs-sub-menu ">
+                  </div> -->
+                  <!-- End Pages - Submenu -->
+                <!-- </li> -->
                 <!-- End Lampiran -->
 
                 <!-- Buku Tamu -->
@@ -551,7 +588,6 @@
   <script src="{{ url ('front/assets/vendor/aos/dist/aos.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-show-animation/dist/hs-show-animation.min.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
-
 
   <script src="{{ url ('front/assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/leaflet/dist/leaflet.js')}}"></script>

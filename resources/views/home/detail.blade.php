@@ -91,9 +91,8 @@
          <!-- End Author -->
         <div class="mt-5" style="text-align:justify; text-justify:auto;text-indent: 40px;  color:black;">
         {!! $detail->isi_posting !!}
-         </div>
+        </div>
 
-   
           <!-- Sticky Block End Point -->
           <div id="stickyBlockEndPoint"></div>
         </div>
@@ -141,7 +140,6 @@
             <!-- End Project -->
             </div>
             @endforeach
-
 
             <div class="mb-7">
               <div class="mb-3">

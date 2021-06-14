@@ -1,5 +1,5 @@
 
-@section('title', 'Dinas Kominfo Wonosobo | Infohoax')
+@section('title', 'Dinas Kominfo Wonosobo | Info Hoax')
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')
@@ -37,26 +37,20 @@
              ]
            }'>
 
-           
-
            @foreach($infohoax as $infohoaxnya)
         <!-- Item -->
-        <div class="cbp-item rounded-lg branding mb-2 ">
-         <a class="cbp-caption" href="/detail/{{$infohoaxnya->id_posting}}"
-       data-hs-fancybox-options='{
-         "selector": "#fancyboxGallery1 .js-fancybox",
-         "speed": 700
-       }'
-       data-src="{{ asset ('uploads') }}/{{ $infohoaxnya->gambarMuka->file_name??'' }}"
-       data-caption="{{$infohoaxnya->judul_posting}}">
-      <img class="img-fluid rounded" src="{{ asset ('uploads') }}/{{ $infohoaxnya->gambarMuka->file_name??'' }}" alt="Image Description">
-
-       <div class="cbp-caption-activeWrap">
+        <div class="cbp-item rounded-lg branding mb-2">
+          <a class="cbp-caption" href="/detail/{{$infohoaxnya->id_posting}}">
+            <div class="cbp-caption-defaultWrap mb-5">
+              <img class="rounded-lg" src="{{ asset ('uploads') }}/{{ $infohoaxnya->gambarmuka->file_name??'' }}" alt="Image Description" style="height:250px;">
+            </div>
+            <div class="cbp-caption-activeWrap">
               <div class="d-flex justify-content-end flex-column h-100 p-4">
-                <span class="d-block h4 text-white mb-0">{{$infohoaxnya->judul_posting}}</span>
+               <span class="topcorner text-white mt-2">{{  Carbon\Carbon::parse($infohoaxnya->created_at)->isoFormat('dddd, D MMMM Y') }}</span>
+                <span class="d-block h5 text-white mb-0">{{$infohoaxnya->judul_posting}}</span>
               </div>
             </div>
-    </a>
+          </a>
         </div>
         <!-- End Item -->
         @endforeach

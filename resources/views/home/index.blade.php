@@ -414,7 +414,7 @@
                 <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block "   src="{{ asset('uploads/'.$hoax->gambarMuka->file_name??'')}}" alt="Image Description">
               </a>
             <div class="card-body">
-               <h5><a href="/detail/{{$hoax->id_posting}}" class="card-text text-inherit ">{{$hoax->judul_posting}}</a></h5>
+               <h5><a href="/detail/{{$hoax->id_posting}}" class="card-text">{{$hoax->judul_posting}}</a></h5>
               </div>
           </div>
           <!-- End Card Info -->

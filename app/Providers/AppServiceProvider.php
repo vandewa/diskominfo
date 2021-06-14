@@ -49,11 +49,17 @@ class AppServiceProvider extends ServiceProvider
          View::share('menu_categories', $categories);
 
 
-          $categories=Menu::with(['childs'])
+        $categories=Menu::with(['childs'])
          ->where('parent', '=', '9') 
          ->get();
 
          View::share('menu_categoriess', $categories);
+
+         $ppid=Menu::with(['childs'])
+         ->where('parent', '=', '43') 
+         ->get();
+
+         View::share('ppid', $ppid);
 
 
         $status_pengaduan=Pengaduan::where('status', '=', '0') 
