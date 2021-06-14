@@ -109,7 +109,7 @@ class HomeController extends Controller
      public function kominfo($id)
     {
 
-        $kominfo = Menu::where('id', 1)
+        $kominfo = Menu::where('id', $id)
         ->first();
     
 

@@ -129,19 +129,29 @@
                        @foreach($menu_categories as $category)
                       <div class="hs-has-sub-menu"> 
                      <a 
-                     @if(count($category->childs))href="/kominfo/{{$category->id}}"@endif
-              
-                    
-                       id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif ">{{ $category->nama }}</a>
+                     @if(count($category->childs))href="#"
+                     @else href="/kominfo/{{$category->id}}"
+                     @endif
+
+                      id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif ">{{ $category->nama }}</a>
                       <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($category->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
                       @if(count($category->childs))
                       @foreach($category->childs as $child)
                       <div class="hs-has-sub-menu">
-                      <a href="{{ url($child->url??'#') }}" id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
+                      <a
+                       @if(count($child->childs))href="#"
+                     @else href="/kominfo/{{$child->id}}"
+                     @endif
+                      
+                       id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
                       <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany">
                       @if(count($child->childs))
                       @foreach($child->childs as $child1)
-                      <a href="{{ url($child1->url??'#') }}" id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
+                      <a 
+                      @if(count($child1->childs))href="#"
+                     @else href="/kominfo/{{$child1->id}}"
+                     @endif
+                       id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
                       @endforeach
                       @endif
                       </div>
