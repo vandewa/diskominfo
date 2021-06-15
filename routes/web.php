@@ -22,6 +22,7 @@ use App\Http\Controllers\InfohoaxController;
 use App\Http\Controllers\InfografisController;
 use Carbon\Carbon;
 use App\Http\Controllers\Perijinan\AksesDcController;
+use App\Http\Controllers\Perijinan\PerminColController;
 
 
 /*
@@ -91,6 +92,10 @@ Route::get('/pengaduans/hapus/{id}/komentar', [PengaduanController::class, 'hapu
 Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
     Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
     Route::post('akses/data-center', [AksesDcController::class, 'store'])->name('akses.dc.post');
+});
+
+Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
+    Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
 });
 
 Route::group(['middleware' => ['auth']], function(){

@@ -33,7 +33,7 @@
 
 <div class="col-md-3">
 
-      <a href="/pengajuanizin">
+      <a href="{{route('perijinan:permintaan.col.create')}}">
             <img  class="card-img transition-zoom-hover" src="{{asset('front/assets/images/colocation.jpg')}}" alt="Girl in a jacket" >
             </a>
 </div>
