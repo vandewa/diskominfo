@@ -51,6 +51,7 @@ Route::get('/tupoksi', [HomeController::class, 'tupoksi'])->name('tupoksi');
 Route::get('/lampiran', [HomeController::class, 'lampiran'])->name('lampiran');
 Route::get('/pengaduan', [HomeController::class, 'pengaduan'])->name('pengaduan');
 Route::get('/pengajuan', [HomeController::class, 'pengajuan'])->name('pengajuan');
+Route::get('/pengajuanizin', [HomeController::class, 'pengajuanizin'])->name('pengajuanizin');
 Route::post('/pengajuan/simpan', [HomeController::class, 'simpan'])->name('pengajuan.simpan');
 Route::get('/website/list', [HomeController::class, 'getWebsite'])->name('website.list');
 Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
