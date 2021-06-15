@@ -68,7 +68,12 @@
                                         {{Form::email('email', null, ['class' => 'form-control '])}}
                                     </div>
                                 </div>
-
+                                <div class="row form-group">
+                                    <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Jenis Keperluan</label>
+                                    <div class="col-sm-9">
+                                        {{Form::select('keperluan_tp',get_code_group('KEPERLUAN_TP'), null, ['class' => 'form-control '])}}
+                                    </div>
+                                </div>
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
                                 </div>

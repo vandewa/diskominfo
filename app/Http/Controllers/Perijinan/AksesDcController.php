@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Perijinan;
 
 use App\Http\Controllers\Controller;
+use App\Models\AksesDc;
 use Illuminate\Http\Request;
+use Session;
 
 class AksesDcController extends Controller
 {
@@ -35,7 +37,10 @@ class AksesDcController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = AksesDc::create($request->all());
+        if($data){
+            Session::flush('keterangan', 'Data berhasil di simpan');
+        }
     }
 
     /**

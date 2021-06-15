@@ -89,6 +89,7 @@ Route::get('/pengaduans/hapus/{id}/komentar', [PengaduanController::class, 'hapu
 
 Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
     Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
+    Route::post('akses/data-center', [AksesDcController::class, 'store'])->name('akses.dc.post');
 });
 
 Route::group(['middleware' => ['auth']], function(){
