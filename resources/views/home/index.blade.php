@@ -198,7 +198,7 @@
             <div class="mb-7">
 
             <div class="mb-3">
-            <a href="/detail/{{$post->id_posting}}">
+            <a href="/pengajuanizin">
             <img  class="card-img transition-zoom-hover" src="{{asset('front/assets/images/pengajuan.jpg')}}" alt="Girl in a jacket" width="250" height="80">
             </a>
             </div>
