@@ -14,6 +14,7 @@ class ComCodeSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('com_codes')->truncate();
         $data = [
             ['code_cd' => 'KEPERLUAN_TP_01', 'code_nm' => 'Server Hardware Maintanace', 'code_group' => 'KEPERLUAN_TP', 'code_value' => ''],
             ['code_cd' => 'KEPERLUAN_TP_02', 'code_nm' => 'Server Software Maintanace', 'code_group' => 'KEPERLUAN_TP', 'code_value' => ''],
