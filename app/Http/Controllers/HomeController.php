@@ -118,6 +118,11 @@ class HomeController extends Controller
 
     }
 
+    public function pengajuanizin()
+    {
+        return view('home.pengajuanizin');
+    }
+
 
     public function detail($post)
     {
