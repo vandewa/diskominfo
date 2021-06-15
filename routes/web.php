@@ -21,6 +21,7 @@ use App\Http\Controllers\SampulController;
 use App\Http\Controllers\InfohoaxController;
 use App\Http\Controllers\InfografisController;
 use Carbon\Carbon;
+use App\Http\Controllers\Perijinan\AksesDcController;
 
 
 /*
@@ -37,7 +38,7 @@ use Carbon\Carbon;
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'], function () {
     return view('dashboard');})->name('dashboard');
 
-    
+
 Route::resource('home', HomeController::class);
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
@@ -86,8 +87,12 @@ Route::get('/pengaduans/list', [PengaduanController::class, 'getPengaduan'])->na
 Route::resource('pengaduans', PengaduanController::class);
 Route::get('/pengaduans/hapus/{id}/komentar', [PengaduanController::class, 'hapus'])->name('pengaduan.komentar.hapus');
 
+Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
+    Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
+});
+
 Route::group(['middleware' => ['auth']], function(){
-    Route::resource('posting', PostingController::class);   
+    Route::resource('posting', PostingController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('menuberanda', MenuBerandaController::class);
     Route::resource('youtube', YoutubeController::class);
