@@ -26,6 +26,8 @@ use App\Http\Controllers\Perijinan\PenambahanVpsController;
 use App\Http\Controllers\Perijinan\PerubahanVpsController;
 use App\Http\Controllers\Perijinan\PengajuanServerController;
 use App\Http\Controllers\Perijinan\LayananServerController;
+use App\Http\Controllers\Perijinan\PerminColController;
+
 
 
 /*
@@ -103,6 +105,10 @@ Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
     Route::post('permohonan/pengajuan-server', [PengajuanServerController::class, 'store'])->name('pengajuan.server.post');
     Route::get('permohonan/layanan-server', [LayananServerController::class, 'create'])->name('layanan.server.create');
     Route::post('permohonan/layanan-server', [LayananServerController::class, 'store'])->name('layanan.server.post');
+});
+
+Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
+    Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
 });
 
 Route::group(['middleware' => ['auth']], function(){
