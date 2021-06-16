@@ -39,8 +39,10 @@ class AksesDcController extends Controller
     {
         $data = AksesDc::create($request->all());
         if($data){
-            Session::flush('keterangan', 'Data berhasil di simpan');
+            Session::flash('keterangan', 'Data berhasil di simpan');
         }
+
+        return  redirect()->back();
     }
 
     /**
