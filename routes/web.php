@@ -22,6 +22,10 @@ use App\Http\Controllers\InfohoaxController;
 use App\Http\Controllers\InfografisController;
 use Carbon\Carbon;
 use App\Http\Controllers\Perijinan\AksesDcController;
+use App\Http\Controllers\Perijinan\PenambahanVpsController;
+use App\Http\Controllers\Perijinan\PerubahanVpsController;
+use App\Http\Controllers\Perijinan\PengajuanServerController;
+use App\Http\Controllers\Perijinan\LayananServerController;
 
 
 /*
@@ -91,6 +95,14 @@ Route::get('/pengaduans/hapus/{id}/komentar', [PengaduanController::class, 'hapu
 Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
     Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
     Route::post('akses/data-center', [AksesDcController::class, 'store'])->name('akses.dc.post');
+    Route::get('permohonan/vps-baru', [PenambahanVpsController::class, 'create'])->name('vps.baru.create');
+    Route::post('permohonan/vps-baru', [PenambahanVpsController::class, 'store'])->name('vps.baru.post');
+    Route::get('permohonan/perubahan-vps', [PerubahanVpsController::class, 'create'])->name('perubahan.vps.create');
+    Route::post('permohonan/perubahan-vps', [PerubahanVpsController::class, 'store'])->name('perubahan.vps.post');
+    Route::get('permohonan/pengajuan-server', [PengajuanServerController::class, 'create'])->name('pengajuan.server.create');
+    Route::post('permohonan/pengajuan-server', [PengajuanServerController::class, 'store'])->name('pengajuan.server.post');
+    Route::get('permohonan/layanan-server', [LayananServerController::class, 'create'])->name('layanan.server.create');
+    Route::post('permohonan/layanan-server', [LayananServerController::class, 'store'])->name('layanan.server.post');
 });
 
 Route::group(['middleware' => ['auth']], function(){

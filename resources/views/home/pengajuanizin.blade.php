@@ -1,5 +1,5 @@
 
-@section('title', 'Dinas Kominfo Wonosobo | Hubungi Kami')
+@section('title', 'Dinas Kominfo Wonosobo')
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')
@@ -47,14 +47,14 @@
 
 <div class="col-md-3 mb-3">
 
-      <a href="/pengajuanizin">
+      <a href="{{route('perijinan:layanan.server.create')}}">
             <img  class="card-img transition-zoom-hover" src="{{asset('front/assets/images/layanan.jpg')}}" alt="Girl in a jacket" >
             </a>
 </div>
 
 <div class="col-md-3">
 
-      <a href="/pengajuanizin">
+      <a href="{{route('perijinan:vps.baru.create')}}">
             <img  class="card-img transition-zoom-hover" src="{{asset('front/assets/images/vps baru.jpg')}}" alt="Girl in a jacket" >
             </a>
 </div>
@@ -62,14 +62,14 @@
 
 <div class="col-md-3">
 
-      <a href="/pengajuanizin">
+      <a href="{{route('perijinan:perubahan.vps.create')}}">
             <img  class="card-img transition-zoom-hover" src="{{asset('front/assets/images/perubahan.jpg')}}" alt="Girl in a jacket" >
             </a>
 </div>
 
 <div class="col-md-3">
 
-      <a href="/pengajuanizin">
+      <a href="{{route('perijinan:pengajuan.server.create')}}">
             <img  class="card-img transition-zoom-hover" src="{{asset('front/assets/images/pengantar.jpg')}}" alt="Girl in a jacket" >
             </a>
 </div>

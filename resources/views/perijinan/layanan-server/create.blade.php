@@ -18,13 +18,13 @@
             <!-- Article Description Section -->
             <div class="container space-top-1 space-bottom-2">
                 <div class="w-100 sm-6 mx-lg-auto">
-                    <h3 class="mb-4 mt-10"><center>Form Pengajuan Akses Data Center</center></h3>
+                    <h3 class="mb-4 mt-10"><center>Form Layanan Server </center></h3>
                     <div class="w-lg-80 mx-auto">
                         <!-- Contacts Form -->
                         <!-- Card -->
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title"> Data Diri</h5>
+                                <h5 class="card-title"> Data Pemohon</h5>
                             </div>
 
                             <!-- Body -->
@@ -33,50 +33,51 @@
                            {{Form::open()}}
                                     <!-- Form Group -->
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Nama</label>
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">OPD </label>
                                         <div class="col-sm-9">
-                                            {{Form::text('name', null, ['class' => 'form-control '])}}
+                                            {{Form::text('opd', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Jenis Identitas</label>
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Bidang / Bagian / UPTD </label>
                                         <div class="col-sm-9">
-                                            {{Form::select('identity_tp',get_code_group('IDENTITY_TP'), null, ['class' => 'form-control '])}}
+                                            {{Form::text('bidang', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">No Identitas</label>
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Alamat</label>
                                         <div class="col-sm-9">
-                                            {{Form::text('identity_no', null, ['class' => 'form-control '])}}
+                                            {{Form::text('alamat', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Asal Instansi</label>
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">No. Telepon</label>
                                         <div class="col-sm-9">
-                                            {{Form::text('asal_instansi', null, ['class' => 'form-control '])}}
+                                            {{Form::text('telp', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
-                                <div class="row form-group">
-                                    <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Telepon</label>
-                                    <div class="col-sm-9">
-                                        {{Form::text('telepon', null, ['class' => 'form-control '])}}
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Email</label>
+                                        <div class="col-sm-9">
+                                             {{Form::text('email', null, ['class' => 'form-control '])}}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row form-group">
-                                    <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Email</label>
-                                    <div class="col-sm-9">
-                                        {{Form::email('email', null, ['class' => 'form-control '])}}
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Jenis Layanan</label>
+                                        <div class="col-sm-9">
+                                            {{Form::select('layanan_tp',get_code_group('JENISLAYANAN_TP'), null, ['class' => 'form-control '])}}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row form-group">
-                                    <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Jenis Keperluan</label>
-                                    <div class="col-sm-9">
-                                        {{Form::select('keperluan_tp',get_code_group('KEPERLUAN_TP'), null, ['class' => 'form-control '])}}
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Keterangan</label>
+                                        <div class="col-sm-9">
+                                            {{Form::text('keterangan', null, ['class' => 'form-control '])}}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
-                                </div>
+                                  
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
+                                    </div>
                             {{Form::close()}}
                                 <!-- End Form -->
                             </div>
