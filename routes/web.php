@@ -27,6 +27,7 @@ use App\Http\Controllers\Perijinan\PerubahanVpsController;
 use App\Http\Controllers\Perijinan\PengajuanServerController;
 use App\Http\Controllers\Perijinan\LayananServerController;
 use App\Http\Controllers\Perijinan\PerminColController;
+use App\Http\Controllers\PerijinanBackend\AksesDataCenterController;
 
 
 
@@ -112,6 +113,7 @@ Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
 });
 
 Route::group(['middleware' => ['auth']], function(){
+    Route::resource('akses-data-center', AksesDataCenterController::class);
     Route::resource('posting', PostingController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('menuberanda', MenuBerandaController::class);
