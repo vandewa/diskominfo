@@ -7,7 +7,7 @@ use App\Models\Tiket;
 use Illuminate\Http\Request;
 use Session;
 use Yajra\DataTables\DataTables;
-
+use PhpOffice\PhpWord\PhpWord;
 class TiketController extends Controller
 {
     /**

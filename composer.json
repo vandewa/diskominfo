@@ -22,6 +22,7 @@
         "laravelcollective/html": "^6.2",
         "livewire/livewire": "^2.0",
         "mews/captcha": "^3.2",
+        "phpoffice/phpword": "^0.18.2",
         "proengsoft/laravel-jsvalidation": "^4.4",
         "santigarcor/laratrust": "^6.3",
         "yajra/laravel-datatables-oracle": "^9.15"
