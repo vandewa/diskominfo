@@ -28,7 +28,7 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	
+
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3_tooltip.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switchery.min.js ')}}"></script>
@@ -60,7 +60,7 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/editors/summernote/summernote.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/editor_summernote.js')}}"></script>
 
-	
+
 	<script src="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/js/app.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/dashboard.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/editor_ckeditor.js ')}}"></script>
@@ -192,11 +192,11 @@
 								<li class="nav-item"><a href="{{ route('sampul.index') }}" class="nav-link">Sampul Beranda</a></li>
 								<li class="nav-item"><a href="{{ route('website.index') }}" class="nav-link">Website Kelurahan</a></li>
 								<li class="nav-item"><a href="{{ route('youtube.index') }}" class="nav-link">Youtube</a></li>
-								
-								
+
+
 							</ul>
 						</li>
-				
+
 						<li class="nav-item nav-item-submenu @yield('kondisi2')">
 							<a href="#" class="nav-link"><i class="icon-newspaper"></i> <span>Posting</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
@@ -219,7 +219,7 @@
 								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Pengantar Pengajuan Server</a></li>
 							</ul>
 						</li>
-						
+
 						<li class="nav-item nav-item-submenu @yield('kondisi3')">
 							<a href="#" class="nav-link"><i class="icon-user"></i> <span>User</span></a>
 
@@ -247,6 +247,16 @@
 									<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_komentar}}</span>
 							</a>
 						</li>
+{{--                        Mulai Ticketing--}}
+                        <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Tiket</div> <i class="icon-menu" title="tiket"></i></li>
+                        <li class="nav-item nav-item-submenu @yield('kondisi8')">
+                            <a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Tiket</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="Posting">
+                                <li class="nav-item"><a href="{{ route('tiket:tiket.create') }}" class="nav-link">Tambah Tiket</a></li>
+                                <li class="nav-item"><a href="{{ route('tiket:tiket.index') }}" class="nav-link">List Tiket</a></li>
+                            </ul>
+                        </li>
+
 						<!-- /main -->
 					</ul>
 				</div>
@@ -278,7 +288,7 @@
 						<div class="breadcrumb">
 							<a href="{{ route('dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
 							@yield('halaman')
-							
+
 						</div>
 
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -322,7 +332,9 @@
 
 	<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 	<script>
-		$(document).on('click', '.delete-data-table', function(a){
+
+
+        $(document).on('click', '.delete-data-table', function(a){
             a.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
@@ -375,10 +387,10 @@
                 confirmButtonText: 'Delete!'
             }).then((result) => {
                 if (result.value) {
-                 
+
                     var url = $(this).attr('href');
 					window.location.replace(url);
-   
+
                 }
             })
         });

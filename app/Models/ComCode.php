@@ -10,5 +10,6 @@ class ComCode extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $primaryKey = 'com_cd';
+    protected $primaryKey = 'code_cd';
+    public $incrementing = false;
 }

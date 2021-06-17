@@ -38,6 +38,16 @@ class ComCodeSeeder extends Seeder
             ['code_cd' => 'JENISLAYANAN_TP_02', 'code_nm' => 'Layanan Sub Domain', 'code_group' => 'JENISLAYANAN_TP ', 'code_value' => ''],
             ['code_cd' => 'JENISLAYANAN_TP_03', 'code_nm' => 'Layanan Cpanel', 'code_group' => 'JENISLAYANAN_TP ', 'code_value' => ''],
             ['code_cd' => 'JENISLAYANAN_TP_04', 'code_nm' => 'Layanan Email', 'code_group' => 'JENISLAYANAN_TP ', 'code_value' => ''],
+            ['code_cd' => 'TIKET_TP_01', 'code_nm' => 'Jaringan', 'code_group' => 'TIKET_TP ', 'code_value' => ''],
+            ['code_cd' => 'TIKET_TP_02', 'code_nm' => 'Website', 'code_group' => 'TIKET_TP ', 'code_value' => ''],
+            ['code_cd' => 'TIKET_TP_03', 'code_nm' => 'Hardware', 'code_group' => 'TIKET_TP ', 'code_value' => ''],
+            ['code_cd' => 'PRIORITY_TP_01', 'code_nm' => 'Critical', 'code_group' => 'PRIORITY_TP ', 'code_value' => '4'],
+            ['code_cd' => 'PRIORITY_TP_02', 'code_nm' => 'High', 'code_group' => 'PRIORITY_TP ', 'code_value' => '3'],
+            ['code_cd' => 'PRIORITY_TP_03', 'code_nm' => 'Medium', 'code_group' => 'PRIORITY_TP ', 'code_value' => '2'],
+            ['code_cd' => 'PRIORITY_TP_04', 'code_nm' => 'Low', 'code_group' => 'PRIORITY_TP ', 'code_value' => '1'],
+            ['code_cd' => 'TIKET_ST_01', 'code_nm' => 'Terbuka', 'code_group' => 'TIKET_ST ', 'code_value' => ''],
+            ['code_cd' => 'TIKET_ST_02', 'code_nm' => 'Dikerjakan', 'code_group' => 'TIKET_ST ', 'code_value' => ''],
+            ['code_cd' => 'TIKET_ST_03', 'code_nm' => 'Selesai', 'code_group' => 'TIKET_ST ', 'code_value' => ''],
         ];
 
         foreach ($data as $datum){

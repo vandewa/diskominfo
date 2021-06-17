@@ -112,6 +112,11 @@ Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
     Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
 });
 
+Route::group(['prefix' => 'tiket', 'as' => 'tiket:'], function(){
+    Route::patch('tambah-petugas/{id}/petugas',[\App\Http\Controllers\Tiket\TiketController::class, 'storePenugasan'] )->name('store.petugas');
+    Route::resource('tiket', \App\Http\Controllers\Tiket\TiketController::class);
+});
+
 Route::group(['middleware' => ['auth']], function(){
     Route::resource('akses-data-center', AksesDataCenterController::class);
     Route::resource('posting', PostingController::class);
