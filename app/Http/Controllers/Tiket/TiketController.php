@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tiket;
 use App\Http\Controllers\Controller;
 use App\Models\Tiket;
 use Illuminate\Http\Request;
+use PhpOffice\PhpWord\TemplateProcessor;
 use Session;
 use Yajra\DataTables\DataTables;
 use PhpOffice\PhpWord\PhpWord;
@@ -85,7 +86,7 @@ class TiketController extends Controller
      */
     public function show($id)
     {
-        $data =  $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
+          $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
 
         return view('tiket.show', compact('data'));
     }
@@ -149,5 +150,24 @@ class TiketController extends Controller
         $data = Tiket::destroy($id);
 
         return  $data;
+    }
+
+    public function cetakSuratTugas($id)
+    {
+        $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
+        $path = public_path('/template/surat_tugas_tiket.docx');
+        $pathSave =storage_path('app/public/'.$data->no.'.docx');
+        $templateProcessor = new TemplateProcessor($path);
+        $templateProcessor->setValues([
+            'no' => $data->no,
+            'tahun' => date('Y', strtotime($data->created_at))
+        ]);
+
+        $templateProcessor->saveAs($pathSave);
+        return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
+
+
+
+
     }
 }

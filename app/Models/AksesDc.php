@@ -9,6 +9,9 @@ class AksesDc extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $casts = [
+        'approval_date' => 'datetime',
+    ];
     protected static function boot()
     {
         parent::boot();

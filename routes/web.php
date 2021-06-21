@@ -114,10 +114,12 @@ Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
 
 Route::group(['prefix' => 'tiket', 'as' => 'tiket:'], function(){
     Route::patch('tambah-petugas/{id}/petugas',[\App\Http\Controllers\Tiket\TiketController::class, 'storePenugasan'] )->name('store.petugas');
+    Route::get('tambah-petugas/{id}/surat-tugas/cetak',[\App\Http\Controllers\Tiket\TiketController::class, 'cetakSuratTugas'] )->name('cetak.surat.tugas');
     Route::resource('tiket', \App\Http\Controllers\Tiket\TiketController::class);
 });
 
 Route::group(['middleware' => ['auth']], function(){
+    Route::patch('akses-data-center/{id}/persetujuab', [AksesDcController::class, 'persetujuan'])->name('akses-data-center.persetujuan');
     Route::resource('akses-data-center', AksesDcController::class);
     Route::resource('posting', PostingController::class);
     Route::resource('category', CategoryController::class);

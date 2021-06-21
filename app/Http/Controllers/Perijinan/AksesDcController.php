@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Perijinan;
 use App\Http\Controllers\Controller;
 use App\Models\AksesDc;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use DataTables;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class AksesDcController extends Controller
 {
@@ -114,6 +116,22 @@ class AksesDcController extends Controller
 
     public function persetujuan(Request $request, $id)
     {
+        $data = AksesDc::find($id)->update(
+            [
+                'aproval_id' => Auth::user()->id,
+                'valid_util' => $request->valid_util,
+                'approval_date' => date('Y-m-d H:i:s'),
+                'penanggung_jawab_id' => $request->penanggung_jawab_id,
+                'status_st' => $request->status_st
+            ]
+        );
+        Session::flash('status','Data berhasil di update');
+        return redirect(route('akses-data-center.index'));
+    }
 
+    public function cetak($id)
+    {
+        $data = AksesDc::with(['keperluan','jenisIdentitas', 'penanggungJawab','menyetujui','status','jenisIdentitas'])->find($id);
+        $templateProcessor = new TemplateProcessor('Template.docx');
     }
 }

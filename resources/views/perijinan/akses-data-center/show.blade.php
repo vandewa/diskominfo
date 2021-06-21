@@ -1,12 +1,12 @@
-@section('title', 'Detail TIket')
-@section('menu','Tiket')
-@section('submenu','Detail Tiket Dan Penugasan')
+@section('title', 'Perijinan')
+@section('menu','Perijinan')
+@section('submenu','Akses Data Center')
 @extends('layouts/template-admin')
 @section('kondisi8','nav-item-expanded nav-item-open')
 
 @section('halaman')
-    <span class="breadcrumb-item active">Tiket</span>
-    <span class="breadcrumb-item active">Penugasan</span>
+    <span class="breadcrumb-item active">Perijinan</span>
+    <span class="breadcrumb-item active">Akses Data Center</span>
 @endsection
 
 @section('container')
@@ -25,20 +25,20 @@
             </div>
 
             <div class="card-body">
-                {{Form::model($data,['route' => ['tiket:store.petugas', $data->id],'method' => 'patch', 'files' => 'true', ''])}}
+                {{Form::model($data,['route' => ['akses-data-center.persetujuan', $data->id],'method' => 'patch', 'files' => 'true', ''])}}
 
                 <div class="row mb-2">
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-phone"></span></i> Nama Pemohon</div>
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Nama Pemohon</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->name}}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-mailbox"></span></i> Telepon Contact Person</div>
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-phone"></span></i> Telepon Contact Person</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->telepon}}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Email</div>
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-mail-read"></span></i> Email</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->email}}</p></div>
                         </div>
                         <div class="row">
@@ -46,11 +46,11 @@
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->asal_instansi}}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-home"></span></i> Jenis Identitas</div>
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-credit-card"></span></i> Jenis Identitas</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->jenisIdentitas->code_nm??''}}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-home"></span></i> No Identitas</div>
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-credit-card"></span></i> No Identitas</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->identity_no}}</p></div>
                         </div>
                     </div>
@@ -83,11 +83,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-folder-check"></span></i> Penanggung Jawab Teknis</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->kategori->code_nm??''}}</p></div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->penanggungJawab->name??''}}</p></div>
                         </div>
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Pemberi Keputusan</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->penerima->name??'-'}}</p></div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->menyetujui->name??'-'}}</p></div>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2">Penanggung Jawab Teknis<span class="text-danger">*</span></label>
                             <div class="col-lg-10">
-                                {{Form::select('petugas_penyelesaian_id', list_user(), null, ['class' => 'form-control select2', 'placeholder' => 'Pilih Prioritas Tiket'])}}
+                                {{Form::select('penanggung_jawab_id', list_user(), null, ['class' => 'form-control select2', 'placeholder' => 'Pilih Prioritas Tiket'])}}
                             </div>
                         </div>
                         <div class="form-group row">
@@ -120,8 +120,11 @@
 
 
                 <div class="text-right">
-                    <button type="button" class="btn bg-warning-400">Cetak Surat Ijin <i class="icon-printer2 ml-2"></i></button>
-                    <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
+                    @if($data->approval_date == '')
+                        <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
+                    @else
+                        <button type="button" class="btn bg-warning-400">Cetak Surat Ijin <i class="icon-printer2 ml-2"></i></button>
+                    @endif
                 </div>
                 {{Form::close()}}
             </div>
