@@ -118,7 +118,7 @@ Route::group(['prefix' => 'tiket', 'as' => 'tiket:'], function(){
 });
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::resource('akses-data-center', AksesDataCenterController::class);
+    Route::resource('akses-data-center', AksesDcController::class);
     Route::resource('posting', PostingController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('menuberanda', MenuBerandaController::class);
@@ -133,6 +133,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('website', WebsiteController::class);
     Route::resource('infohoax',InfohoaxController::class);
     Route::resource('infografis',InfografisController::class);
+});
+
+Route::group([], function(){
+    Route::get('tower/peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
 });
 
 // Route::get('/admin', function() {

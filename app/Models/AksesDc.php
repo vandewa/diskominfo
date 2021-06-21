@@ -21,4 +21,26 @@ class AksesDc extends Model
             }
         });
     }
+
+    public function keperluan()
+    {
+        return $this->belongsTo(ComCode::class, 'keperluan_tp');
+    }
+    public function jenisIdentitas()
+    {
+        return $this->belongsTo(ComCode::class, 'identity_tp');
+    }
+    public function penanggungJawab()
+    {
+        return $this->belongsTo(User::class, 'penanggung_jawab_id');
+    }
+    public function menyetujui()
+    {
+        return $this->belongsTo(User::class, 'aproval_id');
+    }
+    public function status()
+    {
+        return $this->belongsTo(ComCode::class,'status_st');
+    }
+
 }

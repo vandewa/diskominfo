@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AksesDc;
 use Illuminate\Http\Request;
 use Session;
+use DataTables;
 
 class AksesDcController extends Controller
 {
@@ -14,9 +15,28 @@ class AksesDcController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        if($request->ajax()){
+
+            $data = AksesDc::with(['keperluan','jenisIdentitas', 'penanggungJawab','menyetujui','status'])->select('akses_dcs.*');
+
+            return DataTables::of($data)
+                ->editColumn('created_at', function($a){
+                   return $a->created_at->isoFormat('D MMMM Y H:m:s');
+                })
+                ->addColumn('action', function($row){
+
+                return'<div class="list-icons">
+                        <a href="'.route('akses-data-center.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
+                        <a href="'.route('akses-data-center.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                        </div>';
+                    })
+                ->make(true);
+        }
+
+        return view('perijinan.akses-data-center.index');
     }
 
     /**
@@ -53,7 +73,9 @@ class AksesDcController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = AksesDc::with(['keperluan','jenisIdentitas', 'penanggungJawab','menyetujui','status','jenisIdentitas'])->find($id);
+
+        return view('perijinan.akses-data-center.show', compact('data'));
     }
 
     /**
@@ -88,5 +110,10 @@ class AksesDcController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function persetujuan(Request $request, $id)
+    {
+
     }
 }
