@@ -114,11 +114,13 @@ Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
 
 Route::group(['prefix' => 'tiket', 'as' => 'tiket:'], function(){
     Route::patch('tambah-petugas/{id}/petugas',[\App\Http\Controllers\Tiket\TiketController::class, 'storePenugasan'] )->name('store.petugas');
+    Route::get('tambah-petugas/{id}/surat-tugas/cetak',[\App\Http\Controllers\Tiket\TiketController::class, 'cetakSuratTugas'] )->name('cetak.surat.tugas');
     Route::resource('tiket', \App\Http\Controllers\Tiket\TiketController::class);
 });
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::resource('akses-data-center', AksesDataCenterController::class);
+    Route::patch('akses-data-center/{id}/persetujuab', [AksesDcController::class, 'persetujuan'])->name('akses-data-center.persetujuan');
+    Route::resource('akses-data-center', AksesDcController::class);
     Route::resource('posting', PostingController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('menuberanda', MenuBerandaController::class);
@@ -133,6 +135,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('website', WebsiteController::class);
     Route::resource('infohoax',InfohoaxController::class);
     Route::resource('infografis',InfografisController::class);
+});
+
+Route::group([], function(){
+    Route::get('tower/peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
 });
 
 // Route::get('/admin', function() {

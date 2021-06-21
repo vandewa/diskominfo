@@ -132,7 +132,7 @@
 
 
                 <div class="text-right">
-                    <button type="button" class="btn bg-warning-400">Cetak Surat Tugas <i class="icon-printer2 ml-2"></i></button>
+                    <a href="{{route('tiket:cetak.surat.tugas', $data->id)}}" class="btn bg-warning-400">Cetak Surat Tugas <i class="icon-printer2 ml-2"></i></a>
                     <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
                 </div>
                 {{Form::close()}}
