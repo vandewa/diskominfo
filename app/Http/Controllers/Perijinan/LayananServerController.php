@@ -37,7 +37,12 @@ class LayananServerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = LayananServer::create($request->all());
+        if($data){
+            Session::flash('keterangan', 'Data berhasil di simpan');
+        }
+
+        return redirect()->back();
     }
 
     /**
