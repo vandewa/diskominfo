@@ -18,7 +18,7 @@
             <!-- Article Description Section -->
             <div class="container space-top-1 space-bottom-2">
                 <div class="w-100 sm-6 mx-lg-auto">
-                    <h3 class="mb-4 mt-10"><center>Form Permintaan Colocation</center></h3>
+                    <h3 class="mb-4 mt-10"><center>Form Permintaan Colocation Server</center></h3>
                     <div class="w-lg-80 mx-auto">
                         <!-- Contacts Form -->
                         <!-- Card -->

@@ -96,6 +96,7 @@ Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
 
 Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
     Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
+    Route::post('permintaan/colocation', [PerminColController::class, 'store'])->name('permintaan.col.post');
 });
 
 Route::group(['middleware' => ['auth']], function(){
