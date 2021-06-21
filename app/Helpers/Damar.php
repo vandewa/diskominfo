@@ -6,3 +6,47 @@ if(!function_exists('get_code_group')){
         return \App\Models\ComCode::where('code_group', $code)->pluck('code_nm', 'code_cd');
     }
 }
+if(!function_exists('gen_no_akses_dc')){
+    function gen_no_akses_dc(){
+        $no = Date('y-m-').str_pad(1, 6, '0', STR_PAD_LEFT );
+        $terakhir = \App\Models\AksesDc::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at','desc')->first();
+        if($terakhir)
+        {
+            $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
+        }
+        return 'ADC-'.$no;
+    }
+}
+
+if(!function_exists('gen_no_tiket')){
+    function gen_no_tiket(){
+        $no = Date('y-m-').str_pad(1, 6, '0', STR_PAD_LEFT );
+        $terakhir = \App\Models\Tiket::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at','desc')->first();
+        if($terakhir)
+        {
+            $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
+        }
+        return 'TKT-'.$no;
+    }
+}
+if(!function_exists('list_user')){
+    function list_user(){
+        return \App\Models\User::pluck('name', 'id');
+    }
+}
+
+if(!function_exists('label_prioritas')){
+    function label_prioritas($a){
+      if($a==4){
+        return 'badge badge-danger';
+      }
+      elseif ($a==3){
+          return 'badge badge-warning';
+      }elseif($a==2){
+          return 'badge badge-primay';
+      }else{
+          return 'badge badge-purple';
+      }
+    }
+}
+

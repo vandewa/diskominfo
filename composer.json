@@ -9,7 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "alexpechkarev/google-maps": "^8.0",
         "anhskohbo/no-captcha": "^3.3",
+        "barryvdh/laravel-dompdf": "^0.9.0",
         "biscolab/laravel-recaptcha": "^5.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
@@ -21,7 +23,9 @@
         "laravelcollective/html": "^6.2",
         "livewire/livewire": "^2.0",
         "mews/captcha": "^3.2",
+        "phpoffice/phpword": "^0.18.2",
         "proengsoft/laravel-jsvalidation": "^4.4",
+        "santigarcor/laratrust": "^6.3",
         "yajra/laravel-datatables-oracle": "^9.15"
     },
     "require-dev": {

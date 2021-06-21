@@ -18,102 +18,89 @@
             <!-- Article Description Section -->
             <div class="container space-top-1 space-bottom-2">
                 <div class="w-100 sm-6 mx-lg-auto">
-                    <h3 class="mb-4 mt-10"><center>Form Pengajuan Akses Data Center</center></h3>
+                    <h3 class="mb-4 mt-10"><center>Form Permohonan Vps Baru</center></h3>
                     <div class="w-lg-80 mx-auto">
                         <!-- Contacts Form -->
                         <!-- Card -->
-                        @if(!Session::has('keterangan'))
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title"> Data Diri</h5>
+                                <h5 class="card-title"> Data Pemohon</h5>
                             </div>
 
                             <!-- Body -->
                             <div class="card-body">
                                 <!-- Form -->
-
-                           {{Form::open(['route' => 'perijinan:akses.dc.post'])}}
+                           {{Form::open()}}
                                     <!-- Form Group -->
-                                {{Form::hidden('status_st','STATUS_ST_01')}}
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Nama</label>
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Nama </label>
                                         <div class="col-sm-9">
                                             {{Form::text('name', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Jenis Identitas</label>
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">NIP </label>
                                         <div class="col-sm-9">
-                                            {{Form::select('identity_tp',get_code_group('IDENTITY_TP'), null, ['class' => 'form-control '])}}
+                                            {{Form::text('nip', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">No Identitas</label>
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Instansi</label>
                                         <div class="col-sm-9">
-                                            {{Form::text('identity_no', null, ['class' => 'form-control '])}}
+                                            {{Form::text('instansi', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Asal Instansi</label>
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Tujuan Pembuatan Vps</label>
                                         <div class="col-sm-9">
-                                            {{Form::text('asal_instansi', null, ['class' => 'form-control '])}}
+                                            {{Form::text('tujuan', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
-                                <div class="row form-group">
-                                    <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Telepon</label>
-                                    <div class="col-sm-9">
-                                        {{Form::text('telepon', null, ['class' => 'form-control '])}}
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Processor</label>
+                                        <div class="col-sm-9">
+                                            {{Form::select('prosesor_tp',get_code_group('PROSESOR_TP'), null, ['class' => 'form-control '])}}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row form-group">
-                                    <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Email</label>
-                                    <div class="col-sm-9">
-                                        {{Form::email('email', null, ['class' => 'form-control '])}}
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Sistem Operasi</label>
+                                        <div class="col-sm-9">
+                                            {{Form::text('so', null, ['class' => 'form-control '])}}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row form-group">
-                                    <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Jenis Keperluan</label>
-                                    <div class="col-sm-9">
-                                        {{Form::select('keperluan_tp',get_code_group('KEPERLUAN_TP'), null, ['class' => 'form-control '])}}
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Hard Disk</label>
+                                        <div class="col-sm-9">
+                                            {{Form::select('hd_tp',get_code_group('HARDISK_TP'), null, ['class' => 'form-control '])}}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
-                                </div>
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">RAM</label>
+                                        <div class="col-sm-9">
+                                            {{Form::select('ram_tp',get_code_group('RAM_TP'), null, ['class' => 'form-control '])}}
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">IP Address</label>
+                                        <div class="col-sm-9">
+                                            {{Form::text('ip', null, ['class' => 'form-control '])}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Akses Non Fisik</label>
+                                        <div class="col-sm-9">
+                                            {{Form::select('aksesnonfisik_tp',get_code_group('AKSESNONFISIK_TP'), null, ['class' => 'form-control '])}}
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
+                                    </div>
                             {{Form::close()}}
-                            @else
-                                <!-- Cookie Alert -->
-                                    <div class="container ">
-                                        <div class="alert bg-white w-lg-80 border shadow-sm mx-auto" role="alert">
-                                            <h4 class="text-success">Berhasil !</h4>
-                                            <p class="small">
-                                                <span class="font-weight-bold">Selamat</span>
-                                                 Permintaan anda berhasil dikirim, informasi selanjutnya akan dikirim melalui email yang anda daftarkan.
-                                                <br>
-                                                 <strong>Pastikan untuk memeriksa folder spam anda.</strong>
-                                            </p>
-
-                                            <div class="row align-items-sm-center">
-                                                <div class="col-sm-8 mb-3 mb-sm-0">
-
-                                                </div>
-
-                                                <div class="col-sm-4 text-sm-right">
-                                                    <a href="{{route('perijinan:akses.dc.create')}}" type="button" class="btn btn-sm btn-primary transition-3d-hover">Ok!</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Cookie Alert -->
-
-                            @endif
-
                                 <!-- End Form -->
                             </div>
-
                             <!-- End Body -->
                         </div>
-
                         <!-- End Card -->
                         <!-- End Contacts Form -->
                     </div>
