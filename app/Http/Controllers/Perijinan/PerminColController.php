@@ -15,5 +15,13 @@ Class PerminColController extends Controller{
     {
         return view('perijinan.permintaan-colocation.create');
     }
+
+    public function store(Request $request)
+    {
+        $data = PermintaanColoctn::create($request->all());
+        if($data){
+            Session::flush('keterangan', 'Data berhasil di simpan');
+        }
+        return redirect()->to('/pengajuanizin');
+    }
 }
-?>
