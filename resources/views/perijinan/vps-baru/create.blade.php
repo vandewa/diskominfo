@@ -33,6 +33,7 @@
                                 <!-- Form -->
                             {{Form::open(['route' => 'perijinan:vps.baru.post'])}}
                                     <!-- Form Group -->
+                                    {{Form::hidden('status_st','STATUS_ST_01')}}
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Nama </label>
                                         <div class="col-sm-9">
