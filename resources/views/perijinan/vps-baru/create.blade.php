@@ -52,6 +52,18 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">No. Telepon</label>
+                                        <div class="col-sm-9">
+                                            {{Form::text('telepon', null, ['class' => 'form-control '])}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Email</label>
+                                        <div class="col-sm-9">
+                                             {{Form::text('email', null, ['class' => 'form-control '])}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Tujuan Pembuatan Vps</label>
                                         <div class="col-sm-9">
                                             {{Form::text('tujuan', null, ['class' => 'form-control '])}}

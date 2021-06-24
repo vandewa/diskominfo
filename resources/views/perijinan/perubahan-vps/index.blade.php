@@ -1,12 +1,12 @@
 @section('title', 'Perizinan Data Center')
 @section('menu','Perizinan')
-@section('submenu','VPS Baru')
+@section('submenu','Perubahan VPS')
 @extends('layouts/template-admin')
 @section('kondisi7','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Perizinan</span>
-<span class="breadcrumb-item active">VPS Baru</span>
+<span class="breadcrumb-item active">Perubahan VPS</span>
 @endsection
 
 @section('tambah_data')

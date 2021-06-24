@@ -112,4 +112,18 @@ class PenambahanVpsController extends Controller
     {
         //
     }
+     public function persetujuan(Request $request, $id)
+    {
+        $data = PenambahanVps::find($id)->update(
+            [
+                'aproval_id' => Auth::user()->id,
+                'valid_util' => $request->valid_util,
+                'approval_date' => date('Y-m-d H:i:s'),
+                'penanggung_jawab_id' => $request->penanggung_jawab_id,
+                'status_st' => $request->status_st
+            ]
+        );
+        Session::flash('status','Data berhasil di update');
+        return redirect(route('vps-baru.index'));
+    }
 }
