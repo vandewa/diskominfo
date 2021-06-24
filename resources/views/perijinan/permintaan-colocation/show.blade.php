@@ -1,12 +1,12 @@
-@section('title', 'Perijinan')
-@section('menu','Perijinan')
-@section('submenu','Akses Data Center')
+@section('title', 'Perizinan Data Center')
+@section('menu','Perizinan')
+@section('submenu','Colocation Server')
 @extends('layouts/template-admin')
 @section('kondisi7','nav-item-expanded nav-item-open')
 
 @section('halaman')
-    <span class="breadcrumb-item active">Perijinan</span>
-    <span class="breadcrumb-item active">Akses Data Center</span>
+<span class="breadcrumb-item active">Perizinan</span>
+<span class="breadcrumb-item active">Colocation Server</span>
 @endsection
 
 @section('container')
@@ -25,42 +25,32 @@
             </div>
 
             <div class="card-body">
-                {{Form::model($data,['route' => ['akses-data-center.persetujuan', $data->id],'method' => 'patch', 'files' => 'true', ''])}}
+                {{Form::model($data,['route' => ['permintaan-col.persetujuan', $data->id],'method' => 'patch', 'files' => 'true', ''])}}
 
                 <div class="row mb-2">
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Nama Pemohon</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->name}}</p></div>
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Nama OPD</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->opd}}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-phone"></span></i> Telepon Contact Person</div>
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Bidang</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->bidang}}</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Alamat</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->alamat}}</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-phone"></span></i> Telepon</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->telepon}}</p></div>
                         </div>
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-mail-read"></span></i> Email</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->email}}</p></div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-home"></span></i> Instansi Asal</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->asal_instansi}}</p></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-credit-card"></span></i> Jenis Identitas</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->jenisIdentitas->code_nm??''}}</p></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-credit-card"></span></i> No Identitas</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->identity_no}}</p></div>
-                        </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-star-full2"></span></i> Keperluan</div>
-                            <div class="col-md-8"><p class="text-uppercase">:
-                                  {{$data->keperluan->code_nm??''}}
-                                </p></div>
-                        </div>
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-calendar"></span></i> Tanggal Pengajuan</div>
                             <div class="col-md-8"><p class="text-uppercase">:
@@ -91,9 +81,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
 
                 @if($data->approval_date == '')
                     <div class="form-group row">

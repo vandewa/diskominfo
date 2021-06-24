@@ -64,7 +64,7 @@ class AksesDcController extends Controller
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
 
-        return  redirect()->back();
+        return redirect()->back();
     }
 
     /**

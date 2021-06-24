@@ -1,12 +1,12 @@
 @section('title', 'Perizinan Data Center')
 @section('menu','Perizinan')
-@section('submenu','List Pengajuan Izin')
+@section('submenu','Perubahan VPS')
 @extends('layouts/template-admin')
 @section('kondisi7','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Perizinan</span>
-<span class="breadcrumb-item active">List Pengajuan Izin</span>
+<span class="breadcrumb-item active">Perubahan VPS</span>
 @endsection
 
 @section('tambah_data')
@@ -47,7 +47,7 @@
                             Nama
                         </label>
                         <div class="col-md-9">
-                            {{Form::text('name',null,['class' => 'name form-control', 'placeholder' => 'Nama Pemohon'])}}
+                            {{Form::text('nama',null,['class' => 'name form-control', 'placeholder' => 'Nama Pemohon'])}}
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,6 @@
                     <th>No</th>
                     <th>Pemohon</th>
                     <th>Asal Instansi</th>
-                    <th>Telepon</th>
                     <th>Email</th>
                     <th>Keperluan</th>
                     <th>Status</th>
@@ -103,11 +102,10 @@
                 ajax: window.location.href,
 				columns: [
 					{data: 'no', name: 'no'},
-					{data: 'name', name:'name'},
-					{data: 'asal_instansi', name:'asal_instansi'},
-					{data: 'telepon', name:'telepon'},
+					{data: 'nama', name:'nama'},
+					{data: 'instansi', name:'instansi'},
 					{data: 'email', name:'email'},
-					{data: 'keperluan.code_nm', name:'keperluan.code_nm'},
+					{data: 'tujuan', name:'tujuan'},
 					{data: 'status.code_nm', name:'status.code_cd'},
                     {data: 'created_at', name: 'akses_dcs.created_at' },
                     {data: 'action', },
@@ -120,7 +118,7 @@
                     .search( this.value )
                     .draw();
             } );
-            $('input[name=name]').on( 'keyup', function () {
+            $('input[name=nama]').on( 'keyup', function () {
                 table
                     .column( 1 )
                     .search( this.value )

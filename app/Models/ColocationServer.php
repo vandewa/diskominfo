@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PerubahanVps extends Model
+class ColocationServer extends Model
 {
-     use HasFactory;
-    protected $table ='perubahan_vps';
+    use HasFactory;
      protected $guarded = [];
      protected static function boot()
     {
@@ -17,27 +16,12 @@ class PerubahanVps extends Model
         static::creating(function ($query) {
             if($query->no == ''){
 
-                $query->no = gen_perubahan_vps();
+                $query->no = gen_colocation_server();
 
             }
         });
     }
-     public function prosesor()
-    {
-       return $this->belongsTo(ComCode::class, 'prosesor_tp');
-    }
-    public function hd()
-    {
-       return $this->belongsTo(ComCode::class, 'hd_tp');
-    }
-    public function ram()
-    {
-       return $this->belongsTo(ComCode::class, 'ram_tp');
-    }
-    public function aksesNonfisik()
-    {
-       return $this->belongsTo(ComCode::class, 'aksesnonfisik_tp');
-    }
+
      public function penanggungJawab()
     {
         return $this->belongsTo(User::class, 'penanggung_jawab_id');
@@ -50,4 +34,7 @@ class PerubahanVps extends Model
     {
         return $this->belongsTo(ComCode::class,'status_st');
     }
+
+
+
 }

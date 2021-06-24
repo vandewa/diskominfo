@@ -106,11 +106,10 @@ Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
     Route::post('permohonan/pengajuan-server', [PengajuanServerController::class, 'store'])->name('pengajuan.server.post');
     Route::get('permohonan/layanan-server', [LayananServerController::class, 'create'])->name('layanan.server.create');
     Route::post('permohonan/layanan-server', [LayananServerController::class, 'store'])->name('layanan.server.post');
+    Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
+    Route::post('permintaan/colocation', [PerminColController::class, 'store'])->name('permintaan.col.post');
 });
 
-Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
-    Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
-});
 
 Route::group(['prefix' => 'tiket', 'as' => 'tiket:'], function(){
     Route::patch('tambah-petugas/{id}/petugas',[\App\Http\Controllers\Tiket\TiketController::class, 'storePenugasan'] )->name('store.petugas');
@@ -119,8 +118,16 @@ Route::group(['prefix' => 'tiket', 'as' => 'tiket:'], function(){
 });
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::patch('akses-data-center/{id}/persetujuab', [AksesDcController::class, 'persetujuan'])->name('akses-data-center.persetujuan');
+    Route::patch('akses-data-center/{id}/persetujuan', [AksesDcController::class, 'persetujuan'])->name('akses-data-center.persetujuan');
+    Route::patch('layanan-server/{id}/persetujuan', [LayananServerController::class, 'persetujuan'])->name('layanan-server.persetujuan');
+    Route::patch('vps-baru/{id}/persetujuan', [PenambahanVpsController::class, 'persetujuan'])->name('vps-baru.persetujuan');
+    Route::patch('perubahan-vps/{id}/persetujuan', [PerubahanVpsController::class, 'persetujuan'])->name('perubahan-vps.persetujuan');
+    Route::patch('colocation-server/{id}/persetujuan', [PerminColController::class, 'persetujuan'])->name('permintaan-col.persetujuan');
     Route::resource('akses-data-center', AksesDcController::class);
+    Route::resource('layanan-server', LayananServerController ::class);
+    Route::resource('vps-baru', PenambahanVpsController::class);
+    Route::resource('perubahan-vps', PerubahanVpsController::class);
+    Route::resource('colocation-server', PerminColController::class);
     Route::resource('posting', PostingController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('menuberanda', MenuBerandaController::class);

@@ -212,11 +212,11 @@
 							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Perizinan</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
 								<li class="nav-item"><a href="{{ route('akses-data-center.index') }}" class="nav-link">Akses Data Center</a></li>
-								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link">Colocation Server</a></li>
+								<li class="nav-item"><a href="{{ route('colocation-server.index') }}" class="nav-link">Colocation Server</a></li>
 								<li class="nav-item"><a href="{{ route('infografis.index') }}" class="nav-link">Kunjungan Data Center</a></li>
-								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Layanan Server</a></li>
-								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">VPS Baru</a></li>
-								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Perubahan VPS</a></li>
+								<li class="nav-item"><a href="{{ route('layanan-server.index') }}" class="nav-link">Layanan Server</a></li>
+								<li class="nav-item"><a href="{{ route('vps-baru.index') }}" class="nav-link">VPS Baru</a></li>
+								<li class="nav-item"><a href="{{ route('perubahan-vps.index') }}" class="nav-link">Perubahan VPS</a></li>
 								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Pengantar Pengajuan Server</a></li>
 							</ul>
 						</li>
@@ -319,7 +319,7 @@
 
 				<div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2012 - {{ Carbon\Carbon::now()->isoFormat('Y') }}. <a href="#">Diskominfo Wonosobo</a> by <a href="" target="_blank">Devandewa</a>
+						&copy; 2017 - {{ Carbon\Carbon::now()->isoFormat('Y') }}. <a href="#">Diskominfo Wonosobo</a> by <a href="" target="_blank">Devandewa</a>
 					</span>
 				</div>
 			</div>

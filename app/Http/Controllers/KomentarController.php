@@ -99,7 +99,7 @@ class KomentarController extends Controller
 
     public function getKomentar(Request $request)
     {
-            $data = Komentar::orderBy('created_at', 'asc')->get();
+            $data = Komentar::orderBy('created_at', 'desc')->get();
             
             return DataTables::of($data)
                 ->addIndexColumn()

@@ -173,8 +173,5 @@ class TiketController extends Controller
 //        $converter = new OfficeConverter('test-file.docx', 'path-to-outdir');
 //        return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
 
-
-
-
     }
 }
