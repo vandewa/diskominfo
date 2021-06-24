@@ -213,7 +213,7 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
 								<li class="nav-item"><a href="{{ route('akses-data-center.index') }}" class="nav-link">Akses Data Center</a></li>
 								<li class="nav-item"><a href="{{ route('colocation-server.index') }}" class="nav-link">Colocation Server</a></li>
-								<li class="nav-item"><a href="{{ route('infografis.index') }}" class="nav-link">Kunjungan Data Center</a></li>
+								<li class="nav-item"><a href="{{ route('kunjungan-data-center.index') }}" class="nav-link">Kunjungan Data Center</a></li>
 								<li class="nav-item"><a href="{{ route('layanan-server.index') }}" class="nav-link">Layanan Server</a></li>
 								<li class="nav-item"><a href="{{ route('vps-baru.index') }}" class="nav-link">VPS Baru</a></li>
 								<li class="nav-item"><a href="{{ route('perubahan-vps.index') }}" class="nav-link">Perubahan VPS</a></li>

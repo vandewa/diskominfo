@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TambahColumnStatusStTableColocationServer extends Migration
+class TambahColomnIdentityNoTableIjinKunjungans extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class TambahColumnStatusStTableColocationServer extends Migration
      */
     public function up()
     {
-         Schema::table('colocation_servers', function (Blueprint $table) {
-            $table->string('status_st')->nullable();
+        Schema::table('ijin_kunjungans', function (Blueprint $table) {
+            $table->string('identity_no')->nullable();
         });
     }
 
@@ -25,6 +25,8 @@ class TambahColumnStatusStTableColocationServer extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('ijin_kunjungans', function (Blueprint $table) {
+            //
+        });
     }
 }

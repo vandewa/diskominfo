@@ -40,7 +40,7 @@
 
 <div class="col-md-3">
 
-      <a href="/pengajuanizin">
+        <a href="{{route('perijinan:kunjungan.dc.create')}}">
             <img  class="card-img transition-zoom-hover" src="{{asset('front/assets/images/kunjungan.jpg')}}" alt="Girl in a jacket" >
             </a>
 </div>

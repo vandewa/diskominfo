@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Perijinan;
 
-use App\Http\Controllers\Controller;
-use App\Models\AksesDc;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\KunjunganDc;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use DataTables;
-use PhpOffice\PhpWord\TemplateProcessor;
 
-class AksesDcController extends Controller
+class KunjunganDcController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +18,9 @@ class AksesDcController extends Controller
      */
     public function index(Request $request)
     {
-
         if($request->ajax()){
 
-            $data = AksesDc::with(['keperluan','jenisIdentitas', 'penanggungJawab','menyetujui','status'])->select('akses_dcs.*');
+            $data = KunjunganDc::with(['jenisIdentitas', 'penanggungJawab','menyetujui','status'])->select('ijin_kunjungans.*');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){
@@ -31,14 +29,14 @@ class AksesDcController extends Controller
                 ->addColumn('action', function($row){
 
                 return'<div class="list-icons">
-                        <a href="'.route('akses-data-center.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
-                        <a href="'.route('akses-data-center.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                        <a href="'.route('kunjungan-data-center.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
+                        <a href="'.route('kunjungan-data-center.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
                         </div>';
                     })
                 ->make(true);
         }
 
-        return view('perijinan.akses-data-center.index');
+        return view('perijinan.kunjungan-data-center.index');
     }
 
     /**
@@ -48,7 +46,7 @@ class AksesDcController extends Controller
      */
     public function create()
     {
-        return view('perijinan.akses-data-center.create');
+         return view('perijinan.kunjungan-data-center.create');
     }
 
     /**
@@ -59,7 +57,7 @@ class AksesDcController extends Controller
      */
     public function store(Request $request)
     {
-        $data = AksesDc::create($request->all());
+         $data = KunjunganDc::create($request->all());
         if($data){
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
@@ -75,9 +73,9 @@ class AksesDcController extends Controller
      */
     public function show($id)
     {
-        $data = AksesDc::with(['jenisIdentitas', 'penanggungJawab','menyetujui','status'])->find($id);
+        $data = KunjunganDc::with(['jenisIdentitas', 'penanggungJawab','menyetujui','status'])->find($id);
 
-        return view('perijinan.akses-data-center.show', compact('data'));
+        return view('perijinan.kunjungan-data-center.show', compact('data'));
     }
 
     /**
@@ -112,26 +110,5 @@ class AksesDcController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function persetujuan(Request $request, $id)
-    {
-        $data = AksesDc::find($id)->update(
-            [
-                'aproval_id' => Auth::user()->id,
-                'valid_util' => $request->valid_util,
-                'approval_date' => date('Y-m-d H:i:s'),
-                'penanggung_jawab_id' => $request->penanggung_jawab_id,
-                'status_st' => $request->status_st
-            ]
-        );
-        Session::flash('status','Data berhasil di update');
-        return redirect(route('akses-data-center.index'));
-    }
-
-    public function cetak($id)
-    {
-        $data = AksesDc::with(['keperluan','jenisIdentitas', 'penanggungJawab','menyetujui','status','jenisIdentitas'])->find($id);
-        $templateProcessor = new TemplateProcessor('Template.docx');
     }
 }

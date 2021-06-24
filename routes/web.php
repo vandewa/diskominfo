@@ -28,6 +28,7 @@ use App\Http\Controllers\Perijinan\PengajuanServerController;
 use App\Http\Controllers\Perijinan\LayananServerController;
 use App\Http\Controllers\Perijinan\PerminColController;
 use App\Http\Controllers\PerijinanBackend\AksesDataCenterController;
+use App\Http\Controllers\Perijinan\KunjunganDcController;
 
 
 
@@ -108,6 +109,8 @@ Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
     Route::post('permohonan/layanan-server', [LayananServerController::class, 'store'])->name('layanan.server.post');
     Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
     Route::post('permintaan/colocation', [PerminColController::class, 'store'])->name('permintaan.col.post');
+    Route::get('kunjungan/data-center', [KunjunganDcController::class, 'create'])->name('kunjungan.dc.create');
+    Route::post('kunjungan/data-center', [KunjunganDcController::class, 'store'])->name('kunjungan.dc.post');
 });
 
 
@@ -123,11 +126,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::patch('vps-baru/{id}/persetujuan', [PenambahanVpsController::class, 'persetujuan'])->name('vps-baru.persetujuan');
     Route::patch('perubahan-vps/{id}/persetujuan', [PerubahanVpsController::class, 'persetujuan'])->name('perubahan-vps.persetujuan');
     Route::patch('colocation-server/{id}/persetujuan', [PerminColController::class, 'persetujuan'])->name('permintaan-col.persetujuan');
+    Route::patch('kunjungan-data-center/{id}/persetujuan', [KunjunganDcController::class, 'persetujuan'])->name('kunjungan-data-center.persetujuan');
     Route::resource('akses-data-center', AksesDcController::class);
     Route::resource('layanan-server', LayananServerController ::class);
     Route::resource('vps-baru', PenambahanVpsController::class);
     Route::resource('perubahan-vps', PerubahanVpsController::class);
     Route::resource('colocation-server', PerminColController::class);
+    Route::resource('kunjungan-data-center', KunjunganDcController::class);
     Route::resource('posting', PostingController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('menuberanda', MenuBerandaController::class);
