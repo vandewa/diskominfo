@@ -16,10 +16,27 @@ class LayananServer extends Model
         static::creating(function ($query) {
             if($query->no == ''){
 
-                $query->no = gen_no_akses_dc();
+                $query->no = gen_layanan_server();
 
             }
         });
     }
+     public function layanan()
+    {
+       return $this->belongsTo(ComCode::class, 'layanan_tp');
+    }
+     public function penanggungJawab()
+    {
+        return $this->belongsTo(User::class, 'penanggung_jawab_id');
+    }
+    public function menyetujui()
+    {
+        return $this->belongsTo(User::class, 'aproval_id');
+    }
+    public function status()
+    {
+        return $this->belongsTo(ComCode::class,'status_st');
+    }
+
 }
 

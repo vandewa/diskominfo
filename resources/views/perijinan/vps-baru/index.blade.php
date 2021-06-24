@@ -47,7 +47,7 @@
                             Nama
                         </label>
                         <div class="col-md-9">
-                            {{Form::text('name',null,['class' => 'name form-control', 'placeholder' => 'Nama Pemohon'])}}
+                            {{Form::text('nama',null,['class' => 'name form-control', 'placeholder' => 'Nama Pemohon'])}}
                         </div>
                     </div>
                 </div>
@@ -103,11 +103,11 @@
                 ajax: window.location.href,
 				columns: [
 					{data: 'no', name: 'no'},
-					{data: 'name', name:'name'},
-					{data: 'asal_instansi', name:'asal_instansi'},
+					{data: 'nama', name:'nama'},
+					{data: 'instansi', name:'instansi'},
 					{data: 'telepon', name:'telepon'},
 					{data: 'email', name:'email'},
-					{data: 'keperluan.code_nm', name:'keperluan.code_nm'},
+					{data: 'tujuan', name:'tujuan'},
 					{data: 'status.code_nm', name:'status.code_cd'},
                     {data: 'created_at', name: 'akses_dcs.created_at' },
                     {data: 'action', },
@@ -120,7 +120,7 @@
                     .search( this.value )
                     .draw();
             } );
-            $('input[name=name]').on( 'keyup', function () {
+            $('input[name=nama]').on( 'keyup', function () {
                 table
                     .column( 1 )
                     .search( this.value )

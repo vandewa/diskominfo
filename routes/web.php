@@ -120,8 +120,12 @@ Route::group(['prefix' => 'tiket', 'as' => 'tiket:'], function(){
 });
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::patch('akses-data-center/{id}/persetujuab', [AksesDcController::class, 'persetujuan'])->name('akses-data-center.persetujuan');
+    Route::patch('akses-data-center/{id}/persetujuan', [AksesDcController::class, 'persetujuan'])->name('akses-data-center.persetujuan');
+    Route::patch('layanan-server/{id}/persetujuan', [LayananServerController::class, 'persetujuan'])->name('layanan-server.persetujuan');
+     Route::patch('vps-baru/{id}/persetujuan', [PenambahanVpsController::class, 'persetujuan'])->name('vps-baru.persetujuan');
     Route::resource('akses-data-center', AksesDcController::class);
+    Route::resource('layanan-server', LayananServerController ::class);
+    Route::resource('vps-baru', PenambahanVpsController::class);
     Route::resource('posting', PostingController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('menuberanda', MenuBerandaController::class);

@@ -166,8 +166,5 @@ class TiketController extends Controller
         $templateProcessor->saveAs($pathSave);
         return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
 
-
-
-
     }
 }

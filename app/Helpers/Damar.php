@@ -18,6 +18,30 @@ if(!function_exists('gen_no_akses_dc')){
     }
 }
 
+if(!function_exists('gen_layanan_server')){
+    function gen_layanan_server(){
+        $no = Date('y-m-').str_pad(1, 6, '0', STR_PAD_LEFT );
+        $terakhir = \App\Models\LayananServer::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at','desc')->first();
+        if($terakhir)
+        {
+            $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
+        }
+        return 'LS-'.$no;
+    }
+}
+
+if(!function_exists('gen_penambahan_vps')){
+    function gen_penambahan_vps(){
+        $no = Date('y-m-').str_pad(1, 6, '0', STR_PAD_LEFT );
+        $terakhir = \App\Models\PenambahanVps::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at','desc')->first();
+        if($terakhir)
+        {
+            $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
+        }
+        return 'VB-'.$no;
+    }
+}
+
 if(!function_exists('gen_no_tiket')){
     function gen_no_tiket(){
         $no = Date('y-m-').str_pad(1, 6, '0', STR_PAD_LEFT );
