@@ -9,6 +9,9 @@ use PhpOffice\PhpWord\TemplateProcessor;
 use Session;
 use Yajra\DataTables\DataTables;
 use PhpOffice\PhpWord\PhpWord;
+use Storage;
+use NcJoes\OfficeConverter\OfficeConverter;
+
 class TiketController extends Controller
 {
     /**
@@ -157,6 +160,7 @@ class TiketController extends Controller
         $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
         $path = public_path('/template/surat_tugas_tiket.docx');
         $pathSave =storage_path('app/public/'.$data->no.'.docx');
+        $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
             'no' => $data->no,
@@ -164,7 +168,10 @@ class TiketController extends Controller
         ]);
 
         $templateProcessor->saveAs($pathSave);
-        return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
+        $converter = new OfficeConverter($pathSave);
+        $converter->convertTo('aaaa.pdf'); //generates pdf file in same directory as test-file.docx
+//        $converter = new OfficeConverter('test-file.docx', 'path-to-outdir');
+//        return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
 
 
 
