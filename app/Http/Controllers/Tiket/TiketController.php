@@ -11,6 +11,8 @@ use Yajra\DataTables\DataTables;
 use PhpOffice\PhpWord\PhpWord;
 use Storage;
 use NcJoes\OfficeConverter\OfficeConverter;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NotifikasiTiketMasuk;
 
 class TiketController extends Controller
 {
@@ -78,6 +80,7 @@ class TiketController extends Controller
             ]
         );
         Session::flash('status', 'Tiket berhasil ditambahkan');
+        Mail::to($request->email)->send(new NotifikasiTiketMasuk($data));
         return redirect(route('tiket:tiket.index'));
     }
 

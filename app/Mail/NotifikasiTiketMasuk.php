@@ -7,18 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class KirimTiketDc extends Mailable
+class NotifikasiTiketMasuk extends Mailable
 {
     use Queueable, SerializesModels;
+    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($a)
     {
-        //
+        $this->data = $a;
     }
 
     /**
@@ -28,6 +29,7 @@ class KirimTiketDc extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Pelaporan Tiket')
+            ->markdown('mail.notifikasiTiketMasuk', $this->data->toArray());
     }
 }
