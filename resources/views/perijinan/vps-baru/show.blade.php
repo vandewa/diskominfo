@@ -27,8 +27,8 @@
             <div class="card-body">
                 {{Form::model($data,['route' => ['vps-baru.persetujuan', $data->id],'method' => 'patch', 'files' => 'true', ''])}}
 
-                <div class="row mb-2">
-                    <div class="col-md-4">
+               <div class="row mb-2">
+                    <div class="form-control mb-2">
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Nama</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->nama}}</p></div>
@@ -50,7 +50,7 @@
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->email}}</p></div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-mail-read"></span></i> Keperluan</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->tujuan}}</p></div>
@@ -80,7 +80,7 @@
                               <div class="col-md-8"><p class="text-uppercase">: {{$data->aksesNonfisik->code_nm??''}}</p></div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-calendar"></span></i> Tanggal Pengajuan</div>
                             <div class="col-md-8"><p class="text-uppercase">:
@@ -91,7 +91,7 @@
                             <div class="col-md-4"><i class="nav-item"><span class="icon-calendar3"></span></i> Tanggal Persetujuan</div>
                             <div class="col-md-8"><p class="text-uppercase">:
                                     @if($data->approval_date != '')
-                                        {{$data->approval_date->isoFormat('D MMMM Y H:m:s')}}
+                                        {{ Carbon\Carbon::parse($data->approval_date)->isoFormat('LLLL')}} WIB
                                     @else
                                         -
                                     @endif
@@ -136,11 +136,12 @@
                 @endif
 
 
+
                 <div class="text-right">
                     @if($data->approval_date == '')
                         <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
                     @else
-                        <button type="button" class="btn bg-warning-400">Cetak Surat Ijin <i class="icon-printer2 ml-2"></i></button>
+                          <a href="{{route('perijinan:cetak.surat.vps.baru', $data->id)}}" class="btn bg-warning-400">Cetak Surat Tugas <i class="icon-printer2 ml-2"></i></a>
                     @endif
                 </div>
                 {{Form::close()}}

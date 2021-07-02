@@ -10,6 +10,10 @@ class Users extends Model
     use HasFactory;
     protected $primaryKey = 'id';
     protected $table ='users';
-    protected $fillable = ['name', 'email','level', 'password', 'profile_photo_path'];
+    protected $guarded = [];
+
+    public function getNameAttribute($value){
+        return ucwords(strtolower($value));
+    }
 
 }

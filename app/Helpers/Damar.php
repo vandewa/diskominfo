@@ -26,7 +26,7 @@ if(!function_exists('gen_layanan_server')){
         {
             $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
         }
-        return 'LS-'.$no;
+        return 'LSV-'.$no;
     }
 }
 
@@ -38,7 +38,7 @@ if(!function_exists('gen_penambahan_vps')){
         {
             $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
         }
-        return 'VB-'.$no;
+        return 'VPB-'.$no;
     }
 }
 if(!function_exists('gen_perubahan_vps')){
@@ -49,7 +49,7 @@ if(!function_exists('gen_perubahan_vps')){
         {
             $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
         }
-        return 'PV-'.$no;
+        return 'PVP-'.$no;
     }
 }
 if(!function_exists('gen_colocation_server')){
@@ -60,7 +60,7 @@ if(!function_exists('gen_colocation_server')){
         {
             $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
         }
-        return 'CS-'.$no;
+        return 'CSV-'.$no;
     }
 }
 if(!function_exists('gen_kunjungan_dc')){
@@ -71,7 +71,7 @@ if(!function_exists('gen_kunjungan_dc')){
         {
             $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
         }
-        return 'KD-'.$no;
+        return 'KDC-'.$no;
     }
 }
 

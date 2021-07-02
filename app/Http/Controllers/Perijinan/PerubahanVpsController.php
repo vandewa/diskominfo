@@ -8,6 +8,9 @@ use App\Models\PerubahanVps;
 use Session;
 use DataTables;
 use Illuminate\Support\Facades\Auth;
+use PhpOffice\PhpWord\TemplateProcessor;
+use PhpOffice\PhpWord\PhpWord;
+
 
 
 class PerubahanVpsController extends Controller
@@ -59,9 +62,9 @@ class PerubahanVpsController extends Controller
     public function store(Request $request)
     {
          $data = PerubahanVps::create($request->all());
-        if($data){
-            Session::flush('keterangan', 'Data berhasil di simpan');
-        }
+            if($data){
+                Session::flash('keterangan', 'Data berhasil di simpan');
+            }
 
         return redirect()->back();
     }
@@ -126,4 +129,43 @@ class PerubahanVpsController extends Controller
         Session::flash('status','Data berhasil di update');
         return redirect(route('perubahan-vps.index'));
     }
+
+    public function cetakSurat($id)
+    {
+        $data = PerubahanVps::with(['prosesor','hd','ram','aksesNonfisik','penanggungJawab', 'menyetujui', 'status'])->find($id);
+        $path = public_path('/template/form_perubahan_vps.docx');
+        $pathSave =storage_path('app/public/'.$data->no.'.docx');
+        $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
+        $templateProcessor = new TemplateProcessor($path);
+        $templateProcessor->setValues([
+            'no' => $data->no,
+            'nama' => $data->nama,
+            'nip' => $data->nip,
+            'instansi' => $data->instansi,
+            'tujuan' => $data->tujuan,
+            'so' => $data->so,
+            'ip' => $data->ip,
+            'hd' => $data->hd->code_nm??'',
+            'ram' => $data->ram->code_nm??'',
+            'prosesor' => $data->prosesor->code_nm??'',
+            'aksesnonfisik' => $data->aksesNonfisik->code_nm??'',
+            'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
+            'approval_date' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->approval_date))->isoFormat('D MMMM Y'),
+            'valid_until' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->valid_util))->isoFormat('D MMMM Y'),
+            'penanggung_jawab_nama' => $data->penanggungJawab->name,
+            'penanggung_jawab_nip' => $data->penanggungJawab->nip,
+            'penanggung_jawab_jabatan' => $data->penanggungJawab->jabatan,
+            'penanggung_jawab_email' => $data->penanggungJawab->email,
+
+        ]);
+
+        $templateProcessor->saveAs($pathSave);
+        // $converter = new OfficeConverter($pathSave);
+        // $converter->convertTo('aaaa.pdf'); //generates pdf file in same directory as test-file.docx
+//        $converter = new OfficeConverter('test-file.docx', 'path-to-outdir');
+       return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
+
+    }
+
+    
 }

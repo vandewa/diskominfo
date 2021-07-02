@@ -12,20 +12,26 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
-        'superadministrator' => [
+        'superadmin' => [
             'users' => 'c,r,u,d',
-            'payments' => 'c,r,u,d',
-            'profile' => 'r,u'
-        ],
-        'administrator' => [
-            'users' => 'c,r,u,d',
-            'profile' => 'r,u'
-        ],
-        'user' => [
+            'menu_depan' => 'c,r,u,d',
             'profile' => 'r,u',
+            'posting' => 'c,r,u,d',
+            'perizinan' => 'c,r,u,d',
+            'layanan' => 'c,r,u,d',
+            'tiket' => 'c,r,u,d',
         ],
-        'role_name' => [
-            'module_1_name' => 'c,r,u,d',
+        'writer' => [
+           'menu_depan' => 'c,r,u,d',
+            'profile' => 'r,u',
+            'posting' => 'c,r,u,d',
+            'pengaduan_masyarakat' => 'c,r,u,d',
+            'pengajuan_informasi' => 'c,r,u,d',
+        ],
+        'dc_team' => [
+            'perizinan' => 'c,r,u,d',
+            'tiket' => 'c,r,u,d',
+            'users' => 'c,r,u,d',
         ]
     ],
 

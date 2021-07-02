@@ -139,6 +139,7 @@
                                     <!-- End Cookie Alert -->
 
                             @endif
+
                             <!-- End Body -->
                         </div>
                         <!-- End Card -->

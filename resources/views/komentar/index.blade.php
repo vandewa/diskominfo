@@ -1,8 +1,8 @@
-@section('title', 'Data Komentar')
-@section('menu','Komentar')
-@section('submenu','Data ')
+@section('title', 'Permohonan Informasi')
+@section('menu','Layanan')
+@section('submenu','Permohonan Informasi ')
 @extends('layouts/template-admin')
-@section('kondisi4','nav-item-expanded nav-item-open')
+@section('kondisi6','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Komentar</span>

@@ -61,7 +61,7 @@
                             <div class="col-md-4"><i class="nav-item"><span class="icon-calendar3"></span></i> Tanggal Persetujuan</div>
                             <div class="col-md-8"><p class="text-uppercase">:
                                     @if($data->approval_date != '')
-                                        {{$data->approval_date->isoFormat('D MMMM Y H:m:s')}}
+                                        {{ Carbon\Carbon::parse($data->approval_date)->isoFormat('LLLL')}} WIB
                                     @else
                                         -
                                     @endif
@@ -110,7 +110,7 @@
                     @if($data->approval_date == '')
                         <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
                     @else
-                        <button type="button" class="btn bg-warning-400">Cetak Surat Ijin <i class="icon-printer2 ml-2"></i></button>
+                       <a href="{{route('perijinan:cetak.surat.colocation.server', $data->id)}}" class="btn bg-warning-400">Cetak Surat Tugas <i class="icon-printer2 ml-2"></i></a>
                     @endif
                 </div>
                 {{Form::close()}}

@@ -15,6 +15,7 @@ class CreateLayananServersTable extends Migration
     {
         Schema::create('layanan_servers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('no')->nullable();
             $table->string('opd');
             $table->string('bidang');
             $table->string('alamat');
@@ -26,8 +27,8 @@ class CreateLayananServersTable extends Migration
             $table->string('keterangan');
             $table->timestamp('approval_date')->nullable();
             $table->date('valid_util')->nullable();
-            $table->timestamps();
             $table->string('status_st')->nullable();
+            $table->timestamps();
         });
     }
 

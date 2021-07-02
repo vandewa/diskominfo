@@ -182,6 +182,7 @@
 							</a>
 						</li>
 
+						@permission('users-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi5')">
 							<a href="#" class="nav-link"><i class="icon-menu7"></i> <span>Menu Depan</span></a>
 
@@ -197,7 +198,9 @@
 
 							</ul>
 						</li>
+						@endpermission
 
+						@permission('posting-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi2')">
 							<a href="#" class="nav-link"><i class="icon-newspaper"></i> <span>Posting</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
@@ -207,10 +210,12 @@
 								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Kategori</a></li>
 							</ul>
 						</li>
+						@endpermission
 
+						@permission('perizinan-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi7')">
 							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Perizinan</span></a>
-							<ul class="nav nav-group-sub" data-submenu-title="Posting">
+							<ul class="nav nav-group-sub" data-submenu-title="Perizinan">
 								<li class="nav-item"><a href="{{ route('akses-data-center.index') }}" class="nav-link">Akses Data Center</a></li>
 								<li class="nav-item"><a href="{{ route('colocation-server.index') }}" class="nav-link">Colocation Server</a></li>
 								<li class="nav-item"><a href="{{ route('kunjungan-data-center.index') }}" class="nav-link">Kunjungan Data Center</a></li>
@@ -220,7 +225,9 @@
 								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Pengantar Pengajuan Server</a></li>
 							</ul>
 						</li>
+						@endpermission
 
+						@permission('users-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi3')">
 							<a href="#" class="nav-link"><i class="icon-user"></i> <span>User</span></a>
 
@@ -228,27 +235,23 @@
 								<li class="nav-item"><a href="{{route('user.index')}}" class="nav-link ">Management User</a></li>
 							</ul>
 						</li>
+						@endpermission
 
-						<li class="nav-item @yield('kondisi6')">
-							<a href="{{ route('pengaduans.index') }}" class="nav-link @yield('kondisi6')">
-								<i class="icon-bubble-lines4"></i>
-								<span>
-									Pengaduan Masyarakat
-								</span>
-								<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_pengaduan}}</span>
-							</a>
-						</li>
+						@permission('layanan-read')
+						<li class="nav-item nav-item-submenu @yield('kondisi6')">
+							<a href="#" class="nav-link"><i class="icon-bubble-lines4"></i> <span>Layanan</span><span class="badge bg-orange-400 align-self-center ml-auto">{{ $total_layanan}}</span></a>
 
-						<li class="nav-item @yield('kondisi4')">
-							<a href="{{ route('komentar.index') }}" class="nav-link @yield('kondisi4')">
-								<i class="icon-bubble-dots4"></i>
-								<span>
-									Komentar
-								</span>
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_komentar}}</span>
-							</a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layanan">
+								<li class="nav-item"><a href="{{ route('pengaduans.index') }}" class="nav-link ">Pengaduan Masyarakat<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_pengaduan}}</span></a></li>
+								<li class="nav-item"><a href="{{ route('komentar.index') }}" class="nav-link ">Permohonan Informasi<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_komentar}}</span></a></li>
+							</ul>
+							
 						</li>
-{{--                        Mulai Ticketing--}}
+						@endpermission
+
+{{-- Mulai Ticketing--}}
+
+						@permission('tiket-read')
                         <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Tiket</div> <i class="icon-menu" title="tiket"></i></li>
                         <li class="nav-item nav-item-submenu @yield('kondisi8')">
                             <a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Tiket</span></a>
@@ -257,6 +260,7 @@
                                 <li class="nav-item"><a href="{{ route('tiket:tiket.index') }}" class="nav-link">List Tiket</a></li>
                             </ul>
                         </li>
+						@endpermission
 
 						<!-- /main -->
 					</ul>
