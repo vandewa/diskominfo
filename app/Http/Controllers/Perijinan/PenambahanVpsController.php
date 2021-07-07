@@ -76,7 +76,7 @@ class PenambahanVpsController extends Controller
      */
     public function show($id)
     {
-         $data = PenambahanVps::with(['prosesor','hd','ram','aksesNonfisik','penanggungJawab','menyetujui','status'])->find($id);
+        $data = PenambahanVps::with(['prosesor','hd','ram','aksesNonfisik','penanggungJawab','menyetujui','status'])->find($id);
 
         return view('perijinan.vps-baru.show', compact('data'));
     }

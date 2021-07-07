@@ -111,7 +111,7 @@ class PerminColController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ColocationServer::destroy($id);
     }
 
     public function persetujuan(Request $request, $id)
@@ -136,6 +136,7 @@ class PerminColController extends Controller
         $pathSave =storage_path('app/public/'.$data->no.'.docx');
         $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
         $templateProcessor = new TemplateProcessor($path);
+        // dd($data->penanggungJawab->no_hp);
         $templateProcessor->setValues([
             'no' => $data->no,
             'opd' => $data->opd,
@@ -149,6 +150,7 @@ class PerminColController extends Controller
             'penanggung_jawab_nip' => $data->penanggungJawab->nip,
             'penanggung_jawab_jabatan' => $data->penanggungJawab->jabatan,
             'penanggung_jawab_email' => $data->penanggungJawab->email,
+            'nomor_hp' => $data->penanggungJawab->no_hp??'hnghghh',
 
         ]);
 

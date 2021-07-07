@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use DataTables;
 use PhpOffice\PhpWord\TemplateProcessor;
+use PhpOffice\PhpWord\PhpWord;
 
 class AksesDcController extends Controller
 {
@@ -129,9 +130,32 @@ class AksesDcController extends Controller
         return redirect(route('akses-data-center.index'));
     }
 
-    public function cetak($id)
+    public function cetakSurat($id)
     {
-        $data = AksesDc::with(['keperluan','jenisIdentitas', 'penanggungJawab','menyetujui','status','jenisIdentitas'])->find($id);
-        $templateProcessor = new TemplateProcessor('Template.docx');
+       $data = AksesDc::with(['keperluan','jenisIdentitas', 'penanggungJawab','menyetujui','status'])->find($id);
+        $path = public_path('/template/form_akses_dc.docx');
+        $pathSave =storage_path('app/public/'.$data->no.'.docx');
+        $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
+        $templateProcessor = new TemplateProcessor($path);
+        $templateProcessor->setValues([
+            'no' => $data->no,
+            'keperluan' => $data->keperluan->code_nm??'',
+            'name' => $data->name,
+            'identity' => $data->jenisIdentitas->code_nm??'',
+            'identity_no' => $data->identity_no,
+            'asal_instansi' => $data->asal_instansi,
+            'telepon' => $data->telepon,
+            'email' => $data->email,
+            'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
+            'approval_date' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->approval_date))->isoFormat('D MMMM Y'),
+            'valid_until' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->valid_util))->isoFormat('D MMMM Y'),
+        ]);
+
+        $templateProcessor->saveAs($pathSave);
+        // $converter = new OfficeConverter($pathSave);
+        // $converter->convertTo('aaaa.pdf'); //generates pdf file in same directory as test-file.docx
+//        $converter = new OfficeConverter('test-file.docx', 'path-to-outdir');
+       return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
+
     }
 }

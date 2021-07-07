@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Session;
 use DataTables;
 use Illuminate\Support\Facades\Auth;
+use PhpOffice\PhpWord\TemplateProcessor;
+use PhpOffice\PhpWord\PhpWord;
 
 class LayananServerController extends Controller
 {
@@ -125,5 +127,36 @@ class LayananServerController extends Controller
         );
         Session::flash('status','Data berhasil di update');
         return redirect(route('layanan-server.index'));
+    }
+
+     public function cetakSurat($id)
+    {
+        $data = LayananServer::with(['layanan','penanggungJawab', 'menyetujui', 'status'])->find($id);
+        $path = public_path('/template/form_layanan_server.docx');
+        $pathSave =storage_path('app/public/'.$data->no.'.docx');
+        $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
+        $templateProcessor = new TemplateProcessor($path);
+        $templateProcessor->setValues([
+            'no' => $data->no,
+            'opd' => $data->opd,
+            'bidang' => $data->bidang,
+            'alamat' => $data->alamat,
+            'email' => $data->email,
+            'telepon' => $data->telp,
+            'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
+            'approval_date' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->approval_date))->isoFormat('D MMMM Y'),
+            'penanggung_jawab_nama' => $data->penanggungJawab->name,
+            'penanggung_jawab_nip' => $data->penanggungJawab->nip,
+            'penanggung_jawab_jabatan' => $data->penanggungJawab->jabatan,
+            'penanggung_jawab_email' => $data->penanggungJawab->email,
+
+        ]);
+
+        $templateProcessor->saveAs($pathSave);
+        // $converter = new OfficeConverter($pathSave);
+        // $converter->convertTo('aaaa.pdf'); //generates pdf file in same directory as test-file.docx
+//        $converter = new OfficeConverter('test-file.docx', 'path-to-outdir');
+       return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
+
     }
 }

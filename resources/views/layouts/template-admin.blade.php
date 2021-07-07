@@ -222,7 +222,7 @@
 								<li class="nav-item"><a href="{{ route('layanan-server.index') }}" class="nav-link">Layanan Server</a></li>
 								<li class="nav-item"><a href="{{ route('vps-baru.index') }}" class="nav-link">VPS Baru</a></li>
 								<li class="nav-item"><a href="{{ route('perubahan-vps.index') }}" class="nav-link">Perubahan VPS</a></li>
-								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Pengantar Pengajuan Server</a></li>
+								<li class="nav-item"><a href="{{ route('pengajuan-server.index') }}" class="nav-link">Pengantar Pengajuan Server</a></li>
 							</ul>
 						</li>
 						@endpermission

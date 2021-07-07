@@ -22,6 +22,7 @@
                     <div class="w-lg-80 mx-auto">
                         <!-- Contacts Form -->
                         <!-- Card -->
+                        @if(!Session::has('keterangan'))
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title"> Data Pemohon</h5>
@@ -30,8 +31,9 @@
                             <!-- Body -->
                             <div class="card-body">
                                 <!-- Form -->
-                           {{Form::open()}}
+                         {{Form::open(['route' => 'perijinan:pengajuan.server.post'])}}
                                     <!-- Form Group -->
+                                    {{Form::hidden('status_st','STATUS_ST_01')}}
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Nama Instansi</label>
                                         <div class="col-sm-9">
@@ -47,7 +49,7 @@
                                      <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">NIP Kepala Dinas</label>
                                         <div class="col-sm-9">
-                                            {{Form::text('nip_kadin', null, ['class' => 'form-control '])}}
+                                            {{Form::text('nip', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
                                   
@@ -60,7 +62,7 @@
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Tujuan</label>
                                         <div class="col-sm-9">
-                                            {{Form::text('tujuan', null, ['class' => 'form-control '])}}
+                                            {{Form::text('tujuan', 'untuk', ['class' => 'form-control '])}}
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -75,12 +77,42 @@
                                             {{Form::text('no_cp', null, ['class' => 'form-control '])}}
                                         </div>
                                     </div>
+                                    <div class="row form-group">
+                                        <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Email</label>
+                                        <div class="col-sm-9">
+                                            {{Form::text('email', null, ['class' => 'form-control '])}}
+                                        </div>
+                                    </div>
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
                                     </div>
                             {{Form::close()}}
-                                <!-- End Form -->
-                            </div>
+                            @else
+                                <!-- Cookie Alert -->
+                                    <div class="container ">
+                                        <div class="alert bg-white w-lg-80 border shadow-sm mx-auto" role="alert">
+                                            <h4 class="text-success">Berhasil !</h4>
+                                            <p class="small">
+                                                <span class="font-weight-bold">Selamat</span>
+                                                 Permintaan anda berhasil dikirim, informasi selanjutnya akan dikirim melalui email yang anda daftarkan.
+                                                <br>
+                                                 <strong>Pastikan untuk memeriksa folder spam anda.</strong>
+                                            </p>
+
+                                            <div class="row align-items-sm-center">
+                                                <div class="col-sm-8 mb-3 mb-sm-0">
+
+                                                </div>
+
+                                                <div class="col-sm-4 text-sm-right">
+                                                    <a href="{{route('perijinan:pengajuan.server.create')}}" type="button" class="btn btn-sm btn-primary transition-3d-hover">Ok!</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Cookie Alert -->
+
+                            @endif
                             <!-- End Body -->
                         </div>
                         <!-- End Card -->

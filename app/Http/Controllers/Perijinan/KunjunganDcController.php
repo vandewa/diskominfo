@@ -57,7 +57,7 @@ class KunjunganDcController extends Controller
      */
     public function store(Request $request)
     {
-         $data = KunjunganDc::create($request->all());
+        $data = KunjunganDc::create($request->all());
         if($data){
             Session::flash('keterangan', 'Data berhasil di simpan');
         }

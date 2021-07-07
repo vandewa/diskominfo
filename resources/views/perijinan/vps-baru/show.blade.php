@@ -141,7 +141,7 @@
                     @if($data->approval_date == '')
                         <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
                     @else
-                          <a href="{{route('perijinan:cetak.surat.vps.baru', $data->id)}}" class="btn bg-warning-400">Cetak Surat Tugas <i class="icon-printer2 ml-2"></i></a>
+                        <a href="{{route('perijinan:cetak.surat.vps.baru', $data->id)}}" class="btn bg-warning-400">Cetak Surat Tugas <i class="icon-printer2 ml-2"></i></a>
                     @endif
                 </div>
                 {{Form::close()}}

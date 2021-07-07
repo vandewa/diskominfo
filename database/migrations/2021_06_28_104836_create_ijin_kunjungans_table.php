@@ -18,7 +18,7 @@ class CreateIjinKunjungansTable extends Migration
             $table->string('no');
             $table->string('nama');
             $table->string('identity_tp');
-            $table->string('asal_instansi');
+            $table->string('identity_no')->nullable();
             $table->string('telepon');
             $table->string('email');
             $table->string('status_st')->nullable();
@@ -27,7 +27,6 @@ class CreateIjinKunjungansTable extends Migration
             $table->date('valid_util')->nullable();
             $table->unsignedBigInteger('penanggung_jawab_id')->nullable();
             $table->timestamps();
-            $table->string('identity_no')->nullable();
         });
     }
 

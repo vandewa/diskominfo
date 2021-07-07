@@ -17,6 +17,10 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('nip')->nullable();
+            $table->string('jabatan')->nullable();
+            $table->string('opd')->nullable();
+            $table->string('no_hp')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->text('two_factor_secret')->nullable();
@@ -26,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 200)->nullable()->default('kominfo.png');
             $table->timestamps();
             $table->string('level')->nullable()->default('admin');
+            
         });
     }
 

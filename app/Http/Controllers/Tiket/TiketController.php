@@ -172,6 +172,8 @@ class TiketController extends Controller
             'email' => $data->email,
             'telepon' => $data->cp,
             'petugas' => $data->petugas->name??'',
+            'nip' => $data->petugas->nip??'',
+            'jabatan' => $data->petugas->jabatan??'',
             'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
             'tahun' => date('Y', strtotime($data->created_at))
         ]);

@@ -21,12 +21,12 @@ class CreateLayananServersTable extends Migration
             $table->string('alamat');
             $table->string('telp');
             $table->string('email');
-            $table->unsignedBigInteger('administratif_id')->nullable();
-            $table->unsignedBigInteger('teknis_id')->nullable();
             $table->string('layanan_tp');
             $table->string('keterangan');
             $table->timestamp('approval_date')->nullable();
+            $table->unsignedBigInteger('aproval_id')->nullable();
             $table->date('valid_util')->nullable();
+            $table->unsignedBigInteger('penanggung_jawab_id')->nullable();
             $table->string('status_st')->nullable();
             $table->timestamps();
         });

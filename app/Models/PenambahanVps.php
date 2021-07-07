@@ -9,8 +9,8 @@ class PenambahanVps extends Model
 {
     use HasFactory;
     protected $table ='penambahan_vps';
-     protected $guarded = [];
-     protected static function boot()
+    protected $guarded = [];
+    protected static function boot()
     {
         parent::boot();
 

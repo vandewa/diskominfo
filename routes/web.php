@@ -98,6 +98,7 @@ Route::group(['middleware'=>['permission:perizinan-read']], function(){
     Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
         Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
         Route::post('akses/data-center', [AksesDcController::class, 'store'])->name('akses.dc.post');
+        Route::get('akses/data-center/{id}/cetak',[AksesDcController::class, 'cetakSurat'] )->name('cetak.surat.akses.dc');
         Route::get('permohonan/vps-baru', [PenambahanVpsController::class, 'create'])->name('vps.baru.create');
         Route::post('permohonan/vps-baru', [PenambahanVpsController::class, 'store'])->name('vps.baru.post');
         Route::get('permohonan/vps-baru/{id}/cetak',[PenambahanVpsController::class, 'cetakSurat'] )->name('cetak.surat.vps.baru');
@@ -106,8 +107,10 @@ Route::group(['middleware'=>['permission:perizinan-read']], function(){
         Route::get('permohonan/perubahan-vps/{id}/cetak',[PerubahanVpsController::class, 'cetakSurat'] )->name('cetak.surat.perubahan.vps');
         Route::get('permohonan/pengajuan-server', [PengajuanServerController::class, 'create'])->name('pengajuan.server.create');
         Route::post('permohonan/pengajuan-server', [PengajuanServerController::class, 'store'])->name('pengajuan.server.post');
+        Route::get('permohonan/pengajuan-server/{id}/cetak',[PengajuanServerController::class, 'cetakSurat'] )->name('cetak.surat.pengajuan.server');
         Route::get('permohonan/layanan-server', [LayananServerController::class, 'create'])->name('layanan.server.create');
         Route::post('permohonan/layanan-server', [LayananServerController::class, 'store'])->name('layanan.server.post');
+        Route::get('permohonan/layanan-server/{id}/cetak',[LayananServerController::class, 'cetakSurat'] )->name('cetak.surat.layanan.server');
         Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
         Route::post('permintaan/colocation', [PerminColController::class, 'store'])->name('permintaan.col.post');
         Route::get('permintaan/colocation/{id}/cetak',[PerminColController::class, 'cetakSurat'] )->name('cetak.surat.colocation.server');
@@ -120,6 +123,7 @@ Route::group(['middleware'=>['permission:perizinan-read']], function(){
     Route::resource('perubahan-vps', PerubahanVpsController::class);
     Route::resource('colocation-server', PerminColController::class);
     Route::resource('kunjungan-data-center', KunjunganDcController::class);
+    Route::resource('pengajuan-server', PengajuanServerController::class);
 });
 
 Route::group(['middleware'=>['permission:perizinan-update']], function(){
@@ -129,6 +133,7 @@ Route::group(['middleware'=>['permission:perizinan-update']], function(){
     Route::patch('perubahan-vps/{id}/persetujuan', [PerubahanVpsController::class, 'persetujuan'])->name('perubahan-vps.persetujuan');
     Route::patch('colocation-server/{id}/persetujuan', [PerminColController::class, 'persetujuan'])->name('permintaan-col.persetujuan');
     Route::patch('kunjungan-data-center/{id}/persetujuan', [KunjunganDcController::class, 'persetujuan'])->name('kunjungan-data-center.persetujuan');
+    Route::patch('pengajuan-server/{id}/persetujuan', [PengajuanServerController::class, 'persetujuan'])->name('pengajuan-server.persetujuan');
 });
 
 Route::group(['middleware'=>['permission:tiket-read']], function(){

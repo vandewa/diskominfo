@@ -20,13 +20,13 @@
     <div class="container space-top-3 space-bottom-2">
 
       <!-- Nav -->
-<div class="d-flex justify-content-center text-center">
+<div class="d-flex justify-content-center text-center ">
   <ul class="nav nav-pills mb-7" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="pills-one-code-features-example2-tab" data-toggle="pill" href="#pills-one-code-features-example2" role="tab" aria-controls="pills-one-code-features-example2" aria-selected="true">Daftar Pengajuan Izin</a>
+      <a class="nav-link " id="pills-one-code-features-example2-tab" data-toggle="pill" href="#pills-one-code-features-example2" role="tab" aria-controls="pills-one-code-features-example2" aria-selected="true">Daftar Pengajuan Izin</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="pills-two-code-features-example2-tab" data-toggle="pill" href="#pills-two-code-features-example2" role="tab" aria-controls="pills-two-code-features-example2" aria-selected="false">Lacak Nomor Tiket</a>
+      <a class="nav-link active" id="pills-two-code-features-example2-tab" data-toggle="pill" href="#pills-two-code-features-example2" role="tab" aria-controls="pills-two-code-features-example2" aria-selected="false">Lacak Nomor Tiket</a>
     </li>
   </ul>
 </div>
@@ -34,7 +34,7 @@
 
 <!-- Tab Content -->
 <div class="tab-content">
-  <div class="tab-pane fade show active" id="pills-one-code-features-example2" role="tabpanel" aria-labelledby="pills-one-code-features-example2-tab">
+  <div class="tab-pane fade " id="pills-one-code-features-example2" role="tabpanel" aria-labelledby="pills-one-code-features-example2-tab">
    
      <div class="col-md-12 d-flex justify-content-center mb-5">
       <h2>DAFTAR PENGAJUAN IZIN DISKOMINFO</h2>
@@ -88,7 +88,7 @@
   </div>
 
 <!-- TAB 2 -->
-  <div class="tab-pane fade" id="pills-two-code-features-example2" role="tabpanel" aria-labelledby="pills-two-code-features-example2-tab">
+  <div class="tab-pane fade show active" id="pills-two-code-features-example2" role="tabpanel" aria-labelledby="pills-two-code-features-example2-tab">
   <div class="row d-flex justify-content-center">
   <div class="col-md-6 ">
       <form class="input-group input-group-sm input-group-merge input-group-flush mb-3" action="/search" method="get">
@@ -105,30 +105,30 @@
 <ul class="step">
   <li class="step-item">
     <div class="step-content-wrapper">
-      <span class="step-icon step-icon-soft-primary">1</span>
+      <span class="step-icon">   <img class="card-img" src="{{asset('front/assets/images/dikirim.png')}}" ></span>
       <div class="step-content">
-        <h4>First step</h4>
-        <p class="step-text">Achieve virtually any design and layout from within the one template.</p>
+        <h4>Pengajuan izin berhasil dikirim.</h4>
+        <p class="step-text">Sedang dalam tahap pengecekan oleh petugas Diskominfo Wonosobo.</p>
       </div>
     </div>
   </li>
 
   <li class="step-item">
     <div class="step-content-wrapper">
-      <span class="step-icon step-icon-soft-primary">2</span>
+      <span class="step-icon"><img class="card-img" src="{{asset('front/assets/images/disetujui.png')}}" ></span>
       <div class="step-content">
-        <h4>Second step</h4>
-        <p class="step-text">We strive to figure out ways to help your business grow through all platforms.</p>
+        <h4>Pengajuan izin disetujui</h4>
+        <p class="step-text">Disetujui oleh Wajiran</p>
       </div>
     </div>
   </li>
 
   <li class="step-item">
     <div class="step-content-wrapper">
-      <span class="step-icon step-icon-soft-primary">3</span>
+      <span class="step-icon"><img class="card-img" src="{{asset('front/assets/images/selesai.png')}}" ></span>
       <div class="step-content">
-        <h4>Third step</h4>
-        <p class="step-text">Find what you need in one template and combine features at will.</p>
+        <h4>Pengajuan izin selesai</h4>
+        <p class="step-text">Berlaku hingga 21 Januari 2022.</p>
       </div>
     </div>
   </li>

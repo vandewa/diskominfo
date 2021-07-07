@@ -47,8 +47,6 @@ class UserController extends Controller
      */
     public function store(UsercreateValidation $request)
     {
-
-
         return $request->all();
         $request->validate([
             'nama' => 'required',
@@ -57,6 +55,7 @@ class UserController extends Controller
             'nip' => 'required',
             'jabatan' => 'required',
             'opd' => 'required',
+            'no_hp' => 'required',
             
         ],
         [
@@ -66,6 +65,7 @@ class UserController extends Controller
             'nip.required' => 'Nip harus diisi.',
             'jabatan.required' => 'Jabatan harus diisi.',
             'opd.required' => 'OPD harus diisi.',
+            'no_hp.required' => 'No Hp harus diisi.',
         ]);
 
           Users::create([
@@ -76,6 +76,7 @@ class UserController extends Controller
             'nip' => $request->nip,
             'jabatan' => $request->jabatan,
             'opd' => $request->opd,
+            'no_hp' => $request->no_hp,
           ]);
 
           return redirect ('user')->with('status', 'Data user berhasil ditambahkan');
@@ -123,6 +124,7 @@ class UserController extends Controller
             'nip' => 'required',
             'jabatan' => 'required',
             'opd' => 'required',
+            'no_hp' => 'required',
         ],
         [
             'nama.required' => 'Nama harus diisi.',
@@ -131,6 +133,7 @@ class UserController extends Controller
             'nip.required' => 'Nip harus diisi.',
             'jabatan.required' => 'Jabatan harus diisi.',
             'opd.required' => 'OPD harus diisi.',
+            'no_hp.required' => 'No Hp harus diisi.',
         ]);
 
         Users::find($id)->update([
@@ -140,6 +143,7 @@ class UserController extends Controller
             'nip' => $request->nip,
             'jabatan' => $request->jabatan,
             'opd' => $request->opd,
+            'no_hp' => $request->no_hp,
         ]);
 
         if($request->filled('password')){

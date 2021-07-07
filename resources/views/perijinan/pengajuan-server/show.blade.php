@@ -1,12 +1,12 @@
-@section('title', 'Perijinan')
+@section('title', 'Pengantar Pengajuan Server')
 @section('menu','Perijinan')
-@section('submenu','Layanan Server')
+@section('submenu','Pengantar Pengajuan Server')
 @extends('layouts/template-admin')
 @section('kondisi7','nav-item-expanded nav-item-open')
 
 @section('halaman')
     <span class="breadcrumb-item active">Perijinan</span>
-    <span class="breadcrumb-item active">Layanan Server</span>
+    <span class="breadcrumb-item active">Pengantar Pengajuan Server</span>
 @endsection
 
 @section('container')
@@ -25,17 +25,38 @@
             </div>
 
             <div class="card-body">
-                {{Form::model($data,['route' => ['layanan-server.persetujuan', $data->id],'method' => 'patch', 'files' => 'true', ''])}}
+                {{Form::model($data,['route' => ['pengajuan-server.persetujuan', $data->id],'method' => 'patch', 'files' => 'true', ''])}}
 
                 <div class="row mb-2">
-                    <div class="col-md-6">
+                    <div class="form-control mb-2">
                         <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Nama OPD</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->opd}}</p></div>
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Nama Instansi</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->instansi}}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-phone"></span></i> Telepon Contact Person</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->telp}}</p></div>
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Nama Kepala Dinas</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->nama_kadin}}</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> NIP</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->nip}}</p></div>
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-phone"></span></i> Keperluan</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->keperluan}}</p></div>
+                        </div>
+                         <div class="row">
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-phone"></span></i> Tujuan</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->tujuan}}</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-phone"></span></i> Nama CP</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->nama_cp}}</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><i class="nav-item"><span class="icon-phone"></span></i> Nomor CP</div>
+                            <div class="col-md-8"><p class="text-uppercase">: {{$data->no_cp}}</p></div>
                         </div>
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-mail-read"></span></i> Email</div>
@@ -43,12 +64,6 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-star-full2"></span></i> Layanan</div>
-                            <div class="col-md-8"><p class="text-uppercase">:
-                                  {{$data->layanan->code_nm??''}}
-                                </p></div>
-                        </div>
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-calendar"></span></i> Tanggal Pengajuan</div>
                             <div class="col-md-8"><p class="text-uppercase">:
@@ -58,7 +73,7 @@
                         <div class="row">
                             <div class="col-md-4"><i class="nav-item"><span class="icon-calendar3"></span></i> Tanggal Persetujuan</div>
                             <div class="col-md-8"><p class="text-uppercase">:
-                                     @if($data->approval_date != '')
+                                    @if($data->approval_date != '')
                                         {{ Carbon\Carbon::parse($data->approval_date)->isoFormat('LLLL')}} WIB
                                     @else
                                         -
@@ -69,39 +84,15 @@
                             <div class="col-md-4"><i class="nav-item"><span class="icon-file-check"></span></i> Status</div>
                             <div class="col-md-8"><p class="text-uppercase">: {{$data->status->code_nm??''}}</p></div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-folder-check"></span></i> Penanggung Jawab Teknis</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->penanggungJawab->name??''}}</p></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4"><i class="nav-item"><span class="icon-user"></span></i> Pemberi Keputusan</div>
-                            <div class="col-md-8"><p class="text-uppercase">: {{$data->menyetujui->name??'-'}}</p></div>
-                        </div>
+                      
                     </div>
                 </div>
-
-
-
 
                 @if($data->approval_date == '')
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Persetujuan<span class="text-danger">*</span></label>
                         <div class="col-lg-10">
                             {{Form::select('status_st', get_code_group('STATUS_ST'), null, ['class' => 'form-control select2', 'placeholder' => 'Pilih Prioritas Tiket'])}}
-                        </div>
-                    </div>
-                    <div class="devan-asu" style="display: none">
-                        <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Penanggung Jawab Teknis<span class="text-danger">*</span></label>
-                            <div class="col-lg-10">
-                                {{Form::select('penanggung_jawab_id', list_user(), null, ['class' => 'form-control select2', 'placeholder' => 'Pilih Prioritas Tiket'])}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Berlaku Hingga<span class="text-danger">*</span></label>
-                            <div class="col-lg-10">
-                                {{Form::date('valid_util', null, ['class' => 'form-control select2', 'placeholder' => 'Pilih Prioritas Tiket'])}}
-                            </div>
                         </div>
                     </div>
                 @endif
@@ -111,7 +102,7 @@
                     @if($data->approval_date == '')
                         <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
                     @else
-                       <a href="{{route('perijinan:cetak.surat.layanan.server', $data->id)}}" class="btn bg-warning-400">Cetak Surat Tugas <i class="icon-printer2 ml-2"></i></a>
+                       <a href="{{route('perijinan:cetak.surat.pengajuan.server', $data->id)}}" class="btn bg-warning-400">Cetak Surat Tugas <i class="icon-printer2 ml-2"></i></a>
                     @endif
                 </div>
                 {{Form::close()}}

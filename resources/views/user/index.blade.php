@@ -10,12 +10,10 @@
 @endsection
 
 @section('tambah_data')
-@if (auth()->user()->level=='superadmin')
 <a href="{{route('user.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah User
 </a>
-@endif
 @endsection
 
 @section('container')

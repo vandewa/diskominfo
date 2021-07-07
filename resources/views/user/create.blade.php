@@ -109,6 +109,23 @@
 								</div>
 
 								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Nomor HP<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<div class="form-group form-group-feedback form-group-feedback-left">
+											<input type="text" name="no_hp" class="form-control" placeholder="Masukkkan No Hp" value="{{ old('no_hp') }}">
+											@error('no_hp')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
+											<div class="form-control-feedback form-control-feedback-lg">
+												<i class="icon-envelope"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row">
 									<label class="col-form-label col-lg-2">Level<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 									<div class="form-group form-group-feedback form-group-feedback-left">
