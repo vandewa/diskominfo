@@ -23,10 +23,10 @@
 <div class="d-flex justify-content-center text-center ">
   <ul class="nav nav-pills mb-7" role="tablist">
     <li class="nav-item">
-      <a class="nav-link " id="pills-one-code-features-example2-tab" data-toggle="pill" href="#pills-one-code-features-example2" role="tab" aria-controls="pills-one-code-features-example2" aria-selected="true">Daftar Pengajuan Izin</a>
+      <a class="nav-link  @if(request('q') == '') active @endif " id="pills-one-code-features-example2-tab" data-toggle="pill" href="#pills-one-code-features-example2" role="tab" aria-controls="pills-one-code-features-example2" aria-selected="true">Daftar Pengajuan Izin</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" id="pills-two-code-features-example2-tab" data-toggle="pill" href="#pills-two-code-features-example2" role="tab" aria-controls="pills-two-code-features-example2" aria-selected="false">Lacak Nomor Tiket</a>
+      <a class="nav-link @if(request('q') != '') active @endif" id="pills-two-code-features-example2-tab" data-toggle="pill" href="#pills-two-code-features-example2" role="tab" aria-controls="pills-two-code-features-example2" aria-selected="false">Lacak Nomor Tiket</a>
     </li>
   </ul>
 </div>
@@ -34,7 +34,7 @@
 
 <!-- Tab Content -->
 <div class="tab-content">
-  <div class="tab-pane fade " id="pills-one-code-features-example2" role="tabpanel" aria-labelledby="pills-one-code-features-example2-tab">
+  <div class="tab-pane fade @if(request('q') == '') show active @endif" id="pills-one-code-features-example2" role="tabpanel" aria-labelledby="pills-one-code-features-example2-tab">
    
      <div class="col-md-12 d-flex justify-content-center mb-5">
       <h2>DAFTAR PENGAJUAN IZIN DISKOMINFO</h2>
@@ -88,10 +88,10 @@
   </div>
 
 <!-- TAB 2 -->
-  <div class="tab-pane fade show active" id="pills-two-code-features-example2" role="tabpanel" aria-labelledby="pills-two-code-features-example2-tab">
+  <div class="tab-pane fade @if(request('q') != '') show active @endif" id="pills-two-code-features-example2" role="tabpanel" aria-labelledby="pills-two-code-features-example2-tab">
   <div class="row d-flex justify-content-center">
   <div class="col-md-6 ">
-      <form class="input-group input-group-sm input-group-merge input-group-flush mb-3" action="/search" method="get">
+      <form class="input-group input-group-sm input-group-merge input-group-flush mb-3" action="" method="get">
 
       <input name="q" type="search" class="form-control" placeholder="Masukkan Nomor Tiket" aria-label="Search articles" aria-describedby="searchLabel">
       <div class="input-group-append">
@@ -101,8 +101,9 @@
       </div>
       </form>
 
-      <!-- Step -->
+<!-- Step -->
 <ul class="step">
+@if(request('q') != '')
   <li class="step-item">
     <div class="step-content-wrapper">
       <span class="step-icon">   <img class="card-img" src="{{asset('front/assets/images/dikirim.png')}}" ></span>
@@ -117,8 +118,14 @@
     <div class="step-content-wrapper">
       <span class="step-icon"><img class="card-img" src="{{asset('front/assets/images/disetujui.png')}}" ></span>
       <div class="step-content">
-        <h4>Pengajuan izin disetujui</h4>
-        <p class="step-text">Disetujui oleh Wajiran</p>
+        <h4>{{$data->status->code_nm??''}}</h4>
+        <p class="step-text">
+          @if($data->approval_date != '')
+              {{ Carbon\Carbon::parse($data->approval_date)->isoFormat('LLLL')}} WIB
+          @else
+              -
+          @endif
+        </p>
       </div>
     </div>
   </li>
@@ -127,11 +134,11 @@
     <div class="step-content-wrapper">
       <span class="step-icon"><img class="card-img" src="{{asset('front/assets/images/selesai.png')}}" ></span>
       <div class="step-content">
-        <h4>Pengajuan izin selesai</h4>
-        <p class="step-text">Berlaku hingga 21 Januari 2022.</p>
+        <h4>Selesai.</h4>
       </div>
     </div>
   </li>
+  @endif
 </ul>
 <!-- End Step -->
 </div>

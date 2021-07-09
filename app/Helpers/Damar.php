@@ -55,7 +55,7 @@ if(!function_exists('gen_perubahan_vps')){
 if(!function_exists('gen_colocation_server')){
     function gen_colocation_server(){
         $no = Date('y-m-').str_pad(1, 6, '0', STR_PAD_LEFT );
-        $terakhir = \App\Models\PerubahanVps::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at','desc')->first();
+        $terakhir = \App\Models\ColocationServer::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at','desc')->first();
         if($terakhir)
         {
             $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);
@@ -77,7 +77,7 @@ if(!function_exists('gen_kunjungan_dc')){
 if(!function_exists('gen_pengajuan_server')){
     function gen_pengajuan_server(){
         $no = Date('y-m-').str_pad(1, 6, '0', STR_PAD_LEFT );
-        $terakhir = \App\Models\KunjunganDc::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at','desc')->first();
+        $terakhir = \App\Models\PengajuanServer::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at','desc')->first();
         if($terakhir)
         {
             $no = Date('y-m-').str_pad((int)substr($terakhir->no,-6) + 1,6,0,STR_PAD_LEFT);

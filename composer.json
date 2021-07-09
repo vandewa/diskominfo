@@ -28,6 +28,7 @@
         "phpoffice/phpword": "^0.18.2",
         "proengsoft/laravel-jsvalidation": "^4.4",
         "santigarcor/laratrust": "^6.3",
+        "tymon/jwt-auth": "^1.0",
         "yajra/laravel-datatables-oracle": "^9.15"
     },
     "require-dev": {
