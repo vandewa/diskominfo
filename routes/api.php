@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\TiketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Controllers\Api\LoginController;
 |
 */
 Route::post('login', [LoginController::class, 'login']);
+Route::get('tiket', [TiketController::class, 'getTiket']);
 // Route::post('logout', 'AuthController@logout');
 // Route::post('refresh', 'AuthController@refresh');
 // Route::post('me', 'AuthController@me');
