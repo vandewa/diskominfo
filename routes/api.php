@@ -16,12 +16,18 @@ use App\Http\Controllers\Api\TiketController;
 |
 */
 Route::post('login', [LoginController::class, 'login']);
-Route::get('tiket', [TiketController::class, 'getTiket']);
+
+Route::group(['middleware' => 'api'], function(){
+    Route::get('tiket', [TiketController::class, 'getTiket']);
+    Route::get('tiket/detail/{id}',[TiketController::class, 'tiketDetail']);
+    Route::post('tiket/update/{id}', [TiketController::class, 'tiketUpdate']);
+});
+
 // Route::post('logout', 'AuthController@logout');
 // Route::post('refresh', 'AuthController@refresh');
 // Route::post('me', 'AuthController@me');
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('api')->get('/user', function (Request $request) {
+    return auth('api')->user();
 });
