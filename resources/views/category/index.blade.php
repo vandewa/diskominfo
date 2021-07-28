@@ -10,12 +10,10 @@
 @endsection
 
 @section('tambah_data')
-@if (auth()->user()->level=='superadmin'||'admin')
 <a href="{{route('category.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah Kategori
 </a>
-@endif
 @endsection
 
 @section('container')

@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\TiketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,21 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('login', [LoginController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'api'], function(){
+    Route::get('tiket', [TiketController::class, 'getTiket']);
+    Route::get('tiket/belum-selesai', [TiketController::class, 'getTiketBelumSelesai']);
+    Route::get('tiket/sudah-selesai', [TiketController::class, 'getTiketSudahSelesai']);
+    Route::get('tiket/detail/{id}',[TiketController::class, 'tiketDetail']);
+    Route::post('tiket/update/{id}', [TiketController::class, 'tiketUpdate']);
+});
+
+// Route::post('logout', 'AuthController@logout');
+// Route::post('refresh', 'AuthController@refresh');
+// Route::post('me', 'AuthController@me');
+
+
+Route::middleware('api')->get('/user', function (Request $request) {
+    return auth('api')->user();
 });

@@ -34,11 +34,11 @@
 								<input name="profile_photo_path" type="file" class="file-input" data-fouc>
 								<span class="form-text text-muted">Klik 'browse' untuk mengganti foto profil</code>.</span>
 								</div>
-							
+
 						</div>
 						</div>
 
-						
+
 
                         <div class="form-group row">
 									<label class="col-form-label col-lg-2">Nama</label>
@@ -128,7 +128,7 @@
 				<!-- /CKEditor default -->
     </div>
 
-	<script> 
+	<script>
 		function change()
          {
             var x = document.getElementById('pass').type;
@@ -147,7 +147,7 @@
 	</script>
 
 
-	<script> 
+	<script>
 		function change2()
          {
             var x = document.getElementById('passs').type;
@@ -168,4 +168,5 @@
 
 @push('js')
 {!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}
+
 @endpush

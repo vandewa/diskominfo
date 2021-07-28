@@ -72,6 +72,10 @@ class AppServiceProvider extends ServiceProvider
 
          View::share('status_komentar', $status_komentar);
 
+         $total_layanan= $status_komentar+$status_pengaduan;
+
+         View::share('total_layanan', $total_layanan);
+
       
 
           

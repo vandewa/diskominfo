@@ -21,8 +21,14 @@ use App\Models\Sampul;
 use App\Models\Menu;
 use App\Models\Infografis;
 use DataTables;
-
 use PHPUnit\Framework\Constraint\Count;
+use App\Models\AksesDc;
+use App\Models\LayananServer;
+use App\Models\PenambahanVps;
+use App\Models\ColocationServer;
+use App\Models\KunjunganDc;
+use App\Models\PengajuanServer;
+use App\Models\PerubahanVps;
 
 class HomeController extends Controller
 {
@@ -118,9 +124,36 @@ class HomeController extends Controller
 
     }
 
-    public function pengajuanizin()
-    {
-        return view('home.pengajuanizin');
+    public function pengajuanizin(Request $request)
+    {   
+        $data = '';
+        if($request->filled('q')){
+            $a = substr($request->q, 0, 3);
+                switch ($a) {
+                    case "ADC":
+                        $data = AksesDc::with(['status'])->whereNo($request->q)->first();
+                        break;
+                    case "LSV":  
+                        $data = LayananServer::with(['status'])->whereNo($request->q)->first();
+                        break;
+                    case "VPB":
+                        $data = PenambahanVps::with(['status'])->whereNo($request->q)->first();
+                        break;
+                    case "CSV":
+                        $data = ColocationServer::with(['status'])->whereNo($request->q)->first();
+                        break;
+                    case "KDC":
+                        $data = KunjunganDc::with(['status'])->whereNo($request->q)->first();
+                        break;
+                    case "PSV":
+                        $data = PengajuanServer::with(['status'])->whereNo($request->q)->first();
+                        break;
+                    case "PVP":
+                        $data = PerubahanVps::with(['status'])->whereNo($request->q)->first();
+                        break;
+                    }
+        }
+        return view('home.pengajuanizin', compact('data'));
     }
 
 
@@ -233,6 +266,32 @@ class HomeController extends Controller
      */
 
     public function cari(Request $request)
+    {
+        $posting_samping =  Posting::with(['gambarMuka'])
+        ->orderBy('views', 'desc')
+        ->limit(3)
+        ->get();
+
+        $cari = $request->q;
+
+        $posting = Posting::with(['kategori', 'nama'])
+        ->where('judul_posting', 'like', "%".$cari."%")
+        ->select('judul_posting', 'id_posting', 'id_kategori', 'created_by', 'isi_posting')
+        ->orderBy('created_at','desc')
+        ->paginate(5)
+        ->appends(['q' => $request->q]);
+
+        $jumlah = Posting::with(['kategori', 'nama'])
+        ->where('judul_posting', 'like', "%".$cari."%")
+        ->select('judul_posting', 'id_posting', 'id_kategori', 'created_by', 'isi_posting')
+        ->paginate(5)
+        ->appends(['q' => $request->q])
+        ->count();
+
+        return view ('home.cari', compact('posting', 'cari', 'posting_samping','jumlah'));
+    }
+
+    public function lacak(Request $request)
     {
         $posting_samping =  Posting::with(['gambarMuka'])
         ->orderBy('views', 'desc')

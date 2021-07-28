@@ -1,0 +1,164 @@
+<?php
+
+namespace App\Http\Controllers\Perijinan;
+
+use App\Http\Controllers\Controller;
+use App\Models\ColocationServer;
+use Illuminate\Http\Request;
+use Session;
+use DataTables;
+use Illuminate\Support\Facades\Auth;
+use PhpOffice\PhpWord\TemplateProcessor;
+use PhpOffice\PhpWord\PhpWord;
+
+class PerminColController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+         if($request->ajax()){
+
+            $data = ColocationServer::with(['penanggungJawab','menyetujui','status'])->select('colocation_servers.*');
+
+            return DataTables::of($data)
+                ->editColumn('created_at', function($a){
+                   return $a->created_at->isoFormat('D MMMM Y H:m:s');
+                })
+                ->addColumn('action', function($row){
+
+                return'<div class="list-icons">
+                        <a href="'.route('colocation-server.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
+                        <a href="'.route('colocation-server.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                        </div>';
+                    })
+                ->make(true);
+        }
+
+        return view('perijinan.permintaan-colocation.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('perijinan.permintaan-colocation.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $data = ColocationServer::create($request->all());
+        if($data){
+            Session::flash('keterangan', 'Data berhasil di simpan');
+        }
+
+        return redirect()->back();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = ColocationServer::with(['penanggungJawab','menyetujui','status'])->find($id);
+
+        return view('perijinan.permintaan-colocation.show', compact('data'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        ColocationServer::destroy($id);
+    }
+
+    public function persetujuan(Request $request, $id)
+    {
+        $data = ColocationServer::find($id)->update(
+            [
+                'aproval_id' => Auth::user()->id,
+                'valid_util' => $request->valid_util,
+                'approval_date' => date('Y-m-d H:i:s'),
+                'penanggung_jawab_id' => $request->penanggung_jawab_id,
+                'status_st' => $request->status_st
+            ]
+        );
+        Session::flash('status','Data berhasil di update');
+        return redirect(route('colocation-server.index'));
+    }
+
+    public function cetakSurat($id)
+    {
+        $data = ColocationServer::with(['penanggungJawab', 'menyetujui', 'status'])->find($id);
+        $path = public_path('/template/form_colocation_server.docx');
+        $pathSave =storage_path('app/public/'.$data->no.'.docx');
+        $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
+        $templateProcessor = new TemplateProcessor($path);
+        // dd($data->penanggungJawab->no_hp);
+        $templateProcessor->setValues([
+            'no' => $data->no,
+            'opd' => $data->opd,
+            'bidang' => $data->bidang,
+            'alamat' => $data->alamat,
+            'email' => $data->email,
+            'telepon' => $data->telepon,
+            'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
+            'approval_date' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->approval_date))->isoFormat('D MMMM Y'),
+            'penanggung_jawab_nama' => $data->penanggungJawab->name,
+            'penanggung_jawab_nip' => $data->penanggungJawab->nip,
+            'penanggung_jawab_jabatan' => $data->penanggungJawab->jabatan,
+            'penanggung_jawab_email' => $data->penanggungJawab->email,
+            'nomor_hp' => $data->penanggungJawab->no_hp??'hnghghh',
+
+        ]);
+
+        $templateProcessor->saveAs($pathSave);
+        // $converter = new OfficeConverter($pathSave);
+        // $converter->convertTo('aaaa.pdf'); //generates pdf file in same directory as test-file.docx
+//        $converter = new OfficeConverter('test-file.docx', 'path-to-outdir');
+       return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
+
+    }
+}

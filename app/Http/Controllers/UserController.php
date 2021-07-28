@@ -19,7 +19,9 @@ class UserController extends Controller
      */
     public function index()
     {
-       
+       if(!auth()->user()->hasPermission('users-read')){
+        abort(403);
+       }
         return view('user.index');
     }
 
@@ -30,6 +32,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        if(!auth()->user()->hasPermission('users-cread')){
+        abort(403);
+       }
+
         return view('user.create');
     }
 
@@ -41,24 +47,36 @@ class UserController extends Controller
      */
     public function store(UsercreateValidation $request)
     {
-
+        return $request->all();
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email',
-            'level' => 'required'
+            'level' => 'required',
+            'nip' => 'required',
+            'jabatan' => 'required',
+            'opd' => 'required',
+            'no_hp' => 'required',
+            
         ],
         [
             'nama.required' => 'Nama harus diisi.',
             'email.required' =>'Email harus diisi.',
-            'level.required' => 'Level harus dipilih.
-            '
+            'level.required' => 'Level harus dipilih.',
+            'nip.required' => 'Nip harus diisi.',
+            'jabatan.required' => 'Jabatan harus diisi.',
+            'opd.required' => 'OPD harus diisi.',
+            'no_hp.required' => 'No Hp harus diisi.',
         ]);
 
           Users::create([
             'name' => $request->nama,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'level' => $request->level
+            'level' => $request->level,
+            'nip' => $request->nip,
+            'jabatan' => $request->jabatan,
+            'opd' => $request->opd,
+            'no_hp' => $request->no_hp,
           ]);
 
           return redirect ('user')->with('status', 'Data user berhasil ditambahkan');
@@ -83,6 +101,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        if(!auth()->user()->hasPermission('users-update')){
+        abort(403);
+       }
         return view('user.edit', compact('user'));
     }
 
@@ -99,18 +120,30 @@ class UserController extends Controller
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email',
-            'level' => 'required'
+            'level' => 'required',
+            'nip' => 'required',
+            'jabatan' => 'required',
+            'opd' => 'required',
+            'no_hp' => 'required',
         ],
         [
             'nama.required' => 'Nama harus diisi.',
             'email.required' =>'Email harus diisi.',
-            'level.required' => 'Level harus dipilih.'
+            'level.required' => 'Level harus dipilih.',
+            'nip.required' => 'Nip harus diisi.',
+            'jabatan.required' => 'Jabatan harus diisi.',
+            'opd.required' => 'OPD harus diisi.',
+            'no_hp.required' => 'No Hp harus diisi.',
         ]);
 
         Users::find($id)->update([
             'name' => $request->nama,
             'email' => $request->email,
-            'level' => $request->level
+            'level' => $request->level,
+            'nip' => $request->nip,
+            'jabatan' => $request->jabatan,
+            'opd' => $request->opd,
+            'no_hp' => $request->no_hp,
         ]);
 
         if($request->filled('password')){
@@ -130,6 +163,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if(!auth()->user()->hasPermission('users-delete')){
+        abort(403);
+       }
         Users::destroy($id);
     
        
@@ -142,14 +178,14 @@ class UserController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
-                    if(auth()->user()->level=='superadmin'){
+                  
                     $actionBtn = '
                     <div class="list-icons d-flex justify-content-center">
                     <a href="'.route('user.edit', $data->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
                     <a href="'.route('user.destroy', $data->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
                     </div>';
                     return $actionBtn;
-                    }
+                   
                 }
                 )
                 ->editColumn('nama', function($data)

@@ -1,6 +1,6 @@
 @section('title', 'Pengaduan Masyarakat')
-@section('menu','Pengaduan Masyarakat')
-@section('submenu','Edit')
+@section('menu','Layanan')
+@section('submenu','Pengaduan Masyarakat ')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
 
