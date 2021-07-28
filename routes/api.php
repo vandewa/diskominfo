@@ -19,6 +19,8 @@ Route::post('login', [LoginController::class, 'login']);
 
 Route::group(['middleware' => 'api'], function(){
     Route::get('tiket', [TiketController::class, 'getTiket']);
+    Route::get('tiket/belum-selesai', [TiketController::class, 'getTiketBelumSelesai']);
+    Route::get('tiket/sudah-selesai', [TiketController::class, 'getTiketSudahSelesai']);
     Route::get('tiket/detail/{id}',[TiketController::class, 'tiketDetail']);
     Route::post('tiket/update/{id}', [TiketController::class, 'tiketUpdate']);
 });
