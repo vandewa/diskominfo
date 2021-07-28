@@ -94,7 +94,7 @@ Route::get('/reload-captcha', [PengaduanController::class, 'reloadCaptcha']);
 Route::get('/pengaduans/list', [PengaduanController::class, 'getPengaduan'])->name('pengaduans.list');
 Route::get('/pengaduans/hapus/{id}/komentar', [PengaduanController::class, 'hapus'])->name('pengaduan.komentar.hapus');
 
-Route::group(['middleware'=>['permission:perizinan-read']], function(){
+Route::group([], function(){
     Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
         Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
         Route::post('akses/data-center', [AksesDcController::class, 'store'])->name('akses.dc.post');
@@ -183,6 +183,3 @@ Route::group([], function(){
 // Route::get('/admin', function() {
 //     return view('admin');
 // });
-
-
-
