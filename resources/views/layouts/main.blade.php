@@ -313,6 +313,7 @@
                 </li>
                 <!-- End Lampiran -->
 
+               
                  <!-- Lampiran -->
                  <!-- <li class="hs-has-sub-menu navbar-nav-item">
                   <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Sitemap</a> -->
@@ -383,6 +384,7 @@
 
 
                  <!-- Account Login -->
+                 
              <li class="list-inline-item">
               <div class="hs-unfold">
                 <a class="js-hs-unfold-invoker btn btn-icon btn-xs btn-ghost-secondary" href="{{ route('login')}}" >
@@ -550,7 +552,7 @@
         <!-- Copyright -->
 
         <div class="w-md-75 text-lg-center mx-lg-auto">
-          <p class="text-white opacity-sm small">&copy; Diskominfo Wonosobo 2012-{{ Carbon\Carbon::now()->isoFormat('Y') }}.</p>
+          <p class="text-white opacity-sm small">&copy; Diskominfo Wonosobo 2017-{{ Carbon\Carbon::now()->isoFormat('Y') }}.</p>
         </div>
         <!-- End Copyright -->
       </div>

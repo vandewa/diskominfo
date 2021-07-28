@@ -28,7 +28,7 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	
+
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3_tooltip.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switchery.min.js ')}}"></script>
@@ -60,7 +60,7 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/editors/summernote/summernote.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/editor_summernote.js')}}"></script>
 
-	
+
 	<script src="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/js/app.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/dashboard.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/editor_ckeditor.js ')}}"></script>
@@ -84,12 +84,12 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/contextmenu.js ')}}"></script>
 
     <!-- /theme JS files Datatable-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js" integrity="sha512-CrNI25BFwyQ47q3MiZbfATg0ZoG6zuNh2ANn/WjyqvN4ShWfwPeoCOi9pjmX4DoNioMQ5gPcphKKF+oVz3UjRw==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.js" integrity="sha512-ZYvPGKyKaVHwZFJldzOuYineKWIBiHZliZCcfa2dq4IYJe/w7k4WOUYa22jNAUAC+fxlXB1blBq1cgGQrV7DGg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js" integrity="sha512-jQxNe7fqaqehR3t/JfoxC8y2dwkEIL/7a6JWbs6sQdSCI/6Kd0t2okI9nhuKeSUgM5JDTDgdUzLzSPovB2lOBQ==" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.css" integrity="sha512-IThEP8v8WRHuDqEKg3D6V0jROeRcQXGu/02HzCudtHKlLSzl6F6EycdHw34M3gsBA5zsUyR4ynW6j5vS1qE4wQ==" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.js" integrity="sha512-pCY6IoVbjV1hvVawzGdzKCAVB0UXiOacncL59KETWUSkEPiDkvXTrXjGjpAQF6YCqxTcoa3YIV9SGGnFkb8evg==" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.css" integrity="sha512-/D4S05MnQx/q7V0+15CCVZIeJcV+Z+ejL1ZgkAcXE1KZxTE4cYDvu+Fz+cQO9GopKrDzMNNgGK+dbuqza54jgw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.js" integrity="sha512-ZYvPGKyKaVHwZFJldzOuYineKWIBiHZliZCcfa2dq4IYJe/w7k4WOUYa22jNAUAC+fxlXB1blBq1cgGQrV7DGg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js" integrity="sha512-CrNI25BFwyQ47q3MiZbfATg0ZoG6zuNh2ANn/WjyqvN4ShWfwPeoCOi9pjmX4DoNioMQ5gPcphKKF+oVz3UjRw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js" integrity="sha512-jQxNe7fqaqehR3t/JfoxC8y2dwkEIL/7a6JWbs6sQdSCI/6Kd0t2okI9nhuKeSUgM5JDTDgdUzLzSPovB2lOBQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.js" integrity="sha512-pCY6IoVbjV1hvVawzGdzKCAVB0UXiOacncL59KETWUSkEPiDkvXTrXjGjpAQF6YCqxTcoa3YIV9SGGnFkb8evg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.css" integrity="sha512-/D4S05MnQx/q7V0+15CCVZIeJcV+Z+ejL1ZgkAcXE1KZxTE4cYDvu+Fz+cQO9GopKrDzMNNgGK+dbuqza54jgw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.css" integrity="sha512-IThEP8v8WRHuDqEKg3D6V0jROeRcQXGu/02HzCudtHKlLSzl6F6EycdHw34M3gsBA5zsUyR4ynW6j5vS1qE4wQ==" crossorigin="anonymous" />
 
 
 
@@ -137,6 +137,7 @@
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="{{url('/account')}}/{{auth()->user()->id}}/edit" class="dropdown-item"><i class="icon-cog5"></i> Setting Akun</a>
 						<a href="{{route('logout')}}" class="dropdown-item"><i class="icon-switch2" id="sweet_warning"></i> Logout</a>
+                    </div>
 				</li>
 			</ul>
 		</div>
@@ -181,6 +182,7 @@
 							</a>
 						</li>
 
+						@permission('users-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi5')">
 							<a href="#" class="nav-link"><i class="icon-menu7"></i> <span>Menu Depan</span></a>
 
@@ -192,11 +194,13 @@
 								<li class="nav-item"><a href="{{ route('sampul.index') }}" class="nav-link">Sampul Beranda</a></li>
 								<li class="nav-item"><a href="{{ route('website.index') }}" class="nav-link">Website Kelurahan</a></li>
 								<li class="nav-item"><a href="{{ route('youtube.index') }}" class="nav-link">Youtube</a></li>
-								
-								
+
+
 							</ul>
 						</li>
-				
+						@endpermission
+
+						@permission('posting-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi2')">
 							<a href="#" class="nav-link"><i class="icon-newspaper"></i> <span>Posting</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
@@ -206,7 +210,24 @@
 								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Kategori</a></li>
 							</ul>
 						</li>
-						
+						@endpermission
+
+						@permission('perizinan-read')
+						<li class="nav-item nav-item-submenu @yield('kondisi7')">
+							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Perizinan</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Perizinan">
+								<li class="nav-item"><a href="{{ route('akses-data-center.index') }}" class="nav-link">Akses Data Center</a></li>
+								<li class="nav-item"><a href="{{ route('colocation-server.index') }}" class="nav-link">Colocation Server</a></li>
+								<li class="nav-item"><a href="{{ route('kunjungan-data-center.index') }}" class="nav-link">Kunjungan Data Center</a></li>
+								<li class="nav-item"><a href="{{ route('layanan-server.index') }}" class="nav-link">Layanan Server</a></li>
+								<li class="nav-item"><a href="{{ route('vps-baru.index') }}" class="nav-link">VPS Baru</a></li>
+								<li class="nav-item"><a href="{{ route('perubahan-vps.index') }}" class="nav-link">Perubahan VPS</a></li>
+								<li class="nav-item"><a href="{{ route('pengajuan-server.index') }}" class="nav-link">Pengantar Pengajuan Server</a></li>
+							</ul>
+						</li>
+						@endpermission
+
+						@permission('users-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi3')">
 							<a href="#" class="nav-link"><i class="icon-user"></i> <span>User</span></a>
 
@@ -214,26 +235,33 @@
 								<li class="nav-item"><a href="{{route('user.index')}}" class="nav-link ">Management User</a></li>
 							</ul>
 						</li>
+						@endpermission
 
-						<li class="nav-item @yield('kondisi6')">
-							<a href="{{ route('pengaduans.index') }}" class="nav-link @yield('kondisi6')">
-								<i class="icon-bubble-lines4"></i>
-								<span>
-									Pengaduan Masyarakat
-								</span>
-								<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_pengaduan}}</span>
-							</a>
-						</li>
+						@permission('layanan-read')
+						<li class="nav-item nav-item-submenu @yield('kondisi6')">
+							<a href="#" class="nav-link"><i class="icon-bubble-lines4"></i> <span>Layanan</span><span class="badge bg-orange-400 align-self-center ml-auto">{{ $total_layanan}}</span></a>
 
-						<li class="nav-item @yield('kondisi4')">
-							<a href="{{ route('komentar.index') }}" class="nav-link @yield('kondisi4')">
-								<i class="icon-bubble-dots4"></i>
-								<span>
-									Komentar
-								</span>
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_komentar}}</span>
-							</a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layanan">
+								<li class="nav-item"><a href="{{ route('pengaduans.index') }}" class="nav-link ">Pengaduan Masyarakat<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_pengaduan}}</span></a></li>
+								<li class="nav-item"><a href="{{ route('komentar.index') }}" class="nav-link ">Permohonan Informasi<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_komentar}}</span></a></li>
+							</ul>
+							
 						</li>
+						@endpermission
+
+{{-- Mulai Ticketing--}}
+
+						@permission('tiket-read')
+                        <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Tiket</div> <i class="icon-menu" title="tiket"></i></li>
+                        <li class="nav-item nav-item-submenu @yield('kondisi8')">
+                            <a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Tiket</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="Posting">
+                                <li class="nav-item"><a href="{{ route('tiket:tiket.create') }}" class="nav-link">Tambah Tiket</a></li>
+                                <li class="nav-item"><a href="{{ route('tiket:tiket.index') }}" class="nav-link">List Tiket</a></li>
+                            </ul>
+                        </li>
+						@endpermission
+
 						<!-- /main -->
 					</ul>
 				</div>
@@ -265,7 +293,7 @@
 						<div class="breadcrumb">
 							<a href="{{ route('dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
 							@yield('halaman')
-							
+
 						</div>
 
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -295,7 +323,7 @@
 
 				<div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2012 - {{ Carbon\Carbon::now()->isoFormat('Y') }}. <a href="#">Diskominfo Wonosobo</a> by <a href="" target="_blank">Devandewa</a>
+						&copy; 2017 - {{ Carbon\Carbon::now()->isoFormat('Y') }}. <a href="#">Diskominfo Wonosobo</a> by <a href="" target="_blank">Devandewa</a>
 					</span>
 				</div>
 			</div>
@@ -309,7 +337,9 @@
 
 	<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 	<script>
-		$(document).on('click', '.delete-data-table', function(a){
+
+
+        $(document).on('click', '.delete-data-table', function(a){
             a.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
@@ -362,10 +392,10 @@
                 confirmButtonText: 'Delete!'
             }).then((result) => {
                 if (result.value) {
-                 
+
                     var url = $(this).attr('href');
 					window.location.replace(url);
-   
+
                 }
             })
         });

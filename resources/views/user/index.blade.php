@@ -10,12 +10,10 @@
 @endsection
 
 @section('tambah_data')
-@if (auth()->user()->level=='superadmin')
 <a href="{{route('user.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah User
 </a>
-@endif
 @endsection
 
 @section('container')
@@ -39,9 +37,7 @@ Tambah User
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Level</th>
-                    @if (auth()->user()->level=='superadmin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -64,14 +60,12 @@ Tambah User
                     {data: 'nama', },
                     {data: 'email', },
                     {data: 'level', },
-                     @if (auth()->user()->level=='superadmin')
 					    {
 						data: 'action', 
 						name: 'action', 
 						orderable: true, 
 						searchable: true
                          },
-            @endif
         ]
     });
 </script>

@@ -41,12 +41,80 @@
 									</div>
 								</div>
 
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">NIP<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<div class="form-group form-group-feedback form-group-feedback-left">
+											<input type="text" name="nip" class="form-control" placeholder="Masukkan Nip" value="{{ $user->nip }}">
+											@error('nip')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
+											<div class="form-control-feedback form-control-feedback-lg">
+											<i class="icon-vcard"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Jabatan<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<div class="form-group form-group-feedback form-group-feedback-left">
+											<input type="text" name="jabatan" class="form-control" placeholder="Masukkan Jabatan" value="{{ $user->jabatan }}">
+											@error('jabatan')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
+											<div class="form-control-feedback form-control-feedback-lg">
+											<i class="icon-vcard"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">OPD<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<div class="form-group form-group-feedback form-group-feedback-left">
+											<input type="text" name="opd" class="form-control" placeholder="Masukkan OPD" value="{{ $user->opd }}">
+											@error('opd')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
+											<div class="form-control-feedback form-control-feedback-lg">
+											<i class="icon-vcard"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+
                                 <div class="form-group row">
 									<label class="col-form-label col-lg-2">Email<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
 											<input type="text" name="email" class="form-control" placeholder="Keterangan" value="{{ $user->email }}">
 											@error('email')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
+											<div class="form-control-feedback form-control-feedback-lg">
+												<i class="icon-envelope"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Nomor HP<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<div class="form-group form-group-feedback form-group-feedback-left">
+											<input type="text" name="no_hp" class="form-control" placeholder="Masukkkan No Hp" value="{{ $user->no_hp }}">
+											@error('no_hp')
 											<div class="invalid-feedback">
 											{{ $message }}
 											</div>
