@@ -29,6 +29,7 @@ use App\Http\Controllers\Perijinan\LayananServerController;
 use App\Http\Controllers\Perijinan\PerminColController;
 use App\Http\Controllers\PerijinanBackend\AksesDataCenterController;
 use App\Http\Controllers\Perijinan\KunjunganDcController;
+use App\Http\Controllers\Inventory\SatuanController;
 
 
 
@@ -145,7 +146,8 @@ Route::group(['middleware'=>['permission:tiket-read']], function(){
 });
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::group(['prefix' => 'inventory', 'as' => 'inventory'], function(){
+    Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function(){
+        Route::resource('satuan', SatuanController::class);
 
     });
 
