@@ -145,6 +145,10 @@ Route::group(['middleware'=>['permission:tiket-read']], function(){
 });
 
 Route::group(['middleware' => ['auth']], function(){
+    Route::group(['prefix' => 'inventory', 'as' => 'inventory'], function(){
+
+    });
+
     Route::group(['middleware'=>['permission:posting-read']], function (){
         Route::resource('posting', PostingController::class);
         Route::resource('category', CategoryController::class);
@@ -173,7 +177,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('pengaduans', PengaduanController::class);
     });
 
-   
+
 });
 
 Route::group([], function(){
