@@ -182,8 +182,9 @@ Route::group(['middleware' => ['auth']], function(){
 
 });
 
-Route::group([], function(){
-    Route::get('tower/peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
+Route::group(['prefix' => 'tower'], function(){
+    Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
+//    Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
 });
 
 // Route::get('/admin', function() {
