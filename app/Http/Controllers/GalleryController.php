@@ -43,7 +43,7 @@ class GalleryController extends Controller
         $files = $request->file('file_name');
         $prefix = date('Ymdhis');
         $extension = $files->extension();
-        $filename = $prefix.'-'.$by.'.'.$extension;
+        $filename = $prefix . '-' . $by . '.' . $extension;
 
         $files->move(public_path('/uploads'), $filename);
 
@@ -92,20 +92,20 @@ class GalleryController extends Controller
             'keterangan' => $request->keterangan
         ]);
 
-        if($request->hasfile('file_name')){
-        $by = $request->created_by;
-        $files = $request->file('file_name');
-        $prefix = date('Ymdhis');
+        if ($request->hasfile('file_name')) {
+            $by = $request->created_by;
+            $files = $request->file('file_name');
+            $prefix = date('Ymdhis');
 
-        $extension = $files->extension();
-        $filename = $prefix. $by.'.'.$extension;
-        $files->move(public_path('/uploads'), $filename);
-        $galeri = Gallery::where('id',$gallery);
-        $galeri
-        ->update(['file_name' => $filename]);
+            $extension = $files->extension();
+            $filename = $prefix . $by . '.' . $extension;
+            $files->move(public_path('/uploads'), $filename);
+            $galeri = Gallery::where('id', $gallery);
+            $galeri
+                ->update(['file_name' => $filename]);
         }
 
-        return redirect ('youtube')->with('status', 'Link Youtube berhasil diubah');
+        return redirect('youtube')->with('status', 'Link Youtube berhasil diubah');
     }
 
     /**
@@ -116,36 +116,33 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-         Gallery::destroy($id);
-
-        
+        Gallery::destroy($id);
     }
-     public function getGallery(Request $request)
+    public function getGallery(Request $request)
     {
-            $data = Gallery::orderBy('created_at','desc')->get();
-            
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($data){
+        $data = Gallery::orderBy('created_at', 'desc')->get();
+
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn(
+                'action',
+                function ($data) {
                     $actionBtn = '
                     <div class="list-icons d-flex justify-content-center">
-                    <a href="'.route('gallery.edit', $data->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                    <a href="'.route('gallery.destroy', $data->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    <a href="' . route('gallery.edit', $data->id) . ' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="' . route('gallery.destroy', $data->id) . ' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
                 </div>';
                     return $actionBtn;
                 }
-                )
-                ->editColumn('foto', function($data)
-                {
-                     $foto = '<a href="'.asset('uploads/'.$data->file_name).'" target="_blank"><img src="'.asset('uploads/'.$data->file_name).'" style="height:50px;"></a>';
-                    return $foto;
-                })
-                ->editColumn('keterangan', function($data)
-                {
-                    return $data->keterangan;
-                })
-                ->rawColumns(['action', 'status','foto'])
-                ->make(true);
-        
+            )
+            ->editColumn('foto', function ($data) {
+                $foto = '<a href="' . asset('uploads/' . $data->file_name) . '" target="_blank"><img src="' . asset('uploads/' . $data->file_name) . '" style="height:50px;"></a>';
+                return $foto;
+            })
+            ->editColumn('keterangan', function ($data) {
+                return $data->keterangan;
+            })
+            ->rawColumns(['action', 'status', 'foto'])
+            ->make(true);
     }
 }
