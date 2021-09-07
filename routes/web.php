@@ -29,6 +29,7 @@ use App\Http\Controllers\Perijinan\LayananServerController;
 use App\Http\Controllers\Perijinan\PerminColController;
 use App\Http\Controllers\PerijinanBackend\AksesDataCenterController;
 use App\Http\Controllers\Perijinan\KunjunganDcController;
+use App\Http\Controllers\Inventory\SatuanController;
 
 
 
@@ -145,6 +146,11 @@ Route::group(['middleware'=>['permission:tiket-read']], function(){
 });
 
 Route::group(['middleware' => ['auth']], function(){
+    Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function(){
+        Route::resource('satuan', SatuanController::class);
+
+    });
+
     Route::group(['middleware'=>['permission:posting-read']], function (){
         Route::resource('posting', PostingController::class);
         Route::resource('category', CategoryController::class);
@@ -173,11 +179,12 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('pengaduans', PengaduanController::class);
     });
 
-   
+
 });
 
-Route::group([], function(){
-    Route::get('tower/peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
+Route::group(['prefix' => 'tower'], function(){
+    Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
+//    Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
 });
 
 // Route::get('/admin', function() {
