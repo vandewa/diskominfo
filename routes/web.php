@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
-use App\Models\Home;
+// use App\Http\Controllers\Controller;
+// use App\Models\Home;
 use App\Http\Controllers\PostingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
@@ -27,9 +27,10 @@ use App\Http\Controllers\Perijinan\PerubahanVpsController;
 use App\Http\Controllers\Perijinan\PengajuanServerController;
 use App\Http\Controllers\Perijinan\LayananServerController;
 use App\Http\Controllers\Perijinan\PerminColController;
-use App\Http\Controllers\PerijinanBackend\AksesDataCenterController;
+// use App\Http\Controllers\PerijinanBackend\AksesDataCenterController;
 use App\Http\Controllers\Perijinan\KunjunganDcController;
 use App\Http\Controllers\Inventory\SatuanController;
+use App\Http\Controllers\Inventory\KategoriController;
 
 
 
@@ -49,6 +50,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardCon
 })->name('dashboard');
 
 Route::resource('home', HomeController::class);
+// Route::resource('kategori', KategoriController::class);
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 // PPID
@@ -149,6 +151,10 @@ Route::group(['middleware' => ['permission:tiket-read']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function () {
         Route::resource('satuan', SatuanController::class);
+    });
+
+    Route::group(['prefix' => 'kategorisss', 'as' => 'kategorisss:'], function () {
+        Route::resource('kategori', KategoriController::class);
     });
 
     Route::group(['middleware' => ['permission:posting-read']], function () {
