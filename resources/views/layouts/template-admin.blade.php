@@ -277,6 +277,13 @@
 								<li class="nav-item"><a href="{{ route('inventory:satuan.index') }}" class="nav-link">List Satuan</a></li>
 							</ul>
 						</li>
+						<li class="nav-item nav-item-submenu @yield('kondisi10')">
+							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Kategori</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Posting">
+								<li class="nav-item"><a href="{{ route('kategorisss:kategori.create') }}" class="nav-link">Tambah Kategori</a></li>
+								<li class="nav-item"><a href="{{ route('kategorisss:kategori.index') }}" class="nav-link">List Kategori</a></li>
+							</ul>
+						</li>
 
 						<!-- /main -->
 					</ul>
