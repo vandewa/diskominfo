@@ -1,12 +1,12 @@
-@section('title', 'Tambah Satuan')
+@section('title', 'Ubah Satuan')
 @section('menu','Inventori')
-@section('submenu','Tambah Satuan')
+@section('submenu','Ubah Satuan')
 @extends('layouts/template-admin')
 @section('kondisi9','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Inventori</span>
-<span class="breadcrumb-item active">Tambah Satuan</span>
+<span class="breadcrumb-item active">Ubah Satuan</span>
 @endsection
 
 @section('container')
@@ -15,10 +15,10 @@
     <!-- CKEditor default -->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5>FORM INPUT SATUAN</h5>
+            <h5>FORM UBAH SATUAN</h5>
         </div>
         <div class="card-body">
-            {{Form::open(['route' => 'inventory:satuan.store','method' => 'post', 'files' => 'true', ''])}}
+            {{Form::model($data, ['route' => ['inventory:satuan.update', $data->id],'method' => 'put', 'files' => 'true', ''])}}
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Nama Satuan<span class="text-danger">*</span></label>
                 <div class="col-lg-10">

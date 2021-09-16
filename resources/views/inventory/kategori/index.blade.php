@@ -1,18 +1,18 @@
-@section('title', 'Satuan')
-@section('menu','Satuan')
-@section('submenu','List Satuan')
+@section('title', 'Kategori')
+@section('menu','Kategori')
+@section('submenu','List Kategori')
 @extends('layouts/template-admin')
-@section('kondisi9','nav-item-expanded nav-item-open')
+@section('kondisi10','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Satuan</span>
-<span class="breadcrumb-item active">List Satuan</span>
+<span class="breadcrumb-item active">Kategori</span>
+<span class="breadcrumb-item active">List Kategori</span>
 @endsection
 
 @section('tambah_data')
-<a href="{{route('inventory:satuan.create')}}" class="btn btn-primary">
+<a href="{{route('kategorisss:kategori.create')}}" class="btn btn-primary">
     <i class="icon-file-plus mr-2"></i>
-    Tambah Satuan
+    Tambah Kategori
 </a>
 @endsection
 
@@ -33,7 +33,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Satuan</th>
+                        <th>Kategori</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
