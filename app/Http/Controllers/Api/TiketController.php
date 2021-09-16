@@ -9,7 +9,8 @@ use App\Models\Tiket;
 
 class TiketController extends Controller
 {
-    public function getTiket() {
+    public function getTiket()
+    {
         $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])
             ->where('petugas_penyelesaian_id', auth('api')->user()->id)->paginate(20);
 
@@ -17,9 +18,10 @@ class TiketController extends Controller
         return response()->json([
             "status" => "success",
             "data" => $data,
-        ],200);
+        ], 200);
     }
-    public function getTiketBelumSelesai() {
+    public function getTiketBelumSelesai()
+    {
         $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])
             ->where('petugas_penyelesaian_id', auth('api')->user()->id)
             ->where('tiket_st', 'TIKET_ST_02')
@@ -29,9 +31,10 @@ class TiketController extends Controller
         return response()->json([
             "status" => "success",
             "data" => $data,
-        ],200);
+        ], 200);
     }
-    public function getTiketSudahSelesai() {
+    public function getTiketSudahSelesai()
+    {
         $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])
             ->where('petugas_penyelesaian_id', auth('api')->user()->id)
             ->where('tiket_st', 'TIKET_ST_03')
@@ -41,7 +44,7 @@ class TiketController extends Controller
         return response()->json([
             "status" => "success",
             "data" => $data,
-        ],200);
+        ], 200);
     }
     public function tiketDetail($id)
     {
@@ -50,7 +53,7 @@ class TiketController extends Controller
         return response()->json([
             "status" => "success",
             "data" => $data,
-        ],200);
+        ], 200);
     }
 
     public function tiketUpdate(Request $request, $id)
@@ -67,7 +70,6 @@ class TiketController extends Controller
         return response()->json([
             "status" => "success",
             "data" => $data,
-        ],200);
+        ], 200);
     }
 }
-

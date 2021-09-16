@@ -1,12 +1,12 @@
-@section('title', 'Tambah Satuan')
-@section('menu','Inventori')
-@section('submenu','Tambah Satuan')
+@section('title', 'Tambah Kategori')
+@section('menu','Kategori')
+@section('submenu','Tambah Kategori')
 @extends('layouts/template-admin')
-@section('kondisi9','nav-item-expanded nav-item-open')
+@section('kondisi10','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Inventori</span>
-<span class="breadcrumb-item active">Tambah Satuan</span>
+<span class="breadcrumb-item active">Kategori</span>
+<span class="breadcrumb-item active">Tambah Kategori</span>
 @endsection
 
 @section('container')
@@ -15,14 +15,14 @@
     <!-- CKEditor default -->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5>FORM INPUT SATUAN</h5>
+            <h5>FORM INPUT KATEGORI</h5>
         </div>
         <div class="card-body">
-            {{Form::open(['route' => 'inventory:satuan.store','method' => 'post', 'files' => 'true', ''])}}
+            {{Form::open(['route' => 'kategorisss:kategori.store','method' => 'post', 'files' => 'true', ''])}}
             <div class="form-group row">
-                <label class="col-form-label col-lg-2">Nama Satuan<span class="text-danger">*</span></label>
+                <label class="col-form-label col-lg-2">Nama Kategori<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::text('name', null,['class' => 'form-control', 'placeholder' => 'Nama Satuan'])}}
+                    {{Form::text('name', null,['class' => 'form-control', 'placeholder' => 'Nama Kategori'])}}
                 </div>
             </div>
             <div class="text-right">
