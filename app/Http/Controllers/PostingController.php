@@ -117,7 +117,6 @@ class PostingController extends Controller
      */
     public function update(Request $request, $id)
     {
-
        Posting::find($id)
        ->update([
            'posisi' => $request->posisi,

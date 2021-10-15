@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Home;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\CursorPaginator;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -61,11 +62,10 @@ class HomeController extends Controller
 
     public function strukturppid()
     {
-        $strukturppid = Menu::where('id',46)
+        $strukturppid = Menu::where('id',48)
         ->first();
 
-
-        return view('home.strukturppid', compact('strukturppid'));
+        return view('menu.index', compact('strukturppid'));
     }
 
     public function personil()
@@ -114,14 +114,10 @@ class HomeController extends Controller
 
      public function kominfo($id)
     {
-
         $kominfo = Menu::where('id', $id)
         ->first();
     
-
         return view('home.kominfo', compact('kominfo'));
-
-
     }
 
     public function pengajuanizin(Request $request)
@@ -228,7 +224,7 @@ class HomeController extends Controller
         $posting2 = Posting::with(['attachment', 'gambarMuka','nama', 'kategori'])
         ->where('posisi', '=', 'menu_atas')
         ->orderBy('created_at', 'desc')
-        ->simplePaginate(5);
+        ->simplepaginate(5);
 
         $postingg = Posting::with(['attachment', 'gambarMuka', 'nama'])
         ->where('posisi', '=', 'highlight')

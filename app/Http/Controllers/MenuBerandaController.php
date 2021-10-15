@@ -62,8 +62,6 @@ class MenuBerandaController extends Controller
         }
 
         return redirect('menuberanda')->with('status', 'Data berhasil ditambahkan.');
-
-
     }
 
 
@@ -90,7 +88,6 @@ class MenuBerandaController extends Controller
 
         $parentt = DB::table('menu')
         ->get();
-
 
         return view('menuberanda.edit', compact('menuberanda','parentt'));
     }
