@@ -6,3 +6,5 @@
 npm-debug.log
 .env
 /public/uploads.zip
+/uploads.zip
+
