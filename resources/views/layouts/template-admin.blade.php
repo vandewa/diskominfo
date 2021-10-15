@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="csrf-token" content="{{csrf_token()}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('front/assets/images/pemda.ico')}}">
-    <!-- Title -->
-    <title>@yield('title')</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{{ asset('front/assets/images/pemda.ico')}}">
+	<!-- Title -->
+	<title>@yield('title')</title>
 
 
 	<!-- Global stylesheets -->
@@ -76,20 +77,20 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_actions.js ')}}"></script>
 	<!-- /theme JS files -->
 
-    <!-- Theme JS files Datatable-->
+	<!-- Theme JS files Datatable-->
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/datatables.min.js ')}}"></script>
-    <script src="{{ url ('limitless/Template/global_assets/js/demo_pages/datatables_basic.js ')}}"></script>
-    <script src="{{ url ('limitless/Template/global_assets/js/demo_pages/table_elements.js ')}}"></script>
-    <script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/datatables_basic.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/table_elements.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/contextmenu.js ')}}"></script>
 
-    <!-- /theme JS files Datatable-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.js" integrity="sha512-ZYvPGKyKaVHwZFJldzOuYineKWIBiHZliZCcfa2dq4IYJe/w7k4WOUYa22jNAUAC+fxlXB1blBq1cgGQrV7DGg==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js" integrity="sha512-CrNI25BFwyQ47q3MiZbfATg0ZoG6zuNh2ANn/WjyqvN4ShWfwPeoCOi9pjmX4DoNioMQ5gPcphKKF+oVz3UjRw==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js" integrity="sha512-jQxNe7fqaqehR3t/JfoxC8y2dwkEIL/7a6JWbs6sQdSCI/6Kd0t2okI9nhuKeSUgM5JDTDgdUzLzSPovB2lOBQ==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.js" integrity="sha512-pCY6IoVbjV1hvVawzGdzKCAVB0UXiOacncL59KETWUSkEPiDkvXTrXjGjpAQF6YCqxTcoa3YIV9SGGnFkb8evg==" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.css" integrity="sha512-/D4S05MnQx/q7V0+15CCVZIeJcV+Z+ejL1ZgkAcXE1KZxTE4cYDvu+Fz+cQO9GopKrDzMNNgGK+dbuqza54jgw==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.css" integrity="sha512-IThEP8v8WRHuDqEKg3D6V0jROeRcQXGu/02HzCudtHKlLSzl6F6EycdHw34M3gsBA5zsUyR4ynW6j5vS1qE4wQ==" crossorigin="anonymous" />
+	<!-- /theme JS files Datatable-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.js" integrity="sha512-ZYvPGKyKaVHwZFJldzOuYineKWIBiHZliZCcfa2dq4IYJe/w7k4WOUYa22jNAUAC+fxlXB1blBq1cgGQrV7DGg==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js" integrity="sha512-CrNI25BFwyQ47q3MiZbfATg0ZoG6zuNh2ANn/WjyqvN4ShWfwPeoCOi9pjmX4DoNioMQ5gPcphKKF+oVz3UjRw==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js" integrity="sha512-jQxNe7fqaqehR3t/JfoxC8y2dwkEIL/7a6JWbs6sQdSCI/6Kd0t2okI9nhuKeSUgM5JDTDgdUzLzSPovB2lOBQ==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.js" integrity="sha512-pCY6IoVbjV1hvVawzGdzKCAVB0UXiOacncL59KETWUSkEPiDkvXTrXjGjpAQF6YCqxTcoa3YIV9SGGnFkb8evg==" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.css" integrity="sha512-/D4S05MnQx/q7V0+15CCVZIeJcV+Z+ejL1ZgkAcXE1KZxTE4cYDvu+Fz+cQO9GopKrDzMNNgGK+dbuqza54jgw==" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.css" integrity="sha512-IThEP8v8WRHuDqEKg3D6V0jROeRcQXGu/02HzCudtHKlLSzl6F6EycdHw34M3gsBA5zsUyR4ynW6j5vS1qE4wQ==" crossorigin="anonymous" />
 
 
 
@@ -137,7 +138,7 @@
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="{{url('/account')}}/{{auth()->user()->id}}/edit" class="dropdown-item"><i class="icon-cog5"></i> Setting Akun</a>
 						<a href="{{route('logout')}}" class="dropdown-item"><i class="icon-switch2" id="sweet_warning"></i> Logout</a>
-                    </div>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -172,7 +173,9 @@
 					<ul class="nav nav-sidebar" data-nav-type="accordion">
 
 						<!-- Main -->
-						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
+						<li class="nav-item-header">
+							<div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i>
+						</li>
 						<li class="nav-item">
 							<a href="{{ route('dashboard') }}" class="nav-link @yield('kondisi1')">
 								<i class="icon-home4"></i>
@@ -245,22 +248,42 @@
 								<li class="nav-item"><a href="{{ route('pengaduans.index') }}" class="nav-link ">Pengaduan Masyarakat<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_pengaduan}}</span></a></li>
 								<li class="nav-item"><a href="{{ route('komentar.index') }}" class="nav-link ">Permohonan Informasi<span class="badge bg-orange-400 align-self-center ml-auto">{{ $status_komentar}}</span></a></li>
 							</ul>
-							
+
 						</li>
 						@endpermission
 
-{{-- Mulai Ticketing--}}
+						{{-- Mulai Ticketing--}}
 
 						@permission('tiket-read')
-                        <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Tiket</div> <i class="icon-menu" title="tiket"></i></li>
-                        <li class="nav-item nav-item-submenu @yield('kondisi8')">
-                            <a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Tiket</span></a>
-                            <ul class="nav nav-group-sub" data-submenu-title="Posting">
-                                <li class="nav-item"><a href="{{ route('tiket:tiket.create') }}" class="nav-link">Tambah Tiket</a></li>
-                                <li class="nav-item"><a href="{{ route('tiket:tiket.index') }}" class="nav-link">List Tiket</a></li>
-                            </ul>
-                        </li>
+						<li class="nav-item-header">
+							<div class="text-uppercase font-size-xs line-height-xs">Tiket</div> <i class="icon-menu" title="tiket"></i>
+						</li>
+						<li class="nav-item nav-item-submenu @yield('kondisi8')">
+							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Tiket</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Posting">
+								<li class="nav-item"><a href="{{ route('tiket:tiket.create') }}" class="nav-link">Tambah Tiket</a></li>
+								<li class="nav-item"><a href="{{ route('tiket:tiket.index') }}" class="nav-link">List Tiket</a></li>
+							</ul>
+						</li>
 						@endpermission
+
+						<li class="nav-item-header">
+							<div class="text-uppercase font-size-xs line-height-xs">Inventory</div> <i class="icon-menu" title="tiket"></i>
+						</li>
+						<li class="nav-item nav-item-submenu @yield('kondisi9')">
+							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Satuan</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Posting">
+								<li class="nav-item"><a href="{{ route('inventory:satuan.create') }}" class="nav-link">Tambah Satuan</a></li>
+								<li class="nav-item"><a href="{{ route('inventory:satuan.index') }}" class="nav-link">List Satuan</a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu @yield('kondisi10')">
+							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Kategori</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Posting">
+								<li class="nav-item"><a href="{{ route('kategorisss:kategori.create') }}" class="nav-link">Tambah Kategori</a></li>
+								<li class="nav-item"><a href="{{ route('kategorisss:kategori.index') }}" class="nav-link">List Kategori</a></li>
+							</ul>
+						</li>
 
 						<!-- /main -->
 					</ul>
@@ -310,7 +333,7 @@
 			</div>
 			<!-- /page header -->
 
-            @yield('container')
+			@yield('container')
 
 			<!-- Footer -->
 			<div class="navbar navbar-expand-lg navbar-light">
@@ -337,73 +360,72 @@
 
 	<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 	<script>
+		$(document).on('click', '.delete-data-table', function(a) {
+			a.preventDefault();
+			Swal.fire({
+				title: 'Are you sure?',
+				text: "Do you realy want to delete this records? This process cannot be undone.",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Delete!'
+			}).then((result) => {
+				if (result.value) {
+					a.preventDefault();
+					var url = $(this).attr('href');
+					$.ajaxSetup({
+						headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						}
+					});
 
-
-        $(document).on('click', '.delete-data-table', function(a){
-            a.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Do you realy want to delete this records? This process cannot be undone.",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Delete!'
-            }).then((result) => {
-                if (result.value) {
-                    a.preventDefault();
-                    var url = $(this).attr('href');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-
-                    $.ajax({
-                        url: url,
-                        method: 'delete',
-                        success: function () {
-                            Swal.fire(
-                                'Deleted!',
-                                'data has been deleted.',
-                                'success'
-                            )
-                            table.ajax.reload();
-                            if(typeof table2){
-                                table2.ajax.reload();
-                            }
-                        }
-                    })
-                }
-            })
-        });
+					$.ajax({
+						url: url,
+						method: 'delete',
+						success: function() {
+							Swal.fire(
+								'Deleted!',
+								'data has been deleted.',
+								'success'
+							)
+							table.ajax.reload();
+							if (typeof table2) {
+								table2.ajax.reload();
+							}
+						}
+					})
+				}
+			})
+		});
 	</script>
 
 	<script>
-		$(document).on('click', '.deletee', function(a){
-            a.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Do you realy want to delete this records? This process cannot be undone.",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Delete!'
-            }).then((result) => {
-                if (result.value) {
+		$(document).on('click', '.deletee', function(a) {
+			a.preventDefault();
+			Swal.fire({
+				title: 'Are you sure?',
+				text: "Do you realy want to delete this records? This process cannot be undone.",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Delete!'
+			}).then((result) => {
+				if (result.value) {
 
-                    var url = $(this).attr('href');
+					var url = $(this).attr('href');
 					window.location.replace(url);
 
-                }
-            })
-        });
+				}
+			})
+		});
 	</script>
 
-@stack('js')
+	@stack('js')
 
 
 
 </body>
+
 </html>

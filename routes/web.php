@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
-use App\Models\Home;
+// use App\Http\Controllers\Controller;
+// use App\Models\Home;
 use App\Http\Controllers\PostingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
@@ -27,8 +27,14 @@ use App\Http\Controllers\Perijinan\PerubahanVpsController;
 use App\Http\Controllers\Perijinan\PengajuanServerController;
 use App\Http\Controllers\Perijinan\LayananServerController;
 use App\Http\Controllers\Perijinan\PerminColController;
-use App\Http\Controllers\PerijinanBackend\AksesDataCenterController;
+// use App\Http\Controllers\PerijinanBackend\AksesDataCenterController;
 use App\Http\Controllers\Perijinan\KunjunganDcController;
+use App\Http\Controllers\Inventory\SatuanController;
+
+use App\Http\Controllers\Inventory\BarangController;
+
+use App\Http\Controllers\Inventory\KategoriController;
+
 
 
 
@@ -44,9 +50,11 @@ use App\Http\Controllers\Perijinan\KunjunganDcController;
 */
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'], function () {
-    return view('dashboard');})->name('dashboard');
+    return view('dashboard');
+})->name('dashboard');
 
 Route::resource('home', HomeController::class);
+// Route::resource('kategori', KategoriController::class);
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 // PPID
@@ -94,31 +102,31 @@ Route::get('/reload-captcha', [PengaduanController::class, 'reloadCaptcha']);
 Route::get('/pengaduans/list', [PengaduanController::class, 'getPengaduan'])->name('pengaduans.list');
 Route::get('/pengaduans/hapus/{id}/komentar', [PengaduanController::class, 'hapus'])->name('pengaduan.komentar.hapus');
 
-Route::group(['middleware'=>['permission:perizinan-read']], function(){
-    Route::group(['prefix' => 'perijinan', 'as' =>'perijinan:'], function(){
+Route::group([], function () {
+    Route::group(['prefix' => 'perijinan', 'as' => 'perijinan:'], function () {
         Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
         Route::post('akses/data-center', [AksesDcController::class, 'store'])->name('akses.dc.post');
-        Route::get('akses/data-center/{id}/cetak',[AksesDcController::class, 'cetakSurat'] )->name('cetak.surat.akses.dc');
+        Route::get('akses/data-center/{id}/cetak', [AksesDcController::class, 'cetakSurat'])->name('cetak.surat.akses.dc');
         Route::get('permohonan/vps-baru', [PenambahanVpsController::class, 'create'])->name('vps.baru.create');
         Route::post('permohonan/vps-baru', [PenambahanVpsController::class, 'store'])->name('vps.baru.post');
-        Route::get('permohonan/vps-baru/{id}/cetak',[PenambahanVpsController::class, 'cetakSurat'] )->name('cetak.surat.vps.baru');
+        Route::get('permohonan/vps-baru/{id}/cetak', [PenambahanVpsController::class, 'cetakSurat'])->name('cetak.surat.vps.baru');
         Route::get('permohonan/perubahan-vps', [PerubahanVpsController::class, 'create'])->name('perubahan.vps.create');
         Route::post('permohonan/perubahan-vps', [PerubahanVpsController::class, 'store'])->name('perubahan.vps.post');
-        Route::get('permohonan/perubahan-vps/{id}/cetak',[PerubahanVpsController::class, 'cetakSurat'] )->name('cetak.surat.perubahan.vps');
+        Route::get('permohonan/perubahan-vps/{id}/cetak', [PerubahanVpsController::class, 'cetakSurat'])->name('cetak.surat.perubahan.vps');
         Route::get('permohonan/pengajuan-server', [PengajuanServerController::class, 'create'])->name('pengajuan.server.create');
         Route::post('permohonan/pengajuan-server', [PengajuanServerController::class, 'store'])->name('pengajuan.server.post');
-        Route::get('permohonan/pengajuan-server/{id}/cetak',[PengajuanServerController::class, 'cetakSurat'] )->name('cetak.surat.pengajuan.server');
+        Route::get('permohonan/pengajuan-server/{id}/cetak', [PengajuanServerController::class, 'cetakSurat'])->name('cetak.surat.pengajuan.server');
         Route::get('permohonan/layanan-server', [LayananServerController::class, 'create'])->name('layanan.server.create');
         Route::post('permohonan/layanan-server', [LayananServerController::class, 'store'])->name('layanan.server.post');
-        Route::get('permohonan/layanan-server/{id}/cetak',[LayananServerController::class, 'cetakSurat'] )->name('cetak.surat.layanan.server');
+        Route::get('permohonan/layanan-server/{id}/cetak', [LayananServerController::class, 'cetakSurat'])->name('cetak.surat.layanan.server');
         Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
         Route::post('permintaan/colocation', [PerminColController::class, 'store'])->name('permintaan.col.post');
-        Route::get('permintaan/colocation/{id}/cetak',[PerminColController::class, 'cetakSurat'] )->name('cetak.surat.colocation.server');
+        Route::get('permintaan/colocation/{id}/cetak', [PerminColController::class, 'cetakSurat'])->name('cetak.surat.colocation.server');
         Route::get('kunjungan/data-center', [KunjunganDcController::class, 'create'])->name('kunjungan.dc.create');
         Route::post('kunjungan/data-center', [KunjunganDcController::class, 'store'])->name('kunjungan.dc.post');
     });
     Route::resource('akses-data-center', AksesDcController::class);
-    Route::resource('layanan-server', LayananServerController ::class);
+    Route::resource('layanan-server', LayananServerController::class);
     Route::resource('vps-baru', PenambahanVpsController::class);
     Route::resource('perubahan-vps', PerubahanVpsController::class);
     Route::resource('colocation-server', PerminColController::class);
@@ -126,7 +134,7 @@ Route::group(['middleware'=>['permission:perizinan-read']], function(){
     Route::resource('pengajuan-server', PengajuanServerController::class);
 });
 
-Route::group(['middleware'=>['permission:perizinan-update']], function(){
+Route::group(['middleware' => ['permission:perizinan-update']], function () {
     Route::patch('akses-data-center/{id}/persetujuan', [AksesDcController::class, 'persetujuan'])->name('akses-data-center.persetujuan');
     Route::patch('layanan-server/{id}/persetujuan', [LayananServerController::class, 'persetujuan'])->name('layanan-server.persetujuan');
     Route::patch('vps-baru/{id}/persetujuan', [PenambahanVpsController::class, 'persetujuan'])->name('vps-baru.persetujuan');
@@ -136,23 +144,31 @@ Route::group(['middleware'=>['permission:perizinan-update']], function(){
     Route::patch('pengajuan-server/{id}/persetujuan', [PengajuanServerController::class, 'persetujuan'])->name('pengajuan-server.persetujuan');
 });
 
-Route::group(['middleware'=>['permission:tiket-read']], function(){
-    Route::group(['prefix' => 'tiket', 'as' => 'tiket:'], function(){
-        Route::patch('tambah-petugas/{id}/petugas',[\App\Http\Controllers\Tiket\TiketController::class, 'storePenugasan'] )->name('store.petugas');
-        Route::get('tambah-petugas/{id}/surat-tugas/cetak',[\App\Http\Controllers\Tiket\TiketController::class, 'cetakSuratTugas'] )->name('cetak.surat.tugas');
+Route::group(['middleware' => ['permission:tiket-read']], function () {
+    Route::group(['prefix' => 'tiket', 'as' => 'tiket:'], function () {
+        Route::patch('tambah-petugas/{id}/petugas', [\App\Http\Controllers\Tiket\TiketController::class, 'storePenugasan'])->name('store.petugas');
+        Route::get('tambah-petugas/{id}/surat-tugas/cetak', [\App\Http\Controllers\Tiket\TiketController::class, 'cetakSuratTugas'])->name('cetak.surat.tugas');
         Route::resource('tiket', \App\Http\Controllers\Tiket\TiketController::class);
     });
 });
 
-Route::group(['middleware' => ['auth']], function(){
-    Route::group(['middleware'=>['permission:posting-read']], function (){
-        Route::resource('posting', PostingController::class);
-        Route::resource('category', CategoryController::class);
-        Route::resource('infohoax',InfohoaxController::class);
-        Route::resource('infografis',InfografisController::class);
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function () {
+        Route::resource('satuan', SatuanController::class);
+        Route::resource('barang', BarangController::class);
+    });
+    Route::group(['prefix' => 'kategorisss', 'as' => 'kategorisss:'], function () {
+        Route::resource('kategori', KategoriController::class);
     });
 
-    Route::group(['middleware'=>['permission:menu_depan-read']], function(){
+    Route::group(['middleware' => ['permission:posting-read']], function () {
+        Route::resource('posting', PostingController::class);
+        Route::resource('category', CategoryController::class);
+        Route::resource('infohoax', InfohoaxController::class);
+        Route::resource('infografis', InfografisController::class);
+    });
+
+    Route::group(['middleware' => ['permission:menu_depan-read']], function () {
         Route::resource('gallery', GalleryController::class);
         Route::resource('lampirans', LampiranController::class);
         Route::resource('menuberanda', MenuBerandaController::class);
@@ -162,27 +178,22 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('youtube', YoutubeController::class);
     });
 
-    Route::group(['middleware'=>['permission:users-read']], function(){
+    Route::group(['middleware' => ['permission:users-read']], function () {
         Route::resource('user', UserController::class);
         Route::resource('account', AccountController::class);
-
     });
 
-    Route::group(['middleware'=>['permission:layanan-read']], function(){
+    Route::group(['middleware' => ['permission:layanan-read']], function () {
         Route::resource('komentar', KomentarController::class);
         Route::resource('pengaduans', PengaduanController::class);
     });
-
-   
 });
 
-Route::group([], function(){
-    Route::get('tower/peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
+Route::group(['prefix' => 'tower'], function () {
+    Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
+    //    Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
 });
 
 // Route::get('/admin', function() {
 //     return view('admin');
 // });
-
-
-
