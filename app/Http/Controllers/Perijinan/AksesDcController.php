@@ -10,6 +10,8 @@ use Session;
 use DataTables;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\PhpWord;
+use App\Mail\NotifikasiAksesDCMail;
+use Illuminate\Support\Facades\Mail;
 
 class AksesDcController extends Controller
 {
@@ -64,6 +66,8 @@ class AksesDcController extends Controller
         if($data){
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
+
+        Mail::to($request->email)->send(new NotifikasiAksesDCMail($data));
 
         return redirect()->back();
     }
