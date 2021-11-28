@@ -37,7 +37,6 @@
   @stack('css')
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
-  </link>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -437,7 +436,7 @@
                       Total Pengunjung
                       <div class="d-flex justify-content-left ml-3 mb-4">
                         <a href='https://www.stat-counter.org/'></a>
-                        <script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/829214/t/5"></script>
+                        {{-- <script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/829214/t/5"></script> --}}
                       </div>
                     </span>
                   </span>
@@ -720,6 +719,12 @@
         var goTo = new HSGoTo($(this)).init();
       });
     });
+    @if(request('page') !='')
+    window.onload = function() {
+    var el = document.getElementById('de');
+    el.scrollIntoView(true);
+}
+@endif
   </script>
 
   <!-- IE Support -->

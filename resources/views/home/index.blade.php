@@ -20,25 +20,25 @@
         <div class="position-relative">
             <!-- Main Slider -->
             <div id="heroSlider" class="js-slick-carousel slick" data-hs-slick-carousel-options='{
-           "vertical": true,
-           "verticalSwiping": true,
-           "autoplay": true,
-           "autoplaySpeed": 10000,
-           "dots": true,
-           "dotsClass": "slick-pagination slick-pagination-white d-lg-none position-absolute bottom-0 right-0 left-0 mb-3",
-           "asNavFor": "#heroSliderNav",
-           "responsive": [
-             {
-               "breakpoint": 576,
-               "settings": {
-                 "vertical": false,
-                 "verticalSwiping": false
-               }
-             }
-           ]
-         }'>
+                "vertical": true,
+                "verticalSwiping": true,
+                "autoplay": true,
+                "autoplaySpeed": 1000,
+                "dots": true,
+                "dotsClass": "slick-pagination slick-pagination-white d-lg-none position-absolute bottom-0 right-0 left-0 mb-3",
+                "asNavFor": "#heroSliderNav",
+                "responsive": [
+                    {
+                    "breakpoint": 576,
+                    "settings": {
+                        "vertical": false,
+                        "verticalSwiping": false
+                    }
+                    }
+                ]
+                }'>
 
-                <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem"
+                <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem vh-md-70 col-lg col-xl"
                     style="background-image: url({{ asset('front/assets/images/'.$sampul->file_name) }});"
                     data-aos="zoom-out">
                     <!-- News Block -->
@@ -99,6 +99,7 @@
 
 
         <!-- Blogs Section -->
+         <div id="de"></div>
         <div class="container space-2 space-lg-2" id="pagenya">
             <div class="row justify-content-lg-between">
                 <div class="col-lg-8">
@@ -144,6 +145,7 @@
                     </div>
 
                     <!-- End Blog -->
+                   
                     @foreach($posting2 as $post)
                         <!-- Blog -->
                         <article class="row mb-7" data-aos="zoom-out-right">
@@ -191,10 +193,7 @@
                     {{ $posting2->links() }}
 
 
-                    <!-- <button onclick="myFunction()">scroll
-          </button> -->
-
-
+                 
 
                     <!-- Sticky Block End Point -->
                     <div id="stickyBlockEndPoint"></div>
@@ -204,23 +203,24 @@
                     <!-- Sticky Block Start Point -->
                     <div id="stickyBlockStartPoint"></div>
                     <div class="js-sticky-block" data-hs-sticky-block-options='{
-                 "parentSelector": "#stickyBlockStartPoint",
-                 "breakpoint": "lg",
-                 "startPoint": "#stickyBlockStartPoint",
-                 "endPoint": "#stickyBlockEndPoint",
-                 "stickyOffsetTop": 40,
-                 "stickyOffsetBottom": 20
-               }'>
+                        "parentSelector": "#stickyBlockStartPoint",
+                        "breakpoint": "lg",
+                        "startPoint": "#stickyBlockStartPoint",
+                        "endPoint": "#stickyBlockEndPoint",
+                        "stickyOffsetTop": 40,
+                        "stickyOffsetBottom": 20
+                    }'>
                         <div class="mb-7">
 
                             <div class="mb-3">
                                 <a href="/pengajuanizin">
                                     <img class="card-img transition-zoom-hover"
-                                        src="{{ asset('front/assets/images/pengajuan.jpg') }}"
+                                        src="{{ asset('front/assets/images/pengajuan.gif') }}"
                                         alt="Girl in a jacket" width="250" height="80">
                                 </a>
                             </div>
 
+                           
                             <div class="mb-2">
                                 <h3>Cari Berita</h3>
                             </div>
@@ -280,10 +280,60 @@
                             @endforeach
                         </div>
 
-                        <div class="mb-">
+                        <div class="position-relative bg-primary overflow-hidden mb-3">
+                                <div class=" text-left position-relative">
+                                    <h3 class="container text-white text-center font-weight-semi-bold ">SOSIAL MEDIA</h3>
+                                </div>
+                                <!-- SVG Shapes -->
+                                <figure class="mb-n1">
+                                    <svg class="position-absolute top-0 right-0 bottom-0 h-100"
+                                        xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
+                                        height="100%">
+                                        <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z" />
+                                    </svg>
+                                </figure>
+                                <!-- End SVG Shapes -->
+                            </div>
+                        
+
+
+                        <div class="mb-3">
+                                <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
+                                    <img class="card-img transition-zoom-hover"
+                                        src="{{ asset('front/assets/images/instagram.gif') }}"
+                                        alt="Girl in a jacket" width="250" height="80">
+                                </a>
+                            </div>
+
+                         <div class="mb-3">
+                                <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
+                                    <img class="card-img transition-zoom-hover"
+                                        src="{{ asset('front/assets/images/youtube.gif') }}"
+                                        alt="Girl in a jacket" width="250" height="80">
+                                </a>
+                            </div>
+
+                            <div class="mb-3">
+                                <a href="https://www.facebook.com/diskominfo.wsb" target="_blank">
+                                    <img class="card-img transition-zoom-hover"
+                                        src="{{ asset('front/assets/images/fb.gif') }}"
+                                        alt="Girl in a jacket" width="250" height="80">
+                                </a>
+                            </div>
+
+                            <div class="mb-3">
+                                <a href="https://twitter.com/diskominfo_wsb" target="_blank">
+                                    <img class="card-img transition-zoom-hover"
+                                        src="{{ asset('front/assets/images/twitter.gif') }}"
+                                        alt="Girl in a jacket" width="250" height="80">
+                                </a>
+                            </div>
+
+
+                        <div class="mb-0">
                             <div class="mb-3">
 
-                                <div class="position-relative bg-primary overflow-hidden">
+                                {{-- <div class="position-relative bg-primary overflow-hidden">
                                     <div class=" text-left position-relative">
                                         <h3 class="container text-white text-center font-weight-semi-bold ">WEB TV </h3>
                                     </div>
@@ -297,20 +347,20 @@
                                     </figure>
                                     <!-- End SVG Shapes -->
                                 </div>
+ --}}
 
-
-                                <div class=" js-slick-carousel slick" data-hs-slick-carousel-options='{
-                "fade": true,
-                "autoplay": true,
-                "autoplaySpeed": 7000,
-                "infinite": true,
-                "responsive": [{
-                  "breakpoint": 768,
-                  "settings": {
-                    "arrows": false
-                  }
-                }]
-              }'>
+                                {{-- <div class=" js-slick-carousel slick" data-hs-slick-carousel-options='{
+                                    "fade": true,
+                                    "autoplay": true,
+                                    "autoplaySpeed": 7000,
+                                    "infinite": true,
+                                    "responsive": [{
+                                    "breakpoint": 768,
+                                    "settings": {
+                                        "arrows": false
+                                    }
+                                    }]
+                                }'>
                                     @foreach($youtube as $yt)
                                         <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
                                             <iframe src="{{ $yt->link }}" title="YouTube video player" frameborder="0"
@@ -322,11 +372,11 @@
 
 
                             </div>
-                        </div>
+                        </div> --}}
 
 
 
-                        <div class="mb-5">
+                        {{-- <div class="mb-5">
                             <div class="mb-3">
 
                                 <div class="position-relative bg-primary overflow-hidden">
@@ -350,12 +400,12 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> --}}
 
 
 
                         <div class="mb-5">
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
 
                                 <div class="position-relative bg-primary overflow-hidden">
                                     <div class=" text-left position-relative">
@@ -371,14 +421,14 @@
                                         </svg>
                                     </figure>
                                     <!-- End SVG Shapes -->
-                                </div>
+                                </div> --}}
 
-                                <iframe
+                                {{-- <iframe
                                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fdiskominfo.wsb&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1681253631890456"
                                     width="255" height="250" style="border:none;overflow:hidden" scrolling="no"
                                     frameborder="0" allowfullscreen="true"
                                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                                </iframe>
+                                </iframe> --}}
 
                                 <!-- <div class="fb-page" 
             data-href="https://www.facebook.com/diskominfo.wsb"
