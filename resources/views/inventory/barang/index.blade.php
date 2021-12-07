@@ -1,4 +1,4 @@
-@section('title', 'Barang')
+@section('title', 'Inventory')
 @section('menu','Inventory')
 @section('submenu','List Barang')
 @extends('layouts/template-admin')
