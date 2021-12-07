@@ -422,6 +422,7 @@
 		});
 	</script>
 
+
 	@stack('js')
 
 

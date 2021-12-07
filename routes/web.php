@@ -72,11 +72,13 @@ Route::post('/pengajuan/simpan', [HomeController::class, 'simpan'])->name('penga
 Route::get('/website/list', [HomeController::class, 'getWebsite'])->name('website.list');
 Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
 Route::get('/kominfo/{id}', [HomeController::class, 'kominfo'])->name('kominfo');
-Route::get('/detail/{post}', [HomeController::class, 'detail'])->name('detail.posting');
+Route::get('/detail/{post:slug}', [HomeController::class, 'detail'])->name('detail.posting');
 Route::get('/details/{post}', [HomeController::class, 'details'])->name('details.pengumuman');
 Route::get('/search', [HomeController::class, 'cari'])->name('search');
 Route::get('/kategori/{post}', [HomeController::class, 'kategori'])->name('kategori.posting');
 Route::get('/uploadby/{post}', [HomeController::class, 'uploadby'])->name('uploadby.posting');
+Route::get('/posting/checkSlug', [PostingController::class, 'checkSlug'])->middleware('auth');
+Route::get('/posting/{id}/checkSlug', [PostingController::class, 'checkSlug'])->middleware('auth');
 Route::get('/posting/logout', [PostingController::class, 'logout'])->name('logout');
 Route::get('/posting/list', [PostingController::class, 'getPosting'])->name('posting.list');
 Route::get('/infohoax/list', [InfohoaxController::class, 'getInfohoax'])->name('infohoax.list');

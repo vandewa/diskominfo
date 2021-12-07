@@ -42,6 +42,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
+    <link rel="stylesheet" href="{{ url('front/assets/style.css')}}" />
+
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
   <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -609,9 +612,45 @@
 
   <!-- JS Front -->
   <script src="{{ url ('front/assets/js/theme.min.js')}}"></script>
+  <script src="{{ url ('front/assets/js/vanilla-tilt.min.js')}}"></script>
 
 
   <!-- JS Plugins Init. -->
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box1'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box2'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box3'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box4'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
   <script>
     $(document).on('ready', function() {
 
