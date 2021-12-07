@@ -14,21 +14,28 @@ class BarangController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->ajax()){
+        if ($request->ajax()) {
             $data = MasterAsset::with(['satuan', 'kategori']);
             return DataTables::of($data)
-                ->addColumn('action', function ($a){
-
-                })
+                ->addColumn(
+                    'action',
+                    function ($data) {
+                        $actionBtn = '
+                    <div class="list-icons d-flex justify-content-center">
+                    <a href="' . route('inventory:barang.edit', $data->id) . ' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="' . route('inventory:barang.destroy', $data->id) . ' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                </div>';
+                        return $actionBtn;
+                    }
+                )
                 ->make(true);
-
         }
         return view('inventory.barang.index');
     }
 
     public function create()
     {
-        $satuan = Satuan::pluck('name','id');
+        $satuan = Satuan::pluck('name', 'id');
         $kategori = Kategori::pluck('name', 'id');
         return view('inventory.barang.create', compact('satuan', 'kategori'));
     }
@@ -40,24 +47,25 @@ class BarangController extends Controller
         Session::flash('keterangan', 'Data berhasil disimpan');
 
         return redirect(route('inventory:barang.index'));
-
     }
 
     public function show($id)
-    {
-
-    }
+    { }
     public function edit($id)
     {
-        return view('inventory.barang.edit');
+        $satuan = Satuan::pluck('name', 'id');
+        $kategori = Kategori::pluck('name', 'id');
+        $data = MasterAsset::find($id);
+        return view('inventory.barang.edit', compact('data', 'satuan', 'kategori'));
     }
     public function update(Request $request, $id)
     {
-
+        MasterAsset::find($id)->update($request->except(['_token']));
+        return redirect()->route('inventory:barang.index');
     }
-    public function delete($id)
+    public function destroy($id)
     {
-
+        $data = MasterAsset::destroy($id);
+        return $data;
     }
-
 }
