@@ -1,11 +1,11 @@
-@section('title', 'Tambah Kategori')
-@section('menu','Kategori')
+@section('title', 'Inventory')
+@section('menu','Inventory')
 @section('submenu','Tambah Kategori')
 @extends('layouts/template-admin')
 @section('kondisi10','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Kategori</span>
+<span class="breadcrumb-item active">Inventory</span>
 <span class="breadcrumb-item active">Tambah Kategori</span>
 @endsection
 

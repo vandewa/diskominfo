@@ -1,11 +1,11 @@
-@section('title', 'Kategori')
-@section('menu','Kategori')
+@section('title', 'Inventory')
+@section('menu','Inventory')
 @section('submenu','List Kategori')
 @extends('layouts/template-admin')
 @section('kondisi10','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Kategori</span>
+<span class="breadcrumb-item active">Inventory</span>
 <span class="breadcrumb-item active">List Kategori</span>
 @endsection
 
@@ -52,16 +52,16 @@
         serverSide: true,
         ajax: window.location.href,
         columns: [{
-                data: 'DT_RowIndex',
-                name: 'DT_RowIndex'
-            },
-            {
-                data: 'name',
-                name: 'name'
-            },
-            {
-                data: 'action',
-            },
+            data: 'DT_RowIndex',
+            name: 'DT_RowIndex'
+        },
+        {
+            data: 'name',
+            name: 'name'
+        },
+        {
+            data: 'action',
+        },
         ]
     });
 </script>

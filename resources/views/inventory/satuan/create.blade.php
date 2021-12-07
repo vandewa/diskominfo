@@ -1,11 +1,11 @@
-@section('title', 'Tambah Satuan')
-@section('menu','Inventori')
+@section('title', 'Inventory')
+@section('menu','Inventory')
 @section('submenu','Tambah Satuan')
 @extends('layouts/template-admin')
 @section('kondisi9','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Inventori</span>
+<span class="breadcrumb-item active">Inventory</span>
 <span class="breadcrumb-item active">Tambah Satuan</span>
 @endsection
 
