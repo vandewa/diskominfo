@@ -12,7 +12,8 @@ use App\Models\Attachment;
 use App\Models\Category;
 use DataTables;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
+use \Cviebrock\EloquentSluggable\Services\SlugService; 
 
 
 
@@ -122,6 +123,7 @@ class PostingController extends Controller
        ->update([
            'posisi' => $request->posisi,
            'judul_posting' => $request->judul_posting,
+           'slug' => $request->slug,
            'isi_posting' => $request->isi_posting,
            'kata_kunci' => $request->kata_kunci,
            'id_kategori' => $request->id_kategori,
@@ -239,6 +241,10 @@ class PostingController extends Controller
         }
         
     }
-    
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Posting::class, 'slug', $request->judul_posting);
+        return response()->json(['slug' => $slug]); 
+    }
 
 }

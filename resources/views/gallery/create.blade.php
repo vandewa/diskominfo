@@ -53,7 +53,8 @@
 				</div>
 				<!-- /CKEditor default -->
     </div>
-	
+
+
     @endsection
 
 @push('js')

@@ -157,22 +157,24 @@ class HomeController extends Controller
     }
 
 
-    public function detail($post)
+    public function detail(Posting $post)
     {
 
-        Posting::find($post)->increment('views');
-
+        Posting::find($post->id_posting)->increment('views');
+        
         $detail = Posting::with(['attachment', 'gambarMuka', 'nama'])
-        ->where('id_posting', '=', $post)
+        ->where('slug', '=', $post->slug)
         ->first();
+        
 
         $kategori = Posting::where('id_kategori',$detail->id_kategori)
         ->wherenotin('id_posting', [$post])
-         ->orderBy('created_at', 'desc')
+        ->orderBy('created_at', 'desc')
         ->limit(2)
-        ->get();       
+        ->get(); 
+   
 
-        return view('home.detail', compact('detail','kategori'));
+        return view('home.detail', compact('detail', 'kategori'));
     }
 
      public function details($post)

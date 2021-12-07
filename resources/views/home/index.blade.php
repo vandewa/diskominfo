@@ -39,7 +39,8 @@
                 }'>
 
                 <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem vh-md-70 col-lg col-xl"
-                    style="background-image: url({{ asset('front/assets/images/'.$sampul->file_name) }});"
+                    style="background-image: url({{ asset('front/assets/images/'.$sampul->file_name) }}); background-size: cover;
+                        background-position: center center;"
                     data-aos="zoom-out">
                     <!-- News Block -->
                     <div class="container d-flex align-items-center min-h-620rem">
@@ -111,7 +112,7 @@
                 "vertical": true,
                 "verticalSwiping": true,
                 "dots": true,
-                "dotsClass": 
+                "dotsClass":
                 "slick-pagination slick-pagination-white slick-pagination-vertical position-absolute bottom-0 right-0 mb-8 mr-3"
               }'>
                         @foreach($postingg as $highlight)
@@ -145,12 +146,15 @@
                     </div>
 
                     <!-- End Blog -->
-                   
+
+
+
+
                     @foreach($posting2 as $post)
                         <!-- Blog -->
                         <article class="row mb-7" data-aos="zoom-out-right">
                             <div class="col-md-5">
-                                <a href="/detail/{{ $post->id_posting }}">
+                                <a href="/detail/{{ $post->slug }}">
                                     <img class="card-img transition-zoom-hover"
                                         src="{{ asset ('uploads') }}/{{ $post->gambarMuka->file_name??'' }}"
                                         alt="Image Description" style="height:100%">
@@ -193,7 +197,7 @@
                     {{ $posting2->links() }}
 
 
-                 
+
 
                     <!-- Sticky Block End Point -->
                     <div id="stickyBlockEndPoint"></div>
@@ -220,7 +224,7 @@
                                 </a>
                             </div>
 
-                           
+
                             <div class="mb-2">
                                 <h3>Cari Berita</h3>
                             </div>
@@ -238,7 +242,7 @@
                                 </div>
                             </form>
 
-                            <div class="position-relative bg-primary overflow-hidden">
+                            <div class="position-relative bg-primary overflow-hidden ignielPelangi">
                                 <div class=" text-left position-relative">
                                     <h3 class="container text-white text-center font-weight-semi-bold ">BERITA POPULER
                                     </h3>
@@ -280,7 +284,7 @@
                             @endforeach
                         </div>
 
-                        <div class="position-relative bg-primary overflow-hidden mb-3">
+                        <div class="position-relative bg-primary overflow-hidden mb-3 ignielPelangi">
                                 <div class=" text-left position-relative">
                                     <h3 class="container text-white text-center font-weight-semi-bold ">SOSIAL MEDIA</h3>
                                 </div>
@@ -294,10 +298,46 @@
                                 </figure>
                                 <!-- End SVG Shapes -->
                             </div>
-                        
 
 
-                        <div class="mb-3">
+                        <section id="my-keyboards">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12 mb-3">
+                                        <div class="keyboard-box4">
+                                            <img src="front/assets/images/instagram.png" class="keyboard-img" />
+                                          <h2 class="keyboard-tulisan">INSTAGRAM</h2>
+{{--                                            <a href="#" class="btn btn-light keyboard-detail-button">Show Details</a>--}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-12 mb-3">
+                                        <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
+                                        <div class="keyboard-box1">
+                                            <img src="front/assets/images/youtube.png" class="keyboard-img" />
+                                            <h2 class="keyboard-tulisan1 ml-2">YOUTUBE</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-12 mb-3">
+                                        <a href="https://www.facebook.com/diskominfo.wsb" target="_blank">
+                                        <div class="keyboard-box2">
+                                            <img src="front/assets/images/fb.png" class="keyboard-img" />
+                                            <h2 class="keyboard-tulisan ml-2">FACEBOOK</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-12 mb-3">
+                                        <a href="https://twitter.com/diskominfo_wsb" target="_blank">
+                                        <div class="keyboard-box3">
+                                            <img src="front/assets/images/twitter.png" class="keyboard-img" />
+                                            <h2 class="keyboard-tulisan1 ml-2">TWITTER</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+                       {{-- <div class="mb-3">
                                 <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
                                     <img class="card-img transition-zoom-hover"
                                         src="{{ asset('front/assets/images/instagram.gif') }}"
@@ -328,7 +368,7 @@
                                         alt="Girl in a jacket" width="250" height="80">
                                 </a>
                             </div>
-
+--}}
 
                         <div class="mb-0">
                             <div class="mb-3">
@@ -430,11 +470,11 @@
                                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                                 </iframe> --}}
 
-                                <!-- <div class="fb-page" 
+                                <!-- <div class="fb-page"
             data-href="https://www.facebook.com/diskominfo.wsb"
           data-tabs="timeline"
               data-height="250"
-              
+
               style="overflow: auto; height:250px;">
           </div> -->
 
@@ -466,23 +506,23 @@
                     @foreach($infografis as $grafis)
                         <div class="col-sm-6 col-md-3">
                             <!-- Card Info -->
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" style="max-width: 18rem; max-height: 25rem;">
                                 <a class="js-fancybox-item d-block" href="javascript:;"
                                     data-src="{{ asset('uploads/'.$grafis->file_name??'') }}"
                                     data-caption="{{ $grafis->judul }}">
-                                    <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block "
+                                    <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
                                         src="{{ asset('uploads/'.$grafis->file_name??'') }}"
                                         alt="Image Description">
                                 </a>
                                 <div class="card-body">
-                                    <h5><a class="card-text">{{ $grafis->judul }}</a></h5>
+                                    <h5><a>{{ $grafis->judul }}</a></h5>
                                 </div>
                             </div>
                             <!-- End Card Info -->
                         </div>
 
                     @endforeach
-                    <div class="container text-right mb-2">
+                    <div class="container text-right mb-2 mt-3">
                         <a class="btn btn-primary btn-sm"
                             href="{{ route('infografis.detail') }}">Lihat Selengkapnya <i
                                 class="fas fa-angle-right fa-sm ml-1"></i></a>
@@ -507,9 +547,9 @@
                     @foreach($infohoax as $hoax)
                         <div class="col-sm-6 col-md-3 ">
                             <!-- Card Info -->
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" style="max-width: 18rem; max-height: 25rem;">
                                 <a href="/detail/{{ $hoax->id_posting }}">
-                                    <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block "
+                                    <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
                                         src="{{ asset('uploads/'.$hoax->gambarMuka->file_name??'') }}"
                                         alt="Image Description">
                                 </a>
@@ -523,8 +563,8 @@
 
                     @endforeach
 
-                    <div class="container text-right mb-2">
-                        <a class="btn btn-primary btn-sm" href="{{ route('infohoax.daftar') }}">Lihat
+                    <div class="container text-right mb-2 mt-3">
+                        <a class="btn btn-primary btn-sm mb-2" href="{{ route('infohoax.daftar') }}">Lihat
                             Selengkapnya <i class="fas fa-angle-right fa-sm ml-1"></i></a>
                     </div>
 
@@ -544,6 +584,52 @@
                 box-shadow: none;
                 /* You may want to include this as bootstrap applies these styles too */
             }
+
+            .topcorner{
+   position:absolute;
+   top:0;
+   right:0;
+  }
+
+.ignielPelangi {
+    background: linear-gradient(45deg, #f22613, #f89406, #26a65b, #5868ec, #f54e80, #f7ca18, #d2527f);
+    background-size: 500% 500%;
+    -webkit-animation: ignielGradient 15s ease infinite;
+    -moz-animation: ignielGradient 15s ease infinite;
+    animation: ignielGradient 15s ease infinite;
+}
+@-webkit-keyframes ignielGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes ignielGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes ignielGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+input.error {
+    border: 1px dashed red;
+    font-weight: 300;
+    color: red;
+}
+
+}
+
 
         </style>
     @endpush
