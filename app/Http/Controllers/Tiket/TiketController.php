@@ -23,26 +23,23 @@ class TiketController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
+        if ($request->ajax()) {
             $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas']);
 
             return DataTables::of($data)
-                ->editColumn('deskripsi_masalah', function($a){
-                  return  substr_replace($a->deskripsi_masalah, "...", 20);
-
+                ->editColumn('deskripsi_masalah', function ($a) {
+                    return  substr_replace($a->deskripsi_masalah, "...", 20);
                 })
-                ->addColumn('action', function($a){
+                ->addColumn('action', function ($a) {
                     return '<div class="list-icons">
-                    <a href="'.route('tiket:tiket.edit', $a->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                    <a href="'.route('tiket:tiket.destroy', $a->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
-                    <a href="'.route('tiket:tiket.show', $a->id ).' " class="list-icons-item text-info"  data-popup="tooltip" title="Tambah Petugas Penyelesaian" data-placement="top" data-original-title="Top tooltip"><i class="icon-users4"></i></a>
+                    <a href="' . route('tiket:tiket.edit', $a->id) . ' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="' . route('tiket:tiket.destroy', $a->id) . ' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    <a href="' . route('tiket:tiket.show', $a->id) . ' " class="list-icons-item text-info"  data-popup="tooltip" title="Tambah Petugas Penyelesaian" data-placement="top" data-original-title="Top tooltip"><i class="icon-users4"></i></a>
                 </div>';
                 })
                 ->rawColumns(['deskripsi_masalah', 'action'])
                 ->make(true);
-
         }
-
         return view('tiket.index');
     }
 
@@ -92,7 +89,7 @@ class TiketController extends Controller
      */
     public function show($id)
     {
-          $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
+        $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
 
         return view('tiket.show', compact('data'));
     }
@@ -122,16 +119,16 @@ class TiketController extends Controller
 
     public function storePenugasan(Request $request, $id)
     {
-        if($request->filled('petugas_penyelesaian_id')){
-        $data = Tiket::find($id)->update(
-            [
-                'petugas_penyelesaian_id' => $request->petugas_penyelesaian_id,
-                'tiket_st' => 'TIKET_ST_02',
-            ]
-        );
+        if ($request->filled('petugas_penyelesaian_id')) {
+            $data = Tiket::find($id)->update(
+                [
+                    'petugas_penyelesaian_id' => $request->petugas_penyelesaian_id,
+                    'tiket_st' => 'TIKET_ST_02',
+                ]
+            );
             Session::flash('status', 'Petugas berhasil ditambahkan');
             return redirect()->back();
-        }else{
+        } else {
             $data = Tiket::find($id)->update(
                 [
                     'deskripsi_penyelesaian' => $request->deskripsi_penyelesaian,
@@ -162,8 +159,8 @@ class TiketController extends Controller
     {
         $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
         $path = public_path('/template/surat_tugas_tiket.docx');
-        $pathSave =storage_path('app/public/'.$data->no.'.docx');
-        $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
+        $pathSave = storage_path('app/public/' . $data->no . '.docx');
+        $pathPdf =    $pathSave = storage_path('app/public/' . $data->no . '.pdf');
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
             'no' => $data->no,
@@ -171,9 +168,9 @@ class TiketController extends Controller
             'instansi' => $data->instansi,
             'email' => $data->email,
             'telepon' => $data->cp,
-            'petugas' => $data->petugas->name??'',
-            'nip' => $data->petugas->nip??'',
-            'jabatan' => $data->petugas->jabatan??'',
+            'petugas' => $data->petugas->name ?? '',
+            'nip' => $data->petugas->nip ?? '',
+            'jabatan' => $data->petugas->jabatan ?? '',
             'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
             'tahun' => date('Y', strtotime($data->created_at))
         ]);
@@ -181,8 +178,7 @@ class TiketController extends Controller
         $templateProcessor->saveAs($pathSave);
         // $converter = new OfficeConverter($pathSave);
         // $converter->convertTo('aaaa.pdf'); //generates pdf file in same directory as test-file.docx
-//        $converter = new OfficeConverter('test-file.docx', 'path-to-outdir');
-       return response()->download($pathSave,$data->no.'.docx')->deleteFileAfterSend(true);
-
+        //        $converter = new OfficeConverter('test-file.docx', 'path-to-outdir');
+        return response()->download($pathSave, $data->no . '.docx')->deleteFileAfterSend(true);
     }
 }

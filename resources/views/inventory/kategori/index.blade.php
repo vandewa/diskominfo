@@ -2,7 +2,7 @@
 @section('menu','Inventory')
 @section('submenu','List Kategori')
 @extends('layouts/template-admin')
-@section('kondisi10','nav-item-expanded nav-item-open')
+@section('kondisi9','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Inventory</span>

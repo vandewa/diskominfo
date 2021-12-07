@@ -42,15 +42,14 @@ class BarangController extends Controller
 
     public function store(Request $request)
     {
-
         $data = MasterAsset::create($request->all() + ['peminjamanst' => 'PEMINJAMANST_00']);
         Session::flash('keterangan', 'Data berhasil disimpan');
-
         return redirect(route('inventory:barang.index'));
     }
 
     public function show($id)
     { }
+
     public function edit($id)
     {
         $satuan = Satuan::pluck('name', 'id');
@@ -58,11 +57,13 @@ class BarangController extends Controller
         $data = MasterAsset::find($id);
         return view('inventory.barang.edit', compact('data', 'satuan', 'kategori'));
     }
+
     public function update(Request $request, $id)
     {
         MasterAsset::find($id)->update($request->except(['_token']));
         return redirect()->route('inventory:barang.index');
     }
+
     public function destroy($id)
     {
         $data = MasterAsset::destroy($id);

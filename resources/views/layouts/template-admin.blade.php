@@ -337,31 +337,14 @@
 								title="tiket"></i>
 						</li>
 						<li class="nav-item nav-item-submenu @yield('kondisi9')">
-							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Satuan</span></a>
+							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Inventory</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ route('inventory:satuan.create') }}"
-										class="nav-link">Tambah Satuan</a></li>
 								<li class="nav-item"><a href="{{ route('inventory:satuan.index') }}"
-										class="nav-link">List Satuan</a></li>
-							</ul>
-						</li>
-						<li class="nav-item nav-item-submenu @yield('kondisi10')">
-							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Kategori</span></a>
-							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ route('kategorisss:kategori.create') }}"
-										class="nav-link">Tambah Kategori</a></li>
+										class="nav-link">Satuan</a></li>
 								<li class="nav-item"><a href="{{ route('kategorisss:kategori.index') }}"
-										class="nav-link">List Kategori</a></li>
-							</ul>
-						</li>
-						<li class="nav-item nav-item-submenu @yield('kondisi11')">
-							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Daftar Barang</span></a>
-							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ route('inventory:barang.create') }}"
-										class="nav-link">Tambah Barang</a></li>
+										class="nav-link">Kategori</a></li>
 								<li class="nav-item"><a href="{{ route('inventory:barang.index') }}"
-										class="nav-link">List
-										Barang</a></li>
+										class="nav-link">Barang</a></li>
 							</ul>
 						</li>
 
