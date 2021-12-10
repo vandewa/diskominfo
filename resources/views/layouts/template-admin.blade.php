@@ -337,14 +337,16 @@
 								title="tiket"></i>
 						</li>
 						<li class="nav-item nav-item-submenu @yield('kondisi9')">
-							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Inventory</span></a>
+							<a href="#" class="nav-link"><i class="icon-drawer"></i> <span>Inventory</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
 								<li class="nav-item"><a href="{{ route('inventory:satuan.index') }}"
 										class="nav-link">Satuan</a></li>
-								<li class="nav-item"><a href="{{ route('kategorisss:kategori.index') }}"
+								<li class="nav-item"><a href="{{ route('inventory:kategori.index') }}"
 										class="nav-link">Kategori</a></li>
 								<li class="nav-item"><a href="{{ route('inventory:barang.index') }}"
 										class="nav-link">Barang</a></li>
+								<li class="nav-item"><a href="{{ route('inventory:peminjaman.index') }}"
+										class="nav-link">Peminjaman</a></li>
 							</ul>
 						</li>
 

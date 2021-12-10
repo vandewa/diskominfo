@@ -15,7 +15,7 @@ class BarangController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = MasterAsset::with(['satuan', 'kategori']);
+            $data = MasterAsset::with(['satuan', 'kategori', 'status']);
             return DataTables::of($data)
                 ->addColumn(
                     'action',

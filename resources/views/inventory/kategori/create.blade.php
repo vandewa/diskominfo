@@ -18,7 +18,7 @@
             <h5>FORM INPUT KATEGORI</h5>
         </div>
         <div class="card-body">
-            {{Form::open(['route' => 'kategorisss:kategori.store','method' => 'post', 'files' => 'true', ''])}}
+            {{Form::open(['route' => 'inventory:kategori.store','method' => 'post', 'files' => 'true', ''])}}
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Nama Kategori<span class="text-danger">*</span></label>
                 <div class="col-lg-10">

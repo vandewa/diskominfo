@@ -10,7 +10,7 @@
 @endsection
 
 @section('tambah_data')
-<a href="{{route('kategorisss:kategori.create')}}" class="btn btn-primary">
+<a href="{{route('inventory:kategori.create')}}" class="btn btn-primary">
     <i class="icon-file-plus mr-2"></i>
     Tambah Kategori
 </a>
