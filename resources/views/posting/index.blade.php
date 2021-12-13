@@ -62,7 +62,7 @@ Tambah Posting
 					{data: 'judul_posting'},
                     {data: 'id_kategori', },
 					{data: 'posisi', },
-                    {data: 'created_by', },
+                    {data: 'nama.name', name: 'nama.name', defaultContent: '-'},
                     {data: 'created_at', },
                     // {data: 'created_by', },
 					{

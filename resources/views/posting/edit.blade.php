@@ -167,7 +167,7 @@
 	.then(response => response.json())
 	.then(data => slug.value = data.slug);
 	});
+	
+	</script>
 
-</script>
-
-@endpush
+	@endpush

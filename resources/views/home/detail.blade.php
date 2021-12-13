@@ -128,7 +128,7 @@
             @foreach($kategori as $beritaterkait)
            <div class="card-body p-4" data-aos="zoom-out-right">
             <!-- Project -->
-            <a class="card text-body transition-3d-hover mb-2 bg-info" href="/detail/{{$beritaterkait->id_posting}}">
+            <a class="card text-body transition-3d-hover mb-2 bg-info" href="/detail/{{$beritaterkait->slug}}">
             <img class="card-img-top" src="/uploads/{{$beritaterkait->gambarMuka->file_name??''}}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
             <div class="card-body text-left">
             <small>

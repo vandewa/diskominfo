@@ -27,8 +27,25 @@
 									<label class="col-form-label col-lg-2">Nama Kategori<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<div class="form-group form-group-feedback form-group-feedback-left">
-											<input type="text" name="nama_kategori" class="form-control" placeholder="Masukkan Nama Kategori" value="{{ old('nama_kategori') }}">
+											<input type="text" id="nama_kategori" name="nama_kategori" class="form-control" placeholder="Masukkan Nama Kategori" value="{{ old('nama_kategori') }}">
 											@error('nama_kategori')
+											<div class="invalid-feedback">
+											{{ $message }}
+											</div>
+											@enderror
+											<div class="form-control-feedback form-control-feedback-lg">
+											<i class="icon-pencil"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Slug<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<div class="form-group form-group-feedback form-group-feedback-left">
+											<input type="text" id="slug" name="slug" class="form-control" placeholder="Slug" value="{{ old('slug') }}" readonly>
+											@error('slug')
 											<div class="invalid-feedback">
 											{{ $message }}
 											</div>
@@ -88,5 +105,21 @@
     @endsection
 
 @push('js')
-{!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}
+<script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\CategorycreateValidation') !!}</script>
+<script>
+
+const nama_kategori = document.querySelector('#nama_kategori');
+const slug = document.querySelector('#slug');
+
+nama_kategori.addEventListener('change', function() {
+fetch('/category/checkSlug?nama_kategori=' + nama_kategori.value)
+  .then(response => response.json())
+  .then(data => slug.value = data.slug);
+});
+</script>
 @endpush
+

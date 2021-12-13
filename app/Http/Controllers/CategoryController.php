@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use DataTables;
 use Symfony\Component\HttpFoundation\Test\Constraint\RequestAttributeValueSame;
+use \Cviebrock\EloquentSluggable\Services\SlugService; 
+use App\Http\Requests\CategorycreateValidation;
 
 class CategoryController extends Controller
 {
@@ -38,18 +40,19 @@ class CategoryController extends Controller
      */
 
      
-    public function store(Request $request)
+    public function store(CategorycreateValidation $request)
     {
-        $request->validate([
-            'nama_kategori' => 'required',
-        ],
-        [
-            'nama_kategori.required' => 'Nama kategori harus diisi.',
-        ]);
+        // $request->validate([
+        //     'nama_kategori' => 'required',
+        // ],
+        // [
+        //     'nama_kategori.required' => 'Nama kategori harus diisi.',
+        // ]);
 
         Category::create(
             [
-                'nama_kategori' => ucwords($request->nama_kategori)
+                'nama_kategori' => ucwords($request->nama_kategori),
+                'slug' => $request->slug
                 
             ]
 
@@ -138,5 +141,11 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Posting::class, 'slug', $request->judul_posting);
+        return response()->json(['slug' => $slug]); 
     }
 }

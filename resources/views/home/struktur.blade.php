@@ -19,52 +19,58 @@
   <main id="content" role="main">
     <!-- Article Description Section -->
     <div class="container space-top-1 space-bottom-2">
-      <div class="w-lg-60 mx-lg-auto">
-        <div class="mb-4">
-         
-        </div>
-
-        <!-- Author -->
+     <div class="w-lg-100 mx-lg-auto">
+       <div class="mb-4"></div>
        
-        <center><h1 class="h2">{{ $struktur->nama}}</h1>
-        <br>
-
-        <div class="js-slick-carousel slick "
-     data-hs-slick-carousel-options='{
-       "fade": true,
-       "infinite": true,
-       "autoplay": true,
-       "autoplaySpeed": 4000,
-       "dots": true,
-       "dotsAsProgressLine": true,
-       "dotsClass": "slick-dots mt-n4"
-     }'>
-  <div class="js-slide">
-    <img class="img-fluid w-100" src="uploads/{{$struktur->file_name}}" alt="Image Description">
-  </div>
-</div>
-</center>
-<br>
-
-        <!-- End Author -->
-        <div style="
-            text-align:justify;  
-            text-justify:auto;
-             color:black;
-             text-indent: 40px;
-             
-        ">
-        {!! $struktur->isi_posting !!}
+            <section id="my-keyboards">
+        <div class="container">
+          <div class="row text-center mb-3">
+            <div class="col">
+              <h2>Informatika</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-lg-4 mb-3">
+              <div class="keyboard-box">
+                <h4 class="keyboard-name">Kepala Seksi Teknik Komunikasi Jaringan Dan Persandian</h4>
+                <img src="front/assets/images/priyo.png" alt="Keychron K3" class="keyboard-image" />
+                <a href="#" class="btn btn-light keyboard-detail-button"><h5>Priyo Cahyono, SSTP</h5></a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3">
+              <div class="keyboard-box">
+                <h4 class="keyboard-name">Kepala Seksi Tata Kelola Teknologi Informasi Dan Kemitraan</h4>
+                <img src="front/assets/images/ratna.png" alt="Womier RGB" class="keyboard-image" />
+                <a href="#" class="btn btn-light keyboard-detail-button">Ratna Sulistiyani, S.Kom., MM</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3">
+              <div class="keyboard-box">
+                <h4 class="keyboard-name">Plt/Plh. Kepala Seksi Pengembangan Aplikasi dan Telematika</h4>
+                <img src="front/assets/images/anita.png" alt="Red Dragon" class="keyboard-image" />
+                <a href="#" class="btn btn-light keyboard-detail-button">Anita Martilova, A.Md</a>
+              </div>
+            </div>
+             <div class="col-md-6 col-lg-4 mb-3">
+              <div class="keyboard-box">
+                <h4 class="keyboard-name">Analis Sistem Informasi dan Jaringan</h4>
+                <img src="front/assets/images/damar.gif" alt="Red Dragon" class="keyboard-image" />
+                <a href="#" class="btn btn-light keyboard-detail-button">Damar Wisnu Candra Prabowo, S.Kom</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3">
+              <div class="keyboard-box">
+                <h4 class="keyboard-name">Analis Sistem Informasi</h4>
+                <img src="front/assets/images/devan.png" alt="Red Dragon" class="keyboard-image" />
+                <a href="#" class="btn btn-light keyboard-detail-button">Devan Dewananta, S.Kom</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="w-lg-60 mx-lg-auto">
-        
-      <div class="w-lg-60 mx-lg-auto">
-               
-      <div class="w-lg-40 mx-lg-auto">
 
-      </div>
+     </div>
     </div>
     <!-- End Subscribe Section -->
   </main>

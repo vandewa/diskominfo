@@ -34,16 +34,16 @@
           <!-- Blog -->
           <article class="row mb-7" data-aos="zoom-out-left">
             <div class="col-md-5">
-            <a href="/detail/{{$post->id_posting}}">
+            <a href="/detail/{{$post->slug}}">
               <img class="card-img transition-zoom-hover" src="{{ asset ('uploads') }}/{{ $post->gambarMuka->file_name??'' }}" alt="Image Description" style="height:100%">
             </a>
             </div>
             <div class="col-md-7">
               <div class="card-body d-flex flex-column h-100 px-0">
                 <span class="d-block mb-2">
-                  <a class="font-weight-bold" href="/kategori/{{$post->id_kategori}}">{{ $post->kategori->nama_kategori }}</a>
+                  <a class="font-weight-bold" href="/kategori/{{$post->kategori->slug}}">{{ $post->kategori->nama_kategori }}</a>
                 </span>
-                <h3><a class="text-inherit" href="/detail/{{$post->id_posting}}">{{ $post->judul_posting }}</a></h3>
+                <h3><a class="text-inherit" href="/detail/{{$post->slug}}">{{ $post->judul_posting }}</a></h3>
                 <p>{{ $post->keterangan }}</p>
                 <div class="media align-items-center mt-auto">
                   <a class="avatar avatar-sm avatar-circle mr-3">

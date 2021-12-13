@@ -118,7 +118,7 @@
                         @foreach($postingg as $highlight)
                             <article>
                                 <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7"
-                                    href="/detail/{{ $highlight->id_posting }}"
+                                    href="/detail/{{ $highlight->slug }}"
                                     style="background-image: url(uploads/{{ $highlight->gambarMuka->file_name??'' }}); height:400px;">
                                     <div class="card-header border-0 bg-transparent w-100">
                                         <div class="media align-items-center">
@@ -164,10 +164,10 @@
                                 <div class="card-body d-flex flex-column h-100 px-0">
                                     <span class="d-block mb-2">
                                         <a class="font-weight-bold"
-                                            href="/kategori/{{ $post->id_kategori }}">{{ $post->kategori->nama_kategori }}</a>
+                                            href="/kategori/{{ $post->kategori->slug }}">{{ $post->kategori->nama_kategori }}</a>
                                     </span>
                                     <h3><a class="text-inherit"
-                                            href="/detail/{{ $post->id_posting }}">{{ $post->judul_posting }}</a>
+                                            href="/detail/{{ $post->slug }}">{{ $post->judul_posting }}</a>
                                     </h3>
                                     <p>{{ $post->keterangan }}</p>
                                     <div class="media align-items-center mt-auto">
@@ -179,7 +179,7 @@
                                         <div class="media-body">
                                             <span class="text-dark">
                                                 <a class="d-inline-block text-inherit font-weight-bold"
-                                                    href="/uploadby/{{ $post->created_by }}">{{ $post->nama->name }}</a>
+                                                    href="/uploadby/{{ $post->nama->slug }}">{{ $post->nama->name }}</a>
                                             </span>
                                             <!-- isoFormat('dddd, D MMMM Y H') -->
                                             <small
@@ -220,6 +220,14 @@
                                 <a href="/pengajuanizin">
                                     <img class="card-img transition-zoom-hover"
                                         src="{{ asset('front/assets/images/pengajuan.gif') }}"
+                                        alt="Girl in a jacket" width="250" height="80">
+                                </a>
+                            </div>
+
+                            <div class="mb-3">
+                                <a href="https://laporbupati.wonosobokab.go.id/" target="_blank">
+                                    <img class="card-img transition-zoom-hover"
+                                        src="{{ asset('front/assets/images/laporbup.gif') }}"
                                         alt="Girl in a jacket" width="250" height="80">
                                 </a>
                             </div>
@@ -266,7 +274,7 @@
                                 <article class="mb-5 mt-3" data-aos="zoom-out-right">
                                     <div class="media align-items-center text-inherit">
                                         <div class="avatar avatar-lg mr-3">
-                                            <a href="/detail/{{ $post->id_posting }}">
+                                            <a href="/detail/{{ $post->slug }}">
                                                 <img class="avatar-img transition-zoom-hover"
                                                     src="{{ asset('uploads/'.$populer->gambarMuka->file_name) }}"
                                                     alt="Image Description">
@@ -274,7 +282,7 @@
                                         </div>
                                         <div class="media-body">
                                             <h4 class="h6 mb-0"><a class="text-inherit"
-                                                    href="/detail/{{ $populer->id_posting }}">{{ $populer->judul_posting }}</a>
+                                                    href="/detail/{{ $populer->slug }}">{{ $populer->judul_posting }}</a>
                                             </h4>
                                         </div>
                                     </div>
@@ -492,7 +500,7 @@
         <!-- End Blogs Section -->
 
         <div class="text-center mb-3">
-            <span class="divider divider-text">INFO GRAFIS</span>
+            <span class="divider divider-text"><h3>INFO GRAFIS</h3></span>
         </div>
 
 
@@ -535,7 +543,7 @@
 
 
         <div class="text-center mb-3">
-            <span class="divider divider-text">INFO HOAX</span>
+            <span class="divider divider-text"><h3>INFO HOAX</h3></span>
         </div>
 
         <div class="container space-0 space-lg-0  ">
@@ -554,7 +562,7 @@
                                         alt="Image Description">
                                 </a>
                                 <div class="card-body">
-                                    <h5><a href="/detail/{{ $hoax->id_posting }}"
+                                    <h5><a href="/detail/{{ $hoax->slug }}"
                                             class="card-text">{{ $hoax->judul_posting }}</a></h5>
                                 </div>
                             </div>

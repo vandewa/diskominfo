@@ -164,7 +164,8 @@ class PostingController extends Controller
 
     public function getPosting(Request $request)
     {
-            $data = Posting::select('*')->latest();
+            // $data = Posting::with(['nama', 'kategori']);
+            $data = Posting::with(['nama', 'kategori'])->where('id_kategori', '!=', 7)->orderBy('created_at', 'desc');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -196,14 +197,12 @@ class PostingController extends Controller
                 
                 ->editColumn('id_kategori', function($a)
                 {
-                    Posting::with(['kategori']);
                     return $a->kategori->nama_kategori;
                 })
-                ->editColumn('created_by', function($a)
-                {
-                    Posting::with(['nama']);
-                    return $a->nama->name;
-                })
+                // ->editColumn('created_by', function($a)
+                // {
+                //     return $a->nama->name;
+                // })
                 ->rawColumns(['action', 'status'])
                 ->make(true);
         
