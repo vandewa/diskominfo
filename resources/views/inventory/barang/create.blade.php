@@ -24,34 +24,59 @@
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Kode Barcode<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::text('barcode', null,['class' => 'form-control', 'placeholder' => 'Kode Barcode'])}}
+                    {{Form::text('barcode', null,['class' => 'form-control'. ($errors->has('barcode') ? ' is-invalid' :
+                    ''), 'placeholder' =>
+                    'Kode Barcode'])}}
+                    @error('barcode')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Nama<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::text('name', null,['class' => 'form-control', 'placeholder' => 'Nama Barang'])}}
+                    {{Form::text('name', null,['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' :
+                    ''), 'placeholder' => 'Nama Barang'])}}
+                    @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Tahun Anggaran<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::number('tahun_anggaran', null,['class' => 'form-control',
+                    {{Form::number('tahun_anggaran', null,['class' => 'form-control'. ($errors->has('tahun_anggaran') ?
+                    ' is-invalid' :
+                    ''),
                     'placeholder' => 'Tahun Anggaran'])}}
+                    @error('tahun_anggaran')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Kategori<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::select('kategori_id',$kategori, null,['class' => 'form-control', 'placeholder' => 'Pilih
+                    {{Form::select('kategori_id',$kategori, null,['class' => 'form-control'.
+                    ($errors->has('kategori_id') ?
+                    ' is-invalid' :
+                    ''), 'placeholder' => 'Pilih
                     Kategori'])}}
+                    @error('kategori_id')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Satuan<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::select('satuan_id',$satuan, null,['class' => 'form-control', 'placeholder' => 'Pilih
+                    {{Form::select('satuan_id',$satuan, null,['class' => 'form-control'. ($errors->has('satuan_id') ?
+                    ' is-invalid' :
+                    ''), 'placeholder' => 'Pilih
                     Satuan'])}}
+                    @error('satuan_id')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="text-right">

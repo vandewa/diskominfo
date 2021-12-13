@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -42,7 +43,8 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        return view('inventory.peminjaman.create');
+        $userpetugas = User::orderBy('name', 'asc')->pluck('name', 'id');
+        return view('inventory.peminjaman.create', compact('userpetugas'));
     }
 
     /**

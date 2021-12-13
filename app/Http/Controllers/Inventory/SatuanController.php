@@ -38,7 +38,12 @@ class SatuanController extends Controller
 
     public function store(Request $request)
     {
-        Satuan::create($request->all());
+        $validated = $request->validate(
+            [
+                'name' => 'required',
+            ]
+        );
+        Satuan::create($validated);
         return redirect()->route('inventory:satuan.index');
     }
 
@@ -49,8 +54,7 @@ class SatuanController extends Controller
     }
 
     public function show($id)
-    {
-    }
+    { }
 
     public function update(Request $request, $id)
     {

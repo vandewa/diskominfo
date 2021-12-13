@@ -38,7 +38,10 @@ class KategoriController extends Controller
 
     public function store(Request $request)
     {
-        Kategori::create($request->all());
+        $validated = $request->validate([
+            'name' => 'required',
+        ]);
+        Kategori::create($validated);
         return redirect()->route('inventory:kategori.index');
     }
 
