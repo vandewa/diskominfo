@@ -168,7 +168,7 @@ class HomeController extends Controller
         
 
         $kategori = Posting::where('id_kategori',$detail->id_kategori)
-        ->wherenotin('id_posting', [$post])
+        ->wherenotin('id_posting', [$post->id_posting])
         ->orderBy('created_at', 'desc')
         ->limit(2)
         ->get(); 
@@ -278,7 +278,7 @@ class HomeController extends Controller
 
         $posting = Posting::with(['kategori', 'nama'])
         ->where('judul_posting', 'like', "%".$cari."%")
-        ->select('judul_posting', 'id_posting', 'id_kategori', 'created_by', 'isi_posting')
+        ->select('judul_posting', 'id_posting', 'id_kategori', 'created_by', 'isi_posting', 'slug')
         ->orderBy('created_at','desc')
         ->paginate(5)
         ->appends(['q' => $request->q]);
@@ -289,6 +289,7 @@ class HomeController extends Controller
         ->paginate(5)
         ->appends(['q' => $request->q])
         ->count();
+
 
         return view ('home.cari', compact('posting', 'cari', 'posting_samping','jumlah'));
     }
@@ -320,7 +321,7 @@ class HomeController extends Controller
     }
 
 
-    public function kategori($post)
+    public function kategori(Category $post)
     {
 
         $populers = Posting::with(['gambarMuka'])
@@ -329,21 +330,21 @@ class HomeController extends Controller
         ->get();
         
         $kategori = Posting::with(['gambarMuka','kategori'])
-        ->where('id_kategori',$post)
+        ->where('id_kategori','=', $post->id)
         ->orderBy('created_at','desc')
         ->simplePaginate(12);
 
-        $jumlah = Posting::where('id_kategori',$post)
+        $jumlah = Posting::where('id_kategori',$post->id)
         ->count();
 
         $kategorinya = Posting::with(['kategori'])
-        ->where('id_kategori',$post)
+        ->where('id_kategori',$post->id)
         ->first();
 
         return view('home.kategori', compact('kategori','populers','jumlah', 'kategorinya'));
     }
 
-    public function uploadby($post)
+    public function uploadby(Users $post)
     {
 
         $populers = Posting::with(['gambarMuka'])
@@ -352,17 +353,18 @@ class HomeController extends Controller
         ->get();
         
         $uploadby = Posting::with(['gambarMuka','kategori'])
-        ->where('created_by',$post)
+        ->where('created_by','=', $post->id)
         ->orderBy('created_at','desc')
         ->simplePaginate(12);
 
         $upload = Posting::with(['gambarMuka','kategori'])
-        ->where('created_by',$post)
+        ->where('created_by',$post->id)
         ->first();
 
-        $jml_post = Posting::where('created_by', $post)
+        $jml_post = Posting::where('created_by', $post->id)
         ->orderBy('created_at','desc')
-        ->count();        
+        ->count();    
+        
 
         return view('home.uploadby', compact('uploadby','populers','upload','jml_post'));
     }

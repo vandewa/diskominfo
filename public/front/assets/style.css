@@ -14,13 +14,12 @@ section {
 /* My Keyboard Section */
 .keyboard-box {
   position: relative;
-  border-radius: 20px;
-  background-image: url('/front/assets/images/caricaa.png');
-  height: 70px;
+  background-color: #0c6efd;
+  border-radius: 10px;
+  height: 500px;
   transform-style: preserve-3d;
-    background-size: cover;
-    background-position: center center;
 }
+
 
 .keyboard-box1 {
     position: relative;
@@ -81,7 +80,7 @@ section {
 }
 
 .keyboard-box::after {
-  content: 'KEYBOARD';
+  content: '';
   position: absolute;
   color: #fff;
   font-size: 2em;
@@ -136,6 +135,16 @@ section {
   left: 20%;
   transform: translate3d(-50%, -52%, 80px);
   max-width: 20%;
+  transition: 0.5s;
+  z-index: 2;
+}
+
+.keyboard-image {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate3d(-50%, -52%, 80px);
+  max-width: 300px;
   transition: 0.5s;
   z-index: 2;
 }

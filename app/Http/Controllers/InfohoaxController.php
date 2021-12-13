@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use DataTables;
 use App\Models\Posting;
 use App\Models\Attachment;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
+use \Cviebrock\EloquentSluggable\Services\SlugService;  
 
 class InfohoaxController extends Controller
 {
@@ -41,6 +42,7 @@ class InfohoaxController extends Controller
         
         $b= Posting::create([
             'judul_posting' => $request->judul_posting,
+            'slug' => $request->slug,
             'isi_posting' => $request->isi_posting,
             'id_kategori' => 7,
             'created_by' => $request->created_by
@@ -110,6 +112,7 @@ class InfohoaxController extends Controller
            Posting::find($id)
        ->update([
            'judul_posting' => $request->judul_posting,
+           'slug' => $request->slug,
            'isi_posting' => $request->isi_posting,
            'updated_by' => $request->updated_by
        ]);
@@ -146,9 +149,8 @@ class InfohoaxController extends Controller
 
      public function getInfohoax(Request $request)
     {
-            $data = Posting::where('id_kategori', 7)
-            ->orderBy('created_at', 'desc')
-            ->get();
+            $data = Posting::with(['nama'])->where('id_kategori', 7)
+            ->orderBy('created_at', 'desc');
 
 
             return DataTables::of($data)
@@ -176,15 +178,14 @@ class InfohoaxController extends Controller
                 
                 ->editColumn('created_by', function($a)
                 {
-                    Posting::with(['nama']);
-                    return $a->nama->name??'gtrgtd';
+                    return $a->nama->name??'-';
                 })
                 ->rawColumns(['action', 'status'])
                 ->make(true);
         
     }
 
-     public function hapus($id)
+    public function hapus($id)
     {
 
         $oke = Attachment::where('id_attachment',$id)->first();
@@ -201,6 +202,12 @@ class InfohoaxController extends Controller
 
         }
         
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->nama_kategori);
+        return response()->json(['slug' => $slug]); 
     }
 
 }
