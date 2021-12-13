@@ -17,15 +17,25 @@
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Tanggal Peminjaman<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::date('tanggal_peminjaman', null,['class' => 'form-control',
-                    'placeholder' => 'Tanggal Peminjaman'])}}
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                        </span>
+                        {{Form::text('tanggal_peminjaman', null,['class' => 'form-control daterange-single',
+                        'value'=>'03/18/2013'])}}
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Tanggal Pengembalian<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::date('tanggal_pengembalian', null,['class' => 'form-control',
-                    'placeholder' => 'Tanggal Pengembalian'])}}
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                        </span>
+                        {{Form::text('tanggal_pengembalian', null,['class' => 'form-control daterange-single'
+                        ])}}
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
@@ -44,15 +54,15 @@
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Petugas<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::select('petugas_id', $userpetugas, null,['class' => 'form-control', 'placeholder' =>
-                    'Petugas Yang Meminjamkan'])}}
+                    {{Form::select('petugas_id', $userpetugas, null,['class' => 'form-control select-search',
+                    'placeholder' => 'Petugas Yang Meminjamkan'])}}
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Penerima<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::select('penerima_id', $userpetugas, null,['class' => 'form-control', 'placeholder' =>
-                    'Petugas Yang Menerima'])}}
+                    {{Form::select('penerima_id', $userpetugas, null,['class' => 'form-control select-search',
+                    'placeholder' => 'Petugas Yang Menerima'])}}
                 </div>
             </div>
             <div class="text-right">
@@ -66,8 +76,8 @@
     <!-- /CKEditor default -->
 </div>
 @endsection @push('js')
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
-{{-- {!! JsValidator::formRequest('App\Http\Requests\PostingcreateValidation') !!}--}}
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
+<!-- <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script> -->
+<!-- {{-- {!! JsValidator::formRequest('App\Http\Requests\PostingcreateValidation') !!}--}} -->
 @endpush

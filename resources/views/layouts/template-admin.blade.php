@@ -43,14 +43,14 @@
 	<script
 		src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/ui/moment/moment.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/pickers/daterangepicker.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/editors/ckeditor/ckeditor.js ')}}"></script>
+	<!-- <script src="{{ url ('limitless/Template/global_assets/js/plugins/editors/ckeditor/ckeditor.js ')}}"></script> -->
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/select2.min.js ')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/inputmask.js ')}}"></script>
+	<!-- <script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/inputmask.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/uniform.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/core.min.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js ')}}"></script>
+	-->
+	<!-- <script -->
+	<!-- src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js ')}}"></script> -->
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/tags/tagsinput.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/tags/tokenfield.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/touchspin.min.js ')}}"></script>
@@ -93,6 +93,14 @@
 
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_multiselect.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_actions.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/pickers/daterangepicker.js')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/pickers/anytime.min.js' )}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/pickers/pickadate/picker.js' )}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/pickers/pickadate/picker.date.js' )}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/pickers/pickadate/picker.time.js' )}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/pickers/pickadate/legacy.js' )}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/picker_date.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/notifications/jgrowl.min.js' )}}"></script>
 	<!-- /theme JS files -->
 
 	<!-- Theme JS files Datatable-->
