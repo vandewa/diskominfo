@@ -1,18 +1,18 @@
 @section('title', 'Inventory')
 @section('menu','Inventory')
-@section('submenu','List Barang')
+@section('submenu','Peminjaman Barang')
 @extends('layouts/template-admin')
 @section('kondisi9','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Inventory</span>
-<span class="breadcrumb-item active">List Barang</span>
+<span class="breadcrumb-item active">Peminjaman Barang</span>
 @endsection
 
 @section('tambah_data')
-<a href="{{route('inventory:barang.create')}}" class="btn btn-primary">
+<a href="{{route('inventory:peminjaman.create')}}" class="btn btn-primary">
     <i class="icon-file-plus mr-2"></i>
-    Tambah Barang
+    Tambah Peminjaman
 </a>
 @endsection
 
@@ -32,12 +32,13 @@
             <table class="table datatable-basic devan" width="100%">
                 <thead>
                     <tr>
-                        <th>Barcode</th>
-                        <th>Nama</th>
-                        <th>Kategori</th>
-                        <th>Satuan</th>
-                        <th>Tahun</th>
-                        <th>Status</th>
+                        <th>No</th>
+                        <th>Tanggal Peminjaman</th>
+                        <th>Tanggal Pengembalian</th>
+                        <th>Peminjam</th>
+                        <th>Peminjaman</th>
+                        <th>Petugas</th>
+                        <th>Penerima</th>
                         <th>Action</th>
                         {{-- @if (auth()->user()->level=='superadmin'||'admin')--}}
                         {{-- <th class="text-center">Aksi</th>--}}
@@ -59,13 +60,16 @@
         serverSide: true,
         ajax: window.location.href,
         columns: [
-            { data: 'barcode', name: 'barcode' },
-            { data: 'name', name: 'name' },
-            { data: 'kategori.name', name: 'kategori.name' },
-            { data: 'satuan.name', name: 'satuan.name' },
-            { data: 'tahun_anggaran', name: 'tahun_anggaran' },
-            { data: 'status.code_nm', name: 'status.code_nm' },
+            { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+            { data: 'tanggal_peminjaman', name: 'tanggal_peminjaman' },
+            { data: 'tanggal_pengembalian', name: 'tanggal_pengembalian' },
+            { data: 'peminjam_id', name: 'peminjam_id' },
+            { data: 'peminjaman_st', name: 'peminjaman_st' },
+            { data: 'petugas_id', name: 'petugas_id' },
+            { data: 'penerima_id', name: 'penerima_id' },
+            // { data: 'peminjamanst', },
             { data: 'action', },
+
         ]
     });
 </script>

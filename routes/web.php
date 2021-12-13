@@ -20,6 +20,7 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\SampulController;
 use App\Http\Controllers\InfohoaxController;
 use App\Http\Controllers\InfografisController;
+use App\Http\Controllers\PeminjamanController;
 use Carbon\Carbon;
 use App\Http\Controllers\Perijinan\AksesDcController;
 use App\Http\Controllers\Perijinan\PenambahanVpsController;
@@ -160,8 +161,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function () {
         Route::resource('satuan', SatuanController::class);
         Route::resource('barang', BarangController::class);
-    });
-    Route::group(['prefix' => 'kategorisss', 'as' => 'kategorisss:'], function () {
+        Route::resource('peminjaman', PeminjamanController::class);
         Route::resource('kategori', KategoriController::class);
     });
 

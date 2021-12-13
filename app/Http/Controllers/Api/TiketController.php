@@ -14,12 +14,12 @@ class TiketController extends Controller
         $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])
             ->where('petugas_penyelesaian_id', auth('api')->user()->id)->paginate(20);
 
-
         return response()->json([
             "status" => "success",
             "data" => $data,
         ], 200);
     }
+
     public function getTiketBelumSelesai()
     {
         $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])
@@ -27,12 +27,12 @@ class TiketController extends Controller
             ->where('tiket_st', 'TIKET_ST_02')
             ->paginate(20);
 
-
         return response()->json([
             "status" => "success",
             "data" => $data,
         ], 200);
     }
+
     public function getTiketSudahSelesai()
     {
         $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])
@@ -40,12 +40,12 @@ class TiketController extends Controller
             ->where('tiket_st', 'TIKET_ST_03')
             ->paginate(20);
 
-
         return response()->json([
             "status" => "success",
             "data" => $data,
         ], 200);
     }
+
     public function tiketDetail($id)
     {
         $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
@@ -63,7 +63,6 @@ class TiketController extends Controller
                 'deskripsi_penyelesaian' => $request->deskripsi_penyelesaian,
                 'tanggal_selesai' => now(),
                 'tiket_st' => 'TIKET_ST_03'
-
             ]
         );
 

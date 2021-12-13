@@ -20,8 +20,8 @@ class KategoriController extends Controller
                     function ($data) {
                         $actionBtn = '
                     <div class="list-icons d-flex justify-content-center">
-                    <a href="' . route('kategorisss:kategori.edit', $data->id) . ' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                    <a href="' . route('kategorisss:kategori.destroy', $data->id) . ' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    <a href="' . route('inventory:kategori.edit', $data->id) . ' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="' . route('inventory:kategori.destroy', $data->id) . ' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
                 </div>';
                         return $actionBtn;
                     }
@@ -38,8 +38,11 @@ class KategoriController extends Controller
 
     public function store(Request $request)
     {
-        Kategori::create($request->all());
-        return redirect()->route('kategorisss:kategori.index');
+        $validated = $request->validate([
+            'name' => 'required',
+        ]);
+        Kategori::create($validated);
+        return redirect()->route('inventory:kategori.index');
     }
 
     public function show($id)
@@ -56,7 +59,7 @@ class KategoriController extends Controller
     public function update(Request $request, $id)
     {
         Kategori::find($id)->update($request->except(['_token']));
-        return redirect()->route('kategorisss:kategori.index');
+        return redirect()->route('inventory:kategori.index');
     }
 
     public function destroy($id)

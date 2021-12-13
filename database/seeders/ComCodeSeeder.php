@@ -51,9 +51,11 @@ class ComCodeSeeder extends Seeder
             ['code_cd' => 'STATUS_ST_01', 'code_nm' => 'Menunggu Persetujuan', 'code_group' => 'STATUS_ST ', 'code_value' => ''],
             ['code_cd' => 'STATUS_ST_02', 'code_nm' => 'Disetujui', 'code_group' => 'STATUS_ST ', 'code_value' => ''],
             ['code_cd' => 'STATUS_ST_03', 'code_nm' => 'Ditolak', 'code_group' => 'STATUS_ST ', 'code_value' => ''],
+            ['code_cd' => 'PEMINJAMANST_00', 'code_nm' => 'Tersedia', 'code_group' => 'PEMINJAMANST ', 'code_value' => ''],
+            ['code_cd' => 'PEMINJAMANST_01', 'code_nm' => 'Dipinjam', 'code_group' => 'PEMINJAMANST ', 'code_value' => ''],
         ];
 
-        foreach ($data as $datum){
+        foreach ($data as $datum) {
             ComCode::create($datum);
         }
     }

@@ -20,4 +20,9 @@ class MasterAsset extends Model
     {
         return $this->belongsTo(Kategori::class, 'kategori_id');
     }
+
+    public function status()
+    {
+        return $this->belongsTo(ComCode::class, 'peminjamanst');
+    }
 }
