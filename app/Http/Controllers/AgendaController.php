@@ -10,6 +10,12 @@ use Yajra\DataTables\Facades\DataTables;
 
 class AgendaController extends Controller
 {
+    public $botTele = 'bot2110552489:AAFPRxSbkJtY06IVLKcU44GKVcnz3pm4NUM';
+    // uji coba grup tele
+    public $chatIdTele = '1343623060';
+    // id grup aim tele
+    // protected $chatIdTele = '-697674877';
+
     /**
      * Display a listing of the resource.
      *
@@ -66,8 +72,6 @@ class AgendaController extends Controller
         $tgl = $request->post('tanggal');
         $string3 = substr($tgl, 0, 10);
         $string4 = substr($tgl, 13, 24);
-        // $tgl3 = date('Y/m/d', strtotime($string3));
-        // $tgl4 = date('Y/m/d', strtotime($string4));
         $validated = $request->validate([
             'nama_id' => 'required',
             'tanggal' => 'required',
@@ -76,36 +80,19 @@ class AgendaController extends Controller
             'keterangan' => 'required'
         ]);
 
-        $telegrambot = 'bot2110552489:AAFPRxSbkJtY06IVLKcU44GKVcnz3pm4NUM';
-        // id tele grup aim
-        // $user = '-697674877';
-        // id tele uji coba app
-        $user = '1343623060';
-
         if ($string3 == $string4) {
             $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . $string3 . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
         } else {
             $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . $string3 . " - " . $string4 . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
         }
-        // Agenda::create($validated + [
-        //     'oleh' => auth()->user()->name,
-        //     'tanggalBerangkat' => $tgl3,
-        //     'tanggalPulang' => $tgl4,
-        //     'tanggal' => $tgl3 . ' - ' . $tgl4,
-        //     'message_id' => $this->kirim->response->result->message_id
-        // ]);
-        // Session::flash('keterangan', 'Data berhasil disimpan');
-        $this->kirim($pesan, $telegrambot, $user, $validated, $tgl);
+        $this->kirim($pesan, $validated, $tgl);
         return redirect(route('agenda:harian.index'));
     }
 
-    public function kirim($pesan, $bot, $chat, $validated, $tgl)
+    public function kirim($pesan, $validated, $tgl)
     {
-        $url = 'https://api.telegram.org/' . $bot . '/sendMessage?chat_id=' . $chat . '&text=' . $pesan . '&parse_mode=html';
-        // $result = file_get_contents($url, true);
-
-        // $url = "https://api.telegram.org/bot<BOT_API_KEY>/sendMessage?chat_id=$chatid&text=$message";
-
+        $url = 'https://api.telegram.org/' . $this->botTele . '/sendMessage?chat_id=' . $this->chatIdTele . '&text=' . $pesan . '&parse_mode=html';
+        // $response = file_get_contents($url, true);
         $response = json_decode(file_get_contents($url));
 
         if ($response->ok) {
@@ -142,9 +129,11 @@ class AgendaController extends Controller
      * @param  \App\Models\agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function edit(agenda $agenda)
+    public function edit($id)
     {
-        //
+        $user = User::orderBy('name', 'asc')->pluck('name', 'id');
+        $data = Agenda::find($id);
+        return view('agenda.edit', compact('data', 'user'));
     }
 
     /**
@@ -154,9 +143,36 @@ class AgendaController extends Controller
      * @param  \App\Models\agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, agenda $agenda)
+    public function update(Request $request, $id)
     {
-        //
+        $username = User::where('id', $request->post('nama_id'))->first();
+        $tgl = $request->post('tanggal');
+        $string3 = substr($tgl, 0, 10);
+        $string4 = substr($tgl, 13, 24);
+        $tgl3 = date('Y/m/d', strtotime($string3));
+        $tgl4 = date('Y/m/d', strtotime($string4));
+        $msg_id = Agenda::find($id);
+
+        if ($string3 == $string4) {
+            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . $string3 . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+        } else {
+            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . $string3 . " - " . $string4 . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+        }
+
+        $url = 'https://api.telegram.org/' . $this->botTele .  "/editMessageText?chat_id=" . $this->chatIdTele . "&message_id=" . $msg_id->message_id . "&text=" . $pesan . '&parse_mode=html';
+        $response = json_decode(file_get_contents($url));
+
+        if ($response->ok) {
+            $data = [
+                'tanggalBerangkat' => $tgl3,
+                'tanggalPulang' => $tgl4,
+            ];
+            Agenda::find($id)->update(
+                $data +  $request->except(['_token']),
+            );
+        }
+        // return $response;
+        return redirect()->route('agenda:harian.index');
     }
 
     /**
@@ -167,19 +183,11 @@ class AgendaController extends Controller
      */
     public function destroy($id)
     {
-        $telegrambot = 'bot2110552489:AAFPRxSbkJtY06IVLKcU44GKVcnz3pm4NUM';
-        // id tele grup aim
-        // $user = '-697674877';
-        // id tele uji coba app
-        $user = '1343623060';
         $msg_id =  Agenda::where('id', $id)->first();
-
-        $url = 'https://api.telegram.org/' . $telegrambot . '/deleteMessage?chat_id=' . $user . '&message_id=' . $msg_id->message_id . '';
-        // $result = file_get_contents($url, true);
-
+        $url = 'https://api.telegram.org/' . $this->botTele . '/deleteMessage?chat_id=' . $this->chatIdTele . '&message_id=' . $msg_id->message_id . '';
+        $response = json_decode(file_get_contents($url));
         $data = [
-            Agenda::destroy($id),
-            json_decode(file_get_contents($url))
+            Agenda::destroy($id)
         ];
         return $data;
     }
