@@ -34,6 +34,7 @@ use App\Http\Controllers\Perijinan\PerminColController;
 use App\Http\Controllers\Perijinan\KunjunganDcController;
 use App\Http\Controllers\Inventory\SatuanController;
 use App\Http\Controllers\Inventory\BarangController;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\Inventory\KategoriController;
 
 
@@ -167,7 +168,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('kategori', KategoriController::class);
     });
 
+
     Route::group(['prefix' => 'admin','middleware' => ['permission:posting-read']], function () {
+
+    Route::group(['prefix' => 'agenda', 'as' => 'agenda:'], function () {
+        Route::resource('harian', AgendaController::class);
+    });
+
+    Route::group(['middleware' => ['permission:posting-read']], function () {
         Route::resource('posting', PostingController::class);
         Route::resource('halaman', HalamanController::class);
         Route::resource('category', CategoryController::class);

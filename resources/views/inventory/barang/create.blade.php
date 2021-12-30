@@ -24,34 +24,51 @@
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Kode Barcode<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::text('barcode', null,['class' => 'form-control'. ($errors->has('barcode') ? ' is-invalid' :
-                    ''), 'placeholder' =>
-                    'Kode Barcode'])}}
-                    @error('barcode')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <div class="form-group-feedback form-group-feedback-right">
+                        {{Form::text('barcode', null,['class' => 'form-control'. ($errors->has('barcode') ? '
+                        is-invalid' :
+                        ''), 'placeholder' =>
+                        'Kode Barcode'])}}
+                        @error('barcode')
+                        <div class="form-control-feedback text-danger">
+                            <i class="icon-cancel-circle2"></i>
+                        </div>
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Nama<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::text('name', null,['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' :
-                    ''), 'placeholder' => 'Nama Barang'])}}
-                    @error('name')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <div class="form-group-feedback form-group-feedback-right">
+                        {{Form::text('name', null,['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' :
+                        ''), 'placeholder' => 'Nama Barang'])}}
+                        @error('name')
+                        <div class="form-control-feedback text-danger">
+                            <i class="icon-cancel-circle2"></i>
+                        </div>
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Tahun Anggaran<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::number('tahun_anggaran', null,['class' => 'form-control'. ($errors->has('tahun_anggaran') ?
-                    ' is-invalid' :
-                    ''),
-                    'placeholder' => 'Tahun Anggaran'])}}
-                    @error('tahun_anggaran')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <div class="form-group-feedback form-group-feedback-right">
+                        {{Form::number('tahun_anggaran', null,['class' => 'form-control'.
+                        ($errors->has('tahun_anggaran') ?
+                        ' is-invalid' :
+                        ''),
+                        'placeholder' => 'Tahun Anggaran'])}}
+                        @error('tahun_anggaran')
+                        <div class="form-control-feedback text-danger">
+                            <i class="icon-cancel-circle2"></i>
+                        </div>
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
             </div>
             <div class="form-group row">

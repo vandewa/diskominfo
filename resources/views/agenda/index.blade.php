@@ -1,18 +1,18 @@
-@section('title', 'Inventory')
-@section('menu','Inventory')
-@section('submenu','Peminjaman Barang')
+@section('title', 'Agenda')
+@section('menu','Agenda')
+@section('submenu','List Agenda')
 @extends('layouts/template-admin')
-@section('kondisi9','nav-item-expanded nav-item-open')
+@section('kondisi10','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Inventory</span>
-<span class="breadcrumb-item active">Peminjaman Barang</span>
+<span class="breadcrumb-item active">Agenda</span>
+<span class="breadcrumb-item active">List Agenda</span>
 @endsection
 
 @section('tambah_data')
-<a href="{{route('inventory:peminjaman.create')}}" class="btn btn-primary">
+<a href="{{route('agenda:harian.create')}}" class="btn btn-primary">
     <i class="icon-file-plus mr-2"></i>
-    Tambah Peminjaman
+    Tambah Agenda
 </a>
 @endsection
 
@@ -33,12 +33,12 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Tanggal Peminjaman</th>
-                        <th>Tanggal Pengembalian</th>
-                        <th>Peminjam</th>
-                        <th>Status Peminjaman</th>
-                        <th>Petugas</th>
-                        <th>Penerima</th>
+                        <th>Nama</th>
+                        <th>Tanggal</th>
+                        <th>Acara</th>
+                        <th>Tempat</th>
+                        <th>Keterangan</th>
+                        <th>Oleh</th>
                         <th>Action</th>
                         {{-- @if (auth()->user()->level=='superadmin'||'admin')--}}
                         {{-- <th class="text-center">Aksi</th>--}}
@@ -60,16 +60,14 @@
         serverSide: true,
         ajax: window.location.href,
         columns: [
-            { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-            { data: 'tanggal_peminjaman', name: 'tanggal_peminjaman' },
-            { data: 'tanggal_pengembalian', name: 'tanggal_pengembalian' },
-            { data: 'peminjam_id', name: 'peminjam_id' },
-            { data: 'peminjaman_st', name: 'peminjaman_st' },
-            { data: 'petugas_id', name: 'petugas_id' },
-            { data: 'penerima_id', name: 'penerima_id' },
-            // { data: 'peminjamanst', },
+            { data: 'id', name: 'id' },
+            { data: 'user.name', nama: 'user.name' },
+            { data: 'tanggal', name: 'tanggal' },
+            { data: 'acara', name: 'acara' },
+            { data: 'tempat', name: 'tempat' },
+            { data: 'keterangan', name: 'keterangan' },
+            { data: 'oleh', name: 'oleh' },
             { data: 'action', },
-
         ]
     });
 </script>

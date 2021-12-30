@@ -42,15 +42,20 @@ class BarangController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'barcode' => ['required', 'numeric', 'unique:master_assets,barcode'],
-            'name' => 'required',
-            'tahun_anggaran' => 'required',
-            'kategori_id' => 'required',
-            'satuan_id' => 'required',
-        ]);
+        $validated = $request->validate(
+            [
+                'barcode' => ['required', 'numeric', 'unique:master_assets,barcode'],
+                'name' => 'required',
+                'tahun_anggaran' => 'required',
+                'kategori_id' => 'required',
+                'satuan_id' => 'required',
+            ],
+            [
+                'kategori_id.required' => 'Wajib dipilih',
+                'satuan_id.required' => 'Wajib dipilih'
+            ]
+        );
         MasterAsset::create($validated + ['peminjamanst' => 'PEMINJAMANST_00']);
-        // Session::flash('keterangan', 'Data berhasil disimpan');
         return redirect(route('inventory:barang.index'));
     }
 

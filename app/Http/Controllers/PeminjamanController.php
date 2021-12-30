@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
+use App\Models\MasterAsset;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -44,7 +45,8 @@ class PeminjamanController extends Controller
     public function create()
     {
         $userpetugas = User::orderBy('name', 'asc')->pluck('name', 'id');
-        return view('inventory.peminjaman.create', compact('userpetugas'));
+        $barang = MasterAsset::orderBy('name', 'asc')->pluck('name', 'id');
+        return view('inventory.peminjaman.create', compact('userpetugas', 'barang'));
     }
 
     /**
@@ -55,7 +57,24 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $items = $request->get('barang_id');
+        $items = ['1', '2', '3'];
+        $selected_items = '';
+        foreach ($items as $item) {
+            echo   $item . ',';
+        }
+        // dd($items);
+        // $validated = $request->validate([
+        //     'tanggal_peminjaman' => 'required',
+        //     'tanggal_pengembalian' => 'required',
+        //     'peminjam_id' => 'required',
+        //     'peminjaman_st' => 'required',
+        //     'petugas_id' => 'required',
+        //     'penerima_id' => 'required',
+        // ]);
+        // MasterAsset::create($validated + ['peminjamanst' => 'PEMINJAMANST_00']);
+        // Session::flash('keterangan', 'Data berhasil disimpan');
+        // return redirect(route('inventory:barang.index'));
     }
 
     /**
