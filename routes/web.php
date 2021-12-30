@@ -161,18 +161,18 @@ Route::group(['middleware' => ['permission:tiket-read']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
+   
+    Route::group(['prefix' => 'admin','middleware' => ['permission:posting-read']], function () {
+        Route::group(['prefix' => 'agenda', 'as' => 'agenda:'], function () {
+            Route::resource('harian', AgendaController::class);
+        });
+    });
+
     Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function () {
         Route::resource('satuan', SatuanController::class);
         Route::resource('barang', BarangController::class);
         Route::resource('peminjaman', PeminjamanController::class);
         Route::resource('kategori', KategoriController::class);
-    });
-
-
-    Route::group(['prefix' => 'admin','middleware' => ['permission:posting-read']], function () {
-
-    Route::group(['prefix' => 'agenda', 'as' => 'agenda:'], function () {
-        Route::resource('harian', AgendaController::class);
     });
 
     Route::group(['middleware' => ['permission:posting-read']], function () {
@@ -213,6 +213,7 @@ Route::group(['middleware' => ['auth']], function () {
  });
  
 });
+
 
 Route::group(['prefix' => 'tower'], function () {
     Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
