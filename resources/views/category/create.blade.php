@@ -67,41 +67,6 @@
 				</div>
 				<!-- /CKEditor default -->
     </div>
-	<script> 
-		function change()
-         {
-            var x = document.getElementById('pass').type;
-
-            if (x == 'password')
-            {
-               document.getElementById('pass').type = 'text';
-               document.getElementById('mybutton').innerHTML = '<i class="icon-eye-blocked"></i>';
-            }
-            else
-            {
-               document.getElementById('pass').type = 'password';
-               document.getElementById('mybutton').innerHTML = '<i class="icon-eye"></i>';
-            }
-         }
-	</script>
-
-	<script> 
-		function change2()
-         {
-            var x = document.getElementById('passs').type;
-
-            if (x == 'password')
-            {
-               document.getElementById('passs').type = 'text';
-               document.getElementById('mybutton2').innerHTML = '<i class="icon-eye-blocked"></i>';
-            }
-            else
-            {
-               document.getElementById('passs').type = 'password';
-               document.getElementById('mybutton2').innerHTML = '<i class="icon-eye"></i>';
-            }
-         }
-	</script>
     @endsection
 
 @push('js')
@@ -111,15 +76,14 @@
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\CategorycreateValidation') !!}</script>
 <script>
+		const nama_kategori = document.querySelector('#nama_kategori');
+		const slug = document.querySelector('#slug');
 
-const nama_kategori = document.querySelector('#nama_kategori');
-const slug = document.querySelector('#slug');
-
-nama_kategori.addEventListener('change', function() {
-fetch('/category/checkSlug?nama_kategori=' + nama_kategori.value)
-  .then(response => response.json())
-  .then(data => slug.value = data.slug);
-});
-</script>
+		nama_kategori.addEventListener('change', function() {
+		fetch('/category/checkSlug?nama_kategori=' + nama_kategori.value)
+		.then(response => response.json())
+		.then(data => slug.value = data.slug);
+		});
+		</script>
 @endpush
 

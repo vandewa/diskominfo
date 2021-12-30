@@ -44,7 +44,7 @@
 					<label class="col-form-label col-lg-2" for="slug">Slug<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
 						<input type="text" id="slug" name="slug"
-							class="form-control @error('slug') is-invalid @enderror" placeholder="Judul berita"
+							class="form-control @error('slug') is-invalid @enderror" placeholder="Slug"
 							value="{{ old('slug') }}" readonly>
 						@error('slug')
 						<div class="invalid-feedback">
@@ -78,7 +78,7 @@
 					<div class="col-lg-10">
 						<select name="id_kategori" class="form-control select @error('posisi') is-invalid @enderror"
 							data-fouc>
-							<option value="">- Pilih -</option>
+							<option value="" >- Pilih -</option>
 							@foreach ($category as $kategori)
 							@if (old('id_kategori') == $kategori->id)
 							<option value="{{ $kategori->id }}" selected>{{ $kategori->nama_kategori }}</option>
@@ -126,7 +126,7 @@
 				<div class="form-group row mt-2">
 					<label class="col-form-label col-lg-2">Sampul Halaman<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
-						<input type="file" name="file_name[]" class="file-input" multiple="multiple" data-fouc>
+						<input type="file" name="file_name[]" class="file-input-advanced" multiple="multiple" data-fouc>
 					</div>
 				</div>
 

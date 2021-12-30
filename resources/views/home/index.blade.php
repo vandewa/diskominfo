@@ -308,7 +308,7 @@
                             </div>
 
 
-                        <section id="my-keyboards">
+                        <section id="my-keyboards" data-aos="zoom-out-right">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 mb-3">

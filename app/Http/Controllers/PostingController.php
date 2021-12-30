@@ -40,7 +40,7 @@ class PostingController extends Controller
      */
     public function create()
     {
-        $category = Category::wherenotin('id',[0,2])
+        $category = Category::wherenotin('id',[0,2,7,8,9])
         ->get();
 
         return view('posting.create', compact( 'category'));
@@ -54,11 +54,33 @@ class PostingController extends Controller
      */
         public function store(PostingcreateValidation $request)
     {
-        
+        $path = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y');
+        $paths ='uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
         $b= Posting::create($request->except(['file_name']));
         $no = 1;
 
         if($request->hasFile('file_name')){
+             if (!file_exists($path)) {
+                 mkdir($path);
+                 mkdir($paths);
+
+                 $files = $request->file('file_name'); 
+            foreach($files as $a){
+                $prefix = date('Ymdhis');
+                $by = $request->created_by;
+                $extension = $a->extension();
+                $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
+                $a->move(public_path('/uploads'), $filename);
+                $attachment = new Attachment() ;
+                $attachment->id_tabel = $b->id_posting;
+                $attachment->file_name = $filename;
+                $attachment->save();
+                $no++;
+                } 
+
+             }  else if (!file_exists($paths)) { 
+                 mkdir($paths);
+
                 $files = $request->file('file_name'); 
             foreach($files as $a){
                 $prefix = date('Ymdhis');
@@ -70,9 +92,24 @@ class PostingController extends Controller
                 $attachment->id_tabel = $b->id_posting;
                 $attachment->file_name = $filename;
                 $attachment->save();
-
                 $no++;
-                }
+                } 
+             } else {
+
+                $files = $request->file('file_name'); 
+            foreach($files as $a){
+                $prefix = date('Ymdhis');
+                $by = $request->created_by;
+                $extension = $a->extension();
+                $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
+                $a->move(public_path('/uploads'), $filename);
+                $attachment = new Attachment() ;
+                $attachment->id_tabel = $b->id_posting;
+                $attachment->file_name = $filename;
+                $attachment->save();
+                $no++;
+                } 
+             }
         } else {
             $attachment = new Attachment() ;
             $attachment->id_tabel = $b->id_posting;
@@ -80,7 +117,7 @@ class PostingController extends Controller
             $attachment->save();
         }
 
-        return redirect ( url('posting'))->with('status', 'Data posting berhasil ditambahkan.');
+        return redirect ( route('posting.index'))->with('status', 'Data posting berhasil ditambahkan.');
 
 
     }
@@ -146,7 +183,7 @@ class PostingController extends Controller
                 }
         }
 
-        return redirect ('posting')->with('status', 'Data berhasil diubah.');
+        return redirect(route('posting.index'))->with('status', 'Data berhasil diubah.');
 
     }
 
@@ -165,7 +202,7 @@ class PostingController extends Controller
     public function getPosting(Request $request)
     {
             // $data = Posting::with(['nama', 'kategori']);
-            $data = Posting::with(['nama', 'kategori'])->where('id_kategori', '!=', 7)->orderBy('created_at', 'desc');
+            $data = Posting::with(['nama', 'kategori'])->whereNotIn('id_kategori', [7,9])->orderBy('created_at', 'desc');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -197,7 +234,7 @@ class PostingController extends Controller
                 
                 ->editColumn('id_kategori', function($a)
                 {
-                    return $a->kategori->nama_kategori;
+                    return $a->kategori->nama_kategori ?? '';
                 })
                 // ->editColumn('created_by', function($a)
                 // {

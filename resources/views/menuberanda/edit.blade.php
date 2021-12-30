@@ -21,9 +21,15 @@
 				</div>
 
 					<div class="card-body">
-						<form method="POST" action="{{route('menuberanda.update', $menuberanda->id)}}" enctype="multipart/form-data">
+						<form method="POST" action="{{route('menuberanda.update', $menuberanda->id)}}">
 						@method('patch')
 						@csrf
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Nama Menu<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<input type="text" name="nama"  class="form-control" placeholder="Nama Menu" value="{{ $menuberanda->nama }}">
+									</div>
+								</div>
 
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">URL<span class="text-danger">*</span></label>
@@ -36,14 +42,20 @@
 									<label class="col-form-label col-lg-2">Parent<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 									<select name="parent" class="form-control select" data-fouc>
+									<option>- Pilih -</option>
+									
 									@foreach($parentt as $induk)
+									@if ($menuberanda->parent == '')
+											<option value="{{$induk->id }}">{{ $induk->nama??''}}</option>
+									@else
 										<option value="{{ $menuberanda->parent }}" {{$menuberanda->parent == $induk->id  ? 'selected' : ''}}>{{ $induk->nama??''}}</option>
+									@endif
 									@endforeach
 										</select>									
 									</div>
 								</div>
 								
-								@if($menuberanda->isi_posting != null)
+								{{-- @if($menuberanda->isi_posting != null)
 								   <div class="form-group row mt-2">
 									<label class="col-form-label col-lg-2">Image</label>
 									<div class="col-lg-10">
@@ -74,11 +86,9 @@
 								<textarea name="isi_posting" id="editor-full">{{$menuberanda->isi_posting}}</textarea>
 				                </div> 
 
-								@endif
+								@endif --}}
 
 
-
-					
 
 				            <div class="text-right">
 					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>

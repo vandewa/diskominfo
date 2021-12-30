@@ -31,6 +31,7 @@
         "proengsoft/laravel-jsvalidation": "^4.4",
         "santigarcor/laratrust": "^6.3",
         "tymon/jwt-auth": "^1.0",
+        "unisharp/laravel-filemanager": "^2.3",
         "yajra/laravel-datatables-oracle": "^9.15"
     },
     "require-dev": {

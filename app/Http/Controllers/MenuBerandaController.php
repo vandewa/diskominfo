@@ -49,7 +49,7 @@ class MenuBerandaController extends Controller
             Menu::create([
                 'parent' => $request->parent,
                 'nama' => $request->nama,
-                'url' => 'uploads/lampiran/'.$filename,
+                'url' => '/uploads/lampiran/'.$filename,
                 'lampiran' => 'y'
             ]);
         } else {
@@ -61,7 +61,7 @@ class MenuBerandaController extends Controller
 
         }
 
-        return redirect('menuberanda')->with('status', 'Data berhasil ditambahkan.');
+        return redirect(route('menuberanda.index'))->with('status', 'Data berhasil ditambahkan.');
 
 
     }
@@ -88,8 +88,7 @@ class MenuBerandaController extends Controller
     {
         $menuberanda = Menu::find($id);
 
-        $parentt = DB::table('menu')
-        ->get();
+        $parentt = Menu::all();
 
 
         return view('menuberanda.edit', compact('menuberanda','parentt'));
@@ -105,39 +104,14 @@ class MenuBerandaController extends Controller
     public function update(Request $request, $id)
     {
 
-        if($request->hasFile('file_name')){
-            $file = $request->file('file_name');
-            $filename = $file->getClientOriginalName();
-            $file->move(public_path('/uploads'), $filename);
              Menu::find($id)
-            ->update([
-            'url' => $request->url,
-            'parent' => $request->parent,
-            'isi_posting' => $request->isi_posting,
-            'file_name' => $filename
-            ]);
-        }
-
-        if($request->filled('isi_posting')){
-            Menu::find($id)
-            ->update([
-            'url' => $request->url,
-            'parent' => $request->parent,
-            'isi_posting' => $request->isi_posting
-            ]);
-        }
-
-        else {
-
-             Menu::find($id)
-            ->update([
-            'url' => $request->url,
-            'parent' => $request->parent
+                ->update([
+                'nama' => $request->nama,
+                'url' => $request->url,
+                'parent' => $request->parent,
         ]);
 
-        }
-
-        return redirect ('menuberanda')->with('status', 'Data berhasil diubah');
+        return redirect (route('menuberanda.index'))->with('status', 'Data berhasil diubah');
     }
 
     /**
@@ -149,9 +123,8 @@ class MenuBerandaController extends Controller
 
       public function getMenuBeranda(Request $request)
     {
-            $data = Menu::with(['childs','parent'])
-            ->where('parent','!=','transparansi')
-            ->where('parent','!=','profil')
+            $data = Menu::with(['childs','parent','halaman'])
+            ->whereNotin('parent', ['transparansi', 'ppid', 'profil'])
             ->get();
 
             return DataTables::of($data)

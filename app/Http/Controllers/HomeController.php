@@ -49,6 +49,7 @@ class HomeController extends Controller
 
         return view('home.visimisi', compact('visimisi'));
     }
+    
 
     public function tugasppid()
     {

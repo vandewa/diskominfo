@@ -118,10 +118,10 @@
                 </div>
             <!-- SVG Shapes -->
                 <figure class="position-absolute right-0 bottom-0 left-0 mb-n1">
-        <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1920 100.1">
-          <path fill="#fff" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"/>
-        </svg>
-      </figure>
+                <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1920 100.1">
+                  <path fill="#fff" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"/>
+                </svg>
+              </figure>
                 <!-- End SVG Shapes -->
           </div>
 

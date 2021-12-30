@@ -134,7 +134,7 @@
                   @foreach($menu_categories as $category)
                   <div class="hs-has-sub-menu">
                     <a @if(count($category->childs))href="#"
-                      @else href="/kominfo/{{$category->id}}"
+                      @else href="{{$category->url}}"
                       @endif
 
                       id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif ">{{ $category->nama }}</a>
@@ -143,7 +143,7 @@
                       @foreach($category->childs as $child)
                       <div class="hs-has-sub-menu">
                         <a @if(count($child->childs))href="#"
-                          @else href="/kominfo/{{$child->id}}"
+                          @else href="{{$child->url}}"
                           @endif
 
                           id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
@@ -151,7 +151,7 @@
                           @if(count($child->childs))
                           @foreach($child->childs as $child1)
                           <a @if(count($child1->childs))href="#"
-                            @else href="/kominfo/{{$child1->id}}"
+                            @else href="{{$child1->url}}"
                             @endif
                             id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
                           @endforeach

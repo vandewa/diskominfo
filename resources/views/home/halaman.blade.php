@@ -1,4 +1,4 @@
-@section('title', 'Dinas Kominfo Wonosobo ')
+@section('title',$halaman->judul_posting )
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')
@@ -18,27 +18,22 @@
   <!-- ========== MAIN ========== -->
   <main id="content" role="main">
     <!-- Article Description Section -->
-    <div class="container space-top-1 space-bottom-2">
+    <div class="container space-top-2 space-bottom-2">
       <div class="w-lg-60 mx-lg-auto">
-        <div class="mb-4">
-        </div>
         <!-- Author -->
+        <center><h1 class="h2">{{ ucwords($halaman->judul_posting??'')}}</h1>
+
         <br>
-          @if($kominfo->sampul != null)
-       <img class="img-fluid w-100" src="/uploads/{{$kominfo->sampul??''}}" alt="Image Description">
- @endif
- <br>
-   @if($kominfo->file_name != null)
-<iframe src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url=http://devandewa.wonosobokab.go.id/uploads/20190312031507_BAB_III_Tabel.docx" width="100%" height="700px"></iframe>
- @endif
+          @if($picture->sampul??'' != null)
+          <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="/uploads/{{$picture->sampul??''}}" alt="Image Description">
+          @endif
+          <br>
+          {{-- @if($picture->sampul??'' != null)
+          <iframe src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url=http://devandewa.wonosobokab.go.id/uploads/20190312031507_BAB_III_Tabel.docx" width="100%" height="700px"></iframe>
+          @endif --}}
         <!-- End Author -->
-        <div style="
-            text-align:justify;  
-            text-justify:auto;
-            color:black;
-            text-indent: 40px;
-        ">
-        {!! $kominfo->isi_posting !!}
+        <div style="text-align:justify; text-justify:auto;   color:black;">  <!-- text-indent: 40px;-->
+         {!! $halaman->isi_posting??'' !!} 
         </div>
       </div>
 

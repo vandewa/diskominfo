@@ -44,5 +44,10 @@ class Posting extends Model
         ];
     }
 
+    public function halaman()
+    {
+        return $this->hasOne(Menu::class, 'slug');
+    }
+
 
 }
