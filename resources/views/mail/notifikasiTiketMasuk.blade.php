@@ -6,9 +6,6 @@ Anda berhasil melaporkan permasalahan dengan no tiket sebagai berikut.
     {{$no}}
 @endcomponent
 Laporan anda akan segera ditindak lanjuti oleh petugas kami.
-
-
-
 Terimakasih,<br>
 Diskomifo Wonosobo
 @endcomponent

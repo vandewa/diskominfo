@@ -11,7 +11,7 @@ class Posting extends Model
     use HasFactory, Sluggable;
     protected $primaryKey = 'id_posting';
     protected $table ='posting';
-    protected $fillable = ['posisi', 'created_by', 'judul_posting','isi_posting', 'kata_kunci', 'id_kategori', 'keterangan', 'slug'];
+    protected $guarded = [];
 
     public function attachment(){
         return $this->hasMany(Attachment::class, 'id_tabel');

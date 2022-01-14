@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Menu;
 use Illuminate\Support\Facades\DB;
 use DataTables;
+use App\Models\ComCode; 
+use App\Models\Posting; 
 
 class MenuBerandaController extends Controller
 {
@@ -29,8 +31,10 @@ class MenuBerandaController extends Controller
     {
         $parentt = DB::table('menu')
         ->get();
+        $informasi = ComCode::where('code_group', 'INFORMASI_ST')
+        ->get();
 
-        return view('menuberanda.create', compact('parentt'));
+        return view('menuberanda.create', compact('parentt', 'informasi'));
     }
 
     /**
@@ -49,6 +53,7 @@ class MenuBerandaController extends Controller
             Menu::create([
                 'parent' => $request->parent,
                 'nama' => $request->nama,
+                'informasi_st' => $request->informasi_st,
                 'url' => '/uploads/lampiran/'.$filename,
                 'lampiran' => 'y'
             ]);
@@ -56,6 +61,7 @@ class MenuBerandaController extends Controller
              Menu::create([
                 'parent' => $request->parent,
                 'nama' => $request->nama,
+                'informasi_st' => $request->informasi_st,
                 'lampiran' => 'n'
             ]);
 
@@ -87,11 +93,12 @@ class MenuBerandaController extends Controller
     public function edit($id)
     {
         $menuberanda = Menu::find($id);
-
+        $informasi = ComCode::where('code_group', 'INFORMASI_ST')
+        ->get();
         $parentt = Menu::all();
 
 
-        return view('menuberanda.edit', compact('menuberanda','parentt'));
+        return view('menuberanda.edit', compact('menuberanda','parentt','informasi'));
     }
 
     /**
@@ -103,13 +110,19 @@ class MenuBerandaController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-             Menu::find($id)
-                ->update([
-                'nama' => $request->nama,
-                'url' => $request->url,
-                'parent' => $request->parent,
+        Menu::find($id)
+            ->update([
+            'nama' => $request->nama,
+            'url' => $request->url,
+            'informasi_st' => $request->informasi_st,
+            'parent' => $request->parent,
         ]);
+
+        Posting::where('slug',$request->slug)
+        ->update([
+                'informasi_st' => $request->informasi_st,
+                ]);
+
 
         return redirect (route('menuberanda.index'))->with('status', 'Data berhasil diubah');
     }
@@ -124,7 +137,7 @@ class MenuBerandaController extends Controller
       public function getMenuBeranda(Request $request)
     {
             $data = Menu::with(['childs','parent','halaman'])
-            ->whereNotin('parent', ['transparansi', 'ppid', 'profil'])
+            ->whereNotin('parent', ['transparansi', 'ppid', 'profil', '- Pilih -'])
             ->get();
 
             return DataTables::of($data)

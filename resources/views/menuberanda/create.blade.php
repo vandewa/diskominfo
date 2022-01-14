@@ -28,7 +28,7 @@
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">Parent<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-									<select name="parent" class="form-control select" data-fouc required>
+									<select name="parent" class="form-control select-search" data-fouc required>
 									<option>- Pilih -</option>
 									@foreach($parentt as $induk)
 										<option value="{{$induk->id }}">{{ $induk->nama??''}}</option>
@@ -40,6 +40,28 @@
 									<label class="col-form-label col-lg-2">Nama<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<input type="text" name="nama"  class="form-control" placeholder="Nama menu" >
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Jenis Informasi Publik</label>
+									<div class="col-lg-10">
+										<select name="informasi_st" class="form-control select @error('informasi_st') is-invalid @enderror"
+											data-fouc>
+											<option value="" >- Pilih -</option>
+											@foreach ($informasi as $infor)
+											@if (old('informasi_st') == $infor->code_cd)
+											<option value="{{ $infor->code_cd }}" selected>{{ $infor->code_nm }}</option>
+											@else
+											<option value="{{ $infor->code_cd }}">{{ $infor->code_nm }}</option>
+											@endif
+											@endforeach
+										</select>
+										@error('informasi_st')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>
+										@enderror
 									</div>
 								</div>
 
@@ -67,7 +89,7 @@
 								<div class="form-group row mt-2">
 									<label class="col-form-label col-lg-2">File<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-										<input type="file" name="file_name" class="file-input" data-fouc >
+										<input type="file" name="file_name" class="file-input" data-fouc required >
 									</div>
 								</div>
 

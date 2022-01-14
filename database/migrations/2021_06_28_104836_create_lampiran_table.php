@@ -17,9 +17,10 @@ class CreateLampiranTable extends Migration
             $table->integer('id', true);
             $table->string('nama_lampiran', 200)->nullable();
             $table->string('keterangan', 200)->nullable();
-            $table->timestamps();
+            $table->string('informasi_st', 200)->nullable();
             $table->string('created_by', 50)->nullable();
             $table->string('updated_by', 50)->nullable();
+            $table->timestamps();
         });
     }
 

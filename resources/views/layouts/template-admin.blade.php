@@ -114,7 +114,7 @@
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
 			<a href="{{ route('index') }}" class="d-inline-block" target="_blank">
-				<img src="{{ url ('front\assets\images\logo.png ')}}" style="width: 70px;">
+				<img src="{{ url ('front\assets\images\logo.png ')}}" style="width: 100%;">
 			</a>
 		</div>
 
@@ -241,14 +241,15 @@
 
 						@permission('perizinan-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi7')">
-							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Perizinan</span></a>
+							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Perizinan</span><span
+									class="badge bg-orange-400 align-self-center ml-auto">{{ $total_perizinan}}</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Perizinan">
-								<li class="nav-item"><a href="{{ route('akses-data-center.index') }}" class="nav-link">Akses Data Center</a></li>
-								<li class="nav-item"><a href="{{ route('colocation-server.index') }}" class="nav-link">Colocation Server</a></li>
-								<li class="nav-item"><a href="{{ route('kunjungan-data-center.index') }}" class="nav-link">Kunjungan Data Center</a></li>
-								<li class="nav-item"><a href="{{ route('layanan-server.index') }}" class="nav-link">Layanan Server</a></li>
-								<li class="nav-item"><a href="{{ route('vps-baru.index') }}" class="nav-link">VPS Baru</a></li>
-								<li class="nav-item"><a href="{{ route('perubahan-vps.index') }}" class="nav-link">Perubahan VPS</a></li>
+								<li class="nav-item"><a href="{{ route('akses-data-center.index') }}" class="nav-link">Akses Data Center<span class="badge bg-orange-400 align-self-center ml-auto">{{$akses_dc}}</span></a></li>
+								<li class="nav-item"><a href="{{ route('colocation-server.index') }}" class="nav-link">Colocation Server<span class="badge bg-orange-400 align-self-center ml-auto">{{$colocation_server}}</span></a></li>
+								<li class="nav-item"><a href="{{ route('kunjungan-data-center.index') }}" class="nav-link">Kunjungan Data Center<span class="badge bg-orange-400 align-self-center ml-auto">{{$kunjungan_dc}}</span></a></li>
+								<li class="nav-item"><a href="{{ route('layanan-server.index') }}" class="nav-link">Layanan Server<span class="badge bg-orange-400 align-self-center ml-auto">{{$layanan_server}}</span></a></li>
+								<li class="nav-item"><a href="{{ route('vps-baru.index') }}" class="nav-link">VPS Baru<span class="badge bg-orange-400 align-self-center ml-auto">{{$vps_baru}}</span></a></li>
+								<li class="nav-item"><a href="{{ route('perubahan-vps.index') }}" class="nav-link">Perubahan VPS<span class="badge bg-orange-400 align-self-center ml-auto">{{$perubahan_vps}}</span></a></li>
 								<li class="nav-item"><a href="{{ route('pengajuan-server.index') }}" class="nav-link">Pengantar Pengajuan Server</a></li>
 							</ul>
 						</li>
@@ -380,7 +381,7 @@
 				<div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
 						&copy; 2017 - {{ Carbon\Carbon::now()->isoFormat('Y') }}. <a href="#">Diskominfo Wonosobo</a> by
-						<a href="" target="_blank">Devandewa</a>
+						<a href="#">Devandewa</a>
 					</span>
 				</div>
 			</div>
@@ -391,7 +392,11 @@
 
 	</div>
 	<!-- /page content -->
-
+	<script>
+		$(function(){
+			$(".alert").delay(3000).slideUp(300);
+		});
+	</script>
 	<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 	<script>
 		$(document).on('click', '.delete-data-table', function (a) {

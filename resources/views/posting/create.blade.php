@@ -22,7 +22,6 @@
 		<div class="card-body">
 			<form method="POST" action="{{route('posting.store')}}" enctype="multipart/form-data">
 				@csrf
-
 				<input type="hidden" name="posisi" value="highlight">
 				<input type="hidden" name="created_by" value="{{auth()->user()->id}}">
 
@@ -88,6 +87,28 @@
 							@endforeach
 						</select>
 						@error('kategori')
+						<div class="invalid-feedback">
+							{{ $message }}
+						</div>
+						@enderror
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Jenis Informasi Publik</label>
+					<div class="col-lg-10">
+						<select name="informasi_st" class="form-control select @error('informasi_st') is-invalid @enderror"
+							data-fouc>
+							<option value="" >- Pilih -</option>
+							@foreach ($informasi as $infor)
+							@if (old('informasi_st') == $infor->code_cd)
+							<option value="{{ $infor->code_cd }}" selected>{{ $infor->code_nm }}</option>
+							@else
+							<option value="{{ $infor->code_cd }}">{{ $infor->code_nm }}</option>
+							@endif
+							@endforeach
+						</select>
+						@error('informasi_st')
 						<div class="invalid-feedback">
 							{{ $message }}
 						</div>

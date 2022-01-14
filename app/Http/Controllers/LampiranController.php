@@ -111,12 +111,11 @@ class LampiranController extends Controller
     public function destroy($id)
     {
         Lampiran::destroy($id);
-
     }
 
     public function getLampirans(Request $request)
     {
-            $data = Lampiran::orderBy('nama_lampiran', 'asc')->get();
+            $data = Lampiran::orderBy('nama_lampiran', 'asc');
             
             return DataTables::of($data)
                 ->addIndexColumn()

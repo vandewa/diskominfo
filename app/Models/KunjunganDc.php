@@ -20,7 +20,7 @@ class KunjunganDc extends Model
         static::creating(function ($query) {
             if($query->no == ''){
 
-                $query->no = gen_no_akses_dc();
+                $query->no = gen_kunjungan_dc();
 
             }
         });

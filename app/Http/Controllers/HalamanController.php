@@ -13,7 +13,8 @@ use App\Models\Menu;
 use DataTables;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
-use \Cviebrock\EloquentSluggable\Services\SlugService; 
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\ComCode; 
 
 class HalamanController extends Controller
 {
@@ -28,8 +29,7 @@ class HalamanController extends Controller
         ->first();
         $picture = Menu::where('slug',$id)
         ->first();
-
-
+       
         return view('home.halaman', compact('halaman', 'picture'));
     }
 
@@ -45,7 +45,10 @@ class HalamanController extends Controller
      */
     public function create()
     {
-        return view('halaman.create');
+         $informasi = ComCode::where('code_group', 'INFORMASI_ST')
+        ->get();
+        
+        return view('halaman.create', compact('informasi'));
     }
 
     /**
@@ -54,10 +57,18 @@ class HalamanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
-
-        $b = Posting::create($request->except(['sampul']));
+        $path = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y');
+        $paths ='uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
+        
+        if (!file_exists($paths)) {
+             if (!file_exists($path)) {
+              mkdir($path);
+             }
+            mkdir($paths);
+         } 
+   
         if($request->hasFile('sampul')){
                 $files = $request->file('sampul'); 
                 $prefix = date('Ymdhis');
@@ -65,7 +76,7 @@ class HalamanController extends Controller
                 $extension = $files->extension();
                 $filename = $prefix.'-'. $by.'.'.$extension;
 
-                $files->move(public_path('/uploads'), $filename);
+                $files->move(public_path($paths), $filename);
                 $attachment = new Attachment() ;
                 $attachment->id_tabel = $b->id_posting;
                 $attachment->file_name = $filename;
@@ -77,18 +88,18 @@ class HalamanController extends Controller
                 'slug' => $request->slug,
                 'isi_posting' => $request->isi_posting,
                 'sampul' => $filename,
-                'parent' => ''
+                'parent' => '',
+                'informasi_st' => $request->informasi_st,
                 ]);
 
-                // Posting::create([
-                // 'nama' => $request->judul_posting,
-                // 'url' => $request->slug,
-                // 'slug' => $request->slug,
-                // 'isi_posting' => $request->isi_posting,
-                // 'sampul' => $filename,
-                // 'parent' => ''
-                // ]);
-
+                Posting::create([
+                'judul_posting' => $request->judul_posting,
+                'slug' => $request->slug,
+                'isi_posting' => $request->isi_posting,
+                'id_kategori' => $request->id_kategori,
+                'created_by' => $request->created_by,
+                'informasi_st' => $request->informasi_st,
+                ]);
         } else {
             Menu::create([
                 'nama' => $request->judul_posting,
@@ -96,7 +107,16 @@ class HalamanController extends Controller
                 'slug' => $request->slug, 
                 'isi_posting' => $request->isi_posting,
                 'parent' => '',
+                'informasi_st' => $request->informasi_st,
             ]);
+            Posting::create([
+                'judul_posting' => $request->judul_posting,
+                'slug' => $request->slug,
+                'isi_posting' => $request->isi_posting,
+                'id_kategori' => $request->id_kategori,
+                'created_by' => $request->created_by,
+                'informasi_st' => $request->informasi_st,
+                ]);
         }
         
 
@@ -123,9 +143,11 @@ class HalamanController extends Controller
     public function edit($id)
     {
         $halaman = Posting::with(['attachment','kategori', 'halaman'])->find($id);
+        $informasi = ComCode::where('code_group', 'INFORMASI_ST')
+        ->get();
 
         
-        return view('halaman.edit', compact('halaman'));
+        return view('halaman.edit', compact('halaman','informasi'));
     }
 
     /**
@@ -140,11 +162,13 @@ class HalamanController extends Controller
          Menu::where('slug',$request->slug)
           ->update([
                 'isi_posting' => $request->isi_posting,
+                'informasi_st' => $request->informasi_st,
                 ]);
 
         Posting::find($id)
         ->update([
                 'isi_posting' => $request->isi_posting,
+                'informasi_st' => $request->informasi_st,
                 ]);
 
         return redirect(route('halaman.index'))->with('status', 'Data berhasil diubah.'); 

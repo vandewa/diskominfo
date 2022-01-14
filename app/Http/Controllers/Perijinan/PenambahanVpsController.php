@@ -10,6 +10,9 @@ use DataTables;
 use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\PhpWord;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+use App\Mail\NotifikasiVpsBaruMail;
 
 
 class PenambahanVpsController extends Controller
@@ -64,6 +67,18 @@ class PenambahanVpsController extends Controller
         if($data){
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
+
+        
+         // $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+        //     'number' => $request->telepon,
+        //     'message' => $request->name.' Anda telah berhasil mendaftar untuk permohonan vps baru',
+        // ]);
+
+        // return ['response' => $response->body(),
+        //     'data' => $request->all()];
+
+        Mail::to($request->email)->send(new NotifikasiVpsBaruMail($data));
+
 
         return redirect()->back();
     }

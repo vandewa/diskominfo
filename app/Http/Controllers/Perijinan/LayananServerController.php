@@ -10,6 +10,10 @@ use DataTables;
 use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\PhpWord;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+use App\Mail\NotifikasiLayananServerMail;
+
 
 class LayananServerController extends Controller
 {
@@ -63,6 +67,16 @@ class LayananServerController extends Controller
         if($data){
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
+
+         // $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+        //     'number' => $request->telepon,
+        //     'message' => $request->name.' Anda telah berhasil mendaftar untuk layanan server',
+        // ]);
+
+        // return ['response' => $response->body(),
+        //     'data' => $request->all()];
+
+        Mail::to($request->email)->send(new NotifikasiLayananServerMail($data));
 
         return redirect()->back();
     }

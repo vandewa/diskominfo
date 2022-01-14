@@ -29,6 +29,7 @@ use App\Models\ColocationServer;
 use App\Models\KunjunganDc;
 use App\Models\PengajuanServer;
 use App\Models\PerubahanVps;
+use App\Models\InformasiPublik;
 
 class HomeController extends Controller
 {
@@ -90,7 +91,20 @@ class HomeController extends Controller
     public function getLampiran(Request $request)
 
     {
-            $data = Lampiran::orderBy('keterangan', 'asc')->get();
+
+        // $lampiran = Lampiran::select(['nama_lampiran', 'keterangan', 'informasi_st'])
+        //     ->whereNotNull('informasi_st');
+
+        // $menu = Menu::select(['url', 'nama', 'informasi_st'])
+        //     ->whereNotNull('informasi_st');
+        
+        // $data = Posting::select(['slug', 'judul_posting', 'informasi_st'])
+        //     ->whereNotNull('informasi_st')
+        //     ->union($lampiran)
+        //     ->union($menu);
+        
+        
+            $data = InformasiPublik::select('*');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
@@ -100,6 +114,16 @@ class HomeController extends Controller
                 ->editColumn('keterangan', function($data)
                 {
                     return $data->keterangan;
+                })
+
+                ->editColumn('nama_lampiran', function($data)
+                {
+                    return $data->nama_lampiran;
+                })
+
+                ->editColumn('informasi_st', function($data)
+                {
+                    return $data->informasi_st;
                 })
 
                 ->rawColumns(['action', 'status'])

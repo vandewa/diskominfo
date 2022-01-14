@@ -21,10 +21,25 @@
     
       <div class="w-100 sm-6 mx-lg-auto">
       <h3 class="mb-4 mt-10"><center>Kumpulan file-file lampiran</center></h3>
+        <form action="">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <label for="" class="col-md-2">
+                           Jenis Informasi Publik
+                        </label>
+                        <div class="col-md-6">
+                            {{Form::select('informasi_st',get_code_group('INFORMASI_ST'),null,['class' => 'name form-control', 'placeholder' => "Semua Data"])}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
       <table class="table-light table-striped yajra w-100" >
         <thead>
             <tr>
                     <th>No</th>
+                    <th>Nama</th>
                     <th>Lampiran</th>
                     <th>Aksi</th>
             </tr>
@@ -49,23 +64,19 @@
 
 
 @push('js')
-<script>
-<script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
-  <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
-  <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript">
   $(function () {
     
     var table = $('.yajra').DataTable({
-        processing: true,
-        serverSide: true,
+       	processing: true,
+				serverSide: true,
+        sDom: 't',
         ajax: "{{ route('lampiran.list') }}",
         columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'keterangan', },
-					{
+					{data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+          {data: 'keterangan', },
+          {data: 'informasi_st', visible:false },
+					  {
 						data: 'action', 
 						name: 'action', 
 						orderable: true, 
@@ -73,7 +84,23 @@
             },
         ]
     });
+
+        $('select[name=informasi_st]').change(function(){
+                table
+                    .column(2)
+                    .search( this.value )
+                    .draw();
+            });
     
   });
+  
 </script>
+<script>
+<script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+</script>
+
 @endpush

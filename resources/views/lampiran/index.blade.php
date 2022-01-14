@@ -60,7 +60,7 @@ Tambah Lampiran
         serverSide: true,
         ajax: "{{ route('lampirans.list') }}",
         columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
+					{data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'keterangan', },
                     {data: 'nama_lampiran', },
                     {data: 'tanggal', },

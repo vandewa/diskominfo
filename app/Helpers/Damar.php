@@ -10,10 +10,10 @@ if (!function_exists('get_code_group')) {
 if (!function_exists('gen_no_akses_dc')) {
     function gen_no_akses_dc()
     {
-        $no = Date('y-m-') . str_pad(1, 6, '0', STR_PAD_LEFT);
+        $no = Date('y-m-') . str_pad(1, 3, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\AksesDc::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->first();
         if ($terakhir) {
-            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -6) + 1, 6, 0, STR_PAD_LEFT);
+            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -3) + 1, 3, 0, STR_PAD_LEFT);
         }
         return 'ADC-' . $no;
     }
@@ -22,10 +22,10 @@ if (!function_exists('gen_no_akses_dc')) {
 if (!function_exists('gen_layanan_server')) {
     function gen_layanan_server()
     {
-        $no = Date('y-m-') . str_pad(1, 6, '0', STR_PAD_LEFT);
+        $no = Date('y-m-') . str_pad(1, 3, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\LayananServer::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->first();
         if ($terakhir) {
-            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -6) + 1, 6, 0, STR_PAD_LEFT);
+            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -3) + 1, 3, 0, STR_PAD_LEFT);
         }
         return 'LSV-' . $no;
     }
@@ -34,10 +34,10 @@ if (!function_exists('gen_layanan_server')) {
 if (!function_exists('gen_penambahan_vps')) {
     function gen_penambahan_vps()
     {
-        $no = Date('y-m-') . str_pad(1, 6, '0', STR_PAD_LEFT);
+        $no = Date('y-m-') . str_pad(1, 3, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\PenambahanVps::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->first();
         if ($terakhir) {
-            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -6) + 1, 6, 0, STR_PAD_LEFT);
+            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -3) + 1, 3, 0, STR_PAD_LEFT);
         }
         return 'VPB-' . $no;
     }
@@ -45,10 +45,10 @@ if (!function_exists('gen_penambahan_vps')) {
 if (!function_exists('gen_perubahan_vps')) {
     function gen_perubahan_vps()
     {
-        $no = Date('y-m-') . str_pad(1, 6, '0', STR_PAD_LEFT);
+        $no = Date('y-m-') . str_pad(1, 3, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\PerubahanVps::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->first();
         if ($terakhir) {
-            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -6) + 1, 6, 0, STR_PAD_LEFT);
+            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -3) + 1, 3, 0, STR_PAD_LEFT);
         }
         return 'PVP-' . $no;
     }
@@ -56,10 +56,10 @@ if (!function_exists('gen_perubahan_vps')) {
 if (!function_exists('gen_colocation_server')) {
     function gen_colocation_server()
     {
-        $no = Date('y-m-') . str_pad(1, 6, '0', STR_PAD_LEFT);
+        $no = Date('y-m-') . str_pad(1, 3, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\ColocationServer::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->first();
         if ($terakhir) {
-            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -6) + 1, 6, 0, STR_PAD_LEFT);
+            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -3) + 1, 3, 0, STR_PAD_LEFT);
         }
         return 'CSV-' . $no;
     }
@@ -67,10 +67,10 @@ if (!function_exists('gen_colocation_server')) {
 if (!function_exists('gen_kunjungan_dc')) {
     function gen_kunjungan_dc()
     {
-        $no = Date('y-m-') . str_pad(1, 6, '0', STR_PAD_LEFT);
+        $no = Date('y-m-') . str_pad(1, 3, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\KunjunganDc::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->first();
         if ($terakhir) {
-            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -6) + 1, 6, 0, STR_PAD_LEFT);
+            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -3) + 1, 3, 0, STR_PAD_LEFT);
         }
         return 'KDC-' . $no;
     }
@@ -78,10 +78,10 @@ if (!function_exists('gen_kunjungan_dc')) {
 if (!function_exists('gen_pengajuan_server')) {
     function gen_pengajuan_server()
     {
-        $no = Date('y-m-') . str_pad(1, 6, '0', STR_PAD_LEFT);
+        $no = Date('y-m-') . str_pad(1, 3, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\PengajuanServer::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->first();
         if ($terakhir) {
-            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -6) + 1, 6, 0, STR_PAD_LEFT);
+            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -3) + 1, 3, 0, STR_PAD_LEFT);
         }
         return 'PSV-' . $no;
     }

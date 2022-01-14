@@ -157,7 +157,7 @@
                                 <a href="/detail/{{ $post->slug }}">
                                     <img class="card-img transition-zoom-hover"
                                         src="{{ asset ('uploads') }}/{{ $post->gambarMuka->file_name??'' }}"
-                                        alt="Image Description" style="height:100%">
+                                        alt="Image Description" style="height:100%;"> 
                                 </a>
                             </div>
                             <div class="col-md-7">

@@ -17,8 +17,8 @@ class CreateInfografisTable extends Migration
             $table->integer('id', true);
             $table->string('file_name', 500)->nullable();
             $table->string('judul', 500)->nullable();
-            $table->timestamps();
             $table->integer('created_by')->nullable();
+            $table->timestamps();
         });
     }
 

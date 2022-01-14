@@ -10,6 +10,9 @@ use Session;
 use DataTables;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\PhpWord;
+use App\Mail\NotifikasiAksesDCMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
 
 class AksesDcController extends Controller
 {
@@ -23,7 +26,7 @@ class AksesDcController extends Controller
 
         if($request->ajax()){
 
-            $data = AksesDc::with(['keperluan','jenisIdentitas', 'penanggungJawab','menyetujui','status'])->select('akses_dcs.*');
+            $data = AksesDc::with(['keperluan','jenisIdentitas', 'penanggungJawab','menyetujui','status'])->select('akses_dcs.*')->orderby('created_at','desc');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){
@@ -64,6 +67,16 @@ class AksesDcController extends Controller
         if($data){
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
+
+        // $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+        //     'number' => $request->telepon,
+        //     'message' => $request->name.' Anda telah berhasil mendaftar untuk akses data center',
+        // ]);
+
+        // return ['response' => $response->body(),
+        //     'data' => $request->all()];
+
+        Mail::to($request->email)->send(new NotifikasiAksesDCMail($data));
 
         return redirect()->back();
     }
@@ -112,7 +125,7 @@ class AksesDcController extends Controller
      */
     public function destroy($id)
     {
-        //
+        AksesDc::destroy($id);
     }
 
     public function persetujuan(Request $request, $id)
