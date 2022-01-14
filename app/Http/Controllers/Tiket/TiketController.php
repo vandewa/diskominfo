@@ -24,7 +24,7 @@ class TiketController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas']);
+            $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->orderBy('created_at', 'desc');
 
             return DataTables::of($data)
                 ->editColumn('deskripsi_masalah', function ($a) {
@@ -63,7 +63,7 @@ class TiketController extends Controller
     {
         $data = Tiket::create(
             [
-                'no' => gen_no_akses_dc(),
+                'no' => gen_no_tiket(),
                 'tiket_st' => 'TIKET_ST_01',
                 'pelapor' => $request->pelapor,
                 'priority_tp' => $request->priority_tp,

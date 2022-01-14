@@ -91,10 +91,10 @@ if (!function_exists('gen_pengajuan_server')) {
 if (!function_exists('gen_no_tiket')) {
     function gen_no_tiket()
     {
-        $no = Date('y-m-') . str_pad(1, 6, '0', STR_PAD_LEFT);
+        $no = Date('y-m-') . str_pad(1, 3, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\Tiket::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->first();
         if ($terakhir) {
-            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -6) + 1, 6, 0, STR_PAD_LEFT);
+            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -3) + 1, 3, 0, STR_PAD_LEFT);
         }
         return 'TKT-' . $no;
     }
