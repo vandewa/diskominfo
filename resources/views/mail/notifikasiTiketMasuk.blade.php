@@ -6,10 +6,7 @@ Anda berhasil melaporkan permasalahan dengan nomor tiket sebagai berikut.
     {{$no}}
 @endcomponent
 Laporan anda akan segera ditindak lanjuti oleh petugas kami.
-Terima kasih<br>
 
-Untuk cek status silahkan klik link berikut<br>
-http://devandewa.wonosobokab.go.id/pengajuanizin?q={{$no}}
-<br>
-Diskominfo Kabupaten Wonosobo
+Terimakasih,<br>
+Diskomifo Wonosobo
 @endcomponent

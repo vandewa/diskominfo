@@ -1,11 +1,11 @@
-@section('title', 'Tambah Satuan')
-@section('menu','Inventori')
+@section('title', 'Inventory')
+@section('menu','Inventory')
 @section('submenu','Tambah Satuan')
 @extends('layouts/template-admin')
 @section('kondisi9','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Inventori</span>
+<span class="breadcrumb-item active">Inventory</span>
 <span class="breadcrumb-item active">Tambah Satuan</span>
 @endsection
 
@@ -22,7 +22,17 @@
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Nama Satuan<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::text('name', null,['class' => 'form-control', 'placeholder' => 'Nama Satuan'])}}
+                    <div class="form-group-feedback form-group-feedback-right">
+                        {{ form::text('name', null,['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' :
+                        ''),
+                        'placeholder' => 'Nama Satuan']) }}
+                        @error('name')
+                        <div class="form-control-feedback text-danger">
+                            <i class="icon-cancel-circle2"></i>
+                        </div>
+                        <span class="badge d-block badge-danger form-text">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
             </div>
             <div class="text-right">

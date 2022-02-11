@@ -1,11 +1,11 @@
-@section('title', 'Ubah Kategori')
-@section('menu','Kategori')
+@section('title', 'Inventory')
+@section('menu','Inventory')
 @section('submenu','Ubah Kategori')
 @extends('layouts/template-admin')
-@section('kondisi10','nav-item-expanded nav-item-open')
+@section('kondisi9','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Kategori</span>
+<span class="breadcrumb-item active">Inventory</span>
 <span class="breadcrumb-item active">Ubah Kategori</span>
 @endsection
 
@@ -18,7 +18,8 @@
             <h5>FORM UBAH KATEGORI</h5>
         </div>
         <div class="card-body">
-            {{Form::model($data, ['route' => ['kategorisss:kategori.update', $data->id],'method' => 'put', 'files' => 'true', ''])}}
+            {{Form::model($data, ['route' => ['inventory:kategori.update', $data->id],'method' => 'put', 'files' =>
+            'true', ''])}}
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Nama Kategori<span class="text-danger">*</span></label>
                 <div class="col-lg-10">

@@ -30,8 +30,20 @@
                        	 		<div class="form-group row">
 									<label class="col-form-label col-lg-2">Judul <span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-										<input type="text" name="judul_posting" class="form-control @error('judul_posting') is-invalid @enderror" placeholder="Judul berita" value="{{ $infohoax->judul_posting }}">
+										<input type="text" id="judul_posting" name="judul_posting" class="form-control @error('judul_posting') is-invalid @enderror" placeholder="Judul berita" value="{{ $infohoax->judul_posting }}">
 										@error('judul_posting')
+										<div class="invalid-feedback">
+										{{ $message }}
+										</div>
+										@enderror
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2" for="slug">Slug<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<input type="text" id="slug" name="slug" class="form-control @error('slug') is-invalid @enderror" placeholder="Judul berita" value="{{ $infohoax->slug }}" readonly>
+										@error('slug')
 										<div class="invalid-feedback">
 										{{ $message }}
 										</div>
@@ -84,3 +96,19 @@
 				<!-- /CKEditor default -->
     </div>
     @endsection
+
+		@push('js')
+	<script>
+
+	const judul_posting = document.querySelector('#judul_posting');
+	const slug = document.querySelector('#slug');
+
+	judul_posting.addEventListener('change', function() {
+	fetch('/infohoax/checkSlug?judul_posting=' + judul_posting.value)
+	.then(response => response.json())
+	.then(data => slug.value = data.slug);
+	});
+	
+	</script>
+
+	@endpush

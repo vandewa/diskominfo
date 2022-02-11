@@ -10,6 +10,9 @@ use DataTables;
 use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\PhpWord;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+use App\Mail\NotifikasiColocationServerMail;
 
 class PerminColController extends Controller
 {
@@ -22,7 +25,7 @@ class PerminColController extends Controller
     {
          if($request->ajax()){
 
-            $data = ColocationServer::with(['penanggungJawab','menyetujui','status'])->select('colocation_servers.*');
+            $data = ColocationServer::with(['penanggungJawab','menyetujui','status'])->select('colocation_servers.*')->orderby('created_at','desc');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){
@@ -63,6 +66,16 @@ class PerminColController extends Controller
         if($data){
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
+
+        // $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+        //     'number' => $request->telepon,
+        //     'message' => $request->name.' Anda telah berhasil mendaftar untuk permintaan colocation server',
+        // ]);
+
+        // return ['response' => $response->body(),
+        //     'data' => $request->all()];
+
+        Mail::to($request->email)->send(new NotifikasiColocationServerMail($data));
 
         return redirect()->back();
     }

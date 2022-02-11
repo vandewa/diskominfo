@@ -16,10 +16,11 @@ class CreateAttachmentTable extends Migration
         Schema::create('attachment', function (Blueprint $table) {
             $table->integer('id_attachment', true);
             $table->integer('id_tabel');
-            $table->string('file_name', 250);
+            $table->string('path', 250)->nullable();
+            $table->string('file_name', 250)->nullable();
             $table->string('temp', 200)->nullable();
             $table->timestamps();
-            $table->dateTime('delete_at')->nullable();
+            $table->softDeletes()->nullable();
         });
     }
 

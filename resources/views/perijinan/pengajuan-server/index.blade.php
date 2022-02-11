@@ -97,7 +97,6 @@
 			var table = $('.devan').DataTable({
 				processing: true,
 				serverSide: true,
-                sDom: 't',
                 ajax: window.location.href,
 				columns: [
                     {data: 'no', name: 'no'},

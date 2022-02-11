@@ -22,6 +22,7 @@ class CreateMenuTable extends Migration
             $table->string('isi_posting', 5000)->nullable();
             $table->string('sampul', 5000)->nullable();
             $table->string('file_name')->nullable();
+            $table->string('informasi_st')->nullable();
             $table->timestamps();
         });
     }

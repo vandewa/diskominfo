@@ -16,18 +16,20 @@ class CreatePostingTable extends Migration
         Schema::create('posting', function (Blueprint $table) {
             $table->integer('id_posting', true);
             $table->string('posisi', 250)->nullable();
-            $table->string('judul_posting', 250);
+            $table->string('judul_posting', 250)->nullable();
+            $table->string('slug', 250)->nullable();
             $table->text('isi_posting')->nullable();
             $table->text('kata_kunci')->nullable();
             $table->string('id_kategori', 50)->default('1');
+            $table->string('informasi_st', 250)->nullable();
             $table->string('temp', 250)->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
-            $table->timestamps();
             $table->integer('deleted_by')->nullable();
-            $table->softDeletes();
             $table->string('keterangan', 250)->nullable();
             $table->integer('views')->default(0);
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

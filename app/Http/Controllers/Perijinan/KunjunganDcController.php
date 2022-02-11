@@ -8,6 +8,12 @@ use App\Models\KunjunganDc;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use DataTables;
+use PhpOffice\PhpWord\TemplateProcessor;
+use PhpOffice\PhpWord\PhpWord;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+use App\Mail\NotifikasiKunjunganDCMail;
+
 
 class KunjunganDcController extends Controller
 {
@@ -20,7 +26,7 @@ class KunjunganDcController extends Controller
     {
         if($request->ajax()){
 
-            $data = KunjunganDc::with(['jenisIdentitas', 'penanggungJawab','menyetujui','status'])->select('ijin_kunjungans.*');
+            $data = KunjunganDc::with(['jenisIdentitas', 'penanggungJawab','menyetujui','status'])->select('ijin_kunjungans.*')->orderby('created_at','desc');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){
@@ -62,7 +68,18 @@ class KunjunganDcController extends Controller
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
 
+         // $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+        //     'number' => $request->telepon,
+        //     'message' => $request->name.' Anda telah berhasil mendaftar untuk kunjungan data center',
+        // ]);
+
+        // return ['response' => $response->body(),
+        //     'data' => $request->all()];
+
+        Mail::to($request->email)->send(new NotifikasiKunjunganDCMail($data));
+
         return redirect()->back();
+
     }
 
     /**

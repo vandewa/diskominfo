@@ -181,6 +181,9 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -238,6 +241,7 @@ return [
         'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

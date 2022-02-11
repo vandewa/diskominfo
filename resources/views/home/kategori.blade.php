@@ -51,7 +51,7 @@
            @foreach($kategori as $kategorinya)
         <!-- Item -->
         <div class="cbp-item rounded-lg branding mb-2">
-          <a class="cbp-caption" href="/detail/{{$kategorinya->id_posting}}">
+          <a class="cbp-caption" href="/detail/{{$kategorinya->slug}}">
             <div class="cbp-caption-defaultWrap mb-5">
               <img class="rounded-lg" src="{{ asset ('uploads') }}/{{ $kategorinya->gambarMuka->file_name??'' }}" alt="Image Description" style="height:300px;">
             </div>

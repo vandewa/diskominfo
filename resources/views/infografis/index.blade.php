@@ -50,6 +50,7 @@ Tambah Posting
     <!-- /basic datatable -->
 </div>
 @endsection
+
 @push('js')
 <script type="text/javascript">			
 			var table = $('.devan').DataTable({

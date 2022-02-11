@@ -25,6 +25,7 @@ class PostingcreateValidation extends FormRequest
     {
         return [
             'judul_posting' => 'required',
+            'slug' => 'required',
             'posisi' => 'required',
             'id_kategori' => 'required',
             'kata_kunci' => 'required',

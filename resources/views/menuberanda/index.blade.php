@@ -13,7 +13,7 @@
 @if (auth()->user()->level=='superadmin'||'admin')
 <a href="{{route('menuberanda.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
-Tambah Menu
+Tambah Menu ( Khusus File )
 </a>
 @endif
 @endsection

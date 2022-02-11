@@ -20,6 +20,9 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\SampulController;
 use App\Http\Controllers\InfohoaxController;
 use App\Http\Controllers\InfografisController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\HalamanController;
+use App\Http\Controllers\MediaController;
 use Carbon\Carbon;
 use App\Http\Controllers\Perijinan\AksesDcController;
 use App\Http\Controllers\Perijinan\PenambahanVpsController;
@@ -30,9 +33,8 @@ use App\Http\Controllers\Perijinan\PerminColController;
 // use App\Http\Controllers\PerijinanBackend\AksesDataCenterController;
 use App\Http\Controllers\Perijinan\KunjunganDcController;
 use App\Http\Controllers\Inventory\SatuanController;
-
 use App\Http\Controllers\Inventory\BarangController;
-
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\Inventory\KategoriController;
 
 
@@ -61,6 +63,8 @@ Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 Route::get('/tugasppid', [HomeController::class, 'tugasppid'])->name('tugasppid');
 Route::get('/strukturppid', [HomeController::class, 'strukturppid'])->name('strukturppid');
 // END PPID
+Route::get('/page/daftar-informasi-publik', [HomeController::class, 'informasiPublik'])->name('informasi.publik');
+Route::get('/page/{id}', [HalamanController::class, 'dinamis'])->name('dinamis');
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/personil', [HomeController::class, 'personil'])->name('personil');
 Route::get('/tupoksi', [HomeController::class, 'tupoksi'])->name('tupoksi');
@@ -69,21 +73,27 @@ Route::get('/pengaduan', [HomeController::class, 'pengaduan'])->name('pengaduan'
 Route::get('/pengajuan', [HomeController::class, 'pengajuan'])->name('pengajuan');
 Route::get('/pengajuanizin', [HomeController::class, 'pengajuanizin'])->name('pengajuanizin');
 Route::post('/pengajuan/simpan', [HomeController::class, 'simpan'])->name('pengajuan.simpan');
-Route::get('/website/list', [HomeController::class, 'getWebsite'])->name('website.list');
+Route::get('/website/user', [HomeController::class, 'getWebsite'])->name('website.list');
 Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
 Route::get('/kominfo/{id}', [HomeController::class, 'kominfo'])->name('kominfo');
-Route::get('/detail/{post}', [HomeController::class, 'detail'])->name('detail.posting');
+Route::get('/detail/{post:slug}', [HomeController::class, 'detail'])->name('detail.posting');
 Route::get('/details/{post}', [HomeController::class, 'details'])->name('details.pengumuman');
 Route::get('/search', [HomeController::class, 'cari'])->name('search');
-Route::get('/kategori/{post}', [HomeController::class, 'kategori'])->name('kategori.posting');
-Route::get('/uploadby/{post}', [HomeController::class, 'uploadby'])->name('uploadby.posting');
+Route::get('/kategori/{post:slug}', [HomeController::class, 'kategori'])->name('kategori.posting');
+Route::get('/uploadby/{post:slug}', [HomeController::class, 'uploadby'])->name('uploadby.posting');
+Route::get('/posting/checkSlug', [PostingController::class, 'checkSlug'])->middleware('auth');
+Route::get('/posting/{id}/checkSlug', [PostingController::class, 'checkSlug'])->middleware('auth');
 Route::get('/posting/logout', [PostingController::class, 'logout'])->name('logout');
 Route::get('/posting/list', [PostingController::class, 'getPosting'])->name('posting.list');
+Route::get('/halaman/list', [HalamanController::class, 'getHalaman'])->name('halaman.list');
+Route::get('/infohoax/checkSlug', [PostingController::class, 'checkSlug'])->middleware('auth');
 Route::get('/infohoax/list', [InfohoaxController::class, 'getInfohoax'])->name('infohoax.list');
 Route::get('/infohoax/daftar', [HomeController::class, 'daftarInfohoax'])->name('infohoax.daftar');
 Route::get('/infografis/list', [InfografisController::class, 'getInfografis'])->name('infografis.list');
 Route::get('/infografis/detail', [HomeController::class, 'detailInfografis'])->name('infografis.detail');
+Route::get('/category/checkSlug', [CategoryController::class, 'checkSlug'])->middleware('auth');
 Route::get('/category/list', [CategoryController::class, 'getCategory'])->name('category.list');
+Route::get('/informasi-publik/list', [HomeController::class, 'getInformasiPublik'])->name('informasi.publik.list');
 Route::get('/lampiran/list', [HomeController::class, 'getLampiran'])->name('lampiran.list');
 Route::get('/lampirans/list', [LampiranController::class, 'getLampirans'])->name('lampirans.list');
 Route::get('/user/list', [UserController::class, 'getUser'])->name('user.list');
@@ -153,22 +163,29 @@ Route::group(['middleware' => ['permission:tiket-read']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
+   
+    Route::group(['prefix' => 'admin','middleware' => ['permission:posting-read']], function () {
+        Route::group(['prefix' => 'agenda', 'as' => 'agenda:'], function () {
+            Route::resource('harian', AgendaController::class);
+        });
+    });
+
     Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function () {
         Route::resource('satuan', SatuanController::class);
         Route::resource('barang', BarangController::class);
-    });
-    Route::group(['prefix' => 'kategorisss', 'as' => 'kategorisss:'], function () {
+        Route::resource('peminjaman', PeminjamanController::class);
         Route::resource('kategori', KategoriController::class);
     });
 
     Route::group(['middleware' => ['permission:posting-read']], function () {
         Route::resource('posting', PostingController::class);
+        Route::resource('halaman', HalamanController::class);
         Route::resource('category', CategoryController::class);
         Route::resource('infohoax', InfohoaxController::class);
         Route::resource('infografis', InfografisController::class);
     });
 
-    Route::group(['middleware' => ['permission:menu_depan-read']], function () {
+    Route::group(['middleware' => ['permission:menu_depan-read'], 'prefix' => "admin"], function () {
         Route::resource('gallery', GalleryController::class);
         Route::resource('lampirans', LampiranController::class);
         Route::resource('menuberanda', MenuBerandaController::class);
@@ -178,16 +195,27 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('youtube', YoutubeController::class);
     });
 
-    Route::group(['middleware' => ['permission:users-read']], function () {
+    
         Route::resource('user', UserController::class);
         Route::resource('account', AccountController::class);
-    });
+ 
 
     Route::group(['middleware' => ['permission:layanan-read']], function () {
         Route::resource('komentar', KomentarController::class);
         Route::resource('pengaduans', PengaduanController::class);
     });
+
+    Route::group(['middleware' => ['auth'], 'prefix' => "admin"], function () {
+        Route::resource('media', MediaController::class);
+
+    });
+
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+     \UniSharp\LaravelFilemanager\Lfm::routes();
+ });
+ 
 });
+
 
 Route::group(['prefix' => 'tower'], function () {
     Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);

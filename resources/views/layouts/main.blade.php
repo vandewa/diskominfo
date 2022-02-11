@@ -37,11 +37,13 @@
   @stack('css')
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
-  </link>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="{{ url('front/assets/style.css')}}" />
 
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
@@ -132,7 +134,7 @@
                   @foreach($menu_categories as $category)
                   <div class="hs-has-sub-menu">
                     <a @if(count($category->childs))href="#"
-                      @else href="/kominfo/{{$category->id}}"
+                      @else href="{{$category->url}}"
                       @endif
 
                       id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif ">{{ $category->nama }}</a>
@@ -141,7 +143,7 @@
                       @foreach($category->childs as $child)
                       <div class="hs-has-sub-menu">
                         <a @if(count($child->childs))href="#"
-                          @else href="/kominfo/{{$child->id}}"
+                          @else href="{{$child->url}}"
                           @endif
 
                           id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
@@ -149,7 +151,7 @@
                           @if(count($child->childs))
                           @foreach($child->childs as $child1)
                           <a @if(count($child1->childs))href="#"
-                            @else href="/kominfo/{{$child1->id}}"
+                            @else href="{{$child1->url}}"
                             @endif
                             id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
                           @endforeach
@@ -437,7 +439,7 @@
                       Total Pengunjung
                       <div class="d-flex justify-content-left ml-3 mb-4">
                         <a href='https://www.stat-counter.org/'></a>
-                        <script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/829214/t/5"></script>
+                        {{-- <script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/829214/t/5"></script> --}}
                       </div>
                     </span>
                   </span>
@@ -610,9 +612,45 @@
 
   <!-- JS Front -->
   <script src="{{ url ('front/assets/js/theme.min.js')}}"></script>
+  <script src="{{ url ('front/assets/js/vanilla-tilt.min.js')}}"></script>
 
 
   <!-- JS Plugins Init. -->
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box1'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box2'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box3'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box4'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
   <script>
     $(document).on('ready', function() {
 
@@ -720,6 +758,12 @@
         var goTo = new HSGoTo($(this)).init();
       });
     });
+    @if(request('page') !='')
+    window.onload = function() {
+    var el = document.getElementById('de');
+    el.scrollIntoView(true);
+}
+@endif
   </script>
 
   <!-- IE Support -->

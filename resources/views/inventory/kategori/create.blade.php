@@ -1,11 +1,11 @@
-@section('title', 'Tambah Kategori')
-@section('menu','Kategori')
+@section('title', 'Inventory')
+@section('menu','Inventory')
 @section('submenu','Tambah Kategori')
 @extends('layouts/template-admin')
-@section('kondisi10','nav-item-expanded nav-item-open')
+@section('kondisi9','nav-item-expanded nav-item-open')
 
 @section('halaman')
-<span class="breadcrumb-item active">Kategori</span>
+<span class="breadcrumb-item active">Inventory</span>
 <span class="breadcrumb-item active">Tambah Kategori</span>
 @endsection
 
@@ -18,11 +18,21 @@
             <h5>FORM INPUT KATEGORI</h5>
         </div>
         <div class="card-body">
-            {{Form::open(['route' => 'kategorisss:kategori.store','method' => 'post', 'files' => 'true', ''])}}
+            {{Form::open(['route' => 'inventory:kategori.store','method' => 'post', 'files' => 'true', ''])}}
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Nama Kategori<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
-                    {{Form::text('name', null,['class' => 'form-control', 'placeholder' => 'Nama Kategori'])}}
+                    <div class="form-group-feedback form-group-feedback-right">
+                        {{ form::text('name', null,['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' :
+                        ''),
+                        'placeholder' => 'Nama Satuan']) }}
+                        @error('name')
+                        <div class="form-control-feedback text-danger">
+                            <i class="icon-cancel-circle2"></i>
+                        </div>
+                        <span class="badge d-block badge-danger form-text">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
             </div>
             <div class="text-right">
