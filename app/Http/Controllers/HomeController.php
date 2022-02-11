@@ -91,25 +91,56 @@ class HomeController extends Controller
     public function getLampiran(Request $request)
 
     {
-
-        // $lampiran = Lampiran::select(['nama_lampiran', 'keterangan', 'informasi_st'])
-        //     ->whereNotNull('informasi_st');
-
-        // $menu = Menu::select(['url', 'nama', 'informasi_st'])
-        //     ->whereNotNull('informasi_st');
-        
-        // $data = Posting::select(['slug', 'judul_posting', 'informasi_st'])
-        //     ->whereNotNull('informasi_st')
-        //     ->union($lampiran)
-        //     ->union($menu);
-        
-        
-            $data = InformasiPublik::select('*');
+         $data = Lampiran::orderBy('keterangan', 'asc')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
                     $actionBtn = '<a href="uploads/lampiran/'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Download</a>';
                     return $actionBtn;
+                })
+                ->editColumn('keterangan', function($data)
+                {
+                    return $data->keterangan;
+                })
+
+                ->rawColumns(['action', 'status'])
+                ->make(true);
+        
+    }
+    
+    public function lampiran()
+    {
+        return view('home.lampiran');
+    }
+
+     public function informasiPublik()
+    {
+        return view('home.informasipublik');
+    }
+
+    public function getInformasiPublik(Request $request)
+
+    {
+        
+            $data = InformasiPublik::select('*');
+
+            // return $data;
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($data){
+                    if(substr($data->nama_lampiran,-4,1) == '.' || substr($data->nama_lampiran,-5,1) == '.') {
+                    $actionBtn = '<a href="/uploads/lampiran/'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Tampil</a>';
+                      return $actionBtn;
+                    } else{
+                         if(substr($data->nama_lampiran,0,6) == '/page/' ) {
+                            $actionBtn = '<a href="'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Tampil</a>';
+                            return $actionBtn;
+                         }
+
+                        $actionBtn = '<a href="/detail/'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Tampil</a>';
+                      return $actionBtn;
+                    }
+                  
                 })
                 ->editColumn('keterangan', function($data)
                 {
@@ -130,11 +161,6 @@ class HomeController extends Controller
                 ->make(true);
 
         
-    }
-    
-    public function lampiran()
-    {
-        return view('home.lampiran');
     }
 
      public function kominfo($id)
@@ -281,6 +307,7 @@ class HomeController extends Controller
         ->limit(4)
         ->get();
 
+        // return $postingg;
 
 
         return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul', 'infohoax', 'infografis'));

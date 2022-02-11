@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Lampiran;
 use DataTables;
 use App\Http\Requests\LampirancreateValidation;
+use App\Models\ComCode;
 
 class LampiranController extends Controller
 {
@@ -27,7 +28,10 @@ class LampiranController extends Controller
      */
     public function create()
     {
-        return view('lampiran.create');
+        $informasi = ComCode::where('code_group', 'INFORMASI_ST')
+        ->get();
+
+        return view('lampiran.create', compact('informasi'));
     }
 
     /**
@@ -45,11 +49,12 @@ class LampiranController extends Controller
         Lampiran::create([
             'nama_lampiran' => $nama,
             'keterangan' => $request->keterangan,
+            'informasi_st' => $request->informasi_st,
             'created_by' => $request->created_by
 
         ]);
     
-        return redirect(url('lampirans'))->with('status', 'Data berhasil ditambahkan.');
+        return redirect(route('lampirans.index'))->with('status', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -72,8 +77,10 @@ class LampiranController extends Controller
     public function edit($id)
     {
         $lampiran = Lampiran::find($id);
+        $informasi = ComCode::where('code_group', 'INFORMASI_ST')
+        ->get();
 
-        return view('lampiran.edit', compact('lampiran'));
+        return view('lampiran.edit', compact('lampiran', 'informasi'));
     }
 
     /**
@@ -95,10 +102,11 @@ class LampiranController extends Controller
 
         Lampiran::find($id)
         ->update([
-            'keterangan' => $request->keterangan
+            'keterangan' => $request->keterangan,
+            'informasi_st' => $request->informasi_st,
         ]);
 
-        return redirect('lampirans')->with('status', 'Data berhasil diubah.');
+        return redirect(route('lampirans.index'))->with('status', 'Data berhasil diubah.');
 
     }
 

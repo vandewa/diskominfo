@@ -63,6 +63,7 @@ Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 Route::get('/tugasppid', [HomeController::class, 'tugasppid'])->name('tugasppid');
 Route::get('/strukturppid', [HomeController::class, 'strukturppid'])->name('strukturppid');
 // END PPID
+Route::get('/page/daftar-informasi-publik', [HomeController::class, 'informasiPublik'])->name('informasi.publik');
 Route::get('/page/{id}', [HalamanController::class, 'dinamis'])->name('dinamis');
 Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/personil', [HomeController::class, 'personil'])->name('personil');
@@ -72,7 +73,7 @@ Route::get('/pengaduan', [HomeController::class, 'pengaduan'])->name('pengaduan'
 Route::get('/pengajuan', [HomeController::class, 'pengajuan'])->name('pengajuan');
 Route::get('/pengajuanizin', [HomeController::class, 'pengajuanizin'])->name('pengajuanizin');
 Route::post('/pengajuan/simpan', [HomeController::class, 'simpan'])->name('pengajuan.simpan');
-Route::get('/website/list', [HomeController::class, 'getWebsite'])->name('website.list');
+Route::get('/website/user', [HomeController::class, 'getWebsite'])->name('website.list');
 Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
 Route::get('/kominfo/{id}', [HomeController::class, 'kominfo'])->name('kominfo');
 Route::get('/detail/{post:slug}', [HomeController::class, 'detail'])->name('detail.posting');
@@ -92,6 +93,7 @@ Route::get('/infografis/list', [InfografisController::class, 'getInfografis'])->
 Route::get('/infografis/detail', [HomeController::class, 'detailInfografis'])->name('infografis.detail');
 Route::get('/category/checkSlug', [CategoryController::class, 'checkSlug'])->middleware('auth');
 Route::get('/category/list', [CategoryController::class, 'getCategory'])->name('category.list');
+Route::get('/informasi-publik/list', [HomeController::class, 'getInformasiPublik'])->name('informasi.publik.list');
 Route::get('/lampiran/list', [HomeController::class, 'getLampiran'])->name('lampiran.list');
 Route::get('/lampirans/list', [LampiranController::class, 'getLampirans'])->name('lampirans.list');
 Route::get('/user/list', [UserController::class, 'getUser'])->name('user.list');
@@ -193,10 +195,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('youtube', YoutubeController::class);
     });
 
-    Route::group(['middleware' => ['permission:users-read']], function () {
+    
         Route::resource('user', UserController::class);
         Route::resource('account', AccountController::class);
-    });
+ 
 
     Route::group(['middleware' => ['permission:layanan-read']], function () {
         Route::resource('komentar', KomentarController::class);

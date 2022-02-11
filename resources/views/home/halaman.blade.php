@@ -1,4 +1,4 @@
-@section('title',$halaman->judul_posting )
+@section('title',$halaman->judul_posting??'' )
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')

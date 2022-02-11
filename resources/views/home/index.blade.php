@@ -83,14 +83,14 @@
                 <div class="content-centered-y right-0 mr-3">
                     <div id="heroSliderNav" class="js-slick-carousel slick slick-pagination-line max-w-27rem ml-auto"
                         data-hs-slick-carousel-options='{
-               "vertical": true,
-               "verticalSwiping": true,
-               "autoplay": true,
-               "autoplaySpeed": 10000,
-               "slidesToShow": 3,
-               "isThumbs": true,
-               "asNavFor": "#heroSlider"
-             }'>
+                        "vertical": true,
+                        "verticalSwiping": true,
+                        "autoplay": true,
+                        "autoplaySpeed": 10000,
+                        "slidesToShow": 3,
+                        "isThumbs": true,
+                        "asNavFor": "#heroSlider"
+                        }'>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                             <article>
                                 <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7"
                                     href="/detail/{{ $highlight->slug }}"
-                                    style="background-image: url(uploads/{{ $highlight->gambarMuka->file_name??'' }}); height:400px;">
+                                    style="background-image: url({{ asset($highlight->gambarMuka->path.$highlight->gambarMuka->file_name??'') }}); height:400px;">
                                     <div class="card-header border-0 bg-transparent w-100">
                                         <div class="media align-items-center">
                                             <span class="avatar avatar-sm avatar-circle mr-3">
@@ -155,10 +155,17 @@
                         <article class="row mb-7" data-aos="zoom-out-right">
                             <div class="col-md-5">
                                 <a href="/detail/{{ $post->slug }}">
-                                    <img class="card-img transition-zoom-hover"
-                                        src="{{ asset ('uploads') }}/{{ $post->gambarMuka->file_name??'' }}"
+                                        @if (!empty($post->gambarMuka->path) || !empty($post->gambarMuka->file_name))
+                                        <img class="card-img transition-zoom-hover"
+                                        src="{{ asset($post->gambarMuka->path.$post->gambarMuka->file_name??'') }}"
                                         alt="Image Description" style="height:100%;"> 
+                                        @else
+                                          <img class="card-img transition-zoom-hover"
+                                        src="{{ asset('uploads/diskominfowonosobo.jpg') }}"
+                                        alt="Image Description" style="height:100%;"> 
+                                        @endif
                                 </a>
+                              
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body d-flex flex-column h-100 px-0">
@@ -267,8 +274,6 @@
                             </div>
 
 
-
-
                             @foreach($populer as $populer)
                                 <!-- Blog -->
                                 <article class="mb-5 mt-3" data-aos="zoom-out-right">
@@ -276,7 +281,7 @@
                                         <div class="avatar avatar-lg mr-3">
                                             <a href="/detail/{{ $post->slug }}">
                                                 <img class="avatar-img transition-zoom-hover"
-                                                    src="{{ asset('uploads/'.$populer->gambarMuka->file_name) }}"
+                                                    src="{{ asset($populer->gambarMuka->path.$populer->gambarMuka->file_name) }}"
                                                     alt="Image Description">
                                             </a>
                                         </div>

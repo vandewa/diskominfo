@@ -68,8 +68,18 @@ class HalamanController extends Controller
              }
             mkdir($paths);
          } 
+
+           $b=Posting::create([
+                'judul_posting' => $request->judul_posting,
+                'slug' => $request->slug,
+                'isi_posting' => $request->isi_posting,
+                'id_kategori' => $request->id_kategori,
+                'created_by' => $request->created_by,
+                'informasi_st' => $request->informasi_st,
+            ]);
+
    
-        if($request->hasFile('sampul')){
+           if($request->hasFile('sampul')){
                 $files = $request->file('sampul'); 
                 $prefix = date('Ymdhis');
                 $by = $request->created_by;
@@ -79,6 +89,7 @@ class HalamanController extends Controller
                 $files->move(public_path($paths), $filename);
                 $attachment = new Attachment() ;
                 $attachment->id_tabel = $b->id_posting;
+                $attachment->path = $paths;
                 $attachment->file_name = $filename;
                 $attachment->save();
 
@@ -92,14 +103,7 @@ class HalamanController extends Controller
                 'informasi_st' => $request->informasi_st,
                 ]);
 
-                Posting::create([
-                'judul_posting' => $request->judul_posting,
-                'slug' => $request->slug,
-                'isi_posting' => $request->isi_posting,
-                'id_kategori' => $request->id_kategori,
-                'created_by' => $request->created_by,
-                'informasi_st' => $request->informasi_st,
-                ]);
+              
         } else {
             Menu::create([
                 'nama' => $request->judul_posting,
@@ -109,14 +113,6 @@ class HalamanController extends Controller
                 'parent' => '',
                 'informasi_st' => $request->informasi_st,
             ]);
-            Posting::create([
-                'judul_posting' => $request->judul_posting,
-                'slug' => $request->slug,
-                'isi_posting' => $request->isi_posting,
-                'id_kategori' => $request->id_kategori,
-                'created_by' => $request->created_by,
-                'informasi_st' => $request->informasi_st,
-                ]);
         }
         
 

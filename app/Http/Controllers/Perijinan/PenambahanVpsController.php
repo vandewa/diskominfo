@@ -26,7 +26,7 @@ class PenambahanVpsController extends Controller
     {
          if($request->ajax()){
 
-            $data = PenambahanVps::with(['prosesor','hd','ram','aksesNonfisik','penanggungJawab','menyetujui','status'])->select('penambahan_vps.*');
+            $data = PenambahanVps::with(['prosesor','hd','ram','aksesNonfisik','penanggungJawab','menyetujui','status'])->select('penambahan_vps.*')->orderby('created_at','desc');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){

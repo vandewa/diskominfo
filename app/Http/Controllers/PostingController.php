@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\File;
 use \Cviebrock\EloquentSluggable\Services\SlugService; 
 
 
-
-
 class PostingController extends Controller
 {
     /**
@@ -67,9 +65,6 @@ class PostingController extends Controller
              }
             mkdir($paths);
          } 
-
-        $b= Posting::create($request->except(['file_name','proengsoft_jsvalidation']));
-        $no = 1;
     //     Posting::create([
     //        'posisi' => $request->posisi,
     //        'judul_posting' => $request->judul_posting,
@@ -82,7 +77,8 @@ class PostingController extends Controller
     //        'informasi_st' => $request->informasi_st
     //    ]);
 
-       
+        $b= Posting::create($request->except(['file_name','proengsoft_jsvalidation']));
+        $no = 1;
 
         if($request->hasFile('file_name')){
                 $files = $request->file('file_name'); 
@@ -100,12 +96,13 @@ class PostingController extends Controller
 
                 $no++;
                 }
-        } else {
-            $attachment = new Attachment() ;
-            $attachment->id_tabel = $b->id_posting;
-            $attachment->file_name = 'diskominfowonosobo.jpg';
-            $attachment->save();
-        }
+            } else {
+                $attachment = new Attachment() ;
+                $attachment->id_tabel = $b->id_posting;
+                $attachment->path = 'uploads/';
+                $attachment->file_name = 'diskominfowonosobo.jpg';
+                $attachment->save();
+            }
 
         return redirect ( route('posting.index'))->with('status', 'Data posting berhasil ditambahkan.');
 
@@ -189,8 +186,6 @@ class PostingController extends Controller
      */
     public function destroy($id)
     {   
-       
-       
 
         $oke = Attachment::where('id_tabel',$id)->get();
         foreach($oke as $okee){
@@ -198,7 +193,7 @@ class PostingController extends Controller
         File::delete($path);
         Attachment::where('id_tabel',$id)->delete();
         }
-         Posting::destroy($id);
+        Posting::destroy($id);
         
 
     }

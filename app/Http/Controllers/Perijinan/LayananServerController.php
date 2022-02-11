@@ -26,7 +26,7 @@ class LayananServerController extends Controller
     {
          if($request->ajax()){
 
-            $data = LayananServer::with(['layanan','penanggungJawab','menyetujui','status'])->select('layanan_servers.*');
+            $data = LayananServer::with(['layanan','penanggungJawab','menyetujui','status'])->select('layanan_servers.*')->orderby('created_at','desc');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){

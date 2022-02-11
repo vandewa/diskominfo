@@ -255,14 +255,14 @@
 						</li>
 						@endpermission
 
-						@permission('users-read')
+					
 						<li class="nav-item nav-item-submenu @yield('kondisi3')">
 							<a href="#" class="nav-link"><i class="icon-user"></i> <span>User</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="User">
 								<li class="nav-item"><a href="{{route('user.index')}}" class="nav-link ">Management User</a></li>
 							</ul>
 						</li>
-						@endpermission
+			
 
 						@permission('layanan-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi6')">

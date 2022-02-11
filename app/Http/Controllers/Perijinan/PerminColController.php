@@ -25,7 +25,7 @@ class PerminColController extends Controller
     {
          if($request->ajax()){
 
-            $data = ColocationServer::with(['penanggungJawab','menyetujui','status'])->select('colocation_servers.*');
+            $data = ColocationServer::with(['penanggungJawab','menyetujui','status'])->select('colocation_servers.*')->orderby('created_at','desc');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){

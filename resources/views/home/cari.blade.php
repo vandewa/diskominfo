@@ -35,7 +35,7 @@
           <article class="row mb-7" data-aos="zoom-out-left">
             <div class="col-md-5">
             <a href="/detail/{{$post->slug}}">
-              <img class="card-img transition-zoom-hover" src="{{ asset ('uploads') }}/{{ $post->gambarMuka->file_name??'' }}" alt="Image Description" style="height:100%">
+              <img class="card-img transition-zoom-hover" src="{{ asset($post->gambarMuka->path.$post->gambarMuka->file_name??'') }}" alt="Image Description" style="height:100%">
             </a>
             </div>
             <div class="col-md-7">

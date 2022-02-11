@@ -59,7 +59,11 @@
         <div class="cbp-item rounded-lg branding mb-2">
           <a class="cbp-caption" href="/detail/{{$yangupload->slug}}">
             <div class="cbp-caption-defaultWrap mb-5">
-              <img class="rounded-lg" src="{{ asset ('uploads') }}/{{ $yangupload->gambarMuka->file_name??'' }}" alt="Image Description" style="height:300px;">
+              @if(isset($yangupload->gambarMuka))
+              <img class="rounded-lg" src="{{ asset($yangupload->gambarMuka->path.$yangupload->gambarMuka->file_name) }}" alt="Image Description" style="height:300px;">
+              @else
+              <img class="rounded-lg" src="{{ asset('/uploads/diskominfowonosobo.jpg') }}" alt="Image Description" style="height:300px;">
+              @endif
             </div>
             <div class="cbp-caption-activeWrap">
               <div class="d-flex justify-content-end flex-column h-100 p-4">
@@ -71,7 +75,6 @@
         <!-- End Item -->
         @endforeach
         </div>      
-
         {{ $uploadby->links() }}
          <div id="stickyBlockEndPoint"></div>
       </div>
@@ -124,7 +127,7 @@
                 <div class="media align-items-center text-inherit">
                   <div class="avatar avatar-lg mr-3">
                   <a href="/detail/{{$yangupload->slug}}">
-                    <img class="avatar-img transition-zoom-hover" src="{{ asset('uploads/'.$populernya->gambarMuka->file_name) }}" alt="Image Description" >
+                    <img class="avatar-img transition-zoom-hover" src="{{ asset($populernya->gambarMuka->path.$populernya->gambarMuka->file_name) }}" alt="Image Description" >
                   </a>
                   </div>
                   <div class="media-body">

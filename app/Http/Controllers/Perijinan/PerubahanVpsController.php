@@ -27,7 +27,7 @@ class PerubahanVpsController extends Controller
     {
          if($request->ajax()){
 
-            $data = PerubahanVps::with(['prosesor','hd','ram','aksesNonfisik','penanggungJawab','menyetujui','status'])->select('perubahan_vps.*');
+            $data = PerubahanVps::with(['prosesor','hd','ram','aksesNonfisik','penanggungJawab','menyetujui','status'])->select('perubahan_vps.*')->orderby('created_at','desc');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){

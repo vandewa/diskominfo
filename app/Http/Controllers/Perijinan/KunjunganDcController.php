@@ -26,7 +26,7 @@ class KunjunganDcController extends Controller
     {
         if($request->ajax()){
 
-            $data = KunjunganDc::with(['jenisIdentitas', 'penanggungJawab','menyetujui','status'])->select('ijin_kunjungans.*');
+            $data = KunjunganDc::with(['jenisIdentitas', 'penanggungJawab','menyetujui','status'])->select('ijin_kunjungans.*')->orderby('created_at','desc');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){

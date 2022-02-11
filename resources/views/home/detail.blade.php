@@ -29,8 +29,8 @@
               <div class="avatar avatar-circle">
                   <img class="avatar-img" src="{{ asset('uploads/'.$detail->nama->profile_photo_path) }}" alt="Image Description">
                 </div>
-                <div class="media-body font-size-1 ml-3">
-                <a href="/uploadby/{{$detail->created_by}}" class="d-inline-block text-inherit font-weight-bold">
+                <div class="media-body font-size-1 ml-3"> 
+                <a href="/uploadby/{{$detail->nama->slug}}" class="d-inline-block text-inherit font-weight-bold">
                   {{ $detail->nama->name }}
                   </a>
                   <span class="d-block text-muted">{{ Carbon\Carbon::parse($detail->created_at)->isoFormat('LLLL') }} WIB</span>
@@ -82,8 +82,8 @@
           }' >
             @foreach($detail->attachment as $slide)
             <div class="js-slide">
-            <a href="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}" target="_blank">
-                <img class="img-fluid transition-zoom-hover width: 100%;height: 100%;object-fit: scale-down" src="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}" alt="Image Description" height="150px;">
+            <a href="{{ '/'.$slide->path.$slide->file_name??'' }}" target="_blank">
+                <img class="img-fluid transition-zoom-hover width: 100%;height: 100%;object-fit: scale-down" src="{{ asset($slide->path.$slide->file_name??'') }}" alt="Image Description" height="150px;">
                 </a>
             </div>
             @endforeach
@@ -129,7 +129,7 @@
            <div class="card-body p-4" data-aos="zoom-out-right">
             <!-- Project -->
             <a class="card text-body transition-3d-hover mb-2 bg-info" href="/detail/{{$beritaterkait->slug}}">
-            <img class="card-img-top" src="/uploads/{{$beritaterkait->gambarMuka->file_name??''}}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
+            <img class="card-img-top" src="{{ asset($beritaterkait->gambarMuka->path.$beritaterkait->gambarMuka->file_name??'')}}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
             <div class="card-body text-left">
             <small>
             <p class="mb-0 text-white text-left" style="font-size:11px;"><b>{{ Carbon\Carbon::parse($beritaterkait->created_at)->isoFormat('LLLL') }} WIB</b></p>
