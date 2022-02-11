@@ -12,10 +12,7 @@ use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\PhpWord;
 use App\Mail\NotifikasiAksesDCMail;
 use Illuminate\Support\Facades\Mail;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\Http;
->>>>>>> development
 
 class AksesDcController extends Controller
 {
@@ -71,8 +68,6 @@ class AksesDcController extends Controller
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
 
-<<<<<<< HEAD
-=======
         // $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
         //     'number' => $request->telepon,
         //     'message' => $request->name.' Anda telah berhasil mendaftar untuk akses data center',
@@ -81,7 +76,6 @@ class AksesDcController extends Controller
         // return ['response' => $response->body(),
         //     'data' => $request->all()];
 
->>>>>>> development
         Mail::to($request->email)->send(new NotifikasiAksesDCMail($data));
 
         return redirect()->back();
