@@ -48,8 +48,29 @@
 									</div>
 								</div>
 
-                            
-			
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Jenis Informasi Publik</label>
+									<div class="col-lg-10">
+										<select name="informasi_st" class="form-control select @error('informasi_st') is-invalid @enderror"
+											data-fouc>
+											<option value="" >- Pilih -</option>
+											@foreach ($informasi as $infor)
+											@if (old('informasi_st') == $infor->code_cd)
+											<option value="{{ $infor->code_cd }}" selected>{{ $infor->code_nm }}</option>
+											@else
+											<option value="{{ $infor->code_cd }}">{{ $infor->code_nm }}</option>
+											@endif
+											@endforeach
+										</select>
+										@error('informasi_st')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>
+										@enderror
+									</div>
+								</div>
+
+                            		
 				            <div class="text-right">
 					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 				            </div>

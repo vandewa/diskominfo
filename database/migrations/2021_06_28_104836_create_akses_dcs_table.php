@@ -27,8 +27,8 @@ class CreateAksesDcsTable extends Migration
             $table->unsignedBigInteger('aproval_id')->nullable();
             $table->date('valid_util')->nullable();
             $table->unsignedBigInteger('penanggung_jawab_id')->nullable();
-            $table->timestamps();
             $table->string('status_st')->nullable();
+            $table->timestamps();
         });
     }
 

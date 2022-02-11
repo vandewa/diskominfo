@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        if(!auth()->user()->hasPermission('users-cread')){
+        if(!auth()->user()->hasPermission('users-read')){
         abort(403);
        }
 
@@ -47,7 +47,6 @@ class UserController extends Controller
      */
     public function store(UsercreateValidation $request)
     {
-        return $request->all();
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email',

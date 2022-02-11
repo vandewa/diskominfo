@@ -21,9 +21,17 @@
 				</div>
 
 					<div class="card-body">
-						<form method="POST" action="{{route('menuberanda.update', $menuberanda->id)}}" enctype="multipart/form-data">
+						<form method="POST" action="{{route('menuberanda.update', $menuberanda->id)}}">
 						@method('patch')
 						@csrf
+						<input type="hidden" name="slug" value="{{ $menuberanda->slug }}">
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Nama Menu<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<input type="text" name="nama"  class="form-control" placeholder="Nama Menu" value="{{ $menuberanda->nama }}">
+									</div>
+								</div>
 
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">URL<span class="text-danger">*</span></label>
@@ -35,15 +43,38 @@
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">Parent<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-									<select name="parent" class="form-control select" data-fouc>
+									<select name="parent" class="form-control select-search" data-fouc>
+									<option>- Pilih -</option>
+									
 									@foreach($parentt as $induk)
-										<option value="{{ $menuberanda->parent }}" {{$menuberanda->parent == $induk->id  ? 'selected' : ''}}>{{ $induk->nama??''}}</option>
+									@if ($menuberanda->parent == '')
+											<option value="{{$induk->id }}">{{ $induk->nama??''}}</option>
+									@else
+										<option value="{{ $induk->id }}" {{$menuberanda->parent == $induk->id  ? 'selected' : ''}}>{{ $induk->nama??''}}</option>
+									@endif
 									@endforeach
 										</select>									
 									</div>
 								</div>
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Jenis Informasi Publik</label>
+									<div class="col-lg-10">
+									<select name="informasi_st" class="form-control select @error('informasi_st') is-invalid @enderror" data-fouc>
+									<option value="" >- Pilih -</option>
+									@foreach($informasi as $infor )
+										<option value="{{ $infor->code_cd }}" {{$menuberanda->informasi_st == $infor->code_cd  ? 'selected' : ''}}>{{ $infor->code_nm}}</option>
+									@endforeach
+									</select>
+										@error('informasi_st')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>
+										@enderror
+									</div>
+								</div>
 								
-								@if($menuberanda->isi_posting != null)
+								{{-- @if($menuberanda->isi_posting != null)
 								   <div class="form-group row mt-2">
 									<label class="col-form-label col-lg-2">Image</label>
 									<div class="col-lg-10">
@@ -74,11 +105,9 @@
 								<textarea name="isi_posting" id="editor-full">{{$menuberanda->isi_posting}}</textarea>
 				                </div> 
 
-								@endif
+								@endif --}}
 
 
-
-					
 
 				            <div class="text-right">
 					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>

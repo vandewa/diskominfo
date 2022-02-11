@@ -13,9 +13,12 @@
         "anhskohbo/no-captcha": "^3.3",
         "barryvdh/laravel-dompdf": "^0.9.0",
         "biscolab/laravel-recaptcha": "^5.0",
+        "cviebrock/eloquent-sluggable": "^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.7",
+        "itsgoingd/clockwork": "^5.1",
         "laravel/framework": "^8.12",
         "laravel/jetstream": "^2.2",
         "laravel/sanctum": "^2.6",
@@ -29,9 +32,11 @@
         "proengsoft/laravel-jsvalidation": "^4.4",
         "santigarcor/laratrust": "^6.3",
         "tymon/jwt-auth": "^1.0",
+        "unisharp/laravel-filemanager": "^2.3",
         "yajra/laravel-datatables-oracle": "^9.15"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
         "barryvdh/laravel-ide-helper": "^2.10",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
@@ -44,11 +49,15 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform-check": false
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+            "laravel/dusk",
+                "barryvdh/laravel-ide-helper"
+        ]
         }
     },
     "autoload": {

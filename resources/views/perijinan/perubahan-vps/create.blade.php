@@ -131,7 +131,7 @@
                                                 </div>
 
                                                 <div class="col-sm-4 text-sm-right">
-                                                    <a href="{{route('perijinan:perubahan.vps.create')}}" type="button" class="btn btn-sm btn-primary transition-3d-hover">Ok!</a>
+                                                    <a href="{{route('pengajuanizin')}}" type="button" class="btn btn-sm btn-primary transition-3d-hover">Ok!</a>
                                                 </div>
                                             </div>
                                         </div>

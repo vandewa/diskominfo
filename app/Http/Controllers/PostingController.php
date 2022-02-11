@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Posting;
 use App\Models\Attachment;
 use App\Models\Category;
+use App\Models\ComCode;
 use DataTables;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\File; 
-
-
+use Illuminate\Support\Facades\File;
+use \Cviebrock\EloquentSluggable\Services\SlugService; 
 
 
 class PostingController extends Controller
@@ -39,10 +39,13 @@ class PostingController extends Controller
      */
     public function create()
     {
-        $category = Category::wherenotin('id',[0,2])
+        $category = Category::wherenotin('id',[0,2,7,8,9])
         ->get();
 
-        return view('posting.create', compact( 'category'));
+        $informasi = ComCode::where('code_group', 'INFORMASI_ST')
+        ->get();
+
+        return view('posting.create', compact( 'category', 'informasi'));
     }
 
     /**
@@ -53,8 +56,28 @@ class PostingController extends Controller
      */
         public function store(PostingcreateValidation $request)
     {
+        $path = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y');
+        $paths ='uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
         
-        $b= Posting::create($request->except(['file_name']));
+        if (!file_exists($paths)) {
+             if (!file_exists($path)) {
+              mkdir($path);
+             }
+            mkdir($paths);
+         } 
+    //     Posting::create([
+    //        'posisi' => $request->posisi,
+    //        'judul_posting' => $request->judul_posting,
+    //        'slug' => $request->slug,
+    //        'isi_posting' => $request->isi_posting,
+    //        'kata_kunci' => $request->kata_kunci,
+    //        'id_kategori' => $request->id_kategori,
+    //        'created_by' => $request->updated_by,
+    //        'keterangan' => $request->keterangan,
+    //        'informasi_st' => $request->informasi_st
+    //    ]);
+
+        $b= Posting::create($request->except(['file_name','proengsoft_jsvalidation']));
         $no = 1;
 
         if($request->hasFile('file_name')){
@@ -64,22 +87,24 @@ class PostingController extends Controller
                 $by = $request->created_by;
                 $extension = $a->extension();
                 $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
-                $a->move(public_path('/uploads'), $filename);
+                $a->move(public_path($paths), $filename);
                 $attachment = new Attachment() ;
                 $attachment->id_tabel = $b->id_posting;
+                $attachment->path = $paths;
                 $attachment->file_name = $filename;
                 $attachment->save();
 
                 $no++;
                 }
-        } else {
-            $attachment = new Attachment() ;
-            $attachment->id_tabel = $b->id_posting;
-            $attachment->file_name = 'diskominfowonosobo.jpg';
-            $attachment->save();
-        }
+            } else {
+                $attachment = new Attachment() ;
+                $attachment->id_tabel = $b->id_posting;
+                $attachment->path = 'uploads/';
+                $attachment->file_name = 'diskominfowonosobo.jpg';
+                $attachment->save();
+            }
 
-        return redirect ( url('posting'))->with('status', 'Data posting berhasil ditambahkan.');
+        return redirect ( route('posting.index'))->with('status', 'Data posting berhasil ditambahkan.');
 
 
     }
@@ -103,9 +128,13 @@ class PostingController extends Controller
     public function edit($id)
     {
         $posting = Posting::with(['attachment','kategori'])->find($id);
-        $kategori = Category::wherenotin('id',[0,2])
+        $kategori = Category::wherenotin('id',[0,2,7,8,9])
         ->get();
-        return view('posting.edit', compact('posting', 'kategori'));
+        $informasi = ComCode::where('code_group', 'INFORMASI_ST')
+        ->get();
+        
+
+        return view('posting.edit', compact('posting', 'kategori', 'informasi'));
     }
 
     /**
@@ -121,11 +150,13 @@ class PostingController extends Controller
        ->update([
            'posisi' => $request->posisi,
            'judul_posting' => $request->judul_posting,
+           'slug' => $request->slug,
            'isi_posting' => $request->isi_posting,
            'kata_kunci' => $request->kata_kunci,
            'id_kategori' => $request->id_kategori,
            'updated_by' => $request->updated_by,
-           'keterangan' => $request->keterangan
+           'keterangan' => $request->keterangan,
+           'informasi_st' => $request->informasi_st
        ]);
 
        if($request->hasfile('file_name')){
@@ -143,7 +174,7 @@ class PostingController extends Controller
                 }
         }
 
-        return redirect ('posting')->with('status', 'Data berhasil diubah.');
+        return redirect(route('posting.index'))->with('status', 'Data berhasil diubah.');
 
     }
 
@@ -154,14 +185,23 @@ class PostingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
+
+        $oke = Attachment::where('id_tabel',$id)->get();
+        foreach($oke as $okee){
+        $path = public_path($okee->path).$okee->file_name;
+        File::delete($path);
+        Attachment::where('id_tabel',$id)->delete();
+        }
         Posting::destroy($id);
+        
 
     }
 
     public function getPosting(Request $request)
     {
-            $data = Posting::select('*')->latest();
+            // $data = Posting::with(['nama', 'kategori']);
+            $data = Posting::with(['nama', 'kategori'])->whereNotIn('id_kategori', [7,9])->orderBy('created_at', 'desc');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -193,14 +233,12 @@ class PostingController extends Controller
                 
                 ->editColumn('id_kategori', function($a)
                 {
-                    Posting::with(['kategori']);
-                    return $a->kategori->nama_kategori;
+                    return $a->kategori->nama_kategori ?? '';
                 })
-                ->editColumn('created_by', function($a)
-                {
-                    Posting::with(['nama']);
-                    return $a->nama->name;
-                })
+                // ->editColumn('created_by', function($a)
+                // {
+                //     return $a->nama->name;
+                // })
                 ->rawColumns(['action', 'status'])
                 ->make(true);
         
@@ -230,7 +268,7 @@ class PostingController extends Controller
 
         } else {
             
-            $path = public_path()."/uploads/".$oke->file_name;
+            $path = public_path($oke->path).$oke->file_name;
             File::delete($path);
             Attachment::where('id_attachment',$id)->delete();
             return redirect()->back();
@@ -238,6 +276,10 @@ class PostingController extends Controller
         }
         
     }
-    
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Posting::class, 'slug', $request->judul_posting);
+        return response()->json(['slug' => $slug]); 
+    }
 
 }

@@ -23,7 +23,7 @@ class PengajuanServerController extends Controller
     {
          if($request->ajax()){
 
-            $data = PengajuanServer::with(['status'])->select('pengajuan_servers.*');
+            $data = PengajuanServer::with(['status'])->select('pengajuan_servers.*')->orderby('created_at','desc');
 
             return DataTables::of($data)
                 ->editColumn('created_at', function($a){

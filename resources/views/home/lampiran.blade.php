@@ -63,7 +63,7 @@
         serverSide: true,
         ajax: "{{ route('lampiran.list') }}",
         columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
+					          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'keterangan', },
 					{
 						data: 'action', 

@@ -54,12 +54,16 @@
 
             
 
-           @foreach($uploadby as $yangupload)
+        @foreach($uploadby as $yangupload)
         <!-- Item -->
         <div class="cbp-item rounded-lg branding mb-2">
-          <a class="cbp-caption" href="/detail/{{$yangupload->id_posting}}">
+          <a class="cbp-caption" href="/detail/{{$yangupload->slug}}">
             <div class="cbp-caption-defaultWrap mb-5">
-              <img class="rounded-lg" src="{{ asset ('uploads') }}/{{ $yangupload->gambarMuka->file_name??'' }}" alt="Image Description" style="height:300px;">
+              @if(isset($yangupload->gambarMuka))
+              <img class="rounded-lg" src="{{ asset($yangupload->gambarMuka->path.$yangupload->gambarMuka->file_name) }}" alt="Image Description" style="height:300px;">
+              @else
+              <img class="rounded-lg" src="{{ asset('/uploads/diskominfowonosobo.jpg') }}" alt="Image Description" style="height:300px;">
+              @endif
             </div>
             <div class="cbp-caption-activeWrap">
               <div class="d-flex justify-content-end flex-column h-100 p-4">
@@ -71,7 +75,6 @@
         <!-- End Item -->
         @endforeach
         </div>      
-
         {{ $uploadby->links() }}
          <div id="stickyBlockEndPoint"></div>
       </div>
@@ -123,12 +126,12 @@
               <article class="mb-5 mt-3" data-aos="zoom-out-right">
                 <div class="media align-items-center text-inherit">
                   <div class="avatar avatar-lg mr-3">
-                  <a href="/detail/{{$yangupload->id_posting}}">
-                    <img class="avatar-img transition-zoom-hover" src="{{ asset('uploads/'.$populernya->gambarMuka->file_name) }}" alt="Image Description" >
+                  <a href="/detail/{{$yangupload->slug}}">
+                    <img class="avatar-img transition-zoom-hover" src="{{ asset($populernya->gambarMuka->path.$populernya->gambarMuka->file_name) }}" alt="Image Description" >
                   </a>
                   </div>
                   <div class="media-body">
-                    <h4 class="h6 mb-0"><a class="text-inherit" href="/detail/{{$populernya->id_posting}}">{{ $populernya->judul_posting }}</a></h4>
+                    <h4 class="h6 mb-0"><a class="text-inherit" href="/detail/{{$populernya->slug}}">{{ $populernya->judul_posting }}</a></h4>
                   </div>
                 </div>
               </article>

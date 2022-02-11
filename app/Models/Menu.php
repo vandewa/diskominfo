@@ -17,5 +17,9 @@ class Menu extends Model
      public function parent(){
         return $this->hasOne(Menu::class, 'parent');
     }
+     public function halaman()
+    {
+        return $this->hasOne(Posting::class, 'slug');
+    }
 
 }

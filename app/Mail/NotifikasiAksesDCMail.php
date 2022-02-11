@@ -32,4 +32,8 @@ public $devan;
     {
         return $this->markdown('mail.notifikasiAksesDC', $this->devan->toArray());
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> development

@@ -28,7 +28,7 @@
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">Parent<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-									<select name="parent" class="form-control select" data-fouc>
+									<select name="parent" class="form-control select-search" data-fouc required>
 									<option>- Pilih -</option>
 									@foreach($parentt as $induk)
 										<option value="{{$induk->id }}">{{ $induk->nama??''}}</option>
@@ -44,21 +44,57 @@
 								</div>
 
 								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Jenis Informasi Publik</label>
+									<div class="col-lg-10">
+										<select name="informasi_st" class="form-control select @error('informasi_st') is-invalid @enderror"
+											data-fouc>
+											<option value="" >- Pilih -</option>
+											@foreach ($informasi as $infor)
+											@if (old('informasi_st') == $infor->code_cd)
+											<option value="{{ $infor->code_cd }}" selected>{{ $infor->code_nm }}</option>
+											@else
+											<option value="{{ $infor->code_cd }}">{{ $infor->code_nm }}</option>
+											@endif
+											@endforeach
+										</select>
+										@error('informasi_st')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>
+										@enderror
+									</div>
+								</div>
+
+								{{-- <div class="form-group row">
+									<label class="col-form-label col-lg-2">Judul Posting<span class="text-danger">*</span></label>
+									<div class="col-lg-10">
+										<input type="text" id="judul_posting" name="judul_posting"
+											class="form-control @error('judul_posting') is-invalid @enderror" placeholder="Judul berita"
+											value="{{ old('judul_posting') }}">
+										@error('judul_posting')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>
+										@enderror
+									</div>
+								</div> --}}
+
+								{{-- <div class="form-group row">
 									<label class="col-form-label col-lg-2">URL<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 										<input type="text" name="url"  class="form-control" placeholder="URL" >
 									</div>
-								</div>
+								</div> --}}
 
 								<div class="form-group row mt-2">
-									<label class="col-form-label col-lg-2">File <small> (*jika ada)</small></label>
+									<label class="col-form-label col-lg-2">File<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-										<input type="file" name="file_name" class="file-input" data-fouc >
+										<input type="file" name="file_name" class="file-input" data-fouc required >
 									</div>
 								</div>
-<!-- 
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Tampilkan pada 'MenuLampiran<span class="text-danger">*</span></label>
+
+								{{-- <div class="form-group row">
+									<label class="col-form-label col-lg-2">Tampilkan pada Menu Lampiran<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
 									<select name="lampiran" class="form-control select" data-fouc>
 										<option>- Pilih -</option>
@@ -66,14 +102,14 @@
 										<option value="n">Tidak</option>
 									</select>
 									</div>
-								</div>
+								</div> --}}
 
-							<legend class="text-uppercase font-size-sm font-weight-bold">Jika <span style="color:red;">'Tidak Ada Lampiran'</span> Maka Isi Halaman</legend>
+							{{-- <legend class="text-uppercase font-size-sm font-weight-bold">Jika <span style="color:red;">'Tidak Ada Lampiran'</span> Maka Isi Halaman</legend>
 
 							<div class="form-group row">
 								<label>Isi Halaman</label>
 								<textarea name="isi_posting" id="editor-full" ></textarea>
-				            </div> -->
+				            </div>  --}}
 
 
 				            <div class="text-right">

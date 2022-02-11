@@ -25,7 +25,7 @@
         </div>
         <!-- Author -->
         <br>
-    <img class="img-fluid w-100" src="uploads/{{$visimisi->file_name??''}}" alt="Image Description">
+    <img class="img-fluid w-100" src="/uploads/{{$visimisi->file_name??''}}" alt="Image Description">
 </center>
 <br>
 
