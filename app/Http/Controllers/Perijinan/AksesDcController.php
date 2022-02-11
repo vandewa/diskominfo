@@ -68,24 +68,15 @@ class AksesDcController extends Controller
             Session::flash('keterangan', 'Data berhasil di simpan');
         }
 
-<<<<<<< HEAD
-        // $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
-        //     'number' => $request->telepon,
-        //     'message' => $request->name.' Anda telah berhasil mendaftar untuk akses data center',
-        // ]);
-=======
-
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
             'number' => $request->telepon,
             'message' => $request->name.' Anda telah berhasil mendaftar untuk akses data center',
         ]);
->>>>>>> cf847df9225468374890722b3485c18075f67cb8
 
         // return ['response' => $response->body(),
         //     'data' => $request->all()];
 
         Mail::to($request->email)->send(new NotifikasiAksesDCMail($data));
-
         return redirect()->back();
     }
 
