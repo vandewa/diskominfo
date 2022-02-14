@@ -66,14 +66,7 @@ class MenuBerandaController extends Controller
             ]);
 
         }
-
-<<<<<<< HEAD
-        return redirect('menuberanda')->with('status', 'Data berhasil ditambahkan.');
-=======
         return redirect(route('menuberanda.index'))->with('status', 'Data berhasil ditambahkan.');
-
-
->>>>>>> development
     }
 
 
@@ -101,12 +94,8 @@ class MenuBerandaController extends Controller
         ->get();
         $parentt = Menu::all();
 
-<<<<<<< HEAD
-        return view('menuberanda.edit', compact('menuberanda','parentt'));
-=======
 
         return view('menuberanda.edit', compact('menuberanda','parentt','informasi'));
->>>>>>> development
     }
 
     /**
