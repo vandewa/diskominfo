@@ -66,7 +66,10 @@ class MenuBerandaController extends Controller
             ]);
 
         }
+
+
         return redirect(route('menuberanda.index'))->with('status', 'Data berhasil ditambahkan.');
+
     }
 
 
@@ -93,7 +96,6 @@ class MenuBerandaController extends Controller
         $informasi = ComCode::where('code_group', 'INFORMASI_ST')
         ->get();
         $parentt = Menu::all();
-
 
         return view('menuberanda.edit', compact('menuberanda','parentt','informasi'));
     }
