@@ -190,7 +190,9 @@ class PostingController extends Controller
         if(!empty($oke)) {
             foreach($oke as $okee){
             $path = public_path($okee->path).$okee->file_name;
-            File::delete($path);
+            if($path !=  public_path('uploads/diskominfowonosobo.jpg')){
+                File::delete($path);
+            }
             Attachment::where('id_tabel',$id)->delete();
             }
         }

@@ -120,7 +120,7 @@
                                 <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7"
                                     href="/detail/{{ $highlight->slug }}"
                                     style="background-image: url({{ asset($highlight->gambarMuka->path.$highlight->gambarMuka->file_name??'') }}); height:400px; background-size: cover;
-                        background-position: center center;">
+                                     background-position: center center;">
                                     <div class="card-header border-0 bg-transparent w-100">
                                         <div class="media align-items-center">
                                             <span class="avatar avatar-sm avatar-circle mr-3">
