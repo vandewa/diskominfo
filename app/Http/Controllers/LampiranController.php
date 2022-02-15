@@ -43,7 +43,7 @@ class LampiranController extends Controller
     public function store(Request $request)
     {
 
-        $files = $request->file('nama_lampiran')->getClientOriginalExtension();;
+        $files = $request->file('nama_lampiran');
 
         $prefix = date('Ymdhis');
         $by = $request->created_by;
