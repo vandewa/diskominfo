@@ -136,7 +136,7 @@ class MenuBerandaController extends Controller
       public function getMenuBeranda(Request $request)
     {
             $data = Menu::with(['childs','parent','halaman'])
-            ->whereNotin('parent', ['transparansi', 'ppid', 'profil', '- Pilih -','']);
+            ->whereNotin('parent', ['transparansi', 'ppid', 'profil', '- Pilih -']);
 
             return DataTables::of($data)
                 ->addIndexColumn()

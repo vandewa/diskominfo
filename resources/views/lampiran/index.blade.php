@@ -39,9 +39,7 @@ Tambah Lampiran
                     <th>Keterangan</th>
                     <th>Nama File</th>
                     <th>Tanggal</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -59,11 +57,12 @@ Tambah Lampiran
         processing: true,
         serverSide: true,
         ajax: "{{ route('lampirans.list') }}",
-        columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+        "order": [[ 1, "asc" ]],
+				columns: [
+					{data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
                     {data: 'keterangan', },
                     {data: 'nama_lampiran', },
-                    {data: 'tanggal', },
+                    {data: 'created_at', },
 					{
 						data: 'action', 
 						name: 'action', 

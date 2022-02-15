@@ -39,9 +39,7 @@ Tambah Menu ( Khusus File )
                     <th>URL</th>
                     <th>Sub Menu</th>
                     <th>Lampiran</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>

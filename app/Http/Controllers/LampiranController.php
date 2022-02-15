@@ -134,14 +134,14 @@ class LampiranController extends Controller
 
     public function getLampirans(Request $request)
     {
-            $data = Lampiran::orderBy('nama_lampiran', 'asc');
+            $data = Lampiran::select('*');
             
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
                     $actionBtn = '
                     <div class="list-icons d-flex justify-content-center">
-                    <a href="'.route('lampirans.edit', $data->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="'.route('lampirans.edit', $data->id ).' " class="list-icons-item text-primary-600 "><i class="icon-pencil7"></i></a>
                     <a href="'.route('lampirans.destroy', $data->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
                 </div>';
                     return $actionBtn;
@@ -157,7 +157,7 @@ class LampiranController extends Controller
                     $file = '<a href="'.asset('uploads/lampiran/'.$data->nama_lampiran).'" target="_blank">'.$data->nama_lampiran.'</a>';
                     return $file;
                 })
-                ->editColumn('tanggal', function($data){
+                ->editColumn('created_at', function($data){
                     return \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y');
                     
                 })
