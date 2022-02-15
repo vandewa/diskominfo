@@ -27,10 +27,13 @@ class HalamanController extends Controller
     {
         $halaman = Posting::where('slug',$id)->orderBy('created_at', 'desc')
         ->first();
+
+        $attachment = Attachment::where('id_tabel', $halaman->id_posting??'')->first();
+
         $picture = Menu::where('slug',$id)
         ->first();
-       
-        return view('home.halaman', compact('halaman', 'picture'));
+
+        return view('home.halaman', compact('halaman', 'picture', 'attachment'));
     }
 
     public function index()
@@ -98,7 +101,7 @@ class HalamanController extends Controller
                 'url' => '/page/'.$request->slug,
                 'slug' => $request->slug,
                 'isi_posting' => $request->isi_posting,
-                'sampul' => $filename,
+                'sampul' => $paths.$filename,
                 'parent' => '',
                 'informasi_st' => $request->informasi_st,
                 ]);
@@ -195,7 +198,7 @@ class HalamanController extends Controller
     public function getHalaman(Request $request)
     {
 
-            $data = Posting::with(['nama', 'kategori'])->where('id_kategori', 9)->orderBy('created_at', 'desc');
+            $data = Posting::with(['nama', 'kategori'])->where('id_kategori', 9);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){

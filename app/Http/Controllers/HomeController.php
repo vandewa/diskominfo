@@ -303,7 +303,7 @@ class HomeController extends Controller
         ->limit(4)
         ->get();
 
-        // return $postingg;
+    
 
 
         return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul', 'infohoax', 'infografis'));

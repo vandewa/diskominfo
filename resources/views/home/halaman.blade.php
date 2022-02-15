@@ -24,8 +24,10 @@
         <center><h1 class="h2">{{ ucwords($halaman->judul_posting??'')}}</h1>
 
         <br>
-          @if($picture->sampul??'' != null)
-          <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="/uploads/{{$picture->sampul??''}}" alt="Image Description">
+          @if (!empty($attachment->path) || !empty($attachment->file_name))
+          <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="{{ asset($attachment->path.$attachment->file_name??'') }}" alt="Image Description">
+          @else
+            <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="{{ asset('uploads/diskominfowonosobo.jpg')}}" alt="Image Description">
           @endif
           <br>
           {{-- @if($picture->sampul??'' != null)

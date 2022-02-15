@@ -36,9 +36,7 @@ Tambah Halaman
                     <th>Halaman (Url)</th>
                     <th>Oleh</th>
                     <th>Tanggal</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -56,9 +54,10 @@ Tambah Halaman
 				processing: true,
 				serverSide: true,
 				ajax: "{{ route('halaman.list') }}",
+		        "order": [[ 1, "asc" ]],
 				columns: [
-					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-					{data: 'halaman'},
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
+					{data: 'halaman',  name: 'slug',},
                     {data: 'nama.name', name: 'nama.name', defaultContent: '-'},
                     {data: 'created_at', },
 					{
