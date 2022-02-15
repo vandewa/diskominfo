@@ -43,10 +43,11 @@ class LampiranController extends Controller
     public function store(Request $request)
     {
 
-        $files = $request->file('nama_lampiran');
+        $files = $request->file('nama_lampiran')->getClientOriginalExtension();;
+
         $prefix = date('Ymdhis');
         $by = $request->created_by;
-        $extension = $files->extension();
+        $extension = $files->getClientOriginalExtension();
         $filename = $prefix.'_'. $by.'.'.$extension;
 
         $request->file('nama_lampiran')->move(public_path('uploads/lampiran'), $filename);
