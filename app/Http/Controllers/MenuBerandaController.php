@@ -185,6 +185,13 @@ class MenuBerandaController extends Controller
 
     public function destroy($id)
     {
-         Menu::destroy($id);
+        $cek = Menu::where('id',$id)->first();
+        $oke = Posting::where('slug',$cek->slug)->first();
+
+        if(!empty($oke)){
+          $oke->delete();
+        }
+
+        Menu::destroy($id);
     }
 }
