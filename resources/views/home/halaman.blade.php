@@ -26,14 +26,9 @@
         <br>
           @if (!empty($attachment->path) || !empty($attachment->file_name))
           <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="{{ asset($attachment->path.$attachment->file_name??'') }}" alt="Image Description">
-          {{-- @else --}}
-            {{-- <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="{{ asset('uploads/diskominfo.gif')}}" alt="Image Description">
-          @endif --}}
+          @endif 
           <br>
-          {{-- @if($picture->sampul??'' != null)
-          <iframe src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url=http://devandewa.wonosobokab.go.id/uploads/20190312031507_BAB_III_Tabel.docx" width="100%" height="700px"></iframe>
-          @endif --}}
-        <!-- End Author -->
+        
         <div style="text-align:justify; text-justify:auto;   color:black;">  <!-- text-indent: 40px;-->
          {!! $halaman->isi_posting??'' !!} 
         </div>
