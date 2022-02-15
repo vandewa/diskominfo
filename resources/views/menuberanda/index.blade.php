@@ -59,11 +59,12 @@ Tambah Menu ( Khusus File )
         processing: true,
         serverSide: true,
         ajax: "{{ route('menuberanda.list') }}",
-        columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'menu', },
+        "order": [[ 1, "asc" ]],
+				columns: [
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
+                    {data: 'nama', },
                     {data: 'url', },
-                     {data: 'submenu', },
+                     {data: 'parent', },
                       {data: 'lampiran', },
 					{
 						data: 'action', 

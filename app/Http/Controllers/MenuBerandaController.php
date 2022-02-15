@@ -136,8 +136,7 @@ class MenuBerandaController extends Controller
       public function getMenuBeranda(Request $request)
     {
             $data = Menu::with(['childs','parent','halaman'])
-            ->whereNotin('parent', ['transparansi', 'ppid', 'profil', '- Pilih -'])
-            ->get();
+            ->whereNotin('parent', ['transparansi', 'ppid', 'profil', '- Pilih -','']);
 
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -149,7 +148,7 @@ class MenuBerandaController extends Controller
                 </div>';
                     return $actionBtn;
                 })
-               ->editColumn('menu', function($data)
+               ->editColumn('nama', function($data)
                 {
                     return $data->nama;
                 })
@@ -158,7 +157,7 @@ class MenuBerandaController extends Controller
                     $file = '<a href="'.$data->url.'" target="_blank">'.$data->url.'</a>';
                     return $file;
                 })
-                ->editColumn('submenu', function($data)
+                ->editColumn('parent', function($data)
                 {
 
                     $a = '';
@@ -167,6 +166,8 @@ class MenuBerandaController extends Controller
                         $a = $a.' '.$b;
                     }
                     return $a;
+
+                    // return $data->parent;
                 })
                 ->editColumn('lampiran', function($data)
                 {
@@ -177,7 +178,7 @@ class MenuBerandaController extends Controller
                         return '<i class="icon-cross3"></i>';
                     }
                 })
-                ->rawColumns(['action', 'status', 'lampiran','url'])
+                ->rawColumns(['action','lampiran','url'])
                 ->make(true);
         
     }

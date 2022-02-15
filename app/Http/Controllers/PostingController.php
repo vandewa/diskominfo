@@ -185,17 +185,18 @@ class PostingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
-
+    {      
         $oke = Attachment::where('id_tabel',$id)->get();
-        foreach($oke as $okee){
-        $path = public_path($okee->path).$okee->file_name;
-        File::delete($path);
-        Attachment::where('id_tabel',$id)->delete();
+        if(!empty($oke)) {
+            foreach($oke as $okee){
+            $path = public_path($okee->path).$okee->file_name;
+            File::delete($path);
+            Attachment::where('id_tabel',$id)->delete();
+            }
         }
+
         Posting::destroy($id);
         
-
     }
 
     public function getPosting(Request $request)

@@ -180,17 +180,15 @@ class HalamanController extends Controller
     {
       
         $oke = Attachment::where('id_tabel',$id)->first();
-        
-        if($oke->file_name??'' != ''){
-        $path = public_path()."/uploads/".$oke->file_name;
-        // File::destroy($path);
-        unlink($path);
-        $oke->delete();
+
+        if(!empty($oke)){
+        $path = public_path('uploads/').$oke->file_name;
+        if (file_exists($path) || isset($oke->file_name)) {
+            unlink($path);
+            }
+        }
+
         Posting::destroy($id);
-         } else {
-            Posting::destroy($id);
-         }
-        
         
     }
 
