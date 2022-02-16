@@ -57,7 +57,7 @@ class AppServiceProvider extends ServiceProvider
     View::share('menu_categoriess', $categories);
 
     $ppid = Menu::with(['childs'])
-      ->where('parent', '=', '43')
+      ->where('parent', '=', '120')
       ->get();
     View::share('ppid', $ppid);
 
