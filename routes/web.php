@@ -35,6 +35,7 @@ use App\Http\Controllers\Perijinan\KunjunganDcController;
 use App\Http\Controllers\Inventory\SatuanController;
 use App\Http\Controllers\Inventory\BarangController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\ZoomController;
 use App\Http\Controllers\Inventory\KategoriController;
 
 
@@ -163,10 +164,13 @@ Route::group(['middleware' => ['permission:tiket-read']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-   
-    Route::group(['prefix' => 'admin','middleware' => ['permission:posting-read']], function () {
+
+    Route::group(['prefix' => 'admin', 'middleware' => ['permission:posting-read']], function () {
         Route::group(['prefix' => 'agenda', 'as' => 'agenda:'], function () {
             Route::resource('harian', AgendaController::class);
+        });
+        Route::group(['prefix' => 'zoom', 'as' => 'zoom:'], function () {
+            Route::resource('link_zoom', ZoomController::class);
         });
     });
 
@@ -195,10 +199,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('youtube', YoutubeController::class);
     });
 
-    
-        Route::resource('user', UserController::class);
-        Route::resource('account', AccountController::class);
- 
+
+    Route::resource('user', UserController::class);
+    Route::resource('account', AccountController::class);
+
 
     Route::group(['middleware' => ['permission:layanan-read']], function () {
         Route::resource('komentar', KomentarController::class);
@@ -207,13 +211,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['auth'], 'prefix' => "admin"], function () {
         Route::resource('media', MediaController::class);
-
     });
 
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-     \UniSharp\LaravelFilemanager\Lfm::routes();
- });
- 
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
 });
 
 

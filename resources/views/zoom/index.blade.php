@@ -1,17 +1,17 @@
-@section('title', 'Agenda')
-@section('menu','Agenda')
-@section('submenu','List Agenda')
+@section('title', 'Link Zoom')
+@section('menu','Zoom')
+@section('submenu','List Permintaan Link Zoom')
 @extends('layouts/template-admin')
-@section('kondisi10','active')
+@section('kondisi11','active')
 
 @section('halaman')
-<span class="breadcrumb-item active">Agenda</span>
+<span class="breadcrumb-item active">Link Zoom</span>
 @endsection
 
 @section('tambah_data')
-<a href="{{route('agenda:harian.create')}}" class="btn btn-primary">
+<a href="{{route('zoom:link_zoom.create')}}" class="btn btn-primary">
     <i class="icon-file-plus mr-2"></i>
-    Tambah Agenda
+    Tambah Permintaan
 </a>
 @endsection
 
@@ -32,13 +32,13 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama</th>
                         <th>Tanggal</th>
-                        <th>Acara</th>
-                        <th>Tempat</th>
-                        <th>Jam Mulai</th>
-                        <th>Keterangan</th>
-                        <th>Oleh</th>
+                        <th>Jam</th>
+                        <th>Instansi</th>
+                        <th>Topik</th>
+                        <th>Peserta</th>
+                        <th>Nama Peminjam</th>
+                        <th>Link Zoom</th>
                         <th>Action</th>
                         {{-- @if (auth()->user()->level=='superadmin'||'admin')--}}
                         {{-- <th class="text-center">Aksi</th>--}}
@@ -61,13 +61,13 @@
         ajax: window.location.href,
         columns: [
             { data: 'id', name: 'id' },
-            { data: 'user.name', nama: 'user.name' },
             { data: 'tanggal', name: 'tanggal' },
-            { data: 'acara', name: 'acara' },
-            { data: 'tempat', name: 'tempat' },
-            { data: 'jamMulai', name: 'jamMulai' },
-            { data: 'keterangan', name: 'keterangan' },
-            { data: 'oleh', name: 'oleh' },
+            { data: 'jam', nama: 'jam' },
+            { data: 'instansi', name: 'instansi' },
+            { data: 'topik', name: 'topik' },
+            { data: 'peserta', name: 'peserta' },
+            { data: 'peminjam', name: 'peminjam' },
+            { data: 'link_zoom', name: 'link_zoom' },
             { data: 'action', },
         ]
     });

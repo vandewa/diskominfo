@@ -17,6 +17,7 @@ class CreateAttachmentsTable extends Migration
             $table->integer('id', true);
             $table->integer('id_pengumuman');
             $table->string('file_name', 250);
+            $table->date('delete_at')->nullable();
             $table->timestamps();
             $table->softDeletes()->nullable();
         });

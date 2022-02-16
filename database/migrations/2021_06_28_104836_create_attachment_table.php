@@ -19,6 +19,7 @@ class CreateAttachmentTable extends Migration
             $table->string('path', 250)->nullable();
             $table->string('file_name', 250)->nullable();
             $table->string('temp', 200)->nullable();
+            $table->date('delete_at')->nullable();
             $table->timestamps();
             $table->softDeletes()->nullable();
         });

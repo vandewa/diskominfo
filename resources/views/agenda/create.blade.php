@@ -2,9 +2,9 @@
 @section('menu','Agenda')
 @section('submenu','Tambah Agenda')
 @extends('layouts/template-admin')
-@section('kondisi10','nav-item-expanded nav-item-open')
+@section('kondisi10','active')
 @section('halaman')
-<span class="breadcrumb-item active">Agenda</span>
+<a class="breadcrumb-item" href="{{ route('agenda:harian.index') }}">Agenda</a>
 <span class="breadcrumb-item active">Tambah Agenda</span>
 @endsection
 @section('container')
@@ -69,6 +69,23 @@
                         ''), 'placeholder' =>
                         'Tempat'])}}
                         @error('tempat')
+                        <div class="form-control-feedback text-danger">
+                            <i class="icon-cancel-circle2"></i>
+                        </div>
+                        <span class="form-text text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-lg-2">Jam Mulai<span class="text-danger">*</span></label>
+                <div class="col-lg-10">
+                    <div class="form-group-feedback form-group-feedback-right">
+                        {{Form::time('jamMulai', null,['class' => 'form-control'.($errors->has('jamMulai') ?
+                        ' border-danger' :
+                        ''), 'placeholder' =>
+                        'Jam Mulai'])}}
+                        @error('jamMulai')
                         <div class="form-control-feedback text-danger">
                             <i class="icon-cancel-circle2"></i>
                         </div>

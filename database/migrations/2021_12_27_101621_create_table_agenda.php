@@ -22,6 +22,7 @@ class CreateTableAgenda extends Migration
             $table->char('tempat');
             $table->char('keterangan');
             $table->char('tanggal');
+            $table->char('jamMulai');
             $table->char('oleh');
             $table->bigInteger('message_id');
             $table->timestamps();
