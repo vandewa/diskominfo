@@ -69,10 +69,10 @@ class PerubahanVpsController extends Controller
                 Session::flash('keterangan', 'Data berhasil di simpan');
             }
 
-         // $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
-        //     'number' => $request->telepon,
-        //     'message' => $request->name.' Anda telah berhasil mendaftar untuk perubahan vps',
-        // ]);
+         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => $request->telepon,
+            'message' => $request->name.' Anda telah berhasil mendaftar untuk perubahan vps',
+        ]);
 
         // return ['response' => $response->body(),
         //     'data' => $request->all()];

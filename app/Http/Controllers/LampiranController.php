@@ -43,15 +43,20 @@ class LampiranController extends Controller
     public function store(Request $request)
     {
 
-        $nama = $request->file('nama_lampiran')->getClientOriginalName();
-        $request->file('nama_lampiran')->move(public_path('/uploads/lampiran'), $nama);
+        $files = $request->file('nama_lampiran')->getClientOriginalExtension();;
+
+        $prefix = date('Ymdhis');
+        $by = $request->created_by;
+        $extension = $files->getClientOriginalExtension();
+        $filename = $prefix.'_'. $by.'.'.$extension;
+
+        $request->file('nama_lampiran')->move(public_path('uploads/lampiran'), $filename);
        
         Lampiran::create([
-            'nama_lampiran' => $nama,
+            'nama_lampiran' => $filename,
             'keterangan' => $request->keterangan,
             'informasi_st' => $request->informasi_st,
             'created_by' => $request->created_by
-
         ]);
     
         return redirect(route('lampirans.index'))->with('status', 'Data berhasil ditambahkan.');
@@ -118,6 +123,12 @@ class LampiranController extends Controller
      */
     public function destroy($id)
     {
+        $oke = Lampiran::where('id',$id)->first();
+        $path = public_path('uploads/lampiran').$oke->nama_lampiran;
+        if (file_exists($path)) {
+            unlink($path);
+        }
+       
         Lampiran::destroy($id);
     }
 

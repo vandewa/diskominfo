@@ -119,7 +119,8 @@
                             <article>
                                 <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7"
                                     href="/detail/{{ $highlight->slug }}"
-                                    style="background-image: url({{ asset($highlight->gambarMuka->path.$highlight->gambarMuka->file_name??'') }}); height:400px;">
+                                    style="background-image: url({{ asset($highlight->gambarMuka->path.$highlight->gambarMuka->file_name??'') }}); height:400px; background-size: cover;
+                        background-position: center center;">
                                     <div class="card-header border-0 bg-transparent w-100">
                                         <div class="media align-items-center">
                                             <span class="avatar avatar-sm avatar-circle mr-3">
@@ -158,11 +159,11 @@
                                         @if (!empty($post->gambarMuka->path) || !empty($post->gambarMuka->file_name))
                                         <img class="card-img transition-zoom-hover"
                                         src="{{ asset($post->gambarMuka->path.$post->gambarMuka->file_name??'') }}"
-                                        alt="Image Description" style="height:100%;"> 
+                                        alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
                                         @else
                                           <img class="card-img transition-zoom-hover"
                                         src="{{ asset('uploads/diskominfowonosobo.jpg') }}"
-                                        alt="Image Description" style="height:100%;"> 
+                                        alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
                                         @endif
                                 </a>
                               
@@ -227,7 +228,7 @@
                                 <a href="/pengajuanizin">
                                     <img class="card-img transition-zoom-hover"
                                         src="{{ asset('front/assets/images/pengajuan.gif') }}"
-                                        alt="Girl in a jacket" width="250" height="80">
+                                        alt="" width="250" height="80">
                                 </a>
                             </div>
 
@@ -235,7 +236,7 @@
                                 <a href="https://laporbupati.wonosobokab.go.id/" target="_blank">
                                     <img class="card-img transition-zoom-hover"
                                         src="{{ asset('front/assets/images/laporbup.gif') }}"
-                                        alt="Girl in a jacket" width="250" height="80">
+                                        alt="" width="250" height="80">
                                 </a>
                             </div>
 
@@ -280,9 +281,15 @@
                                     <div class="media align-items-center text-inherit">
                                         <div class="avatar avatar-lg mr-3">
                                             <a href="/detail/{{ $post->slug }}">
-                                                <img class="avatar-img transition-zoom-hover"
-                                                    src="{{ asset($populer->gambarMuka->path.$populer->gambarMuka->file_name) }}"
-                                                    alt="Image Description">
+                                                 @if (!empty($populer->gambarMuka->path) || !empty($populer->gambarMuka->file_name))
+                                                <img class="card-img transition-zoom-hover"
+                                                src="{{ asset($populer->gambarMuka->path.$populer->gambarMuka->file_name??'') }}"
+                                                alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
+                                                @else
+                                                <img class="card-img transition-zoom-hover"
+                                                src="{{ asset('uploads/diskominfowonosobo.jpg') }}"
+                                                alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
+                                                @endif
                                             </a>
                                         </div>
                                         <div class="media-body">

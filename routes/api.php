@@ -17,7 +17,7 @@ use App\Http\Controllers\Api\TiketController;
 */
 Route::post('login', [LoginController::class, 'login']);
 
-Route::group(['middleware' => 'api'], function(){
+Route::group(['middleware' => 'auth:api'], function(){
     Route::get('tiket', [TiketController::class, 'getTiket']);
     Route::get('tiket/belum-selesai', [TiketController::class, 'getTiketBelumSelesai']);
     Route::get('tiket/sudah-selesai', [TiketController::class, 'getTiketSudahSelesai']);
@@ -30,6 +30,6 @@ Route::group(['middleware' => 'api'], function(){
 // Route::post('me', 'AuthController@me');
 
 
-Route::middleware('api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return auth('api')->user();
 });

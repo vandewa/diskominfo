@@ -57,7 +57,7 @@ class PostingController extends Controller
         public function store(PostingcreateValidation $request)
     {
         $path = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y');
-        $paths ='uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
+        $paths = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
         
         if (!file_exists($paths)) {
              if (!file_exists($path)) {

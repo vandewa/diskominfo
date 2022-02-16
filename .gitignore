@@ -2,5 +2,10 @@
 /vendor
 /.idea
 /.vagrant
+/uploads
 npm-debug.log
 .env
+/public/uploads.zip
+/uploads.zip
+
+
