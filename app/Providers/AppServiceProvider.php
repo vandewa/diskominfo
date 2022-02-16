@@ -73,27 +73,27 @@ class AppServiceProvider extends ServiceProvider
     View::share('total_layanan', $total_layanan);
 
     $akses_dc = AksesDc::where('status_st', '=', 'STATUS_ST_01')
-    ->count();
+      ->count();
     View::share('akses_dc', $akses_dc);
-    
+
     $colocation_server = ColocationServer::where('status_st', '=', 'STATUS_ST_01')
-    ->count();
+      ->count();
     View::share('colocation_server', $colocation_server);
 
     $kunjungan_dc = KunjunganDc::where('status_st', '=', 'STATUS_ST_01')
-    ->count();
+      ->count();
     View::share('kunjungan_dc', $kunjungan_dc);
 
     $layanan_server = LayananServer::where('status_st', '=', 'STATUS_ST_01')
-    ->count();
+      ->count();
     View::share('layanan_server', $layanan_server);
 
     $vps_baru = PenambahanVps::where('status_st', '=', 'STATUS_ST_01')
-    ->count();
+      ->count();
     View::share('vps_baru', $vps_baru);
 
     $perubahan_vps = PerubahanVps::where('status_st', '=', 'STATUS_ST_01')
-    ->count();
+      ->count();
     View::share('perubahan_vps', $perubahan_vps);
 
     $total_perizinan = $akses_dc + $colocation_server + $kunjungan_dc + $layanan_server + $vps_baru + $perubahan_vps;

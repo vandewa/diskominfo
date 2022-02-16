@@ -12,9 +12,9 @@ class AgendaController extends Controller
 {
     public $botTele = 'bot2110552489:AAFPRxSbkJtY06IVLKcU44GKVcnz3pm4NUM';
     // uji coba grup tele
-    public $chatIdTele = '1343623060';
+    public $chatIdTeleDev = '1343623060';
     // id grup aim tele
-    // protected $chatIdTele = '-697674877';
+    public $chatIdTeleGrup = '-697674877';
 
     /**
      * Display a listing of the resource.
@@ -77,13 +77,13 @@ class AgendaController extends Controller
             'tanggal' => 'required',
             'acara' => 'required',
             'tempat' => 'required',
+            'jamMulai' => 'required',
             'keterangan' => 'required'
         ]);
-
         if ($string3 == $string4) {
-            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . $string3 . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromTimeStamp(strtotime($string3))->isoFormat('D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
         } else {
-            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . $string3 . " - " . $string4 . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromTimeStamp(strtotime($string3))->isoFormat('D MMMM Y') . " - " . \Carbon\Carbon::createFromTimeStamp(strtotime($string4))->isoFormat('D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
         }
         $this->kirim($pesan, $validated, $tgl);
         return redirect(route('agenda:harian.index'));
@@ -91,7 +91,11 @@ class AgendaController extends Controller
 
     public function kirim($pesan, $validated, $tgl)
     {
-        $url = 'https://api.telegram.org/' . $this->botTele . '/sendMessage?chat_id=' . $this->chatIdTele . '&text=' . $pesan . '&parse_mode=html';
+        if (request()->secure()) {
+            $url = 'https://api.telegram.org/' . $this->botTele . '/sendMessage?chat_id=' . $this->chatIdTeleGrup . '&text=' . $pesan . '&parse_mode=html';
+        } else {
+            $url = 'https://api.telegram.org/' . $this->botTele . '/sendMessage?chat_id=' . $this->chatIdTeleDev . '&text=' . $pesan . '&parse_mode=html';
+        }
         // $response = file_get_contents($url, true);
         $response = json_decode(file_get_contents($url));
 
@@ -154,12 +158,16 @@ class AgendaController extends Controller
         $msg_id = Agenda::find($id);
 
         if ($string3 == $string4) {
-            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . $string3 . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromTimeStamp(strtotime($string3))->isoFormat('D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
         } else {
-            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . $string3 . " - " . $string4 . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromTimeStamp(strtotime($string3))->isoFormat('D MMMM Y') . " - " . \Carbon\Carbon::createFromTimeStamp(strtotime($string4))->isoFormat('D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
         }
 
-        $url = 'https://api.telegram.org/' . $this->botTele .  "/editMessageText?chat_id=" . $this->chatIdTele . "&message_id=" . $msg_id->message_id . "&text=" . $pesan . '&parse_mode=html';
+        if (request()->secure()) {
+            $url = 'https://api.telegram.org/' . $this->botTele .  "/editMessageText?chat_id=" . $this->chatIdTeleGrup . "&message_id=" . $msg_id->message_id . "&text=" . $pesan . '&parse_mode=html';
+        } else {
+            $url = 'https://api.telegram.org/' . $this->botTele .  "/editMessageText?chat_id=" . $this->chatIdTeleDev . "&message_id=" . $msg_id->message_id . "&text=" . $pesan . '&parse_mode=html';
+        }
         $response = json_decode(file_get_contents($url));
 
         if ($response->ok) {
@@ -184,7 +192,11 @@ class AgendaController extends Controller
     public function destroy($id)
     {
         $msg_id =  Agenda::where('id', $id)->first();
-        $url = 'https://api.telegram.org/' . $this->botTele . '/deleteMessage?chat_id=' . $this->chatIdTele . '&message_id=' . $msg_id->message_id . '';
+        if (request()->secure()) {
+            $url = 'https://api.telegram.org/' . $this->botTele . '/deleteMessage?chat_id=' . $this->chatIdTeleGrup . '&message_id=' . $msg_id->message_id . '';
+        } else {
+            $url = 'https://api.telegram.org/' . $this->botTele . '/deleteMessage?chat_id=' . $this->chatIdTeleDev . '&message_id=' . $msg_id->message_id . '';
+        }
         $response = json_decode(file_get_contents($url));
         $data = [
             Agenda::destroy($id)
