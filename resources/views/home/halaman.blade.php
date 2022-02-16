@@ -25,7 +25,7 @@
 
         <br>
           @if (!empty($attachment->path) || !empty($attachment->file_name))
-          <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="{{ asset($attachment->path.$attachment->file_name??'') }}" alt="Image Description">
+        <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="{{ asset($attachment->path.$attachment->file_name??'') }}" alt="Image Description">
           @endif 
           <br>
         

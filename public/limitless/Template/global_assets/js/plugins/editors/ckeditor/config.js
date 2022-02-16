@@ -2,7 +2,7 @@
  * @license Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
-
+CKEDITOR.config.autolink_urlRegex = /^(https?|ftp):\/\/(-\.)?([^\s\/?\.#]\.?)+(\/[^\s]*)?[^\s\.,]$/i;
 CKEDITOR.editorConfig = function( config ) {
 
 	// Define changes to default configuration here.
@@ -38,7 +38,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
-	config.removeButtons = 'Underline,Subscript,Superscript';
+	config.removeButtons = '';
 
 	// Set the most common block elements.
 	config.format_tags = 'p;h1;h2;h3;pre';
@@ -48,6 +48,8 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Allow content rules
 	config.allowedContent = true;
+
+	config.pasteFilter = 'p; a[!href]';
 
 
 	// Extra plugins

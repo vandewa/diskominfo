@@ -31,7 +31,8 @@ var CKEditor = function() {
         // Setup
         CKEDITOR.replace('editor-full', {
             height: 300,
-            extraPlugins: 'forms',
+            extraPlugins: 'forms,autolink,font,justify,computedstyles,basicstyles,panelbutton,preview',
+            skin : 'office2013',
             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
             filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
             filebrowserBrowseUrl: '/laravel-filemanager?type=Files',

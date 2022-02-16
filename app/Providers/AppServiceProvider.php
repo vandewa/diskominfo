@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
     View::share('key', $total);
 
     $categories = Menu::with(['childs'])
-      ->where('parent', '=', '0')
+      ->where('parent', '=', '47')
       ->get();
     View::share('menu_categories', $categories);
 

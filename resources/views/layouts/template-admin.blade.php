@@ -86,6 +86,8 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/table_elements.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/contextmenu.js ')}}"></script>
+	
+	<script src="{{ url ('limitless/Documentation/assets/ckeditor/ckeditor.js ')}}"></script>
 
 	<!-- /theme JS files Datatable-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.js"
@@ -460,6 +462,7 @@
 			})
 		});
 	</script>
+	
 	@stack('js')
 </body>
 
