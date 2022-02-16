@@ -24,6 +24,8 @@
 					<div class="card-body">
 						<form method="POST" action="{{route('menuberanda.store')}}" enctype="multipart/form-data">
 						@csrf
+						
+						    <input type="hidden" name ="created_by" value="{{auth()->user()->id}}">
 
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">Parent<span class="text-danger">*</span></label>

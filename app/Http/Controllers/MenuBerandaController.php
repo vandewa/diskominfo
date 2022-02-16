@@ -47,9 +47,13 @@ class MenuBerandaController extends Controller
     {
        
         if($request->hasFile('file_name')){
-            $file = $request->file('file_name');
-            $filename = $file->getClientOriginalName();
-            $file->move(public_path('/uploads/lampiran'), $filename);
+        $files = $request->file('file_name');
+        $prefix = date('Ymdhis');
+        $by = $request->created_by;
+        $extension = $files->getClientOriginalExtension();
+        $filename = $prefix.'_'. $by.'.'.$extension;
+        $request->file('file_name')->move(public_path('uploads/lampiran'), $filename);
+
             Menu::create([
                 'parent' => $request->parent,
                 'nama' => $request->nama,
@@ -187,9 +191,14 @@ class MenuBerandaController extends Controller
     {
         $cek = Menu::find($id);
         $oke = Posting::where('slug',$cek->slug)->first();
+        $path = public_path($cek->url);
 
         if(!empty($oke)){
             $oke->delete();
+        }
+        
+        if (file_exists($path)) {
+            unlink($path);
         }
 
         $cek->delete();
