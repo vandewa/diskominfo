@@ -40,8 +40,8 @@
            
               @foreach($details->attachments as $slide)
             <div class="js-slide">
-            <a href="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}" target="_blank">
-                <img class="img-fluid transition-zoom-hover width: 100%;height: 100%;object-fit: scale-down" src="{{ asset ('/uploads') }}/{{ $slide->file_name??'' }}" alt="Image Description" height="150px;">
+            <a href="{{ asset ($slide->file_name??'') }}" target="_blank">
+                <img class="img-fluid transition-zoom-hover" src="{{ asset ($slide->file_name??'') }}" alt="Image Description" style="width: 100%;height: 100%;object-fit: scale-down">
                 </a>
             </div>
             @endforeach
@@ -49,7 +49,12 @@
          <!-- End Author -->
         <div class="mt-5" style="text-align:justify; text-justify:auto;text-indent: 40px;  color:black;">
         {!! $details->isi !!}
+
+         
          </div>
+          @if (!empty($lampiran))
+            <a href="{{ url('/uploads/lampiran/'.$lampiran->nama_lampiran) }}" class="edit btn btn-success btn-sm" target="_blank"><i class="icon-download mr-2"></i>Download Lampiran</a>
+            @endif
 
    
           <!-- Sticky Block End Point -->
@@ -88,7 +93,7 @@
            <div class="card-body p-4" data-aos="zoom-out-right">
             <!-- Project -->
             <a class="card text-body transition-3d-hover mb-2 bg-info" href="/details/{{$pengumumanya->id}}">
-            <img class="card-img-top" src="/uploads/{{$pengumumanya->gambarmuka->file_name??''}}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
+            <img class="card-img-top" src="{{'/'.$pengumumanya->gambarmuka->file_name??''}}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
             <div class="card-body text-left">
             <small>
             <p class="mb-0 text-white text-left" style="font-size:11px;"><b>{{ Carbon\Carbon::parse($pengumumanya->created_at)->isoFormat('LLLL') }} WIB</b></p>

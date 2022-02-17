@@ -6,6 +6,8 @@ use App\Models\Pengumuman;
 use App\Models\Attachments;
 use DataTables;
 use Illuminate\Http\Request;
+use App\Models\Lampiran;
+use Illuminate\Support\Facades\File;
 
 class PengumumanController extends Controller
 {
@@ -38,33 +40,72 @@ class PengumumanController extends Controller
     public function store(Request $request)
     {
 
-        $b= Pengumuman::create($request->except(['file_name']));
+        $path = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y');
+        $paths = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
+        
+        if (!file_exists($paths)) {
+             if (!file_exists($path)) {
+              mkdir($path);
+             }
+            mkdir($paths);
+         } 
+
+        if($request->hasFile('nama_lampiran')){
+            $a = $request->file('nama_lampiran'); 
+            $prefix = date('Ymdhis');
+            $by = $request->created_by;
+            $extension = $a->extension();
+            $filename = $prefix.'_'. $by.'.'.$extension;
+        }
+
+         $b = Pengumuman::create([
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+            'nama_lampiran' => $filename??'',
+          ]);
+
+        if($request->hasFile('nama_lampiran')){
+            $files = $request->file('nama_lampiran');
+            $prefix = date('Ymdhis');
+            $by = $request->created_by;
+            $extension = $files->getClientOriginalExtension();
+            $filename = $prefix.'_'. $by.'.'.$extension;
+
+            $files->move(public_path('uploads/lampiran'), $filename);
+
+            $lampiran = new Lampiran() ;
+            $lampiran->nama_lampiran = $filename;
+            $lampiran->keterangan =  $request->judul;
+            $lampiran->created_by =  $request->created_by;
+            $lampiran->save();
+
+        }
 
         if($request->hasFile('file_name')){
-        $by = $request->created_by;
-        $files = $request->file('file_name');
-        $prefix = date('Ymdhis');
-        $no = 1;
-            foreach($files as $a){
-                $extension = $a->extension();
-                $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
-                $a->move(public_path('/uploads'), $filename);
-                $attachment = new Attachments() ;
-                $attachment->id_pengumuman = $b->id;
-                $attachment->file_name = $filename;
-                $attachment->save();
+            $by = $request->created_by;
+            $files = $request->file('file_name');
+            $prefix = date('Ymdhis');
+            $no = 1;
+                foreach($files as $a){
+                    $extension = $a->getClientOriginalExtension();
+                    $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
+                    $a->move(public_path($paths), $filename);
+                    $attachments = new Attachments() ;
+                    $attachments->id_pengumuman = $b->id;
+                    $attachments->file_name = $paths.$filename;
+                    $attachments->save();
 
-                $no++;
-                }
+                    $no++;
+                    }
         } else {
-            $attachment = new Attachments() ;
-            $attachment->id_pengumuman = $b->id;
-            $attachment->file_name = 'diskominfo.jpg';
-            $attachment->save();
+            $attachments = new Attachments() ;
+            $attachments->id_pengumuman = $b->id;
+            $attachments->file_name = 'diskominfo.jpg';
+            $attachments->save();
         }
        
 
-        return redirect('pengumumans')->with('status', 'Pengumuman berhasil ditambahkan.');
+        return redirect(route('pengumumans.index'))->with('status', 'Pengumuman berhasil ditambahkan.');
     }
 
     /**
@@ -103,7 +144,7 @@ class PengumumanController extends Controller
 
         Pengumuman::find($id)->update([
             'judul' => $request->judul,
-            'isi' => $request->isi
+            'isi' => $request->isi,
         ]);
 
 
@@ -116,14 +157,14 @@ class PengumumanController extends Controller
                 $extension = $a->extension();
                 $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
                
-                $a->move(public_path('/uploads'), $filename);
+                $a->move(public_path($paths), $filename);
                 $attachment = Attachments::where('id_pengumuman',$id);
                 Attachments::create(['file_name' => $filename, 'id_pengumuman'=> $id]);
                 $no++;
                 
                 }
         }
-        return redirect ('pengumumans')->with('status', 'Data berhasil diubah');
+         return redirect(route('pengumumans.index'))->with('status', 'Data berhasil diubah');
     }
 
     /**
@@ -134,12 +175,32 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
+        $oke = Pengumuman::where('id',$id)->first();
+        $okee = Attachments::where('id_pengumuman',$oke->id)->get();
+
+        $path_lampiran = public_path('uploads/lampiran/').$oke->nama_lampiran;
+        $path_gambar = public_path($oke->file_name);
+       
+        if (file_exists($path_lampiran)) {
+            unlink($path_lampiran);
+            Lampiran::where('nama_lampiran', $oke->nama_lampiran)->delete();
+        }
+
+        if(!empty($okee)) {
+            foreach($okee as $item){
+                if($item !=  public_path('uploads/diskominfowonosobo.jpg')){
+                    unlink($item->file_name);
+                }
+            }
+            Attachments::destroy($okee);
+        }
+        
         Pengumuman::destroy($id);
     }
 
     public function getPengumuman(Request $request)
     {
-            $data = Pengumuman::orderBy('created_at','desc')->get();
+            $data = Pengumuman::with(['gambarmuka']);
             
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -152,10 +213,9 @@ class PengumumanController extends Controller
                     return $actionBtn;
                 }
                 )
-                ->editColumn('foto', function($data)
+                ->editColumn('nama_lampiran', function($data)
                 {
-                    Pengumuman::with(['gambarmuka']);
-                     $foto = '<a href="'.asset('uploads/'.$data->gambarmuka->file_name).'" target="_blank"><img src="'.asset('uploads/'.$data->gambarmuka->file_name).'" style="height:50px;"></a>';
+                     $foto = '<a href="'.asset($data->gambarmuka->file_name).'" target="_blank"><img src="'.asset($data->gambarmuka->file_name).'" style="height:50px;"></a>';
                     return $foto;
                 })
                 ->editColumn('judul', function($data)
@@ -163,7 +223,7 @@ class PengumumanController extends Controller
                     return $data->judul;
                 })
             
-                ->rawColumns(['action', 'status','foto'])
+                ->rawColumns(['action', 'status','nama_lampiran'])
                 ->make(true);
         
     }

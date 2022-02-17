@@ -46,6 +46,14 @@
 						</div>
 
 						
+                        <div class="form-group row mt-2">
+									<label class="col-form-label col-lg-2">Lampiran</label>
+									<div class="col-lg-10">
+										<input type="file" name="nama_lampiran" class="file-input" data-fouc >
+									</div>
+						</div>
+
+						
 
                                 <div class="mb-4">
 								<label>Isi <span class="text-danger">*</span><small>(*wajib diisi)</small></label>

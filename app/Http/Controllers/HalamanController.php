@@ -181,8 +181,10 @@ class HalamanController extends Controller
      */
     public function destroy($id)
     {
-      
+
         $oke = Attachment::where('id_tabel',$id)->first();
+
+        $posting = Posting::find($id);
 
         if(!empty($oke)){
         $path = public_path('uploads/').$oke->file_name;
@@ -191,6 +193,7 @@ class HalamanController extends Controller
             }
         }
 
+        Menu::where('slug', $posting->slug)->delete();
         Posting::destroy($id);
         
     }

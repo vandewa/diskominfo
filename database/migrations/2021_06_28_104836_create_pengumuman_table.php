@@ -16,6 +16,7 @@ class CreatePengumumanTable extends Migration
         Schema::create('pengumuman', function (Blueprint $table) {
             $table->increments('id');
             $table->string('file_name', 250)->nullable();
+            $table->string('nama_lampiran', 250)->nullable();
             $table->string('judul', 250)->nullable();
             $table->string('isi', 10000)->nullable();
             $table->timestamps();

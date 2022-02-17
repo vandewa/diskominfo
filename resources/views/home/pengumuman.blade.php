@@ -42,7 +42,7 @@
         <div class="cbp-item rounded-lg branding mb-2">
           <a class="cbp-caption" href="/details/{{$pengumumannya->id}}">
             <div class="cbp-caption-defaultWrap mb-5">
-              <img class="rounded-lg" src="{{ asset ('uploads') }}/{{ $pengumumannya->gambarmuka->file_name??'' }}" alt="Image Description" style="height:250px;">
+              <img class="rounded-lg" src="{{ asset ($pengumumannya->gambarmuka->file_name??'') }}" alt="Image Description" style="height:250px;">
             </div>
             <div class="cbp-caption-activeWrap">
               <div class="d-flex justify-content-end flex-column h-100 p-4">

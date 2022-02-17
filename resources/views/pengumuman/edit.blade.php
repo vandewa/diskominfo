@@ -52,8 +52,8 @@
 							</div>
 
 							<div class="card">
-							<a href="{{asset('uploads/'.$data->file_name) }}" target="_blank">
-							<img class="img-fluid" src="{{asset('uploads/'.$data->file_name) }}" alt="">
+							<a href="{{asset($data->file_name) }}" target="_blank">
+							<img class="img-fluid" src="{{asset($data->file_name) }}">
 							</a>
 							</div>
 

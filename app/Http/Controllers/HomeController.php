@@ -234,14 +234,15 @@ class HomeController extends Controller
         ->first();
 
 
-        $pengumuman = Pengumuman::with(['gambarMuka'])
+        $pengumuman = Pengumuman::with(['gambarmuka'])
         ->wherenotin('id', [$post])
         ->orderBy('created_at', 'desc')
         ->limit(2)
         ->get();  
-        
 
-        return view('home.details', compact('details','pengumuman'));
+        $lampiran = Lampiran::where('nama_lampiran', $details->nama_lampiran)->first();
+
+        return view('home.details', compact('details','pengumuman', 'lampiran'));
     }
 
     /**
@@ -459,8 +460,11 @@ class HomeController extends Controller
 
        public function pengumuman()
     {
-        $pengumuman= Pengumuman::orderBy('created_at','desc')
+        $pengumuman= Pengumuman::with(['gambarmuka', 'attachments'])
+        ->orderBy('created_at','desc')
         ->get();
+
+        // return $pengumuman;
 
         return view('home.pengumuman', compact('pengumuman'));
     }

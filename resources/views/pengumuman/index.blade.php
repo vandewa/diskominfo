@@ -38,9 +38,7 @@ Tambah
                     <th>No</th>
                     <th>Foto</th>
                     <th>Judul</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -58,9 +56,10 @@ Tambah
         processing: true,
         serverSide: true,
         ajax: "{{ route('pengumumans.list') }}",
-        columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'foto', },
+        "order": [[ 2, "asc" ]],
+				columns: [
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
+                    {data: 'nama_lampiran', },
                     {data: 'judul', },
 					{
 						data: 'action', 
