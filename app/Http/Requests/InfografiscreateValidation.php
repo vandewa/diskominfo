@@ -25,7 +25,7 @@ class InfografiscreateValidation extends FormRequest
     {
         return [
             'judul' => 'required',
-            'file_name' => 'required|max:5048|mimes:jpeg,png,jpg',
+            'file_name[]' => 'required|max:5048|mimes:jpeg,png,jpg',
         ];
     }
 }

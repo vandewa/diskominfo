@@ -58,6 +58,7 @@ Tambah Posting
 				processing: true,
 				serverSide: true,
 				ajax: "{{ route('posting.list') }}",
+                  "order": [[ 5, "desc" ]],
 				columns: [
 					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
 					{data: 'judul_posting'},

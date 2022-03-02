@@ -25,7 +25,7 @@ class InfohoaxcreateValidation extends FormRequest
     {
         return [
             'judul_posting' => 'required',
-            'file_name[]'=>'max:2048|mimes:jpeg,png,jpg',
+            'file_name[]'=>'required|max:2048|mimes:jpeg,png,jpg',
             'isi_posting' => 'required'
         ];
     }

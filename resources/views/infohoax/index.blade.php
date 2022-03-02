@@ -12,7 +12,7 @@
 @section('tambah_data')
 <a href="{{route('infohoax.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
-Tambah Posting
+Tambah Info Hoax
 </a>
 @endsection
 

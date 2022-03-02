@@ -278,7 +278,7 @@ class HomeController extends Controller
         $posting2 = Posting::with(['attachment', 'gambarMuka','nama', 'kategori'])
         ->where('posisi', '=', 'menu_atas')
         ->orderBy('created_at', 'desc')
-        ->simplePaginate(4);
+        ->simplePaginate(3);
 
         $postingg = Posting::with(['attachment', 'gambarMuka', 'nama'])
         ->where('posisi', '=', 'highlight')
@@ -300,11 +300,15 @@ class HomeController extends Controller
         ->limit(4)
         ->get();
 
-        $infografis = Infografis::orderBy('created_at', 'desc')
+        $infografis = Infografis::with(['attachments' , 'gambarMuka'])
+        ->orderBy('created_at', 'desc')
         ->limit(4)
         ->get();
 
-    
+
+
+
+
 
 
         return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul', 'infohoax', 'infografis'));
@@ -462,9 +466,7 @@ class HomeController extends Controller
     {
         $pengumuman= Pengumuman::with(['gambarmuka', 'attachments'])
         ->orderBy('created_at','desc')
-        ->get();
-
-        // return $pengumuman;
+        ->Simplepaginate(12);
 
         return view('home.pengumuman', compact('pengumuman'));
     }

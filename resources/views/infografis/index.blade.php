@@ -6,13 +6,13 @@
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
-<span class="breadcrumb-item active">Info Grafis</span>
+<span class="breadcrumb-item active">InfoGrafis</span>
 @endsection
 
 @section('tambah_data')
 <a href="{{route('infografis.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
-Tambah Posting
+Tambah InfoGrafis
 </a>
 @endsection
 
@@ -37,9 +37,7 @@ Tambah Posting
                     <th>Judul</th>
                     <th>Oleh</th>
                     <th>Tanggal</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -57,6 +55,7 @@ Tambah Posting
 				processing: true,
 				serverSide: true,
 				ajax: "{{ route('infografis.list') }}",
+                   "order": [[ 4, "desc" ]],
 				columns: [
 					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
 					{data: 'file_name',},

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 use App\Models\infografis;
+use App\Models\Attachments;
 use App\Http\Requests\InfografiscreateValidation;
 
 
@@ -36,30 +37,44 @@ class InfografisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InfografiscreateValidation $request)
+    public function store(Request $request)
     {
 
-          $files = $request->file('file_name'); 
-           $extension = $files->extension();
-            $prefix = date('Ymdhis');
-            $by = $request->created_by;
-           
+        $path = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y');
+        $paths = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
+        $no = 1;
+        
+        if (!file_exists($paths)) {
+             if (!file_exists($path)) {
+              mkdir($path);
+             }
+            mkdir($paths);
+         } 
 
-            $filename = $prefix.'_'. $by.'.'.$extension;
-
-            $files->move(public_path('/uploads'), $filename);
-
-
-
-            Infografis::create([
+         $b=  Infografis::create([
             'judul' => $request->judul,
-            'file_name' => $filename,
             'created_by' => $request->created_by
         ]);
+    
+          if($request->hasFile('file_name')){
+                $files = $request->file('file_name'); 
+            foreach($files as $a){
+                $prefix = date('Ymdhis');
+                $by = $request->created_by;
+                $extension = $a->extension();
+                $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
+                $a->move(public_path($paths), $filename);
+                $attachments = new Attachments() ;
+                $attachments->id_infografis = $b->id;
+                $attachments->file_name =  $paths.$filename;
+                $attachments->save();
 
-      
+                $no++;
+                }
+        }
 
-          return redirect ('infografis')->with('status', 'Data berhasil ditambahkan.');
+
+          return redirect (route('infografis.index'))->with('status', 'Data berhasil ditambahkan.');
 
     }
 
@@ -112,14 +127,22 @@ class InfografisController extends Controller
      */
     public function destroy($id)
     {
-         Infografis::destroy($id);
+        $oke = Attachments::where('id_infografis',$id)->get();
+        if(!empty($oke)) {
+            foreach($oke as $okee){
+            $path = public_path($okee->file_name);
+            unlink($path);
+            Attachments::where('id_infografis',$id)->delete();
+            }
+        }
+
+        Infografis::destroy($id);
     }
 
     
      public function getInfografis(Request $request)
     {
-            $data = Infografis::orderBy('created_at','desc')->get();
-
+            $data = Infografis::with(['attachments' , 'gambarMuka']);
 
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -138,12 +161,12 @@ class InfografisController extends Controller
                 })
                 ->editColumn('file_name', function($a){
                 
-                $nama = $a->file_name;    
-                $link1 = "uploads/".$nama;
+                $nama = $a->gambarMuka->file_name??'';    
+                $link1 = $nama;
                 $link2 = '<a href="'.$link1.'" target="_blank"><img src="'.$link1.'" style="height:50px;"></a>';
 
 
-             return $link2;
+                    return $link2;
                 })
                 ->editColumn('judul', function($a){
                     return $a->judul;

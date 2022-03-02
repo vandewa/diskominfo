@@ -331,10 +331,10 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 mb-3">
+                                        <a href="https://instagram.com/wonosobohebat" target="_blank">
                                         <div class="keyboard-box4">
                                             <img src="front/assets/images/instagram.png" class="keyboard-img" />
                                           <h2 class="keyboard-tulisan">INSTAGRAM</h2>
-{{--                                            <a href="#" class="btn btn-light keyboard-detail-button">Show Details</a>--}}
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
@@ -361,204 +361,96 @@
                                 </div>
                             </div>
                         </section>
-
-
-
-                       {{-- <div class="mb-3">
-                                <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
-                                    <img class="card-img transition-zoom-hover"
-                                        src="{{ asset('front/assets/images/instagram.gif') }}"
-                                        alt="Girl in a jacket" width="250" height="80">
-                                </a>
-                            </div>
-
-                         <div class="mb-3">
-                                <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
-                                    <img class="card-img transition-zoom-hover"
-                                        src="{{ asset('front/assets/images/youtube.gif') }}"
-                                        alt="Girl in a jacket" width="250" height="80">
-                                </a>
-                            </div>
-
-                            <div class="mb-3">
-                                <a href="https://www.facebook.com/diskominfo.wsb" target="_blank">
-                                    <img class="card-img transition-zoom-hover"
-                                        src="{{ asset('front/assets/images/fb.gif') }}"
-                                        alt="Girl in a jacket" width="250" height="80">
-                                </a>
-                            </div>
-
-                            <div class="mb-3">
-                                <a href="https://twitter.com/diskominfo_wsb" target="_blank">
-                                    <img class="card-img transition-zoom-hover"
-                                        src="{{ asset('front/assets/images/twitter.gif') }}"
-                                        alt="Girl in a jacket" width="250" height="80">
-                                </a>
-                            </div>
---}}
-
-                        <div class="mb-0">
-                            <div class="mb-3">
-
-                                {{-- <div class="position-relative bg-primary overflow-hidden">
-                                    <div class=" text-left position-relative">
-                                        <h3 class="container text-white text-center font-weight-semi-bold ">WEB TV </h3>
-                                    </div>
-                                    <!-- SVG Shapes -->
-                                    <figure class="mb-n1">
-                                        <svg class="position-absolute top-0 right-0 bottom-0 h-100"
-                                            xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
-                                            height="100%">
-                                            <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z" />
-                                        </svg>
-                                    </figure>
-                                    <!-- End SVG Shapes -->
-                                </div>
- --}}
-
-                                {{-- <div class=" js-slick-carousel slick" data-hs-slick-carousel-options='{
-                                    "fade": true,
-                                    "autoplay": true,
-                                    "autoplaySpeed": 7000,
-                                    "infinite": true,
-                                    "responsive": [{
-                                    "breakpoint": 768,
-                                    "settings": {
-                                        "arrows": false
-                                    }
-                                    }]
-                                }'>
-                                    @foreach($youtube as $yt)
-                                        <div class="embed-responsive embed-responsive-21by9 js-slide mb-5">
-                                            <iframe src="{{ $yt->link }}" title="YouTube video player" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                        </div>
-                                    @endforeach
-                                </div>
-
-
-                            </div>
-                        </div> --}}
-
-
-
-                        {{-- <div class="mb-5">
-                            <div class="mb-3">
-
-                                <div class="position-relative bg-primary overflow-hidden">
-                                    <div class=" text-left position-relative">
-                                        <h3 class="container text-white text-center font-weight-semi-bold ">TWITTER</h3>
-                                    </div>
-                                    <!-- SVG Shapes -->
-                                    <figure class="mb-n1">
-                                        <svg class="position-absolute top-0 right-0 bottom-0 h-100"
-                                            xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
-                                            height="100%">
-                                            <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z" />
-                                        </svg>
-                                    </figure>
-                                    <!-- End SVG Shapes -->
-                                </div>
-
-
-                                <div style="overflow: auto; height:200px;">
-                                    <a class="twitter-timeline" href="https://twitter.com/diskominfo_wsb"></a>
-                                </div>
-
-                            </div>
-                        </div> --}}
-
-
-
-                        <div class="mb-5">
-                            {{-- <div class="mb-3">
-
-                                <div class="position-relative bg-primary overflow-hidden">
-                                    <div class=" text-left position-relative">
-                                        <h3 class="container text-white text-center font-weight-semi-bold ">FACEBOOK
-                                        </h3>
-                                    </div>
-                                    <!-- SVG Shapes -->
-                                    <figure class="mb-n1">
-                                        <svg class="position-absolute top-0 right-0 bottom-0 h-100"
-                                            xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
-                                            height="100%">
-                                            <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z" />
-                                        </svg>
-                                    </figure>
-                                    <!-- End SVG Shapes -->
-                                </div> --}}
-
-                                {{-- <iframe
-                                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fdiskominfo.wsb&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1681253631890456"
-                                    width="255" height="250" style="border:none;overflow:hidden" scrolling="no"
-                                    frameborder="0" allowfullscreen="true"
-                                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                                </iframe> --}}
-
-                                <!-- <div class="fb-page"
-            data-href="https://www.facebook.com/diskominfo.wsb"
-          data-tabs="timeline"
-              data-height="250"
-
-              style="overflow: auto; height:250px;">
-          </div> -->
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-
-
-
-            <!-- Pagination -->
-            <!-- End Pagination -->
-        </div>
         <!-- End Blogs Section -->
 
         <div class="text-center mb-3">
             <span class="divider divider-text"><h3>INFO GRAFIS</h3></span>
         </div>
 
-
-
-
-        <div class="container space-0 space-lg-0 ">
-            <div id="fancyboxGallery" class="js-fancybox" data-hs-fancybox-options='{
-             "selector": "#fancyboxGallery .js-fancybox-item"
-           }'>
-                <div class="row">
-                    @foreach($infografis as $grafis)
-                        <div class="col-sm-6 col-md-3">
-                            <!-- Card Info -->
-                            <div class="card" style="max-width: 18rem; max-height: 25rem;">
-                                <a class="js-fancybox-item d-block" href="javascript:;"
-                                    data-src="{{ asset('uploads/'.$grafis->file_name??'') }}"
-                                    data-caption="{{ $grafis->judul }}">
-                                    <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
-                                        src="{{ asset('uploads/'.$grafis->file_name??'') }}"
-                                        alt="Image Description">
-                                </a>
-                                <div class="card-body">
-                                    <h5><a>{{ $grafis->judul }}</a></h5>
-                                </div>
+        <div class="container space-0 space-lg-0  ">
+            @php
+                $angka = 1;
+            @endphp
+            <div class="row">
+                @foreach($infografis as $grafis)
+                <div class="col-sm-6 col-md-3">
+                    <div id="fancyboxGallery{{ $angka }}" class="js-fancybox" data-hs-fancybox-options='{
+                    "selector": "#fancyboxGallery{{ $angka }} .js-fancybox-item"}'>
+                        <div class="card" style="max-width: 18rem; max-height: 25rem;">
+                         
+                            <a class="js-fancybox-item media-viewer mb-3 d-block" href="javascript:;"
+                                data-src="{{ asset($grafis->gambarMuka->file_name??'') }}"
+                                data-caption="{{ $grafis->judul }}">
+                                <img  style="height:230px;object-fit:cover" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover" src="{{ asset($grafis->gambarMuka->file_name??'') }}" alt="Image Description">
+                            </a>
+                           
+                          
+                            @foreach($grafis->attachments as $picture)
+                            @if ($loop->first)
+                            @else
+                            <img class="js-fancybox-item d-none" alt="Image Description"
+                                data-src="{{ asset($picture->file_name??'') }}"
+                                data-caption="{{ $grafis->judul }}">
+                            @endif
+                            @endforeach
+                    
+                            <div class="card-body">
+                                <h5><a>{{ $grafis->judul }}</a></h5>
                             </div>
-                            <!-- End Card Info -->
                         </div>
-
-                    @endforeach
-                    <div class="container text-right mb-2 mt-3">
-                        <a class="btn btn-primary btn-sm"
-                            href="{{ route('infografis.detail') }}">Lihat Selengkapnya <i
-                                class="fas fa-angle-right fa-sm ml-1"></i></a>
                     </div>
+                </div>
+                @php ($angka++) @endphp
+                @endforeach
 
+                <div class="container text-right mb-2 mt-3">
+                    <a class="btn btn-primary btn-sm"
+                        href="{{ route('infografis.detail') }}">Lihat Selengkapnya <i
+                        class="fas fa-angle-right fa-sm ml-1"></i></a>
                 </div>
 
             </div>
         </div>
+        {{-- <div class="container space-0 space-lg-0 ">
+             <div class="row">
+            @php
+                $angka = 1;
+            @endphp
+             <div id="fancyboxGallery{{ $angka }}" class="js-fancybox col-sm-6 col-md-3"
+               data-hs-fancybox-options='{
+                 "selector": "#fancyboxGallery{{ $angka }} .js-fancybox-item"
+               }'>
+                
+                        <div class="card" style="max-width: 18rem; max-height: 25rem;">
+                            <a class="js-fancybox-item media-viewer mb-3 d-block" href="javascript:;"
+                                data-src="{{ asset($grafis->gambarMuka->file_name??'') }}"
+                                data-caption="{{ $grafis->judul }}">
+                                <img class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover" src="{{ asset($grafis->gambarMuka->file_name??'') }}" alt="Image Description">
+                            </a>
+                                    @foreach($grafis->attachments as $picture)
+                                        <img class="js-fancybox-item d-none" alt="Image Description"
+                                            data-src="{{ asset($picture->file_name??'') }}"
+                                            data-caption="{{ $grafis->judul }}">
+                                    @endforeach
+
+                                 <div class="card-body">
+                                    <h5><a>{{ $grafis->judul }}</a></h5>
+                                </div>
+                        </div>
+                         @php ($angka++) @endphp 
+                </div>
+            </div>
+             @endforeach
+
+             <div class="container text-right mb-2 mt-3">
+                        <a class="btn btn-primary btn-sm"
+                            href="{{ route('infografis.detail') }}">Lihat Selengkapnya <i
+                                class="fas fa-angle-right fa-sm ml-1"></i></a>
+                    </div>
+        </div> --}}
 
 
         <div class="text-center mb-3">
@@ -566,28 +458,32 @@
         </div>
 
         <div class="container space-0 space-lg-0  ">
-            <div id="fancyboxGallery" class="js-fancybox" data-hs-fancybox-options='{
-             "selector": "#fancyboxGallery .js-fancybox-item"
-           }'>
+            <div id="fancyboxGallery0" class="js-fancybox" data-hs-fancybox-options='{
+             "selector": "#fancyboxGallery0 .js-fancybox-item0"}'>
                 <div class="row">
-
+                    @php
+                    $index = 50;
+                    @endphp
                     @foreach($infohoax as $hoax)
-                        <div class="col-sm-6 col-md-3 ">
+                        <div class="col-sm-6 col-md-3">
+                        {{-- <div id="fancyboxGallery{{ $index }}" class="js-fancybox1 col-sm-6 col-md-3" data-hs-fancybox-options='{
+                        "selector": "#fancyboxGallery{{ $index }} .js-fancybox-item1"}'> --}}
                             <!-- Card Info -->
                             <div class="card" style="max-width: 18rem; max-height: 25rem;">
-                                <a href="/detail/{{ $hoax->id_posting }}">
+                                <a class="js-fancybox-item0 d-block" href="javascript:;"
+                                    data-src="{{ asset('uploads/'.$hoax->gambarMuka->file_name??'') }}"
+                                    data-caption="{{ $hoax->judul_posting }}">
                                     <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
                                         src="{{ asset('uploads/'.$hoax->gambarMuka->file_name??'') }}"
                                         alt="Image Description">
                                 </a>
                                 <div class="card-body">
-                                    <h5><a href="/detail/{{ $hoax->slug }}"
-                                            class="card-text">{{ $hoax->judul_posting }}</a></h5>
+                                    <h5><a>{{ $hoax->judul_posting }}</a></h5>
                                 </div>
                             </div>
                             <!-- End Card Info -->
                         </div>
-
+                         @php ($index++) @endphp
                     @endforeach
 
                     <div class="container text-right mb-2 mt-3">

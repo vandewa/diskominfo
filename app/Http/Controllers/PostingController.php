@@ -204,7 +204,7 @@ class PostingController extends Controller
     public function getPosting(Request $request)
     {
             // $data = Posting::with(['nama', 'kategori']);
-            $data = Posting::with(['nama', 'kategori'])->whereNotIn('id_kategori', [7,9])->orderBy('created_at', 'desc');
+            $data = Posting::with(['nama', 'kategori'])->whereNotIn('id_kategori', [7,9]);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){

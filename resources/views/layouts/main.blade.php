@@ -658,12 +658,6 @@
       // =======================================================
       var header = new HSHeader($('#header')).init();
 
-      // INITIALIZATION OF FANCYBOX
-      // =======================================================
-      $('.js-fancybox').each(function() {
-        var fancybox = $.HSCore.components.HSFancyBox.init($(this));
-      });
-
 
       // INITIALIZATION OF MEGA MENU
       // =======================================================
@@ -672,6 +666,13 @@
           position: 'left'
         }
       }).init();
+
+
+      // INITIALIZATION OF FANCYBOX
+      // =======================================================
+      $('.js-fancybox').each(function() {
+        var fancybox = $.HSCore.components.HSFancyBox.init($(this));
+      });
 
 
       // INITIALIZATION OF UNFOLD

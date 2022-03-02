@@ -1,12 +1,12 @@
-@section('title', 'Tambah Info Grafis')
+@section('title', 'Tambah InfoGrafis')
 @section('menu','Posting')
-@section('submenu','Tambah Info Grafis')
+@section('submenu','Tambah InfoGrafis')
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
-<span class="breadcrumb-item active">Info Grafis</span>
+<span class="breadcrumb-item active">InfoGrafis</span>
 @endsection
 
 @section('container')
@@ -38,9 +38,9 @@
 								</div>
 
 								<div class="form-group row mt-2">
-									<label class="col-form-label col-lg-2">Sampul Halaman<span class="text-danger">*</span></label>
+									<label class="col-form-label col-lg-2">Picture<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-										<input type="file" name="file_name" class="file-input" data-fouc >
+										<input type="file" name="file_name[]" class="file-input" multiple="multiple" data-fouc >
 									</div>
 								</div>
 

@@ -16,4 +16,18 @@ class Infografis extends Model
     {
         return $this->belongsTo(Users::class, 'created_by');
     }
+    
+       public function attachments(){
+        return $this->hasMany(Attachments::class, 'id_infografis');
+    }
+    
+       public function attachments2(){
+        return $this->hasMany(Attachments::class, 'id_infografis')->orderBy('created_at', 'desc');
+    }
+
+    public function gambarMuka()
+    {
+        return $this->hasOne(Attachments::class, 'id_infografis');
+    }
+
 }
