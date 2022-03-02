@@ -142,7 +142,7 @@ class InfografisController extends Controller
     
      public function getInfografis(Request $request)
     {
-            $data = Infografis::with(['attachments' , 'gambarMuka']);
+            $data = Infografis::with(['attachments' , 'gambarMuka'])->orderby('created_at', 'desc');
 
             return DataTables::of($data)
                 ->addIndexColumn()

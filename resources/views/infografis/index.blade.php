@@ -55,7 +55,6 @@ Tambah InfoGrafis
 				processing: true,
 				serverSide: true,
 				ajax: "{{ route('infografis.list') }}",
-                   "order": [[ 4, "desc" ]],
 				columns: [
 					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
 					{data: 'file_name',},

@@ -15,7 +15,8 @@ class CreateAttachmentsTable extends Migration
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('id_pengumuman');
+            $table->integer('id_pengumuman')->nullable();
+            $table->integer('id_infografis')->nullable();
             $table->string('file_name', 250);
             $table->date('delete_at')->nullable();
             $table->timestamps();
