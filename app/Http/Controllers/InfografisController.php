@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DataTables;
-use App\Models\infografis;
+use App\Models\Infografis;
 use App\Models\Attachments;
 use App\Http\Requests\InfografiscreateValidation;
 
