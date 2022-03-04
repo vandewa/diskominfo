@@ -39,38 +39,39 @@ class InfohoaxController extends Controller
      */
        public function store(Request $request)
     {
-        
+        $path = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y');
+        $paths = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
+
+        if (!file_exists($paths)) {
+             if (!file_exists($path)) {
+              mkdir($path);
+             }
+            mkdir($paths);
+         } 
+
         $b= Posting::create([
             'judul_posting' => $request->judul_posting,
             'slug' => $request->slug,
-            'isi_posting' => $request->isi_posting,
             'id_kategori' => 7,
             'created_by' => $request->created_by
         ]);
 
-        $no = 1;
-
         if($request->hasFile('file_name')){
                 $files = $request->file('file_name'); 
-            foreach($files as $a){
                 $prefix = date('Ymdhis');
                 $by = $request->created_by;
-                $extension = $a->extension();
-                $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
-                $a->move(public_path('/uploads'), $filename);
+                $extension = $files->extension();
+                $filename = $prefix.'_'. $by.'.'.$extension;
+                $files->move(public_path($paths), $filename);
+                
                 $attachment = new Attachment() ;
                 $attachment->id_tabel = $b->id_posting;
+                $attachment->path = $paths;
                 $attachment->file_name = $filename;
                 $attachment->save();
 
-                $no++;
-                }
-        } else {
-            $attachment = new Attachment() ;
-            $attachment->id_tabel = $b->id_posting;
-            $attachment->file_name = 'diskominfowonosobo.jpg';
-            $attachment->save();
-        }
+        
+        } 
 
         return redirect ( url('infohoax'))->with('status', 'Data posting berhasil ditambahkan.');
 
@@ -96,7 +97,7 @@ class InfohoaxController extends Controller
      */
     public function edit($id)
     {
-         $infohoax = Posting::with(['attachment'])->find($id);
+        $infohoax = Posting::with(['attachment'])->find($id);
         return view('infohoax.edit', compact('infohoax'));
     }
 
@@ -110,27 +111,27 @@ class InfohoaxController extends Controller
     public function update(Request $request, $id)
     {
            Posting::find($id)
-       ->update([
-           'judul_posting' => $request->judul_posting,
-           'slug' => $request->slug,
-           'isi_posting' => $request->isi_posting,
-           'updated_by' => $request->updated_by
-       ]);
+            ->update([
+                'judul_posting' => $request->judul_posting,
+                'slug' => $request->slug,
+                'isi_posting' => $request->isi_posting,
+                'updated_by' => $request->updated_by
+            ]);
 
-       if($request->hasfile('file_name')){
-        $by = $request->updated_by;
-        $files = $request->file('file_name');
-        $prefix = date('Ymdhis');
-        $no = 1;
-            foreach($files as $a){
-                $extension = $a->extension();
-                $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
-                $a->move(public_path('/uploads'), $filename);
-                $attachment = Attachment::where('id_tabel',$id);
-                Attachment::create(['file_name' => $filename, 'id_tabel'=> $id]);
-                $no++;
-                }
-        }
+    //    if($request->hasfile('file_name')){
+    //     $by = $request->updated_by;
+    //     $files = $request->file('file_name');
+    //     $prefix = date('Ymdhis');
+    //     $no = 1;
+    //         foreach($files as $a){
+    //             $extension = $a->extension();
+    //             $filename = $prefix.'-'.$no.'_'. $by.'.'.$extension;
+    //             $a->move(public_path('/uploads'), $filename);
+    //             $attachment = Attachment::where('id_tabel',$id);
+    //             Attachment::create(['file_name' => $filename, 'id_tabel'=> $id]);
+    //             $no++;
+    //             }
+    //     }
 
         return redirect ('infohoax')->with('status', 'Data berhasil diubah.');
 

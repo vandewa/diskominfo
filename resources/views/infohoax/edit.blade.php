@@ -52,15 +52,15 @@
 								</div>
 
 						
-								<div class="form-group row mt-2">
+								{{-- <div class="form-group row mt-2">
 									<label class="col-form-label col-lg-2">Sampul Halaman</label>
 									<div class="col-lg-10">
 									<input type="file" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
 										<span class="form-text text-muted">*Klik browse untuk menambah foto</span>
 									</div>
-								</div>
+								</div> --}}
 								
-						<div class="row">
+						{{-- <div class="row">
 								<!-- Multiple titles -->
 								@foreach($infohoax->attachment as $data)
 						<div class="card col-2">
@@ -81,23 +81,25 @@
 						</div>
 						@endforeach
 						<!-- /multiple titles -->
-						</div>
+						</div> --}}
 
-							<div class="mb-4">
+							{{-- <div class="mb-4">
 								<label>Isi Halaman <span class="text-danger">*</span><small>(*wajib diisi)</small></label>
 								<textarea name="isi_posting" id="editor-full" >{{$infohoax->isi_posting}}</textarea>
-				            </div>
+				            </div> --}}
 
 				            <div class="text-right">
 					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 				            </div>
 			            </form>
+					</div>
+				</div>
 					
 				<!-- /CKEditor default -->
     </div>
     @endsection
 
-		@push('js')
+	@push('js')
 	<script>
 
 	const judul_posting = document.querySelector('#judul_posting');

@@ -453,9 +453,12 @@
         </div> --}}
 
 
-        <div class="text-center mb-3">
-            <span class="divider divider-text"><h3>INFO HOAX</h3></span>
-        </div>
+      
+        @if (count($infohoax))
+            <div class="text-center mb-3">
+                <span class="divider divider-text"><h3>INFO HOAX</h3></span>
+            </div>
+        @endif
 
         <div class="container space-0 space-lg-0  ">
             <div id="fancyboxGallery0" class="js-fancybox" data-hs-fancybox-options='{
@@ -471,10 +474,10 @@
                             <!-- Card Info -->
                             <div class="card" style="max-width: 18rem; max-height: 25rem;">
                                 <a class="js-fancybox-item0 d-block" href="javascript:;"
-                                    data-src="{{ asset('uploads/'.$hoax->gambarMuka->file_name??'') }}"
+                                    data-src="{{ asset($hoax->gambarMuka->path.$hoax->gambarMuka->file_name??'') }}"
                                     data-caption="{{ $hoax->judul_posting }}">
                                     <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
-                                        src="{{ asset('uploads/'.$hoax->gambarMuka->file_name??'') }}"
+                                        src="{{ asset($hoax->gambarMuka->path.$hoax->gambarMuka->file_name??'') }}"
                                         alt="Image Description">
                                 </a>
                                 <div class="card-body">
@@ -486,12 +489,13 @@
                          @php ($index++) @endphp
                     @endforeach
 
+                    @if (count($infohoax))
                     <div class="container text-right mb-2 mt-3">
                         <a class="btn btn-primary btn-sm mb-2" href="{{ route('infohoax.daftar') }}">Lihat
                             Selengkapnya <i class="fas fa-angle-right fa-sm ml-1"></i></a>
                     </div>
-
-
+                    @endif
+                   
                 </div>
             </div>
         </div>

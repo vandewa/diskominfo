@@ -309,8 +309,6 @@ class HomeController extends Controller
 
 
 
-
-
         return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul', 'infohoax', 'infografis'));
     }
 

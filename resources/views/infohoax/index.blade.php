@@ -36,9 +36,7 @@ Tambah Info Hoax
                     <th>Judul</th>
                     <th>Oleh</th>
                     <th>Tanggal</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>

@@ -40,7 +40,7 @@
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2" for="slug">Slug<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-										<input type="text" id="slug" name="slug" class="form-control @error('slug') is-invalid @enderror" placeholder="Judul berita" value="{{ old('slug') }}" readonly>
+										<input type="text" id="slug" name="slug" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug" value="{{ old('slug') }}" readonly>
 										@error('slug')
 										<div class="invalid-feedback">
 										{{ $message }}
@@ -52,11 +52,11 @@
 								<div class="form-group row mt-2">
 									<label class="col-form-label col-lg-2">Sampul Halaman<span class="text-danger">*</span></label>
 									<div class="col-lg-10">
-										<input type="file" name="file_name[]" class="file-input"  multiple="multiple" data-fouc >
+										<input type="file" name="file_name" class="file-input" data-fouc >
 									</div>
 								</div>
 
-							<div class="mb-4">
+							{{-- <div class="mb-4">
 								<label>Isi Halaman <span class="text-danger">*</span><small>(*wajib diisi)</small></label>
 								<textarea name="isi_posting" id="editor-full">{{ old('isi_posting') }}</textarea>
 										@error('isi_posting')
@@ -64,7 +64,7 @@
 										{{ $message }}
 										</div>
 										@enderror
-				            </div>
+				            </div> --}}
 
 				            <div class="text-right">
 					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
