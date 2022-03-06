@@ -14,9 +14,10 @@ section {
 /* My Keyboard Section */
 .keyboard-box {
   position: relative;
+  top: 100px;
   background-color: #0c6efd;
   border-radius: 10px;
-  height: 500px;
+  height: 100px;
   transform-style: preserve-3d;
 }
 
@@ -99,18 +100,18 @@ section {
 
 .keyboard-name {
   position: absolute;
-  top: 75%;
-  width: 100%;
+  bottom: 0px;
+  width: 90%;
   color: #fff;
   text-align: center;
-  font-size: 1em;
+  font-size: 0.7em;
   opacity: 0;
   transform: translate3d(0, 0, 50px);
   transition: 0.5s;
 }
 
 .keyboard-box:hover .keyboard-name {
-  top: 70px;
+  top: 20px;
   opacity: 1;
 }
 
@@ -121,12 +122,13 @@ section {
   transform: translate3d(-50%, 0, 100px);
   opacity: 0;
   transition: 0.5s;
-  z-index: 3;
+  z-index: 1;
 }
 
 .keyboard-box:hover .keyboard-detail-button {
   opacity: 1;
-  bottom: 20px;
+  bottom: 0px;
+   font-size: 0.7em;
 }
 
 .keyboard-img {
@@ -140,11 +142,11 @@ section {
 }
 
 .keyboard-image {
-  position: absolute;
-  top: 52%;
+  position: relative;
+  top: 0%;
   left: 50%;
   transform: translate3d(-50%, -52%, 80px);
-  max-width: 300px;
+  max-width: 150px;
   transition: 0.5s;
   z-index: 2;
 }

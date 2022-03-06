@@ -472,11 +472,11 @@
                         {{-- <div id="fancyboxGallery{{ $index }}" class="js-fancybox1 col-sm-6 col-md-3" data-hs-fancybox-options='{
                         "selector": "#fancyboxGallery{{ $index }} .js-fancybox-item1"}'> --}}
                             <!-- Card Info -->
-                            <div class="card" style="max-width: 18rem; max-height: 25rem;">
+                            <div class="card" style="max-width: 18rem; max-height: 25rem; ">
                                 <a class="js-fancybox-item0 d-block" href="javascript:;"
                                     data-src="{{ asset($hoax->gambarMuka->path.$hoax->gambarMuka->file_name??'') }}"
                                     data-caption="{{ $hoax->judul_posting }}">
-                                    <img style="height: 230px;" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
+                                    <img style="height: 230px; object-fit:cover" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
                                         src="{{ asset($hoax->gambarMuka->path.$hoax->gambarMuka->file_name??'') }}"
                                         alt="Image Description">
                                 </a>

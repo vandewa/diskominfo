@@ -16,7 +16,7 @@
 				<!-- CKEditor default -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-                    <h5 >FORM EDIT POSTING</h5>
+                    <h5 >FORM EDIT INFO HOAX</h5>
 					</div>
 
 					<div class="card-body">

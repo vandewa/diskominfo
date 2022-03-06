@@ -27,7 +27,7 @@ class UsercreateValidation extends FormRequest
             'nama' => 'required',
             'email' => 'required|email',
             'level' => 'required',
-            'password' => 'confirmed'
+            'password' => 'confirmed',
         ];
     }
 }

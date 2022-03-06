@@ -19,53 +19,42 @@
 @endif
 
 <div class="content">
+	<div class="card">
+		<div class="card-header header-elements-inline">
+		<h5 >FORM EDIT SAMPUL</h5>
+		</div>
 
-				<!-- CKEditor default -->
-				<div class="card">
-					<div class="card-header header-elements-inline">
-                    <h5 >FORM EDIT SAMPUL</h5>
+		<div class="card-body">
+			<form method="POST" action="{{route('sampul.update', $sampul->id)}}" enctype="multipart/form-data" >
+			@method('patch')
+			@csrf
+
+				<div class="form-group row mt-2">
+					<label class="col-form-label col-lg-2">Sampul Halaman</label>
+					<div class="col-lg-10">
+					<input type="file" name="file_name" class="file-input" data-fouc >
+						<span class="form-text text-muted">*Klik browse untuk mengganti foto</span>
 					</div>
-
-					<div class="card-body">
-						<form method="POST" action="{{route('sampul.update', $sampul->id)}}" enctype="multipart/form-data" >
-						@method('patch')
-						@csrf
-
-                        <div class="form-group row mt-2">
-									<label class="col-form-label col-lg-2">Sampul Halaman</label>
-									<div class="col-lg-10">
-									<input type="file" name="file_name" class="file-input" data-fouc >
-										<span class="form-text text-muted">*Klik browse untuk mengganti foto</span>
-									</div>
-								</div>
-						
-								
-						<div class="row">
-								<!-- Multiple titles -->
-						<div class="card col-12">
-							<div class="card-header d-flex justify-content-between">
-							</div>
-
-							<div class="card">
+				</div>
+					
+				<div class="row">
+					<div class="card col-12">
+						<div class="card">
 							<a href="{{asset('front/assets/images/'.$sampul->file_name) }}" target="_blank">
 							<img class="img-fluid" src="{{asset('front/assets/images/'.$sampul->file_name) }}" alt="">
 							</a>
-							</div>
-
 						</div>
-						<!-- /multiple titles -->
-						</div>
+					</div>
+				</div>
 
-	
-
-				            <div class="text-right">
-					            <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
-				            </div>
-			            </form>
-					
-				<!-- /CKEditor default -->
-    </div>
-    @endsection
+				<div class="text-right">
+					<button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
+				</div>
+			</form>
+		</div>
+	</div>	
+</div>
+@endsection
 
 
 

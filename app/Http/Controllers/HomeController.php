@@ -508,8 +508,9 @@ class HomeController extends Controller
      */
    public function detailInfografis()
     {
-        $infografis= Infografis::orderBy('created_at','desc')
-        ->get();
+         $infografis = Infografis::with(['attachments' , 'gambarMuka'])
+        ->orderBy('created_at', 'desc')
+        ->simplePaginate(8);
 
         return view('home.infografis', compact('infografis'));
     }
@@ -519,7 +520,7 @@ class HomeController extends Controller
         $infohoax= Posting::with(['gambarMuka'])
         ->where('id_kategori',7)
         ->orderBy('created_at','desc')
-        ->get();
+        ->simplePaginate(8);
 
         return view('home.daftarinfohoax', compact('infohoax'));
     }

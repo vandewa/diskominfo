@@ -18,60 +18,50 @@
  
   <!-- ========== MAIN ========== -->
   <main id="content" role="main">
-    <div class="container space-top-3 space-top-lg-3 space-bottom-2">
-     <div class="row">
+    <div class="container space-top-2 space-top-lg-2 space-bottom-2">
+      <div class="row">
         <div class="col-lg-12">
-      <!-- Content -->
-      <div class="cbp"
-           data-hs-cbp-options='{
-             "animationType": "quicksand",
-             "caption": "zoom",
-             "gapHorizontal": 40,
-             "gapVertical": 40,
-             "mediaQueries": [
-               {"width": 1500, "cols": 4},
-               {"width": 1100, "cols": 4},
-               {"width": 800, "cols": 3},
-               {"width": 480, "cols": 2},
-               {"width": 380, "cols": 1}
-             ]
-           }'>
-
-           @foreach($infografis as $infografisnya)
-        <!-- Item -->
-        <div class="cbp-item rounded-lg branding mb-2 " id="fancyboxGallery1">
-         <a class="cbp-caption js-fancybox media-viewer" href="javascript:;"
-       data-hs-fancybox-options='{
-         "selector": "#fancyboxGallery1 .js-fancybox",
-         "speed": 700
-       }'
-       data-src="{{ asset ('uploads') }}/{{ $infografisnya->file_name??'' }}"
-       data-caption="{{$infografisnya->judul}}">
-      <img class="img-fluid rounded" src="{{ asset ('uploads') }}/{{ $infografisnya->file_name??'' }}" alt="Image Description">
-
-       <div class="cbp-caption-activeWrap">
-              <div class="d-flex justify-content-end flex-column h-100 p-4">
-                <span class="d-block h4 text-white mb-0">{{$infografisnya->judul}}</span>
-              </div>
+        <!-- Content -->
+            @php
+                $angka = 1;
+            @endphp
+            <div class="row">
+                @foreach($infografis as $grafis)
+                <div class="col-sm-6 col-md-3 mb-3">
+                    <div id="fancyboxGallery{{ $angka }}" class="js-fancybox" data-hs-fancybox-options='{
+                    "selector": "#fancyboxGallery{{ $angka }} .js-fancybox-item"}'>
+                        <div class="card" style="max-width: 18rem; max-height: 25rem;">
+                         
+                            <a class="js-fancybox-item media-viewer mb-3 d-block" href="javascript:;"
+                                data-src="{{ asset($grafis->gambarMuka->file_name??'') }}"
+                                data-caption="{{ $grafis->judul }}">
+                                <img  style="height:230px;object-fit:cover" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover" src="{{ asset($grafis->gambarMuka->file_name??'') }}" alt="Image Description">
+                            </a>
+                             
+                            @foreach($grafis->attachments as $picture)
+                            @if ($loop->first)
+                            @else
+                            <img class="js-fancybox-item d-none" alt="Image Description"
+                                data-src="{{ asset($picture->file_name??'') }}"
+                                data-caption="{{ $grafis->judul }}">
+                            @endif
+                            @endforeach
+                            <div class="card-body">
+                                <h5><a>{{ $grafis->judul }}</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @php ($angka++) @endphp
+                @endforeach
             </div>
-    </a>
-        </div>
-        <!-- End Item -->
-        @endforeach
-        </div>      
+        </div>       
       </div>
-
-    
-      </div>
-      
-        
+     <div class="d-flex justify-content-center mt-3">
+    {{ $infografis->links() }}
     </div>
-    <div>
-
-    
-    
-       
-  </main>
+  </div>       
+</main>
   <!-- ========== END MAIN ========== -->
 @endsection
 
