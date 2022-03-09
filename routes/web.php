@@ -37,6 +37,7 @@ use App\Http\Controllers\Inventory\BarangController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ZoomController;
 use App\Http\Controllers\Inventory\KategoriController;
+use App\Http\Controllers\RoleController;
 
 
 
@@ -102,6 +103,7 @@ Route::get('/gallery/list', [GalleryController::class, 'getGallery'])->name('gal
 Route::get('/youtube/list', [YoutubeController::class, 'getYoutube'])->name('youtube.list');
 Route::get('/komentar/list', [KomentarController::class, 'getKomentar'])->name('komentar.list');
 Route::get('/menuberanda/list', [MenuBerandaController::class, 'getMenuBeranda'])->name('menuberanda.list');
+Route::get('/role/list', [RoleController::class, 'getRole'])->name('role.list');
 Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumuman');
 Route::get('/pengumumans/list', [PengumumanController::class, 'getPengumuman'])->name('pengumumans.list');
 Route::get('/pengumumans/hapus/{id}/gambar', [PengumumanController::class, 'hapus'])->name('pengumumans.gambar.hapus');
@@ -202,6 +204,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('user', UserController::class);
     Route::resource('account', AccountController::class);
+    Route::resource('role', RoleController::class);
 
 
     Route::group(['middleware' => ['permission:layanan-read']], function () {

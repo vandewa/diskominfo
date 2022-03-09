@@ -278,7 +278,7 @@ class HomeController extends Controller
         $posting2 = Posting::with(['attachment', 'gambarMuka','nama', 'kategori'])
         ->where('posisi', '=', 'menu_atas')
         ->orderBy('created_at', 'desc')
-        ->simplePaginate(3);
+        ->simplePaginate(2);
 
         $postingg = Posting::with(['attachment', 'gambarMuka', 'nama'])
         ->where('posisi', '=', 'highlight')
@@ -304,9 +304,6 @@ class HomeController extends Controller
         ->orderBy('created_at', 'desc')
         ->limit(4)
         ->get();
-
-
-
 
 
         return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul', 'infohoax', 'infografis'));

@@ -83,7 +83,7 @@ class SampulController extends Controller
             'file_name' => $nama
             ]);
 
-         return redirect ('sampul')->with('status', 'Data berhasil diubah.');
+         return redirect (route('sampul.index'))->with('status', 'Data berhasil diubah.');
 
     }
 

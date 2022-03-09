@@ -11,6 +11,8 @@
 
 @section('container')
 
+{{ Auth::user()->roles->first()->get('name') }}
+
 <div class="content">
 	<!-- CKEditor default -->
 	<div class="card">

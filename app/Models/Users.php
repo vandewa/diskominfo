@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laratrust\Models\LaratrustRole;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class Users extends Authenticatable  implements JWTSubject
 {
     use HasFactory;
+    use LaratrustUserTrait;
     protected $primaryKey = 'id';
     protected $table ='users';
     protected $guarded = [];
@@ -33,5 +36,9 @@ class Users extends Authenticatable  implements JWTSubject
     {
         return [];
     }
+
+    
+
+
 
 }

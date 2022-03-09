@@ -78,8 +78,10 @@
 									<label class="col-form-label col-lg-2">Level</label>
 									<div class="col-lg-10">
 									<div class="form-group form-group-feedback form-group-feedback-left">
-									<select name="level" class="form-control select-icons" >
-											<option value="{{ auth()->user()->level }}" >{{ ucwords(auth()->user()->level) }}</option>
+									<select name="level" class="form-control select-icons" disabled>
+											@foreach($role as $role )
+											<option value="{{ auth()->user()->level }}" {{ 1 == $role->id  ? 'selected' : ''}}>{{ $role->display_name}}</option>
+											@endforeach
 										</select>
 										@error('level')
 											<div class="invalid-feedback">

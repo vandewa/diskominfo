@@ -13,20 +13,13 @@
 
 
 	<!-- Global stylesheets -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
-		type="text/css">
-	<link href="{{ url ('limitless/Template/global_assets/css/icons/icomoon/styles.css ')}}" rel="stylesheet"
-		type="text/css">
-	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/bootstrap.min.css ')}}"
-		rel="stylesheet" type="text/css">
-	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/bootstrap_limitless.min.css ')}}"
-		rel="stylesheet" type="text/css">
-	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/layout.min.css ')}}" rel="stylesheet"
-		type="text/css">
-	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/components.min.css ')}}"
-		rel="stylesheet" type="text/css">
-	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/colors.min.css ')}}" rel="stylesheet"
-		type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="{{ url ('limitless/Template/global_assets/css/icons/icomoon/styles.css ')}}" rel="stylesheet" type="text/css">
+	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/bootstrap.min.css ')}}" rel="stylesheet" type="text/css">
+	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/bootstrap_limitless.min.css ')}}" rel="stylesheet" type="text/css">
+	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/layout.min.css ')}}" rel="stylesheet" type="text/css">
+	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/components.min.css ')}}" rel="stylesheet" type="text/css">
+	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/colors.min.css ')}}" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
@@ -39,48 +32,37 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3_tooltip.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switchery.min.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/ui/moment/moment.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/editors/ckeditor/ckeditor.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/select2.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/inputmask.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/uniform.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/core.min.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/tags/tagsinput.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/tags/tokenfield.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/touchspin.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/maxlength.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/formatter.min.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/jszip/jszip.min.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/buttons.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/jszip/jszip.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/extensions/buttons.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_inputs.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/uploader_bootstrap.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/notifications/jgrowl.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/notifications/noty.min.js')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/editors/summernote/summernote.min.js')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/editors/summernote/summernote.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/editor_summernote.js')}}"></script>
 	<script src="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/js/app.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/dashboard.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/editor_ckeditor.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_floating_labels.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/demo_pages/datatables_extension_buttons_html5.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/datatables_extension_buttons_html5.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_select2.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/extra_jgrowl_noty.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/notifications/sweet_alert.min.js ')}}"></script>
@@ -100,35 +82,20 @@
 	<!-- /theme JS files -->
 
 	<!-- Theme JS files Datatable-->
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/datatables.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/tables/datatables/datatables.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/datatables_basic.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/table_elements.js ')}}"></script>
-	<script
-		src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js ')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/contextmenu.js ')}}"></script>
-	
 	<script src="{{ url ('limitless/Documentation/assets/ckeditor/ckeditor.js ')}}"></script>
 
 	<!-- /theme JS files Datatable-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.js"
-		integrity="sha512-ZYvPGKyKaVHwZFJldzOuYineKWIBiHZliZCcfa2dq4IYJe/w7k4WOUYa22jNAUAC+fxlXB1blBq1cgGQrV7DGg=="
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js"
-		integrity="sha512-CrNI25BFwyQ47q3MiZbfATg0ZoG6zuNh2ANn/WjyqvN4ShWfwPeoCOi9pjmX4DoNioMQ5gPcphKKF+oVz3UjRw=="
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js"
-		integrity="sha512-jQxNe7fqaqehR3t/JfoxC8y2dwkEIL/7a6JWbs6sQdSCI/6Kd0t2okI9nhuKeSUgM5JDTDgdUzLzSPovB2lOBQ=="
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.js"
-		integrity="sha512-pCY6IoVbjV1hvVawzGdzKCAVB0UXiOacncL59KETWUSkEPiDkvXTrXjGjpAQF6YCqxTcoa3YIV9SGGnFkb8evg=="
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.css"
-		integrity="sha512-/D4S05MnQx/q7V0+15CCVZIeJcV+Z+ejL1ZgkAcXE1KZxTE4cYDvu+Fz+cQO9GopKrDzMNNgGK+dbuqza54jgw=="
-		crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.css"
-		integrity="sha512-IThEP8v8WRHuDqEKg3D6V0jROeRcQXGu/02HzCudtHKlLSzl6F6EycdHw34M3gsBA5zsUyR4ynW6j5vS1qE4wQ=="
-		crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.js" integrity="sha512-ZYvPGKyKaVHwZFJldzOuYineKWIBiHZliZCcfa2dq4IYJe/w7k4WOUYa22jNAUAC+fxlXB1blBq1cgGQrV7DGg==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.js" integrity="sha512-CrNI25BFwyQ47q3MiZbfATg0ZoG6zuNh2ANn/WjyqvN4ShWfwPeoCOi9pjmX4DoNioMQ5gPcphKKF+oVz3UjRw==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js" integrity="sha512-jQxNe7fqaqehR3t/JfoxC8y2dwkEIL/7a6JWbs6sQdSCI/6Kd0t2okI9nhuKeSUgM5JDTDgdUzLzSPovB2lOBQ==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.js" integrity="sha512-pCY6IoVbjV1hvVawzGdzKCAVB0UXiOacncL59KETWUSkEPiDkvXTrXjGjpAQF6YCqxTcoa3YIV9SGGnFkb8evg==" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.min.css" integrity="sha512-/D4S05MnQx/q7V0+15CCVZIeJcV+Z+ejL1ZgkAcXE1KZxTE4cYDvu+Fz+cQO9GopKrDzMNNgGK+dbuqza54jgw==" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.css" integrity="sha512-IThEP8v8WRHuDqEKg3D6V0jROeRcQXGu/02HzCudtHKlLSzl6F6EycdHw34M3gsBA5zsUyR4ynW6j5vS1qE4wQ==" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -137,7 +104,7 @@
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
 			<a href="{{ route('index') }}" class="d-inline-block" target="_blank">
-				<img src="{{ url ('front\assets\images\logo.png ')}}" style="width: 100%;">
+				<img src="{{ url ('img/diskominfo.png ')}}" style="height: 30px;">
 			</a>
 		</div>
 
@@ -212,15 +179,12 @@
 
 						<!-- Main -->
 						<li class="nav-item-header">
-							<div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu"
-								title="Main"></i>
+							<div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i>
 						</li>
 						<li class="nav-item">
 							<a href="{{ route('dashboard') }}" class="nav-link @yield('kondisi1')">
 								<i class="icon-home4"></i>
-								<span>
-									Dashboard
-								</span>
+								<span>Dashboard</span>
 							</a>
 						</li>
 
@@ -229,110 +193,101 @@
 							<a href="#" class="nav-link"><i class="icon-menu7"></i> <span>Menu Depan</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Menu Depan">
-								<li class="nav-item"><a href="{{ route('gallery.index') }}" class="nav-link">Galeri</a>
-								</li>
-								<li class="nav-item"><a href="{{ route('lampirans.index') }}"
-										class="nav-link">Lampiran</a></li>
-								<li class="nav-item"><a href="{{ route('menuberanda.index') }}"
-										class="nav-link">Menu</a></li>
-								<li class="nav-item"><a href="{{ route('pengumumans.index') }}"
-										class="nav-link">Pengumuman</a></li>
-								<li class="nav-item"><a href="{{ route('sampul.index') }}" class="nav-link">Sampul
-										Beranda</a></li>
-								<li class="nav-item"><a href="{{ route('website.index') }}" class="nav-link">Website
-										Kelurahan</a></li>
-								<li class="nav-item"><a href="{{ route('youtube.index') }}" class="nav-link">Youtube</a>
-								</li>
+								<li class="nav-item"><a href="{{ route('gallery.index') }}" class="nav-link">Galeri</a></li>
+								<li class="nav-item"><a href="{{ route('lampirans.index') }}" class="nav-link">Lampiran</a></li>
+								<li class="nav-item"><a href="{{ route('menuberanda.index') }}" class="nav-link">Menu</a></li>
+								<li class="nav-item"><a href="{{ route('pengumumans.index') }}" class="nav-link">Pengumuman</a></li>
+								<li class="nav-item"><a href="{{ route('sampul.index') }}" class="nav-link">Sampul Beranda</a></li>
+								<li class="nav-item"><a href="{{ route('website.index') }}" class="nav-link">Website Kelurahan</a></li>
+								<li class="nav-item"><a href="{{ route('youtube.index') }}" class="nav-link">Youtube</a></li>
 							</ul>
 						</li>
 						@endpermission
 
-
-						{{-- <li class="nav-item nav-item-submenu @yield('kondisi10')">
-							<a href="#" class="nav-link"><i class="icon-file-media"></i> <span>Media</span></a>
-							<ul class="nav nav-group-sub" data-submenu-title="Media">
-								<li class="nav-item"><a href="{{ route('media.create') }}" class="nav-link">Upload</a>
-								</li>
-								<li class="nav-item"><a href="{{ route('media.index') }}" class="nav-link">Galeri</a>
-								</li>
-							</ul>
-						</li> --}}
-
-
+						@permission('posting-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi2')">
 							<a href="#" class="nav-link"><i class="icon-newspaper"></i> <span>Posting</span></a>
+
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ route('posting.index') }}" class="nav-link">Posting
-										Berita</a></li>
-								<li class="nav-item"><a href="{{ route('halaman.index') }}" class="nav-link">Halaman</a>
-								</li>
-								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link">Info
-										Hoax</a></li>
-								<li class="nav-item"><a href="{{ route('infografis.index') }}"
-										class="nav-link">InfoGrafis</a></li>
-								<li class="nav-item"><a href="{{ route('category.index') }}"
-										class="nav-link">Kategori</a></li>
+								<li class="nav-item"><a href="{{ route('posting.index') }}" class="nav-link">Posting Berita</a></li>
+								<li class="nav-item"><a href="{{ route('halaman.index') }}" class="nav-link">Halaman</a></li>
+								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link">Info Hoax</a></li>
+								<li class="nav-item"><a href="{{ route('infografis.index') }}" class="nav-link">InfoGrafis</a></li>
+								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link">Kategori</a></li>
 							</ul>
 						</li>
+						@endpermission
 
 						@permission('perizinan-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi7')">
-							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Perizinan</span><span
-									class="badge bg-orange-400 align-self-center ml-auto">{{
-									$total_perizinan}}</span></a>
+							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Perizinan</span>
+								<span class="badge bg-orange-400 align-self-center ml-auto">{{$total_perizinan}}</span>
+							</a>
 							<ul class="nav nav-group-sub" data-submenu-title="Perizinan">
-								<li class="nav-item"><a href="{{ route('akses-data-center.index') }}"
-										class="nav-link">Akses Data Center<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$akses_dc}}</span></a>
+								<li class="nav-item">
+									<a href="{{ route('akses-data-center.index') }}" class="nav-link">Akses Data Center
+										<span class="badge bg-orange-400 align-self-center ml-auto">{{$akses_dc}}</span>
+									</a>
 								</li>
-								<li class="nav-item"><a href="{{ route('colocation-server.index') }}"
-										class="nav-link">Colocation Server<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$colocation_server}}</span></a>
+								<li class="nav-item">
+									<a href="{{ route('colocation-server.index') }}" class="nav-link">Colocation Server
+										<span class="badge bg-orange-400 align-self-center ml-auto">{{$colocation_server}}</span>
+									</a>
 								</li>
-								<li class="nav-item"><a href="{{ route('kunjungan-data-center.index') }}"
-										class="nav-link">Kunjungan Data Center<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$kunjungan_dc}}</span></a>
+								<li class="nav-item">
+									<a href="{{ route('kunjungan-data-center.index') }}" class="nav-link">Kunjungan Data Center
+										<span class="badge bg-orange-400 align-self-center ml-auto">{{$kunjungan_dc}}</span>
+									</a>
 								</li>
-								<li class="nav-item"><a href="{{ route('layanan-server.index') }}"
-										class="nav-link">Layanan Server<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$layanan_server}}</span></a>
+								<li class="nav-item">
+									<a href="{{ route('layanan-server.index') }}" class="nav-link">Layanan Server
+										<span class="badge bg-orange-400 align-self-center ml-auto">{{$layanan_server}}</span>
+									</a>
 								</li>
-								<li class="nav-item"><a href="{{ route('vps-baru.index') }}" class="nav-link">VPS
-										Baru<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$vps_baru}}</span></a>
+								<li class="nav-item">
+									<a href="{{ route('vps-baru.index') }}" class="nav-link">VPS Baru
+										<span class="badge bg-orange-400 align-self-center ml-auto">{{$vps_baru}}</span>
+									</a>
 								</li>
-								<li class="nav-item"><a href="{{ route('perubahan-vps.index') }}"
-										class="nav-link">Perubahan VPS<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$perubahan_vps}}</span></a>
+								<li class="nav-item">
+									<a href="{{ route('perubahan-vps.index') }}" class="nav-link">Perubahan VPS
+										<span class="badge bg-orange-400 align-self-center ml-auto">{{$perubahan_vps}}</span>
+									</a>
 								</li>
-								<li class="nav-item"><a href="{{ route('pengajuan-server.index') }}"
-										class="nav-link">Pengantar Pengajuan Server</a></li>
+								<li class="nav-item">
+									<a href="{{ route('pengajuan-server.index') }}" class="nav-link">Pengantar Pengajuan Server</a>
+								</li>
 							</ul>
 						</li>
 						@endpermission
 
-
+						@permission('users-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi3')">
 							<a href="#" class="nav-link"><i class="icon-user"></i> <span>User</span></a>
+
 							<ul class="nav nav-group-sub" data-submenu-title="User">
-								<li class="nav-item"><a href="{{route('user.index')}}" class="nav-link ">Management
-										User</a></li>
+								<li class="nav-item"><a href="{{route('user.index')}}" class="nav-link ">Management User</a></li>
+								<li class="nav-item"><a href="{{route('role.index')}}" class="nav-link ">Role</a></li>
 							</ul>
 						</li>
+						@endpermission
 
 
 						@permission('layanan-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi6')">
-							<a href="#" class="nav-link"><i class="icon-bubble-lines4"></i> <span>Layanan</span><span
-									class="badge bg-orange-400 align-self-center ml-auto">{{ $total_layanan}}</span></a>
+							<a href="#" class="nav-link"><i class="icon-bubble-lines4"></i><span>Layanan</span>
+								<span class="badge bg-orange-400 align-self-center ml-auto">{{ $total_layanan}}</span>
+							</a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layanan">
-								<li class="nav-item"><a href="{{ route('pengaduans.index') }}"
-										class="nav-link ">Pengaduan Masyarakat<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$status_pengaduan}}</span></a>
+								<li class="nav-item">
+									<a href="{{ route('pengaduans.index') }}" class="nav-link ">Pengaduan Masyarakat
+										<span class="badge bg-orange-400 align-self-center ml-auto">{{$status_pengaduan}}</span>
+									</a>
 								</li>
-								<li class="nav-item"><a href="{{ route('komentar.index') }}"
-										class="nav-link ">Permohonan Informasi<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$status_komentar}}</span></a>
+								<li class="nav-item">
+									<a href="{{ route('komentar.index') }}" class="nav-link ">Permohonan Informasi
+										<span class="badge bg-orange-400 align-self-center ml-auto">{{$status_komentar}}</span>
+									</a>
 								</li>
 							</ul>
 						</li>
@@ -342,35 +297,27 @@
 
 						@permission('tiket-read')
 						<li class="nav-item-header">
-							<div class="text-uppercase font-size-xs line-height-xs">Tiket</div> <i class="icon-menu"
-								title="tiket"></i>
+							<div class="text-uppercase font-size-xs line-height-xs">Tiket</div> <i class="icon-menu" title="tiket"></i>
 						</li>
 						<li class="nav-item nav-item-submenu @yield('kondisi8')">
 							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Tiket</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ route('tiket:tiket.create') }}" class="nav-link">Tambah
-										Tiket</a></li>
-								<li class="nav-item"><a href="{{ route('tiket:tiket.index') }}" class="nav-link">List
-										Tiket</a></li>
+								<li class="nav-item"><a href="{{ route('tiket:tiket.create') }}" class="nav-link">Tambah Tiket</a></li>
+								<li class="nav-item"><a href="{{ route('tiket:tiket.index') }}" class="nav-link">List Tiket</a></li>
 							</ul>
 						</li>
 						@endpermission
 
 						<li class="nav-item-header">
-							<div class="text-uppercase font-size-xs line-height-xs">AIM</div> <i class="icon-menu"
-								title="tiket"></i>
+							<div class="text-uppercase font-size-xs line-height-xs">AIM</div> <i class="icon-menu" title="tiket"></i>
 						</li>
 						<li class="nav-item nav-item-submenu @yield('kondisi9')">
 							<a href="#" class="nav-link"><i class="icon-drawer"></i> <span>Inventory</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ route('inventory:satuan.index') }}"
-										class="nav-link">Satuan</a></li>
-								<li class="nav-item"><a href="{{ route('inventory:kategori.index') }}"
-										class="nav-link">Kategori</a></li>
-								<li class="nav-item"><a href="{{ route('inventory:barang.index') }}"
-										class="nav-link">Barang</a></li>
-								<li class="nav-item"><a href="{{ route('inventory:peminjaman.index') }}"
-										class="nav-link">Peminjaman</a></li>
+								<li class="nav-item"><a href="{{ route('inventory:satuan.index') }}" class="nav-link">Satuan</a></li>
+								<li class="nav-item"><a href="{{ route('inventory:kategori.index') }}" class="nav-link">Kategori</a></li>
+								<li class="nav-item"><a href="{{ route('inventory:barang.index') }}" class="nav-link">Barang</a></li>
+								<li class="nav-item"><a href="{{ route('inventory:peminjaman.index') }}" class="nav-link">Peminjaman</a></li>
 							</ul>
 						</li>
 
@@ -390,29 +337,24 @@
 						<li class="nav-item">
 							<a href="{{ route('agenda:harian.index') }}" class="nav-link @yield('kondisi10')">
 								<i class="icon-bookmark"></i>
-								<span>
-									Agenda
-								</span>
+								<span>Agenda</span>
 							</a>
 						</li>
 
+						@permission('zoom-read')
 						<li class="nav-item">
 							<a href="{{ route('zoom:link_zoom.index') }}" class="nav-link @yield('kondisi11')">
 								<i class="icon-laptop"></i>
-								<span>
-									Link Zoom
-								</span>
+								<span>Link Zoom</span>
 							</a>
 						</li>
-
+						@endpermission
 						<!-- /main -->
 					</ul>
 				</div>
 				<!-- /main navigation -->
-
 			</div>
 			<!-- /sidebar content -->
-
 		</div>
 		<!-- /main sidebar -->
 
@@ -435,12 +377,12 @@
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
-							<a href="{{ route('dashboard')}}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>
-								Home</a>
+							<a href="{{ route('dashboard')}}" class="breadcrumb-item">
+								<i class="icon-home2 mr-2"></i>
+								Home
+							</a>
 							@yield('halaman')
-
 						</div>
-
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 					</div>
 
@@ -497,12 +439,11 @@
 			</div>
 			<!-- /basic modal -->
 			<!-- /footer -->
-
 		</div>
 		<!-- /main content -->
-
 	</div>
 	<!-- /page content -->
+	<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 	<script>
 		$(function () {
 			$(".alert").delay(3000).slideUp(300);
@@ -525,7 +466,6 @@
 			$('.link-zoomss').html(link);
 		});
 	</script>
-	<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 	<script>
 		$(document).on('click', '.delete-data-table', function (a) {
 			a.preventDefault();

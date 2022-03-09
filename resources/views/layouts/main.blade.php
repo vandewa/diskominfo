@@ -24,15 +24,14 @@
   <link href="{{ url ('limitless/Template/global_assets/css/icons/icomoon/styles.css ')}}" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="{{ url ('front/assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.css')}}">
   <link rel="stylesheet" href="{{ url ('front/assets/vendor/leaflet/dist/leaflet.css')}}">
-  <link rel="stylesheet" href="{{ url ('front/assets/vendor/slick-carousel/slick/slick.css')}}">
-
-
   <link rel="stylesheet" href="{{ url('front/assets/vendor/fontawesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/slick-carousel/slick/slick.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/aos/dist/aos.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/cubeportfolio/css/cubeportfolio.min.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/ion-rangeslider/css/ion.rangeSlider.css')}}">
+  <link rel="stylesheet" href="{{ url('front/assets/vendor/dzsparallaxer/dzsparallaxer.css')}}">
+  <link rel="stylesheet" href="{{ url('front/assets/vendor/vendor/hs-video-bg/dist/hs-video-bg.min.css')}}">
 
   @stack('css')
 
@@ -67,7 +66,7 @@
         <!-- End Logo -->
 
         <!-- Responsive Toggle Button -->
-        <button type="button" class="navbar-toggler btn btn-icon btn-sm rounded-circle collapsed" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+        <button type="button" class="navbar-toggler btn btn-icon btn-sm rounded-circle collapsed" aria-label="Toggle navigation" aria-expanded="false"    aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
           <span class="navbar-toggler-default">
             <svg width="14" height="14" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
               <path fill="currentColor" d="M17.4,6.2H0.6C0.3,6.2,0,5.9,0,5.5V4.1c0-0.4,0.3-0.7,0.6-0.7h16.9c0.3,0,0.6,0.3,0.6,0.7v1.4C18,5.9,17.7,6.2,17.4,6.2z M17.4,14.1H0.6c-0.3,0-0.6-0.3-0.6-0.7V12c0-0.4,0.3-0.7,0.6-0.7h16.9c0.3,0,0.6,0.3,0.6,0.7v1.4C18,13.7,17.7,14.1,17.4,14.1z"></path>
@@ -141,7 +140,7 @@
                   <!-- Company -->
                   @endforeach
 
-                  <a class="dropdown-item " href="{{ route('galeri')}}">Galeri</a>
+                  {{-- <a class="dropdown-item " href="{{ route('galeri')}}">Galeri</a> --}}
                 </div>
                 <!-- End Pages - Submenu -->
               </li>
@@ -265,7 +264,7 @@
                 <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu" style="min-width: 230px;">
                   <a class="dropdown-item " href="{{ route('pengaduan')}}">Pengaduan Masyarakat</a>
                   <a class="dropdown-item " href="{{ route('pengajuan')}}">Pengajuan Informasi</a>
-                  <a class="dropdown-item " href="{{ route('website.list')}}">Website Kelurahan</a>
+                  {{-- <a class="dropdown-item " href="{{ route('website.list')}}">Website Kelurahan</a> --}}
                 </div>
                 <!-- End Submenu -->
               </li>
@@ -580,7 +579,8 @@
 
   <script src="{{ url ('front/assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/leaflet/dist/leaflet.js')}}"></script>
-  <script src="{{ url ('front/assets/vendor/slick-carousel/slick/slick.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/hs-video-bg/dist/hs-video-bg.min.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/aos/dist/aos.js')}}"></script>
 
 
   <!-- ====validator==== -->

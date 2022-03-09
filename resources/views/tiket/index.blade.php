@@ -40,9 +40,6 @@
                         <th>Deskripsi</th>
                         <th>Petugas</th>
                         <th>Action</th>
-{{--                        @if (auth()->user()->level=='superadmin'||'admin')--}}
-{{--                            <th class="text-center">Aksi</th>--}}
-{{--                        @endif--}}
                     </tr>
                     </thead>
                     <tbody>

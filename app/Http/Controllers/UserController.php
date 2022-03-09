@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Users;
+use App\Models\Role;
 use DataTables;
 use App\Http\Requests\UsercreateValidation;
 use Illuminate\Support\Facades\Hash;
@@ -67,7 +68,7 @@ class UserController extends Controller
             'no_hp.required' => 'No Hp harus diisi.',
         ]);
 
-          Users::create([
+          $user = Users::create([
             'name' => $request->nama,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -77,6 +78,8 @@ class UserController extends Controller
             'opd' => $request->opd,
             'no_hp' => $request->no_hp,
           ]);
+
+          $user->attachRole($request->level);
 
           return redirect ('user')->with('status', 'Data user berhasil ditambahkan');
     }
@@ -102,8 +105,11 @@ class UserController extends Controller
     {
         if(!auth()->user()->hasPermission('users-update')){
         abort(403);
-       }
-        return view('user.edit', compact('user'));
+        }
+       
+        $role = Role::with(['permissions'])->get();
+
+        return view('user.edit', compact('user', 'role'));
     }
 
     /**
@@ -116,33 +122,33 @@ class UserController extends Controller
     public function update(UsercreateValidation $request, $id)
     {
 
-        $request->validate([
-            'nama' => 'required',
-            'email' => 'required|email',
-            'level' => 'required',
-            'nip' => 'required',
-            'jabatan' => 'required',
-            'opd' => 'required',
-            'no_hp' => 'required',
-        ],
-        [
-            'nama.required' => 'Nama harus diisi.',
-            'email.required' =>'Email harus diisi.',
-            'level.required' => 'Level harus dipilih.',
-            'nip.required' => 'Nip harus diisi.',
-            'jabatan.required' => 'Jabatan harus diisi.',
-            'opd.required' => 'OPD harus diisi.',
-            'no_hp.required' => 'No Hp harus diisi.',
-        ]);
+        // $request->validate([
+        //     'nama' => 'required',
+        //     'email' => 'required|email',
+        //     'level' => 'required',
+        //     'nip' => 'required',
+        //     'jabatan' => 'required',
+        //     'opd' => 'required',
+        //     'no_hp' => 'required',
+        // ],
+        // [
+        //     'nama.required' => 'Nama harus diisi.',
+        //     'email.required' =>'Email harus diisi.',
+        //     'level.required' => 'Level harus dipilih.',
+        //     'nip.required' => 'Nip harus diisi.',
+        //     'jabatan.required' => 'Jabatan harus diisi.',
+        //     'opd.required' => 'OPD harus diisi.',
+        //     'no_hp.required' => 'No Hp harus diisi.',
+        // ]);
 
         Users::find($id)->update([
             'name' => $request->nama,
             'email' => $request->email,
-            'level' => $request->level,
             'nip' => $request->nip,
             'jabatan' => $request->jabatan,
             'opd' => $request->opd,
             'no_hp' => $request->no_hp,
+            'level' => $request->level,
         ]);
 
         if($request->filled('password')){
@@ -150,6 +156,9 @@ class UserController extends Controller
                 'password' => Hash::make($request->password)
             ]);
         }
+
+        $user = User::find($id);
+        $user->syncRoles([$request->level]);
 
         return redirect('user')->with('status', 'Data user berhasil diubah.');
     }
@@ -172,7 +181,9 @@ class UserController extends Controller
 
      public function getUser(Request $request)
     {
-            $data = User::orderBy('name','asc')->get();
+            $data = User::with(['roles']);
+
+            // return $data;
             
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -185,9 +196,19 @@ class UserController extends Controller
                     </div>';
                     return $actionBtn;
                    
-                }
-                )
-                ->editColumn('nama', function($data)
+                })
+                ->addColumn('role', function($a){
+                    $data = $a->roles;
+                    $tampung = '';
+                    $hitung = count($data);
+                    foreach ($data as $item)
+                    {
+                        $cek = $hitung > 1? ' | ': ' ';
+                        $tampung = $tampung.$item->display_name.$cek;
+                    }
+                    return $tampung;
+                })
+                ->editColumn('name', function($data)
                 {
                     return $data->name;
                 })
@@ -197,12 +218,12 @@ class UserController extends Controller
                     return $data->email;
                 })
 
-                ->editColumn('level', function($data)
-                {
-                    $level = '<span class="badge badge-flat border-primary text-primary-600">'.ucwords($data->level).'</span>';
-                    return $level;
-                })
-                ->rawColumns(['action', 'status','level'])
+                // ->editColumn('level', function($data)
+                // {
+                //     $level = '<span class="badge badge-flat border-primary text-primary-600">'.ucwords($data->roles[0]->display_name??'').'</span>';
+                //     return $level;
+                // })
+                ->rawColumns(['action', 'status','role'])
                 ->make(true);
         
     }

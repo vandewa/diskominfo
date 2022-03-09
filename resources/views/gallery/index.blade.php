@@ -38,9 +38,7 @@ Tambah Galeri
                     <th>No</th>
                     <th>Foto</th>
                     <th>Keterangan</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>

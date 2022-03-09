@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UsercreateValidation;
 use App\Models\Users;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Role;
 
 class AccountController extends Controller
 {
@@ -17,7 +18,9 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('account.index');
+        $role = Role::with(['permissions'])->get();
+
+        return view('account.index',compact('role'));
     }
 
     /**
@@ -60,7 +63,9 @@ class AccountController extends Controller
      */
     public function edit($id)
     {
-        return view('account.edit');
+        $role = Role::with(['permissions'])->get();
+
+        return view('account.edit', compact('role'));
     }
 
     /**

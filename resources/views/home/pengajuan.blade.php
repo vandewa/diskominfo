@@ -15,7 +15,7 @@
 @endsection
 
    <!-- ========== MAIN ========== -->
-  <main id="content" role="main" class="ignielPelangi">
+  <body style="background-image:url({{ asset('front/assets/images/bg_pengaduan.jpg') }}); background-size: cover; background-repeat:   no-repeat; background-position: center center; object-fit:cover" >
     <!-- Contact Form Section -->
     <div class="container space-top-3 space-bottom-2">
       <div class="row">
@@ -54,7 +54,7 @@
                     <!-- Form Group -->
                     <div class="js-form-message form-group">
                       <label for="emailAddress" class="input-label">Email</label>
-                      <input type="email" class="form-control" name="email" id="emailAddress" placeholder="Contoh: diskominfo@gmail.com" aria-label="emailanda@gmail.com"" required
+                      <input type="email" class="form-control" name="email" id="emailAddress" placeholder="Contoh: diskominfo@gmail.com" aria-label="emailanda@gmail.com" required
                              data-msg="Please enter a valid email address">
                     </div>
                     <!-- End Form Group -->
@@ -82,7 +82,7 @@
       </div>
     </div>
     <!-- End Contact Form Section -->
-  </main>
+  </body>
   <!-- ========== END MAIN ========== -->
 @endsection
 
@@ -203,5 +203,6 @@ required: true,
 sweetAlert();
 @endif
 </script>
+
 @endpush
 

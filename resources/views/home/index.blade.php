@@ -12,7 +12,7 @@
     @endsection
 
     @section('kondisi2')
-    <i class="fas fa-user-circle fa-lg" style="color:blue"></i>
+    <i class="fas fa-user-circle fa-lg" style="color:grey"></i>
     @endsection
     <!-- ========== MAIN ========== -->
     <main id="content" role="main">
@@ -97,6 +97,67 @@
             <!-- End Slider Nav -->
         </div>
         <!-- End Hero Section -->
+
+    <!-- Clients Section -->
+    <div class="container space-bottom-0 space-bottom-lg-0">
+      <div class="row">
+        <div class="col-lg-4 pt-7 pt-lg-0">
+          <!-- Card -->
+          <div class="card bg-primary shadow-primary-lg mt-lg-n11 p-4 p-lg-7" data-aos="fade-up">
+            <div class="text-white mb-7">
+              <span class="d-block small text-white font-weight-bold text-cap mb-2">Apa saja layanan di Diskominfo Wonosobo?</span>
+              <div class="d-flex justify-content-center">
+                <h4 class="text-white">
+                    1. Permintaan Zoom<br>
+                    2. Pengajuan Izin<br>
+                    3. Pengajuan Informasi<br>
+                    4. Pengaduan Masyarakat<br>
+                    5. Call Center 112<br>
+                    6. Lapor Bupati</h4>
+              </div>
+            </div>
+            <div class="btn btn-block btn-light transition-3d-hover" href="#">Berikut adalah layanannya</div>
+          </div>
+          <!-- End Card -->
+        </div>
+
+        <div class="col-lg-8 pt-7">
+          <!-- Logos -->
+          <div class="row text-center">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
+                <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/zoom.gif') }}">
+            </div>
+             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
+                <a href="/pengajuanizin">
+                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/pengajuan_izin.gif') }}">
+                </a>
+            </div>
+             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
+                <a href="/pengajuan">
+                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/informasi.gif') }}">
+                </a>
+            </div>
+             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
+                <a href="/pengaduan">
+                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/pengaduan.gif') }}">
+                </a>
+            </div>
+             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
+                <a href="tel:112">
+                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/112.gif') }}">
+                </a>
+            </div>
+             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
+              <a href="https://laporbupati.wonosobokab.go.id/" target="_blank">
+                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/lapor.gif') }}">
+                </a>
+            </div>
+          </div>
+          <!-- End Logos -->
+        </div>
+      </div>
+    </div>
+    <!-- End Clients Section -->
 
 
         <!-- Blogs Section -->
@@ -231,7 +292,7 @@
                     }'>
                         <div class="mb-7">
 
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <a href="/pengajuanizin">
                                     <img class="card-img transition-zoom-hover"
                                         src="{{ asset('front/assets/images/pengajuan.gif') }}"
@@ -245,7 +306,7 @@
                                         src="{{ asset('front/assets/images/laporbup.gif') }}"
                                         alt="" width="250" height="80">
                                 </a>
-                            </div>
+                            </div> --}}
 
 
                             <div class="mb-2">

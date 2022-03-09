@@ -55,11 +55,12 @@ Tambah User
         processing: true,
         serverSide: true,
         ajax: "{{ route('user.list') }}",
+        "order": [[ 1, "asc" ]],
         columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'nama', },
+					{data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
+                    {data: 'name', },
                     {data: 'email', },
-                    {data: 'level', },
+                    {data: 'role', searchable: false },
 					    {
 						data: 'action', 
 						name: 'action', 

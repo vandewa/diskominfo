@@ -139,10 +139,11 @@
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
 							<select name="level" class="form-control select-icons @error('level') is-invalid @enderror" data-fouc>
-								<option value="" >- Pilih -</option>
-								<option data-icon="icon-wrench3" value="superadmin" {{$user->level == 'superadmin' ? "selected": ""}}>Superadmin</option>
-								<option data-icon="icon-wrench3" value="admin" {{$user->level == 'admin' ? "selected": ""}}>Admin</option>
-							</select>
+							<option>-- Pilih --</option>
+							@foreach($role as $role )
+							<option value="{{ $role->id }}" {{$user->level == $role->id  ? 'selected' : ''}}>{{ $role->display_name}}</option>
+							@endforeach
+						</select>
 								@error('level')
 								<div class="invalid-feedback">
 								{{ $message }}

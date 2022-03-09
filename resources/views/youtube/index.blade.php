@@ -38,9 +38,7 @@ Tambah Link
                     <th>No</th>
                     <th>Youtube</th>
                     <th>Link</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>

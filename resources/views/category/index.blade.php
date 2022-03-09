@@ -34,9 +34,7 @@ Tambah Kategori
                 <tr>
                     <th>No</th>
                     <th>Nama Kategori</th>
-                    @if (auth()->user()->level=='superadmin'||'admin')
                     <th class="text-center">Aksi</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>
