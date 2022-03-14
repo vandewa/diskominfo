@@ -125,7 +125,9 @@
           <!-- Logos -->
           <div class="row text-center">
             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
-                <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/zoom.gif') }}">
+                 <a href="/permintaan/zoom">
+                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/zoom.gif') }}">
+                </a>
             </div>
              <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
                 <a href="/pengajuanizin">
@@ -560,7 +562,6 @@
                 </div>
             </div>
         </div>
-
     </main>
     <!-- ========== END MAIN ========== -->
     @endsection
@@ -624,22 +625,16 @@ input.error {
 
     @push('js')
         <script>
-            < script src = "{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}" >
-
-        </script>
-        <script
-            src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}">
-        </script>
-        <script
-            src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}">
-        </script>
-        <script src="//platform.twitter.com/widgets.js" charset="utf-8" async></script>
+        <script src = "{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}" ></script>
+        <script src ="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
+        <script src ="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+        <script src ="//platform.twitter.com/widgets.js" charset="utf-8" async></script>
+        
         <script>
             function myFunction() {
                 var elmnt = document.getElementById("pagenya");
                 elmnt.scrollIntoView();
             }
-
         </script>
 
         <script>
@@ -650,7 +645,8 @@ input.error {
                     }, 1000);
                 }
             });
-
         </script>
+        
+
         </script>
     @endpush

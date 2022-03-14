@@ -1,139 +1,180 @@
-@section('title', 'Agenda')
-@section('menu','Agenda')
-@section('submenu','Ubah Agenda')
+@section('title', 'Link Zoom')
+@section('menu','Link Zoom')
+@section('submenu','Edit Link Zoom')
 @extends('layouts/template-admin')
 @section('kondisi11','active')
 @section('halaman')
-<a class="breadcrumb-item" href="{{ route('zoom:link_zoom.index') }}">Zoom</a>
-<span class="breadcrumb-item active">Ubah Zoom</span>
+<a class="breadcrumb-item" href="{{ route('zoom:link_zoom.index') }}">Link Zoom</a>
+<span class="breadcrumb-item active">Edit Link Zoom</span>
 @endsection
 @section('container')
 <div class="content">
     <!-- CKEditor default -->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5>FORM UBAH AGENDA</h5>
+            <h5>FORM EDIT ZOOM</h5>
         </div>
 
         <div class="card-body">
             {{Form::model($data, ['route' => ['zoom:link_zoom.update', $data->id],'method' => 'put', 'files' =>
             'true', ''])}}
-            <div class="form-group row">
-                <label class="col-form-label col-lg-2">Nama Instansi / OPD<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="form-group-feedback form-group-feedback-right">
-                        {{Form::text('instansi', null,[
-                        'class' => 'form-control'.($errors->has('instansi') ? ' border-danger' : ''),
-                        'placeholder' => 'Instansi'])}}
-                        @error('instansi')
-                        <div class="form-control-feedback text-danger">
-                            <i class="icon-cancel-circle2"></i>
+
+             <div class="form-group row" style="margin-bottom: 0.25rem">
+                <div class="col-6">
+					<label class="col-form-label col-lg-4">Nama Peminjam<span class="text-danger">*</span></label>
+                    <div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            {{Form::text('peminjam', null,[
+                            'class' => 'form-control'.($errors->has('peminjam') ? ' border-danger' : ''),
+                            'placeholder' => 'Nama Peminjam'])}}
+                            @error('email')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                            @enderror
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-user"></i>
+                            </div>
                         </div>
-                        <span class="form-text text-danger">{{ $message }}</span>
-                        @enderror
                     </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-form-label col-lg-2">Nama Peminjam<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="form-group-feedback form-group-feedback-right">
-                        {{Form::text('peminjam', null,[
-                        'class' => 'form-control'.($errors->has('peminjam') ? ' border-danger' : ''),
-                        'placeholder' => 'Nama Peminjam'])}}
-                        @error('peminjam')
-                        <div class="form-control-feedback text-danger">
-                            <i class="icon-cancel-circle2"></i>
+				</div>
+
+                <div class="col-6">
+					<label class="col-form-label col-lg-4">Instansi<span class="text-danger">*</span></label>
+                    <div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            {{Form::text('nama_opd', null,[
+                            'class' => 'form-control'.($errors->has('nama_opd') ? ' border-danger' : ''),
+                            'placeholder' => 'Nama OPD'])}}
+                            @error('nama_opd')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                            @enderror
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-office"></i>
+                            </div>
                         </div>
-                        <span class="form-text text-danger">{{ $message }}</span>
-                        @enderror
                     </div>
-                </div>
+				</div>
             </div>
-            <div class="form-group row">
-                <label class="col-form-label col-lg-2">No Handphone<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="form-group-feedback form-group-feedback-right">
-                        {{Form::number('no_hp', null,[
-                        'class' => 'form-control'.($errors->has('no_hp') ? ' border-danger' : ''),
-                        'placeholder' => 'No Handphone', 'min' => '0'])}}
-                        @error('no_hp')
-                        <div class="form-control-feedback text-danger">
-                            <i class="icon-cancel-circle2"></i>
+
+            <div class="form-group row" style="margin-bottom: 0.25rem">
+                <div class="col-6">
+					<label class="col-form-label col-lg-4">No Handphone<span class="text-danger">*</span></label>
+					<div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            {{Form::text('no_hp', null,[
+                            'class' => 'form-control'.($errors->has('no_hp') ? ' border-danger' : ''),
+                            'placeholder' => 'No HP'])}}
+                            @error('no_hp')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                            @enderror
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-phone2"></i>
+                            </div>
                         </div>
-                        <span class="form-text text-danger">{{ $message }}</span>
-                        @enderror
                     </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-form-label col-lg-2">Tanggal<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="input-group">
-                        <span class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-calendar22"></i></span>
-                        </span>
-                        {{Form::text('tanggal', null,['class' => 'form-control daterange-single'
-                        ])}}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-form-label col-lg-2">Topik<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="form-group-feedback form-group-feedback-right">
-                        {{Form::text('topik', null,['class' => 'form-control'.($errors->has('topik') ?
-                        ' border-danger' :
-                        ''), 'placeholder' =>
-                        'Topik'])}}
-                        @error('topik')
-                        <div class="form-control-feedback text-danger">
-                            <i class="icon-cancel-circle2"></i>
+			    </div>
+
+				<div class="col-6">
+					<label class="col-form-label col-lg-2">Tanggal<span class="text-danger">*</span></label>
+                    <div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                             {{Form::text('tanggal', $tanggal,['class' => 'form-control daterange-single'])}}
+                            @error('tanggal')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                            @enderror
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-calendar22"></i>
+                            </div>
                         </div>
-                        <span class="form-text text-danger">{{ $message }}</span>
-                        @enderror
                     </div>
-                </div>
+				</div>
             </div>
-            <div class="form-group row">
-                <label class="col-form-label col-lg-2">Jam Acara<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="form-group-feedback form-group-feedback-right">
-                        {{Form::time('jam', null,['class' => 'form-control'.($errors->has('jam') ?
-                        ' border-danger' :
-                        ''), 'placeholder' =>
-                        'Jam Acara'])}}
-                        @error('jam')
-                        <div class="form-control-feedback text-danger">
-                            <i class="icon-cancel-circle2"></i>
+
+            <div class="form-group row" style="margin-bottom: 0.25rem">
+				<div class="col-6">
+					<label class="col-form-label col-lg-2">Topik<span class="text-danger">*</span></label>
+					<div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            {{Form::text('topik', null,['class' => 'form-control'.($errors->has('topik') ?' border-danger' :''), 'placeholder' =>'Topik'])}}
+                            @error('topik')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                            @enderror
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-bubble-notification"></i>
+                            </div>
                         </div>
-                        <span class="form-text text-danger">{{ $message }}</span>
-                        @enderror
                     </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-form-label col-lg-2">Akun Zoom<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="form-group-feedback form-group-feedback-right">
-                        {{Form::radio('peserta', '100',)}} 100
-                        {{Form::radio('peserta', '500',)}} 500
-                        @error('peserta')
-                        <div class="form-control-feedback text-danger">
-                            <i class="icon-cancel-circle2"></i>
+			    </div>
+
+				<div class="col-6">
+					<label class="col-form-label col-lg-2">Akun Zoom<span class="text-danger">*</span></label>
+					<div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            {{Form::radio('peserta', '100')}}100 &nbsp;&nbsp;&nbsp;
+                             {{Form::radio('peserta', '500')}}500
+    
+                            
+                            @error('peserta')
+                            <div class="form-control-feedback text-danger">
+                                <i class="icon-cancel-circle2"></i>
+                            </div>
+                            <span class="form-text text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
-                        <span class="form-text text-danger">{{ $message }}</span>
-                        @enderror
                     </div>
-                </div>
+			    </div>
             </div>
-            <div class="form-group row">
+
+             <div class="form-group row" style="margin-bottom: 0.25rem">
+				<div class="col-6">
+					<label class="col-form-label col-lg-2">Jam Mulai<span class="text-danger">*</span></label>
+                    <div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                             {{Form::time('jam_mulai', null,['class' => 'form-control'.($errors->has('jam_mulai') ?' border-danger' :''), 'placeholder' =>'Jam Mulai Acara'])}}
+                            @error('jam_mulai')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                            @enderror
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-hour-glass"></i>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+
+				<div class="col-6">
+					<label class="col-form-label col-lg-2">Jam Selesai<span class="text-danger">*</span></label>
+					<div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            {{Form::time('jam_selesai', null,['class' => 'form-control'.($errors->has('jam_selesai') ?' border-danger' :''), 'placeholder' =>'Jam Selesai Acara'])}}
+                            @error('jam_selesai')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                            @enderror
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-hour-glass3"></i>
+                            </div>
+                        </div>
+                    </div>
+			    </div>
+            </div>
+       
+            <div class="form-group row mt-3">
                 <label class="col-form-label col-lg-2">Link Zoom</label>
                 <div class="col-lg-10">
                     {{Form::textarea('link_zoom', null,['class' => 'form-control', 'id' => 'editor-full'
                     ])}}
-                    <!-- {{Form::textarea('link_zoom', null,['class' => 'summernote-height'
-                    ])}} -->
                 </div>
                 @error('link_zoom')
                 <div class="form-control-feedback text-danger">
@@ -142,6 +183,7 @@
                 <span class="form-text text-danger">{{ $message }}</span>
                 @enderror
             </div>
+
             <div class="text-right">
                 <button type="submit" class="btn bg-teal-400">
                     Submit form <i class="icon-paperplane ml-2"></i>
@@ -152,15 +194,25 @@
     </div>
     <!-- /CKEditor default -->
 </div>
-@endsection @push('js')
-<script>
-    $('#barang_id').on('select2:select', function (e) {
-        var data = e.params.data;
-        console.log(data);
-    });
-</script>
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
-<!-- <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script> -->
-<!-- {{-- {!! JsValidator::formRequest('App\Http\Requests\PostingcreateValidation') !!}--}} -->
+@endsection 
+
+@push('js')
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+  <script>
+  flatpickr("input[type=datetime-local]", {
+    "locale": "id"
+  });
+  </script>
+  <script>
+  flatpickr("input[type=time]", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true
+  });
+  </script>
+@endpush
 @endpush

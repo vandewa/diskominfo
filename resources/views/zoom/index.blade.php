@@ -34,12 +34,13 @@
                         <th>No</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
+                        <th>Nama Peminjam</th>
                         <th>Instansi</th>
                         <th>Topik</th>
                         <th>Peserta</th>
-                        <th>Nama Peminjam</th>
                         <th>Link Zoom</th>
                         <th>Action</th>
+                     
                     </tr>
                 </thead>
                 <tbody>
@@ -55,16 +56,18 @@
     var table = $('.devan').DataTable({
         processing: true,
         serverSide: true,
-        ajax: window.location.href,
+        ajax: "{{ route('zoom.list') }}",
+         "order": [[ 1, "desc" ]],
         columns: [
-            { data: 'id', name: 'id' },
-            { data: 'tanggal', name: 'tanggal' },
-            { data: 'jam', nama: 'jam' },
-            { data: 'instansi', name: 'instansi' },
+           { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+            { data: 'tanggal-buat', name: 'tanggal' },
+            { data: 'jam_mulai', nama: 'jam_mulai' },
+            { data: 'peminjam', name: 'peminjam' },
+            { data: 'nama_opd', name: 'nama_opd' },
             { data: 'topik', name: 'topik' },
             { data: 'peserta', name: 'peserta' },
-            { data: 'peminjam', name: 'peminjam' },
             { data: 'link_zoom', name: 'link_zoom' },
+          
             { data: 'action', },
         ]
     });

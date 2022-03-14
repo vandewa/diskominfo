@@ -38,6 +38,7 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ZoomController;
 use App\Http\Controllers\Inventory\KategoriController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\Front\FrontZoomController;
 
 
 
@@ -114,6 +115,14 @@ Route::post('/captcha-validation', [PengaduanController::class, 'capthcaFormVali
 Route::get('/reload-captcha', [PengaduanController::class, 'reloadCaptcha']);
 Route::get('/pengaduans/list', [PengaduanController::class, 'getPengaduan'])->name('pengaduans.list');
 Route::get('/pengaduans/hapus/{id}/komentar', [PengaduanController::class, 'hapus'])->name('pengaduan.komentar.hapus');
+Route::get('/zoom/list', [ZoomController::class, 'getZoom'])->name('zoom.list');
+Route::get('/zooms/list', [FrontZoomController::class, 'getZoom'])->name('front.zoom.list');
+
+Route::group([], function () {
+    Route::group(['prefix' => 'permintaan', 'as' => 'permintaan:'], function () {
+       Route::resource('zoom', FrontZoomController::class);
+    });
+});
 
 Route::group([], function () {
     Route::group(['prefix' => 'perijinan', 'as' => 'perijinan:'], function () {

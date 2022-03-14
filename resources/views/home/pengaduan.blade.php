@@ -78,7 +78,10 @@
           <br>
         </div>
       </div>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Formulir Pengaduan</button>            
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+            <span class="fas fa-plus mr-2"></span>
+          Formulir Pengaduan
+        </button>            
       <!-- End Title and Sort -->
       <hr class="my-4">
          @foreach($pengaduan as $dataaduan)

@@ -53,7 +53,7 @@
         <div class="cbp-item rounded-lg branding mb-2">
           <a class="cbp-caption" href="/detail/{{$kategorinya->slug}}">
             <div class="cbp-caption-defaultWrap mb-5">
-              <img class="rounded-lg" src="{{ asset ('uploads') }}/{{ $kategorinya->gambarMuka->file_name??'' }}" alt="Image Description" style="height:300px;">
+              <img class="rounded-lg" src="{{ asset ($kategorinya->gambarMuka->path.$kategorinya->gambarMuka->file_name??'') }}" alt="Image Description" style="height:300px; object-fit:cover">
             </div>
             <div class="cbp-caption-activeWrap">
               <div class="d-flex justify-content-end flex-column h-100 p-4">
@@ -114,22 +114,33 @@
                 <!-- End SVG Shapes -->
               </div>
 
-              @foreach($populers as $populernya)
-              <!-- Blog -->
-              <article class="mb-5 mt-3" data-aos="zoom-out-right">
-                <div class="media align-items-center text-inherit">
-                  <div class="avatar avatar-lg mr-3">
-                  <a href="/detail/{{$kategorinya->id_posting}}">
-                    <img class="avatar-img transition-zoom-hover" src="{{ asset('uploads/'.$populernya->gambarMuka->file_name) }}" alt="Image Description" >
-                  </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="h6 mb-0"><a class="text-inherit" href="/detail/{{$populernya->id_posting}}">{{ $populernya->judul_posting }}</a></h4>
-                  </div>
-                </div>
-              </article>
-              <!-- End Blog -->
-             @endforeach
+              @foreach($populers as $populer)
+                    <!-- Blog -->
+                    <article class="mb-5 mt-3" data-aos="zoom-out-right">
+                        <div class="media align-items-center text-inherit">
+                            <div class="avatar avatar-lg mr-3">
+                                <a href="/detail/{{ $populer->slug }}">
+                                      @if (!empty($populer->gambarMuka->path) || !empty($populer->gambarMuka->file_name))
+                                    <img class="card-img transition-zoom-hover"
+                                    src="{{ asset($populer->gambarMuka->path.$populer->gambarMuka->file_name??'') }}"
+                                    alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
+                                    @else
+                                    <img class="card-img transition-zoom-hover"
+                                    src="{{ asset('uploads/diskominfowonosobo.jpg') }}"
+                                    alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
+                                    @endif
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="h6 mb-0"><a class="text-inherit"
+                                        href="/detail/{{ $populer->slug }}">{{ $populer->judul_posting }}</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- End Blog -->
+
+                @endforeach
             </div>
 
             <div class="mb-7">

@@ -32,6 +32,11 @@
   <link rel="stylesheet" href="{{ url('front/assets/vendor/ion-rangeslider/css/ion.rangeSlider.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/dzsparallaxer/dzsparallaxer.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/vendor/hs-video-bg/dist/hs-video-bg.min.css')}}">
+  <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
+  <link rel="stylesheet" href="{{ url('front/custombox/jquery.mCustomScrollbar.css')}}">
+  <link rel="stylesheet" href="{{ url('front/custombox/custombox.min.css')}}">
+
+
 
   @stack('css')
 
@@ -262,6 +267,7 @@
 
                 <!-- Blog - Submenu -->
                 <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu" style="min-width: 230px;">
+                  <a class="dropdown-item " href="{{ route('permintaan:zoom.index')}}">Permintaan Link Zoom</a>
                   <a class="dropdown-item " href="{{ route('pengaduan')}}">Pengaduan Masyarakat</a>
                   <a class="dropdown-item " href="{{ route('pengajuan')}}">Pengajuan Informasi</a>
                   {{-- <a class="dropdown-item " href="{{ route('website.list')}}">Website Kelurahan</a> --}}
@@ -560,7 +566,23 @@
 
 
   <!-- JS Implementing Plugins -->
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+  <script>
+  flatpickr("input[type=datetime-local]", {
+    "locale": "id"
+  });
+  </script>
+  <script>
+  flatpickr("input[type=waktu]", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true
+  });
+  </script>
   <script src="{{ url ('front/assets/vendor/hs-header/dist/hs-header.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-go-to/dist/hs-go-to.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-unfold/dist/hs-unfold.min.js')}}"></script>
@@ -589,6 +611,11 @@
   <!-- JS Front -->
   <script src="{{ url ('front/assets/js/theme.min.js')}}"></script>
   <script src="{{ url ('front/assets/js/vanilla-tilt.min.js')}}"></script>
+  <script src="{{ url ('front/assets/js/vanilla-tilt.min.js')}}"></script>
+  <script src="{{ url ('front/custombox/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+  <script src="{{ url ('front/custombox/custombox.min.js')}}"></script>
+  <script src="{{ url ('front/custombox/custombox.legacy.min.js')}}"></script>
+  <script src="{{ url ('front/custombox/hs.modal-window.js')}}"></script>
 
 
   <!-- JS Plugins Init. -->
@@ -667,6 +694,11 @@
       $('.js-validate').each(function() {
         var validation = $.HSCore.components.HSValidation.init($(this));
       });
+
+       // initialization of autonomous popups
+        $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-modal-window', {
+            autonomous: true
+        });
 
       // INITIALIZATION OF CUBEPORTFOLIO
       // =======================================================

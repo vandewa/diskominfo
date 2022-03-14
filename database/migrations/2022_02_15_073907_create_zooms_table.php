@@ -15,14 +15,15 @@ class CreateZoomsTable extends Migration
     {
         Schema::create('zooms', function (Blueprint $table) {
             $table->id();
-            $table->char('peminjam');
-            $table->char('topik');
-            $table->string('link_zoom', 555)->nullable();;
-            $table->char('no_hp');
-            $table->char('instansi');
-            $table->char('tanggal');
-            $table->time('jam');
-            $table->integer('peserta');
+            $table->string('nama_opd')->nullable();
+            $table->string('peminjam')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->date('tanggal')->nullable();
+            $table->string('topik')->nullable();
+            $table->time('jam_mulai')->nullable();
+            $table->time('jam_selesai')->nullable();
+            $table->integer('peserta')->nullable();
+            $table->string('link_zoom', 555)->nullable();
             $table->timestamps();
         });
     }
