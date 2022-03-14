@@ -20,12 +20,12 @@
    
     
       <div class="w-100 sm-6 mx-lg-auto">
-      <h3 class="mb-4 mt-10"><center>Kumpulan file-file lampiran</center></h3>
+      <h3 class="mb-4 mt-10"><center>Download Area</center></h3>
       <table class="table-light table-striped yajra w-100" >
         <thead>
             <tr>
                     <th>No</th>
-                    <th>Lampiran</th>
+                    <th>Nama</th>
                     <th>Aksi</th>
             </tr>
         </thead>

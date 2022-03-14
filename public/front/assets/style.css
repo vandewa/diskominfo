@@ -62,6 +62,16 @@ section {
     background-position: center center;
 }
 
+.keyboard-box5 {
+    position: relative;
+    border-radius: 20px;
+    background-image: url('/front/assets/images/carica.png');
+    height: 70px;
+    transform-style: preserve-3d;
+    background-size: cover;
+    background-position: center center;
+}
+
 .keyboard-box::before {
   /*content: 'MY';*/
   position: fixed;
