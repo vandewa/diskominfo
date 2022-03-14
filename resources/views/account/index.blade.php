@@ -80,7 +80,7 @@
 									<div class="form-group form-group-feedback form-group-feedback-left">
 									<select name="level" class="form-control select-icons" data-fouc disabled>
 										@foreach($role as $role )
-											<option value="{{ auth()->user()->level }}" {{ 1 == $role->id  ? 'selected' : ''}}>{{ $role->display_name}}</option>
+											<option value="{{ auth()->user()->level }}" {{ auth()->user()->level == $role->id  ? 'selected' : ''}}>{{ $role->display_name}}</option>
 										@endforeach
 										</select>
 										@error('level')

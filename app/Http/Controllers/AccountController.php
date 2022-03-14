@@ -20,6 +20,8 @@ class AccountController extends Controller
     {
         $role = Role::with(['permissions'])->get();
 
+        return $role;
+
         return view('account.index',compact('role'));
     }
 
