@@ -99,24 +99,20 @@
         <!-- End Hero Section -->
 
     <!-- Clients Section -->
-    <div class="container space-bottom-0 space-bottom-lg-0">
+    <div class="container space-bottom-0 space-bottom-lg-0 ">
       <div class="row">
         <div class="col-lg-4 pt-7 pt-lg-0">
           <!-- Card -->
           <div class="card bg-primary shadow-primary-lg mt-lg-n11 p-4 p-lg-7" data-aos="fade-up">
             <div class="text-white mb-7">
-              <span class="d-block small text-white font-weight-bold text-cap mb-2">Apa saja layanan di Diskominfo Wonosobo?</span>
+              <h2 class="d-block text-white font-weight-bold text-cap mb-2 text-center">VISI BUPATI</h2>
               <div class="d-flex justify-content-center">
-                <h4 class="text-white">
-                    1. Permintaan Zoom<br>
-                    2. Pengajuan Izin<br>
-                    3. Pengajuan Informasi<br>
-                    4. Pengaduan Masyarakat<br>
-                    5. Call Center 112<br>
-                    6. Lapor Bupati</h4>
+                <h4 class="text-white mt-5 text-center">
+                   “Mewujudkan Wonosobo Yang Berdaya Saing, Maju dan Sejahtera”</h4>
+                   
               </div>
             </div>
-            <div class="btn btn-block btn-light transition-3d-hover" href="#">Berikut adalah layanannya</div>
+            {{-- <div class="btn btn-block btn-light transition-3d-hover" href="#">Berikut adalah layanannya</div> --}}
           </div>
           <!-- End Card -->
         </div>
@@ -391,7 +387,7 @@
 
 
                         <section id="my-keyboards" data-aos="zoom-out-right">
-                            <div class="container">
+                            <div class="container mb-3">
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://instagram.com/wonosobohebat" target="_blank">
@@ -421,6 +417,45 @@
                                             <h2 class="keyboard-tulisan1 ml-2">TWITTER</h2>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="position-relative bg-primary overflow-hidden mb-3 ignielPelangi">
+                                <div class=" text-left position-relative">
+                                    <h3 class="container text-white text-center font-weight-semi-bold ">MEDIA KAMI</h3>
+                                </div>
+                                <!-- SVG Shapes -->
+                                <figure class="mb-n1">
+                                    <svg class="position-absolute top-0 right-0 bottom-0 h-100"
+                                        xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
+                                        height="100%">
+                                        <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z" />
+                                    </svg>
+                                </figure>
+                                <!-- End SVG Shapes -->
+                            </div>
+
+
+                        <section id="my-keyboards" data-aos="zoom-out-right">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12 mb-3">
+                                        <a href="https://pesonafm.wonosobokab.go.id" target="_blank">
+                                        
+                                            <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/pesona.gif') }}">
+                                       
+                                    </div>
+                                    <div class="col-md-12 col-lg-12 mb-3">
+                                        <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
+                                       <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/webtv.gif') }}">
+                                    </div>
+                                    <div class="col-md-12 col-lg-12 mb-3">
+                                        <a href="https://instagram.com/wonosobohebat" target="_blank">
+                                        
+                                            <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/wsbhebat.gif') }}">
+                                        
+                    
                                 </div>
                             </div>
                         </section>

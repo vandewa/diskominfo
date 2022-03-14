@@ -60,14 +60,16 @@
   @yield('kondisi')
 
   <div class="header-section">
-    <div id="logoAndNav" class="container">
+    <div id="logoAndNav" class="col-md-12 d-flex justify-content-center">
       <!-- Nav -->
       <nav class="js-mega-menu navbar navbar-expand-lg">
         <!-- Logo -->
+        <div class="mr-5">
         <a href="{{ url('/') }}" aria-label="Front">
-          <img style="margin-top:4px; width:80px;" src="{{ url('front/assets/images/pemda.png')}}">
-          <img style="margin-top:4px; width:58px;" src="{{ url('front/assets/images/kominfo.png')}}">
+          {{-- <img style="margin-top:4px; width:80px;" src="{{ url('front/assets/images/pemda.png')}}"> --}}
+          <img style="width:120px;" src="{{ url('front/assets/images/diskominfo.png')}}">
         </a>
+        </div>
         <!-- End Logo -->
 
         <!-- Responsive Toggle Button -->
@@ -267,9 +269,11 @@
 
                 <!-- Blog - Submenu -->
                 <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu" style="min-width: 230px;">
-                  <a class="dropdown-item " href="{{ route('permintaan:zoom.index')}}">Permintaan Link Zoom</a>
-                  <a class="dropdown-item " href="{{ route('pengaduan')}}">Pengaduan Masyarakat</a>
-                  <a class="dropdown-item " href="{{ route('pengajuan')}}">Pengajuan Informasi</a>
+                  {{-- <a class="dropdown-item " href="{{ route('permintaan:zoom.index')}}">Permintaan Link Zoom</a> --}}
+                  {{-- <a class="dropdown-item " href="{{ route('pengaduan')}}">Pengaduan Masyarakat</a> --}}
+                  {{-- <a class="dropdown-item " href="{{ route('pengajuan')}}">Pengajuan Informasi</a> --}}
+                  <a class="dropdown-item " href="{{ url('/page/form-ikp')}}">Pembuatan Media Publikasi</a>
+                  <a class="dropdown-item " href="{{ url('/page/form-ikp')}}">Pembuatan Media Publikasi</a>
                   {{-- <a class="dropdown-item " href="{{ route('website.list')}}">Website Kelurahan</a> --}}
                 </div>
                 <!-- End Submenu -->
@@ -288,9 +292,35 @@
 
               <!-- Lampiran -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Lampiran</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Download Area</a>
                 <!-- Pages - Submenu -->
                 <div class="hs-sub-menu ">
+                </div>
+                <!-- End Pages - Submenu -->
+              </li>
+              <!-- End Lampiran -->
+
+
+              <!-- Lampiran -->
+              <li class="hs-has-sub-menu navbar-nav-item">
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="https://www.kominfo.go.id/content/all/laporan_isu_hoaks"  target="_blank" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Cek Isu Hoax</a>
+                <!-- Pages - Submenu -->
+                <div class="hs-sub-menu ">
+                </div>
+                <!-- End Pages - Submenu -->
+              </li>
+              <!-- End Lampiran -->
+
+
+              <!-- Lampiran -->
+              <li class="hs-has-sub-menu navbar-nav-item">
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Pengaduan Masyarakat</a>
+                <!-- Pages - Submenu -->
+               <!-- Blog - Submenu -->
+                <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu" style="min-width: 230px;">
+                  <a class="dropdown-item " href="https://laporbupati.wonosobokab.go.id/" target="_blank">LaporBup</a>
+                  <a class="dropdown-item" href="tel:112">Call Center 112</a>
+                  {{-- <a class="dropdown-item " href="{{ route('website.list')}}">Website Kelurahan</a> --}}
                 </div>
                 <!-- End Pages - Submenu -->
               </li>
@@ -368,13 +398,13 @@
 
               <!-- Account Login -->
 
-              <li class="list-inline-item">
+              {{-- <li class="list-inline-item">
                 <div class="hs-unfold">
                   <a class="js-hs-unfold-invoker btn btn-icon btn-xs btn-ghost-secondary" href="{{ route('login')}}">
                     @yield('kondisi2')
                   </a>
                 </div>
-              </li>
+              </li> --}}
               <!-- End Account Login -->
             </ul>
           </div>
@@ -482,24 +512,25 @@
 
             <ul class="nav nav-sm nav-x-0 nav-white flex-column">
               <li class="nav-item">
-                <a class="nav-link media" href="https://dashboard-smartcity.wonosobokab.go.id" target="_blank">
+                <a class="nav-link media" href="https://website.wonosobokab.go.id/" target="_blank">
                   <span class="media">
                     <span class="icon-seven-segment-1 mt-1 mr-2"></span>
+                    <span class="media-body">
+                      Website Pemkab Wonosobo
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link media" href="https://dashboard-smartcity.wonosobokab.go.id" target="_blank">
+                  <span class="media">
+                    <span class="icon-seven-segment-2 mt-1 mr-2"></span>
                     <span class="media-body">
                       Dashboard Smartcity
                     </span>
                   </span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link media" href="https://website.wonosobokab.go.id/" target="_blank">
-                  <span class="media">
-                    <span class="icon-seven-segment-2 mt-1 mr-2"></span>
-                    <span class="media-body">
-                      Website Wonosobo
-                    </span>
-                  </span>
-                </a>
               <li class="nav-item">
                 <a class="nav-link media" href="https://satudata.wonosobokab.go.id/" target="_blank">
                   <span class="media">
@@ -654,6 +685,14 @@
           glare: true,
       });
   </script>
+  <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll('.keyboard-box_a'), {
+          max: 35,
+          speed: 1000,
+          glare: true,
+      });
+  </script>
+  
   <script>
     $(document).on('ready', function() {
 
