@@ -99,58 +99,44 @@
         <!-- End Hero Section -->
 
     <!-- Clients Section -->
-    <div class="container space-bottom-0 space-bottom-lg-0 ">
+    <div class="container space-bottom-0 space-bottom-lg-0">
       <div class="row">
-        <div class="col-lg-4 pt-7 pt-lg-0">
+        <div class="col-lg-4 pt-7 pt-lg-0 mt-2">
           <!-- Card -->
-          <div class="card bg-primary shadow-primary-lg mt-lg-n11 p-4 p-lg-7" data-aos="fade-up">
-            <div class="text-white mb-7">
-              <h2 class="d-block text-white font-weight-bold text-cap mb-2 text-center">VISI BUPATI</h2>
-              <div class="d-flex justify-content-center">
-                <h4 class="text-white mt-5 text-center">
-                   “Mewujudkan Wonosobo Yang Berdaya Saing, Maju dan Sejahtera”</h4>
-                   
+          <div class="card bg-primary shadow-primary-lg mt-lg-n11 p-4 p-lg-5 mb-7" data-aos="fade-up">
+            <div class="text-white">
+              <span class="d-block small text-white font-weight-bold text-cap mb-4 text-center">Berikut adalah Standar Pelayanan (SP) Diskomnfo Wonosobo</span>
+              <span class="d-block small text-white font-weight-bold text-cap mb-5 text-center">Silahkan klik nomor untuk melihat masing-masing Standar Pelayanan (SP)</span>
+              <div class="d-flex justify-content-center mb-4">
+                <h4 class="text-white">
+                    <a href="/page/sp-pembuatan-media-publikasi"><span class="text-white small"> 1. Pembuatan Media Publikasi</span></a><br>
+                    <a href="/page/sp-permohonan-peliputan-kegiatan"><span class="text-white small"> 2. Permohonan Liputan</span></a><br>
+                    <a href="/page/sp-permohonan-informasi-publik"><span class="text-white small"> 3. Permohonan Informasi Publik</span></a><br>
+                    <a href="/page/sp-pengajuan-keberatan-informasi-publik"><span class="text-white small"> 4. Pengajuan Keberatan Informasi Publik</span></a><br>
+                    <a href="/page/sp-permohonan-pinjam-tempat"><span class="text-white small"> 5. Pinjam Tempat Rapat</span></a><br>
+                    <a href="/page/sp-permohonan-pinjam-alat"><span class="text-white small"> 6. Pinjam Peralatan</span></a><br>
+                    <a href="/page/sp-layanan-magang"><span class="text-white small"> 7. Permohonan Magang</span></a><br>
+                    <a href="/page/sp-peminjaman-akun-zoom"><span class="text-white small"> 8. Permohonan Peminjaman Akun Zoom</span></a><br>
+                    <a href="/page/sp-permohonan-jaringan"><span class="text-white small"> 9. Permohonan Jaringan Internet</span></a><br>
+                    <a href="/page/sp-permohonan-aplikasi"><span class="text-white small"> 10. Permohonan Aplikasi</span></a><br>
+                    <a href="/page/sp-permohonan-subdomain"><span class="text-white small"> 11. Permohonan Subdomain</span></a><br>
+                    <a href="/page/sp-colocation-server"><span class="text-white small"> 12. Permohonan Pemasangan Server</span></a><br>        
+                </h4>
               </div>
             </div>
-            {{-- <div class="btn btn-block btn-light transition-3d-hover" href="#">Berikut adalah layanannya</div> --}}
+            <div class=" transition-3d-hover" href="#"></div>
           </div>
           <!-- End Card -->
         </div>
 
-        <div class="col-lg-8 pt-7">
+        <div class="col-lg-8 pt-3">
           <!-- Logos -->
           <div class="row text-center">
-            <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
-                <a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/zoom.gif') }}">
-                </a>
-            </div>
-             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
-                <a href="/pengajuanizin">
-                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/pengajuan_izin.gif') }}">
-                </a>
-            </div>
-             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
-                <a href="/pengajuan">
-                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/informasi.gif') }}">
-                </a>
-            </div>
-             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
-                <a href="/pengaduan">
-                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/pengaduan.gif') }}">
-                </a>
-            </div>
-             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
-                <a href="tel:112">
-                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/112.gif') }}">
-                </a>
-            </div>
-             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
-              <a href="https://laporbupati.wonosobokab.go.id/" target="_blank">
-                    <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/lapor.gif') }}">
-                </a>
-            </div>
+             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 py-2">
+                    <img class="card-img transition-zoom-hover" src="{{ asset('front/assets/images/maklumat.jpg') }}" style="width: 90%;">
+             </div>
           </div>
+
           <!-- End Logos -->
         </div>
       </div>
@@ -160,7 +146,7 @@
 
         <!-- Blogs Section -->
          <div id="de"></div>
-        <div class="container space-2 space-lg-2" id="pagenya">
+        <div class="container space-1 space-lg-1" id="pagenya">
             <div class="row justify-content-lg-between">
                 <div class="col-lg-8">
 
@@ -387,7 +373,7 @@
 
 
                         <section id="my-keyboards" data-aos="zoom-out-right">
-                            <div class="container mb-3">
+                            <div class="container">
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://instagram.com/wonosobohebat" target="_blank">
@@ -459,6 +445,8 @@
                                 </div>
                             </div>
                         </section>
+
+                        
                     </div>
                 </div>
             </div>
