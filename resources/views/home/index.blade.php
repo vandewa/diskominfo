@@ -125,7 +125,7 @@
           <!-- Logos -->
           <div class="row text-center">
             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
-                 <a href="/permintaan/zoom">
+                <a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                     <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/zoom.gif') }}">
                 </a>
             </div>
