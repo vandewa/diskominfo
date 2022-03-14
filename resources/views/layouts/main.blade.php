@@ -262,6 +262,7 @@
               <!-- End Pages - Submenu -->
               <!-- </li> -->
               <!-- End Tupoksi -->
+              
 
               <!-- Blog -->
               <li class="hs-has-sub-menu navbar-nav-item">
@@ -272,9 +273,24 @@
                   {{-- <a class="dropdown-item " href="{{ route('permintaan:zoom.index')}}">Permintaan Link Zoom</a> --}}
                   {{-- <a class="dropdown-item " href="{{ route('pengaduan')}}">Pengaduan Masyarakat</a> --}}
                   {{-- <a class="dropdown-item " href="{{ route('pengajuan')}}">Pengajuan Informasi</a> --}}
-                  <a class="dropdown-item " href="{{ url('/page/form-ikp')}}">Pembuatan Media Publikasi</a>
-                  <a class="dropdown-item " href="{{ url('/page/form-ikp')}}">Pembuatan Media Publikasi</a>
                   {{-- <a class="dropdown-item " href="{{ route('website.list')}}">Website Kelurahan</a> --}}
+                  {{-- <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Standar Pelayanan</a>
+                  <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Maklumat Pelayanan</a>
+                  <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">SP Diskominfo</a> --}}
+
+                  <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Pembuatan Media Publikasi</a>
+                  <a class="dropdown-item " href="{{ url('/page/permohonan-liputan')}}">Permohonan Liputan</a>
+                  <a class="dropdown-item " href="{{ url('/page/permohonan-informasi-publik')}}">Permohonan Informasi Publik</a>
+                  <a class="dropdown-item " href="{{ url('/page/pengajuan-keberatan-informasi-publik')}}">Pengajuan Keberatan Informasi Publik</a>
+                  <a class="dropdown-item " href="{{ url('/page/pinjam-tempat-rapat')}}">Pinjam Tempat Rapat</a>
+                  <a class="dropdown-item " href="{{ url('/page/pinjam-peralatan')}}">Pinjam Peralatan</a>
+                  <a class="dropdown-item " href="{{ url('/page/permohonan-magang')}}">Permohonan Magang</a>
+                  <a class="dropdown-item " href="{{ route('permintaan:zoom.index')}}">Permohonan Peminjaman Akun Zoom</a>
+                  <a class="dropdown-item " href="{{ url('/page/permohonan-jaringan')}}">Permohonan Jaringan Internet</a>
+                  <a class="dropdown-item " href="{{ url('/page/permohonan-aplikasi')}}">Permohonan Aplikasi</a>
+                  <a class="dropdown-item " href="{{ url('/perijinan/permohonan/layanan-server')}}">Permohonan Subdomain</a>
+                  <a class="dropdown-item " href="{{ url('/perijinan/permintaan/colocation')}}">Permohonan Colocation Server</a>
+                 
                 </div>
                 <!-- End Submenu -->
               </li>
