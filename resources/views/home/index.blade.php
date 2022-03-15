@@ -49,7 +49,7 @@
                             <div class="media align-items-center mb-3">
                                 <div class="avatar avatar-sm avatar-circle mr-3">
                                     <img class="avatar-img"
-                                        src="{{ asset('front/assets/images/diskominfo_ig.jpg') }}"
+                                        src="{{ asset('front/assets/images/soull.png') }}"
                                         alt="Image Description">
                                 </div>
                                 <div class="media-body">
@@ -105,9 +105,9 @@
           <!-- Card -->
           <div class="card bg-primary shadow-primary-lg mt-lg-n11 p-4 p-lg-5 mb-7" data-aos="fade-up">
             <div class="text-white">
-              <span class="d-block small text-white font-weight-bold text-cap mb-4 text-center">Berikut adalah Standar Pelayanan (SP) Diskomnfo Wonosobo</span>
-              <span class="d-block small text-white font-weight-bold text-cap mb-5 text-center">Silahkan klik nomor untuk melihat masing-masing Standar Pelayanan (SP)</span>
-              <div class="d-flex justify-content-center mb-4">
+              <span class="d-block small text-white font-weight-bold text-cap mb-3 text-center">Berikut adalah Standar Pelayanan (SP) Diskominfo Wonosobo</span>
+              <span class="d-block small text-white font-weight-bold text-cap mb-3 text-center">Silahkan klik nomor untuk melihat masing-masing Standar Pelayanan (SP)</span>
+              <div class="d-flex justify-content-center mb-1">
                 <h4 class="text-white">
                     <a href="/page/sp-pembuatan-media-publikasi"><span class="text-white small"> 1. Pembuatan Media Publikasi</span></a><br>
                     <a href="/page/sp-permohonan-peliputan-kegiatan"><span class="text-white small"> 2. Permohonan Liputan</span></a><br>
@@ -133,7 +133,7 @@
           <!-- Logos -->
           <div class="row text-center">
              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 py-2">
-                    <img class="card-img transition-zoom-hover" src="{{ asset('front/assets/images/maklumat.jpg') }}" style="width: 90%;">
+                    <img class="card-img transition-zoom-hover" src="{{ asset('front/assets/images/maklumat.png') }}" style="width: 100%;">
              </div>
           </div>
 
@@ -182,7 +182,7 @@
                                             </span>
                                             <div class="media-body">
                                                 <span
-                                                    class="d-inline-block text-white font-weight-bold">{{ $highlight->nama->name }}</span>
+                                                    class="d-inline-block text-white font-weight-bold small">{{ $highlight->nama->name }}</span>
                                                 <small class="d-block text-white"><span
                                                         class="badge bg-dark">{{ Carbon\Carbon::parse($highlight->created_at)->isoFormat('dddd, D MMMM Y') }}</span></small>
                                             </div>
@@ -231,19 +231,18 @@
                                     </h3>
                                     <p>{{ $post->keterangan }}</p>
                                     <div class="media align-items-center mt-auto">
-                                        <a class="avatar avatar-sm avatar-circle mr-3">
+                                        <a class="avatar avatar-sm avatar-circle mt-2 ">
                                             <img class="avatar-img"
                                                 src="{{ asset('uploads/'. $post->nama->profile_photo_path) }}"
-                                                alt="Image Description">
+                                                alt="Image Description" style="max-width: 80%; height: 80%;">
                                         </a>
                                         <div class="media-body">
                                             <span class="text-dark">
-                                                <a class="d-inline-block text-inherit font-weight-bold"
+                                                <a class="d-inline-block text-inherit font-weight-bold small"
                                                     href="/uploadby/{{ $post->nama->slug }}">{{ $post->nama->name }}</a>
                                             </span>
                                             <!-- isoFormat('dddd, D MMMM Y H') -->
-                                            <small
-                                                class="d-block">{{ Carbon\Carbon::parse($post->created_at)->isoFormat('LLLL') }}
+                                            <small class="d-block small">{{ Carbon\Carbon::parse($post->created_at)->isoFormat('LLLL') }}
                                                 WIB</small>
                                         </div>
                                     </div>
@@ -376,21 +375,21 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 mb-3">
-                                        <a href="https://instagram.com/wonosobohebat" target="_blank">
+                                        <a href="https://www.instagram.com/diskominfo_wonosobo/" target="_blank">
                                         <div class="keyboard-box4">
                                             <img src="front/assets/images/instagram.png" class="keyboard-img" />
                                           <h2 class="keyboard-tulisan">INSTAGRAM</h2>
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
-                                        <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
+                                        <a href="https://www.youtube.com/channel/UCZqWOVA_3o7A2bqY4ywZn8Q" target="_blank">
                                         <div class="keyboard-box1">
                                             <img src="front/assets/images/youtube.png" class="keyboard-img" />
                                             <h2 class="keyboard-tulisan1 ml-2">YOUTUBE</h2>
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
-                                        <a href="https://www.facebook.com/diskominfo.wsb" target="_blank">
+                                        <a href="https://www.facebook.com/kominfo.wsb/" target="_blank">
                                         <div class="keyboard-box2">
                                             <img src="front/assets/images/fb.png" class="keyboard-img" />
                                             <h2 class="keyboard-tulisan ml-2">FACEBOOK</h2>

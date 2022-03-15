@@ -163,16 +163,22 @@
 
                   @foreach($ppid as $ppids)
                   <div class="hs-has-sub-menu">
-                    <a href="{{ url($ppids->url??'#') }}" @if($ppids->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($ppids->childs))dropdown-item-toggle @endif">{{ $ppids->nama }}</a>
+                    <a @if(count($ppids->childs))href="#"
+                      @else href="{{$ppids->url??'#'}}"
+                      @endif @if($ppids->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($ppids->childs))dropdown-item-toggle @endif">{{ $ppids->nama }}</a>
                     <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($ppids->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
                       @if(count($ppids->childs))
                       @foreach($ppids->childs as $child)
                       <div class="hs-has-sub-menu">
-                        <a href="{{ url($child->url??'#') }}" @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
+                        <a @if(count($child->childs))href="#"
+                        @else href="{{$child->url??'#'}}"
+                        @endif @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
                         <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany">
                           @if(count($child->childs))
                           @foreach($child->childs as $child1)
-                          <a href="{{ url($child1->url??'#') }}" @if($child1->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
+                          <a @if(count($child1->childs))href="#"
+                        @else href="{{$child1->url??'#'}}"
+                        @endif @if($child1->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
                           @endforeach
                           @endif
                         </div>
@@ -198,16 +204,24 @@
 
                   @foreach($menu_categoriess as $category)
                   <div class="hs-has-sub-menu">
-                    <a href="{{ url($category->url??'#') }}" @if($category->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif">{{ $category->nama }}</a>
+                    <a @if(count($category->childs))href="#"
+                        @else href="{{$category->url??'#'}}"
+                        @endif
+                         @if($category->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif">{{ $category->nama }}</a>
                     <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($category->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
                       @if(count($category->childs))
                       @foreach($category->childs as $child)
                       <div class="hs-has-sub-menu">
-                        <a href="{{ url($child->url??'#') }}" @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
+                        <a @if(count($child->childs))href="#"
+                        @else href="{{$child->url??'#'}}"
+                        @endif
+                         @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
                         <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany">
                           @if(count($child->childs))
                           @foreach($child->childs as $child1)
-                          <a href="{{ url($child1->url??'#') }}" @if($child1->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
+                          <a @if(count($child1->childs))href="#"
+                        @else href="{{$child1->url??'#'}}"
+                        @endif @if($child1->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
                           @endforeach
                           @endif
                         </div>
@@ -330,7 +344,7 @@
 
               <!-- Lampiran -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Pengaduan Masyarakat</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="#" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Pengaduan Masyarakat</a>
                 <!-- Pages - Submenu -->
                <!-- Blog - Submenu -->
                 <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu" style="min-width: 230px;">
@@ -519,8 +533,6 @@
             <!-- End Nav Link -->
           </div>
 
-
-
           <div class="col-12 col-md-6 col-lg mb-5 mb-lg-0">
             <div class="mb-4">
               <h5 class="text-white">Link Terkait</h5>
@@ -538,7 +550,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link media" href="https://dashboard-smartcity.wonosobokab.go.id" target="_blank">
+                <a class="nav-link media" href="https://smartcity.wonosobokab.go.id" target="_blank">
                   <span class="media">
                     <span class="icon-seven-segment-2 mt-1 mr-2"></span>
                     <span class="media-body">
@@ -557,22 +569,53 @@
                   </span>
                 </a>
               </li>
+            </ul>
+            </li>
+          </div>
+
+           <div class="col-12 col-md-6 col-lg mb-5 mb-lg-0">
+            <div class="mb-7">
+            </div>
+
+            <ul class="nav nav-sm nav-x-0 nav-white flex-column">
               <li class="nav-item">
-                <a class="nav-link media" href="https://www.kominfo.go.id/" target="_blank">
+                <a class="nav-link media" href="https://datadesa.wonosobokab.go.id/" target="_blank">
                   <span class="media">
                     <span class="icon-seven-segment-4 mt-1 mr-2"></span>
                     <span class="media-body">
-                      Kementerian Komunikasi dan Informatika
+                      Open Data Wonosobo
                     </span>
                   </span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link media" href="https://diskominfo.jatengprov.go.id/" target="_blank">
+                  <span class="media">
+                    <span class="icon-seven-segment-5 mt-1 mr-2"></span>
+                    <span class="media-body">
+                      Kominfo Jateng 
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link media" href="https://kominfo.go.id/" target="_blank">
+                  <span class="media">
+                    <span class="icon-seven-segment-6 mt-1 mr-2"></span>
+                    <span class="media-body">
+                     Kementerian Komunikasi dan Informatika
+                    </span>
+                  </span>
+                </a>
+              </li>
+    
             </ul>
             </li>
 
 
 
           </div>
+
         </div>
       </div>
 
