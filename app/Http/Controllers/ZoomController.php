@@ -27,7 +27,6 @@ class ZoomController extends Controller
      */
     public function create()
     {
-        // $user = User::orderBy('name', 'asc')->pluck('name', 'id');
         return view('zoom.create');
     }
 
@@ -39,11 +38,6 @@ class ZoomController extends Controller
      */
     public function store(Request $request)
     {
-
-        $nohape = $request->no_hp;
-        $link = urldecode('%2APermintaan+Link+Zoom%2A%0D%0AOPD+%3A+' . $request->nama_opd . '%0D%0ANama+%3A+' . $request->peminjam . '%0D%0ATopik+%3A+' . $request->topik . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('D MMMM Y') . '%0D%0AJam+%3A+' . $request->jam_mulai . '-'. $request->jam_selesai  . '%0D%0AAkun+Zoom+%3A+' . $request->peserta);
-        $this->notification($nohape);
-        // $this->sendGroupWA($link);
         Zoom::create([
             'nama_opd' => $request->nama_opd,
             'peminjam' => $request->peminjam,
@@ -56,11 +50,16 @@ class ZoomController extends Controller
             'link_zoom' => $request->link_zoom,
         ]);
 
-        if (isset($request->link_zoom)){
-            $nohape = $request->input('no_hp');
-            $link = strip_tags($request->input('link_zoom'));
+        $nohape = $request->no_hp;
+        $link = urldecode('%2APermintaan+Link+Zoom%2A%0D%0AOPD+%3A+' .  ucwords($request->nama_opd) . '%0D%0ANama+%3A+' .  ucwords($request->peminjam) . '%0D%0ATopik+%3A+' .  ucwords($request->topik) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AJam+%3A+' . $request->jam_mulai . '-'. $request->jam_selesai  .' WIB'. '%0D%0AAkun+Zoom+%3A+' . $request->peserta);
+        $this->notification($nohape);
+        $this->sendGroupWA($link);
+
+        if ($request->filled('link_zoom')){
+            $nohape = $request->no_hp;
+            $link = strip_tags($request->link_zoom);
             $this->notification($nohape, $link);
-            // $this->sendGroupWA($link);
+            $this->sendGroupWA($link);
         }
 
         return redirect(route('zoom:link_zoom.index'));
@@ -114,8 +113,8 @@ class ZoomController extends Controller
             'link_zoom' => $request->link_zoom,
         ]);
 
-        $nohape = $request->input('no_hp');
-        $link = strip_tags($request->input('link_zoom'));
+        $nohape = $request->no_hp;
+        $link = strip_tags($request->link_zoom);
         $this->notification($nohape, $link);
         $this->sendGroupWA($link);
 
@@ -167,31 +166,34 @@ class ZoomController extends Controller
                         return '-';
                     }
                 })
+                ->editColumn('nama_opd', function($a){
+                    return ucwords($a->nama_opd);
+                })
+
+                 ->editColumn('peminjam', function($a){
+                    return ucwords($a->peminjam);
+                })
                 ->rawColumns(['link_zoom', 'action'])
                 ->make(true);
     }
 
     public function notification($nohape, $link = 'Mohon ditunggu, permintaan link zoom Anda sedang diproses...')
     {
-
+        
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
-            'number' => $nohape,
-            'message' => $link,
+        'number' => $nohape,
+        'message' => $link
         ]);
+
 
     }
 
     public function sendGroupWA($link)
     {
-        $client = new \GuzzleHttp\Client();
-   
-            $notif = $client->request('POST', 'http://10.0.1.21:8000/send-group-message', [
-                'form_params' => [
-                    'name' => 'DC Team',
-                    'message' => $link,
-                ]
-            ]);
-       
-        return $notif;
+        $notif = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [   
+        'name' => 'DC Team',
+        'message' => $link,
+        ]);
+    
     }
 }

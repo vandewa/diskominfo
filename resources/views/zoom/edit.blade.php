@@ -170,18 +170,24 @@
 			    </div>
             </div>
        
-            <div class="form-group row mt-3">
-                <label class="col-form-label col-lg-2">Link Zoom</label>
-                <div class="col-lg-10">
-                    {{Form::textarea('link_zoom', null,['class' => 'form-control', 'id' => 'editor-full'
-                    ])}}
-                </div>
-                @error('link_zoom')
-                <div class="form-control-feedback text-danger">
-                    <i class="icon-cancel-circle2"></i>
-                </div>
-                <span class="form-text text-danger">{{ $message }}</span>
-                @enderror
+              <div class="form-group row mb-3" style="margin-bottom: 0.25rem">
+				<div class="col-12">
+					<label class="col-form-label col-lg-2">Link Zoom<span class="text-danger">*</span></label>
+                    <div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                              {{Form::textarea('link_zoom', null,['class' => 'form-control', 'id' => 'editor-full'])}}
+                                @error('link_zoom')
+                                <div class="form-control-feedback text-danger">
+                                    <i class="icon-cancel-circle2"></i>
+                                </div>
+                                <span class="form-text text-danger">{{ $message }}</span>
+                                @enderror
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-hour-glass"></i>
+                            </div>
+                        </div>
+                    </div>
+				</div>
             </div>
 
             <div class="text-right">

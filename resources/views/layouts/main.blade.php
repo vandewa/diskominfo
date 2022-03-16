@@ -569,15 +569,6 @@
                   </span>
                 </a>
               </li>
-            </ul>
-            </li>
-          </div>
-
-           <div class="col-12 col-md-6 col-lg mb-5 mb-lg-0">
-            <div class="mb-7">
-            </div>
-
-            <ul class="nav nav-sm nav-x-0 nav-white flex-column">
               <li class="nav-item">
                 <a class="nav-link media" href="https://datadesa.wonosobokab.go.id/" target="_blank">
                   <span class="media">
@@ -608,14 +599,9 @@
                   </span>
                 </a>
               </li>
-    
             </ul>
             </li>
-
-
-
           </div>
-
         </div>
       </div>
 

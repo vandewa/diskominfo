@@ -27,7 +27,9 @@
 					<label class="col-form-label col-lg-6">Nama<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
-							<input type="text" name="nama" class="form-control" placeholder="Masukkan Nama" value="{{ old('nama') }}">
+							<input type="text" id="nama" name="nama"
+							class="form-control @error('nama') is-invalid @enderror" placeholder="Nama"
+							value="{{ old('nama') }}">
 							@error('nama')
 							<div class="invalid-feedback">
 							{{ $message }}
@@ -40,6 +42,25 @@
 					</div>
 				</div>
 
+				<div class="col-6">
+					<label class="col-form-label col-lg-6">Slug<span class="text-danger">*</span></label>
+					<div class="col-lg-12">
+						<div class="form-group form-group-feedback form-group-feedback-left">
+							<input type="text" id="slug" name="slug" class="form-control" placeholder="Slug" value="{{ old('slug') }}" readonly>
+								@error('slug')
+								<div class="invalid-feedback">
+								{{ $message }}
+								</div>
+							@enderror
+							<div class="form-control-feedback form-control-feedback-lg">
+							<i class="icon-vcard"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
 					<label class="col-form-label col-lg-6">NIP<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
@@ -56,9 +77,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
 					<label class="col-form-label col-lg-6">Jabatan<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
@@ -75,7 +94,9 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
+			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
 					<label class="col-form-label col-lg-6">OPD<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
@@ -92,15 +113,13 @@
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="form-group row" style="margin-bottom: 0.25rem">
+				
 				<div class="col-6">
 					<label class="col-form-label col-lg-6">Email<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
 							<input type="text" name="email" class="form-control" placeholder="Masukkkan Email" value="{{ old('email') }}">
-							@error('nama')
+							@error('email')
 							<div class="invalid-feedback">
 							{{ $message }}
 							</div>
@@ -111,7 +130,9 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
+			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
 					<label class="col-form-label col-lg-6">Nomor HP<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
@@ -128,23 +149,22 @@
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
 					<label class="col-form-label col-lg-6">Level<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
 							<select name="level" class="form-control select-icons @error('level') is-invalid @enderror" data-fouc>
-								<option value=" " >- Pilih -</option>
-								<option data-icon="icon-wrench3" value="superadmin" >Superadmin</option>
-								<option data-icon="icon-wrench3" value="admin" >Admin</option>
-							</select>
-							@error('level')
-							<div class="invalid-feedback">
+							<option>-- Pilih --</option>
+							@foreach($role as $role )
+							<option value="{{ $role->id }}">{{ $role->display_name}}</option>
+							@endforeach
+						</select>
+								@error('level')
+								<div class="invalid-feedback">
 								{{ $message }}
-							</div>
-							@enderror
+								</div>
+								@enderror
 							<div class="form-control-feedback form-control-feedback-lg">
 								<i class="icon-wrench3"></i>
 							</div>
@@ -194,6 +214,16 @@
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}
 </script>
+<script>
+		const nama_kategori = document.querySelector('#nama');
+		const slug = document.querySelector('#slug');
+
+		nama.addEventListener('change', function() {
+		fetch('/user/checkSlug?nama=' + nama.value)
+		.then(response => response.json())
+		.then(data => slug.value = data.slug);
+		});
+		</script>
 
 <script> 
 	function change()
@@ -230,4 +260,6 @@
 		}
 		}
 </script>
+
+
 @endpush

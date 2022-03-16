@@ -99,6 +99,7 @@ Route::get('/category/list', [CategoryController::class, 'getCategory'])->name('
 Route::get('/informasi-publik/list', [HomeController::class, 'getInformasiPublik'])->name('informasi.publik.list');
 Route::get('/lampiran/list', [HomeController::class, 'getLampiran'])->name('lampiran.list');
 Route::get('/lampirans/list', [LampiranController::class, 'getLampirans'])->name('lampirans.list');
+Route::get('/user/checkSlug', [UserController::class, 'checkSlug'])->middleware('auth');
 Route::get('/user/list', [UserController::class, 'getUser'])->name('user.list');
 Route::get('/gallery/list', [GalleryController::class, 'getGallery'])->name('gallery.list');
 Route::get('/youtube/list', [YoutubeController::class, 'getYoutube'])->name('youtube.list');
@@ -116,7 +117,8 @@ Route::get('/reload-captcha', [PengaduanController::class, 'reloadCaptcha']);
 Route::get('/pengaduans/list', [PengaduanController::class, 'getPengaduan'])->name('pengaduans.list');
 Route::get('/pengaduans/hapus/{id}/komentar', [PengaduanController::class, 'hapus'])->name('pengaduan.komentar.hapus');
 Route::get('/zoom/list', [ZoomController::class, 'getZoom'])->name('zoom.list');
-Route::get('/zooms/list', [FrontZoomController::class, 'getZoom'])->name('front.zoom.list');
+Route::get('/permintaan/zoom/list', [FrontZoomController::class, 'getZoom'])->name('front.zoom.list');
+
 
 Route::group([], function () {
     Route::group(['prefix' => 'permintaan', 'as' => 'permintaan:'], function () {

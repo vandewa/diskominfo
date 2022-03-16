@@ -10,12 +10,10 @@
 @endsection
 
 @section('tambah_data')
-@if (auth()->user()->level=='superadmin'||'admin')
 <a href="{{route('pengumumans.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah
 </a>
-@endif
 @endsection
 
 @section('container')
@@ -38,6 +36,7 @@ Tambah
                     <th>No</th>
                     <th>Foto</th>
                     <th>Judul</th>
+                    <th>Tanggal</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -56,11 +55,12 @@ Tambah
         processing: true,
         serverSide: true,
         ajax: "{{ route('pengumumans.list') }}",
-        "order": [[ 2, "asc" ]],
+        "order": [[ 3, "desc" ]],
 				columns: [
 					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
                     {data: 'nama_lampiran', },
                     {data: 'judul', },
+                    {data: 'created_at', },
 					{
 						data: 'action', 
 						name: 'action', 

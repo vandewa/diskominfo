@@ -9,11 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Models\LaratrustRole;
 use Laratrust\Traits\LaratrustUserTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Users extends Authenticatable  implements JWTSubject
 {
     use HasFactory;
-    use LaratrustUserTrait;
+    use LaratrustUserTrait, Sluggable;
     protected $primaryKey = 'id';
     protected $table ='users';
     protected $guarded = [];
@@ -35,6 +36,15 @@ class Users extends Authenticatable  implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'jabatan'
+            ]
+        ];
     }
 
     

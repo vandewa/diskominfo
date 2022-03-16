@@ -218,6 +218,12 @@ class PengumumanController extends Controller
                      $foto = '<a href="'.asset($data->gambarmuka->file_name).'" target="_blank"><img src="'.asset($data->gambarmuka->file_name).'" style="height:50px;"></a>';
                     return $foto;
                 })
+
+                ->editColumn('created_at', function($data)
+                {
+                     return \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y');
+                })
+
                 ->editColumn('judul', function($data)
                 {
                     return $data->judul;

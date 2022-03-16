@@ -49,12 +49,22 @@
                             <div class="media align-items-center mb-3">
                                 <div class="avatar avatar-sm avatar-circle mr-3">
                                     <img class="avatar-img"
+                                        src="{{ asset('front/assets/images/pemkab.png') }}"
+                                        alt="Image Description">
+                                </div>
+                                <div class="avatar avatar-sm avatar-circle mr-3">
+                                    <img class="avatar-img"
                                         src="{{ asset('front/assets/images/soull.png') }}"
                                         alt="Image Description">
                                 </div>
-                                <div class="media-body">
-                                    <a class="text-white" href="">Diskominfo Wonosobo</a>
+                                <div class="avatar avatar-sm avatar-circle mr-3">
+                                    <img class="avatar-img"
+                                        src="{{ asset('front/assets/images/smartcity.png') }}"
+                                        alt="Image Description">
                                 </div>
+                                {{-- <div class="media-body">
+                                    <a class="text-white" href="">Diskominfo Wonosobo</a>
+                                </div> --}}
                             </div>
                             <!-- End Author -->
 
@@ -105,9 +115,9 @@
           <!-- Card -->
           <div class="card bg-primary shadow-primary-lg mt-lg-n11 p-4 p-lg-5 mb-7" data-aos="fade-up">
             <div class="text-white">
-              <span class="d-block small text-white font-weight-bold text-cap mb-3 text-center">Berikut adalah Standar Pelayanan (SP) Diskominfo Wonosobo</span>
-              <span class="d-block small text-white font-weight-bold text-cap mb-3 text-center">Silahkan klik nomor untuk melihat masing-masing Standar Pelayanan (SP)</span>
-              <div class="d-flex justify-content-center mb-1">
+              <span class="d-block text-white font-weight-bold text-cap mb-5 text-center">Standar Pelayanan (SP) Diskominfo Wonosobo</span>
+              {{-- <span class="d-block small text-white font-weight-bold text-cap mb-3 text-center">Silahkan klik nomor untuk melihat masing-masing Standar Pelayanan (SP)</span> --}}
+              <div class="d-flex justify-content-center mb-7">
                 <h4 class="text-white">
                     <a href="/page/sp-pembuatan-media-publikasi"><span class="text-white small"> 1. Pembuatan Media Publikasi</span></a><br>
                     <a href="/page/sp-permohonan-peliputan-kegiatan"><span class="text-white small"> 2. Permohonan Liputan</span></a><br>

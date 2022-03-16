@@ -10,6 +10,7 @@ use App\Models\Role;
 use DataTables;
 use App\Http\Requests\UsercreateValidation;
 use Illuminate\Support\Facades\Hash;
+use \Cviebrock\EloquentSluggable\Services\SlugService; 
 
 class UserController extends Controller
 {
@@ -37,7 +38,9 @@ class UserController extends Controller
         abort(403);
        }
 
-        return view('user.create');
+       $role = Role::with(['permissions'])->get();
+
+        return view('user.create', compact('role'));
     }
 
     /**
@@ -68,7 +71,7 @@ class UserController extends Controller
             'no_hp.required' => 'No Hp harus diisi.',
         ]);
 
-          $user = Users::create([
+          $user = User::create([
             'name' => $request->nama,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -77,11 +80,12 @@ class UserController extends Controller
             'jabatan' => $request->jabatan,
             'opd' => $request->opd,
             'no_hp' => $request->no_hp,
+            'slug' => $request->slug,
           ]);
 
           $user->attachRole($request->level);
 
-          return redirect ('user')->with('status', 'Data user berhasil ditambahkan');
+          return redirect (route('user.index'))->with('status', 'Data user berhasil ditambahkan');
     }
 
     /**
@@ -103,6 +107,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        
         if(!auth()->user()->hasPermission('users-update')){
         abort(403);
         }
@@ -141,7 +146,7 @@ class UserController extends Controller
         //     'no_hp.required' => 'No Hp harus diisi.',
         // ]);
 
-        Users::find($id)->update([
+        User::find($id)->update([
             'name' => $request->nama,
             'email' => $request->email,
             'nip' => $request->nip,
@@ -149,6 +154,7 @@ class UserController extends Controller
             'opd' => $request->opd,
             'no_hp' => $request->no_hp,
             'level' => $request->level,
+            'slug' => $request->slug,
         ]);
 
         if($request->filled('password')){
@@ -160,7 +166,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->syncRoles([$request->level]);
 
-        return redirect('user')->with('status', 'Data user berhasil diubah.');
+        return (route('user.index'))->with('status', 'Data user berhasil diubah.');
     }
 
     /**
@@ -226,5 +232,11 @@ class UserController extends Controller
                 ->rawColumns(['action', 'status','role'])
                 ->make(true);
         
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Users::class, 'slug', $request->nama);
+        return response()->json(['slug' => $slug]); 
     }
 }

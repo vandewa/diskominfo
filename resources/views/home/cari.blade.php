@@ -36,12 +36,12 @@
                     <h3><a class="text-inherit" href="/detail/{{$post->slug}}">{{ $post->judul_posting }}</a></h3>
                     <p>{{ $post->keterangan }}</p>
                 <div class="media align-items-center mt-auto">
-                  <a class="avatar avatar-sm avatar-circle mr-3">
-                    <img class="avatar-img" src="{{ asset('uploads/'.$post->nama->profile_photo_path) }}" alt="Image Description">
+                  <a class="avatar avatar-sm avatar-circle mt-2">
+                    <img class="avatar-img" src="{{ asset('uploads/'.$post->nama->profile_photo_path) }}" alt="Image Description" style="max-width: 80%; height: 80%;">
                   </a>
                   <div class="media-body">
                     <span class="text-dark">
-                       <a class="d-inline-block text-inherit font-weight-bold" href="/uploadby/{{$post->created_by}}">{{ $post->nama->name }}</a>
+                       <a class="d-inline-block text-inherit font-weight-bold small" href="/uploadby/{{$post->created_by}}">{{ $post->nama->name }}</a>
                     </span>
                     <small class="d-block">{{  Carbon\Carbon::parse($post->created_at)->isoFormat('LLLL') }} WIB </small>
                   </div>
@@ -99,7 +99,7 @@
                   <article class="mb-5 mt-3" data-aos="zoom-out-right">
                     <div class="media align-items-center text-inherit">
                       <div class="avatar avatar-lg mr-3">
-                        <a href="/detail/{{ $post->slug }}">
+                        <a href="/detail/{{ $populer->slug }}">
                             @if (!empty($populer->gambarMuka->path) || !empty($populer->gambarMuka->file_name))
                             <img class="card-img transition-zoom-hover"
                                   src="{{ asset($populer->gambarMuka->path.$populer->gambarMuka->file_name??'') }}"

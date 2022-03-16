@@ -10,12 +10,10 @@
 @endsection
 
 @section('tambah_data')
-@if (auth()->user()->level=='superadmin'||'admin')
 <a href="{{route('youtube.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah Link 
 </a>
-@endif
 @endsection
 
 @section('container')

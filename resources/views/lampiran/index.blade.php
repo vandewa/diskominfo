@@ -10,12 +10,10 @@
 @endsection
 
 @section('tambah_data')
-@if (auth()->user()->level=='superadmin'||'admin')
 <a href="{{route('lampirans.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
 Tambah Lampiran
 </a>
-@endif
 @endsection
 
 @section('container')

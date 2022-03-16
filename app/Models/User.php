@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -20,17 +21,14 @@ class User extends Authenticatable implements JWTSubject
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -75,5 +73,14 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'jabatan'
+            ]
+        ];
     }
 }

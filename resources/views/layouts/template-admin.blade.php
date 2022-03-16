@@ -198,8 +198,8 @@
 								<li class="nav-item"><a href="{{ route('menuberanda.index') }}" class="nav-link">Menu</a></li>
 								<li class="nav-item"><a href="{{ route('pengumumans.index') }}" class="nav-link">Pengumuman</a></li>
 								<li class="nav-item"><a href="{{ route('sampul.index') }}" class="nav-link">Sampul Beranda</a></li>
-								<li class="nav-item"><a href="{{ route('website.index') }}" class="nav-link">Website Kelurahan</a></li>
-								<li class="nav-item"><a href="{{ route('youtube.index') }}" class="nav-link">Youtube</a></li>
+								{{-- <li class="nav-item"><a href="{{ route('website.index') }}" class="nav-link">Website Kelurahan</a></li> --}}
+								{{-- <li class="nav-item"><a href="{{ route('youtube.index') }}" class="nav-link">Youtube</a></li> --}}
 							</ul>
 						</li>
 						@endpermission

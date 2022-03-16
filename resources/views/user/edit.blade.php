@@ -25,10 +25,12 @@
 
 			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
-					<label class="col-form-label col-lg-2">Nama<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-6">Nama<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
-							<input type="text" name="nama" class="form-control" placeholder="Judul berita" value="{{ $user->name }}">
+							<input type="text" id="nama" name="nama"
+							class="form-control @error('nama') is-invalid @enderror" placeholder="Nama"
+							value="{{ $user->name }}">
 							@error('nama')
 							<div class="invalid-feedback">
 							{{ $message }}
@@ -42,7 +44,26 @@
 				</div>
 
 				<div class="col-6">
-					<label class="col-form-label col-lg-2">NIP<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-6">Slug<span class="text-danger">*</span></label>
+					<div class="col-lg-12">
+						<div class="form-group form-group-feedback form-group-feedback-left">
+							<input type="text" id="slug" name="slug" class="form-control" placeholder="Slug" value="{{ $user->slug }}" readonly>
+								@error('slug')
+								<div class="invalid-feedback">
+								{{ $message }}
+								</div>
+							@enderror
+							<div class="form-control-feedback form-control-feedback-lg">
+							<i class="icon-vcard"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row" style="margin-bottom: 0.25rem">
+				<div class="col-6">
+					<label class="col-form-label col-lg-6">NIP<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
 							<input type="text" name="nip" class="form-control" placeholder="Masukkan Nip" value="{{ $user->nip }}">
@@ -57,11 +78,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
-					<label class="col-form-label col-lg-2">Jabatan<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-6">Jabatan<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
 							<input type="text" name="jabatan" class="form-control" placeholder="Masukkan Jabatan" value="{{ $user->jabatan }}">
@@ -76,10 +95,11 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
-
+			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
-					<label class="col-form-label col-lg-2">OPD<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-6">OPD<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
 							<input type="text" name="opd" class="form-control" placeholder="Masukkan OPD" value="{{ $user->opd }}">
@@ -94,14 +114,12 @@
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="form-group row" style="margin-bottom: 0.25rem">
+				
 				<div class="col-6">
-					<label class="col-form-label col-lg-2">Email<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-6">Email<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
-							<input type="text" name="email" class="form-control" placeholder="Keterangan" value="{{ $user->email }}">
+							<input type="text" name="email" class="form-control" placeholder="Masukkkan Email" value="{{ $user->email }}">
 							@error('email')
 							<div class="invalid-feedback">
 							{{ $message }}
@@ -113,10 +131,11 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
-
+			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
-					<label class="col-form-label col-lg-3">Nomor HP<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-6">Nomor HP<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
 							<input type="text" name="no_hp" class="form-control" placeholder="Masukkkan No Hp" value="{{ $user->no_hp }}">
@@ -131,9 +150,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
 				<label class="col-form-label col-lg-2">Level<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
@@ -231,5 +248,6 @@
 		}
 		}
 </script>
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}
 @endpush
