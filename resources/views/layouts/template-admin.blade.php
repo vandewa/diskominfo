@@ -276,10 +276,10 @@
 						@permission('layanan-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi6')">
 							<a href="#" class="nav-link"><i class="icon-bubble-lines4"></i><span>Layanan</span>
-								<span class="badge bg-orange-400 align-self-center ml-auto">{{ $total_layanan}}</span>
+								{{-- <span class="badge bg-orange-400 align-self-center ml-auto">{{ $total_layanan}}</span> --}}
 							</a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layanan">
-								<li class="nav-item">
+								{{-- <li class="nav-item">
 									<a href="{{ route('pengaduans.index') }}" class="nav-link ">Pengaduan Masyarakat
 										<span class="badge bg-orange-400 align-self-center ml-auto">{{$status_pengaduan}}</span>
 									</a>
@@ -287,6 +287,18 @@
 								<li class="nav-item">
 									<a href="{{ route('komentar.index') }}" class="nav-link ">Permohonan Informasi
 										<span class="badge bg-orange-400 align-self-center ml-auto">{{$status_komentar}}</span>
+									</a>
+								</li> --}}
+								<li class="nav-item">
+									<a href="{{ route('media-publikasi.index') }}" class="nav-link ">Pembuatan Media Publikasi
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ route('liputan.index') }}" class="nav-link ">Permohonan Liputan
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ route('informasi-publik.index') }}" class="nav-link ">Permohonan Informasi Publik
 									</a>
 								</li>
 							</ul>
@@ -349,6 +361,14 @@
 							</a>
 						</li>
 						@endpermission
+
+						<li class="nav-item">
+							<a href="{{ route('buku:tamu.index') }}" class="nav-link @yield('kondisi12')">
+								<i class="icon-man-woman"></i>
+								<span>Buku Tamu</span>
+							</a>
+						</li>
+
 						<!-- /main -->
 					</ul>
 				</div>

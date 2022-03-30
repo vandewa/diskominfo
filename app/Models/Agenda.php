@@ -13,4 +13,8 @@ class Agenda extends Model
     {
         return $this->belongsTo(User::class, 'nama_id');
     }
+    public function oleh()
+    {
+        return $this->belongsTo(User::class, 'oleh');
+    }
 }

@@ -36,7 +36,7 @@
                         <th>Topik</th>
                         <th>Peserta</th>
                         <th>Instansi</th>
-                        <th>Action</th>
+                        <th>Link</th>
                     </tr>
                     </thead>
                     <tbody>

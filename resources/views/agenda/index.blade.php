@@ -57,14 +57,14 @@
         serverSide: true,
         ajax: window.location.href,
         columns: [
-            { data: 'id', name: 'id' },
+            { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
             { data: 'user.name', nama: 'user.name' },
             { data: 'tanggal', name: 'tanggal' },
             { data: 'acara', name: 'acara' },
             { data: 'tempat', name: 'tempat' },
             { data: 'jamMulai', name: 'jamMulai' },
             { data: 'keterangan', name: 'keterangan' },
-            { data: 'oleh', name: 'oleh' },
+            { data: 'oleh.name', name: 'oleh.name',  orderable: false, searchable: false, },
             { data: 'action', },
         ]
     });

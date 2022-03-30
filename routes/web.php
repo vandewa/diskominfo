@@ -39,6 +39,11 @@ use App\Http\Controllers\ZoomController;
 use App\Http\Controllers\Inventory\KategoriController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Front\FrontZoomController;
+use App\Http\Controllers\Front\FrontBukuTamuController;
+use App\Http\Controllers\BukuTamuController;
+use App\Http\Controllers\Layanan\MediaPublikasiController;
+use App\Http\Controllers\Layanan\LiputanController;
+use App\Http\Controllers\Layanan\InformasiPublikController;
 
 
 
@@ -118,6 +123,8 @@ Route::get('/pengaduans/list', [PengaduanController::class, 'getPengaduan'])->na
 Route::get('/pengaduans/hapus/{id}/komentar', [PengaduanController::class, 'hapus'])->name('pengaduan.komentar.hapus');
 Route::get('/zoom/list', [ZoomController::class, 'getZoom'])->name('zoom.list');
 Route::get('/permintaan/zoom/list', [FrontZoomController::class, 'getZoom'])->name('front.zoom.list');
+Route::get('/agenda', [AgendaController::class, 'front'])->name('front.agenda');
+Route::get('/tamu', [FrontBukuTamuController::class, 'index'])->name('front.tamu');
 
 
 Route::group([], function () {
@@ -148,6 +155,12 @@ Route::group([], function () {
         Route::get('permintaan/colocation/{id}/cetak', [PerminColController::class, 'cetakSurat'])->name('cetak.surat.colocation.server');
         Route::get('kunjungan/data-center', [KunjunganDcController::class, 'create'])->name('kunjungan.dc.create');
         Route::post('kunjungan/data-center', [KunjunganDcController::class, 'store'])->name('kunjungan.dc.post');
+        Route::get('pembuatan/media-publikasi', [MediaPublikasiController::class, 'create'])->name('media.publikasi.create');
+        Route::post('pembuatan/media-publikasi', [MediaPublikasiController::class, 'store'])->name('media.publikasi.post');
+        Route::get('permohonan/liputan', [LiputanController::class, 'create'])->name('liputan.create');
+        Route::post('permohonan/liputan', [LiputanController::class, 'store'])->name('liputan.post');
+        Route::get('permohonan/informasi-publik', [InformasiPublikController::class, 'create'])->name('informasi.publik.create');
+        Route::post('permohonan/informasi-publik', [InformasiPublikController::class, 'store'])->name('informasi.publik.post');
     });
     Route::resource('akses-data-center', AksesDcController::class);
     Route::resource('layanan-server', LayananServerController::class);
@@ -156,6 +169,7 @@ Route::group([], function () {
     Route::resource('colocation-server', PerminColController::class);
     Route::resource('kunjungan-data-center', KunjunganDcController::class);
     Route::resource('pengajuan-server', PengajuanServerController::class);
+    Route::resource('buku_tamu', FrontBukuTamuController::class);
 });
 
 Route::group(['middleware' => ['permission:perizinan-update']], function () {
@@ -184,6 +198,9 @@ Route::group(['middleware' => ['auth']], function () {
         });
         Route::group(['prefix' => 'zoom', 'as' => 'zoom:'], function () {
             Route::resource('link_zoom', ZoomController::class);
+        });
+        Route::group(['prefix' => 'buku', 'as' => 'buku:'], function () {
+            Route::resource('tamu', BukuTamuController::class);
         });
     });
 
@@ -218,9 +235,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('role', RoleController::class);
 
 
-    Route::group(['middleware' => ['permission:layanan-read']], function () {
-        Route::resource('komentar', KomentarController::class);
-        Route::resource('pengaduans', PengaduanController::class);
+    Route::group(['middleware' => ['permission:layanan-read'], 'prefix' => "admin"], function () {
+        // Route::resource('komentar', KomentarController::class);
+        // Route::resource('pengaduans', PengaduanController::class);
+        Route::resource('media-publikasi', MediaPublikasiController::class);
+        Route::resource('liputan', LiputanController::class);
+        Route::resource('informasi-publik', InformasiPublikController::class);
     });
 
     Route::group(['middleware' => ['auth'], 'prefix' => "admin"], function () {

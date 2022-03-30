@@ -15,26 +15,19 @@
         @endsection
 
         <main id="content" role="main">
-            <!-- Article Description Section -->
             <div class="container space-top-1 space-bottom-2">
                 <div class="w-100 sm-6 mx-lg-auto">
                     <h3 class="mb-4 mt-10"><center>Form Pengajuan Akses Data Center</center></h3>
                     <div class="w-lg-80 mx-auto">
-                        <!-- Contacts Form -->
-                        <!-- Card -->
                         @if(!Session::has('keterangan'))
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title"> Data Diri</h5>
                             </div>
 
-                            <!-- Body -->
                             <div class="card-body">
-                                <!-- Form -->
-
-                           {{Form::open(['route' => 'perijinan:akses.dc.post'])}}
-                                    <!-- Form Group -->
-                                {{Form::hidden('status_st','STATUS_ST_01')}}
+                            {{Form::open(['route' => 'perijinan:akses.dc.post'])}}
+                            {{Form::hidden('status_st','STATUS_ST_01')}}
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-3 col-form-label input-label">Nama</label>
                                         <div class="col-sm-9">
@@ -81,8 +74,7 @@
                                     <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
                                 </div>
                             {{Form::close()}}
-                            @else
-                                <!-- Cookie Alert -->
+                                @else
                                     <div class="container ">
                                         <div class="alert bg-white w-lg-80 border shadow-sm mx-auto" role="alert">
                                             <h4 class="text-success">Berhasil !</h4>
@@ -104,23 +96,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- End Cookie Alert -->
-
-                            @endif
-
-                                <!-- End Form -->
+                                @endif
                             </div>
-
-                            <!-- End Body -->
                         </div>
-
-                        <!-- End Card -->
-                        <!-- End Contacts Form -->
                     </div>
                 </div>
             </div>
-
-
         </main>
 
         @endsection
@@ -133,11 +114,12 @@
 
         @push('js')
             <script>
-                <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+            <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
             <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
             <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
             <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+            </script>
             <script type="text/javascript">
                 $(function () {
 
@@ -159,4 +141,4 @@
 
                 });
             </script>
-    @endpush
+         @endpush

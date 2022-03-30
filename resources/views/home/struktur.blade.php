@@ -22,35 +22,69 @@
      <div class="w-lg-100 mx-lg-auto">
        <div class="mb-4"></div>
 
-       <img src="{{ asset('front/assets/images/profil/asep.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/diksa1.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/azis.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/borimin.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/damar.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/danang.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/devan.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/dina.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/ganes.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/mukhamim.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/agung.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/noor.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/richard.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/setyo.png') }}" alt="" style="width: 20%;" class="mr-5">
-       <img src="{{ asset('front/assets/images/profil/sugeng.png') }}" alt="" style="width: 20%;" class="mr-5">
+       <div class="d-flex justify-content-center ml-3"> 
+         <img src="{{ asset('front/assets/images/profil/1.png') }}" alt="" style="width: 21%;" class="mr-5">
+       </div>
+        <div class="d-flex justify-content-center ml-3"> 
+         <img src="{{ asset('front/assets/images/profil/2.png') }}" alt="" style="width: 21%;" class="mr-5">
+          <img src="{{ asset('front/assets/images/profil/3.png') }}" alt="" style="width: 21%;" class="mr-5">
+          <img src="{{ asset('front/assets/images/profil/4.png') }}" alt="" style="width: 21%;" class="mr-5">
+          <img src="{{ asset('front/assets/images/profil/5.png') }}" alt="" style="width: 21%;" class="mr-5">
+       </div>
+      
+       <img src="{{ asset('front/assets/images/profil/6.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/7.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/8.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/9.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/10.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/11.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/12.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/13.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/14.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/15.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/16.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/17.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/18.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/19.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/20.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/21.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/22.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/23.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/24.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/25.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/26.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/27.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/28.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/29.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/30.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/31.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/32.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/33.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/34.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/35.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/36.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/37.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/38.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/39.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/40.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/41.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/42.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/43.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/44.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/45.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/46.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/47.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/48.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/49.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/50.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/51.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/52.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/53.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/54.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/55.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/56.png') }}" alt="" style="width: 21%;" class="mr-5">
+       <img src="{{ asset('front/assets/images/profil/57.png') }}" alt="" style="width: 21%;" class="mr-5">
+     
 
      </div>
     </div>

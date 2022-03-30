@@ -34,18 +34,6 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-form-label col-lg-2">Tanggal<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="input-group">
-                        <span class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-calendar22"></i></span>
-                        </span>
-                        {{Form::text('tanggal', null,['class' => 'form-control daterange-basic'
-                        ])}}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
                 <label class="col-form-label col-lg-2">Acara<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
                     <div class="form-group-feedback form-group-feedback-right">
@@ -62,6 +50,44 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="col-form-label col-lg-2">Tanggal Berangkat<span class="text-danger">*</span></label>
+                <div class="col-lg-10">
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                        </span>
+                        {{Form::text('tanggalBerangkat', $tanggalBerangkat,['class' => 'form-control daterange-single'
+                        ])}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-lg-2">Tanggal Pulang<span class="text-danger">*</span></label>
+                <div class="col-lg-10">
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                        </span>
+                        {{Form::text('tanggalPulang', $tanggalPulang,['class' => 'form-control daterange-single'
+                        ])}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-lg-2">Jam Mulai<span class="text-danger">*</span></label>
+                <div class="col-lg-10">
+                    <div class="form-group-feedback form-group-feedback-right">
+                        {{Form::time('jamMulai', null,['class' => 'form-control'.($errors->has('jamMulai') ?' border-danger' :''), 'placeholder' =>'Jam Mulai'])}}
+                        @error('jamMulai')
+                        <div class="form-control-feedback text-danger">
+                            <i class="icon-cancel-circle2"></i>
+                        </div>
+                        <span class="form-text text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+            </div>   
+            <div class="form-group row">
                 <label class="col-form-label col-lg-2">Tempat<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
                     <div class="form-group-feedback form-group-feedback-right">
@@ -70,23 +96,6 @@
                         ''), 'placeholder' =>
                         'Tempat'])}}
                         @error('tempat')
-                        <div class="form-control-feedback text-danger">
-                            <i class="icon-cancel-circle2"></i>
-                        </div>
-                        <span class="form-text text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-form-label col-lg-2">Jam Mulai<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="form-group-feedback form-group-feedback-right">
-                        {{Form::time('jamMulai', null,['class' => 'form-control'.($errors->has('jamMulai') ?
-                        ' border-danger' :
-                        ''), 'placeholder' =>
-                        'Jam Mulai'])}}
-                        @error('jamMulai')
                         <div class="form-control-feedback text-danger">
                             <i class="icon-cancel-circle2"></i>
                         </div>
@@ -129,8 +138,20 @@
         console.log(data);
     });
 </script>
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
-<!-- <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script> -->
-<!-- {{-- {!! JsValidator::formRequest('App\Http\Requests\PostingcreateValidation') !!}--}} -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+  <script>
+  flatpickr("input[type=datetime-local]", {
+    "locale": "id"
+  });
+  </script>
+  <script>
+  flatpickr("input[type=time]", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true
+  });
+  </script>
 @endpush

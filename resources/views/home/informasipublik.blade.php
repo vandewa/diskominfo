@@ -70,7 +70,7 @@
     var table = $('.yajra').DataTable({
        	processing: true,
 				serverSide: true,
-        sDom: 't',
+        // sDom: 't',
         ajax: "{{ route('informasi.publik.list') }}",
         columns: [
 					{data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},

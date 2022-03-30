@@ -26,8 +26,7 @@
                         <a class="nav-link  @if(request('q') == '') active @endif "
                             id="pills-one-code-features-example2-tab" data-toggle="pill"
                             href="#pills-one-code-features-example2" role="tab"
-                            aria-controls="pills-one-code-features-example2" aria-selected="true">Daftar Pengajuan
-                            Izin</a>
+                            aria-controls="pills-one-code-features-example2" aria-selected="true">Daftar Layanan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if(request('q') != '') active @endif"
@@ -46,56 +45,53 @@
                     aria-labelledby="pills-one-code-features-example2-tab">
 
                     <div class="col-md-12 d-flex justify-content-center mb-5">
-                        <h2>DAFTAR PENGAJUAN IZIN DISKOMINFO</h2>
+                        <h2>DAFTAR LAYANAN DISKOMINFO</h2>
                     </div>
 
                     <div class="row">
 
                         <div class="col-md-3">
-                            <a href="{{ route('perijinan:akses.dc.create') }}">
+                            {{-- <a href="{{ route('perijinan:akses.dc.create') }}"> --}}
+                            <a href="{{ route('perijinan:media.publikasi.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/akses data center.jpg') }}"
-                                    alt="Girl in a jacket">
+                                    src="{{ asset('front/assets/images/akses data center.jpg') }}">
                             </a>
                         </div>
 
                         <div class="col-md-3">
-                            <a href="{{ route('perijinan:permintaan.col.create') }}">
+                            {{-- <a href="{{ route('perijinan:permintaan.col.create') }}"> --}}
+                             <a href="{{ route('perijinan:liputan.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/colocation.jpg') }}"
-                                    alt="Girl in a jacket">
+                                    src="{{ asset('front/assets/images/colocation.jpg') }}">
                             </a>
                         </div>
 
                         <div class="col-md-3">
-                            <a href="{{ route('perijinan:kunjungan.dc.create') }}">
+                            {{-- <a href="{{ route('perijinan:kunjungan.dc.create') }}"> --}}
+                                <a href="{{ route('perijinan:informasi.publik.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/kunjungan.jpg') }}"
-                                    alt="Girl in a jacket">
+                                    src="{{ asset('front/assets/images/kunjungan.jpg') }}">
                             </a>
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <a href="{{ route('perijinan:layanan.server.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/layanan.jpg') }}"
-                                    alt="Girl in a jacket">
+                                    src="{{ asset('front/assets/images/layanan.jpg') }}">
                             </a>
                         </div>
 
                         <div class="col-md-3">
                             <a href="{{ route('perijinan:vps.baru.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/vps baru.jpg') }}"
-                                    alt="Girl in a jacket">
+                                    src="{{ asset('front/assets/images/vps baru.jpg') }}">
                             </a>
                         </div>
 
                         <div class="col-md-3">
                             <a href="{{ route('perijinan:perubahan.vps.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/perubahan.jpg') }}"
-                                    alt="Girl in a jacket">
+                                    src="{{ asset('front/assets/images/perubahan.jpg') }}">
                             </a>
                         </div>
 
@@ -209,14 +205,32 @@
 
     @push('js')
         <script>
-            < script src = "{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}" >
+        <script src = "{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+        <script src = "{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
+        <script src = "{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+        </script>
+        <script type="text/javascript">
+            function sweetAlert() 
+            {  
 
-        </script>
-        <script
-            src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}">
-        </script>
-        <script
-            src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}">
-        </script>
+
+            // Swal.fire(
+            // 'Berhasil!',
+            // 'Permintaan berhasil dikirim',
+            // 'success')
+            // }
+
+          Swal.fire({
+            title: 'Berhasil!',
+            text: 'Silahkan cek WhatsApp / Email untuk notifikasi berikutnya',
+            imageWidth: 300,
+            imageHeight: 239,
+            imageUrl: 'front/assets/images/okk.gif',
+            })
+            }
+
+            @if(session('status'))
+            sweetAlert();
+            @endif
         </script>
     @endpush

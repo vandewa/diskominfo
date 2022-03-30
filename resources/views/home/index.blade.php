@@ -341,7 +341,7 @@
                                 <article class="mb-5 mt-3" data-aos="zoom-out-right">
                                     <div class="media align-items-center text-inherit">
                                         <div class="avatar avatar-lg mr-3">
-                                            <a href="/detail/{{ $post->slug }}">
+                                            <a href="/detail/{{ $populer->slug }}">
                                                  @if (!empty($populer->gambarMuka->path) || !empty($populer->gambarMuka->file_name))
                                                 <img class="card-img transition-zoom-hover"
                                                 src="{{ asset($populer->gambarMuka->path.$populer->gambarMuka->file_name??'') }}"

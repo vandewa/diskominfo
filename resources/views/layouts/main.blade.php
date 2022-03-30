@@ -9,7 +9,7 @@
   <meta property="og:description" content="Website Resmi Dinas Komunikasi dan Informatika Kabupaten Wonosobo">
 
   <!-- Required Meta Tags Always Come First -->
-  <meta charset="utf-8">
+  <meta charset = "UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Favicon -->
@@ -679,6 +679,7 @@
   <script src="{{ url ('front/assets/vendor/leaflet/dist/leaflet.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-video-bg/dist/hs-video-bg.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/aos/dist/aos.js')}}"></script>
+  
 
 
   <!-- ====validator==== -->

@@ -129,8 +129,9 @@ class FrontZoomController extends Controller
                  ->addColumn('tanggal-zoom', function ($a) {
                     return \Carbon\Carbon::createFromTimeStamp(strtotime($a->tanggal))->isoFormat('D MMMM Y');
                 })
+
                  ->addColumn('jam_mulai', function ($a) {
-                    return $a->jam_mulai.' - '.$a->jam_selesai.' WIB';
+                    return Carbon::createFromFormat('H:i:s',$a->jam_mulai)->format('H:i').' - '.Carbon::createFromFormat('H:i:s',$a->jam_selesai)->format('H:i') .' WIB ';
                 })
                 
                 ->rawColumns(['link_zoom', 'action'])

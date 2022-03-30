@@ -15,16 +15,15 @@ class CreateTableAgenda extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nama_id');
-            $table->date('tanggalBerangkat');
-            $table->date('tanggalPulang');
-            $table->char('acara');
-            $table->char('tempat');
-            $table->char('keterangan');
-            $table->char('tanggal');
-            $table->char('jamMulai');
-            $table->char('oleh');
-            $table->bigInteger('message_id');
+            $table->bigInteger('nama_id')->nullable();
+            $table->date('tanggalBerangkat')->nullable();
+            $table->date('tanggalPulang')->nullable();
+            $table->char('acara')->nullable();
+            $table->char('tempat')->nullable();
+            $table->char('keterangan')->nullable();
+            $table->time('jamMulai')->nullable();
+            $table->bigInteger('oleh')->nullable();
+            $table->bigInteger('message_id')->nullable();
             $table->timestamps();
         });
     }

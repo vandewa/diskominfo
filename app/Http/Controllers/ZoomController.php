@@ -43,7 +43,7 @@ class ZoomController extends Controller
             'peminjam' => $request->peminjam,
             'no_hp' => $request->no_hp,
             'topik' => $request->topik,
-            'tanggal' => Carbon::createFromFormat('m/d/Y', $request->tanggal)->format('Y-m-d'),
+            'tanggal' => Carbon::createFromFormat('d/m/Y', $request->tanggal)->format('Y-m-d'),
             'jam_mulai' => $request->jam_mulai,
             'jam_selesai' => $request->jam_selesai,
             'peserta' => $request->peserta,
@@ -86,7 +86,7 @@ class ZoomController extends Controller
     public function edit($id)
     {
         $data = Zoom::find($id);
-        $tanggal = Carbon::createFromFormat('Y-m-d', $data->tanggal)->format('m/d/Y');
+        $tanggal = Carbon::createFromFormat('Y-m-d', $data->tanggal)->format('d/m/Y');
         return view('zoom.edit', compact('data', 'tanggal'));
     }
 
@@ -99,14 +99,13 @@ class ZoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         Zoom::find($id)
        ->update([
             'nama_opd' => $request->nama_opd,
             'peminjam' => $request->peminjam,
             'no_hp' => $request->no_hp,
             'topik' => $request->topik,
-            'tanggal' => Carbon::createFromFormat('m/d/Y', $request->tanggal)->format('Y-m-d'),
+            'tanggal' => Carbon::createFromFormat('d/m/Y', $request->tanggal)->format('Y-m-d'),
             'jam_mulai' => $request->jam_mulai,
             'jam_selesai' => $request->jam_selesai,
             'peserta' => $request->peserta,
@@ -153,7 +152,7 @@ class ZoomController extends Controller
                     return \Carbon\Carbon::createFromTimeStamp(strtotime($a->tanggal))->isoFormat('D MMMM Y');
                 })
                  ->addColumn('jam_mulai', function ($a) {
-                    return $a->jam_mulai.' - '.$a->jam_selesai.' WIB';
+                    return Carbon::createFromFormat('H:i:s',$a->jam_mulai)->format('H:i').' - '.Carbon::createFromFormat('H:i:s',$a->jam_selesai)->format('H:i') .' WIB ';
                 })
                 ->addColumn('link_zoom', function ($a) {
                     if ($a->link_zoom != null) {
