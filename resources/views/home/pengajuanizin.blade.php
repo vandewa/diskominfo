@@ -91,6 +91,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <a href="{{ route('perijinan:pinjam.peralatan.create') }}">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/6.png') }}">
                             </a>

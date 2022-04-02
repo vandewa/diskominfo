@@ -20,7 +20,7 @@ class PinjamTempatController extends Controller
     {
         if($request->ajax()){
 
-            $data = PinjamTempat::with(['status'])->select('*');
+            $data = PinjamTempat::with(['status', 'acara'])->select('*');
 
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -53,7 +53,7 @@ class PinjamTempatController extends Controller
     {
         if($request->ajax()){
 
-            $data = PinjamTempat::with(['status'])->whereDate('tanggal', '>=', date(Carbon::now()->format('Y-m-d')));
+            $data = PinjamTempat::with(['status', 'acara'])->whereDate('tanggal', '>=', date(Carbon::now()->format('Y-m-d')));
 
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -87,6 +87,7 @@ class PinjamTempatController extends Controller
      */
     public function store(Request $request)
     {
+        
         if($request->acara == 'ACARA_ST_01'){
             $acara = 'Daring';
         } else if ($request->acara == 'ACARA_ST_02') {
@@ -101,7 +102,7 @@ class PinjamTempatController extends Controller
             $files = $request->file('file_name');
             $prefix = date('Ymdhis');
             $extension = $files->getClientOriginalExtension();
-            $filename = $prefix.$extension;
+            $filename = $prefix.'.'.$extension;
             $request->file('file_name')->move(public_path('uploads/layanan'), $filename);
 
             PinjamTempat::create([
@@ -149,7 +150,11 @@ class PinjamTempatController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = PinjamTempat::find($id);
+        $tanggal = Carbon::createFromFormat('Y-m-d', $data->tanggal)->format('d/m/Y');
+        $alasan = $data->alasan;
+        $lampiran = $data->file_name;
+        return view('perijinan.pinjam-tempat.edit', compact('data', 'tanggal', 'alasan', 'lampiran'));
     }
 
     /**
@@ -172,7 +177,34 @@ class PinjamTempatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        PinjamTempat::find($id)
+        ->update([
+                'nama' => $request->nama,
+                'instansi' => $request->instansi,
+                'tanggal' => Carbon::createFromFormat('d/m/Y', $request->tanggal)->format('Y-m-d'),
+                'waktu' => $request->waktu,
+                'acara' => $request->acara,
+                'peserta' => $request->peserta,
+                'cp' => $request->cp,
+                'status_st' => $request->status_st,
+                'alasan' => $request->alasan,
+            ]);
+        
+        $nohape = $request->cp;
+        $status = \App\Models\ComCode::where('code_cd', $request->status_st)->first();
+        if(isset($request->alasan)) {
+            $notif = 'Status permintaan layanan Pinjam Tempat Rapat '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.
+                    '%0D%0A'.'( ' .$request->alasan . ' )' . '%0D%0A' .
+                    '%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
+        } else {
+           
+            $notif = 'Status permintaan layanan Pinjam Tempat Rapat '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
+        }
+     
+        // $this->notification($nohape, $notif);
+        // $this->sendGroupWA($notif);
+
+        return redirect(route('pinjam-tempat.index'))->with('status','Data berhasil diubah');
     }
 
     /**
@@ -183,6 +215,26 @@ class PinjamTempatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PinjamTempat::destroy($id);
+    }
+
+    public function notification($nohape, $notif = 'Terima kasih, permintaan layanan pinjam tempat rapat berhasil dikirim, mohon ditunggu notifikasi berikutnya. ')
+    {
+
+        $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => $nohape,
+            'message' => $notif,
+        ]);
+
+    }
+    
+
+    public function sendGroupWA($notif)
+    {
+        $response = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
+            'name' => 'DC Team',
+            'message' => $notif,
+        ]);
+    
     }
 }

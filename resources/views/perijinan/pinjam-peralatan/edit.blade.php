@@ -1,12 +1,12 @@
-@section('title', 'Detail Pinjam Tempat Rapat ')
+@section('title', 'Detail Pinjam Peralatan ')
 @section('menu','Layanan')
-@section('submenu','Detail Pinjam Tempat Rapat')
+@section('submenu','Detail Pinjam Peralatan')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Layanan</span>
-<span class="breadcrumb-item active">Pinjam Tempat Rapat</span>
+<span class="breadcrumb-item active">Pinjam Peralatan</span>
 @endsection
 
 @section('container')
@@ -14,14 +14,14 @@
 <div class="content">
 	<div class="card">
 		<div class="card-header header-elements-inline">
-		<h5 >DETAIL PINJAM TEMPAT RAPAT</h5>
+		<h5 >DETAIL PINJAM PERALATAN</h5>
 		</div>
 
 		<div class="card-body">
-			 {{Form::model($data, ['route' => ['pinjam-tempat.update', $data->id],'method' => 'put', 'files' =>
+			 {{Form::model($data, ['route' => ['pinjam-peralatan.update', $data->id],'method' => 'put', 'files' =>
             'true', ''])}}
 
-            @include('perijinan.pinjam-tempat.form')
+            @include('perijinan.pinjam-peralatan.form')
 
 			{{Form::close()}}
 		</div>

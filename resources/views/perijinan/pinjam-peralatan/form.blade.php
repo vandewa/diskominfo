@@ -34,10 +34,10 @@
     </div>
 
       <div class="col-6">
-        <label class="col-form-label col-lg-6">Waktu<span class="text-danger">*</span></label>
+        <label class="col-form-label col-lg-6">Alat Yang Pipinjam<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                    {{Form::time('waktu', null,['class' => 'form-control', 'placeholder' =>'Waktu'])}}
+                {{Form::text('alat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan nama alat','required'])}}
             </div>
         </div>
     </div>
@@ -45,31 +45,20 @@
 
 <div class="form-group row" style="margin-bottom: 0.25rem">
     <div class="col-6">
-        <label class="col-form-label col-lg-6">Acara<span class="text-danger">*</span></label>
+        <label class="col-form-label col-lg-6">Lama Pinjam<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                 {{Form::select('acara',get_code_group('ACARA_ST'), null, ['class' => 'form-control '])}}
+                {{Form::text('lama_pinjam', null, ['class' => 'form-control ', 'placeholder' => 'Lama pinjam','required'])}}
             </div>
         </div>
     </div>
-    <div class="col-6">
-        <label class="col-form-label col-lg-6">Jumlah Peserta<span class="text-danger">*</span></label>
-        <div class="col-lg-12">
-            <div class="form-group">
-                 {{Form::number('peserta', null, ['class' => 'form-control ','placeholder' => 'Masukkan Jumlah Peserta','required'])}}
-            </div>
-        </div>  
-    </div>
-</div>
-
-<div class="form-group row" style="margin-bottom: 0.25rem">
     <div class="col-6">
         <label class="col-form-label col-lg-6">Kontak Person<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                {{Form::number('cp', null, ['class' => 'form-control ','placeholder' => 'Masukkan nomor kontak person','required'])}}
+                {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Masukkan nomor telepon kontak person','required'])}}
             </div>
-        </div>
+        </div>  
     </div>
 </div>
 

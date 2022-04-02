@@ -95,7 +95,7 @@ class LiputanController extends Controller
             $files = $request->file('file_name');
             $prefix = date('Ymdhis');
             $extension = $files->getClientOriginalExtension();
-            $filename = $prefix.$extension;
+            $filename = $prefix.'.'.$extension;
             $request->file('file_name')->move(public_path('uploads/layanan'), $filename);
 
             Liputan::create([

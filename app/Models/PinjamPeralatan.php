@@ -5,21 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PinjamTempat extends Model
+class PinjamPeralatan extends Model
 {
     use HasFactory;
+
     protected $primaryKey = 'id';
-    protected $table ='pinjam_tempat';
+    protected $table ='pinjam_peralatan';
     protected $guarded = []; 
     
     public function status()
     {
         return $this->belongsTo(ComCode::class,'status_st');
-    }
-
-    public function acara()
-    {
-        return $this->belongsTo(ComCode::class,'acara');
     }
 
 }

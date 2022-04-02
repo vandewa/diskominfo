@@ -28,8 +28,8 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Instansi/Lembaga</th>
-                    <th>Acara</th>
-                    <th>Jumlah Peserta</th>
+                    <th>Alat</th>
+                    <th>Lama Pinjam</th>
                     <th>Tanggal</th>
                     <th>Status</th>
                     <th class="text-center">Aksi</th>
@@ -56,8 +56,8 @@
             {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
             {data: 'nama', name:'nama', orderable: false, searchable: false,},
             {data: 'instansi', name:'instansi'},
-            {data: 'acara.code_nm', name:'acara.code_cd'},
-            {data: 'peserta', name:'peserta'},
+            {data: 'alat', name:'alat'},
+            {data: 'lama_pinjam', name:'lama_pinjam'},
             {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
             {data: 'status.code_nm', name:'status.code_cd', orderable: false, searchable: false,},
             {data: 'action', },

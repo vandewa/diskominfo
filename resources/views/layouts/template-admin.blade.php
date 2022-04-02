@@ -309,6 +309,10 @@
 									<a href="{{ route('pinjam-tempat.index') }}" class="nav-link ">Pinjam Tempat Rapat
 									</a>
 								</li>
+								<li class="nav-item">
+									<a href="{{ route('pinjam-peralatan.index') }}" class="nav-link ">Pinjam Peralatan
+									</a>
+								</li>
 							</ul>
 						</li>
 						@endpermission

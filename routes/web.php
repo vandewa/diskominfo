@@ -46,6 +46,7 @@ use App\Http\Controllers\Layanan\LiputanController;
 use App\Http\Controllers\Layanan\InformasiPublikController;
 use App\Http\Controllers\Layanan\PengajuanKeberatanController;
 use App\Http\Controllers\Layanan\PinjamTempatController;
+use App\Http\Controllers\Layanan\PinjamPeralatanController;
 
 
 
@@ -166,8 +167,8 @@ Route::group([], function () {
         Route::post('permohonan/pengajuan-keberatan', [PengajuanKeberatanController::class, 'store'])->name('pengajuan.keberatan.post');
         Route::get('permohonan/pinjam-tempat', [PinjamTempatController::class, 'create'])->name('pinjam.tempat.create');
         Route::post('permohonan/pinjam-tempat', [PinjamTempatController::class, 'store'])->name('pinjam.tempat.post');
-
-
+        Route::get('permohonan/pinjam-peralatan', [PinjamPeralatanController::class, 'create'])->name('pinjam.peralatan.create');
+        Route::post('permohonan/pinjam-peralatan', [PinjamPeralatanController::class, 'store'])->name('pinjam.peralatan.post');
 
 
     });
@@ -252,6 +253,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('informasi-publik', InformasiPublikController::class);
         Route::resource('pengajuan-keberatan', PengajuanKeberatanController::class);
         Route::resource('pinjam-tempat', PinjamTempatController::class);
+        Route::resource('pinjam-peralatan', PinjamPeralatanController::class);
     });
 
     Route::group(['middleware' => ['auth'], 'prefix' => "admin"], function () {

@@ -31,12 +31,11 @@
                         <tr>
                         <th>No</th>
                         <th>Tanggal</th>
-                        <th>Instansi / Lembaga</th>
-                        <th>Jam</th>
-                        <th>Tempat</th>
+                        <th>Instansi/Lembaga</th>
                         <th>Acara</th>
-                        <th>Peserta</th>
+                        <th>Jumlah Peserta</th>
                         <th>Status</th>
+                        <th style="display:none;">Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,7 +56,7 @@
                 </button>
                 </div>
                 <div class="card-body">
-                     {{Form::open(['route' => 'perijinan:pinjam.tempat.post'])}}
+                     {{Form::open(['route' => 'perijinan:pinjam.tempat.post', 'files' => true])}}
                     {{Form::hidden('status_st','STATUS_ST_01')}}
                             <div class="row form-group">
                                 <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama</label>
@@ -162,16 +161,15 @@
             processing: true,
             serverSide: true,
             ajax: window.location.href,
-            "order": [[ 1, "asc" ]],
+            "order": [[ 6, "desc" ]],
             columns: [
-            { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-                { data: 'tanggalnya', name:'tanggalnya'},
-                { data: 'instansi', nama: 'instansi' },
-                { data: 'waktu', name: 'waktu' },
-                { data: 'tempat', name: 'tempat' },
-                { data: 'acara', name: 'acara' },
-                { data: 'peserta', name: 'peserta' },
-                { data: 'status_st', name:'status_st', orderable: false, searchable: false,},
+                {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+                {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
+                {data: 'instansi', name:'instansi'},
+                {data: 'acara.code_nm', name:'acara.code_cd'},
+                {data: 'peserta', name:'peserta'},
+                {data: 'status_st', name:'status_st', orderable: false, searchable: false,},
+                {data: 'tanggal', name:'tanggal', visible: false,},
             ]
         });
     </script>
