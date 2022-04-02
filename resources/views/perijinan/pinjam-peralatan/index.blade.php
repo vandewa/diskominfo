@@ -1,12 +1,12 @@
-@section('title', 'Pinjam Tempat Rapat ')
+@section('title', 'Pinjam Peralatan ')
 @section('menu','Layanan')
-@section('submenu','List Pinjam Tempat Rapat')
+@section('submenu','List Pinjam Peralatan')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Layanan</span>
-<span class="breadcrumb-item active">Pinjam Tempat Rapat</span>
+<span class="breadcrumb-item active">Pinjam Peralatan</span>
 @endsection
 
 @section('container')
@@ -33,7 +33,7 @@
                     <th>Tanggal</th>
                     <th>Status</th>
                     <th class="text-center">Aksi</th>
-                    <th >Tanggalnya</th>
+                    <th style="display:none;">Tanggalnya</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,7 +54,7 @@
         "order": [[ 8, "desc" ]],
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-            {data: 'nama', name:'nama', orderable: false, searchable: false,},
+            {data: 'nama', name:'nama',},
             {data: 'instansi', name:'instansi'},
             {data: 'alat', name:'alat'},
             {data: 'lama_pinjam', name:'lama_pinjam'},

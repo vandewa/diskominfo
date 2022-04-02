@@ -86,13 +86,13 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Kontak person/ penanggung jawab</label>
+                                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Penanggung jawab</label>
                                         <div class="col-sm-7">
                                             {{Form::text('cp', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan nama kontak person/ penanggung jawab','required'])}}
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nomor telepon kontak person</label>
+                                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nomor telepon kontak person<small style="color: red;"><b>(*WhatsApp)</b></small></label>
                                         <div class="col-sm-7">
                                             {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Masukkan nomor telepon kontak person','required'])}}
                                         </div>

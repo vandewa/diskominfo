@@ -193,7 +193,7 @@
 							<a href="#" class="nav-link"><i class="icon-menu7"></i> <span>Menu Depan</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Menu Depan">
-								<li class="nav-item"><a href="{{ route('gallery.index') }}" class="nav-link">Galeri</a></li>
+								{{-- <li class="nav-item"><a href="{{ route('gallery.index') }}" class="nav-link">Galeri</a></li> --}}
 								<li class="nav-item"><a href="{{ route('lampirans.index') }}" class="nav-link">Lampiran</a></li>
 								<li class="nav-item"><a href="{{ route('menuberanda.index') }}" class="nav-link">Menu</a></li>
 								<li class="nav-item"><a href="{{ route('pengumumans.index') }}" class="nav-link">Pengumuman</a></li>
@@ -311,6 +311,10 @@
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('pinjam-peralatan.index') }}" class="nav-link ">Pinjam Peralatan
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ route('magang.index') }}" class="nav-link ">Permohonan Magang
 									</a>
 								</li>
 							</ul>

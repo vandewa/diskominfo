@@ -99,6 +99,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <a href="{{ route('perijinan:magang.create') }}">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/7.png') }}">
                             </a>
@@ -248,11 +249,8 @@
 
 
     @push('js')
-        <script>
-        <script src = "{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}"></script>
-        <script src = "{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
-        <script src = "{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-        </script>
+        <script src = "{{ asset ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
+        <script src = "{{ asset ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
         <script type="text/javascript">
             function sweetAlert() 
             {  

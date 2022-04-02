@@ -47,6 +47,7 @@ use App\Http\Controllers\Layanan\InformasiPublikController;
 use App\Http\Controllers\Layanan\PengajuanKeberatanController;
 use App\Http\Controllers\Layanan\PinjamTempatController;
 use App\Http\Controllers\Layanan\PinjamPeralatanController;
+use App\Http\Controllers\Layanan\PermohonanMagangController;
 
 
 
@@ -169,6 +170,10 @@ Route::group([], function () {
         Route::post('permohonan/pinjam-tempat', [PinjamTempatController::class, 'store'])->name('pinjam.tempat.post');
         Route::get('permohonan/pinjam-peralatan', [PinjamPeralatanController::class, 'create'])->name('pinjam.peralatan.create');
         Route::post('permohonan/pinjam-peralatan', [PinjamPeralatanController::class, 'store'])->name('pinjam.peralatan.post');
+        Route::get('permohonan/magang', [PermohonanMagangController::class, 'create'])->name('magang.create');
+        Route::post('permohonan/magang', [PermohonanMagangController::class, 'store'])->name('magang.post');
+
+
 
 
     });
@@ -230,13 +235,13 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['middleware' => ['permission:menu_depan-read'], 'prefix' => "admin"], function () {
-        Route::resource('gallery', GalleryController::class);
+        // Route::resource('gallery', GalleryController::class);
         Route::resource('lampirans', LampiranController::class);
         Route::resource('menuberanda', MenuBerandaController::class);
         Route::resource('pengumumans', PengumumanController::class);
         Route::resource('sampul', SampulController::class);
-        Route::resource('website', WebsiteController::class);
-        Route::resource('youtube', YoutubeController::class);
+        // Route::resource('website', WebsiteController::class);
+        // Route::resource('youtube', YoutubeController::class);
     });
 
 
@@ -254,6 +259,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('pengajuan-keberatan', PengajuanKeberatanController::class);
         Route::resource('pinjam-tempat', PinjamTempatController::class);
         Route::resource('pinjam-peralatan', PinjamPeralatanController::class);
+        Route::resource('magang', PermohonanMagangController::class);
     });
 
     Route::group(['middleware' => ['auth'], 'prefix' => "admin"], function () {

@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="{{ url('front/assets/vendor/cubeportfolio/css/cubeportfolio.min.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/ion-rangeslider/css/ion.rangeSlider.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/dzsparallaxer/dzsparallaxer.css')}}">
-  <link rel="stylesheet" href="{{ url('front/assets/vendor/vendor/hs-video-bg/dist/hs-video-bg.min.css')}}">
+  <link rel="stylesheet" href="{{ url('front/assets/vendor/hs-video-bg/dist/hs-video-bg.min.css')}}">
   <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
   <link rel="stylesheet" href="{{ url('front/custombox/jquery.mCustomScrollbar.css')}}">
   <link rel="stylesheet" href="{{ url('front/custombox/custombox.min.css')}}">
@@ -868,8 +868,7 @@
 
   <!-- IE Support -->
   <script>
-    if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{ asset ('
-      front / assets / vendor / babel - polyfill / dist / polyfill.js ')}}"><\/script>');
+    if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{ asset ('front/assets/vendor/babel-polyfill/dist/polyfill.js ')}}"><\/script>');
   </script>
   @stack('js')
 
