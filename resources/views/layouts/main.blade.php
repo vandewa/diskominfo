@@ -679,6 +679,7 @@
   <script src="{{ url ('front/assets/vendor/leaflet/dist/leaflet.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-video-bg/dist/hs-video-bg.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/aos/dist/aos.js')}}"></script>
+  <script src="{{ url ('front/assets/vendor/hs-file-attach/dist/hs-file-attach.min.js')}}"></script>
   
 
 
@@ -755,6 +756,10 @@
         }
       }).init();
 
+       $('.js-file-attach').each(function () {
+        var customFile = new HSFileAttach($(this)).init();
+        });
+
 
       // INITIALIZATION OF FANCYBOX
       // =======================================================
@@ -829,6 +834,7 @@
         $('#heroSliderNav').slick('setPosition');
       });
 
+      
 
       // INITIALIZATION OF STICKY BLOCKS
       // =======================================================

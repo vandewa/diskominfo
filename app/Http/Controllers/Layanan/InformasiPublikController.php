@@ -48,7 +48,7 @@ class InformasiPublikController extends Controller
      */
     public function create()
     {
-         return view('perijinan.informasi-publik.create');
+        return view('perijinan.informasi-publik.create');
     
     }
 
@@ -60,7 +60,24 @@ class InformasiPublikController extends Controller
      */
     public function store(Request $request)
     {
-       return redirect(route('pengajuanizin'))->with('status','oke');
+        PermohonanInformasiPublik::create([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'pekerjaan' => $request->pekerjaan,
+            'nomor' => $request->nomor,
+            'email' => $request->email,
+            'tujuan' => $request->tujuan,
+            'rincian' => $request->rincian,
+            'status_st' => $request->status_st,
+        ]);
+
+        $nohape = $request->nomor;
+        $notif = urldecode('%2APermohonan+Informasi+Publikasi%2A%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AAlamat+%3A+' .  ucwords($request->alamat) . '%0D%0APekerjaan+%3A+' .  ucwords($request->pekerjaan) . '%0D%0ANomor+%3A+' .  $request->nomor. '%0D%0AEmail+%3A+' . $request->email . '%0D%0ATujuan+penggunaan+informasi+%3A+' . $request->tujuan .'%0D%0ARincian+informasi+yang+diinginkan+%3A+' );
+
+        $this->notification($nohape);
+        $this->sendGroupWA($notif);
+
+        return redirect(route('pengajuanizin'))->with('status','oke');
     }
 
     /**
@@ -71,7 +88,9 @@ class InformasiPublikController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = PermohonanInformasiPublik::find($id);
+
+        return view('perijinan.informasi-publik.edit', compact('data'));
     }
 
     /**
@@ -94,7 +113,34 @@ class InformasiPublikController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         PermohonanInformasiPublik::find($id)
+        ->update([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'pekerjaan' => $request->pekerjaan,
+            'nomor' => $request->nomor,
+            'email' => $request->email,
+            'tujuan' => $request->tujuan,
+            'rincian' => $request->rincian,
+            'status_st' => $request->status_st,
+            'alasan' => $request->alasan,
+        ]);
+
+        $nohape = $request->nomor;
+        $status = \App\Models\ComCode::where('code_cd', $request->status_st)->first();
+        if(isset($request->alasan)) {
+            $notif = 'Status permintaan layanan Permohonan Informasi Publik '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.
+                    '%0D%0A'.'( ' .$request->alasan . ' )' . '%0D%0A' .
+                    '%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
+        } else {
+           
+            $notif = 'Status permintaan layanan Permohonan Informasi Publik '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
+        }
+     
+        $this->notification($nohape, $notif);
+        $this->sendGroupWA($notif);
+    
+        return redirect()->route('media-publikasi.index');
     }
 
     /**
@@ -105,6 +151,26 @@ class InformasiPublikController extends Controller
      */
     public function destroy($id)
     {
-        //
+         PermohonanInformasiPublik::destroy($id);
+    }
+
+    public function notification($nohape, $notif = 'Terima kasih, permintaan layanan permohonan informasi publik berhasil dikirim, mohon ditunggu notifikasi berikutnya. ')
+    {
+
+        $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => $nohape,
+            'message' => $notif,
+        ]);
+
+    }
+    
+
+    public function sendGroupWA($notif)
+    {
+        $response = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
+            'name' => 'DC Team',
+            'message' => $notif,
+        ]);
+    
     }
 }

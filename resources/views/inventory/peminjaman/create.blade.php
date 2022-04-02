@@ -123,15 +123,13 @@
     </div>
     <!-- /CKEditor default -->
 </div>
-@endsection @push('js')
+@endsection 
+
+@push('js')
 <script>
     $('#barang_id').on('select2:select', function (e) {
         var data = e.params.data;
         console.log(data);
     });
 </script>
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
-<!-- <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script> -->
-<!-- {{-- {!! JsValidator::formRequest('App\Http\Requests\PostingcreateValidation') !!}--}} -->
 @endpush

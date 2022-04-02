@@ -8,6 +8,7 @@ use App\Models\MediaPublikasi;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
+use App\Http\Requests\MediaPublikasiStoreRequest;
 
 class MediaPublikasiController extends Controller
 {
@@ -62,24 +63,53 @@ class MediaPublikasiController extends Controller
      */
     public function store(Request $request)
     {
-        MediaPublikasi::create([
-            'nama' => $request->nama,
-            'instansi' => $request->instansi,
-            'informasi' => $request->informasi,
-            'tujuan' => $request->tujuan,
-            'tanggal' => $request->tanggal,
-            'waktu' => $request->waktu,
-            'tempat' => $request->tempat,
-            'cp' => $request->cp,
-            'nomor' => $request->nomor,
-            'status_st' => $request->status_st,
-        ]);
 
         $nohape = $request->nomor;
-        $notif = urldecode('%2APermintaan+Media+Publikasi%2A%0D%0AOPD+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ASekilas+data+dan+informasi+%3A+' .  ucwords($request->informasi) . '%0D%0AMaksud+tujuan+pembuatan+media+publikasi+%3A+' .  ucwords($request->tujuan). '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AWaktu+%3A+' . $request->waktu   .' WIB'.'%0D%0ATempat%3A+' . $request->tempat .'%0D%0AKontak+person+/+penanggungjawab+kegiatan+%3A+' . $request->cp .'%0D%0ANomor+telepon+%3A+' . $request->nomor);
+
+        if($request->hasFile('file_name')){
+            $files = $request->file('file_name');
+            $prefix = date('Ymdhis');
+            $extension = $files->getClientOriginalExtension();
+            $filename = $prefix.$extension;
+            $request->file('file_name')->move(public_path('uploads/layanan'), $filename);
+
+            MediaPublikasi::create([
+                'nama' => $request->nama,
+                'instansi' => $request->instansi,
+                'informasi' => $request->informasi,
+                'tujuan' => $request->tujuan,
+                'tanggal' => $request->tanggal,
+                'waktu' => $request->waktu,
+                'tempat' => $request->tempat,
+                'cp' => $request->cp,
+                'nomor' => $request->nomor,
+                'status_st' => $request->status_st,
+                'file_name' => $filename,
+            ]);
+
+               $notif = urldecode('%2APermintaan+Media+Publikasi%2A%0D%0AOPD+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ASekilas+data+dan+informasi+%3A+' .  ucwords($request->informasi) . '%0D%0AMaksud+tujuan+pembuatan+media+publikasi+%3A+' .  ucwords($request->tujuan). '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AWaktu+%3A+' . $request->waktu   .' WIB'.'%0D%0ATempat%3A+' . $request->tempat .'%0D%0AKontak+person+/+penanggungjawab+kegiatan+%3A+' . $request->cp .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0ALampiran%3A+&#8730;' );
+
+        } else {
+
+             MediaPublikasi::create([
+                'nama' => $request->nama,
+                'instansi' => $request->instansi,
+                'informasi' => $request->informasi,
+                'tujuan' => $request->tujuan,
+                'tanggal' => $request->tanggal,
+                'waktu' => $request->waktu,
+                'tempat' => $request->tempat,
+                'cp' => $request->cp,
+                'nomor' => $request->nomor,
+                'status_st' => $request->status_st,
+            ]);
+
+                $notif = urldecode('%2APermintaan+Media+Publikasi%2A%0D%0AOPD+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ASekilas+data+dan+informasi+%3A+' .  ucwords($request->informasi) . '%0D%0AMaksud+tujuan+pembuatan+media+publikasi+%3A+' .  ucwords($request->tujuan). '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AWaktu+%3A+' . $request->waktu   .' WIB'.'%0D%0ATempat%3A+' . $request->tempat .'%0D%0AKontak+person+/+penanggungjawab+kegiatan+%3A+' . $request->cp .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0ALampiran%3A+%D7;' );
+
+        }
    
-        $this->notification($nohape);
-        $this->sendGroupWA($notif);
+        // $this->notification($nohape);
+        // $this->sendGroupWA($notif);
 
         return redirect(route('pengajuanizin'))->with('status','oke');
     }
@@ -95,7 +125,8 @@ class MediaPublikasiController extends Controller
         $data = MediaPublikasi::find($id);
         $tanggal = Carbon::createFromFormat('Y-m-d', $data->tanggal)->format('d/m/Y');
         $alasan = $data->alasan;
-        return view('perijinan.media-publikasi.edit', compact('data', 'tanggal', 'alasan'));
+        $lampiran = $data->file_name;
+        return view('perijinan.media-publikasi.edit', compact('data', 'tanggal', 'alasan','lampiran'));
     }
 
     /**
@@ -176,7 +207,7 @@ class MediaPublikasiController extends Controller
     public function sendGroupWA($notif)
     {
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
-            'name' => 'Konten Medsos IKP',
+            'name' => 'DC Team',
             'message' => $notif,
         ]);
     

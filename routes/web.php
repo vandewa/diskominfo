@@ -44,6 +44,8 @@ use App\Http\Controllers\BukuTamuController;
 use App\Http\Controllers\Layanan\MediaPublikasiController;
 use App\Http\Controllers\Layanan\LiputanController;
 use App\Http\Controllers\Layanan\InformasiPublikController;
+use App\Http\Controllers\Layanan\PengajuanKeberatanController;
+use App\Http\Controllers\Layanan\PinjamTempatController;
 
 
 
@@ -126,7 +128,6 @@ Route::get('/permintaan/zoom/list', [FrontZoomController::class, 'getZoom'])->na
 Route::get('/agenda', [AgendaController::class, 'front'])->name('front.agenda');
 Route::get('/tamu', [FrontBukuTamuController::class, 'index'])->name('front.tamu');
 
-
 Route::group([], function () {
     Route::group(['prefix' => 'permintaan', 'as' => 'permintaan:'], function () {
        Route::resource('zoom', FrontZoomController::class);
@@ -161,6 +162,14 @@ Route::group([], function () {
         Route::post('permohonan/liputan', [LiputanController::class, 'store'])->name('liputan.post');
         Route::get('permohonan/informasi-publik', [InformasiPublikController::class, 'create'])->name('informasi.publik.create');
         Route::post('permohonan/informasi-publik', [InformasiPublikController::class, 'store'])->name('informasi.publik.post');
+        Route::get('permohonan/pengajuan-keberatan', [PengajuanKeberatanController::class, 'create'])->name('pengajuan.keberatan.create');
+        Route::post('permohonan/pengajuan-keberatan', [PengajuanKeberatanController::class, 'store'])->name('pengajuan.keberatan.post');
+        Route::get('permohonan/pinjam-tempat', [PinjamTempatController::class, 'create'])->name('pinjam.tempat.create');
+        Route::post('permohonan/pinjam-tempat', [PinjamTempatController::class, 'store'])->name('pinjam.tempat.post');
+
+
+
+
     });
     Route::resource('akses-data-center', AksesDcController::class);
     Route::resource('layanan-server', LayananServerController::class);
@@ -241,6 +250,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('media-publikasi', MediaPublikasiController::class);
         Route::resource('liputan', LiputanController::class);
         Route::resource('informasi-publik', InformasiPublikController::class);
+        Route::resource('pengajuan-keberatan', PengajuanKeberatanController::class);
+        Route::resource('pinjam-tempat', PinjamTempatController::class);
     });
 
     Route::group(['middleware' => ['auth'], 'prefix' => "admin"], function () {

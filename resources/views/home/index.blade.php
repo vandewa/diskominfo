@@ -380,7 +380,6 @@
                                 <!-- End SVG Shapes -->
                             </div>
 
-
                         <section id="my-keyboards" data-aos="zoom-out-right">
                             <div class="container">
                                 <div class="row">
@@ -437,25 +436,22 @@
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://pesonafm.wonosobokab.go.id" target="_blank">
-                                        
                                             <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/pesona.gif') }}">
-                                       
+                                        </a>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
-                                       <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/webtv.gif') }}">
+                                            <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/webtv.gif') }}">
+                                        </a>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://instagram.com/wonosobohebat" target="_blank">
-                                        
                                             <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/wsbhebat.gif') }}">
-                                        
-                    
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </section>
-
-                        
                     </div>
                 </div>
             </div>
@@ -506,48 +502,8 @@
                         href="{{ route('infografis.detail') }}">Lihat Selengkapnya <i
                         class="fas fa-angle-right fa-sm ml-1"></i></a>
                 </div>
-
             </div>
         </div>
-        {{-- <div class="container space-0 space-lg-0 ">
-             <div class="row">
-            @php
-                $angka = 1;
-            @endphp
-             <div id="fancyboxGallery{{ $angka }}" class="js-fancybox col-sm-6 col-md-3"
-               data-hs-fancybox-options='{
-                 "selector": "#fancyboxGallery{{ $angka }} .js-fancybox-item"
-               }'>
-                
-                        <div class="card" style="max-width: 18rem; max-height: 25rem;">
-                            <a class="js-fancybox-item media-viewer mb-3 d-block" href="javascript:;"
-                                data-src="{{ asset($grafis->gambarMuka->file_name??'') }}"
-                                data-caption="{{ $grafis->judul }}">
-                                <img class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover" src="{{ asset($grafis->gambarMuka->file_name??'') }}" alt="Image Description">
-                            </a>
-                                    @foreach($grafis->attachments as $picture)
-                                        <img class="js-fancybox-item d-none" alt="Image Description"
-                                            data-src="{{ asset($picture->file_name??'') }}"
-                                            data-caption="{{ $grafis->judul }}">
-                                    @endforeach
-
-                                 <div class="card-body">
-                                    <h5><a>{{ $grafis->judul }}</a></h5>
-                                </div>
-                        </div>
-                         @php ($angka++) @endphp 
-                </div>
-            </div>
-             @endforeach
-
-             <div class="container text-right mb-2 mt-3">
-                        <a class="btn btn-primary btn-sm"
-                            href="{{ route('infografis.detail') }}">Lihat Selengkapnya <i
-                                class="fas fa-angle-right fa-sm ml-1"></i></a>
-                    </div>
-        </div> --}}
-
-
       
         @if (count($infohoax))
             <div class="text-center mb-3">
@@ -607,50 +563,47 @@
             }
 
             .topcorner{
-   position:absolute;
-   top:0;
-   right:0;
-  }
+                position:absolute;
+                top:0;
+                right:0;
+            }
 
-.ignielPelangi {
-    background: linear-gradient(45deg, #f22613, #f89406, #26a65b, #5868ec, #f54e80, #f7ca18, #d2527f);
-    background-size: 500% 500%;
-    -webkit-animation: ignielGradient 15s ease infinite;
-    -moz-animation: ignielGradient 15s ease infinite;
-    animation: ignielGradient 15s ease infinite;
-}
-@-webkit-keyframes ignielGradient {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@-moz-keyframes ignielGradient {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@keyframes ignielGradient {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
+            .ignielPelangi {
+                background: linear-gradient(45deg, #f22613, #f89406, #26a65b, #5868ec, #f54e80, #f7ca18, #d2527f);
+                background-size: 500% 500%;
+                -webkit-animation: ignielGradient 15s ease infinite;
+                -moz-animation: ignielGradient 15s ease infinite;
+                animation: ignielGradient 15s ease infinite;
+            }
+            @-webkit-keyframes ignielGradient {
+                0%{background-position:0% 50%}
+                50%{background-position:100% 50%}
+                100%{background-position:0% 50%}
+            }
+            @-moz-keyframes ignielGradient {
+                0%{background-position:0% 50%}
+                50%{background-position:100% 50%}
+                100%{background-position:0% 50%}
+            }
+            @keyframes ignielGradient {
+                0%{background-position:0% 50%}
+                50%{background-position:100% 50%}
+                100%{background-position:0% 50%}
+            }
 
+            label.error {
+                color: red;
+                font-size: 1rem;
+                display: block;
+                margin-top: 5px;
+            }
 
-label.error {
-    color: red;
-    font-size: 1rem;
-    display: block;
-    margin-top: 5px;
-}
-
-input.error {
-    border: 1px dashed red;
-    font-weight: 300;
-    color: red;
-}
-
-}
-
+            input.error {
+                border: 1px dashed red;
+                font-weight: 300;
+                color: red;
+            }
+        }
 
         </style>
     @endpush
@@ -658,9 +611,8 @@ input.error {
     @push('js')
         <script>
         <script src = "{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}" ></script>
-        <script src ="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
-        <script src ="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-        <script src ="//platform.twitter.com/widgets.js" charset="utf-8" async></script>
+        <script src = "{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
+        <script src = "{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
         
         <script>
             function myFunction() {
@@ -678,7 +630,5 @@ input.error {
                 }
             });
         </script>
-        
-
         </script>
     @endpush

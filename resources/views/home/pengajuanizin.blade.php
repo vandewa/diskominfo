@@ -45,53 +45,96 @@
                     aria-labelledby="pills-one-code-features-example2-tab">
 
                     <div class="col-md-12 d-flex justify-content-center mb-5">
-                        <h2>DAFTAR LAYANAN DISKOMINFO</h2>
+                        <center><h2>DAFTAR LAYANAN DISKOMINFO</h2></center>
                     </div>
 
                     <div class="row">
-
-                        <div class="col-md-3">
+                        <div class="col-sm-6 col-md-3 mb-3 ">
                             {{-- <a href="{{ route('perijinan:akses.dc.create') }}"> --}}
                             <a href="{{ route('perijinan:media.publikasi.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/akses data center.jpg') }}">
+                                    src="{{ asset('front/assets/images/layanan/1.png') }}">
                             </a>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-sm-6 col-md-3 mb-3 ">
                             {{-- <a href="{{ route('perijinan:permintaan.col.create') }}"> --}}
                              <a href="{{ route('perijinan:liputan.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/colocation.jpg') }}">
+                                    src="{{ asset('front/assets/images/layanan/2.png') }}">
                             </a>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-sm-6 col-md-3 mb-3 ">
                             {{-- <a href="{{ route('perijinan:kunjungan.dc.create') }}"> --}}
                                 <a href="{{ route('perijinan:informasi.publik.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/kunjungan.jpg') }}">
+                                    src="{{ asset('front/assets/images/layanan/3.png') }}">
                             </a>
                         </div>
 
-                        <div class="col-md-3 mb-3">
-                            <a href="{{ route('perijinan:layanan.server.create') }}">
+                        <div class="col-sm-6 col-md-3 mb-3 ">
+                            {{-- <a href="{{ route('perijinan:layanan.server.create') }}"> --}}
+                                <a href="{{ route('perijinan:pengajuan.keberatan.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/layanan.jpg') }}">
+                                    src="{{ asset('front/assets/images/layanan/4.png') }}">
                             </a>
                         </div>
 
-                        <div class="col-md-3">
-                            <a href="{{ route('perijinan:vps.baru.create') }}">
+                        <div class="col-sm-6 col-md-3 mb-3">
+                            {{-- <a href="{{ route('perijinan:vps.baru.create') }}"> --}}
+                                <a href="{{ route('perijinan:pinjam.tempat.create') }}">
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/vps baru.jpg') }}">
+                                    src="{{ asset('front/assets/images/layanan/5.png') }}">
                             </a>
                         </div>
 
-                        <div class="col-md-3">
-                            <a href="{{ route('perijinan:perubahan.vps.create') }}">
+                        <div class="col-sm-6 col-md-3 mb-3">
+                            {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
                                 <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('front/assets/images/perubahan.jpg') }}">
+                                    src="{{ asset('front/assets/images/layanan/6.png') }}">
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-3">
+                            {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <img class="card-img transition-zoom-hover"
+                                    src="{{ asset('front/assets/images/layanan/7.png') }}">
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-3">
+                            {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <img class="card-img transition-zoom-hover"
+                                    src="{{ asset('front/assets/images/layanan/8.png') }}">
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-3">
+                            {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <img class="card-img transition-zoom-hover"
+                                    src="{{ asset('front/assets/images/layanan/9.png') }}">
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-3">
+                            {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <img class="card-img transition-zoom-hover"
+                                    src="{{ asset('front/assets/images/layanan/10.png') }}">
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-3">
+                            {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <img class="card-img transition-zoom-hover"
+                                    src="{{ asset('front/assets/images/layanan/11.png') }}">
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-3">
+                            {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <img class="card-img transition-zoom-hover"
+                                    src="{{ asset('front/assets/images/layanan/12.png') }}">
                             </a>
                         </div>
 

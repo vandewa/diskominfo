@@ -26,6 +26,7 @@ class CreateMediaPublikasiTable extends Migration
             $table->string('nomor')->nullable();
             $table->string('status_st')->nullable();
             $table->string('alasan')->nullable();
+            $table->string('file_name')->nullable();
             $table->timestamps();
         });
     }

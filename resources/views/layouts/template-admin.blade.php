@@ -218,7 +218,7 @@
 						</li>
 						@endpermission
 
-						@permission('perizinan-read')
+						{{-- @permission('perizinan-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi7')">
 							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Perizinan</span>
 								<span class="badge bg-orange-400 align-self-center ml-auto">{{$total_perizinan}}</span>
@@ -259,7 +259,7 @@
 								</li>
 							</ul>
 						</li>
-						@endpermission
+						@endpermission --}}
 
 						@permission('users-read')
 						<li class="nav-item nav-item-submenu @yield('kondisi3')">
@@ -299,6 +299,14 @@
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('informasi-publik.index') }}" class="nav-link ">Permohonan Informasi Publik
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ route('pengajuan-keberatan.index') }}" class="nav-link ">Pengajuan Keberatan Informasi Publik
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ route('pinjam-tempat.index') }}" class="nav-link ">Pinjam Tempat Rapat
 									</a>
 								</li>
 							</ul>

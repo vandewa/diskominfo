@@ -25,7 +25,7 @@
                             </div>
 
                             <div class="card-body">
-                            {{Form::open(['route' => 'perijinan:informasi.publik.post', 'id' => 'basic-form'])}}
+                            {{Form::open(['route' => 'perijinan:informasi.publik.post'])}}
                             {{Form::hidden('status_st','STATUS_ST_01')}}
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama</label>
@@ -83,8 +83,8 @@
         @endsection
 
         @push('css')
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+            <link rel="stylesheet" href="{{ asset('js/datatable/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('js/datatable/dataTables.bootstrap4.min.css') }}">
         @endpush
 
 
@@ -93,40 +93,9 @@
             <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
             <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
             <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-            <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-            <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+            <script src="{{ asset ('js/datatable/jquery.dataTables.min.js') }}"></script>
+            <script src="{{ asset ('js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+            {!! JsValidator::formRequest('App\Http\Requests\InformasiPublikStoreRequest') !!}
             </script>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                $("#basic-form").validate({
-                rules: {
-                nama : {
-                required: true,
-                },
-                instansi: {
-                required: true,
-                },
-                informasi: {
-                required: true,
-                },
-                tanggal: {
-                required: true,
-                },
-                waktu: {
-                required: true,
-                },
-                tempat: {
-                required: true,
-                },
-                cp: {
-                required: true,
-                },
-                nomor: {
-                required: true,
-                },
-                
-                }
-                });
-                });
-                </script>
          @endpush

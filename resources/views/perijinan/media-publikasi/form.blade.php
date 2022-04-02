@@ -81,6 +81,19 @@
     </div>
 </div>
 
+@if(!empty($lampiran))
+<div class="form-group row">
+    <div class="col-12">
+        <label class="col-form-label col-lg-6">Lampiran<span class="text-danger">*</span></label>
+        <div class="col-lg-12">
+            <div class="form-group">
+               <iframe height="500" src="{{ asset('uploads/layanan/'.$data->file_name) }}" width="100%"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 <hr>
 
 <div class="form-group row">

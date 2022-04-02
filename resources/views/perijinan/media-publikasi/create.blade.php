@@ -25,7 +25,7 @@
                             </div>
 
                             <div class="card-body">
-                            {{Form::open(['route' => 'perijinan:media.publikasi.post', 'id' => 'basic-form'])}}
+                            {{Form::open(['route' => 'perijinan:media.publikasi.post', 'files' => true])}}
                             {{Form::hidden('status_st','STATUS_ST_01')}}
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama</label>
@@ -69,12 +69,12 @@
                                                             <span class="fas fa-clock"></span>
                                                         </span>
                                                     </div>
-                                                    <input class="form-control" type="waktu" id="single-input" name="waktu" placeholder="WIB">
-                                                    {{-- <div class="input-group-prepend">
+                                                    <input class="form-control" type="waktu" id="single-input" name="waktu" placeholder="Jam">
+                                                    <div class="input-group-prepend">
                                                         <span class="input-group-text">
                                                             <span>WIB</span>
                                                         </span>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,6 +97,16 @@
                                             {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Masukkan nomor telepon kontak person','required'])}}
                                         </div>
                                     </div>
+                                    <div class="row form-group"  >
+                                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Lampiran <small style="color: red;"><b>(*pdf)</small></b></label>
+                                        <div class="col-sm-7 custom-file">
+                                          <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
+                                                    data-hs-file-attach-options='{
+                                                    "textTarget": "[for=\"customFile\"]"
+                                                }' accept=".pdf">
+                                            <label class="custom-file-label" for="customFile">Pilih file</label>
+                                        </div>
+                                    </div>
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
                                     </div>
@@ -107,57 +117,16 @@
                 </div>
             </div>
         </main>
-
         @endsection
-
-        @push('css')
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-        @endpush
-
 
         @push('js')
             <script>
-            <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
-            <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
-            <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-            <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-            <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+            <script src="{{ asset ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+            <script src="{{ asset ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
+            <script src="{{ asset ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+            
+            <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+            {!! JsValidator::formRequest('App\Http\Requests\MediaPublikasiStoreRequest') !!}
             </script>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                $("#basic-form").validate({
-                rules: {
-                nama : {
-                required: true,
-                },
-                instansi: {
-                required: true,
-                },
-                informasi: {
-                required: true,
-                },
-                tujuan: {
-                required: true,
-                },
-                tanggal: {
-                required: true,
-                },
-                waktu: {
-                required: true,
-                },
-                tempat: {
-                required: true,
-                },
-                cp: {
-                required: true,
-                },
-                nomor: {
-                required: true,
-                },
-                
-                }
-                });
-                });
-                </script>
+            
          @endpush
