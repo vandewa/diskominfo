@@ -2,7 +2,7 @@
 @section('menu','Zoom')
 @section('submenu','List Permintaan Link Zoom')
 @extends('layouts/template-admin')
-@section('kondisi11','active')
+@section('kondisi6','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Link Zoom</span>

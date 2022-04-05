@@ -2,7 +2,7 @@
 @section('menu','Link Zoom')
 @section('submenu','Tambah Link Zoom')
 @extends('layouts/template-admin')
-@section('kondisi11','active')
+@section('kondisi6','active')
 @section('halaman')
 <a class="breadcrumb-item" href="{{ route('zoom:link_zoom.index') }}">Link Zoom</a>
 <span class="breadcrumb-item active">Tambah Link Zoom</span>

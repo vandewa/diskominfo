@@ -290,31 +290,34 @@
 									</a>
 								</li> --}}
 								<li class="nav-item">
-									<a href="{{ route('media-publikasi.index') }}" class="nav-link ">Pembuatan Media Publikasi
+									<a href="{{ route('media-publikasi.index') }}" class="nav-link ">Media Publikasi
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('liputan.index') }}" class="nav-link ">Permohonan Liputan
+									<a href="{{ route('liputan.index') }}" class="nav-link ">Liputan
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('informasi-publik.index') }}" class="nav-link ">Permohonan Informasi Publik
+									<a href="{{ route('informasi-publik.index') }}" class="nav-link ">Informasi Publik
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('pengajuan-keberatan.index') }}" class="nav-link ">Pengajuan Keberatan Informasi Publik
+									<a href="{{ route('pengajuan-keberatan.index') }}" class="nav-link ">Keberatan Informasi Publik
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('pinjam-tempat.index') }}" class="nav-link ">Pinjam Tempat Rapat
+									<a href="{{ route('pinjam-tempat.index') }}" class="nav-link ">Tempat Rapat
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('pinjam-peralatan.index') }}" class="nav-link ">Pinjam Peralatan
+									<a href="{{ route('pinjam-peralatan.index') }}" class="nav-link ">Peralatan
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('magang.index') }}" class="nav-link ">Permohonan Magang
+									<a href="{{ route('magang.index') }}" class="nav-link ">Magang
+									</a>
+								</li><li class="nav-item">
+									<a href="{{ route('zoom:link_zoom.index') }}" class="nav-link ">Link Zoom
 									</a>
 								</li>
 							</ul>
@@ -369,14 +372,14 @@
 							</a>
 						</li>
 
-						@permission('zoom-read')
+						{{-- @permission('zoom-read')
 						<li class="nav-item">
 							<a href="{{ route('zoom:link_zoom.index') }}" class="nav-link @yield('kondisi11')">
 								<i class="icon-laptop"></i>
 								<span>Link Zoom</span>
 							</a>
 						</li>
-						@endpermission
+						@endpermission --}}
 
 						<li class="nav-item">
 							<a href="{{ route('buku:tamu.index') }}" class="nav-link @yield('kondisi12')">

@@ -212,7 +212,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::resource('harian', AgendaController::class);
         });
         Route::group(['prefix' => 'zoom', 'as' => 'zoom:'], function () {
-            Route::resource('link_zoom', ZoomController::class);
         });
         Route::group(['prefix' => 'buku', 'as' => 'buku:'], function () {
             Route::resource('tamu', BukuTamuController::class);
@@ -260,6 +259,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('pinjam-tempat', PinjamTempatController::class);
         Route::resource('pinjam-peralatan', PinjamPeralatanController::class);
         Route::resource('magang', PermohonanMagangController::class);
+        Route::resource('link_zoom', ZoomController::class);
+
     });
 
     Route::group(['middleware' => ['auth'], 'prefix' => "admin"], function () {

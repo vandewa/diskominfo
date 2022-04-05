@@ -41,6 +41,7 @@ class FrontZoomController extends Controller
     public function store(Request $request)
     {
 
+        return $request->all();
         Zoom::create([
             'nama_opd' => $request->nama_opd,
             'peminjam' => $request->peminjam,
@@ -54,8 +55,8 @@ class FrontZoomController extends Controller
 
         $nohape = $request->no_hp;
         $link = urldecode('%2APermintaan+Link+Zoom%2A%0D%0AOPD+%3A+' .  ucwords($request->nama_opd) . '%0D%0ANama+%3A+' .  ucwords($request->peminjam) . '%0D%0ATopik+%3A+' .  ucwords($request->topik) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AJam+%3A+' . $request->jam_mulai . '-'. $request->jam_selesai  .' WIB'. '%0D%0AAkun+Zoom+%3A+' . $request->peserta);
-        $this->notification($nohape);
-        $this->sendGroupWA($link);
+        // $this->notification($nohape);
+        // $this->sendGroupWA($link);
 
         return redirect(route('permintaan:zoom.index'))->with('status','oke');
 

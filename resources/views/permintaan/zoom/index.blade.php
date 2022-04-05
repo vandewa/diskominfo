@@ -255,9 +255,6 @@
         </div>
     </div>    
     <!-- ============= END FORM ================== -->
-
-  
-
     
 <!-- Modal -->
 <div class="modal fade" id="modalZoomLink" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -282,10 +279,8 @@
     </div>
   </div>
 </div>
-
 </main>
 @endsection
-
 
 
 @push('css')
