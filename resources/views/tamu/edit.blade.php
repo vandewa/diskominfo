@@ -4,7 +4,7 @@
 @extends('layouts/template-admin')
 @section('kondisi12','active')
 @section('halaman')
-<a class="breadcrumb-item" href="{{ route('zoom:link_zoom.index') }}">Buku Tamu</a>
+<a class="breadcrumb-item" href="{{ route('buku:tamu.create') }}">Buku Tamu</a>
 <span class="breadcrumb-item active">Edit Buku Tamu</span>
 @endsection
 @section('container')

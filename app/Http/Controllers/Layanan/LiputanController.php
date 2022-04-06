@@ -130,6 +130,8 @@ class LiputanController extends Controller
              $notif = urldecode('%2APermohonan+Liputan%2A%0D%0AInstitusi+/+lembaga+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AInformasi+acara+%3A+' .  ucwords($request->informasi) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AWaktu+%3A+' . $request->waktu .  ' WIB'.'%0D%0ATempat%3A+' . $request->tempat . '%0D%0AKontak+person+/+penanggungjawab+kegiatan+%3A+' . $request->cp .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0ALampiran%3A+%D7;');
 
         }
+
+        return $notif;
        
         // $this->notification($nohape);
         // $this->sendGroupWA($notif);

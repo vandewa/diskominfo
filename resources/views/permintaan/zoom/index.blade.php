@@ -56,7 +56,7 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                <form method="POST" action="{{route('permintaan:zoom.store')}}" >
+                <form method="POST" action="{{route('perijinan:zoom.store')}}" >
                     @csrf
                     <div class="card-body p-5">
                         <!-- Input Group -->
@@ -322,21 +322,19 @@ sweetAlert();
             { data: 'topik', name: 'topik' },
             { data: 'peserta', name: 'peserta' },
             { data: 'nama_opd', name: 'nama_opd' },
-            { data: 'action', },
+            { data: 'action', name:'action'},
         ]
     });
 
+    $('.devan tbody').on( 'click', 'tr', function () {
+        let datanya = table.row( this ).data() ;
+        $('#result').html(datanya.no_hp);
+        $('.link-zoomss').html(datanya.link_zoom);
+        $('.link-zoomss').hide();
+        $('#username').val('');
+        
 
- 
-            $('.devan tbody').on( 'click', 'tr', function () {
-              let datanya = table.row( this ).data() ;
-              $('#result').html(datanya.no_hp);
-              $('.link-zoomss').html(datanya.link_zoom);
-              $('.link-zoomss').hide();
-              $('#username').val('');
-              
-
-            });
+    });
 
      $('#username').keyup(function() {
             var uname = $('#username').val();

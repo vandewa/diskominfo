@@ -299,7 +299,7 @@
                   <a class="dropdown-item " href="{{ url('/page/pinjam-tempat-rapat')}}">Pinjam Tempat Rapat</a>
                   <a class="dropdown-item " href="{{ url('/page/pinjam-peralatan')}}">Pinjam Peralatan</a>
                   <a class="dropdown-item " href="{{ url('/page/permohonan-magang')}}">Permohonan Magang</a>
-                  <a class="dropdown-item " href="{{ route('permintaan:zoom.index')}}">Permohonan Peminjaman Akun Zoom</a>
+                  <a class="dropdown-item " href="{{ route('perijinan:zoom.index')}}">Permohonan Peminjaman Akun Zoom</a>
                   <a class="dropdown-item " href="{{ url('/page/permohonan-jaringan')}}">Permohonan Jaringan Internet</a>
                   <a class="dropdown-item " href="{{ url('/page/permohonan-aplikasi')}}">Permohonan Aplikasi</a>
                   <a class="dropdown-item " href="{{ url('/perijinan/permohonan/layanan-server')}}">Permohonan Subdomain</a>

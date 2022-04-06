@@ -133,7 +133,7 @@
                             <label class="custom-file-label" for="customFile">Pilih file</label>
                         </div>
                     </div>
-              <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
                     </div>
                     {{Form::close()}}

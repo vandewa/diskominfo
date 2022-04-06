@@ -317,7 +317,23 @@
 									<a href="{{ route('magang.index') }}" class="nav-link ">Magang
 									</a>
 								</li><li class="nav-item">
-									<a href="{{ route('zoom:link_zoom.index') }}" class="nav-link ">Link Zoom
+									<a href="{{ route('link_zoom.index') }}" class="nav-link ">Link Zoom
+									</a>
+								</li>
+								</li><li class="nav-item">
+									<a href="{{ route('jaringan-internet.index') }}" class="nav-link ">Jaringan Internet
+									</a>
+								</li>
+								</li><li class="nav-item">
+									<a href="{{ route('permohonan-aplikasi.index') }}" class="nav-link ">Aplikasi
+									</a>
+								</li>
+								</li><li class="nav-item">
+									<a href="{{ route('permohonan-subdomain.index') }}" class="nav-link ">Subdomain
+									</a>
+								</li>
+								</li><li class="nav-item">
+									<a href="{{ route('permintaan-colocation.index') }}" class="nav-link ">Colocation Server
 									</a>
 								</li>
 							</ul>
@@ -374,7 +390,7 @@
 
 						{{-- @permission('zoom-read')
 						<li class="nav-item">
-							<a href="{{ route('zoom:link_zoom.index') }}" class="nav-link @yield('kondisi11')">
+							<a href="{{ route('link_zoom.index') }}" class="nav-link @yield('kondisi11')">
 								<i class="icon-laptop"></i>
 								<span>Link Zoom</span>
 							</a>

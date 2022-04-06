@@ -2,9 +2,9 @@
 @section('menu','Link Zoom')
 @section('submenu','Edit Link Zoom')
 @extends('layouts/template-admin')
-@section('kondisi6','active')
+@section('kondisi6','nav-item-expanded nav-item-open')
 @section('halaman')
-<a class="breadcrumb-item" href="{{ route('zoom:link_zoom.index') }}">Link Zoom</a>
+<a class="breadcrumb-item" href="{{ route('link_zoom.index') }}">Link Zoom</a>
 <span class="breadcrumb-item active">Edit Link Zoom</span>
 @endsection
 @section('container')
@@ -16,7 +16,7 @@
         </div>
 
         <div class="card-body">
-            {{Form::model($data, ['route' => ['zoom:link_zoom.update', $data->id],'method' => 'put', 'files' =>
+            {{Form::model($data, ['route' => ['link_zoom.update', $data->id],'method' => 'put', 'files' =>
             'true', ''])}}
 
              <div class="form-group row" style="margin-bottom: 0.25rem">

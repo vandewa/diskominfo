@@ -40,8 +40,6 @@ class FrontZoomController extends Controller
      */
     public function store(Request $request)
     {
-
-        return $request->all();
         Zoom::create([
             'nama_opd' => $request->nama_opd,
             'peminjam' => $request->peminjam,
@@ -58,7 +56,7 @@ class FrontZoomController extends Controller
         // $this->notification($nohape);
         // $this->sendGroupWA($link);
 
-        return redirect(route('permintaan:zoom.index'))->with('status','oke');
+        return redirect(route('perijinan:zoom.index'))->with('status','oke');
 
     }
 
@@ -112,14 +110,19 @@ class FrontZoomController extends Controller
             $data = Zoom::whereDate('tanggal', '>=', date(Carbon::now()->format('Y-m-d')));
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn(
-                    'action',
+                ->addColumn('action',
                     function ($data) {
                         if ($data->link_zoom != null) {
-                         $actionBtn = '
-                        <div class="list-icons d-flex justify-content-center">
-                            <a data-toggle="modal" data-target="#modalZoomLink" data-modal-effect="blur" data-topik_zoom="'.$data->topik.'" data-link_zoom="'.$data->link_zoom.'" data-hape="'.$data->no_hp.'" class="badge badge-primary btn-linkzoom" href="#modalZoomLink">Lihat Link</a>
-                        </div>';
+                         $actionBtn =  "<div class='d-flex justify-content-center'>
+                            <a 
+                            data-toggle='modal' 
+                            data-target='#modalZoomLink' 
+                            data-modal-effect='blur' 
+                            data-topik_zoom='".$data->topik."' 
+                            data-link_zoom='".$data->link_zoom."'
+                            data-hape='".$data->no_hp."'
+                            class='badge badge-primary btn-linkzoom' href='#modalZoomLink'>Lihat Link</a>
+                        </div>";
                         return $actionBtn;
                     } else {
                         return ' <div class=" d-flex justify-content-center">-</div>';

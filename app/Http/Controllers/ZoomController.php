@@ -58,11 +58,11 @@ class ZoomController extends Controller
         if ($request->filled('link_zoom')){
             $nohape = $request->no_hp;
             $link = strip_tags($request->link_zoom);
-            $this->notification($nohape, $link);
-            $this->sendGroupWA($link);
+            // $this->notification($nohape, $link);
+            // $this->sendGroupWA($link);
         }
 
-        return redirect(route('zoom:link_zoom.index'));
+        return redirect(route('link_zoom.index'));
     }
 
 
@@ -114,10 +114,10 @@ class ZoomController extends Controller
 
         $nohape = $request->no_hp;
         $link = strip_tags($request->link_zoom);
-        $this->notification($nohape, $link);
-        $this->sendGroupWA($link);
+        // $this->notification($nohape, $link);
+        // $this->sendGroupWA($link);
 
-        return redirect()->route('zoom:link_zoom.index');
+        return redirect()->route('link_zoom.index');
     }
 
     /**
@@ -142,8 +142,8 @@ class ZoomController extends Controller
                     function ($data) {
                         $actionBtn = '
                     <div class="list-icons d-flex justify-content-center">
-                    <a href="' . route('zoom:link_zoom.edit', $data->id) . ' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                    <a href="' . route('zoom:link_zoom.destroy', $data->id) . ' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    <a href="' . route('link_zoom.edit', $data->id) . ' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
+                    <a href="' . route('link_zoom.destroy', $data->id) . ' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
                 </div>';
                         return $actionBtn;
                     }

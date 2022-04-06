@@ -2,14 +2,14 @@
 @section('menu','Zoom')
 @section('submenu','List Permintaan Link Zoom')
 @extends('layouts/template-admin')
-@section('kondisi6','active')
+@section('kondisi6','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Link Zoom</span>
 @endsection
 
 @section('tambah_data')
-<a href="{{route('zoom:link_zoom.create')}}" class="btn btn-primary">
+<a href="{{route('link_zoom.create')}}" class="btn btn-primary">
     <i class="icon-file-plus mr-2"></i>
     Tambah Permintaan
 </a>

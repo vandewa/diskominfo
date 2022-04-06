@@ -48,6 +48,10 @@ use App\Http\Controllers\Layanan\PengajuanKeberatanController;
 use App\Http\Controllers\Layanan\PinjamTempatController;
 use App\Http\Controllers\Layanan\PinjamPeralatanController;
 use App\Http\Controllers\Layanan\PermohonanMagangController;
+use App\Http\Controllers\Layanan\JaringanInternetController;
+use App\Http\Controllers\Layanan\PermohonanAplikasiController;
+use App\Http\Controllers\Layanan\ColocationServerController;
+use App\Http\Controllers\Layanan\PermohonanSubdomainController;
 
 
 
@@ -131,12 +135,6 @@ Route::get('/agenda', [AgendaController::class, 'front'])->name('front.agenda');
 Route::get('/tamu', [FrontBukuTamuController::class, 'index'])->name('front.tamu');
 
 Route::group([], function () {
-    Route::group(['prefix' => 'permintaan', 'as' => 'permintaan:'], function () {
-       Route::resource('zoom', FrontZoomController::class);
-    });
-});
-
-Route::group([], function () {
     Route::group(['prefix' => 'perijinan', 'as' => 'perijinan:'], function () {
         Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
         Route::post('akses/data-center', [AksesDcController::class, 'store'])->name('akses.dc.post');
@@ -172,9 +170,15 @@ Route::group([], function () {
         Route::post('permohonan/pinjam-peralatan', [PinjamPeralatanController::class, 'store'])->name('pinjam.peralatan.post');
         Route::get('permohonan/magang', [PermohonanMagangController::class, 'create'])->name('magang.create');
         Route::post('permohonan/magang', [PermohonanMagangController::class, 'store'])->name('magang.post');
-
-
-
+        Route::resource('zoom', FrontZoomController::class);
+        Route::get('permohonan/jaringan-internet', [JaringanInternetController::class, 'create'])->name('jaringan.internet.create');
+        Route::post('permohonan/jaringan-internet', [JaringanInternetController::class, 'store'])->name('jaringan.internet.post');
+        Route::get('permohonan/aplikasi', [PermohonanAplikasiController::class, 'create'])->name('permohonan.aplikasi.create');
+        Route::post('permohonan/aplikasi', [PermohonanAplikasiController::class, 'store'])->name('permohonan.aplikasi.post');
+        Route::get('permohonan/subdomain', [PermohonanSubdomainController::class, 'create'])->name('permohonan.subdomain.create');
+        Route::post('permohonan/subdomain', [PermohonanSubdomainController::class, 'store'])->name('permohonan.subdomain.post');
+        Route::get('permohonan/colocation-server', [ColocationServerController::class, 'create'])->name('colocation.server.create');
+        Route::post('permohonan/colocation-server', [ColocationServerController::class, 'store'])->name('colocation.server.post');
 
     });
     Route::resource('akses-data-center', AksesDcController::class);
@@ -210,8 +214,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'admin', 'middleware' => ['permission:posting-read']], function () {
         Route::group(['prefix' => 'agenda', 'as' => 'agenda:'], function () {
             Route::resource('harian', AgendaController::class);
-        });
-        Route::group(['prefix' => 'zoom', 'as' => 'zoom:'], function () {
         });
         Route::group(['prefix' => 'buku', 'as' => 'buku:'], function () {
             Route::resource('tamu', BukuTamuController::class);
@@ -260,6 +262,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('pinjam-peralatan', PinjamPeralatanController::class);
         Route::resource('magang', PermohonanMagangController::class);
         Route::resource('link_zoom', ZoomController::class);
+        Route::resource('jaringan-internet', JaringanInternetController::class);
+        Route::resource('permohonan-aplikasi', PermohonanAplikasiController::class);
+        Route::resource('permohonan-subdomain', PermohonanSubdomainController::class);
+        Route::resource('permintaan-colocation', ColocationServerController::class);
 
     });
 

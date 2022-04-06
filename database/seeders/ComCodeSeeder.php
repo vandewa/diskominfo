@@ -34,7 +34,7 @@ class ComCodeSeeder extends Seeder
             ['code_cd' => 'RAM_TP_02', 'code_nm' => '2 GB', 'code_group' => 'RAM_TP', 'code_value' => ''],
             ['code_cd' => 'AKSESNONFISIK_TP_01', 'code_nm' => 'SSH', 'code_group' => 'AKSESNONFISIK_TP', 'code_value' => ''],
             ['code_cd' => 'AKSESNONFISIK_TP_02', 'code_nm' => 'Remote Desktop', 'code_group' => 'AKSESNONFISIK_TP', 'code_value' => ''],
-            ['code_cd' => 'JENISLAYANAN_TP_01', 'code_nm' => 'Layanan Hosting', 'code_group' => 'JENISLAYANAN_TP', 'code_value' => ''],
+            // ['code_cd' => 'JENISLAYANAN_TP_01', 'code_nm' => 'Layanan Hosting', 'code_group' => 'JENISLAYANAN_TP', 'code_value' => ''],
             ['code_cd' => 'JENISLAYANAN_TP_02', 'code_nm' => 'Layanan Sub Domain', 'code_group' => 'JENISLAYANAN_TP', 'code_value' => ''],
             ['code_cd' => 'JENISLAYANAN_TP_03', 'code_nm' => 'Layanan Cpanel', 'code_group' => 'JENISLAYANAN_TP', 'code_value' => ''],
             ['code_cd' => 'JENISLAYANAN_TP_04', 'code_nm' => 'Layanan Email', 'code_group' => 'JENISLAYANAN_TP', 'code_value' => ''],
@@ -60,6 +60,12 @@ class ComCodeSeeder extends Seeder
             ['code_cd' => 'ACARA_ST_01', 'code_nm' => 'Daring', 'code_group' => 'ACARA_ST', 'code_value' => ''],
             ['code_cd' => 'ACARA_ST_02', 'code_nm' => 'Luring', 'code_group' => 'ACARA_ST', 'code_value' => ''],
             ['code_cd' => 'ACARA_ST_03', 'code_nm' => 'Hybrid', 'code_group' => 'ACARA_ST', 'code_value' => ''],
+            ['code_cd' => 'JARINGAN_ST_01', 'code_nm' => 'LAN', 'code_group' => 'JARINGAN_ST', 'code_value' => ''],
+            ['code_cd' => 'JARINGAN_ST_02', 'code_nm' => 'FO', 'code_group' => 'JARINGAN_ST', 'code_value' => ''],
+            ['code_cd' => 'LAYANAN_INTERNET_ST_01', 'code_nm' => 'Pemasangan Baru', 'code_group' => 'LAYANAN_INTERNET_ST', 'code_value' => ''],
+            ['code_cd' => 'LAYANAN_INTERNET_ST_02', 'code_nm' => 'Perbaikan Jaringan', 'code_group' => 'LAYANAN_INTERNET_ST', 'code_value' => ''],
+            ['code_cd' => 'DOMAIN_ST_01', 'code_nm' => 'wonosobokab.go.id', 'code_group' => 'DOMAIN_ST', 'code_value' => ''],
+            ['code_cd' => 'DOMAIN_ST_02', 'code_nm' => 'wonosobokab.com', 'code_group' => 'DOMAIN_ST', 'code_value' => ''],
             
         ];
 

@@ -107,6 +107,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <a href="{{ route('perijinan:zoom.index') }}">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/8.png') }}">
                             </a>
@@ -114,6 +115,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <a href="{{ route('perijinan:jaringan.internet.create') }}">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/9.png') }}">
                             </a>
@@ -121,6 +123,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <a href="{{ route('perijinan:permohonan.aplikasi.create') }}">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/10.png') }}">
                             </a>
@@ -128,6 +131,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <a href="{{ route('perijinan:permohonan.subdomain.create') }}">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/11.png') }}">
                             </a>
@@ -135,6 +139,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
+                                <a href="{{ route('perijinan:colocation.server.create') }}">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/12.png') }}">
                             </a>
