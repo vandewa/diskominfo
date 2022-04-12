@@ -27,6 +27,7 @@
                             <div class="card-body">
                             {{Form::open(['route' => 'perijinan:jaringan.internet.post', 'files' => true])}}
                             {{Form::hidden('status_st','STATUS_ST_01')}}
+                            {{Form::hidden('waktu',\Carbon\Carbon::now()->format('H:i:s'))}}
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama</label>
                                         <div class="col-sm-7">
@@ -72,6 +73,8 @@
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
                                     </div>
+
+                                    
                             {{Form::close()}}
                             </div>
                         </div>

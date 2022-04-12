@@ -169,7 +169,17 @@
 
                             <!-- Step -->
                             <ul class="step">
-                                @if(request('q') != '')
+                                @if((!empty($datanya) && empty($data->status_st)))
+                                    <li class="step-item">
+                                        <div class="step-content-wrapper">
+                                            <div class="step-content">
+                                                <h5>{{ $datanya.'.' }}</h5>
+                                                <p class="step-text"></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endif
+                                @if((request('q') != '') && !empty($data->status_st))
                                     <li class="step-item">
                                         <div class="step-content-wrapper">
                                             <span class="step-icon"> <img class="card-img"
@@ -182,8 +192,8 @@
                                     </li>
 
 
-                                        @if($data->approval_date == '' && $data->status_st == 'STATUS_ST_01' )
-                                       <li class="step-item">
+                                    @if($data->approval_date == '' && $data->status_st == 'STATUS_ST_01' )
+                                    <li class="step-item">
                                         <div class="step-content-wrapper">
                                             <span class="step-icon"><img class="card-img"
                                                     src="{{ asset('front/assets/images/menunggu.png') }}"></span>
@@ -228,10 +238,10 @@
                                                     src="{{ asset('front/assets/images/selesai.png') }}"></span>
                                             <div class="step-content">
                                                
-                                                        <h4>Selesai.</h4>
-                                                    @else
-                                                        -
-                                                    @endif
+                                                    <h4>Selesai.</h4>
+                                                @else
+                                                    -
+                                                @endif
                                                
                                             </div>
                                         </div>

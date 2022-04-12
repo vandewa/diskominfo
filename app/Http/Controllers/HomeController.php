@@ -174,33 +174,39 @@ class HomeController extends Controller
     public function pengajuanizin(Request $request)
     {   
         $data = '';
-        if($request->filled('q')){
-            $a = substr($request->q, 0, 3);
-                switch ($a) {
-                    case "ADC":
-                        $data = AksesDc::with(['status'])->whereNo($request->q)->first();
-                        break;
-                    case "LSV":  
-                        $data = LayananServer::with(['status'])->whereNo($request->q)->first();
-                        break;
-                    case "VPB":
-                        $data = PenambahanVps::with(['status'])->whereNo($request->q)->first();
-                        break;
-                    case "CSV":
-                        $data = ColocationServer::with(['status'])->whereNo($request->q)->first();
-                        break;
-                    case "KDC":
-                        $data = KunjunganDc::with(['status'])->whereNo($request->q)->first();
-                        break;
-                    case "PSV":
-                        $data = PengajuanServer::with(['status'])->whereNo($request->q)->first();
-                        break;
-                    case "PVP":
-                        $data = PerubahanVps::with(['status'])->whereNo($request->q)->first();
-                        break;
-                    }
+        $datanya = '';
+            if($request->filled('q')){
+                $a = substr($request->q, 0, 3);
+                    switch ($a) {
+                        case "ADC":
+                            $data = AksesDc::with(['status'])->whereNo($request->q)->first();
+                            break;
+                        case "LSV":  
+                            $data = LayananServer::with(['status'])->whereNo($request->q)->first();
+                            break;
+                        case "VPB":
+                            $data = PenambahanVps::with(['status'])->whereNo($request->q)->first();
+                            break;
+                        case "CSV":
+                            $data = ColocationServer::with(['status'])->whereNo($request->q)->first();
+                            break;
+                        case "KDC":
+                            $data = KunjunganDc::with(['status'])->whereNo($request->q)->first();
+                            break;
+                        case "PSV":
+                            $data = PengajuanServer::with(['status'])->whereNo($request->q)->first();
+                            break;
+                        case "PVP":
+                            $data = PerubahanVps::with(['status'])->whereNo($request->q)->first();
+                            break;
+                        }
+                
+                if($a != 'ADC' || 'LSV' || 'VPB' || 'CSV' || 'KDC' || 'PSV' || 'PVP'){
+                             $datanya = 'Data tidak ditemukan';
+                }
         }
-        return view('home.pengajuanizin', compact('data'));
+
+        return view('home.pengajuanizin', compact('data', 'datanya'));
     }
 
 

@@ -61,6 +61,19 @@ class JaringanInternetController extends Controller
      */
     public function store(Request $request)
     {
+
+        if( $request->waktu > '07:30:00' && $request->waktu < '16:00:00'){
+             $notifikasi = 'Terima kasih, permintaan layanan jaringan internet berhasil dikirim, mohon ditunggu notifikasi berikutnya.';
+        } else {
+            $notifikasi ='Terima kasih, '.urldecode('%2A').'permintaan layanan jaringan internet'.urldecode('%2A').' berhasil dikirim. Saat ini kami sedang tidak bertugas, pesan Anda akan segera kami balas saat jam kerja.'.urldecode('%0D%0A%0D%0A').
+             'Senin-Kamis : 07.30 - 16.00 WIB'.
+             urldecode('%0D%0A').
+             'Jumat : 07.30 - 11.00 WIB'.
+             urldecode('%0D%0A%0D%0A%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60')
+             ;
+
+        }
+
         JaringanInternet::create([
                 'nama' => $request->nama,
                 'instansi' => $request->instansi,
@@ -87,7 +100,7 @@ class JaringanInternetController extends Controller
             $nohape = $request->nomor;
             $notif = urldecode('%2APermohonan+Jaringan+Internet%2A%0D%0AOPD+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ANIP+%3A+' . $request->nip . '%0D%0AEmail+%3A+' . $request->email .'%0D%0ANomor+telepon+%3A+' . $request->nomor . '%0D%0AJenis+layanan+%3A+' . $jaringan_st . '%0D%0AJenis+layanan+%3A+' . $layanan_st   );
 
-            // $this->notification($nohape);
+            $this->notification($nohape, $notifikasi);
             // $this->sendGroupWA($notif);
       
             return redirect(route('pengajuanizin'))->with('status','oke');
@@ -145,6 +158,7 @@ class JaringanInternetController extends Controller
             $notif = 'Status permintaan layanan Jaringan Internet '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.
                     '%0D%0A'.'( ' .$request->alasan . ' )' . '%0D%0A' .
                     '%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
+
         } else {
            
             $notif = 'Status permintaan layanan Jaringan Internet '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
@@ -167,12 +181,12 @@ class JaringanInternetController extends Controller
         JaringanInternet::destroy($id);
     }
 
-    public function notification($nohape, $notif = 'Terima kasih, permintaan layanan jaringan internet berhasil dikirim, mohon ditunggu notifikasi berikutnya. ')
+    public function notification($nohape, $notifikasi)
     {
 
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
             'number' => $nohape,
-            'message' => $notif,
+            'message' => $notifikasi,
         ]);
 
     }
