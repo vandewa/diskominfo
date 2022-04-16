@@ -168,6 +168,8 @@ return [
          */
 
         Spatie\Analytics\AnalyticsServiceProvider::class,
+         \Torann\GeoIP\GeoIPServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -245,6 +247,7 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
 
     ],
 

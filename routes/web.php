@@ -79,6 +79,7 @@ Route::get('/cek', function(){
     $cek = Analytics::fetchVisitorsAndPageViews(Period::days(7));
     return $cek;
 });
+Route::post('/', [HomeController::class, 'index']);
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 // PPID
 Route::get('/tugasppid', [HomeController::class, 'tugasppid'])->name('tugasppid');

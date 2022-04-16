@@ -3,8 +3,13 @@
         <label class="col-form-label col-lg-6">Nama<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                {{Form::text('nama', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama','required',
-                'readonly' => true])}}
+                <<<<<<< HEAD {{Form::text('nama', null, ['class'=> 'form-control ','placeholder' => 'Masukkan
+                    Nama','required',
+                    'readonly' => true])}}
+                    =======
+                    {{Form::text('nama', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama','required',
+                    'readonly' => true])}}
+                    >>>>>>> bebd51eb7ef5b9eccb655406b13ed11ad12c206f
             </div>
         </div>
     </div>
@@ -13,8 +18,12 @@
         <label class="col-form-label col-lg-6">Instansi/Lembaga<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                {{Form::text('instansi', null, ['class' => 'form-control ','placeholder' => 'Masukkan
-                instansi/lembaga','required', 'readonly' => true])}}
+                <<<<<<< HEAD {{Form::text('instansi', null, ['class'=> 'form-control ','placeholder' => 'Masukkan
+                    instansi/lembaga','required', 'readonly' => true])}}
+                    =======
+                    {{Form::text('instansi', null, ['class' => 'form-control ','placeholder' => 'Masukkan
+                    instansi/lembaga','required', 'readonly' => true])}}
+                    >>>>>>> bebd51eb7ef5b9eccb655406b13ed11ad12c206f
             </div>
         </div>
     </div>
@@ -26,9 +35,10 @@
         <div class="col-lg-12">
             <div class="form-group">
                 @if(!empty($tanggal))
-                {{Form::text('tanggal', $tanggal,['class' => 'form-control daterange-single', 'disabled' => true])}}
+                {{Form::text('tanggal', $tanggal,['class' => 'form-control daterange-single', 'disabled' =>
+                'disabled',])}}
                 @else
-                {{Form::text('tanggal', null,['class' => 'form-control daterange-single', 'disabled' => true])}}
+                {{Form::text('tanggal', null,['class' => 'form-control daterange-single', 'disabled' => 'disabled',])}}
                 @endif
             </div>
         </div>
@@ -90,7 +100,7 @@
 
 @if(!empty($alasan))
 
-<div class="devan-asu">
+<div class="devandewa">
     <div class="form-group row">
         <label class="col-form-label col-lg-2">Alasan<span class="text-danger">*</span></label>
         <div class="col-lg-10">
@@ -101,7 +111,7 @@
 
 @else
 
-<div class="devan-asu" style="display: none">
+<div class="devandewa" style="display: none">
     <div class="form-group row">
         <label class="col-form-label col-lg-2">Alasan<span class="text-danger">*</span></label>
         <div class="col-lg-10">
@@ -138,12 +148,13 @@
         $('select[name=status_st]').change(function () {
             let isi = $(this).val();
 
-            if (isi == 'STATUS_ST_03') {
-                $('.devan-asu').show('slow');
+            if (isi == 'STATUS_ST_03' || isi == 'STATUS_ST_04') {
+                $('.devandewa').show('slow');
             } else {
-                $('.devan-asu').hide('slow');
+                $('.devandewa').hide('slow');
                 // $('#aa').val('');
             }
+
         });
     });
 </script>

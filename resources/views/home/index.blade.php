@@ -221,9 +221,6 @@
 
                     <!-- End Blog -->
 
-
-
-
                     @foreach($posting2 as $post)
                     <!-- Blog -->
                     <article class="row mb-7" data-aos="zoom-out-right">

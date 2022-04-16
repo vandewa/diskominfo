@@ -62,7 +62,7 @@ class JaringanInternetController extends Controller
     public function store(Request $request)
     {
 
-        if( $request->waktu > '07:30:00' && $request->waktu < '16:00:00'){
+        if( $request->waktu > '07:30:00' && $request->waktu < '11:00:00'){
              $notifikasi = 'Terima kasih, permintaan layanan jaringan internet berhasil dikirim, mohon ditunggu notifikasi berikutnya.';
         } else {
             $notifikasi ='Terima kasih, '.urldecode('%2A').'permintaan layanan jaringan internet'.urldecode('%2A').' berhasil dikirim. Saat ini kami sedang tidak bertugas, pesan Anda akan segera kami balas saat jam kerja.'.urldecode('%0D%0A%0D%0A').

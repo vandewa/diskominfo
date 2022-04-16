@@ -34,6 +34,7 @@ class PinjamPeralatanController extends Controller
                 ->addColumn('tanggalnya', function ($a) {
                     return Carbon::createFromTimeStamp(strtotime($a->tanggal))->isoFormat('D MMMM Y');
                 })
+               
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -59,6 +60,8 @@ class PinjamPeralatanController extends Controller
      */
     public function store(Request $request)
     {
+
+        // return $request->all();
         
         $nohape = $request->nomor;
 
@@ -69,32 +72,40 @@ class PinjamPeralatanController extends Controller
             $filename = $prefix.'.'.$extension;
             $request->file('file_name')->move(public_path('uploads/layanan'), $filename);
 
-            PinjamPeralatan::create([
+                PinjamPeralatan::create([
                 'nama' => $request->nama,
                 'instansi' => $request->instansi,
                 'tanggal' => $request->tanggal,
-                'alat' => $request->alat,
+                'alat' => implode(' dan ', $request->alat),
                 'lama_pinjam' => $request->lama_pinjam,
                 'nomor' => $request->nomor,
                 'status_st' => $request->status_st,
                 'file_name' => $filename,
             ]);
 
-             $notif = urldecode('%2APinjam+Peralatan%2A%0D%0AInstitusi+/+lembaga+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AAlat+%3A+' . $request->alat . '%0D%0ALama+pinjam+%3A+' . $request->lama_pinjam .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0ALampiran%3A+&#8730;');
+        
+
+             $notif = urldecode('%2APinjam+Peralatan%2A%0D%0AInstitusi+/+lembaga+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AAlat+%3A+' .implode(' dan ', $request->alat) . '%0D%0ALama+pinjam+%3A+' . $request->lama_pinjam .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0ALampiran%3A+&#8730;');
 
          } else {
-               PinjamPeralatan::create([
-                'nama' => $request->nama,
-                'instansi' => $request->instansi,
-                'tanggal' => $request->tanggal,
-                'alat' => $request->alat,
-                'lama_pinjam' => $request->lama_pinjam,
-                'nomor' => $request->nomor,
-                'status_st' => $request->status_st,
-            ]);
 
-             $notif = urldecode('%2APinjam+Peralatan%2A%0D%0AInstitusi+/+lembaga+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AAlat+%3A+' . $request->alat . '%0D%0ALama+pinjam+%3A+' . $request->lama_pinjam .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0ALampiran%3A+%D7;');
+            // return implode(' dan ', $request->alat);
+
+                PinjamPeralatan::create([
+                    'nama' => $request->nama,
+                    'instansi' => $request->instansi,
+                    'tanggal' => $request->tanggal,
+                    'alat' => implode(' dan ', $request->alat),
+                    'lama_pinjam' => $request->lama_pinjam,
+                    'nomor' => $request->nomor,
+                    'status_st' => $request->status_st,
+                ]);
+
+
+             $notif = urldecode('%2APinjam+Peralatan%2A%0D%0AInstitusi+/+lembaga+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AAlat+%3A+' . implode(' dan ', $request->alat) . '%0D%0ALama+pinjam+%3A+' . $request->lama_pinjam .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0ALampiran%3A+%D7;');
          }
+
+        //  return $notif;
 
            // $this->notification($nohape);
             // $this->sendGroupWA($notif);
@@ -137,6 +148,7 @@ class PinjamPeralatanController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         PinjamPeralatan::find($id)
         ->update([
                 // 'nama' => $request->nama,
@@ -149,7 +161,7 @@ class PinjamPeralatanController extends Controller
                 'alasan' => $request->alasan,
             ]);
         
-        $nohape = $request->cp;
+        $nohape = $request->nomor;
         $status = \App\Models\ComCode::where('code_cd', $request->status_st)->first();
         if(isset($request->alasan)) {
             $notif = 'Status permintaan layanan Pinjam Peralatan '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.
@@ -159,7 +171,7 @@ class PinjamPeralatanController extends Controller
            
             $notif = 'Status permintaan layanan Pinjam Peralatan '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
         }
-     
+
         // $this->notification($nohape, $notif);
         // $this->sendGroupWA($notif);
 

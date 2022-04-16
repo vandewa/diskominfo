@@ -31,6 +31,10 @@ use App\Models\KunjunganDc;
 use App\Models\PengajuanServer;
 use App\Models\PerubahanVps;
 use App\Models\InformasiPublik;
+use App\Models\Visitor;
+use Carbon\Carbon;
+use Browser;
+
 
 class HomeController extends Controller
 {
@@ -258,6 +262,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
+    
         $youtube =  Youtube::orderBy('created_at', 'desc')
         ->limit(3)
         ->get();
@@ -311,6 +317,37 @@ class HomeController extends Controller
         ->limit(4)
         ->get();
 
+        $checkLocation=geoip()->getLocation($_SERVER['REMOTE_ADDR']);
+
+        // $cek = Visitor::where('ip', $checkLocation->ip)->orderBy('created_at', 'desc')->first();
+
+        // $now = Carbon::now()->format('Y-m-d');
+        //  if(!empty($cek)){
+            //  $tanggal = $cek->created_at->format('Y-m-d');
+            //  if($tanggal != $now) {
+
+                    if(Browser::isDesktop() == 1){
+                         $jenis = 'Desktop';
+                    }
+                    if(Browser::isTablet() == 1){
+                         $jenis = 'Tablet';
+                    }
+                    if(Browser::isMobile() == 1){
+                         $jenis = 'Mobile';
+                    }
+                    
+                    Visitor::create([
+                    'ip' => $checkLocation->ip,
+                    'kota' => $checkLocation->city,
+                    'negara' => $checkLocation->country,
+                    'browser_family' => Browser::browserFamily(),
+                    'browser_name' => Browser::browserName(),
+                    'platform_family' => Browser::platformFamily(),
+                    'platform_name' =>  Browser::platformName(),
+                    'jenis' =>  $jenis,
+                ]);
+            // } 
+        //  }
 
         return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul', 'infohoax', 'infografis'));
     }

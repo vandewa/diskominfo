@@ -98,5 +98,10 @@ class AppServiceProvider extends ServiceProvider
 
     $total_perizinan = $akses_dc + $colocation_server + $kunjungan_dc + $layanan_server + $vps_baru + $perubahan_vps;
     View::share('total_perizinan', $total_perizinan);
+
+
+    $total_pengunjung = DB::table('visitor')
+    ->count();
+    View::share('total_pengunjung', $total_pengunjung);
   }
 }
