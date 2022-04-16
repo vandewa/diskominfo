@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.83.1.
+ * Generated for Laravel 8.83.8.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -4346,6 +4346,102 @@
         public static function flushMacros()
         {
                         \Illuminate\Cookie\CookieJar::flushMacros();
+        }
+         
+    }
+            /**
+     * 
+     *
+     * @see \Illuminate\Encryption\Encrypter
+     */ 
+        class Crypt {
+                    /**
+         * Determine if the given key and cipher combination is valid.
+         *
+         * @param string $key
+         * @param string $cipher
+         * @return bool 
+         * @static 
+         */ 
+        public static function supported($key, $cipher)
+        {
+                        return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
+        }
+                    /**
+         * Create a new encryption key for the given cipher.
+         *
+         * @param string $cipher
+         * @return string 
+         * @static 
+         */ 
+        public static function generateKey($cipher)
+        {
+                        return \Illuminate\Encryption\Encrypter::generateKey($cipher);
+        }
+                    /**
+         * Encrypt the given value.
+         *
+         * @param mixed $value
+         * @param bool $serialize
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\EncryptException
+         * @static 
+         */ 
+        public static function encrypt($value, $serialize = true)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->encrypt($value, $serialize);
+        }
+                    /**
+         * Encrypt a string without serialization.
+         *
+         * @param string $value
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\EncryptException
+         * @static 
+         */ 
+        public static function encryptString($value)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->encryptString($value);
+        }
+                    /**
+         * Decrypt the given value.
+         *
+         * @param string $payload
+         * @param bool $unserialize
+         * @return mixed 
+         * @throws \Illuminate\Contracts\Encryption\DecryptException
+         * @static 
+         */ 
+        public static function decrypt($payload, $unserialize = true)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->decrypt($payload, $unserialize);
+        }
+                    /**
+         * Decrypt the given string without unserialization.
+         *
+         * @param string $payload
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\DecryptException
+         * @static 
+         */ 
+        public static function decryptString($payload)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->decryptString($payload);
+        }
+                    /**
+         * Get the encryption key.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getKey()
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->getKey();
         }
          
     }
@@ -8716,7 +8812,7 @@
                     /**
          * Push a new job onto the queue.
          *
-         * @param string $job
+         * @param string|object $job
          * @param mixed $data
          * @param string|null $queue
          * @return mixed 
@@ -8745,7 +8841,7 @@
          * Push a new job onto the queue after a delay.
          *
          * @param \DateTimeInterface|\DateInterval|int $delay
-         * @param string $job
+         * @param string|object $job
          * @param mixed $data
          * @param string|null $queue
          * @return mixed 
@@ -8760,7 +8856,7 @@
          * Push a new job onto the queue.
          *
          * @param string $queue
-         * @param string $job
+         * @param string|object $job
          * @param mixed $data
          * @return mixed 
          * @static 
@@ -8775,7 +8871,7 @@
          *
          * @param string $queue
          * @param \DateTimeInterface|\DateInterval|int $delay
-         * @param string $job
+         * @param string|object $job
          * @param mixed $data
          * @return mixed 
          * @static 
@@ -15754,7 +15850,7 @@
          * DataTables using Query.
          *
          * @param \Illuminate\Database\Query\Builder|mixed $builder
-         * @return \Yajra\DataTables\DataTableAbstract|\Yajra\DataTables\QueryDataTable 
+         * @return \Yajra\DataTables\QueryDataTable|\Yajra\DataTables\DataTableAbstract 
          * @static 
          */ 
         public static function query($builder)
@@ -15766,7 +15862,7 @@
          * DataTables using Eloquent Builder.
          *
          * @param \Illuminate\Database\Eloquent\Builder|mixed $builder
-         * @return \Yajra\DataTables\DataTableAbstract|\Yajra\DataTables\EloquentDataTable 
+         * @return \Yajra\DataTables\EloquentDataTable|\Yajra\DataTables\DataTableAbstract 
          * @static 
          */ 
         public static function eloquent($builder)
@@ -15778,7 +15874,7 @@
          * DataTables using Collection.
          *
          * @param \Illuminate\Support\Collection|array $collection
-         * @return \Yajra\DataTables\DataTableAbstract|\Yajra\DataTables\CollectionDataTable 
+         * @return \Yajra\DataTables\CollectionDataTable|\Yajra\DataTables\DataTableAbstract 
          * @static 
          */ 
         public static function collection($collection)
@@ -15790,7 +15886,7 @@
          * DataTables using Collection.
          *
          * @param \Illuminate\Http\Resources\Json\AnonymousResourceCollection|array $collection
-         * @return \Yajra\DataTables\DataTableAbstract|\Yajra\DataTables\ApiResourceDataTable 
+         * @return \Yajra\DataTables\ApiResourceDataTable|\Yajra\DataTables\DataTableAbstract 
          * @static 
          */ 
         public static function resource($resource)
@@ -16624,6 +16720,170 @@
         {
                         /** @var \Intervention\Image\ImageManager $instance */
                         return $instance->cache($callback, $lifetime, $returnObj);
+        }
+         
+    }
+     
+}
+
+    namespace Spatie\Analytics { 
+            /**
+     * 
+     *
+     * @see \Spatie\Analytics\Analytics
+     */ 
+        class AnalyticsFacade {
+                    /**
+         * 
+         *
+         * @param string $viewId
+         * @return \Spatie\Analytics\Analytics 
+         * @static 
+         */ 
+        public static function setViewId($viewId)
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->setViewId($viewId);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getViewId()
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->getViewId();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function fetchVisitorsAndPageViews($period)
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->fetchVisitorsAndPageViews($period);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function fetchTotalVisitorsAndPageViews($period)
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->fetchTotalVisitorsAndPageViews($period);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function fetchMostVisitedPages($period, $maxResults = 20)
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->fetchMostVisitedPages($period, $maxResults);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function fetchTopReferrers($period, $maxResults = 20)
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->fetchTopReferrers($period, $maxResults);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function fetchUserTypes($period)
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->fetchUserTypes($period);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function fetchTopBrowsers($period, $maxResults = 10)
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->fetchTopBrowsers($period, $maxResults);
+        }
+                    /**
+         * Call the query method on the authenticated client.
+         *
+         * @param \Spatie\Analytics\Period $period
+         * @param string $metrics
+         * @param array $others
+         * @return array|null 
+         * @static 
+         */ 
+        public static function performQuery($period, $metrics, $others = [])
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->performQuery($period, $metrics, $others);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getAnalyticsService()
+        {
+                        /** @var \Spatie\Analytics\Analytics $instance */
+                        return $instance->getAnalyticsService();
+        }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+                        \Spatie\Analytics\Analytics::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {
+                        \Spatie\Analytics\Analytics::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+                        return \Spatie\Analytics\Analytics::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function flushMacros()
+        {
+                        \Spatie\Analytics\Analytics::flushMacros();
         }
          
     }
@@ -20917,6 +21177,7 @@ namespace  {
             class Cache extends \Illuminate\Support\Facades\Cache {}
             class Config extends \Illuminate\Support\Facades\Config {}
             class Cookie extends \Illuminate\Support\Facades\Cookie {}
+            class Crypt extends \Illuminate\Support\Facades\Crypt {}
             class DB extends \Illuminate\Support\Facades\DB {}
             class Eloquent extends \Illuminate\Database\Eloquent\Model {             
                 /**
@@ -24385,6 +24646,7 @@ namespace  {
             class JWTAuth extends \Tymon\JWTAuth\Facades\JWTAuth {}
             class JWTFactory extends \Tymon\JWTAuth\Facades\JWTFactory {}
             class Image extends \Intervention\Image\Facades\Image {}
+            class Analytics extends \Spatie\Analytics\AnalyticsFacade {}
             class GeoIP extends \Torann\GeoIP\Facades\GeoIP {}
             class NoCaptcha extends \Anhskohbo\NoCaptcha\Facades\NoCaptcha {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}

@@ -168,7 +168,7 @@ return [
          */
 
         Spatie\Analytics\AnalyticsServiceProvider::class,
-         \Torann\GeoIP\GeoIPServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
 
 
         /*
