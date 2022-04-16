@@ -167,6 +167,8 @@ return [
          * Package Service Providers...
          */
 
+        Spatie\Analytics\AnalyticsServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -242,6 +244,7 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
 
     ],
 

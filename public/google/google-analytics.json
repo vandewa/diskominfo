@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "diskominfo-347412",
+  "private_key_id": "cb77ad9fc4232fb544ce105bec6905552b102e11",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCkyWfP7i0P5NwO\nHIGxeZGnORMC6yMTxZVZb+SFukN7SKu9C0XKnZH0EgF04IEDdaUlnPQlsyOHuUAo\nRcspVsKLdsajE1+Vp4JgOsUqBcBDL24qikIJW//gOLI9j9YBj9MRK/JeS+JqEdpY\nZjouCRurA/jLy50YO0iJHVptd1LdRb1jsAjunMlprz19xVhmG7zmpmgbQvj52a11\n1OxmTAK+AjS/bF16Ky8T3jspd7/agAoFsXXj+QaqXWI15ekLIuWVbp4/th+ZhpBr\nFAumSweO2CP6s+2/0+DQwn2Izgmb1b8MUEnuNImm7VUU5LKXRGX2/xmwJujkZsnO\nYhj9MWrfAgMBAAECggEAAI5BUF0wP7Z4239THKMZT6QMoVzjoGRxLX0IGz9WjOrg\n0WFhWd6QKG+LG7bKGJXj+a1+0UW6X/HK+pfJqJkHTOsYnmIpV1raQLLSCWM9k7xs\nNa6DrH5n7XyjdTuv8A9pGcy5I4JEADGRN+0YUyFqu3fm9eD45aUFiJjVvjrBx8c8\nChgEB5X70GpU++cFG6+wY+hpMd+Q1ggCGa84fCO/M0upM+MPntaGthGXbaDgC4z9\nmleUEpQNRszGjE2xMAJmSlaVDdX5Aim+EZAC4Gu0bAnHLXyyUrvERTuJmBtmMyWd\nl4d/ophKX/dLPVULNP7ZfHUFGkfy5Dh8mCI7P6s4sQKBgQDZIQ2tHoPFrxIZNUvu\n5UxdVXT78luv7f5RLqe2kYRZ7FWPTuHXNQ5CU0zZE8i4C6BNBXJ2SaNHpCI6FxoV\nXl2/KpTMlEaaB5ypztyoFiBVu4ZWWBkeq/XLhBxzLDPSJXILOSclip4MrTia2SG2\ndiAZW6CrTOZnwMCKWTQVRT5daQKBgQDCSYVBob9bTY7HV4dM4lkhe2oQUblJg1l4\nb1kIPMPKXNbtyEWXwzSdSzjFcykJoaf1YC5NCDxuHC4C9fmXyQyfMRRxCmQeUVVc\naSfSRDL8QkqaXBb5cG7gA+TLEChXQ6KOltIS57puxx8POkZqIROGK5Q56ZA7cNJ6\n+W+ZQ5FVBwKBgARcKY4kYrkBfveKnm+5owLsyGCWyUiLGuQ+b5e27FVx7XXnO5m6\nswKZ8Z0aTJmFgj6JsXa2m9TAcv9/n0J2lqNUE5DYGWLWbErsoHmvmA6gqV3qfvai\ntVjU2k1lwdSic9vN1f9m/S17/Pr/CTJExPg9YsiNzsKemD8u82DJ9yqhAoGBAKMi\nwp6iZyAOFoYxa61WHcssapm7VV5xyQ2ESXjONQRVQi80y6KrySEOSWQZ12p776Ds\nmtQZx0wZo1TfHy2hJlUBDA4C0KBYYNmQflxi4YDJVQUZsDzQeHjnLBSJw6XKZ9Nc\ntpYjN3rO/bh2kSuKDG/LZdHe2Tnf+QxDJ77EamK/AoGBAKDxd4nnvuvNVmr1RuYq\n7E4DJ9L27OJFpO0MnQAYDbbjfavrsMAZ4eWRLc70p00NMTzccHoc/Vgh3oaeXKWg\nbUZxesfNyys1cvxTmEdes0AA5khzv4gYUy2HdZzPK1/G8PLvG4vz7UcFzUffDcvg\ni0yRDUCQBuqQlcHEweib/EVP\n-----END PRIVATE KEY-----\n",
+  "client_email": "diskominfo@diskominfo-347412.iam.gserviceaccount.com",
+  "client_id": "104806798891965144308",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/diskominfo%40diskominfo-347412.iam.gserviceaccount.com"
+}

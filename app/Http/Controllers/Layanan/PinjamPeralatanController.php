@@ -139,13 +139,14 @@ class PinjamPeralatanController extends Controller
     {
         PinjamPeralatan::find($id)
         ->update([
-                'nama' => $request->nama,
-                'instansi' => $request->instansi,
-                'tanggal' => Carbon::createFromFormat('d/m/Y', $request->tanggal)->format('Y-m-d'),
-                'alat' => $request->alat,
-                'lama_pinjam' => $request->lama_pinjam,
+                // 'nama' => $request->nama,
+                // 'instansi' => $request->instansi,
+                // 'tanggal' => Carbon::createFromFormat('d/m/Y', $request->tanggal)->format('Y-m-d'),
+                // 'alat' => $request->alat,
+                // 'lama_pinjam' => $request->lama_pinjam,
                 'nomor' => $request->nomor,
                 'status_st' => $request->status_st,
+                'alasan' => $request->alasan,
             ]);
         
         $nohape = $request->cp;

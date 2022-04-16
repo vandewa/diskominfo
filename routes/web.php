@@ -52,6 +52,7 @@ use App\Http\Controllers\Layanan\JaringanInternetController;
 use App\Http\Controllers\Layanan\PermohonanAplikasiController;
 use App\Http\Controllers\Layanan\ColocationServerController;
 use App\Http\Controllers\Layanan\PermohonanSubdomainController;
+use Spatie\Analytics\Period;
 
 
 
@@ -74,6 +75,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardCon
 Route::resource('home', HomeController::class);
 // Route::resource('kategori', KategoriController::class);
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/cek', function(){
+    $cek = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+    return $cek;
+});
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 // PPID
 Route::get('/tugasppid', [HomeController::class, 'tugasppid'])->name('tugasppid');

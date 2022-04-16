@@ -38,28 +38,23 @@
                 ]
                 }'>
 
-                <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem vh-md-70 col-lg col-xl"
-                    style="background-image: url({{ asset('front/assets/images/'.$sampul->file_name) }}); background-size: cover;
-                        background-position: center center;"
-                    data-aos="zoom-out">
+                <div class="gradient-x-overlay-sm-dark bg-img-hero min-h-620rem vh-md-70 col-lg col-xl" style="background-image: url({{ asset('front/assets/images/'.$sampul->file_name) }}); background-size: cover;
+                        background-position: center center;" data-aos="zoom-out">
                     <!-- News Block -->
                     <div class="container d-flex align-items-center min-h-620rem">
                         <div class="w-lg-40 mr-5">
                             <!-- Author -->
                             <div class="media align-items-center mb-3">
                                 <div class="avatar avatar-sm avatar-circle mr-3">
-                                    <img class="avatar-img"
-                                        src="{{ asset('front/assets/images/pemkab.png') }}"
+                                    <img class="avatar-img" src="{{ asset('front/assets/images/pemkab.png') }}"
                                         alt="Image Description">
                                 </div>
                                 <div class="avatar avatar-sm avatar-circle mr-3">
-                                    <img class="avatar-img"
-                                        src="{{ asset('front/assets/images/soull.png') }}"
+                                    <img class="avatar-img" src="{{ asset('front/assets/images/soull.png') }}"
                                         alt="Image Description">
                                 </div>
                                 <div class="avatar avatar-sm avatar-circle mr-3">
-                                    <img class="avatar-img"
-                                        src="{{ asset('front/assets/images/smartcity.png') }}"
+                                    <img class="avatar-img" src="{{ asset('front/assets/images/smartcity.png') }}"
                                         alt="Image Description">
                                 </div>
                                 {{-- <div class="media-body">
@@ -108,54 +103,71 @@
         </div>
         <!-- End Hero Section -->
 
-    <!-- Clients Section -->
-    <div class="container space-bottom-0 space-bottom-lg-0">
-      <div class="row">
-        <div class="col-lg-4 pt-7 pt-lg-0 mt-2">
-          <!-- Card -->
-          <div class="card bg-primary shadow-primary-lg mt-lg-n11 p-4 p-lg-5 mb-7" data-aos="fade-up">
-            <div class="text-white">
-              <span class="d-block text-white font-weight-bold text-cap mb-5 text-center">Standar Pelayanan (SP) Diskominfo Wonosobo</span>
-              {{-- <span class="d-block small text-white font-weight-bold text-cap mb-3 text-center">Silahkan klik nomor untuk melihat masing-masing Standar Pelayanan (SP)</span> --}}
-              <div class="d-flex justify-content-center mb-7">
-                <h4 class="text-white">
-                    <a href="/page/sp-pembuatan-media-publikasi"><span class="text-white small"> 1. Pembuatan Media Publikasi</span></a><br>
-                    <a href="/page/sp-permohonan-peliputan-kegiatan"><span class="text-white small"> 2. Permohonan Liputan</span></a><br>
-                    <a href="/page/sp-permohonan-informasi-publik"><span class="text-white small"> 3. Permohonan Informasi Publik</span></a><br>
-                    <a href="/page/sp-pengajuan-keberatan-informasi-publik"><span class="text-white small"> 4. Pengajuan Keberatan Informasi Publik</span></a><br>
-                    <a href="/page/sp-permohonan-pinjam-tempat"><span class="text-white small"> 5. Pinjam Tempat Rapat</span></a><br>
-                    <a href="/page/sp-permohonan-pinjam-alat"><span class="text-white small"> 6. Pinjam Peralatan</span></a><br>
-                    <a href="/page/sp-layanan-magang"><span class="text-white small"> 7. Permohonan Magang</span></a><br>
-                    <a href="/page/sp-peminjaman-akun-zoom"><span class="text-white small"> 8. Permohonan Peminjaman Akun Zoom</span></a><br>
-                    <a href="/page/sp-permohonan-jaringan"><span class="text-white small"> 9. Permohonan Jaringan Internet</span></a><br>
-                    <a href="/page/sp-permohonan-aplikasi"><span class="text-white small"> 10. Permohonan Aplikasi</span></a><br>
-                    <a href="/page/sp-permohonan-subdomain"><span class="text-white small"> 11. Permohonan Subdomain</span></a><br>
-                    <a href="/page/sp-colocation-server"><span class="text-white small"> 12. Permohonan Pemasangan Server</span></a><br>        
-                </h4>
-              </div>
+        <!-- Clients Section -->
+        <div class="container space-bottom-0 space-bottom-lg-0">
+            <div class="row">
+                <div class="col-lg-4 pt-7 pt-lg-0 mt-2">
+                    <!-- Card -->
+                    <div class="card bg-primary shadow-primary-lg mt-lg-n11 p-4 p-lg-5 mb-7" data-aos="fade-up">
+                        <div class="text-white">
+                            <span class="d-block text-white font-weight-bold text-cap mb-5 text-center">Standar
+                                Pelayanan (SP) Diskominfo Wonosobo</span>
+                            {{-- <span
+                                class="d-block small text-white font-weight-bold text-cap mb-3 text-center">Silahkan
+                                klik nomor untuk melihat masing-masing Standar Pelayanan (SP)</span> --}}
+                            <div class="d-flex justify-content-center mb-7">
+                                <h4 class="text-white">
+                                    <a href="/page/sp-pembuatan-media-publikasi"><span class="text-white small"> 1.
+                                            Pembuatan Media Publikasi</span></a><br>
+                                    <a href="/page/sp-permohonan-peliputan-kegiatan"><span class="text-white small"> 2.
+                                            Permohonan Liputan</span></a><br>
+                                    <a href="/page/sp-permohonan-informasi-publik"><span class="text-white small"> 3.
+                                            Permohonan Informasi Publik</span></a><br>
+                                    <a href="/page/sp-pengajuan-keberatan-informasi-publik"><span
+                                            class="text-white small"> 4. Pengajuan Keberatan Informasi
+                                            Publik</span></a><br>
+                                    <a href="/page/sp-permohonan-pinjam-tempat"><span class="text-white small"> 5.
+                                            Pinjam Tempat Rapat</span></a><br>
+                                    <a href="/page/sp-permohonan-pinjam-alat"><span class="text-white small"> 6. Pinjam
+                                            Peralatan</span></a><br>
+                                    <a href="/page/sp-layanan-magang"><span class="text-white small"> 7. Permohonan
+                                            Magang</span></a><br>
+                                    <a href="/page/sp-peminjaman-akun-zoom"><span class="text-white small"> 8.
+                                            Permohonan Peminjaman Akun Zoom</span></a><br>
+                                    <a href="/page/sp-permohonan-jaringan"><span class="text-white small"> 9. Permohonan
+                                            Jaringan Internet</span></a><br>
+                                    <a href="/page/sp-permohonan-aplikasi"><span class="text-white small"> 10.
+                                            Permohonan Aplikasi</span></a><br>
+                                    <a href="/page/sp-permohonan-subdomain"><span class="text-white small"> 11.
+                                            Permohonan Subdomain</span></a><br>
+                                    <a href="/page/sp-colocation-server"><span class="text-white small"> 12. Permohonan
+                                            Pemasangan Server</span></a><br>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class=" transition-3d-hover" href="#"></div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+
+                <div class="col-lg-8 pt-3">
+                    <!-- Logos -->
+                    <div class="row text-center">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 py-2">
+                            <img class="card-img transition-zoom-hover"
+                                src="{{ asset('front/assets/images/maklumat.png') }}" style="width: 100%;">
+                        </div>
+                    </div>
+
+                    <!-- End Logos -->
+                </div>
             </div>
-            <div class=" transition-3d-hover" href="#"></div>
-          </div>
-          <!-- End Card -->
         </div>
-
-        <div class="col-lg-8 pt-3">
-          <!-- Logos -->
-          <div class="row text-center">
-             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 py-2">
-                    <img class="card-img transition-zoom-hover" src="{{ asset('front/assets/images/maklumat.png') }}" style="width: 100%;">
-             </div>
-          </div>
-
-          <!-- End Logos -->
-        </div>
-      </div>
-    </div>
-    <!-- End Clients Section -->
+        <!-- End Clients Section -->
 
 
         <!-- Blogs Section -->
-         <div id="de"></div>
+        <div id="de"></div>
         <div class="container space-1 space-lg-1" id="pagenya">
             <div class="row justify-content-lg-between">
                 <div class="col-lg-8">
@@ -171,18 +183,16 @@
                 "slick-pagination slick-pagination-white slick-pagination-vertical position-absolute bottom-0 right-0 mb-8 mr-3"
               }'>
                         @foreach($postingg as $highlight)
-                            <article>
-                                 @if (!empty($highlight->gambarMuka->path) || !empty($highlight->gambarMuka->file_name))
-                                       <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7"
-                                        href="/detail/{{ $highlight->slug }}"
-                                        style="background-image: url({{ asset($highlight->gambarMuka->path.$highlight->gambarMuka->file_name??'') }}); height:400px; background-size: cover;
+                        <article>
+                            @if (!empty($highlight->gambarMuka->path) || !empty($highlight->gambarMuka->file_name))
+                            <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7"
+                                href="/detail/{{ $highlight->slug }}" style="background-image: url({{ asset($highlight->gambarMuka->path.$highlight->gambarMuka->file_name??'') }}); height:400px; background-size: cover;
                                         background-position: center center;">
-                                        @else
-                                        <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7"
-                                        href="/detail/{{ $highlight->slug }}"
-                                        style="background-image: url({{ asset('uploads/diskominfowonosobo.jpg') }}); height:400px; background-size: cover;
+                                @else
+                                <a class="card align-items-start flex-wrap flex-row h-380rem gradient-x-overlay-sm-dark js-slide bg-img-hero rounded-lg-pseudo transition-3d-hover mb-7"
+                                    href="/detail/{{ $highlight->slug }}" style="background-image: url({{ asset('uploads/diskominfowonosobo.jpg') }}); height:400px; background-size: cover;
                                         background-position: center center;">
-                                        @endif
+                                    @endif
                                     <div class="card-header border-0 bg-transparent w-100">
                                         <div class="media align-items-center">
                                             <span class="avatar avatar-sm avatar-circle mr-3">
@@ -191,10 +201,11 @@
                                                     alt="Image Description">
                                             </span>
                                             <div class="media-body">
-                                                <span
-                                                    class="d-inline-block text-white font-weight-bold small">{{ $highlight->nama->name }}</span>
-                                                <small class="d-block text-white"><span
-                                                        class="badge bg-dark">{{ Carbon\Carbon::parse($highlight->created_at)->isoFormat('dddd, D MMMM Y') }}</span></small>
+                                                <span class="d-inline-block text-white font-weight-bold small">{{
+                                                    $highlight->nama->name }}</span>
+                                                <small class="d-block text-white"><span class="badge bg-dark">{{
+                                                        Carbon\Carbon::parse($highlight->created_at)->isoFormat('dddd, D
+                                                        MMMM Y') }}</span></small>
                                             </div>
                                         </div>
                                     </div>
@@ -204,7 +215,7 @@
                                         <p class="text-white-70 mb-0">{{ $highlight->keterangan }}</p>
                                     </div>
                                 </a>
-                            </article>
+                        </article>
                         @endforeach
                     </div>
 
@@ -214,52 +225,53 @@
 
 
                     @foreach($posting2 as $post)
-                        <!-- Blog -->
-                        <article class="row mb-7" data-aos="zoom-out-right">
-                            <div class="col-md-5">
-                                <a href="/detail/{{ $post->slug }}">
-                                        @if (!empty($post->gambarMuka->path) || !empty($post->gambarMuka->file_name))
-                                        <img class="card-img transition-zoom-hover"
-                                        src="{{ asset($post->gambarMuka->path.$post->gambarMuka->file_name??'') }}"
-                                        alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
-                                        @else
-                                          <img class="card-img transition-zoom-hover"
-                                        src="{{ asset('uploads/diskominfowonosobo.jpg') }}"
-                                        alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
-                                        @endif
-                                </a>
-                              
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body d-flex flex-column h-100 px-0">
-                                    <span class="d-block mb-2">
-                                        <a class="font-weight-bold"
-                                            href="/kategori/{{ $post->kategori->slug }}">{{ $post->kategori->nama_kategori }}</a>
-                                    </span>
-                                    <h3><a class="text-inherit"
-                                            href="/detail/{{ $post->slug }}">{{ $post->judul_posting }}</a>
-                                    </h3>
-                                    <p>{{ $post->keterangan }}</p>
-                                    <div class="media align-items-center mt-auto">
-                                        <a class="avatar avatar-sm avatar-circle mt-2 ">
-                                            <img class="avatar-img"
-                                                src="{{ asset('uploads/'. $post->nama->profile_photo_path) }}"
-                                                alt="Image Description" style="max-width: 80%; height: 80%;">
-                                        </a>
-                                        <div class="media-body">
-                                            <span class="text-dark">
-                                                <a class="d-inline-block text-inherit font-weight-bold small"
-                                                    href="/uploadby/{{ $post->nama->slug }}">{{ $post->nama->name }}</a>
-                                            </span>
-                                            <!-- isoFormat('dddd, D MMMM Y H') -->
-                                            <small class="d-block small">{{ Carbon\Carbon::parse($post->created_at)->isoFormat('LLLL') }}
-                                                WIB</small>
-                                        </div>
+                    <!-- Blog -->
+                    <article class="row mb-7" data-aos="zoom-out-right">
+                        <div class="col-md-5">
+                            <a href="/detail/{{ $post->slug }}">
+                                @if (!empty($post->gambarMuka->path) || !empty($post->gambarMuka->file_name))
+                                <img class="card-img transition-zoom-hover"
+                                    src="{{ asset($post->gambarMuka->path.$post->gambarMuka->file_name??'') }}"
+                                    alt="Image Description" style="height:100%;width:100%;object-fit:cover">
+                                @else
+                                <img class="card-img transition-zoom-hover"
+                                    src="{{ asset('uploads/diskominfowonosobo.jpg') }}" alt="Image Description"
+                                    style="height:100%;width:100%;object-fit:cover">
+                                @endif
+                            </a>
+
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body d-flex flex-column h-100 px-0">
+                                <span class="d-block mb-2">
+                                    <a class="font-weight-bold" href="/kategori/{{ $post->kategori->slug }}">{{
+                                        $post->kategori->nama_kategori }}</a>
+                                </span>
+                                <h3><a class="text-inherit" href="/detail/{{ $post->slug }}">{{ $post->judul_posting
+                                        }}</a>
+                                </h3>
+                                <p>{{ $post->keterangan }}</p>
+                                <div class="media align-items-center mt-auto">
+                                    <a class="avatar avatar-sm avatar-circle mt-2 ">
+                                        <img class="avatar-img"
+                                            src="{{ asset('uploads/'. $post->nama->profile_photo_path) }}"
+                                            alt="Image Description" style="max-width: 80%; height: 80%;">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="text-dark">
+                                            <a class="d-inline-block text-inherit font-weight-bold small"
+                                                href="/uploadby/{{ $post->nama->slug }}">{{ $post->nama->name }}</a>
+                                        </span>
+                                        <!-- isoFormat('dddd, D MMMM Y H') -->
+                                        <small class="d-block small">{{
+                                            Carbon\Carbon::parse($post->created_at)->isoFormat('LLLL') }}
+                                            WIB</small>
                                     </div>
                                 </div>
                             </div>
-                        </article>
-                        <!-- End Blog -->
+                        </div>
+                    </article>
+                    <!-- End Blog -->
                     @endforeach
 
 
@@ -288,16 +300,16 @@
                             {{-- <div class="mb-3">
                                 <a href="/pengajuanizin">
                                     <img class="card-img transition-zoom-hover"
-                                        src="{{ asset('front/assets/images/pengajuan.gif') }}"
-                                        alt="" width="250" height="80">
+                                        src="{{ asset('front/assets/images/pengajuan.gif') }}" alt="" width="250"
+                                        height="80">
                                 </a>
                             </div>
 
                             <div class="mb-3">
                                 <a href="https://laporbupati.wonosobokab.go.id/" target="_blank">
                                     <img class="card-img transition-zoom-hover"
-                                        src="{{ asset('front/assets/images/laporbup.gif') }}"
-                                        alt="" width="250" height="80">
+                                        src="{{ asset('front/assets/images/laporbup.gif') }}" alt="" width="250"
+                                        height="80">
                                 </a>
                             </div> --}}
 
@@ -337,98 +349,100 @@
 
 
                             @foreach($populer as $populer)
-                                <!-- Blog -->
-                                <article class="mb-5 mt-3" data-aos="zoom-out-right">
-                                    <div class="media align-items-center text-inherit">
-                                        <div class="avatar avatar-lg mr-3">
-                                            <a href="/detail/{{ $populer->slug }}">
-                                                 @if (!empty($populer->gambarMuka->path) || !empty($populer->gambarMuka->file_name))
-                                                <img class="card-img transition-zoom-hover"
+                            <!-- Blog -->
+                            <article class="mb-5 mt-3" data-aos="zoom-out-right">
+                                <div class="media align-items-center text-inherit">
+                                    <div class="avatar avatar-lg mr-3">
+                                        <a href="/detail/{{ $populer->slug }}">
+                                            @if (!empty($populer->gambarMuka->path) ||
+                                            !empty($populer->gambarMuka->file_name))
+                                            <img class="card-img transition-zoom-hover"
                                                 src="{{ asset($populer->gambarMuka->path.$populer->gambarMuka->file_name??'') }}"
-                                                alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
-                                                @else
-                                                <img class="card-img transition-zoom-hover"
+                                                alt="Image Description" style="height:100%;width:100%;object-fit:cover">
+                                            @else
+                                            <img class="card-img transition-zoom-hover"
                                                 src="{{ asset('uploads/diskominfowonosobo.jpg') }}"
-                                                alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
-                                                @endif
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="h6 mb-0"><a class="text-inherit"
-                                                    href="/detail/{{ $populer->slug }}">{{ $populer->judul_posting }}</a>
-                                            </h4>
-                                        </div>
+                                                alt="Image Description" style="height:100%;width:100%;object-fit:cover">
+                                            @endif
+                                        </a>
                                     </div>
-                                </article>
-                                <!-- End Blog -->
+                                    <div class="media-body">
+                                        <h4 class="h6 mb-0"><a class="text-inherit"
+                                                href="/detail/{{ $populer->slug }}">{{ $populer->judul_posting }}</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- End Blog -->
 
                             @endforeach
                         </div>
 
                         <div class="position-relative bg-primary overflow-hidden mb-3 ignielPelangi">
-                                <div class=" text-left position-relative">
-                                    <h3 class="container text-white text-center font-weight-semi-bold ">SOSIAL MEDIA</h3>
-                                </div>
-                                <!-- SVG Shapes -->
-                                <figure class="mb-n1">
-                                    <svg class="position-absolute top-0 right-0 bottom-0 h-100"
-                                        xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
-                                        height="100%">
-                                        <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z" />
-                                    </svg>
-                                </figure>
-                                <!-- End SVG Shapes -->
+                            <div class=" text-left position-relative">
+                                <h3 class="container text-white text-center font-weight-semi-bold ">SOSIAL MEDIA</h3>
                             </div>
+                            <!-- SVG Shapes -->
+                            <figure class="mb-n1">
+                                <svg class="position-absolute top-0 right-0 bottom-0 h-100"
+                                    xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
+                                    height="100%">
+                                    <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z" />
+                                </svg>
+                            </figure>
+                            <!-- End SVG Shapes -->
+                        </div>
 
                         <section id="my-keyboards" data-aos="zoom-out-right">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://www.instagram.com/diskominfo_wonosobo/" target="_blank">
-                                        <div class="keyboard-box4">
-                                            <img src="front/assets/images/instagram.png" class="keyboard-img" />
-                                          <h2 class="keyboard-tulisan">INSTAGRAM</h2>
-                                        </div>
+                                            <div class="keyboard-box4">
+                                                <img src="front/assets/images/instagram.png" class="keyboard-img" />
+                                                <h2 class="keyboard-tulisan">INSTAGRAM</h2>
+                                            </div>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
-                                        <a href="https://www.youtube.com/channel/UCZqWOVA_3o7A2bqY4ywZn8Q" target="_blank">
-                                        <div class="keyboard-box1">
-                                            <img src="front/assets/images/youtube.png" class="keyboard-img" />
-                                            <h2 class="keyboard-tulisan1 ml-2">YOUTUBE</h2>
-                                        </div>
+                                        <a href="https://www.youtube.com/channel/UCZqWOVA_3o7A2bqY4ywZn8Q"
+                                            target="_blank">
+                                            <div class="keyboard-box1">
+                                                <img src="front/assets/images/youtube.png" class="keyboard-img" />
+                                                <h2 class="keyboard-tulisan1 ml-2">YOUTUBE</h2>
+                                            </div>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://www.facebook.com/kominfo.wsb/" target="_blank">
-                                        <div class="keyboard-box2">
-                                            <img src="front/assets/images/fb.png" class="keyboard-img" />
-                                            <h2 class="keyboard-tulisan ml-2">FACEBOOK</h2>
-                                        </div>
+                                            <div class="keyboard-box2">
+                                                <img src="front/assets/images/fb.png" class="keyboard-img" />
+                                                <h2 class="keyboard-tulisan ml-2">FACEBOOK</h2>
+                                            </div>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://twitter.com/diskominfo_wsb" target="_blank">
-                                        <div class="keyboard-box3">
-                                            <img src="front/assets/images/twitter.png" class="keyboard-img" />
-                                            <h2 class="keyboard-tulisan1 ml-2">TWITTER</h2>
-                                        </div>
+                                            <div class="keyboard-box3">
+                                                <img src="front/assets/images/twitter.png" class="keyboard-img" />
+                                                <h2 class="keyboard-tulisan1 ml-2">TWITTER</h2>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
                         <div class="position-relative bg-primary overflow-hidden mb-3 ignielPelangi">
-                                <div class=" text-left position-relative">
-                                    <h3 class="container text-white text-center font-weight-semi-bold ">MEDIA KAMI</h3>
-                                </div>
-                                <!-- SVG Shapes -->
-                                <figure class="mb-n1">
-                                    <svg class="position-absolute top-0 right-0 bottom-0 h-100"
-                                        xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
-                                        height="100%">
-                                        <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z" />
-                                    </svg>
-                                </figure>
-                                <!-- End SVG Shapes -->
+                            <div class=" text-left position-relative">
+                                <h3 class="container text-white text-center font-weight-semi-bold ">MEDIA KAMI</h3>
                             </div>
+                            <!-- SVG Shapes -->
+                            <figure class="mb-n1">
+                                <svg class="position-absolute top-0 right-0 bottom-0 h-100"
+                                    xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
+                                    height="100%">
+                                    <path fill="#fff" d="M0,1920c0,0,93.4-934.4,0-1920h100.1v1920H0z" />
+                                </svg>
+                            </figure>
+                            <!-- End SVG Shapes -->
+                        </div>
 
 
                         <section id="my-keyboards" data-aos="zoom-out-right">
@@ -436,17 +450,20 @@
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://pesonafm.wonosobokab.go.id" target="_blank">
-                                            <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/pesona.gif') }}">
+                                            <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto"
+                                                src="{{ asset('front/assets/images/pesona.gif') }}">
                                         </a>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://www.youtube.com/c/OfficialWonosoboTV" target="_blank">
-                                            <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/webtv.gif') }}">
+                                            <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto"
+                                                src="{{ asset('front/assets/images/webtv.gif') }}">
                                         </a>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://instagram.com/wonosobohebat" target="_blank">
-                                            <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto" src="{{ asset('front/assets/images/wsbhebat.gif') }}">
+                                            <img class="card-img transition-zoom-hover min-w-15rem min-w-md-15rem mx-auto"
+                                                src="{{ asset('front/assets/images/wsbhebat.gif') }}">
                                         </a>
                                     </div>
                                 </div>
@@ -455,180 +472,214 @@
                     </div>
                 </div>
             </div>
-        <!-- End Blogs Section -->
+            <!-- End Blogs Section -->
 
-        <div class="text-center mb-3">
-            <span class="divider divider-text"><h3>INFO GRAFIS</h3></span>
-        </div>
-
-        <div class="container space-0 space-lg-0  ">
-            @php
-                $angka = 1;
-            @endphp
-            <div class="row">
-                @foreach($infografis as $grafis)
-                <div class="col-sm-6 col-md-3">
-                    <div id="fancyboxGallery{{ $angka }}" class="js-fancybox" data-hs-fancybox-options='{
-                    "selector": "#fancyboxGallery{{ $angka }} .js-fancybox-item"}'>
-                        <div class="card" style="max-width: 18rem; max-height: 25rem;">
-                         
-                            <a class="js-fancybox-item media-viewer mb-3 d-block" href="javascript:;"
-                                data-src="{{ asset($grafis->gambarMuka->file_name??'') }}"
-                                data-caption="{{ $grafis->judul }}">
-                                <img  style="height:230px;object-fit:cover" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover" src="{{ asset($grafis->gambarMuka->file_name??'') }}" alt="Image Description">
-                            </a>
-                           
-                          
-                            @foreach($grafis->attachments as $picture)
-                            @if ($loop->first)
-                            @else
-                            <img class="js-fancybox-item d-none" alt="Image Description"
-                                data-src="{{ asset($picture->file_name??'') }}"
-                                data-caption="{{ $grafis->judul }}">
-                            @endif
-                            @endforeach
-                    
-                            <div class="card-body">
-                                <h5><a>{{ $grafis->judul }}</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @php ($angka++) @endphp
-                @endforeach
-
-                <div class="container text-right mb-2 mt-3">
-                    <a class="btn btn-primary btn-sm"
-                        href="{{ route('infografis.detail') }}">Lihat Selengkapnya <i
-                        class="fas fa-angle-right fa-sm ml-1"></i></a>
-                </div>
-            </div>
-        </div>
-      
-        @if (count($infohoax))
             <div class="text-center mb-3">
-                <span class="divider divider-text"><h3>INFO HOAX</h3></span>
+                <!-- <span class="divider divider-text">
+                    <h3>INFO GRAFIS</h3>
+                </span> -->
+                <img src="{{ asset('gif/infografis.gif') }}" alt="">
             </div>
-        @endif
 
-        <div class="container space-0 space-lg-0  ">
-            <div id="fancyboxGallery0" class="js-fancybox" data-hs-fancybox-options='{
-             "selector": "#fancyboxGallery0 .js-fancybox-item0"}'>
+            <div class="container space-0 space-lg-0  ">
+                @php
+                $angka = 1;
+                @endphp
                 <div class="row">
-                    @php
-                    $index = 50;
-                    @endphp
-                    @foreach($infohoax as $hoax)
-                        <div class="col-sm-6 col-md-3">
-                        {{-- <div id="fancyboxGallery{{ $index }}" class="js-fancybox1 col-sm-6 col-md-3" data-hs-fancybox-options='{
-                        "selector": "#fancyboxGallery{{ $index }} .js-fancybox-item1"}'> --}}
-                            <!-- Card Info -->
-                            <div class="card" style="max-width: 18rem; max-height: 25rem; ">
-                                <a class="js-fancybox-item0 d-block" href="javascript:;"
-                                    data-src="{{ asset($hoax->gambarMuka->path.$hoax->gambarMuka->file_name??'') }}"
-                                    data-caption="{{ $hoax->judul_posting }}">
-                                    <img style="height: 230px; object-fit:cover" class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
-                                        src="{{ asset($hoax->gambarMuka->path.$hoax->gambarMuka->file_name??'') }}"
-                                        alt="Image Description">
+                    @foreach($infografis as $grafis)
+                    <div class="col-sm-6 col-md-3">
+                        <div id="fancyboxGallery{{ $angka }}" class="js-fancybox" data-hs-fancybox-options='{
+                    "selector": "#fancyboxGallery{{ $angka }} .js-fancybox-item"}'>
+                            <div class="card" style="max-width: 18rem; max-height: 25rem;">
+
+                                <a class="js-fancybox-item media-viewer mb-3 d-block" href="javascript:;"
+                                    data-src="{{ asset($grafis->gambarMuka->file_name??'') }}"
+                                    data-caption="{{ $grafis->judul }}">
+                                    <img style="height:230px;object-fit:cover"
+                                        class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
+                                        src="{{ asset($grafis->gambarMuka->file_name??'') }}" alt="Image Description">
                                 </a>
+
+
+                                @foreach($grafis->attachments as $picture)
+                                @if ($loop->first)
+                                @else
+                                <img class="js-fancybox-item d-none" alt="Image Description"
+                                    data-src="{{ asset($picture->file_name??'') }}" data-caption="{{ $grafis->judul }}">
+                                @endif
+                                @endforeach
+
                                 <div class="card-body">
-                                    <h5><a>{{ $hoax->judul_posting }}</a></h5>
+                                    <h5><a>{{ $grafis->judul }}</a></h5>
                                 </div>
                             </div>
-                            <!-- End Card Info -->
                         </div>
-                         @php ($index++) @endphp
+                    </div>
+                    @php ($angka++) @endphp
                     @endforeach
 
-                    @if (count($infohoax))
                     <div class="container text-right mb-2 mt-3">
-                        <a class="btn btn-primary btn-sm mb-2" href="{{ route('infohoax.daftar') }}">Lihat
-                            Selengkapnya <i class="fas fa-angle-right fa-sm ml-1"></i></a>
+                        <a class="btn btn-primary btn-sm" href="{{ route('infografis.detail') }}">Lihat Selengkapnya <i
+                                class="fas fa-angle-right fa-sm ml-1"></i></a>
                     </div>
-                    @endif
-                   
                 </div>
             </div>
-        </div>
+
+            @if (count($infohoax))
+            <div class="text-center mb-3">
+                <!-- <span class="divider divider-text">
+                    <h3>INFO HOAX</h3>
+                </span> -->
+                <img src="{{ asset('gif/infohoax.gif') }}" alt="">
+            </div>
+            @endif
+
+            <div class="container space-0 space-lg-0  ">
+                <div id="fancyboxGallery0" class="js-fancybox" data-hs-fancybox-options='{
+             "selector": "#fancyboxGallery0 .js-fancybox-item0"}'>
+                    <div class="row">
+                        @php
+                        $index = 50;
+                        @endphp
+                        @foreach($infohoax as $hoax)
+                        <div class="col-sm-6 col-md-3">
+                            {{-- <div id="fancyboxGallery{{ $index }}" class="js-fancybox1 col-sm-6 col-md-3"
+                                data-hs-fancybox-options='{
+                        "selector": "#fancyboxGallery{{ $index }} .js-fancybox-item1"}'> --}}
+                                <!-- Card Info -->
+                                <div class="card" style="max-width: 18rem; max-height: 25rem; ">
+                                    <a class="js-fancybox-item0 d-block" href="javascript:;"
+                                        data-src="{{ asset($hoax->gambarMuka->path.$hoax->gambarMuka->file_name??'') }}"
+                                        data-caption="{{ $hoax->judul_posting }}">
+                                        <img style="height: 230px; object-fit:cover"
+                                            class="img-fluid img-thumbnail rounded mx-auto d-block transition-zoom-hover"
+                                            src="{{ asset($hoax->gambarMuka->path.$hoax->gambarMuka->file_name??'') }}"
+                                            alt="Image Description">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5><a>{{ $hoax->judul_posting }}</a></h5>
+                                    </div>
+                                </div>
+                                <!-- End Card Info -->
+                            </div>
+                            @php ($index++) @endphp
+                            @endforeach
+
+                            @if (count($infohoax))
+                            <div class="container text-right mb-2 mt-3">
+                                <a class="btn btn-primary btn-sm mb-2" href="{{ route('infohoax.daftar') }}">Lihat
+                                    Selengkapnya <i class="fas fa-angle-right fa-sm ml-1"></i></a>
+                            </div>
+                            @endif
+
+                        </div>
+                    </div>
+                </div>
     </main>
     <!-- ========== END MAIN ========== -->
     @endsection
 
     @push('css')
-        <style>
-            .no-border {
-                border: 0;
-                box-shadow: none;
-                /* You may want to include this as bootstrap applies these styles too */
+    <style>
+        .no-border {
+            border: 0;
+            box-shadow: none;
+            /* You may want to include this as bootstrap applies these styles too */
+        }
+
+        .topcorner {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .ignielPelangi {
+            background: linear-gradient(45deg, #f22613, #f89406, #26a65b, #5868ec, #f54e80, #f7ca18, #d2527f);
+            background-size: 500% 500%;
+            -webkit-animation: ignielGradient 15s ease infinite;
+            -moz-animation: ignielGradient 15s ease infinite;
+            animation: ignielGradient 15s ease infinite;
+        }
+
+        @-webkit-keyframes ignielGradient {
+            0% {
+                background-position: 0% 50%
             }
 
-            .topcorner{
-                position:absolute;
-                top:0;
-                right:0;
+            50% {
+                background-position: 100% 50%
             }
 
-            .ignielPelangi {
-                background: linear-gradient(45deg, #f22613, #f89406, #26a65b, #5868ec, #f54e80, #f7ca18, #d2527f);
-                background-size: 500% 500%;
-                -webkit-animation: ignielGradient 15s ease infinite;
-                -moz-animation: ignielGradient 15s ease infinite;
-                animation: ignielGradient 15s ease infinite;
-            }
-            @-webkit-keyframes ignielGradient {
-                0%{background-position:0% 50%}
-                50%{background-position:100% 50%}
-                100%{background-position:0% 50%}
-            }
-            @-moz-keyframes ignielGradient {
-                0%{background-position:0% 50%}
-                50%{background-position:100% 50%}
-                100%{background-position:0% 50%}
-            }
-            @keyframes ignielGradient {
-                0%{background-position:0% 50%}
-                50%{background-position:100% 50%}
-                100%{background-position:0% 50%}
-            }
-
-            label.error {
-                color: red;
-                font-size: 1rem;
-                display: block;
-                margin-top: 5px;
-            }
-
-            input.error {
-                border: 1px dashed red;
-                font-weight: 300;
-                color: red;
+            100% {
+                background-position: 0% 50%
             }
         }
 
-        </style>
+        @-moz-keyframes ignielGradient {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        @keyframes ignielGradient {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        label.error {
+            color: red;
+            font-size: 1rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        input.error {
+            border: 1px dashed red;
+            font-weight: 300;
+            color: red;
+        }
+        }
+    </style>
     @endpush
 
     @push('js')
-        <script>
-        <script src = "{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}" ></script>
-        <script src = "{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
-        <script src = "{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-        
-        <script>
+    <script>
+        <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}" ></script>
+    <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
+    <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script>
             function myFunction() {
                 var elmnt = document.getElementById("pagenya");
-                elmnt.scrollIntoView();
+            elmnt.scrollIntoView();
             }
-        </script>
+    </script>
 
-        <script>
+    <script>
             $(document).ready(function () {
                 if (window.location.hash == "#moreInfo") {
-                    $('html, body').animate({
-                        scrollTop: $("#moreInfo").offset().top
-                    }, 1000);
+                $('html, body').animate({
+                    scrollTop: $("#moreInfo").offset().top
+                }, 1000);
                 }
             });
-        </script>
-        </script>
+    </script>
+    </script>
     @endpush

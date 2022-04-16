@@ -9,7 +9,7 @@
   <meta property="og:description" content="Website Resmi Dinas Komunikasi dan Informatika Kabupaten Wonosobo">
 
   <!-- Required Meta Tags Always Come First -->
-  <meta charset = "UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Favicon -->
@@ -21,7 +21,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- CSS Implementing Plugins -->
-  <link href="{{ url ('limitless/Template/global_assets/css/icons/icomoon/styles.css ')}}" rel="stylesheet" type="text/css">
+  <link href="{{ url ('limitless/Template/global_assets/css/icons/icomoon/styles.css ')}}" rel="stylesheet"
+    type="text/css">
   <link rel="stylesheet" href="{{ url ('front/assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.css')}}">
   <link rel="stylesheet" href="{{ url ('front/assets/vendor/leaflet/dist/leaflet.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/fontawesome/css/all.min.css')}}">
@@ -46,8 +47,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7V1VF1L35"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-    <link rel="stylesheet" href="{{ url('front/assets/style.css')}}" />
+    gtag('config', 'G-R7V1VF1L35');
+  </script>
+
+
+  <link rel="stylesheet" href="{{ url('front/assets/style.css')}}" />
 
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
@@ -65,30 +76,36 @@
       <nav class="js-mega-menu navbar navbar-expand-lg">
         <!-- Logo -->
         <div class="mr-5">
-        <a href="{{ url('/') }}" aria-label="Front">
-          {{-- <img style="margin-top:4px; width:80px;" src="{{ url('front/assets/images/pemda.png')}}"> --}}
-          <img style="width:120px;" src="{{ url('front/assets/images/diskominfo.png')}}">
-        </a>
+          <a href="{{ url('/') }}" aria-label="Front">
+            {{-- <img style="margin-top:4px; width:80px;" src="{{ url('front/assets/images/pemda.png')}}"> --}}
+            <img style="width:120px;" src="{{ url('front/assets/images/diskominfo.png')}}">
+          </a>
         </div>
         <!-- End Logo -->
 
         <!-- Responsive Toggle Button -->
-        <button type="button" class="navbar-toggler btn btn-icon btn-sm rounded-circle collapsed" aria-label="Toggle navigation" aria-expanded="false"    aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+        <button type="button" class="navbar-toggler btn btn-icon btn-sm rounded-circle collapsed"
+          aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse"
+          data-target="#navBar">
           <span class="navbar-toggler-default">
             <svg width="14" height="14" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-              <path fill="currentColor" d="M17.4,6.2H0.6C0.3,6.2,0,5.9,0,5.5V4.1c0-0.4,0.3-0.7,0.6-0.7h16.9c0.3,0,0.6,0.3,0.6,0.7v1.4C18,5.9,17.7,6.2,17.4,6.2z M17.4,14.1H0.6c-0.3,0-0.6-0.3-0.6-0.7V12c0-0.4,0.3-0.7,0.6-0.7h16.9c0.3,0,0.6,0.3,0.6,0.7v1.4C18,13.7,17.7,14.1,17.4,14.1z"></path>
+              <path fill="currentColor"
+                d="M17.4,6.2H0.6C0.3,6.2,0,5.9,0,5.5V4.1c0-0.4,0.3-0.7,0.6-0.7h16.9c0.3,0,0.6,0.3,0.6,0.7v1.4C18,5.9,17.7,6.2,17.4,6.2z M17.4,14.1H0.6c-0.3,0-0.6-0.3-0.6-0.7V12c0-0.4,0.3-0.7,0.6-0.7h16.9c0.3,0,0.6,0.3,0.6,0.7v1.4C18,13.7,17.7,14.1,17.4,14.1z">
+              </path>
             </svg>
           </span>
           <span class="navbar-toggler-toggled">
             <svg width="14" height="14" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-              <path fill="currentColor" d="M11.5,9.5l5-5c0.2-0.2,0.2-0.6-0.1-0.9l-1-1c-0.3-0.3-0.7-0.3-0.9-0.1l-5,5l-5-5C4.3,2.3,3.9,2.4,3.6,2.6l-1,1 C2.4,3.9,2.3,4.3,2.5,4.5l5,5l-5,5c-0.2,0.2-0.2,0.6,0.1,0.9l1,1c0.3,0.3,0.7,0.3,0.9,0.1l5-5l5,5c0.2,0.2,0.6,0.2,0.9-0.1l1-1 c0.3-0.3,0.3-0.7,0.1-0.9L11.5,9.5z"></path>
+              <path fill="currentColor"
+                d="M11.5,9.5l5-5c0.2-0.2,0.2-0.6-0.1-0.9l-1-1c-0.3-0.3-0.7-0.3-0.9-0.1l-5,5l-5-5C4.3,2.3,3.9,2.4,3.6,2.6l-1,1 C2.4,3.9,2.3,4.3,2.5,4.5l5,5l-5,5c-0.2,0.2-0.2,0.6,0.1,0.9l1,1c0.3,0.3,0.7,0.3,0.9,0.1l5-5l5,5c0.2,0.2,0.6,0.2,0.9-0.1l1-1 c0.3-0.3,0.3-0.7,0.1-0.9L11.5,9.5z">
+              </path>
             </svg>
           </span>
         </button>
         <!-- End Responsive Toggle Button -->
 
         <!-- Navigation -->
-        <div id="navBar" class="navbar-collapse collapse" style="">
+        <div id="navBar" class="navbar-collapse collapse">
           <div class="navbar-body header-abs-top-inner">
             <ul class="navbar-nav">
 
@@ -96,7 +113,8 @@
               <!-- Profil -->
               <li class="hs-has-sub-menu navbar-nav-item">
 
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('index')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Beranda</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('index')}}"
+                  aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Beranda</a>
                 <!-- Pages - Submenu -->
                 <div class="hs-sub-menu ">
                 </div>
@@ -108,9 +126,12 @@
               <!-- Pages -->
               <li class="hs-has-sub-menu navbar-nav-item">
 
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Profil</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold"
+                  href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu"
+                  @yield('warna')>Profil</a>
                 <!-- Pages - Submenu -->
-                <div id="pagesSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu" style="min-width: 230px;">
+                <div id="pagesSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu"
+                  style="min-width: 230px;">
                   <!-- Company -->
 
                   @foreach($menu_categories as $category)
@@ -119,8 +140,11 @@
                       @else href="{{$category->url}}"
                       @endif
 
-                      id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif ">{{ $category->nama }}</a>
-                    <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($category->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
+                      id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item
+                      @if(count($category->childs))dropdown-item-toggle @endif ">{{ $category->nama }}</a>
+                    <div id="navSubmenuPagesCompany"
+                      class="hs-sub-menu @if(count($category->childs)) dropdown-menu @endif"
+                      aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
                       @if(count($category->childs))
                       @foreach($category->childs as $child)
                       <div class="hs-has-sub-menu">
@@ -128,14 +152,20 @@
                           @else href="{{$child->url}}"
                           @endif
 
-                          id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
-                        <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany">
+                          id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item
+                          @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
+                        <div id="navSubmenuPagesCompany"
+                          class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif"
+                          aria-labelledby="navLinkPagesCompany">
                           @if(count($child->childs))
                           @foreach($child->childs as $child1)
                           <a @if(count($child1->childs))href="#"
                             @else href="{{$child1->url}}"
                             @endif
-                            id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
+                            id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item
+                            @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;"
+                            aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{
+                            $child1->nama }}</a>
                           @endforeach
                           @endif
                         </div>
@@ -156,29 +186,42 @@
               <!-- Pages -->
               <li class="hs-has-sub-menu navbar-nav-item">
 
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>PPID</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold"
+                  href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu"
+                  @yield('warna')>PPID</a>
                 <!-- Pages - Submenu -->
-                <div id="pagesSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu" style="min-width: 230px;">
+                <div id="pagesSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu"
+                  style="min-width: 230px;">
                   <!-- Company -->
 
                   @foreach($ppid as $ppids)
                   <div class="hs-has-sub-menu">
                     <a @if(count($ppids->childs))href="#"
                       @else href="{{$ppids->url??'#'}}"
-                      @endif @if($ppids->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($ppids->childs))dropdown-item-toggle @endif">{{ $ppids->nama }}</a>
-                    <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($ppids->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
+                      @endif @if($ppids->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
+                      class="hs-mega-menu-invoker dropdown-item @if(count($ppids->childs))dropdown-item-toggle
+                      @endif">{{ $ppids->nama }}</a>
+                    <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($ppids->childs)) dropdown-menu @endif"
+                      aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
                       @if(count($ppids->childs))
                       @foreach($ppids->childs as $child)
                       <div class="hs-has-sub-menu">
                         <a @if(count($child->childs))href="#"
-                        @else href="{{$child->url??'#'}}"
-                        @endif @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
-                        <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany">
+                          @else href="{{$child->url??'#'}}"
+                          @endif @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
+                          class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle
+                          @endif" >{{ $child->nama }}</a>
+                        <div id="navSubmenuPagesCompany"
+                          class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif"
+                          aria-labelledby="navLinkPagesCompany">
                           @if(count($child->childs))
                           @foreach($child->childs as $child1)
                           <a @if(count($child1->childs))href="#"
-                        @else href="{{$child1->url??'#'}}"
-                        @endif @if($child1->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
+                            @else href="{{$child1->url??'#'}}"
+                            @endif @if($child1->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
+                            class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle
+                            @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
                           @endforeach
                           @endif
                         </div>
@@ -197,31 +240,45 @@
               <!-- Pages -->
               <li class="hs-has-sub-menu navbar-nav-item">
 
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Transparansi</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold"
+                  href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu"
+                  @yield('warna')>Transparansi</a>
                 <!-- Pages - Submenu -->
-                <div id="pagesSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu" style="min-width: 230px;">
+                <div id="pagesSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu"
+                  style="min-width: 230px;">
                   <!-- Company -->
 
                   @foreach($menu_categoriess as $category)
                   <div class="hs-has-sub-menu">
                     <a @if(count($category->childs))href="#"
-                        @else href="{{$category->url??'#'}}"
-                        @endif
-                         @if($category->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle @endif">{{ $category->nama }}</a>
-                    <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($category->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
+                      @else href="{{$category->url??'#'}}"
+                      @endif
+                      @if($category->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
+                      class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle
+                      @endif">{{ $category->nama }}</a>
+                    <div id="navSubmenuPagesCompany"
+                      class="hs-sub-menu @if(count($category->childs)) dropdown-menu @endif"
+                      aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
                       @if(count($category->childs))
                       @foreach($category->childs as $child)
                       <div class="hs-has-sub-menu">
                         <a @if(count($child->childs))href="#"
-                        @else href="{{$child->url??'#'}}"
-                        @endif
-                         @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
-                        <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif" aria-labelledby="navLinkPagesCompany">
+                          @else href="{{$child->url??'#'}}"
+                          @endif
+                          @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
+                          class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle
+                          @endif" >{{ $child->nama }}</a>
+                        <div id="navSubmenuPagesCompany"
+                          class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif"
+                          aria-labelledby="navLinkPagesCompany">
                           @if(count($child->childs))
                           @foreach($child->childs as $child1)
                           <a @if(count($child1->childs))href="#"
-                        @else href="{{$child1->url??'#'}}"
-                        @endif @if($child1->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
+                            @else href="{{$child1->url??'#'}}"
+                            @endif @if($child1->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
+                            class="hs-mega-menu-invoker dropdown-item @if(count($child1->childs))dropdown-item-toggle
+                            @endif " href="javascript:;" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="navSubmenuPagesCompany">{{ $child1->nama }}</a>
                           @endforeach
                           @endif
                         </div>
@@ -276,35 +333,47 @@
               <!-- End Pages - Submenu -->
               <!-- </li> -->
               <!-- End Tupoksi -->
-              
+
 
               <!-- Blog -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                <a id="blogMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu" @yield('warna')>Layanan</a>
+                <a id="blogMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold"
+                  href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu"
+                  @yield('warna')>Layanan</a>
 
                 <!-- Blog - Submenu -->
-                <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu" style="min-width: 230px;">
-                  {{-- <a class="dropdown-item " href="{{ route('permintaan:zoom.index')}}">Permintaan Link Zoom</a> --}}
+                <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu"
+                  style="min-width: 230px;">
+                  {{-- <a class="dropdown-item " href="{{ route('permintaan:zoom.index')}}">Permintaan Link Zoom</a>
+                  --}}
                   {{-- <a class="dropdown-item " href="{{ route('pengaduan')}}">Pengaduan Masyarakat</a> --}}
                   {{-- <a class="dropdown-item " href="{{ route('pengajuan')}}">Pengajuan Informasi</a> --}}
                   {{-- <a class="dropdown-item " href="{{ route('website.list')}}">Website Kelurahan</a> --}}
-                  {{-- <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Standar Pelayanan</a>
+                  {{-- <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Standar
+                    Pelayanan</a>
                   <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Maklumat Pelayanan</a>
                   <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">SP Diskominfo</a> --}}
 
-                  <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Pembuatan Media Publikasi</a>
+                  <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Pembuatan Media
+                    Publikasi</a>
                   <a class="dropdown-item " href="{{ url('/page/permohonan-liputan')}}">Permohonan Liputan</a>
-                  <a class="dropdown-item " href="{{ url('/page/permohonan-informasi-publik')}}">Permohonan Informasi Publik</a>
-                  <a class="dropdown-item " href="{{ url('/page/pengajuan-keberatan-informasi-publik')}}">Pengajuan Keberatan Informasi Publik</a>
+                  <a class="dropdown-item " href="{{ url('/page/permohonan-informasi-publik')}}">Permohonan Informasi
+                    Publik</a>
+                  <a class="dropdown-item " href="{{ url('/page/pengajuan-keberatan-informasi-publik')}}">Pengajuan
+                    Keberatan Informasi Publik</a>
                   <a class="dropdown-item " href="{{ url('/page/pinjam-tempat-rapat')}}">Pinjam Tempat Rapat</a>
                   <a class="dropdown-item " href="{{ url('/page/pinjam-peralatan')}}">Pinjam Peralatan</a>
                   <a class="dropdown-item " href="{{ url('/page/permohonan-magang')}}">Permohonan Magang</a>
-                  <a class="dropdown-item " href="{{ route('perijinan:zoom.index')}}">Permohonan Peminjaman Akun Zoom</a>
-                  <a class="dropdown-item " href="{{ url('/page/permohonan-jaringan')}}">Permohonan Jaringan Internet</a>
+                  <a class="dropdown-item " href="{{ route('perijinan:zoom.index')}}">Permohonan Peminjaman Akun
+                    Zoom</a>
+                  <a class="dropdown-item " href="{{ url('/page/permohonan-jaringan')}}">Permohonan Jaringan
+                    Internet</a>
                   <a class="dropdown-item " href="{{ url('/page/permohonan-aplikasi')}}">Permohonan Aplikasi</a>
-                  <a class="dropdown-item " href="{{ url('/perijinan/permohonan/layanan-server')}}">Permohonan Subdomain</a>
-                  <a class="dropdown-item " href="{{ url('/perijinan/permintaan/colocation')}}">Permohonan Colocation Server</a>
-                 
+                  <a class="dropdown-item " href="{{ url('/perijinan/permohonan/layanan-server')}}">Permohonan
+                    Subdomain</a>
+                  <a class="dropdown-item " href="{{ url('/perijinan/permintaan/colocation')}}">Permohonan Colocation
+                    Server</a>
+
                 </div>
                 <!-- End Submenu -->
               </li>
@@ -312,7 +381,9 @@
 
               <!-- Pengumuman -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('pengumuman')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Pengumuman</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold"
+                  href="{{ route('pengumuman')}}" aria-haspopup="true" aria-expanded="false"
+                  aria-labelledby="pagesSubMenu" @yield('warna')>Pengumuman</a>
                 <!-- Pages - Submenu -->
                 <div class="hs-sub-menu ">
                 </div>
@@ -322,7 +393,9 @@
 
               <!-- Lampiran -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Download Area</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold"
+                  href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false"
+                  aria-labelledby="pagesSubMenu" @yield('warna')>Download Area</a>
                 <!-- Pages - Submenu -->
                 <div class="hs-sub-menu ">
                 </div>
@@ -333,7 +406,9 @@
 
               <!-- Lampiran -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="https://www.kominfo.go.id/content/all/laporan_isu_hoaks"  target="_blank" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Cek Isu Hoax</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold"
+                  href="https://www.kominfo.go.id/content/all/laporan_isu_hoaks" target="_blank" aria-haspopup="true"
+                  aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Cek Isu Hoax</a>
                 <!-- Pages - Submenu -->
                 <div class="hs-sub-menu ">
                 </div>
@@ -344,10 +419,13 @@
 
               <!-- Lampiran -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="#" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Pengaduan Masyarakat</a>
+                <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="#"
+                  aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Pengaduan
+                  Masyarakat</a>
                 <!-- Pages - Submenu -->
-               <!-- Blog - Submenu -->
-                <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu" style="min-width: 230px;">
+                <!-- Blog - Submenu -->
+                <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu"
+                  style="min-width: 230px;">
                   <a class="dropdown-item " href="https://laporbupati.wonosobokab.go.id/" target="_blank">LaporBup</a>
                   <a class="dropdown-item" href="tel:112">Call Center 112</a>
                   {{-- <a class="dropdown-item " href="{{ route('website.list')}}">Website Kelurahan</a> --}}
@@ -480,7 +558,9 @@
                       Total Pengunjung
                       <div class="d-flex justify-content-left ml-3 mb-4">
                         <a href='https://www.stat-counter.org/'></a>
-                        {{-- <script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/829214/t/5"></script> --}}
+                        {{--
+                        <script type="text/javascript"
+                          src="https://freevisitorcounters.com/en/home/counter/829214/t/5"></script> --}}
                       </div>
                     </span>
                   </span>
@@ -584,7 +664,7 @@
                   <span class="media">
                     <span class="icon-seven-segment-5 mt-1 mr-2"></span>
                     <span class="media-body">
-                      Kominfo Jateng 
+                      Kominfo Jateng
                     </span>
                   </span>
                 </a>
@@ -594,7 +674,7 @@
                   <span class="media">
                     <span class="icon-seven-segment-6 mt-1 mr-2"></span>
                     <span class="media-body">
-                     Kementerian Komunikasi dan Informatika
+                      Kementerian Komunikasi dan Informatika
                     </span>
                   </span>
                 </a>
@@ -611,7 +691,8 @@
         <!-- Copyright -->
 
         <div class="w-md-75 text-lg-center mx-lg-auto">
-          <p class="text-white opacity-sm small">&copy; Diskominfo Wonosobo 2017-{{ Carbon\Carbon::now()->isoFormat('Y') }}.</p>
+          <p class="text-white opacity-sm small">&copy; Diskominfo Wonosobo 2017-{{ Carbon\Carbon::now()->isoFormat('Y')
+            }}.</p>
         </div>
         <!-- End Copyright -->
       </div>
@@ -642,22 +723,22 @@
 
 
   <!-- JS Implementing Plugins -->
-  
+
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
   <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
   <script>
-  flatpickr("input[type=datetime-local]", {
-    "locale": "id"
-  });
+    flatpickr("input[type=datetime-local]", {
+      "locale": "id"
+    });
   </script>
   <script>
-  flatpickr("input[type=waktu]", {
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-    time_24hr: true
-  });
+    flatpickr("input[type=waktu]", {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "H:i",
+      time_24hr: true
+    });
   </script>
   <script src="{{ url ('front/assets/vendor/hs-header/dist/hs-header.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-go-to/dist/hs-go-to.min.js')}}"></script>
@@ -680,7 +761,7 @@
   <script src="{{ url ('front/assets/vendor/hs-video-bg/dist/hs-video-bg.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/aos/dist/aos.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-file-attach/dist/hs-file-attach.min.js')}}"></script>
-  
+
 
 
   <!-- ====validator==== -->
@@ -698,50 +779,50 @@
 
   <!-- JS Plugins Init. -->
   <script type="text/javascript">
-      VanillaTilt.init(document.querySelectorAll('.keyboard-box'), {
-          max: 35,
-          speed: 1000,
-          glare: true,
-      });
+    VanillaTilt.init(document.querySelectorAll('.keyboard-box'), {
+      max: 35,
+      speed: 1000,
+      glare: true,
+    });
   </script>
   <script type="text/javascript">
-      VanillaTilt.init(document.querySelectorAll('.keyboard-box1'), {
-          max: 35,
-          speed: 1000,
-          glare: true,
-      });
+    VanillaTilt.init(document.querySelectorAll('.keyboard-box1'), {
+      max: 35,
+      speed: 1000,
+      glare: true,
+    });
   </script>
   <script type="text/javascript">
-      VanillaTilt.init(document.querySelectorAll('.keyboard-box2'), {
-          max: 35,
-          speed: 1000,
-          glare: true,
-      });
+    VanillaTilt.init(document.querySelectorAll('.keyboard-box2'), {
+      max: 35,
+      speed: 1000,
+      glare: true,
+    });
   </script>
   <script type="text/javascript">
-      VanillaTilt.init(document.querySelectorAll('.keyboard-box3'), {
-          max: 35,
-          speed: 1000,
-          glare: true,
-      });
+    VanillaTilt.init(document.querySelectorAll('.keyboard-box3'), {
+      max: 35,
+      speed: 1000,
+      glare: true,
+    });
   </script>
   <script type="text/javascript">
-      VanillaTilt.init(document.querySelectorAll('.keyboard-box4'), {
-          max: 35,
-          speed: 1000,
-          glare: true,
-      });
+    VanillaTilt.init(document.querySelectorAll('.keyboard-box4'), {
+      max: 35,
+      speed: 1000,
+      glare: true,
+    });
   </script>
   <script type="text/javascript">
-      VanillaTilt.init(document.querySelectorAll('.keyboard-box_a'), {
-          max: 35,
-          speed: 1000,
-          glare: true,
-      });
+    VanillaTilt.init(document.querySelectorAll('.keyboard-box_a'), {
+      max: 35,
+      speed: 1000,
+      glare: true,
+    });
   </script>
-  
+
   <script>
-    $(document).on('ready', function() {
+    $(document).on('ready', function () {
 
       // INITIALIZATION OF HEADER
       // =======================================================
@@ -756,14 +837,14 @@
         }
       }).init();
 
-       $('.js-file-attach').each(function () {
+      $('.js-file-attach').each(function () {
         var customFile = new HSFileAttach($(this)).init();
-        });
+      });
 
 
       // INITIALIZATION OF FANCYBOX
       // =======================================================
-      $('.js-fancybox').each(function() {
+      $('.js-fancybox').each(function () {
         var fancybox = $.HSCore.components.HSFancyBox.init($(this));
       });
 
@@ -774,25 +855,25 @@
 
       // INITIALIZATION OF SHOW ANIMATIONS
       // =======================================================
-      $('.js-animation-link').each(function() {
+      $('.js-animation-link').each(function () {
         var showAnimation = new HSShowAnimation($(this)).init();
       });
 
 
       // INITIALIZATION OF FORM VALIDATION
       // =======================================================
-      $('.js-validate').each(function() {
+      $('.js-validate').each(function () {
         var validation = $.HSCore.components.HSValidation.init($(this));
       });
 
-       // initialization of autonomous popups
-        $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-modal-window', {
-            autonomous: true
-        });
+      // initialization of autonomous popups
+      $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-modal-window', {
+        autonomous: true
+      });
 
       // INITIALIZATION OF CUBEPORTFOLIO
       // =======================================================
-      $('.cbp').each(function() {
+      $('.cbp').each(function () {
         var cbp = $.HSCore.components.HSCubeportfolio.init($(this), {
           layoutMode: 'grid',
           filters: '#filterControls',
@@ -803,20 +884,20 @@
 
       // INITIALIZATION OF SLICK CAROUSEL
       // =======================================================
-      $('#heroSliderNav').on('init', function(event, slick) {
-        $(slick.$slider).find('.slick-pagination-line-progress .slick-pagination-line-progress-helper').each(function() {
+      $('#heroSliderNav').on('init', function (event, slick) {
+        $(slick.$slider).find('.slick-pagination-line-progress .slick-pagination-line-progress-helper').each(function () {
           $(this).css({
             transitionDuration: (slick.options.autoplaySpeed - slick.options.speed) + 'ms'
           });
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
           $(slick.$slider).addClass('slick-dots-ready');
         });
       });
 
-      $('#heroSliderNav').one('beforeChange', function(event, slick) {
-        $(slick.$slider).find('.slick-pagination-line-progress .slick-pagination-line-progress-helper').each(function() {
+      $('#heroSliderNav').one('beforeChange', function (event, slick) {
+        $(slick.$slider).find('.slick-pagination-line-progress .slick-pagination-line-progress-helper').each(function () {
           $(this).css({
             transitionDuration: (slick.options.autoplaySpeed + slick.options.speed) + 'ms'
           });
@@ -826,19 +907,19 @@
 
       // INITIALIZATION OF SLICK CAROUSEL
       // =======================================================
-      $('.js-slick-carousel').each(function() {
+      $('.js-slick-carousel').each(function () {
         var slickCarousel = $.HSCore.components.HSSlickCarousel.init($(this));
       });
 
-      $(window).on('resize', function() {
+      $(window).on('resize', function () {
         $('#heroSliderNav').slick('setPosition');
       });
 
-      
+
 
       // INITIALIZATION OF STICKY BLOCKS
       // =======================================================
-      $('.js-sticky-block').each(function() {
+      $('.js-sticky-block').each(function () {
         var stickyBlock = new HSStickyBlock($(this)).init();
       });
 
@@ -854,21 +935,22 @@
 
       // INITIALIZATION OF GO TO
       // =======================================================
-      $('.js-go-to').each(function() {
+      $('.js-go-to').each(function () {
         var goTo = new HSGoTo($(this)).init();
       });
     });
-    @if(request('page') !='')
-    window.onload = function() {
-    var el = document.getElementById('de');
-    el.scrollIntoView(true);
-}
-@endif
+
+    @if (request('page') != '')
+      window.onload = function () {
+        var el = document.getElementById('de');
+        el.scrollIntoView(true);
+      }
+    @endif
   </script>
 
   <!-- IE Support -->
   <script>
-    if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{ asset ('front/assets/vendor/babel-polyfill/dist/polyfill.js ')}}"><\/script>');
+    if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{ asset ('front / assets / vendor / babel - polyfill / dist / polyfill.js ')}}"><\/script>');
   </script>
   @stack('js')
 
