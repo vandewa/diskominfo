@@ -51,6 +51,7 @@ class ComCodeSeeder extends Seeder
             ['code_cd' => 'STATUS_ST_01', 'code_nm' => 'Menunggu Persetujuan', 'code_group' => 'STATUS_ST', 'code_value' => ''],
             ['code_cd' => 'STATUS_ST_02', 'code_nm' => 'Disetujui', 'code_group' => 'STATUS_ST', 'code_value' => ''],
             ['code_cd' => 'STATUS_ST_03', 'code_nm' => 'Ditolak', 'code_group' => 'STATUS_ST', 'code_value' => ''],
+            ['code_cd' => 'STATUS_ST_04', 'code_nm' => 'Dibatalkan', 'code_group' => 'STATUS_ST', 'code_value' => ''],
             ['code_cd' => 'PEMINJAMANST_00', 'code_nm' => 'Tersedia', 'code_group' => 'PEMINJAMANST', 'code_value' => ''],
             ['code_cd' => 'PEMINJAMANST_01', 'code_nm' => 'Dipinjam', 'code_group' => 'PEMINJAMANST', 'code_value' => ''],
             ['code_cd' => 'INFORMASI_ST_01', 'code_nm' => 'Informasi Berkala', 'code_group' => 'INFORMASI_ST', 'code_value' => ''],
@@ -66,7 +67,8 @@ class ComCodeSeeder extends Seeder
             ['code_cd' => 'LAYANAN_INTERNET_ST_02', 'code_nm' => 'Perbaikan Jaringan', 'code_group' => 'LAYANAN_INTERNET_ST', 'code_value' => ''],
             ['code_cd' => 'DOMAIN_ST_01', 'code_nm' => 'wonosobokab.go.id', 'code_group' => 'DOMAIN_ST', 'code_value' => ''],
             ['code_cd' => 'DOMAIN_ST_02', 'code_nm' => 'wonosobokab.com', 'code_group' => 'DOMAIN_ST', 'code_value' => ''],
-            
+            ['code_cd' => 'ALAT_TP_01', 'code_nm' => 'TV', 'code_group' => 'ALAT_TP', 'code_value' => ''],
+            ['code_cd' => 'ALAT_TP_02', 'code_nm' => 'Kamera Zoom', 'code_group' => 'ALAT_TP', 'code_value' => ''],
         ];
 
         foreach ($data as $datum) {

@@ -4,7 +4,7 @@
         <label class="col-form-label col-lg-6">Nama<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                 {{Form::text('nama', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama','required'])}}
+                 {{Form::text('nama', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama','required', 'readonly' => true])}}
             </div>
         </div>
     </div>
@@ -13,7 +13,7 @@
         <label class="col-form-label col-lg-6">Instansi/Lembaga<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                 {{Form::text('instansi', null, ['class' => 'form-control ','placeholder' => 'Masukkan instansi/lembaga','required'])}}
+                 {{Form::text('instansi', null, ['class' => 'form-control ','placeholder' => 'Masukkan instansi/lembaga','required', 'readonly' => true])}}
             </div>
         </div>
     </div>
@@ -25,9 +25,9 @@
         <div class="col-lg-12">
             <div class="form-group">
                 @if(!empty($tanggal))
-                {{Form::text('tanggal', $tanggal,['class' => 'form-control daterange-single'])}}
+                {{Form::text('tanggal', $tanggal,['class' => 'form-control daterange-single',  'disabled' => 'disabled',])}}
                 @else
-                {{Form::text('tanggal', null,['class' => 'form-control daterange-single'])}}
+                {{Form::text('tanggal', null,['class' => 'form-control daterange-single',  'disabled' => 'disabled',])}}
                 @endif
             </div>
         </div>
@@ -37,7 +37,7 @@
         <label class="col-form-label col-lg-6">Alat Yang Pipinjam<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                {{Form::text('alat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan nama alat','required'])}}
+                {{Form::text('alat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan nama alat','required', 'readonly' => true])}}
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
         <label class="col-form-label col-lg-6">Lama Pinjam<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                {{Form::text('lama_pinjam', null, ['class' => 'form-control ', 'placeholder' => 'Lama pinjam','required'])}}
+                {{Form::text('lama_pinjam', null, ['class' => 'form-control ', 'placeholder' => 'Lama pinjam','required', 'readonly' => true])}}
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
         <label class="col-form-label col-lg-6">Kontak Person<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Masukkan nomor telepon kontak person','required'])}}
+                {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Masukkan nomor telepon kontak person','required', 'readonly' => true])}}
             </div>
         </div>  
     </div>
@@ -86,7 +86,7 @@
 
  @if(!empty($alasan))
 
-<div class="devan-asu">
+<div class="devandewa">
     <div class="form-group row">
         <label class="col-form-label col-lg-2">Alasan<span class="text-danger">*</span></label>
         <div class="col-lg-10">
@@ -97,7 +97,7 @@
 
 @else
 
-<div class="devan-asu" style="display: none">
+<div class="devandewa" style="display: none">
     <div class="form-group row">
         <label class="col-form-label col-lg-2">Alasan<span class="text-danger">*</span></label>
         <div class="col-lg-10">
@@ -134,12 +134,13 @@ flatpickr("input[type=time]", {
         $('select[name=status_st]').change(function(){
             let isi = $(this).val();
 
-            if(isi == 'STATUS_ST_03'){
-                $('.devan-asu').show('slow');
+            if(isi == 'STATUS_ST_03' || isi == 'STATUS_ST_04'){
+                $('.devandewa').show('slow');
             }else{
-                $('.devan-asu').hide('slow');
+                $('.devandewa').hide('slow');
                 // $('#aa').val('');
             }
+
         });
     });
 </script>

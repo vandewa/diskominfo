@@ -25,7 +25,7 @@
                             </div>
 
                             <div class="card-body">
-                            {{Form::open(['route' => 'perijinan:pinjam.peralatan.post', 'files' => true])}}
+                            {{Form::open(['route' => 'perijinan:pinjam.peralatan.post', 'files' => true, 'id' => "form-simpan"])}}
                             {{Form::hidden('status_st','STATUS_ST_01')}}
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama</label>
@@ -42,13 +42,14 @@
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tanggal</label>
                                         <div class="col-sm-7">
-                                             <input required class="js-range-datepicker form-control bg-transparent rounded-right" type="datetime-local" name="tanggal" placeholder="Masukkan Tanggal" aria-label="From" data-rp-wrapper="#datepickerWrapperFrom">
+                                             <input required class="js-range-datepicker form-control bg-transparent rounded-right" type="datetime-local" name="tanggal" placeholder="Masukkan Tanggal" aria-label="From" data-rp-wrapper="#datepickerWrapperFrom" id="tanggal">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Alat Yang Dipinjam</label>
                                         <div class="col-sm-7">
-                                            {{Form::text('alat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan nama alat','required'])}}
+                                             {{ Form::checkbox('alat[]', 'Tv', null) }}  TV &nbsp;&nbsp;&nbsp;
+                                             {{ Form::checkbox('alat[]', 'Kamera Zoom', null) }}  Kamera Zoom    
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -93,6 +94,35 @@
             
             <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
             {!! JsValidator::formRequest('App\Http\Requests\PinjamPeralatanStore') !!}
+
+
+            </script>
+            <script>
+                 const tanggal = document.getElementById('tanggal').setAttribute("min", \Carbon\Carbon::now()->format('Y-m-d')); 
+                 $('#form-simpan').submit(function(e){
+                e.preventDefault();
+
+                let data  = $(this).serialize();
+                
+                $.ajax({
+                type: "POST",
+                url: '{{ route('perijinan:pinjam.peralatan.post') }}',
+                data: data,
+                success: function(){
+                   Swal.fire({
+                    title: 'Berhasil!',
+                    text: 'Silahkan cek WhatsApp / Email untuk notifikasi berikutnya',
+                    imageWidth: 300,
+                    imageHeight: 239,
+                    imageUrl: "{{ asset('front/assets/images/okk.gif') }}",
+                    })
+                    setTimeout(function(){ window.location.replace("{{ route('pengajuanizin') }}")}, 2500);
+                   
+                },
+                });
+            })
+               
+
             </script>
             
          @endpush

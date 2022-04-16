@@ -477,9 +477,9 @@
                   <span class="media">
                     <span class="icon-stats-growth mt-1 mr-2"></span>
                     <span class="media-body">
-                      Total Pengunjung
+                      Total Pengunjung :  {{ $total_pengunjung }}
                       <div class="d-flex justify-content-left ml-3 mb-4">
-                        <a href='https://www.stat-counter.org/'></a>
+                        {{-- <a href='https://www.stat-counter.org/'></a> --}}
                         {{-- <script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/829214/t/5"></script> --}}
                       </div>
                     </span>

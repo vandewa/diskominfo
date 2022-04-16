@@ -74,6 +74,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardCon
 Route::resource('home', HomeController::class);
 // Route::resource('kategori', KategoriController::class);
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::post('/', [HomeController::class, 'index']);
+
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 // PPID
 Route::get('/tugasppid', [HomeController::class, 'tugasppid'])->name('tugasppid');
