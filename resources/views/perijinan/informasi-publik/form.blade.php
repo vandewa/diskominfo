@@ -79,7 +79,7 @@
 
  @if(!empty($alasan))
 
-<div class="devan-asu">
+<div class="devandewa">
     <div class="form-group row">
         <label class="col-form-label col-lg-2">Alasan<span class="text-danger">*</span></label>
         <div class="col-lg-10">
@@ -90,7 +90,7 @@
 
 @else
 
-<div class="devan-asu" style="display: none">
+<div class="devandewa" style="display: none">
     <div class="form-group row">
         <label class="col-form-label col-lg-2">Alasan<span class="text-danger">*</span></label>
         <div class="col-lg-10">
@@ -102,6 +102,7 @@
 @endif
 
 <div class="text-right mt-5">
+    <a href="{{route('informasi-publik.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
     <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 </div>
 
@@ -127,10 +128,10 @@ flatpickr("input[type=time]", {
         $('select[name=status_st]').change(function(){
             let isi = $(this).val();
 
-            if(isi == 'STATUS_ST_03'){
-                $('.devan-asu').show('slow');
+            if(isi == 'STATUS_ST_03' || isi == 'STATUS_ST_04' ){
+                $('.devandewa').show('slow');
             }else{
-                $('.devan-asu').hide('slow');
+                $('.devandewa').hide('slow');
                 // $('#aa').val('');
             }
         });

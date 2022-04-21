@@ -169,28 +169,83 @@
                     </div>
 			    </div>
             </div>
-       
-              <div class="form-group row mb-3" style="margin-bottom: 0.25rem">
-				<div class="col-12">
-					<label class="col-form-label col-lg-2">Link Zoom<span class="text-danger">*</span></label>
+
+            @if(!empty($lampiran))
+            <div class="form-group row">
+                <div class="col-12">
+                    <label class="col-form-label col-lg-6">Lampiran<span class="text-danger">*</span></label>
                     <div class="col-lg-12">
-                        <div class="form-group form-group-feedback form-group-feedback-left">
-                              {{Form::textarea('link_zoom', null,['class' => 'form-control', 'id' => 'editor-full'])}}
-                                @error('link_zoom')
-                                <div class="form-control-feedback text-danger">
-                                    <i class="icon-cancel-circle2"></i>
-                                </div>
-                                <span class="form-text text-danger">{{ $message }}</span>
-                                @enderror
-                            <div class="form-control-feedback form-control-feedback-lg">
-                                <i class="icon-hour-glass"></i>
-                            </div>
+                        <div class="form-group">
+                        <iframe height="500" src="{{ asset('uploads/layanan/'.$data->file_name) }}" width="100%"></iframe>
                         </div>
                     </div>
-				</div>
+                </div>
+            </div>
+            @endif
+
+            <hr>
+
+            <div class="form-group row">
+                <label class="col-form-label col-lg-2">Status Permintaan Layanan<span class="text-danger">*</span></label>
+                <div class="col-lg-10">
+                    {{Form::select('status_st',get_code_group('STATUS_ST'),null,['class' => 'form-control',])}}
+                </div>
             </div>
 
+            @if(!empty($link_zoom))
+
+            <div class="devan">
+                <div class="form-group row mb-3 " style="margin-bottom: 0.25rem" >
+                    <label class="col-form-label col-lg-2">Link Zoom<span class="text-danger">*</span></label>
+                    <div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                                {{Form::textarea('link_zoom', null,['class' => 'form-control', 'id' => 'editor-full'])}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @else
+       
+            <div class="devan" style="display: none">
+                <div class="form-group row mb-3 " style="margin-bottom: 0.25rem" >
+                    <label class="col-form-label col-lg-2">Link Zoom<span class="text-danger">*</span></label>
+                    <div class="col-lg-12">
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                                {{Form::textarea('link_zoom', null,['class' => 'form-control', 'id' => 'editor-full'])}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @endif
+
+            @if(!empty($alasan))
+
+            <div class="devandewa">
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-2">Alasan<span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                        {{Form::textarea('alasan', null, ['class' => 'form-control ', 'rows' => 2, 'cols' => 100, 'id' => 'aa'])}}
+                    </div>
+                </div>
+            </div>
+
+            @else
+
+            <div class="devandewa" style="display: none">
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-2">Alasan<span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                        {{Form::textarea('alasan', null, ['class' => 'form-control ', 'rows' => 2, 'cols' => 100, 'id' => 'aa2'])}}
+                    </div>
+                </div>
+            </div>
+
+            @endif
+
             <div class="text-right">
+                <a href="{{route('link_zoom.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
                 <button type="submit" class="btn bg-teal-400">
                     Submit form <i class="icon-paperplane ml-2"></i>
                 </button>
@@ -219,4 +274,25 @@
     time_24hr: true
   });
   </script>
+  <script>
+    $(document).ready(function(){
+        $('select[name=status_st]').change(function(){
+            let isi = $(this).val();
+
+            if(isi == 'STATUS_ST_02'){
+                $('.devan').show('slow');
+            }else{
+                $('.devan').hide('slow');
+                // $('#aa').val('');
+            }
+
+            if(isi == 'STATUS_ST_03' || isi == 'STATUS_ST_04' ){
+                $('.devandewa').show('slow');
+            }else{
+                $('.devandewa').hide('slow');
+                // $('#aa').val('');
+            }
+        });
+    });
+</script>
 @endpush

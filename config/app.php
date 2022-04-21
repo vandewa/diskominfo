@@ -169,6 +169,7 @@ return [
 
         Spatie\Analytics\AnalyticsServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
+         Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
 
         /*
@@ -248,6 +249,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
 
     ],
 

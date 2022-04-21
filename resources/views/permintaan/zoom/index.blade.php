@@ -36,7 +36,9 @@
                         <th>Topik</th>
                         <th>Peserta</th>
                         <th>Instansi</th>
+                        <th>Status</th>
                         <th>Link</th>
+                        <th style="display: none;">Link</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -45,80 +47,42 @@
             </div>
         </div>
     </div>
-    <!-- =============FORM============= -->
+
+     <!-- =============FORM============= -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document" >
             <div class="modal-content">
                 <div class="card-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Pinjam Akun Zoom</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Pinjam Akun Zoom</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body">
-                <form method="POST" action="{{route('perijinan:zoom.store')}}" >
-                    @csrf
-                    <div class="card-body p-5">
-                        <!-- Input Group -->
-                        <div class="form-row align-items-center mb-3">
-                            <div class="col-4 text-right">
-                                <label id="amountLabelExample1" class="h6 small d-block text-uppercase mb-0">
-                                    Nama OPD / Instansi
-                                </label>
-                            </div>
-                            <div class="col-8">
-                                <div class="js-form-message">
-                                    <div class="input-group input-group-sm">
-                                        <input class="form-control" type="text" name="nama_opd" required placeholder="Masukkan Nama OPD" aria-describedby="amountLabelExample1" data-msg="Please enter a valid Name OPD / Instansi." data-error-class="u-has-error" data-success-class="u-has-success">
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card-body">
+                    {{Form::open(['route' => 'perijinan:zoom.store', 'files' => true])}}
+                    {{Form::hidden('status_st','STATUS_ST_01')}}
+                    {{Form::hidden('waktu',\Carbon\Carbon::now()->format('H:i:s'))}}
+                    <div class="row form-group">
+                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama OPD / Instansi</label>
+                        <div class="col-sm-7">
+                            {{Form::text('nama_opd', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama OPD','required'])}}
                         </div>
-                        <!-- End Input Group -->
-                        <!-- Input Group -->
-                        <div class="form-row align-items-center mb-3">
-                            <div class="col-4 text-right">
-                                <label id="amountLabelExample1" class="h6 small d-block text-uppercase mb-0">
-                                    Nama Peminjam
-                                </label>
-                            </div>
-                            <div class="col-8">
-                                <div class="js-form-message">
-                                    <div class="input-group input-group-sm">
-                                        <input class="form-control" type="text" name="peminjam" required placeholder="Masukkan Nama Peminjam" aria-label="$ 0.00" aria-describedby="amountLabelExample1" data-msg="Please enter a valid Name." data-error-class="u-has-error" data-success-class="u-has-success">
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama Peminjam</label>
+                        <div class="col-sm-7">
+                            {{Form::text('peminjam', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama Peminjam'])}}
                         </div>
-                        <!-- End Input Group -->
-                        <!-- Input Group -->
-                        <div class="form-row align-items-center mb-3">
-                            <div class="col-4 text-right">
-                                <label id="amountLabelExample1" class="h6 small d-block text-uppercase mb-0">
-                                    No Handphone
-                                </label>
-                            </div>
-                            <div class="col-8">
-                                <div class="js-form-message">
-                                    <div class="input-group input-group-sm">
-                                        <!-- <div class="input-group-prepend">
-                                            <span class="input-group-text">+628</span>
-                                        </div> -->
-                                        <input class="form-control" type="number" min="0" name="no_hp" required placeholder="Masukkan No HP" aria-describedby="amountLabelExample1" data-msg="Please enter a valid Number." data-error-class="u-has-error" data-success-class="u-has-success">
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">No Handphone</label>
+                        <div class="col-sm-7">
+                            {{Form::number('no_hp', null, ['class' => 'form-control ','placeholder' => 'Masukkan No HP'])}}
                         </div>
-                        <!-- End Input Group -->
-                        <!-- Input Group -->
-                        <div class="form-row align-items-center mb-3">
-                            <div class="col-4 text-right">
-                                <label class="h6 small d-block text-uppercase mb-0">
-                                    Tanggal
-                                </label>
-                            </div>
-                            <div class="col-8">
-                                <!-- Datepicker -->
+                    </div>
+                    <div class="row form-group">
+                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tanggal</label>
+                        <div class="col-sm-7">
                                 <div id="datepickerWrapperFrom" class="u-datepicker input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
@@ -127,129 +91,104 @@
                                     </div>
                                     <input required class="js-range-datepicker form-control bg-transparent rounded-right" type="datetime-local" name="tanggal" placeholder="Masukkan Tanggal" aria-label="From" data-rp-wrapper="#datepickerWrapperFrom">
                                 </div>
-                                <!-- End Datepicker -->
-                            </div>
                         </div>
-                        <!-- End Input Group -->
-
-                        <!-- Input Group -->
-                        <div class="form-row align-items-center mb-3">
-                            <div class="col-4 text-right">
-                                <label id="cardNumberLabel" class="h6 small d-block text-uppercase mb-0">
-                                    Topik
-                                </label>
-                            </div>
-                            <div class="col-8">
-                                <div class="js-form-message">
-                                    <div class="input-group input-group-sm">
-                                        <input class="form-control" name="topik" type="text" required placeholder="Masukkan Topik" aria-label="Card number" aria-describedby="cardNumberLabel" data-msg="Silahkan Masukkan Topik" data-error-class="u-has-error" data-success-class="u-has-success">
+                    </div>
+                    <div class="row form-group">
+                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Topik</label>
+                        <div class="col-sm-7">
+                            {{Form::text('topik', null, ['class' => 'form-control ','placeholder' => 'Masukkan Topik'])}}
+                        </div>
+                    </div>
+                    
+                    <div class="row form-group">
+                            <label id="cardholderNameLabel" class="col-sm-5 col-form-label input-label">
+                                Jam Mulai
+                            </label>
+                        <div class="col-sm-7">
+                            <div class="js-form-message">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <span class="fas fa-clock"></span>
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="waktu" id="single-input" name="jam_mulai" placeholder="Jam">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <span>WIB</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- End Input Group -->
-
-                        <!-- Input Group -->
-                        <div class="form-row align-items-center mb-3">
-                            <div class="col-4 text-right">
-                                <label id="cardholderNameLabel" class="h6 small d-block text-uppercase mb-0">
-                                    Jam Mulai
-                                </label>
-                            </div>
-                            <div class="col-8">
-                                <div class="js-form-message">
-                                    <div class="input-group input-group-sm">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <span class="fas fa-clock"></span>
-                                            </span>
-                                        </div>
-                                        <input class="form-control" type="waktu" id="single-input" name="jam_mulai" placeholder="Jam Mulai" aria-label="Jam Mulai" required data-msg="Masukkan jam mulai." data-error-class="u-has-error" data-success-class="u-has-success">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <span>WIB</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Input Group -->
-
-                        <!-- Input Group -->
-                        <div class="form-row align-items-center mb-3">
-                            <div class="col-4 text-right">
-                                <label id="cardholderNameLabel" class="h6 small d-block text-uppercase mb-0">
-                                    Jam Selesai
-                                </label>
-                            </div>
-                            <div class="col-8">
-                                <div class="js-form-message">
-                                    <div class="input-group input-group-sm">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <span class="fas fa-clock"></span>
-                                            </span>
-                                        </div>
-                                        <input class="form-control" type="waktu" id="single-input2" name="jam_selesai" placeholder="Jam Selesai" aria-label="Jam Selesai" required data-msg="Masukkan jam selesai." data-error-class="u-has-error" data-success-class="u-has-success">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <span>WIB</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Input Group -->
-
-                        <!-- Input Group -->
-                        <div class="form-row align-items-center mb-3">
-                            <div class="col-4 text-right">
-                                <label id="cardholderNameLabel" class="h6 small d-block text-uppercase mb-0">
-                                    Akun Maks Peserta
-                                </label>
-                            </div>
-                            <div class="col-8">
-                                <div class="row">
-                                    <div class="col-sm mb-2 mb-sm-0">
-                                        <!-- Form Radio -->
-                                        <label class="form-control" for="formControlRadioEg1">
-                                            <span class="form-check">
-                                                <input type="radio" class="form-check-input" name="peserta" id="formControlRadioEg1" value="100" required>
-                                                <span class="form-check-label">100</span>
-                                            </span>
-                                        </label>
-                                        <!-- End Form Radio -->
-                                    </div>
-
-                                    <div class="col-sm mb-2 mb-sm-0">
-                                        <!-- Form Radio -->
-                                        <label class="form-control" for="formControlRadioEg2">
-                                            <span class="form-check">
-                                                <input type="radio" class="form-check-input" name="peserta" id="formControlRadioEg2" value="500">
-                                                <span class="form-check-label">500</span>
-                                            </span>
-                                        </label>
-                                        <!-- End Form Radio -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Input Group -->
-                        <div class="d-flex justify-content-end ">
-                        <p style="font-size: 10pt;"><em><b>*Pastikan Nomor HP harus ada WhatsApp, karena sistem secara otomatis mengirim link zoom ke nomor tersebut.</b></em></p>
                         </div>
                     </div>
 
-                    <!-- Buttons -->
-                    <div class="card-footer py-3 px-5">
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-sm btn-primary transition-3d-hover mr-1">Kirim</button>
+                    <div class="row form-group">
+                            <label id="cardholderNameLabel" class="col-sm-5 col-form-label input-label">
+                                Jam Selesai
+                            </label>
+                        <div class="col-sm-7">
+                            <div class="js-form-message">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <span class="fas fa-clock"></span>
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="waktu" id="single-input" name="jam_selesai" placeholder="Jam">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <span>WIB</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- End Buttons -->
-                </form>
+
+                    <div class="row form-group">
+                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Akun Maks Peserta</label>
+                        <div class="col-sm-7">
+                            <label class="form-control" for="formControlRadioEg1">
+                                <span class="form-check">
+                                    <input type="radio" class="form-check-input" name="peserta" id="formControlRadioEg1" value="100" required>
+                                    <span class="form-check-label">100</span>
+                                </span>
+                            </label>
+
+                           <label class="form-control" for="formControlRadioEg2">
+                                <span class="form-check">
+                                    <input type="radio" class="form-check-input" name="peserta" id="formControlRadioEg2" value="500">
+                                    <span class="form-check-label">500</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="row form-group">
+                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Lampiran <small style="color: red;"><b>(*pdf)</small></b></label>
+                        <div class="col-sm-7 custom-file">
+                            <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
+                                    data-hs-file-attach-options='{
+                                    "textTarget": "[for=\"customFile\"]"
+                                }' accept="application/pdf">
+                            <label class="custom-file-label" for="customFile">Pilih file</label>
+                        </div>
+                    </div>
+
+                    <div class="row form-group d-flex justify-content-center">
+                        {!! htmlFormSnippet() !!}
+                        @if ($errors->has('g-recaptcha-response'))
+                        <span class="help-block label label-danger">
+                            <strong style="color: red;">{{ $errors->first('g-recaptcha-response') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
+                    </div>
+                    {{Form::close()}}
                 </div>
             </div>
         </div>
@@ -295,18 +234,8 @@
 <script src="{{ asset ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{ asset('js/datatable/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/datatable/dataTables.bootstrap4.min.js') }}"></script>
- <script type="text/javascript">
-  function sweetAlert() 
-  {  
-  Swal.fire(
-  'Berhasil!',
-  'Permintaan Anda sedang diproses...',
-  'success')
-  }
 
-@if(session('status'))
-sweetAlert();
-@endif
+
 </script>
 
 <script type="text/javascript">
@@ -322,7 +251,9 @@ sweetAlert();
             { data: 'topik', name: 'topik' },
             { data: 'peserta', name: 'peserta' },
             { data: 'nama_opd', name: 'nama_opd' },
+            { data: 'status_st', name:'status_st', orderable: false, searchable: false,},
             { data: 'action', name:'action'},
+            { data: 'tanggal', name:'tanggal', visible:false},
         ]
     });
 
@@ -365,5 +296,24 @@ sweetAlert();
         alert("Link Berhasil di Salin!");
     }
 </script>
+
+<script type="text/javascript">
+        function sweetAlert() 
+        {  
+
+            Swal.fire({
+            title: 'Berhasil!',
+            text: 'Silahkan cek WhatsApp / Email untuk notifikasi berikutnya',
+            imageWidth: 300,
+            imageHeight: 239,
+            imageUrl: "{{ asset('front/assets/images/okk.gif')}}",
+            })
+        }
+
+        @if(session('status'))
+        sweetAlert();
+        @endif
+
+    </script>
 
 @endpush

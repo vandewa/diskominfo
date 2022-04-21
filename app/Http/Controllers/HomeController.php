@@ -34,6 +34,9 @@ use App\Models\InformasiPublik;
 use App\Models\Visitor;
 use Carbon\Carbon;
 use Browser;
+use App\Models\PinjamPeralatan;
+use Illuminate\Support\Facades\Http;
+
 
 
 class HomeController extends Controller
@@ -179,40 +182,105 @@ class HomeController extends Controller
     {   
         $data = '';
         $datanya = '';
+        $jenis = '';
             if($request->filled('q')){
                 $a = substr($request->q, 0, 3);
                     switch ($a) {
-                        case "ADC":
-                            $data = AksesDc::with(['status'])->whereNo($request->q)->first();
-                            break;
-                        case "LSV":  
-                            $data = LayananServer::with(['status'])->whereNo($request->q)->first();
-                            break;
-                        case "VPB":
-                            $data = PenambahanVps::with(['status'])->whereNo($request->q)->first();
-                            break;
-                        case "CSV":
-                            $data = ColocationServer::with(['status'])->whereNo($request->q)->first();
-                            break;
-                        case "KDC":
-                            $data = KunjunganDc::with(['status'])->whereNo($request->q)->first();
-                            break;
-                        case "PSV":
-                            $data = PengajuanServer::with(['status'])->whereNo($request->q)->first();
-                            break;
-                        case "PVP":
-                            $data = PerubahanVps::with(['status'])->whereNo($request->q)->first();
-                            break;
+                        // case "ADC":
+                        //     $data = AksesDc::with(['status'])->whereNo($request->q)->first();
+                        //     break;
+                        // case "LSV":  
+                        //     $data = LayananServer::with(['status'])->whereNo($request->q)->first();
+                        //     break;
+                        // case "VPB":
+                        //     $data = PenambahanVps::with(['status'])->whereNo($request->q)->first();
+                        //     break;
+                        // case "CSV":
+                        //     $data = ColocationServer::with(['status'])->whereNo($request->q)->first();
+                        //     break;
+                        // case "KDC":
+                        //     $data = KunjunganDc::with(['status'])->whereNo($request->q)->first();
+                        //     break;
+                        // case "PSV":
+                        //     $data = PengajuanServer::with(['status'])->whereNo($request->q)->first();
+                        //     break;
+                        // case "PVP":
+                        //     $data = PerubahanVps::with(['status'])->whereNo($request->q)->first();
+                        //     break;
+                        case "PPE":
+                            $data = PinjamPeralatan::with(['status'])->whereNo($request->q)->first();
+                        break;
                         }
                 
-                if($a != 'ADC' || 'LSV' || 'VPB' || 'CSV' || 'KDC' || 'PSV' || 'PVP'){
-                             $datanya = 'Data tidak ditemukan';
+                // if($a != 'ADC' || 'LSV' || 'VPB' || 'CSV' || 'KDC' || 'PSV' || 'PVP' || 'PPE'){
+                //              $datanya = 'Data tidak ditemukan';
+                // }
+
+                if($a != 'PPE'){
+                    $datanya = 'Data tidak ditemukan';
                 }
         }
 
-        return view('home.pengajuanizin', compact('data', 'datanya'));
+         if (!empty($data)){
+           if(substr($data->no, 0, 3) == 'PPE'){
+                $jenis = 'Permohonan layanan pinjam peralatan';
+            }
+         }
+
+        //  return $data;
+
+        return view('home.pengajuanizin', compact('data', 'datanya', 'jenis'));
     }
 
+
+    public function pengajuanizinPost(Request $request)
+    {   
+        
+
+        $path = public_path('uploads/bukti');
+        
+        if (!file_exists($path)) {
+              mkdir($path);
+         } 
+
+       if($request->hasFile('bukti')){
+            $files = $request->file('bukti');
+            $prefix = date('Ymdhis');
+            $extension = $files->getClientOriginalExtension();
+            $filename = $prefix.'.'.$extension;
+            $request->file('bukti')->move(public_path('uploads/bukti'), $filename);
+
+            $notif = 'Terima kasih, surat pernyataan berhasil dikirim.'.urldecode('%0D%0A').
+             'Mohon ditunggu notifikasi berikutnya.'.
+            urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
+
+            $notifikasi = 'Tiket dengan nomor ( *'.$request->no.'* ) sudah melakukan upload surat pernyataan.'.urldecode('%0D%0A').
+            'Mohon untuk dilakukan pengecekan pada website Diskominfo.'.urldecode('%0D%0A%0D%0A').
+            url('/admin/pinjam-peralatan/'.$request->id).urldecode('%0D%0A%0D%0A').
+            'Terima Kasih :)'.
+            urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
+
+      
+            PinjamPeralatan::find($request->id)
+            ->update([
+                'bukti' => $filename,
+            ]);
+
+             Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+                'number' => $request->nomor,
+                'message' => $notif,
+            ]);
+
+            Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
+            'name' => 'Sekretariat Diskominfo',
+            'message' => $notifikasi,
+            ]);
+
+            return redirect(url('pengajuanizin?q='.$request->no))->with('status', 'oke');
+
+       }
+
+    }
 
     public function detail(Posting $post)
     {

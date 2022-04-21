@@ -13,8 +13,6 @@ class PinjamPeralatan extends Model
     protected $table ='pinjam_peralatan';
     protected $guarded = []; 
     
-    
-    
     public function status()
     {
         return $this->belongsTo(ComCode::class,'status_st');

@@ -147,11 +147,11 @@ class InfografisController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = '
-                    <div class="list-icons">
-                    <a href="'.route('infografis.edit', $row->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                    <a href="'.route('infografis.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
-                </div>';
+                    $actionBtn = 
+                    '<div class="list-icons">
+                        <a href="'.route('infografis.edit', $row->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                        <a href="'.route('infografis.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
+                    </div>';
                     return $actionBtn;
                 })
                 ->addColumn('status', function($row){

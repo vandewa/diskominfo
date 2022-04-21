@@ -4,10 +4,10 @@
 @section('isi')
 @section('kondisi')
 <header id="header" class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent header-black-nav-links-lg header-show-hide"
-        data-hs-header-options='{
-            "fixMoment": 1000,
-            "fixEffect": "slide"
-        }'>
+          data-hs-header-options='{
+              "fixMoment": 1000,
+              "fixEffect": "slide"
+            }'>
 @endsection
 
 @section('kondisi2')
@@ -17,7 +17,7 @@
 <main id="content" role="main">
     <div class="container space-top-1 space-bottom-2">
         <div class="w-100 sm-6 mx-lg-auto">
-            <h3 class="mb-4 mt-10"><center>Pinjam Tempat Rapat</center></h3>
+           <h3 class="mb-4 mt-10"><center>Pinjam Tempat Rapat</center></h3>
             <div class="mb-4">
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                     <span class="fas fa-plus mr-2"></span>
@@ -34,8 +34,9 @@
                         <th>Instansi/Lembaga</th>
                         <th>Acara</th>
                         <th>Jumlah Peserta</th>
+                        <th>Waktu</th>
                         <th>Status</th>
-                        <th style="display:none;">Status</th>
+                        <th style="display: none;">Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -111,7 +112,7 @@
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Kontak Person<small style="color: red;"><b>(*WhatsApp)</b></small></label>
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Kontak Person<small style="color: red;"><b> (*WhatsApp) </b></small></label>
                                 <div class="col-sm-7">
                                     {{Form::number('cp', null, ['class' => 'form-control ','placeholder' => 'Masukkan nomor kontak person','required'])}}
                                 </div>
@@ -126,8 +127,17 @@
                                     <label class="custom-file-label" for="customFile">Pilih file</label>
                                 </div>
                             </div>
+                            <div class="row form-group d-flex justify-content-center">
+                                {!! htmlFormSnippet() !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                <span class="help-block label label-danger">
+                                    <strong style="color: red;">{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </span>
+                             @endif
+                            </div>
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
+                                <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
+                                        <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
                             </div>
                     {{Form::close()}}
                     </div>
@@ -161,16 +171,37 @@
             processing: true,
             serverSide: true,
             ajax: window.location.href,
-            "order": [[ 6, "desc" ]],
+            "order": [[ 7, "desc" ]],
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
                 {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
                 {data: 'instansi', name:'instansi'},
                 {data: 'acara.code_nm', name:'acara.code_cd'},
                 {data: 'peserta', name:'peserta'},
+                {data: 'waktu', name:'waktu'},
                 {data: 'status_st', name:'status_st', orderable: false, searchable: false,},
                 {data: 'tanggal', name:'tanggal', visible: false,},
             ]
         });
     </script>
+
+    <script type="text/javascript">
+        function sweetAlert() 
+        {  
+
+            Swal.fire({
+            title: 'Berhasil!',
+            text: 'Silahkan cek WhatsApp / Email untuk notifikasi berikutnya',
+            imageWidth: 300,
+            imageHeight: 239,
+            imageUrl: "{{ asset('front/assets/images/okk.gif')}}",
+            })
+        }
+
+        @if(session('status'))
+        sweetAlert();
+        @endif
+
+    </script>
+
 @endpush

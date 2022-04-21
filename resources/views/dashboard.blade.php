@@ -36,8 +36,8 @@
 						<div class="card card-body bg-danger-400 has-bg-image">
 							<div class="media">
 								<div class="media-body">
-									<h3 class="mb-0">{{ $jml_komentar }}</h3>
-									<span class="text-uppercase font-size-xs">total komentar</span>
+									<h3 class="mb-0">{{ $total_layanan }}</h3>
+									<span class="text-uppercase font-size-xs">total layanan</span>
 								</div>
 
 								<div class="ml-3 align-self-center">
@@ -53,12 +53,12 @@
 						<div class="card card-body bg-success-400 has-bg-image">
 							<div class="media">
 								<div class="mr-3 align-self-center">
-									<i class="icon-files-empty icon-3x opacity-75"></i>
+									<i class="icon-users2 icon-3x opacity-75"></i>
 								</div>
 
 								<div class="media-body text-right">
-									<h3 class="mb-0">{{ $jml_lampiran }}</h3>
-									<span class="text-uppercase font-size-xs">total lampiran</span>
+									<h3 class="mb-0">{{ $total_user }}</h3>
+									<span class="text-uppercase font-size-xs">total user</span>
 								</div>
 							</div>
 						</div>
@@ -70,12 +70,12 @@
 						<div class="card card-body bg-indigo-400 has-bg-image">
 							<div class="media">
 								<div class="mr-3 align-self-center">
-									<i class="icon-bubble-lines4 icon-3x opacity-75"></i>
+									<i class="icon-file-download icon-3x opacity-75"></i>
 								</div>
 
 								<div class="media-body text-right">
-									<h3 class="mb-0">{{ $jml_pengaduan }}</h3>
-									<span class="text-uppercase font-size-xs">total pengaduan </span>
+									<h3 class="mb-0">{{ $file_download }}</h3>
+									<span class="text-uppercase font-size-xs">total file download area </span>
 								</div>
 							</div>
 						</div>

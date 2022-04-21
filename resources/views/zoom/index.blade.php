@@ -8,12 +8,12 @@
 <span class="breadcrumb-item active">Link Zoom</span>
 @endsection
 
-@section('tambah_data')
+{{-- @section('tambah_data')
 <a href="{{route('link_zoom.create')}}" class="btn btn-primary">
     <i class="icon-file-plus mr-2"></i>
     Tambah Permintaan
 </a>
-@endsection
+@endsection --}}
 
 @section('container')
 

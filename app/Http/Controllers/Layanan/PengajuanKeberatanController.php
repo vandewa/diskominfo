@@ -27,8 +27,8 @@ class PengajuanKeberatanController extends Controller
                 ->addColumn('action', function($row){
                     return
                 '<div class="list-icons">
-                    <a href="'.route('pengajuan-keberatan.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
-                    <a href="'.route('pengajuan-keberatan.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    <a href="'.route('pengajuan-keberatan.show', $row->id ).'" class="btn btn-outline-primary rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                   <a href="'.route('pengajuan-keberatan.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                 </div>';
                     })
                 ->addColumn('tanggalnya', function ($a) {
@@ -59,6 +59,13 @@ class PengajuanKeberatanController extends Controller
      */
     public function store(Request $request)
     {
+          $request->validate([
+                'g-recaptcha-response' => 'required|recaptcha',
+            ],
+            [
+                'g-recaptcha-response.required' => 'Captcha harus benar.',
+                'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
+            ]);
        
             PengajuanKeberatan::create([
                 'nama' => $request->nama,
@@ -74,12 +81,13 @@ class PengajuanKeberatanController extends Controller
             ]);
 
             
-            $notif = urldecode('%2APengajuan+Keberatan+Informasi+Publik+%2A%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AAlamat+%3A+' .  ucwords($request->alamat) . '%0D%0APekerjaan+%3A+' . $request->informasi . '%0D%0AEmail+%3A+' . $request->email . '%0D%0ANomor+pendaftaran+permintaan+informasi+publik+%3A+' . $request->nomor_pendaftaran .'%0D%0ATujuan+penggunaan+informasi+publik+%3A+' . $request->tujuan . '%0D%0AAlasan+pengajuan+keberatan+%3A+' . $request->alasan_pengajuan .'%0D%0AKronologi+kasus+%3A+' . $request->kasus);
-
-       
             $nohape = $request->nomor;
-        // $this->notification($nohape);
-        // $this->sendGroupWA($notif);
+            $notif = urldecode('%2APengajuan+Keberatan+Informasi+Publik+%2A%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AAlamat+%3A+' .  ucwords($request->alamat) . '%0D%0APekerjaan+%3A+' . $request->informasi . '%0D%0AEmail+%3A+' . $request->email . '%0D%0ANomor+pendaftaran+permintaan+informasi+publik+%3A+' . $request->nomor_pendaftaran .'%0D%0ATujuan+penggunaan+informasi+publik+%3A+' . $request->tujuan . '%0D%0AAlasan+pengajuan+keberatan+%3A+' . $request->alasan_pengajuan .'%0D%0AKronologi+kasus+%3A+' . $request->kasus);
+            
+        $this->notification($nohape);
+        $this->sendGroupWA($notif);
+        // $this->notificationStakeholder($notif);
+
 
         return redirect(route('pengajuanizin'))->with('status','oke');
 
@@ -144,8 +152,8 @@ class PengajuanKeberatanController extends Controller
             $notif = 'Status permintaan layanan Pengajuan Keberatan Informasi Publik '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
         }
      
-        // $this->notification($nohape, $notif);
-        // $this->sendGroupWA($notif);
+        $this->notification($nohape, $notif);
+        $this->sendGroupWA($notif);
     
         return redirect()->route('pengajuan-keberatan.index');
     }
@@ -161,8 +169,10 @@ class PengajuanKeberatanController extends Controller
         PengajuanKeberatan::destroy($id);
     }
 
-    public function notification($nohape, $notif = 'Terima kasih, permintaan layanan pengajuan keberatan informasi publik berhasil dikirim, mohon ditunggu notifikasi berikutnya. ')
+    public function notification($nohape)
     {
+
+        $notif = 'Terima kasih, permintaan layanan pengajuan keberatan informasi publik berhasil dikirim.'.urldecode('%0D%0A').'Mohon ditunggu notifikasi berikutnya. '. urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
 
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
             'number' => $nohape,
@@ -174,7 +184,21 @@ class PengajuanKeberatanController extends Controller
     public function sendGroupWA($notif)
     {
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
-            'name' => 'DC Team',
+            'name' => 'Konten Medsos IKP',
+            'message' => $notif,
+        ]);
+    
+    }
+
+    public function notificationStakeholder($notif)
+    {
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '081329585110',
+            'message' => $notif,
+        ]);
+
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '08122513172',
             'message' => $notif,
         ]);
     

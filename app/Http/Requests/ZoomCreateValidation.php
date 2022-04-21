@@ -32,6 +32,8 @@ class ZoomCreateValidation extends FormRequest
             'jam_mulai' => 'required', 
             'jam_selesai' => 'required', 
             'peserta' => 'required', 
+            'file_name'=>'mimes:pdf',
+
         ];
     }
 }

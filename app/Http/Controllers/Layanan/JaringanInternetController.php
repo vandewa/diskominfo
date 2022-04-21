@@ -29,8 +29,8 @@ class JaringanInternetController extends Controller
                  ->addColumn('action', function($row){
                     return
                 '<div class="list-icons">
-                    <a href="'.route('jaringan-internet.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
-                    <a href="'.route('jaringan-internet.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    <a href="'.route('jaringan-internet.show', $row->id ).'" class="btn btn-outline-primary rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                   <a href="'.route('jaringan-internet.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                 </div>';
                     })
                 ->addColumn('tanggalnya', function ($a) {
@@ -61,9 +61,18 @@ class JaringanInternetController extends Controller
      */
     public function store(Request $request)
     {
+          $request->validate([
+                'g-recaptcha-response' => 'required|recaptcha',
+            ],
+            [
+                'g-recaptcha-response.required' => 'Captcha harus benar.',
+                'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
+            ]);
 
-        if( $request->waktu > '07:30:00' && $request->waktu < '11:00:00'){
-             $notifikasi = 'Terima kasih, permintaan layanan jaringan internet berhasil dikirim, mohon ditunggu notifikasi berikutnya.';
+        if( $request->waktu > '07:30:00' && $request->waktu < '16:00:00'){
+            
+            $notifikasi = 'Terima kasih, permintaan layanan jaringan internet berhasil dikirim.'.urldecode('%0D%0A').'Mohon ditunggu notifikasi berikutnya. '. urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
+        
         } else {
             $notifikasi ='Terima kasih, '.urldecode('%2A').'permintaan layanan jaringan internet'.urldecode('%2A').' berhasil dikirim. Saat ini kami sedang tidak bertugas, pesan Anda akan segera kami balas saat jam kerja.'.urldecode('%0D%0A%0D%0A').
              'Senin-Kamis : 07.30 - 16.00 WIB'.
@@ -97,13 +106,15 @@ class JaringanInternetController extends Controller
             $layanan_st = 'Perbaikan Jaringan';
         }
 
-            $nohape = $request->nomor;
-            $notif = urldecode('%2APermohonan+Jaringan+Internet%2A%0D%0AOPD+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ANIP+%3A+' . $request->nip . '%0D%0AEmail+%3A+' . $request->email .'%0D%0ANomor+telepon+%3A+' . $request->nomor . '%0D%0AJenis+layanan+%3A+' . $jaringan_st . '%0D%0AJenis+layanan+%3A+' . $layanan_st   );
+        $nohape = $request->nomor;
+        $notif = urldecode('%2APermohonan+Jaringan+Internet%2A%0D%0AOPD+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0ANIP+%3A+' . $request->nip . '%0D%0AEmail+%3A+' . $request->email .'%0D%0ANomor+telepon+%3A+' . $request->nomor . '%0D%0AJenis+layanan+%3A+' . $jaringan_st . '%0D%0AJenis+layanan+%3A+' . $layanan_st   );
 
-            $this->notification($nohape, $notifikasi);
-            // $this->sendGroupWA($notif);
-      
-            return redirect(route('pengajuanizin'))->with('status','oke');
+        $this->notification($nohape, $notifikasi);
+        $this->sendGroupWA($notif);
+        // $this->notificationStakeholder($notif);
+
+    
+        return redirect(route('pengajuanizin'))->with('status','oke');
     }
 
     /**
@@ -195,6 +206,20 @@ class JaringanInternetController extends Controller
     {
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
             'name' => 'DC Team',
+            'message' => $notif,
+        ]);
+    
+    }
+
+    public function notificationStakeholder($notif)
+    {
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '081329585110', 
+            'message' => $notif,
+        ]);
+
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '08122513172',
             'message' => $notif,
         ]);
     

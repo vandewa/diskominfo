@@ -25,12 +25,12 @@
         <table class="table datatable-basic devan">
             <thead>
                 <tr>
-                    <th>No</th>
+                    <th>No Tiket</th>
                     <th>Nama</th>
                     <th>Instansi/Lembaga</th>
                     <th>Alat</th>
                     <th>Lama Pinjam</th>
-                    <th>Tanggal</th>
+                    <th>Surat Ditandatangani</th>
                     <th>Status</th>
                     <th class="text-center">Aksi</th>
                     <th style="display:none;">Tanggalnya</th>
@@ -51,17 +51,18 @@
         processing: true,
         serverSide: true,
         ajax: window.location.href,
-        "order": [[ 8, "desc" ]],
+        "order": [[ 7, "desc" ]],
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+            // {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+            {data: 'no', name:'no',},
             {data: 'nama', name:'nama',},
             {data: 'instansi', name:'instansi'},
             {data: 'alat', name:'alat'},
-            {data: 'lama_pinjam', name:'lama_pinjam'},
             {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
+            {data: 'bukti', name:'bukti', orderable: false, searchable: false,},
             {data: 'status.code_nm', name:'status.code_cd', orderable: false, searchable: false,},
             {data: 'action', },
-            {data: 'tanggal', name:'tanggal', visible: false},
+            {data: 'tanggal_mulai', name:'tanggal_mulai', visible: false},
         ]
     });
 </script>

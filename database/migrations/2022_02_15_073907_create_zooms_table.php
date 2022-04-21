@@ -24,6 +24,10 @@ class CreateZoomsTable extends Migration
             $table->time('jam_selesai')->nullable();
             $table->integer('peserta')->nullable();
             $table->string('link_zoom', 555)->nullable();
+            $table->string('file_name')->nullable();
+            $table->string('status_st')->nullable();
+            $table->string('alasan')->nullable();
+
             $table->timestamps();
         });
     }

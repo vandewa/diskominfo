@@ -3,21 +3,21 @@
 @extends('layouts/main')
 @section('isi')
 @section('kondisi')
-<header id="header" class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent header-black-nav-links-lg header-show-hide"
-        data-hs-header-options='{
-            "fixMoment": 1000,
-            "fixEffect": "slide"
-        }'>
+<header id="header" 
+            data-hs-header-options='{
+              "fixMoment": 1000,
+              "fixEffect": "slide"
+            }'>
 @endsection
 
 @section('kondisi2')
     <i class="fas fa-user-circle fa-lg" style="color:black"></i>
 @endsection
 
-<main id="content" role="main">
+<main id="content" role="main" style="background-image:url({{ asset('front/assets/images/arjuna.jpg') }}); background-size: cover; background-repeat:   no-repeat; background-position: center center; object-fit:cover">
     <div class="container space-top-1 space-bottom-2">
         <div class="w-100 sm-6 mx-lg-auto">
-            <h3 class="mb-4 mt-10"><center>Form Permohonan Subdomain</center></h3>
+           <h3 class="mb-4 mt-4" style="color: white;"><center>Form Permohonan Subdomain</center></h3>
             <div class="w-lg-80 mx-auto">
                 <div class="card">
                     <div class="card-header">
@@ -27,6 +27,7 @@
                     <div class="card-body">
                     {{Form::open(['route' => 'perijinan:permohonan.subdomain.post', 'files' => true])}}
                     {{Form::hidden('status_st','STATUS_ST_01')}}
+                    {{Form::hidden('waktu',\Carbon\Carbon::now()->format('H:i:s'))}}
                             <div class="row form-group">
                                 <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Nama </label>
                                 <div class="col-sm-8">
@@ -59,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">No. Telepon<small style="color: red;"><b> (*WhatsApp)</b></small></label>
+                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">No. Telepon<small style="color: red;"><b> (*WhatsApp) </b></small></label>
                                 <div class="col-sm-8">
                                 {{Form::number('nomor', null, ['class' => 'form-control ', 'placeholder' => 'Nomor kontak person pemohon'])}}
                                 </div>
@@ -79,13 +80,13 @@
                             <div class="row form-group devan" style="display: none">
                                 <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Nama Subdomain</label>
                                 <div class="col-sm-8">
-                                {{Form::text('nama_subdomain_cpanel', null, ['class' => 'form-control ', 'placeholder' => 'Nama Subdomain'])}}
+                                {{Form::text('nama_subdomain', null, ['class' => 'form-control ', 'placeholder' => 'Nama Subdomain'])}}
                                 </div>
                             </div>
                             <div class="row form-group devan" style="display: none">
                                 <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Pilihan Subdomain</label>
                                 <div class="col-sm-8">
-                                {{Form::select('domain_st_cpanel',get_code_group('DOMAIN_ST'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Subdomain -'])}}
+                                {{Form::select('domain_st',get_code_group('DOMAIN_ST'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Subdomain -'])}}
                                 </div>
                             </div>
                             <div class="row form-group devan" style="display: none">
@@ -120,13 +121,13 @@
                             <div class="row form-group devanganteng" style="display: none">
                                 <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Nama Subdomain</label>
                                 <div class="col-sm-8">
-                                {{Form::text('nama_subdomain', null, ['class' => 'form-control ', 'placeholder' => 'Nama Subdomain'])}}
+                                {{Form::text('nama_subdomain_cpanel', null, ['class' => 'form-control ', 'placeholder' => 'Nama Subdomain'])}}
                                 </div>
                             </div>
                             <div class="row form-group devanganteng" style="display: none">
                                 <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Pilihan Subdomain</label>
                                 <div class="col-sm-8">
-                                {{Form::select('domain_st',get_code_group('DOMAIN_ST'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Subdomain -'])}}
+                                {{Form::select('domain_st_cpanel',get_code_group('DOMAIN_ST'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Subdomain -'])}}
                                 </div>
                             </div>
 
@@ -157,8 +158,21 @@
                                 </div>
                             </div>
 
+                            <div class="row form-group">
+                              <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label"></label>
+                                <div class="col-sm-8">
+                                    {!! htmlFormSnippet() !!}
+                                    @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block label label-danger">
+                                        <strong style="color: red;">{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                     @endif
+                                </div>
+                            </div>
+
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
+                                <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
+                                        <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
                             </div>
                     {{Form::close()}}
                     </div>

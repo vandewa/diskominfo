@@ -27,8 +27,8 @@ class ColocationServerController extends Controller
                  ->addColumn('action', function($row){
                     return
                 '<div class="list-icons">
-                    <a href="'.route('permintaan-colocation.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
-                    <a href="'.route('permintaan-colocation.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    <a href="'.route('permintaan-colocation.show', $row->id ).'" class="btn btn-outline-primary rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                   <a href="'.route('permintaan-colocation.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                 </div>';
                     })
                 ->addColumn('tanggalnya', function ($a) {
@@ -59,6 +59,28 @@ class ColocationServerController extends Controller
      */
     public function store(Request $request)
     {
+
+        if( $request->waktu > '07:30:00' && $request->waktu < '16:00:00'){
+
+            $notifikasi = 'Terima kasih, permintaan layanan permohonan colocation server berhasil dikirim.'.urldecode('%0D%0A').'Mohon ditunggu notifikasi berikutnya. '. urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
+            
+        } else {
+            $notifikasi ='Terima kasih, '.urldecode('%2A').'permintaan layanan permohonan colocation server'.urldecode('%2A').' berhasil dikirim. Saat ini kami sedang tidak bertugas, pesan Anda akan segera kami balas saat jam kerja.'.urldecode('%0D%0A%0D%0A').
+             'Senin-Kamis : 07.30 - 16.00 WIB'.
+             urldecode('%0D%0A').
+             'Jumat : 07.30 - 11.00 WIB'.
+             urldecode('%0D%0A%0D%0A%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60')
+             ;
+        }
+
+          $request->validate([
+                'g-recaptcha-response' => 'required|recaptcha',
+            ],
+            [
+                'g-recaptcha-response.required' => 'Captcha harus benar.',
+                'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
+            ]);
+            
         PermintaanColocation::create([
                 'nama' => $request->nama,
                 'nip' => $request->nip,
@@ -81,8 +103,10 @@ class ColocationServerController extends Controller
         '%2ASpesifikasi+server+%2A%0D%0A' .
         '%0D%0AMerk/Brand+Server+%3A+'. $request->merk .'%0D%0AJenis/Type+Server+%3A+'. $request->type. '%0D%0ACPU+model+%3A+' . $request->model . '%0D%0ACPU+server+%3A+' . $request->cpu . ' Core' . '%0D%0AHarddisk+server+%3A+' . $request->hardisk . ' GB' .'%0D%0ARAM+server+%3A+' . $request->ram .' GB'   );
 
-        // $this->notification($nohape);
-        // $this->sendGroupWA($notif);
+        $this->notification($nohape, $notifikasi);
+        $this->sendGroupWA($notif);
+        // $this->notificationStakeholder($notif);
+
     
         return redirect(route('pengajuanizin'))->with('status','oke');
     }
@@ -150,8 +174,8 @@ class ColocationServerController extends Controller
             $notif = 'Status permintaan layanan Colocation Server '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
         }
 
-        // $this->notification($nohape, $notif);
-        // $this->sendGroupWA($notif);
+        $this->notification($nohape, $notif);
+        $this->sendGroupWA($notif);
 
         return redirect(route('permintaan-colocation.index'))->with('status','Data berhasil diubah');
     }
@@ -167,12 +191,12 @@ class ColocationServerController extends Controller
         PermintaanColocation::destroy($id);
     }
 
-    public function notification($nohape, $notif = 'Terima kasih, permintaan layanan colocation server berhasil dikirim, mohon ditunggu notifikasi berikutnya. ')
+    public function notification($nohape, $notifikasi)
     {
 
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
             'number' => $nohape,
-            'message' => $notif,
+            'message' => $notifikasi,
         ]);
 
     }
@@ -181,6 +205,20 @@ class ColocationServerController extends Controller
     {
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
             'name' => 'DC Team',
+            'message' => $notif,
+        ]);
+    
+    }
+
+    public function notificationStakeholder($notif)
+    {
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '081329585110', 
+            'message' => $notif,
+        ]);
+
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '08122513172',
             'message' => $notif,
         ]);
     

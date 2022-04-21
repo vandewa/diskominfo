@@ -345,59 +345,67 @@
 								</li> --}}
 								<li class="nav-item">
 									<a href="{{ route('media-publikasi.index') }}" class="nav-link ">Media Publikasi
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$media_publikasi}}</span>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('liputan.index') }}" class="nav-link ">Liputan
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$liputan}}</span>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('informasi-publik.index') }}" class="nav-link ">Informasi Publik
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$informasi_publik}}</span>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('pengajuan-keberatan.index') }}" class="nav-link ">Keberatan
 										Informasi Publik
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$pengajuan_keberatan}}</span>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('pinjam-tempat.index') }}" class="nav-link ">Tempat Rapat
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$tempat_rapat}}</span>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('pinjam-peralatan.index') }}" class="nav-link ">Pinjam Peralatan
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$pinjam_peralatan}}</span>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('magang.index') }}" class="nav-link ">Magang
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$magang}}</span>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('link_zoom.index') }}" class="nav-link ">Link Zoom
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$zoom}}</span>
 									</a>
 								</li>
+								<li class="nav-item">
+									<a href="{{ route('jaringan-internet.index') }}" class="nav-link ">Jaringan Internet
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$internet}}</span>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ route('permohonan-aplikasi.index') }}" class="nav-link ">Aplikasi
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$aplikasi}}</span>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ route('permohonan-subdomain.index') }}" class="nav-link ">Subdomain
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$subdomain}}</span>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ route('permintaan-colocation.index') }}" class="nav-link ">Colocation Server
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{$colocation	}}</span>
+									</a>
+								</li>
+							</ul>
 						</li>
-						<li class="nav-item">
-							<a href="{{ route('jaringan-internet.index') }}" class="nav-link ">Jaringan Internet
-							</a>
-						</li>
-						</li>
-						<li class="nav-item">
-							<a href="{{ route('permohonan-aplikasi.index') }}" class="nav-link ">Aplikasi
-							</a>
-						</li>
-						</li>
-						<li class="nav-item">
-							<a href="{{ route('permohonan-subdomain.index') }}" class="nav-link ">Subdomain
-							</a>
-						</li>
-						</li>
-						<li class="nav-item">
-							<a href="{{ route('permintaan-colocation.index') }}" class="nav-link ">Colocation Server
-							</a>
-						</li>
-					</ul>
-					</li>
 					@endpermission
 
 					{{-- Mulai Ticketing--}}

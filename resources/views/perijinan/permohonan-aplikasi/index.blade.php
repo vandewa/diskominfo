@@ -57,7 +57,7 @@
 					{data: 'nip', name:'nip'},
 					{data: 'nomor', name:'nomor'},
 					{data: 'status.code_nm', name:'status.code_cd'},
-                    {data: 'action', },
+                    {data: 'action',},
 					{data: 'created_at', name:'created_at', visible: false},
 				]
 			});

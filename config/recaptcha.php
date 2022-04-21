@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2017 - present
  * LaravelGoogleRecaptcha - recaptcha.php
@@ -37,7 +38,7 @@ return [
      * get more info @ https://developers.google.com/recaptcha/docs/versions
      *
      */
-    'version'                      => 'v3',
+    'version'  => 'v2', // supported: "v3"|"v2"|"invisible"
 
     /**
      *
@@ -50,9 +51,10 @@ return [
     /**
      *
      * IP addresses for which validation will be skipped
+     * IP/CIDR netmask eg. 127.0.0.0/24, also 127.0.0.1 is accepted and /32 assumed
      *
      */
-    'skip_ip'                      => [],
+    'skip_ip'                      => env('RECAPTCHA_SKIP_IP', []),
 
     /**
      *
@@ -112,6 +114,24 @@ return [
 
     /**
      *
+     * Set `true` when the error message must be null
+     * @since v5.1.0
+     * Default false
+     *
+     */
+    'empty_message' => false,
+
+    /**
+     *
+     * Set either the error message or the errom message translation key
+     * @since v5.1.0
+     * Default 'validation.recaptcha'
+     *
+     */
+    'error_message_key' => 'validation.recaptcha',
+
+    /**
+     *
      * g-recaptcha tag attributes and grecaptcha.render parameters (v2 only)
      * @see   https://developers.google.com/recaptcha/docs/display#render_param
      * @since v4.0.0
@@ -122,7 +142,7 @@ return [
          * The color theme of the widget.
          * Supported "light", "dark"
          */
-        'theme'            => 'dark',
+        'theme'            => 'light',
 
         /**
          * The size of the widget.

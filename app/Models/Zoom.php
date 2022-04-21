@@ -9,8 +9,9 @@ class Zoom extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class, 'nama_id');
-    // }
+
+    public function status()
+        {
+            return $this->belongsTo(ComCode::class,'status_st');
+        }
 }

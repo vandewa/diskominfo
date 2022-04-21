@@ -36,7 +36,7 @@ Tambah User
                     <th>No</th>
                     <th>Nama</th>
                     <th>Email</th>
-                    <th>Level</th>
+                    <th>Role</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>

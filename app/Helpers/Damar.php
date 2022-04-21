@@ -7,6 +7,7 @@ if (!function_exists('get_code_group')) {
         return \App\Models\ComCode::where('code_group', $code)->pluck('code_nm', 'code_cd');
     }
 }
+
 if (!function_exists('gen_no_akses_dc')) {
     function gen_no_akses_dc()
     {
@@ -42,6 +43,7 @@ if (!function_exists('gen_penambahan_vps')) {
         return 'VPB-' . $no;
     }
 }
+
 if (!function_exists('gen_perubahan_vps')) {
     function gen_perubahan_vps()
     {
@@ -53,6 +55,7 @@ if (!function_exists('gen_perubahan_vps')) {
         return 'PVP-' . $no;
     }
 }
+
 if (!function_exists('gen_colocation_server')) {
     function gen_colocation_server()
     {
@@ -64,6 +67,7 @@ if (!function_exists('gen_colocation_server')) {
         return 'CSV-' . $no;
     }
 }
+
 if (!function_exists('gen_kunjungan_dc')) {
     function gen_kunjungan_dc()
     {
@@ -75,6 +79,7 @@ if (!function_exists('gen_kunjungan_dc')) {
         return 'KDC-' . $no;
     }
 }
+
 if (!function_exists('gen_pengajuan_server')) {
     function gen_pengajuan_server()
     {
@@ -87,7 +92,6 @@ if (!function_exists('gen_pengajuan_server')) {
     }
 }
 
-
 if (!function_exists('gen_no_tiket')) {
     function gen_no_tiket()
     {
@@ -99,6 +103,19 @@ if (!function_exists('gen_no_tiket')) {
         return 'TKT-' . $no;
     }
 }
+
+if (!function_exists('gen_pinjam_alat')) {
+    function gen_pinjam_alat()
+    {
+        $no = Date('y-m-') . str_pad(1, 3, '0', STR_PAD_LEFT);
+        $terakhir = \App\Models\PinjamPeralatan::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->first();
+        if ($terakhir) {
+            $no = Date('y-m-') . str_pad((int) substr($terakhir->no, -3) + 1, 3, 0, STR_PAD_LEFT);
+        }
+        return 'PPE-' . $no;
+    }
+}
+
 if (!function_exists('list_user')) {
     function list_user()
     {
@@ -119,4 +136,5 @@ if (!function_exists('label_prioritas')) {
             return 'badge badge-purple';
         }
     }
+    
 }

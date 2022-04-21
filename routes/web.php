@@ -94,6 +94,7 @@ Route::get('/lampiran', [HomeController::class, 'lampiran'])->name('lampiran');
 Route::get('/pengaduan', [HomeController::class, 'pengaduan'])->name('pengaduan');
 Route::get('/pengajuan', [HomeController::class, 'pengajuan'])->name('pengajuan');
 Route::get('/pengajuanizin', [HomeController::class, 'pengajuanizin'])->name('pengajuanizin');
+Route::post('/pengajuanizin/simpan', [HomeController::class, 'pengajuanizinPost'])->name('upload.surat');
 Route::post('/pengajuan/simpan', [HomeController::class, 'simpan'])->name('pengajuan.simpan');
 Route::get('/website/user', [HomeController::class, 'getWebsite'])->name('website.list');
 Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
@@ -185,6 +186,9 @@ Route::group([], function () {
         Route::post('permohonan/subdomain', [PermohonanSubdomainController::class, 'store'])->name('permohonan.subdomain.post');
         Route::get('permohonan/colocation-server', [ColocationServerController::class, 'create'])->name('colocation.server.create');
         Route::post('permohonan/colocation-server', [ColocationServerController::class, 'store'])->name('colocation.server.post');
+        Route::get('permohonan/pinjam-peralatan/{id}/cetak', [PinjamPeralatanController::class, 'cetakSurat'])->name('cetak.surat.alat');
+
+
 
     });
     Route::resource('akses-data-center', AksesDcController::class);

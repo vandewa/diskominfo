@@ -27,8 +27,8 @@ class InformasiPublikController extends Controller
                 ->addColumn('action', function($row){
                     return
                 '<div class="list-icons">
-                    <a href="'.route('informasi-publik.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
-                    <a href="'.route('informasi-publik.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    <a href="'.route('informasi-publik.show', $row->id ).'" class="btn btn-outline-primary rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                   <a href="'.route('informasi-publik.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                 </div>';
                     })
                 ->addColumn('tanggal', function ($a) {
@@ -60,6 +60,14 @@ class InformasiPublikController extends Controller
      */
     public function store(Request $request)
     {
+          $request->validate([
+                'g-recaptcha-response' => 'required|recaptcha',
+            ],
+            [
+                'g-recaptcha-response.required' => 'Captcha harus benar.',
+                'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
+            ]);
+            
         PermohonanInformasiPublik::create([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
@@ -76,6 +84,8 @@ class InformasiPublikController extends Controller
 
         $this->notification($nohape);
         $this->sendGroupWA($notif);
+        // $this->notificationStakeholder($notif);
+
 
         return redirect(route('pengajuanizin'))->with('status','oke');
     }
@@ -154,8 +164,10 @@ class InformasiPublikController extends Controller
          PermohonanInformasiPublik::destroy($id);
     }
 
-    public function notification($nohape, $notif = 'Terima kasih, permintaan layanan permohonan informasi publik berhasil dikirim, mohon ditunggu notifikasi berikutnya. ')
+    public function notification($nohape)
     {
+        
+        $notif = 'Terima kasih, permintaan layanan permohonan informasi publik berhasil dikirim.'.urldecode('%0D%0A').'Mohon ditunggu notifikasi berikutnya. '. urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
 
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
             'number' => $nohape,
@@ -168,7 +180,21 @@ class InformasiPublikController extends Controller
     public function sendGroupWA($notif)
     {
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
-            'name' => 'DC Team',
+            'name' => 'Konten Medsos IKP',
+            'message' => $notif,
+        ]);
+    
+    }
+
+    public function notificationStakeholder($notif)
+    {
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '081329585110',
+            'message' => $notif,
+        ]);
+
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '08122513172',
             'message' => $notif,
         ]);
     

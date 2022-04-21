@@ -85,7 +85,7 @@ class UserController extends Controller
 
           $user->attachRole($request->level);
 
-          return redirect (route('user.index'))->with('status', 'Data user berhasil ditambahkan');
+          return redirect(route('user.index'))->with('status', 'Data user berhasil ditambahkan');
     }
 
     /**
@@ -166,7 +166,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->syncRoles([$request->level]);
 
-        return (route('user.index'))->with('status', 'Data user berhasil diubah.');
+        return redirect(route('user.index'))->with('status', 'Data user berhasil diubah.');
     }
 
     /**
@@ -195,10 +195,10 @@ class UserController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
                   
-                    $actionBtn = '
-                    <div class="list-icons d-flex justify-content-center">
-                    <a href="'.route('user.edit', $data->id ).' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                    <a href="'.route('user.destroy', $data->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    $actionBtn = 
+                    '<div class="list-icons">
+                        <a href="'.route('user.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                        <a href="'.route('user.destroy', $data->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                     </div>';
                     return $actionBtn;
                    

@@ -28,10 +28,10 @@ class LiputanController extends Controller
                 ->addColumn('action', function($row){
                     return
                 '<div class="list-icons">
-                    <a href="'.route('liputan.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
-                    <a href="'.route('liputan.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                   <a href="'.route('liputan.show', $row->id ).'" class="btn btn-outline-primary rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                   <a href="'.route('liputan.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                 </div>';
-                    })
+                })
                 ->addColumn('tanggalnya', function ($a) {
                     return Carbon::createFromTimeStamp(strtotime($a->tanggal))->isoFormat('D MMMM Y');
                 })
@@ -88,8 +88,15 @@ class LiputanController extends Controller
      */
     public function store(Request $request)
     {
+          $request->validate([
+                'g-recaptcha-response' => 'required|recaptcha',
+            ],
+            [
+                'g-recaptcha-response.required' => 'Captcha harus benar.',
+                'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
+            ]);
 
-        $nohape = $request->nomor;
+            $nohape = $request->nomor;
 
         if($request->hasFile('file_name')){
             $files = $request->file('file_name');
@@ -111,7 +118,7 @@ class LiputanController extends Controller
                 'file_name' => $filename,
             ]);
 
-             $notif = urldecode('%2APermohonan+Liputan%2A%0D%0AInstitusi+/+lembaga+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AInformasi+acara+%3A+' .  ucwords($request->informasi) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AWaktu+%3A+' . $request->waktu .  ' WIB'.'%0D%0ATempat%3A+' . $request->tempat . '%0D%0AKontak+person+/+penanggungjawab+kegiatan+%3A+' . $request->cp .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0ALampiran%3A+&#8730;');
+             $notif = urldecode('%2APermohonan+Liputan%2A%0D%0AInstitusi+/+lembaga+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AInformasi+acara+%3A+' .  ucwords($request->informasi) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AWaktu+%3A+' . $request->waktu .  ' WIB'.'%0D%0ATempat%3A+' . $request->tempat . '%0D%0AKontak+person+/+penanggungjawab+kegiatan+%3A+' . $request->cp .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0A').'Lampiran : ('.html_entity_decode('&#8730;'). ')';
 
         } else {
 
@@ -127,16 +134,24 @@ class LiputanController extends Controller
                 'status_st' => $request->status_st,
             ]);
 
-             $notif = urldecode('%2APermohonan+Liputan%2A%0D%0AInstitusi+/+lembaga+%3A+' .  ucwords($request->instansi) . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AInformasi+acara+%3A+' .  ucwords($request->informasi) . '%0D%0ATanggal+%3A+' . \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y') . '%0D%0AWaktu+%3A+' . $request->waktu .  ' WIB'.'%0D%0ATempat%3A+' . $request->tempat . '%0D%0AKontak+person+/+penanggungjawab+kegiatan+%3A+' . $request->cp .'%0D%0ANomor+telepon+%3A+' . $request->nomor .'%0D%0ALampiran%3A+%D7;');
-
+            $notif = '*Permohonan Liputan*'.urldecode('%0D%0A').
+                     'Institusi / lembaga : '.$request->instansi.urldecode('%0D%0A').
+                     'Nama : '. $request->nama.urldecode('%0D%0A').
+                     'Informasi acara : '. $request->informasi.urldecode('%0D%0A').
+                     'Tanggal : '. \Carbon\Carbon::createFromTimeStamp(strtotime($request->tanggal))->isoFormat('dddd, D MMMM Y').urldecode('%0D%0A').
+                     'Waktu : '. $request->waktu. ' WIB'.urldecode('%0D%0A').
+                     'Tempat : '. $request->tempat.urldecode('%0D%0A').
+                     'Kontak person / penanggungjawab kegiatan : '.$request->cp.urldecode('%0D%0A').
+                     'Nomor telepon : '. $request->nomor.urldecode('%0D%0A').
+                     'Lampiran : ('.urldecode('%C3%97'). ')'  ;
         }
-
-        return $notif;
        
-        // $this->notification($nohape);
-        // $this->sendGroupWA($notif);
+        $this->notification($nohape);
+        $this->sendGroupWA($notif);
+        // $this->notificationStakeholder($notif);
 
-        return redirect(route('pengajuanizin'))->with('status','oke');
+
+        return redirect(route('perijinan:liputan.create'))->with('status','oke');
     }
 
     /**
@@ -199,8 +214,8 @@ class LiputanController extends Controller
             $notif = 'Status permintaan layanan Permohonan Liputan '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
         }
      
-        // $this->notification($nohape, $notif);
-        // $this->sendGroupWA($notif);
+        $this->notification($nohape, $notif);
+        $this->sendGroupWA($notif);
     
         return redirect()->route('liputan.index');
     }
@@ -216,8 +231,9 @@ class LiputanController extends Controller
         Liputan::destroy($id);
     }
 
-    public function notification($nohape, $notif = 'Terima kasih, permintaan layanan permohonan liputan berhasil dikirim, mohon ditunggu notifikasi berikutnya. ')
+    public function notification($nohape)
     {
+        $notif = 'Terima kasih, permintaan layanan permohonan liputan berhasil dikirim.'.urldecode('%0D%0A').'Mohon ditunggu notifikasi berikutnya. '. urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
 
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
             'number' => $nohape,
@@ -226,11 +242,24 @@ class LiputanController extends Controller
 
     }
     
-
     public function sendGroupWA($notif)
     {
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
-            'name' => 'DC Team',
+            'name' => 'Konten Medsos IKP',
+            'message' => $notif,
+        ]);
+    
+    }
+
+    public function notificationStakeholder($notif)
+    {
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '081329585110',
+            'message' => $notif,
+        ]);
+
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '08122513172',
             'message' => $notif,
         ]);
     

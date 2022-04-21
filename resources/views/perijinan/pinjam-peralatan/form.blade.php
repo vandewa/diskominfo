@@ -1,15 +1,16 @@
+<div class="form-group row " style="margin-bottom: 0.25rem">
+    <div class="col-12 ">
+        <label class="col-form-label col-lg-12 d-flex justify-content-center"><h1>{{ $data->no }}</h1></label>
+    </div>
+</div>
+
 <div class="form-group row" style="margin-bottom: 0.25rem">
     <div class="col-6">
         <label class="col-form-label col-lg-6">Nama<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                <<<<<<< HEAD {{Form::text('nama', null, ['class'=> 'form-control ','placeholder' => 'Masukkan
-                    Nama','required',
-                    'readonly' => true])}}
-                    =======
                     {{Form::text('nama', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama','required',
                     'readonly' => true])}}
-                    >>>>>>> bebd51eb7ef5b9eccb655406b13ed11ad12c206f
             </div>
         </div>
     </div>
@@ -18,12 +19,8 @@
         <label class="col-form-label col-lg-6">Instansi/Lembaga<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                <<<<<<< HEAD {{Form::text('instansi', null, ['class'=> 'form-control ','placeholder' => 'Masukkan
-                    instansi/lembaga','required', 'readonly' => true])}}
-                    =======
                     {{Form::text('instansi', null, ['class' => 'form-control ','placeholder' => 'Masukkan
                     instansi/lembaga','required', 'readonly' => true])}}
-                    >>>>>>> bebd51eb7ef5b9eccb655406b13ed11ad12c206f
             </div>
         </div>
     </div>
@@ -31,37 +28,40 @@
 
 <div class="form-group row" style="margin-bottom: 0.25rem">
     <div class="col-6">
-        <label class="col-form-label col-lg-6">Tanggal<span class="text-danger">*</span></label>
+        <label class="col-form-label col-lg-6">Dari Tanggal<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
-                @if(!empty($tanggal))
-                {{Form::text('tanggal', $tanggal,['class' => 'form-control daterange-single', 'disabled' =>
+                @if(!empty($tanggal_mulai))
+                {{Form::text('tanggal_mulai', $tanggal_mulai,['class' => 'form-control daterange-single', 'disabled' =>
                 'disabled',])}}
                 @else
-                {{Form::text('tanggal', null,['class' => 'form-control daterange-single', 'disabled' => 'disabled',])}}
+                {{Form::text('tanggal_mulai', null,['class' => 'form-control daterange-single', 'disabled' => 'disabled',])}}
                 @endif
             </div>
         </div>
     </div>
+    <div class="col-6">
+        <label class="col-form-label col-lg-6">Sampai Tanggal<span class="text-danger">*</span></label>
+        <div class="col-lg-12">
+            <div class="form-group">
+                @if(!empty($tanggal_selesai))
+                {{Form::text('tanggal_selesai', $tanggal_selesai,['class' => 'form-control daterange-single', 'disabled' =>
+                'disabled',])}}
+                @else
+                {{Form::text('tanggal_selesai', null,['class' => 'form-control daterange-single', 'disabled' => 'disabled',])}}
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="form-group row" style="margin-bottom: 0.25rem">
     <div class="col-6">
         <label class="col-form-label col-lg-6">Alat Yang Pipinjam<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
                 {{Form::text('alat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan nama
                 alat','required', 'readonly' => true])}}
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row" style="margin-bottom: 0.25rem">
-    <div class="col-6">
-        <label class="col-form-label col-lg-6">Lama Pinjam<span class="text-danger">*</span></label>
-        <div class="col-lg-12">
-            <div class="form-group">
-                {{Form::text('lama_pinjam', null, ['class' => 'form-control ', 'placeholder' => 'Lama
-                pinjam','required', 'readonly' => true])}}
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
 
 @if(!empty($lampiran))
 <div class="form-group row">
-    <div class="col-12">
+    <div class="col-6">
         <label class="col-form-label col-lg-6">Lampiran<span class="text-danger">*</span></label>
         <div class="col-lg-12">
             <div class="form-group">
@@ -86,8 +86,22 @@
             </div>
         </div>
     </div>
+
+    @if(!empty($bukti))
+    <div class="col-6">
+        <label class="col-form-label col-lg-6">Surat Pernyataan<span class="text-danger">*</span></label>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <iframe height="500" src="{{ asset('uploads/bukti/'.$data->bukti) }}" width="100%"></iframe>
+            </div>
+        </div>
+    </div>
+    @endif
+
+
 </div>
 @endif
+
 
 <hr>
 
@@ -123,6 +137,8 @@
 @endif
 
 <div class="text-right mt-5">
+    <a href="{{route('pinjam-peralatan.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
+    <a href="{{route('perijinan:cetak.surat.alat', $data->id )}}" class="btn bg-warning-400">Cetak Surat <i class="icon-download7 ml-2"></i></a>
     <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 </div>
 

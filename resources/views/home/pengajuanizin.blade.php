@@ -167,7 +167,7 @@
                                 </div>
                             </form>
 
-                            <!-- Step -->
+                            {{-- <!-- Step -->
                             <ul class="step">
                                 @if((!empty($datanya) && empty($data->status_st)))
                                     <li class="step-item">
@@ -248,7 +248,128 @@
                                     </li>
                                 @endif
                             </ul>
+                            <!-- End Step --> --}}
+
+                             <!-- Step -->
+                            <ul class="step">
+                                @if((!empty($datanya) && empty($data->status_st)))
+                                    <li class="step-item">
+                                        <div class="step-content-wrapper">
+                                            <div class="step-content">
+                                                <h5>{{ $datanya.'.' }}</h5>
+                                                <p class="step-text"></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endif
+                                @if((request('q') != '') && !empty($data->status_st))
+
+                                    <h5>Nomor tiket : {{ $data->no }}</h5><br><br>
+
+                                    <li class="step-item">
+                                        <div class="step-content-wrapper">
+                                            <span class="step-icon"> <img class="card-img" src="{{ asset('front/assets/images/dikirim.png') }}"></span>
+                                            <div class="step-content">
+                                                <h4>{{ $jenis }} berhasil dikirim.</h4>
+                                                <p class="step-text">{{ Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }} WIB</p>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    @if(!isset($data->bukti) && $data->status_st == 'STATUS_ST_01')
+                                    <form class="input-group input-group-sm input-group-merge input-group-flush mb-3" action="{{ route('upload.surat') }}" method="post" enctype="multipart/form-data" >
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $data->id }}">
+                                        <input type="hidden" name="no" value="{{ $data->no }}">
+                                        <input type="hidden" name="nomor" value="{{ $data->nomor }}">
+
+                                        <li class="step-item">
+                                            <div class="step-content-wrapper">
+                                                <div class="step-content">
+                                                    <label class="btn btn-sm btn-success transition-3d-hover file-attachment-btn" for="fileAttachmentBtn">
+                                                        <span id="customFileExample5">Upload Surat Pernyataan <b>(*PDF)</b> </span>
+                                                        <input id="fileAttachmentBtn" name="bukti" type="file" class="js-file-attach file-attachment-btn-label"
+                                                            data-hs-file-attach-options='{
+                                                                "textTarget": "#customFileExample5"
+                                                            }' accept=".pdf">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <div class="d-flex justify-content-end">
+                                            <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
+                                                    <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
+                                        </div>
+                                    </form>
+                                    @endif
+
+                                    @if(isset($data->bukti))
+                                    <li class="step-item">
+                                        <div class="step-content-wrapper">
+                                            <span class="step-icon"><img class="card-img" src="{{ asset('front/assets/images/upload.png') }}"></span>
+                                            <div class="step-content">
+                                                <h4>Berhasil upload</h4>
+                                                <p class="step-text">
+                                                     Surat pernyataan berhasil diupload.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @endif
+
+                                    @if($data->status_st == 'STATUS_ST_01' ||  $data->status_st == 'STATUS_ST_03' ||  $data->status_st == 'STATUS_ST_02' || $data->status_st == 'STATUS_ST_04')
+                                    <li class="step-item">
+                                        <div class="step-content-wrapper">
+                                             @if( $data->status_st == 'STATUS_ST_02')
+                                                    <span class="step-icon"><img class="card-img" src="{{ asset('front/assets/images/disetujui.png') }}"></span>
+                                                    <div class="step-content">
+                                                        <h4>{{ $data->status->code_nm??'' }}</h4>
+                                                        <p class="step-text">{{ Carbon\Carbon::parse($data->updated_at)->isoFormat('LLLL') }} WIB</p>
+                                                    </div>
+                                            @endif
+
+                                            @if( $data->status_st == 'STATUS_ST_03' )
+                                            <span class="step-icon"><img class="card-img" src="{{ asset('front/assets/images/ditolak.png') }}"></span>
+                                                <div class="step-content">
+                                                    <h4>{{ $data->status->code_nm??'' }}</h4>
+                                                    <p class="step-text">{{ '( '.$data->alasan.' )' }}</p>
+                                                    <p class="step-text">{{ Carbon\Carbon::parse($data->updated_at)->isoFormat('LLLL') }} WIB</p>
+                                                </div>
+                                            @endif
+
+                                            @if( $data->status_st == 'STATUS_ST_04' )
+                                            <span class="step-icon"><img class="card-img" src="{{ asset('front/assets/images/ditolak.png') }}"></span>
+                                                <div class="step-content">
+                                                    <h4>{{ $data->status->code_nm??'' }}</h4>
+                                                    <p class="step-text">{{ '( '.$data->alasan.' )' }}</p>
+                                                    <p class="step-text">{{ Carbon\Carbon::parse($data->updated_at)->isoFormat('LLLL') }} WIB</p>
+                                                </div>
+                                            @endif
+
+                                        </div>
+                                    </li>
+                                    @endif
+
+                                    @if($data->status_st == 'STATUS_ST_02' || $data->status_st == 'STATUS_ST_03' | $data->status_st == 'STATUS_ST_04')
+                                    <li class="step-item">
+                                        <div class="step-content-wrapper">
+                                            <span class="step-icon"><img class="card-img" src="{{ asset('front/assets/images/selesai.png') }}"></span>
+                                            <div class="step-content">
+                                               
+                                                    <h4>Selesai.</h4>
+                                                @else
+                                                    -
+                                                @endif
+                                               
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endif
+                            </ul>
                             <!-- End Step -->
+
+
                         </div>
                     </div>
                 </div>
@@ -277,17 +398,54 @@
             // 'success')
             // }
 
-          Swal.fire({
-            title: 'Berhasil!',
-            text: 'Silahkan cek WhatsApp / Email untuk notifikasi berikutnya',
-            imageWidth: 300,
-            imageHeight: 239,
-            imageUrl: 'front/assets/images/okk.gif',
-            })
+                Swal.fire({
+                title: 'Berhasil!',
+                text: 'Silahkan cek WhatsApp / Email untuk notifikasi berikutnya',
+                imageWidth: 300,
+                imageHeight: 239,
+                imageUrl: 'front/assets/images/okk.gif',
+                })
             }
 
             @if(session('status'))
             sweetAlert();
+            @endif
+        </script>
+
+        @if(session('statuss'))
+        <script type="text/javascript">
+            function sweetAlert2() 
+            {  
+
+                Swal.fire({
+                title: 'Berhasil!',
+                imageWidth: 300,
+                imageHeight: 239,
+                imageUrl: 'front/assets/images/okk.gif',
+                html:
+                    'Silahkan download surat pernyataan dibawah ini<br>' +
+                     '<small>( Harap ditandatangani dan di upload pada link yang tertera pada pesan WhatsApp )</small><br><br>'+
+                    '<a href="{{route('perijinan:cetak.surat.alat', session()->get('id_alat') )}}" class="btn btn-primary"><i class="fa fa-thumbs-up"></i> Download</a>',   
+                showCloseButton: true,
+                showCancelButton: false,
+                showConfirmButton: false,
+                focusConfirm: false,
+                
+                
+                // confirmButtonText:
+                //     '<i class="fa fa-thumbs-up"></i> Oke!',
+                // confirmButtonAriaLabel: 'Thumbs up, great!',
+                // cancelButtonText:
+                //     '<i class="""> Tutup</i>',
+                // cancelButtonAriaLabel: 'Thumbs down'
+                })
+            }
+
+            @endif
+
+
+            @if(session('statuss'))
+            sweetAlert2();
             @endif
         </script>
     @endpush

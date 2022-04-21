@@ -27,8 +27,8 @@ class PermohonanMagangController extends Controller
                  ->addColumn('action', function($row){
                     return
                 '<div class="list-icons">
-                    <a href="'.route('magang.show', $row->id ).'" class="list-icons-item text-primary-600"><i class="icon-eye"></i></a>
-                    <a href="'.route('magang.destroy', $row->id ).' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                    <a href="'.route('magang.show', $row->id ).'" class="btn btn-outline-primary rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                   <a href="'.route('magang.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                 </div>';
                     })
                 ->addColumn('tanggalnya', function ($a) {
@@ -59,6 +59,13 @@ class PermohonanMagangController extends Controller
      */
     public function store(Request $request)
     {
+          $request->validate([
+                'g-recaptcha-response' => 'required|recaptcha',
+            ],
+            [
+                'g-recaptcha-response.required' => 'Captcha harus benar.',
+                'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
+            ]);
 
         $nohape = $request->nomor;
 
@@ -80,7 +87,8 @@ class PermohonanMagangController extends Controller
                 'file_name' => $filename,
             ]);
 
-             $notif = urldecode('%2APermohonan+Magang%2A%0D%Asal+sekolah+/+PT+%3A+' .  $request->asal . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AJurusan+%3A+' . $request->jurusan . '%0D%0ALama+magang+%3A+' . $request->lama_magang . '%0D%0ALama+pinjam+%3A+' . $request->lama_pinjam .'%0D%0ANomor+&+tgl+surat+pengantar+dari+sekolah+/+PT+%3A+' . $request->nomor_surat. '%0D%0ANomor+telepon+%3A+' . $request->nomor  .'%0D%0ALampiran%3A+&#8730;');
+             $notif = urldecode('%2APermohonan+Magang%2A%0D%0AAsal+sekolah+/+PT+%3A+' .  $request->asal . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AJurusan+%3A+' . $request->jurusan . '%0D%0ALama+magang+%3A+' . $request->lama_magang .'%0D%0ANomor+&+tgl+surat+pengantar+dari+sekolah+/+PT+%3A+' . $request->nomor_surat. '%0D%0ANomor+telepon+%3A+' . $request->nomor  .'%0D%0A'.'Lampiran : ('.html_entity_decode('&#8730;'). ')');
+
 
          } else {
                PermohonanMagang::create([
@@ -93,13 +101,15 @@ class PermohonanMagangController extends Controller
                 'status_st' => $request->status_st,
             ]);
 
-             $notif = urldecode('%2APermohonan+Magang%2A%0D%Asal+sekolah+/+PT+%3A+' .  $request->asal . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AJurusan+%3A+' . $request->jurusan . '%0D%0ALama+magang+%3A+' . $request->lama_magang . '%0D%0ALama+pinjam+%3A+' . $request->lama_pinjam .'%0D%0ANomor+&+tgl+surat+pengantar+dari+sekolah+/+PT+%3A+' . $request->nomor_surat. '%0D%0ANomor+telepon+%3A+' . $request->nomor.'%0D%0ALampiran%3A+%D7;');
+             $notif = urldecode('%2APermohonan+Magang%2A%0D%0AAsal+sekolah+/+PT+%3A+' .  $request->asal . '%0D%0ANama+%3A+' .  ucwords($request->nama) . '%0D%0AJurusan+%3A+' . $request->jurusan . '%0D%0ALama+magang+%3A+' . $request->lama_magang .'%0D%0ANomor+&+tgl+surat+pengantar+dari+sekolah+/+PT+%3A+' . $request->nomor_surat. '%0D%0ANomor+telepon+%3A+' . $request->nomor.'%0D%0ALampiran%3A+(%C3%97)');
          }
 
-           // $this->notification($nohape);
-            // $this->sendGroupWA($notif);
+        $this->notification($nohape);
+        $this->sendGroupWA($notif);
+        // $this->notificationStakeholder($notif);
+
       
-            return redirect(route('pengajuanizin'))->with('status','oke');
+        return redirect(route('pengajuanizin'))->with('status','oke');
     }
 
     /**
@@ -158,8 +168,8 @@ class PermohonanMagangController extends Controller
             $notif = 'Status permintaan layanan Permohonan Magang '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
         }
      
-        // $this->notification($nohape, $notif);
-        // $this->sendGroupWA($notif);
+        $this->notification($nohape, $notif);
+        $this->sendGroupWA($notif);
 
         return redirect(route('magang.index'))->with('status','Data berhasil diubah');
     }
@@ -175,8 +185,10 @@ class PermohonanMagangController extends Controller
         PermohonanMagang::destroy($id);
     }
 
-     public function notification($nohape, $notif = 'Terima kasih, permintaan layanan permohonan magang berhasil dikirim, mohon ditunggu notifikasi berikutnya. ')
+    public function notification($nohape)
     {
+
+        $notif = 'Terima kasih, permintaan layanan permohonan magang berhasil dikirim.'.urldecode('%0D%0A').'Mohon ditunggu notifikasi berikutnya. '. urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
 
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
             'number' => $nohape,
@@ -185,11 +197,24 @@ class PermohonanMagangController extends Controller
 
     }
     
-
     public function sendGroupWA($notif)
     {
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
-            'name' => 'DC Team',
+            'name' => 'Sekretariat Diskominfo',
+            'message' => $notif,
+        ]);
+    
+    }
+
+    public function notificationStakeholder($notif)
+    {
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '081329585110',
+            'message' => $notif,
+        ]);
+
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '08122513172',
             'message' => $notif,
         ]);
     

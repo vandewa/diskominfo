@@ -21,8 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- CSS Implementing Plugins -->
-  <link href="{{ url ('limitless/Template/global_assets/css/icons/icomoon/styles.css ')}}" rel="stylesheet"
-    type="text/css">
+  <link href="{{ url ('limitless/Template/global_assets/css/icons/icomoon/styles.css ')}}" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="{{ url ('front/assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.css')}}">
   <link rel="stylesheet" href="{{ url ('front/assets/vendor/leaflet/dist/leaflet.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/fontawesome/css/all.min.css')}}">
@@ -53,7 +52,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-R7V1VF1L35');
   </script>
 
@@ -64,6 +62,21 @@
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
   <script src="https://www.google.com/recaptcha/api.js"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
+
+    <style>
+      .buttonnya {
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+    </style>
 </head>
 
 <body>
@@ -729,7 +742,16 @@
   <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
   <script>
     flatpickr("input[type=datetime-local]", {
-      "locale": "id"
+      "locale": "id",
+      "minDate": "today",
+    });
+  </script>
+    <script>
+    flatpickr("input[type=datetime-local-range]", {
+      "minDate": "today",
+      "mode": "range",
+      "minDate": "today",
+      "dateFormat": "Y-m-d",
     });
   </script>
   <script>
@@ -737,7 +759,8 @@
       enableTime: true,
       noCalendar: true,
       dateFormat: "H:i",
-      time_24hr: true
+      time_24hr: true,
+      
     });
   </script>
   <script src="{{ url ('front/assets/vendor/hs-header/dist/hs-header.min.js')}}"></script>
