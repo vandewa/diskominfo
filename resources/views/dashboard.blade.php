@@ -16,7 +16,7 @@
 			
 				<div class="row">
 					<div class="col-sm-6 col-xl-3">
-						<a href="{{ url('/posting') }}" class="transition-3d-hover">
+						<a href="{{ route('posting.index') }}" class="transition-3d-hover">
 						<div class="card card-body bg-blue-400 has-bg-image">
 							<div class="media">
 								<div class="media-body">
@@ -32,7 +32,7 @@
 					</div>
 
 					<div class="col-sm-6 col-xl-3">
-						<a href="{{ url('/komentar') }}">
+						{{-- <a href="{{ url('/komentar') }}"> --}}
 						<div class="card card-body bg-danger-400 has-bg-image">
 							<div class="media">
 								<div class="media-body">
@@ -45,11 +45,11 @@
 								</div>
 							</div>
 						</div>
-						</a>
+						{{-- </a> --}}
 					</div>
 
 					<div class="col-sm-6 col-xl-3">
-						<a href="{{ url('/lampirans') }}">
+						<a href="{{ route('user.index') }}">
 						<div class="card card-body bg-success-400 has-bg-image">
 							<div class="media">
 								<div class="mr-3 align-self-center">
@@ -66,7 +66,7 @@
 					</div>
 
 					<div class="col-sm-6 col-xl-3">
-						<a href="{{ url('/user') }}">
+						<a href="{{ route('lampirans.index') }}">
 						<div class="card card-body bg-indigo-400 has-bg-image">
 							<div class="media">
 								<div class="mr-3 align-self-center">

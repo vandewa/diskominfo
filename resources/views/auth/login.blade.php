@@ -66,9 +66,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<meta name="description" content="Sistem Informasi Manajemen Ormas Kemasyarakatan">
+	<meta name="description" content="Diskominfo Wonosobo Login">
 	<meta name="author" content="Diskominfo Wonosobo">
-	<meta name="keyword" content="Sistem Informasi Manajemen Ormas Kemasyarakatan">
+	<meta name="keyword" content="Diskominfo Wonosobo Login">
 	<link rel="shortcut icon" href="{{ asset('image/pemda.ico')}}">
 	<title>Login Diskominfo Wonosobo</title>
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
