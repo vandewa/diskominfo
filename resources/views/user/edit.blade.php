@@ -250,4 +250,17 @@
 </script>
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}
+
+<script>
+
+const nama = document.querySelector('#nama');
+const slug = document.querySelector('#slug');
+
+nama.addEventListener('change', function() {
+fetch('/user/checkSlug?nama=' + nama.value)
+.then(response => response.json())
+.then(data => slug.value = data.slug);
+});
+
+</script>
 @endpush
