@@ -225,12 +225,17 @@ class MediaPublikasiController extends Controller
     public function notificationStakeholder($notif)
     {
         Http::asForm()->post('http://10.0.1.21:8000/send-message', [
-            'number' => '081329585110',
+            'number' => '081329585110', // Pak Fahmi
             'message' => $notif,
         ]);
 
         Http::asForm()->post('http://10.0.1.21:8000/send-message', [
-            'number' => '08122513172',
+            'number' => '08122513172', // Bu Win
+            'message' => $notif,
+        ]);
+
+        Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => '085220024492', // Bu Dina
             'message' => $notif,
         ]);
     
