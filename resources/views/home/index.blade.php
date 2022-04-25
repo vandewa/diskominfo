@@ -1,6 +1,7 @@
 @section('title', 'Dinas Kominfo Wonosobo | Beranda')
 @extends('layouts/main')
 @section('isi')
+@include('home.popup')
 @section('kondisi')
 <header id="header"
     class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent header-white-nav-links-lg header-show-hide"
@@ -117,31 +118,41 @@
                                 klik nomor untuk melihat masing-masing Standar Pelayanan (SP)</span> --}}
                             <div class="d-flex justify-content-center mb-7">
                                 <h4 class="text-white">
-                                    <a href="/page/sp-pembuatan-media-publikasi"><span class="text-white small"> 1.
-                                            Pembuatan Media Publikasi</span></a><br>
-                                    <a href="/page/sp-permohonan-peliputan-kegiatan"><span class="text-white small"> 2.
-                                            Permohonan Liputan</span></a><br>
-                                    <a href="/page/sp-permohonan-informasi-publik"><span class="text-white small"> 3.
-                                            Permohonan Informasi Publik</span></a><br>
-                                    <a href="/page/sp-pengajuan-keberatan-informasi-publik"><span
-                                            class="text-white small"> 4. Pengajuan Keberatan Informasi
-                                            Publik</span></a><br>
-                                    <a href="/page/sp-permohonan-pinjam-tempat"><span class="text-white small"> 5.
-                                            Pinjam Tempat Rapat</span></a><br>
-                                    <a href="/page/sp-permohonan-pinjam-alat"><span class="text-white small"> 6. Pinjam
-                                            Peralatan</span></a><br>
-                                    <a href="/page/sp-layanan-magang"><span class="text-white small"> 7. Permohonan
-                                            Magang</span></a><br>
-                                    <a href="/page/sp-peminjaman-akun-zoom"><span class="text-white small"> 8.
-                                            Permohonan Peminjaman Akun Zoom</span></a><br>
-                                    <a href="/page/sp-permohonan-jaringan"><span class="text-white small"> 9. Permohonan
-                                            Jaringan Internet</span></a><br>
-                                    <a href="/page/sp-permohonan-aplikasi"><span class="text-white small"> 10.
-                                            Permohonan Aplikasi</span></a><br>
-                                    <a href="/page/sp-permohonan-subdomain"><span class="text-white small"> 11.
-                                            Permohonan Subdomain</span></a><br>
-                                    <a href="/page/sp-colocation-server"><span class="text-white small"> 12. Permohonan
-                                            Pemasangan Server</span></a><br>
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#MediaPublikasi" data-whatever="@mdo" data-toggle="modal" data-target="#MediaPublikasi" data-whatever="@mdo"><span class="text-white small"> 
+                                        1. Pembuatan Media Publikasi</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PermohonanLiputan" data-whatever="@mdo"><span class="text-white small"> 
+                                        2. Permohonan Liputan</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PermohonanInformasiPublik" data-whatever="@mdo"><span class="text-white small"> 
+                                        3. Permohonan Informasi Publik</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PengajuanKeberatanInformasiPublik" data-whatever="@mdo"><span
+                                            class="text-white small"> 
+                                        4. Pengajuan Keberatan Informasi Publik</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PinjamTempatRapat" data-whatever="@mdo"><span class="text-white small"> 
+                                        5. Pinjam Tempat Rapat</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PinjamPeralatan" data-whatever="@mdo"><span class="text-white small"> 
+                                        6. Pinjam Peralatan</span></a><br>
+                                        
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PermohonanMagang" data-whatever="@mdo"><span class="text-white small">
+                                         7. Permohonan Magang</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PermohonanPeminjamanAkunZoom" data-whatever="@mdo"><span class="text-white small"> 
+                                        8. Permohonan Peminjaman Akun Zoom</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PermohonanJaringanInternet" data-whatever="@mdo"><span class="text-white small"> 
+                                        9. Permohonan Jaringan Internet</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PermohonanAplikasi" data-whatever="@mdo"><span class="text-white small"> 
+                                        10. Permohonan Aplikasi</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PermohonanSubdomain" data-whatever="@mdo"><span class="text-white small"> 11. Permohonan Subdomain</span></a><br>
+
+                                    <a class="hvr-bounce-to-right help" data-toggle="modal" data-target="#PermohonanPemasanganServer" data-whatever="@mdo"><span class="text-white small"> 12. Permohonan Pemasangan Server</span></a><br>
+
                                 </h4>
                             </div>
                         </div>
@@ -227,11 +238,11 @@
                         <div class="col-md-5">
                             <a href="/detail/{{ $post->slug }}">
                                 @if (!empty($post->gambarMuka->path) || !empty($post->gambarMuka->file_name))
-                                <img class="card-img transition-zoom-hover"
+                                <img class="card-img hvr-wobble-vertical"
                                     src="{{ asset($post->gambarMuka->path.$post->gambarMuka->file_name??'') }}"
                                     alt="Image Description" style="height:100%;width:100%;object-fit:cover">
                                 @else
-                                <img class="card-img transition-zoom-hover"
+                                <img class="card-img hvr-wobble-vertical"
                                     src="{{ asset('uploads/diskominfowonosobo.jpg') }}" alt="Image Description"
                                     style="height:100%;width:100%;object-fit:cover">
                                 @endif
@@ -241,10 +252,10 @@
                         <div class="col-md-7">
                             <div class="card-body d-flex flex-column h-100 px-0">
                                 <span class="d-block mb-2">
-                                    <a class="font-weight-bold" href="/kategori/{{ $post->kategori->slug }}">{{
+                                    <a class="font-weight-bold hvr-underline-from-left" href="/kategori/{{ $post->kategori->slug }}">{{
                                         $post->kategori->nama_kategori }}</a>
                                 </span>
-                                <h3><a class="text-inherit" href="/detail/{{ $post->slug }}">{{ $post->judul_posting
+                                <h3><a class="text-inherit hvr-underline-from-left" href="/detail/{{ $post->slug }}">{{ $post->judul_posting
                                         }}</a>
                                 </h3>
                                 <p>{{ $post->keterangan }}</p>
@@ -364,7 +375,7 @@
                                         </a>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="h6 mb-0"><a class="text-inherit"
+                                        <h4 class="h6 mb-0"><a class="text-inherit hvr-underline-from-left"
                                                 href="/detail/{{ $populer->slug }}">{{ $populer->judul_posting }}</a>
                                         </h4>
                                     </div>
@@ -489,7 +500,7 @@
                     "selector": "#fancyboxGallery{{ $angka }} .js-fancybox-item"}'>
                             <div class="card" style="max-width: 18rem; max-height: 25rem;">
 
-                                <a class="js-fancybox-item media-viewer mb-3 d-block" href="javascript:;"
+                                <a class="js-fancybox-item media-viewer mb-3 d-block hvr-bounce-to-bottom" href="javascript:;"
                                     data-src="{{ asset($grafis->gambarMuka->file_name??'') }}"
                                     data-caption="{{ $grafis->judul }}">
                                     <img style="height:230px;object-fit:cover"
@@ -545,7 +556,7 @@
                         "selector": "#fancyboxGallery{{ $index }} .js-fancybox-item1"}'> --}}
                                 <!-- Card Info -->
                                 <div class="card" style="max-width: 18rem; max-height: 25rem; ">
-                                    <a class="js-fancybox-item0 d-block" href="javascript:;"
+                                    <a class="js-fancybox-item0 d-block hvr-bounce-to-bottom" href="javascript:;"
                                         data-src="{{ asset($hoax->gambarMuka->path.$hoax->gambarMuka->file_name??'') }}"
                                         data-caption="{{ $hoax->judul_posting }}">
                                         <img style="height: 230px; object-fit:cover"

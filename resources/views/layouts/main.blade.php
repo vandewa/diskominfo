@@ -18,7 +18,9 @@
   <title>@yield('title')</title>
 
   <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  {{-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> --}}
+  <link rel="stylesheet" href="{{ asset ('css/import/font-google.css')}}">
+
 
   <!-- CSS Implementing Plugins -->
   <link href="{{ url ('limitless/Template/global_assets/css/icons/icomoon/styles.css ')}}" rel="stylesheet" type="text/css">
@@ -32,22 +34,31 @@
   <link rel="stylesheet" href="{{ url('front/assets/vendor/ion-rangeslider/css/ion.rangeSlider.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/dzsparallaxer/dzsparallaxer.css')}}">
   <link rel="stylesheet" href="{{ url('front/assets/vendor/hs-video-bg/dist/hs-video-bg.min.css')}}">
-  <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
+  {{-- <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css"> --}}
+  <link rel="stylesheet" href="{{ asset ('css/import/material_red.css')}}">
   <link rel="stylesheet" href="{{ url('front/custombox/jquery.mCustomScrollbar.css')}}">
   <link rel="stylesheet" href="{{ url('front/custombox/custombox.min.css')}}">
-
-
+  <link rel="stylesheet" href="{{ asset('css/hover-master/css/hover.css')}}">
+  {{-- https://ianlunn.github.io/Hover/ dokummentasi animasi  --}}
 
   @stack('css')
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet"> --}}
+  <link rel="stylesheet" href="{{ asset ('css/import/sweetalert2.min.css')}}">
+  {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
+  <link rel="stylesheet" href="{{ asset ('css/import/bootstrap.min.css')}}">
+  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+  <script src="{{ asset ('css/import/jquery.min.js')}}"></script>
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> --}}
+  <script src="{{ asset ('css/import/popper.min.js')}}"></script>
+  {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
+  <script src="{{ asset ('css/import/bootstrap.min.js')}}"></script>
+
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7V1VF1L35"></script>
+  {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7V1VF1L35"></script> --}}
+  <script src="{{ asset ('css/import/gtag.js')}}"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -60,7 +71,9 @@
 
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
-  <script src="https://www.google.com/recaptcha/api.js"></script>
+  {{-- <script src="https://www.google.com/recaptcha/api.js"></script> --}}
+  <script src="{{ asset ('css/import/api.js')}}"></script>
+
   <meta name="csrf-token" content="{{ csrf_token() }}">
     {!! ReCaptcha::htmlScriptTagJsApi() !!}
 
@@ -76,6 +89,7 @@
         margin: 4px 2px;
         cursor: pointer;
       }
+      .help {cursor: help;}
     </style>
 </head>
 
@@ -737,9 +751,13 @@
 
   <!-- JS Implementing Plugins -->
 
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> --}}
+  <script src="{{ asset ('css/import/flatpick.js')}}"></script>
+  {{-- <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script> --}}
+  <script src="{{ asset ('css/import/flatpickr.min.js')}}"></script>
+  {{-- <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script> --}}
+  <script src="{{ asset ('css/import/id.js')}}"></script>
+
   <script>
     flatpickr("input[type=datetime-local]", {
       "locale": "id",
@@ -777,7 +795,9 @@
   <script src="{{ url ('front/assets/vendor/typed.js/lib/typed.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/aos/dist/aos.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-show-animation/dist/hs-show-animation.min.js')}}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script> --}}
+  <script src="{{ asset ('css/import/sweetalert2.min.js')}}"></script>
+
 
   <script src="{{ url ('front/assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/leaflet/dist/leaflet.js')}}"></script>

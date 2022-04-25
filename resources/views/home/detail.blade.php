@@ -50,23 +50,22 @@
                   <span class="d-block small font-weight-bold text-cap mr-2">|</span>
                 <span class="d-block small font-weight-bold text-cap mr-2">Share:</span> 
 
-                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="https://www.facebook.com/sharer/sharer.php?u=https://devandewa.wonosobokab.go.id/detail/{{$detail->id_posting}}" target="_blank">
+                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="https://www.facebook.com/sharer/sharer.php?u={{ url('/detail/'.$detail->slug) }}" target="_blank">
                   <i class="fab fa-facebook-f"></i>
                 </a>
-                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="https://twitter.com/intent/tweet?url=https://devandewa.wonosobokab.go.id/detail/{{$detail->id_posting}}" target="_blank">
+                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="https://twitter.com/intent/tweet?url={{ url('/detail/'.$detail->slug) }}" target="_blank">
                   <i class="fab fa-twitter"></i>
                 </a>
-                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="https://api.whatsapp.com/send?text=https://devandewa.wonosobokab.go.id/detail/{{$detail->id_posting}}" target="_blank">
+                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="https://api.whatsapp.com/send?text={{ url('/detail/'.$detail->slug) }}" target="_blank">
                   <i class="fab fa-whatsapp"></i>
                 </a>
-                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="https://www.linkedin.com/shareArticle?mini=true&url=https://devandewa.wonosobokab.go.id/detail/{{$detail->id_posting}}" target="_blank">
+                <a class="btn btn-xs btn-icon btn-soft-secondary rounded-circle ml-2" href="https://www.linkedin.com/shareArticle?mini=true&url={{ url('/detail/'.$detail->slug) }}" target="_blank">
                   <i class="fab fa-linkedin"></i>
                 </a>
               </div>
             </div>
            </div>
         </div>
-
 
          <center><h1 class="h2">{{ $detail->judul_posting}}</h1>
 

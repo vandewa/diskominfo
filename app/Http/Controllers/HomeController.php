@@ -297,6 +297,8 @@ class HomeController extends Controller
         ->orderBy('created_at', 'desc')
         ->limit(2)
         ->get(); 
+
+        // return $detail;
    
 
         return view('home.detail', compact('detail', 'kategori'));
