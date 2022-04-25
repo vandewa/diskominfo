@@ -9,7 +9,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084001_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084001_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -32,7 +32,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314083904_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314083904_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -55,7 +55,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314083452_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314083452_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -78,7 +78,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084031_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084031_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -101,7 +101,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084421_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084421_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -124,7 +124,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084421_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084421_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -147,7 +147,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084503_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084503_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -170,7 +170,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084147_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084147_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -193,7 +193,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084216_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084216_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -216,7 +216,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084254_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084254_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -239,7 +239,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084319_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084319_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -262,7 +262,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <iframe height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&amp;url={{ url('/uploads/lampiran/20220314084347_1.pdf') }}" width="100%"></iframe>
+                            <iframe height="600" src="{{ url('/uploads/lampiran/20220314084347_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
