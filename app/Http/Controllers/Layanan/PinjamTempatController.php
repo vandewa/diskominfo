@@ -143,7 +143,7 @@ class PinjamTempatController extends Controller
 
         $this->notification($nohape);
         $this->sendGroupWA($notif);
-        // $this->notificationStakeholder($notif);
+        $this->notificationStakeholder($notif);
 
       
         return redirect(route('perijinan:pinjam.tempat.create'))->with('status','oke');

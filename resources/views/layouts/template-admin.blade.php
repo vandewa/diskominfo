@@ -208,10 +208,10 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Menu Depan">
 								{{-- <li class="nav-item"><a href="{{ route('gallery.index') }}"
 										class="nav-link">Galeri</a></li> --}}
-								<li class="nav-item"><a href="{{ route('lampirans.index') }}"
-										class="nav-link">Lampiran</a></li>
 								<li class="nav-item"><a href="{{ route('menuberanda.index') }}"
 										class="nav-link">Menu</a></li>
+								<li class="nav-item"><a href="{{ route('lampirans.index') }}"
+										class="nav-link">Download Area</a></li>
 								<li class="nav-item"><a href="{{ route('pengumumans.index') }}"
 										class="nav-link">Pengumuman</a></li>
 								<li class="nav-item"><a href="{{ route('sampul.index') }}" class="nav-link">Sampul
@@ -231,7 +231,7 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
 								<li class="nav-item"><a href="{{ route('posting.index') }}" class="nav-link">Posting
 										Berita</a></li>
-								<li class="nav-item"><a href="{{ route('halaman.index') }}" class="nav-link">Halaman</a>
+								<li class="nav-item"><a href="{{ route('halaman.index') }}" class="nav-link">Halaman Menu</a>
 								</li>
 								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link">Info
 										Hoax</a></li>

@@ -133,8 +133,9 @@ class PinjamPeralatanController extends Controller
 
         //  return $notif;
 
-        $this->notification($nohape, $tiket, $id_alat);
-        $this->sendGroupWA($notif);
+        // $this->notification($nohape, $tiket);
+        $this->sendMedia($nohape, $id_alat);
+        // $this->sendGroupWA($notif);
         // $this->notificationStakeholder($notif);
 
       
@@ -219,17 +220,16 @@ class PinjamPeralatanController extends Controller
         PinjamPeralatan::destroy($id);
     }
 
-    public function notification($nohape, $tiket, $id_alat)
+    public function notification($nohape, $tiket)
     {
 
         $notif = 'Terima kasih, permintaan layanan pinjam peralatan berhasil dikirim.'.urldecode('%0D%0A%0D%0A').
-
-        'Download surat pernyataan disini :'.urldecode('%0D%0A').
-        route('perijinan:cetak.surat.alat', $id_alat).urldecode('%0D%0A%0D%0A').
         
         'Mohon surat pernyataan yang sudah ditandatangani diupload pada :'.urldecode('%0D%0A').
         url('/pengajuanizin?q='.$tiket).urldecode('%0D%0A').
         
+        'Download surat pernyataan dibawah ini :'.urldecode('%0D%0A').
+
         urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
 
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
@@ -260,6 +260,15 @@ class PinjamPeralatanController extends Controller
             'message' => $notif,
         ]);
     
+    }
+
+     public function sendMedia($nohape, $id_alat)
+    {
+        Http::asForm()->post('http://10.0.1.21:8000/send-media', [
+            'number' => $nohape, 
+            'file' =>  route('perijinan:cetak.surat.alat', $id_alat).urldecode('%0D%0A%0D%0A'),
+        ]);
+
     }
 
     public function cetakSurat($id_alat)

@@ -45,13 +45,13 @@
                     aria-labelledby="pills-one-code-features-example2-tab">
 
                     <div class="col-md-12 d-flex justify-content-center mb-5">
-                        <center><h2>DAFTAR LAYANAN DISKOMINFO</h2></center>
+                        <img src="{{ asset('gif/layanan.gif') }}" alt="">
                     </div>
 
                     <div class="row">
                         <div class="col-sm-6 col-md-3 mb-3 ">
                             {{-- <a href="{{ route('perijinan:akses.dc.create') }}"> --}}
-                            <a href="{{ route('perijinan:media.publikasi.create') }}">
+                            <a href="{{ route('perijinan:media.publikasi.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/1.png') }}">
                             </a>
@@ -59,7 +59,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3 ">
                             {{-- <a href="{{ route('perijinan:permintaan.col.create') }}"> --}}
-                             <a href="{{ route('perijinan:liputan.create') }}">
+                             <a href="{{ route('perijinan:liputan.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/2.png') }}">
                             </a>
@@ -67,7 +67,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3 ">
                             {{-- <a href="{{ route('perijinan:kunjungan.dc.create') }}"> --}}
-                                <a href="{{ route('perijinan:informasi.publik.create') }}">
+                                <a href="{{ route('perijinan:informasi.publik.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/3.png') }}">
                             </a>
@@ -75,7 +75,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3 ">
                             {{-- <a href="{{ route('perijinan:layanan.server.create') }}"> --}}
-                                <a href="{{ route('perijinan:pengajuan.keberatan.create') }}">
+                                <a href="{{ route('perijinan:pengajuan.keberatan.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/4.png') }}">
                             </a>
@@ -83,7 +83,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:vps.baru.create') }}"> --}}
-                                <a href="{{ route('perijinan:pinjam.tempat.create') }}">
+                                <a href="{{ route('perijinan:pinjam.tempat.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/5.png') }}">
                             </a>
@@ -91,7 +91,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
-                                <a href="{{ route('perijinan:pinjam.peralatan.create') }}">
+                                <a href="{{ route('perijinan:pinjam.peralatan.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/6.png') }}">
                             </a>
@@ -99,7 +99,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
-                                <a href="{{ route('perijinan:magang.create') }}">
+                                <a href="{{ route('perijinan:magang.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/7.png') }}">
                             </a>
@@ -107,7 +107,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
-                                <a href="{{ route('perijinan:zoom.index') }}">
+                                <a href="{{ route('perijinan:zoom.index') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/8.png') }}">
                             </a>
@@ -115,7 +115,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
-                                <a href="{{ route('perijinan:jaringan.internet.create') }}">
+                                <a href="{{ route('perijinan:jaringan.internet.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/9.png') }}">
                             </a>
@@ -123,7 +123,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
-                                <a href="{{ route('perijinan:permohonan.aplikasi.create') }}">
+                                <a href="{{ route('perijinan:permohonan.aplikasi.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/10.png') }}">
                             </a>
@@ -131,7 +131,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
-                                <a href="{{ route('perijinan:permohonan.subdomain.create') }}">
+                                <a href="{{ route('perijinan:permohonan.subdomain.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/11.png') }}">
                             </a>
@@ -139,7 +139,7 @@
 
                         <div class="col-sm-6 col-md-3 mb-3">
                             {{-- <a href="{{ route('perijinan:perubahan.vps.create') }}"> --}}
-                                <a href="{{ route('perijinan:colocation.server.create') }}">
+                                <a href="{{ route('perijinan:colocation.server.create') }}" class="hvr-float-shadow">
                                 <img class="card-img transition-zoom-hover"
                                     src="{{ asset('front/assets/images/layanan/12.png') }}">
                             </a>

@@ -148,7 +148,7 @@ class LiputanController extends Controller
        
         $this->notification($nohape);
         $this->sendGroupWA($notif);
-        // $this->notificationStakeholder($notif);
+        $this->notificationStakeholder($notif);
 
 
         return redirect(route('perijinan:liputan.create'))->with('status','oke');

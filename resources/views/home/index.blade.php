@@ -410,6 +410,7 @@
                                                 <img src="front/assets/images/instagram.png" class="keyboard-img" />
                                                 <h2 class="keyboard-tulisan">INSTAGRAM</h2>
                                             </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://www.youtube.com/channel/UCZqWOVA_3o7A2bqY4ywZn8Q"
@@ -418,6 +419,7 @@
                                                 <img src="front/assets/images/youtube.png" class="keyboard-img" />
                                                 <h2 class="keyboard-tulisan1 ml-2">YOUTUBE</h2>
                                             </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://www.facebook.com/kominfo.wsb/" target="_blank">
@@ -425,6 +427,7 @@
                                                 <img src="front/assets/images/fb.png" class="keyboard-img" />
                                                 <h2 class="keyboard-tulisan ml-2">FACEBOOK</h2>
                                             </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-12 col-lg-12 mb-3">
                                         <a href="https://twitter.com/diskominfo_wsb" target="_blank">
@@ -432,6 +435,7 @@
                                                 <img src="front/assets/images/twitter.png" class="keyboard-img" />
                                                 <h2 class="keyboard-tulisan1 ml-2">TWITTER</h2>
                                             </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

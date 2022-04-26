@@ -3,7 +3,7 @@
 
 <head>
 
-  <meta property="og:url" content="http://localhost:8080">
+  {{-- <meta property="og:url" content="http://localhost:8080"> --}}
   <meta property="og:type" content="website">
   <meta property="og:title" content="Dinas Kominfo Wonosobo">
   <meta property="og:description" content="Website Resmi Dinas Komunikasi dan Informatika Kabupaten Wonosobo">
@@ -93,7 +93,7 @@
     </style>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
   <!-- ========== HEADER ========== -->
   @yield('kondisi')
 
@@ -364,13 +364,14 @@
 
               <!-- Blog -->
               <li class="hs-has-sub-menu navbar-nav-item">
-                <a id="blogMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold"
+                <a href="{{ route('pengajuanizin')}}" id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold"
                   href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu"
                   @yield('warna')>Layanan</a>
 
                 <!-- Blog - Submenu -->
-                <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu"
-                  style="min-width: 230px;">
+                {{-- <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu"
+                  style="min-width: 230px;"> --}}
+                  <div class="hs-sub-menu ">
                   {{-- <a class="dropdown-item " href="{{ route('permintaan:zoom.index')}}">Permintaan Link Zoom</a>
                   --}}
                   {{-- <a class="dropdown-item " href="{{ route('pengaduan')}}">Pengaduan Masyarakat</a> --}}
@@ -381,7 +382,7 @@
                   <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Maklumat Pelayanan</a>
                   <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">SP Diskominfo</a> --}}
 
-                  <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Pembuatan Media
+                  {{-- <a class="dropdown-item " href="{{ url('/page/pembuatan-media-publikasi')}}">Pembuatan Media
                     Publikasi</a>
                   <a class="dropdown-item " href="{{ url('/page/permohonan-liputan')}}">Permohonan Liputan</a>
                   <a class="dropdown-item " href="{{ url('/page/permohonan-informasi-publik')}}">Permohonan Informasi
@@ -399,7 +400,7 @@
                   <a class="dropdown-item " href="{{ url('/perijinan/permohonan/layanan-server')}}">Permohonan
                     Subdomain</a>
                   <a class="dropdown-item " href="{{ url('/perijinan/permintaan/colocation')}}">Permohonan Colocation
-                    Server</a>
+                    Server</a> --}}
 
                 </div>
                 <!-- End Submenu -->
@@ -557,7 +558,7 @@
   @yield('isi')
 
   <!-- ========== FOOTER ========== -->
-  <footer class="bg-primary">
+  <footer class="bg-primary mt-auto">
     <div class="container">
       <div class="space-top-2 space-bottom-lg-1">
         <div class="row justify-content-lg-between">

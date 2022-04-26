@@ -1,12 +1,12 @@
-@section('title', 'Edit Halaman')
+@section('title', 'Edit Halaman Menu')
 @section('menu','Posting')
-@section('submenu','Edit Halaman')
+@section('submenu','Edit Halaman Menu')
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
-<span class="breadcrumb-item active">Posting Halaman</span>
+<span class="breadcrumb-item active">Halaman Menu</span>
 @endsection
 
 @section('container')
@@ -15,7 +15,7 @@
 	<!-- CKEditor default -->
 	<div class="card">
 		<div class="card-header header-elements-inline">
-		<h5 >FORM EDIT HALAMAN</h5>
+		<h5 >FORM EDIT HALAMAN MENU</h5>
 		</div>
 
 		<div class="card-body">

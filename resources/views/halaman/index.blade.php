@@ -1,18 +1,18 @@
-@section('title', 'Posting Halaman')
+@section('title', 'Halaman Menu')
 @section('menu','Posting')
-@section('submenu','Posting Halaman')
+@section('submenu','Halaman Menu')
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
-<span class="breadcrumb-item active">Halaman</span>
+<span class="breadcrumb-item active">Halaman Menu</span>
 @endsection
 
 @section('tambah_data')
 <a href="{{route('halaman.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
-Tambah Halaman
+Tambah Halaman Menu
 </a>
 @endsection
 
@@ -33,7 +33,7 @@ Tambah Halaman
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Halaman (Url)</th>
+                    <th>Halaman Menu (Url)</th>
                     <th>Oleh</th>
                     <th>Tanggal</th>
                     <th class="text-center">Aksi</th>

@@ -149,7 +149,7 @@ class PermohonanSubdomainController extends Controller
        
         $this->notification($nohape, $notifikasi);
         $this->sendGroupWA($notif);
-        // $this->notificationStakeholder($notif);
+        $this->notificationStakeholder($notif);
 
 
         return redirect(route('pengajuanizin'))->with('status','oke');
