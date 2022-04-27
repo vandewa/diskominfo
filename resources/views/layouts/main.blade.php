@@ -75,13 +75,23 @@
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
   {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
-  <script src="https://www.google.com/recaptcha/api.js?
+  <script type="text/javascript">
+  var onloadCallback = function() {
+    alert("grecaptcha is ready!");
+  };
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+</script>
+
+  {{-- <script src="https://www.google.com/recaptcha/api.js?
     &render=explicit" async defer>
-    </script>
+    </script> --}}
 
-  {{-- {!! ReCaptcha::htmlScriptTagJsApi() !!} --}}
+  {!! ReCaptcha::htmlScriptTagJsApi() !!}
 
-  {!! htmlScriptTagJsApi()  !!}
+  {{-- {!! htmlScriptTagJsApi()  !!} --}}
 
     <style>
       .buttonnya {
