@@ -104,49 +104,6 @@
         </div>
         <!-- End Hero Section -->
 
-
-        {{-- Ramadan --}}
-        <div class="container-fluid m-0 p-0">
-            <div class="modal fade" id="infografis" role="dialog">
-                <div class="modal-dialog modal-default">
-                <!-- Modal content-->
-                    <div class="modal-content">
-                        <button type="button" class="modal-title close" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
-                        <div class="modal-body">
-
-                            <div id="popup-carousel-news" class="carousel slide" data-ride="carousel" data-interval="3000">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="img-fluid" src="{{ asset('image/selamat.png') }}" alt="...">
-                                        
-                                    </div>
-                                    {{-- <div class="carousel-item">
-                                        <img class="img-fluid" src="http://diskominfo.magelangkab.go.id/images/e37127b31bb66b49e97561233a515eda.jpeg" alt="...">
-                                    </div> --}}
-                                </div>
-
-                                <!-- Controls -->
-                                {{-- <a class="carousel-control-prev" href="#popup-carousel-news" role="button" data-slide="prev" style="background-image: linear-gradient(to right,rgba(0, 0, 0, 0.7),
-                                                    rgba(255, 255, 255, 0.0));">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#popup-carousel-news" role="button" data-slide="next" style="background-image: linear-gradient(to left,rgba(0, 0, 0, 0.7),
-                                                    rgba(255, 255, 255, 0.0));">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                                </a> --}}
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- Ramadhan --}}
-
-
-
         <!-- Clients Section -->
         <div class="container space-bottom-0 space-bottom-lg-0">
             <div class="row">
@@ -736,11 +693,5 @@
                 }
             });
     </script>
-
-    <script>
-    $(document).ready(function () {
-        $("#infografis").modal("show");
-    });
-</script>
     </script>
     @endpush

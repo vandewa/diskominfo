@@ -93,7 +93,7 @@
                             <div class="row form-group">
                               <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label"></label>
                                 <div class="col-sm-7">
-                                    {!! htmlFormSnippet() !!}
+                                   <div class="g-recaptcha" data-sitekey="6LcBS4AfAAAAALZsrroTukVR8pViMfU8QwIa0qYb"></div>
                                     @if ($errors->has('g-recaptcha-response'))
                                     <span class="help-block label label-danger">
                                         <strong style="color: red;">{{ $errors->first('g-recaptcha-response') }}</strong>
