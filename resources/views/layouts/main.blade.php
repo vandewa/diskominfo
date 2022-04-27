@@ -75,10 +75,8 @@
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
   {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
-  <script src='https://www.google.com/recaptcha/api.js?
-    onload=onloadCallback
-    &render=explicit
-    &hl={{app.request.locale|default(defaultLang) }}' async defer>
+  <script src="https://www.google.com/recaptcha/api.js?
+    &render=explicit" async defer>
     </script>
 
   {{-- {!! ReCaptcha::htmlScriptTagJsApi() !!} --}}
