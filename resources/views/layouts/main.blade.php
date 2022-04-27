@@ -59,6 +59,7 @@
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7V1VF1L35"></script> --}}
+  
   <script src="{{ asset ('css/import/gtag.js')}}"></script>
 
   <script>
@@ -73,7 +74,12 @@
 
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
+  <script src='https://www.google.com/recaptcha/api.js?
+    onload=onloadCallback
+    &render=explicit
+    &hl={{app.request.locale|default(defaultLang) }}' async defer>
+    </script>
 
   {{-- {!! ReCaptcha::htmlScriptTagJsApi() !!} --}}
 
@@ -767,7 +773,7 @@ else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
   <!-- JS Implementing Plugins -->
 
   {{-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> --}}
-  <script src="{{ asset ('css/import/flatpick.js')}}"></script>
+  <script src="{{ asset ('css/import/flatpickr.js')}}"></script>
   {{-- <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script> --}}
   <script src="{{ asset ('css/import/flatpickr.min.js')}}"></script>
   {{-- <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script> --}}
