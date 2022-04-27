@@ -73,8 +73,8 @@
 
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
-  {{-- <script src="https://www.google.com/recaptcha/api.js"></script> --}}
-  <script src="{{ asset ('css/import/api.js')}}"></script>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+  {{-- <script src="{{ asset ('css/import/api.js')}}"></script> --}}
 
   {!! ReCaptcha::htmlScriptTagJsApi() !!}
 
