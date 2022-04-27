@@ -58,9 +58,9 @@
 
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7V1VF1L35"></script> --}}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7V1VF1L35"></script>
   
-  <script src="{{ asset ('css/import/gtag.js')}}"></script>
+  {{-- <script src="{{ asset ('css/import/gtag.js')}}"></script> --}}
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -75,20 +75,15 @@
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
   {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
-  <script type="text/javascript">
-  var onloadCallback = function() {
-    alert("grecaptcha is ready!");
-  };
-</script>
 
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-    async defer>
-</script>
 
-  {{-- <script src="https://www.google.com/recaptcha/api.js?
-    &render=explicit" async defer>
-    </script> --}}
-
+    <script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '6LcBS4AfAAAAALZsrroTukVR8pViMfU8QwIa0qYb'
+        });
+      };
+    </script>
   {!! ReCaptcha::htmlScriptTagJsApi() !!}
 
   {{-- {!! htmlScriptTagJsApi()  !!} --}}
@@ -107,18 +102,6 @@
       }
       .help {cursor: help;}
     </style>
-
-    <noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript><script type="rocketlazyloadscript">
-/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
-(function(w){"use strict";if(!w.loadCSS){w.loadCSS=function(){}}
-var rp=loadCSS.relpreload={};rp.support=(function(){var ret;try{ret=w.document.createElement("link").relList.supports("preload")}catch(e){ret=!1}
-return function(){return ret}})();rp.bindMediaToggle=function(link){var finalMedia=link.media||"all";function enableStylesheet(){link.media=finalMedia}
-if(link.addEventListener){link.addEventListener("load",enableStylesheet)}else if(link.attachEvent){link.attachEvent("onload",enableStylesheet)}
-setTimeout(function(){link.rel="stylesheet";link.media="only x"});setTimeout(enableStylesheet,3000)};rp.poly=function(){if(rp.support()){return}
-var links=w.document.getElementsByTagName("link");for(var i=0;i<links.length;i++){var link=links[i];if(link.rel==="preload"&&link.getAttribute("as")==="style"&&!link.getAttribute("data-loadcss")){link.setAttribute("data-loadcss",!0);rp.bindMediaToggle(link)}}};if(!rp.support()){rp.poly();var run=w.setInterval(rp.poly,500);if(w.addEventListener){w.addEventListener("load",function(){rp.poly();w.clearInterval(run)})}else if(w.attachEvent){w.attachEvent("onload",function(){rp.poly();w.clearInterval(run)})}}
-if(typeof exports!=="undefined"){exports.loadCSS=loadCSS}
-else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
-</script>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
