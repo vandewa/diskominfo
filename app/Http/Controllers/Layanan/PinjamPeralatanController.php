@@ -77,11 +77,11 @@ class PinjamPeralatanController extends Controller
      */
     public function store(Request $request)
     {
+
           $request->validate([
-                'g-recaptcha-response' => 'required|recaptcha',
+                'g-recaptcha-response' => 'recaptcha',
             ],
             [
-                'g-recaptcha-response.required' => 'Captcha harus benar.',
                 'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
             ]);
         
