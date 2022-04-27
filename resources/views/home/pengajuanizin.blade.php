@@ -44,8 +44,8 @@
                     id="pills-one-code-features-example2" role="tabpanel"
                     aria-labelledby="pills-one-code-features-example2-tab">
 
-                    <div class="col-md-12 d-flex justify-content-center mb-5">
-                        <img src="{{ asset('gif/layanan.gif') }}" alt="">
+                    <div class="text-center mb-5">
+                        <img src="{{ asset('gif/layanan.gif') }}"  alt="" style="width: auto; height:auto;">
                     </div>
 
                     <div class="row">

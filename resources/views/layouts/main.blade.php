@@ -11,6 +11,8 @@
   <!-- Required Meta Tags Always Come First -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{ url('front/assets/images/pemda.ico')}}">
@@ -74,8 +76,7 @@
   {{-- <script src="https://www.google.com/recaptcha/api.js"></script> --}}
   <script src="{{ asset ('css/import/api.js')}}"></script>
 
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-    {!! ReCaptcha::htmlScriptTagJsApi() !!}
+  {!! ReCaptcha::htmlScriptTagJsApi() !!}
 
     <style>
       .buttonnya {
