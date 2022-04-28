@@ -5,6 +5,7 @@
 /uploads
 npm-debug.log
 .env
+.htaccess
 /public/uploads.zip
 /uploads.zip
 
