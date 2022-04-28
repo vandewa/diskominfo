@@ -91,15 +91,19 @@
                             </div>
 
                             <div class="row form-group">
-                              <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label"></label>
+                               <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
+                                <div class="col-sm-7 captcha">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                    &#x21bb;
+                                    </button>
+                                </div>
+                            </div>
+
+                             <div class="row form-group">
+                               <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
                                 <div class="col-sm-7">
-                                    <div data-sitekey="6LcBS4AfAAAAALZsrroTukVR8pViMfU8QwIa0qYb" class="g-recaptcha"></div>
-                                   {{-- {!! NoCaptcha::display(['data-theme' => 'dark']) !!} --}}
-                                    @if ($errors->has('g-recaptcha-response'))
-                                    <span class="help-block label label-danger">
-                                        <strong style="color: red;">{{ $errors->first('g-recaptcha-response') }}</strong>
-                                    </span>
-                                     @endif
+                                    <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
                                 </div>
                             </div>
 
@@ -115,6 +119,20 @@
         </div>
     </main>
     @endsection
+
+@push('scripts')
+<script type="text/javascript">
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush
 
     @push('js')
     <script>

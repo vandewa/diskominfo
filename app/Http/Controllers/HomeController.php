@@ -635,6 +635,12 @@ class HomeController extends Controller
         return view('home.daftarinfohoax', compact('infohoax'));
     }
 
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
+    }
+
+
     /**
         * Remove the specified resource from storage.
      *

@@ -589,7 +589,31 @@
                 </div>
     </main>
     <!-- ========== END MAIN ========== -->
-    @endsection
+
+
+{{-- Ramadan --}}
+<div class="container-fluid m-0 p-0">
+  <div class="modal fade" id="infografis" role="dialog">
+    <div class="modal-dialog modal-default">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <button type="button" class="modal-title close" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
+        <div class="modal-body">
+
+          <div id="popup-carousel-news" class="carousel slide" data-ride="carousel" data-interval="3000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img class="img-fluid" src="{{ asset('image/selamat.png') }}" alt="...">
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@endsection
+
 
     @push('css')
     <style>
@@ -693,5 +717,12 @@
                 }
             });
     </script>
+
+    <script>
+    $(document).ready(function () {
+        $("#infografis").modal("show");
+    });
+    </script>
+
     </script>
     @endpush

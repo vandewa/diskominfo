@@ -79,7 +79,7 @@ class PinjamPeralatanController extends Controller
     {
 
           $request->validate([
-               'g-recaptcha-response' => 'required|captcha'
+                'captcha' => 'required','captcha',
             ],
             [
                 'required' => 'Please verify that you are not a robot.',
@@ -149,6 +149,7 @@ class PinjamPeralatanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         $data = PinjamPeralatan::find($id);

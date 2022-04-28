@@ -187,6 +187,8 @@ Route::group([], function () {
         Route::get('permohonan/colocation-server', [ColocationServerController::class, 'create'])->name('colocation.server.create');
         Route::post('permohonan/colocation-server', [ColocationServerController::class, 'store'])->name('colocation.server.post');
         Route::get('permohonan/pinjam-peralatan/{id}/cetak', [PinjamPeralatanController::class, 'cetakSurat'])->name('cetak.surat.alat');
+        Route::get('permohonan/reload-captcha', [HomeController::class, 'reloadCaptcha']);
+
 
 
 

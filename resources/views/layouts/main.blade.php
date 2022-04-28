@@ -62,8 +62,6 @@
   
   {{-- <script src="{{ asset ('css/import/gtag.js')}}"></script> --}}
 
-   {!! NoCaptcha::renderJs() !!}
-
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -865,6 +863,8 @@
       glare: true,
     });
   </script>
+
+    @stack('scripts')
 
   <script>
     $(document).on('ready', function () {

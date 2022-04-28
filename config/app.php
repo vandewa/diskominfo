@@ -169,7 +169,7 @@ return [
 
         Spatie\Analytics\AnalyticsServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
-        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
 
 
         /*
@@ -247,7 +247,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
-        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
     ],
 
