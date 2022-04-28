@@ -79,10 +79,11 @@ class PinjamPeralatanController extends Controller
     {
 
           $request->validate([
-                'g-recaptcha-response' => 'recaptcha',
+               'g-recaptcha-response' => 'required|captcha'
             ],
             [
-                'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
+                'required' => 'Please verify that you are not a robot.',
+                'captcha' => 'Captcha error! try again later or contact site admin.',
             ]);
         
         $nohape = $request->nomor;

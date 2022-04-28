@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.83.8.
+ * Generated for Laravel 8.83.10.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15957,83 +15957,6 @@
      
 }
 
-    namespace Mews\Captcha\Facades { 
-            /**
-     * 
-     *
-     * @see \Mews\Captcha\Captcha
-     */ 
-        class Captcha {
-                    /**
-         * Create captcha image
-         *
-         * @param string $config
-         * @param bool $api
-         * @return array|mixed 
-         * @throws Exception
-         * @static 
-         */ 
-        public static function create($config = 'default', $api = false)
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->create($config, $api);
-        }
-                    /**
-         * Captcha check
-         *
-         * @param string $value
-         * @return bool 
-         * @static 
-         */ 
-        public static function check($value)
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->check($value);
-        }
-                    /**
-         * Captcha check
-         *
-         * @param string $value
-         * @param string $key
-         * @param string $config
-         * @return bool 
-         * @static 
-         */ 
-        public static function check_api($value, $key, $config = 'default')
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->check_api($value, $key, $config);
-        }
-                    /**
-         * Generate captcha image source
-         *
-         * @param string $config
-         * @return string 
-         * @static 
-         */ 
-        public static function src($config = 'default')
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->src($config);
-        }
-                    /**
-         * Generate captcha image html tag
-         *
-         * @param string $config
-         * @param array $attrs $attrs -> HTML attributes supplied to the image tag where key is the attribute and the value is the attribute value
-         * @return string 
-         * @static 
-         */ 
-        public static function img($config = 'default', $attrs = [])
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->img($config, $attrs);
-        }
-         
-    }
-     
-}
-
     namespace GoogleMaps\Facade { 
             /**
      * 
@@ -16980,69 +16903,94 @@
      */ 
         class NoCaptcha {
                     /**
-         * Create captcha image
+         * Render HTML captcha.
          *
-         * @param string $config
-         * @param bool $api
-         * @return array|mixed 
-         * @throws Exception
-         * @static 
-         */ 
-        public static function create($config = 'default', $api = false)
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->create($config, $api);
-        }
-                    /**
-         * Captcha check
-         *
-         * @param string $value
-         * @return bool 
-         * @static 
-         */ 
-        public static function check($value)
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->check($value);
-        }
-                    /**
-         * Captcha check
-         *
-         * @param string $value
-         * @param string $key
-         * @param string $config
-         * @return bool 
-         * @static 
-         */ 
-        public static function check_api($value, $key, $config = 'default')
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->check_api($value, $key, $config);
-        }
-                    /**
-         * Generate captcha image source
-         *
-         * @param string $config
+         * @param array $attributes
          * @return string 
          * @static 
          */ 
-        public static function src($config = 'default')
+        public static function display($attributes = [])
         {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->src($config);
+                        /** @var \Anhskohbo\NoCaptcha\NoCaptcha $instance */
+                        return $instance->display($attributes);
         }
                     /**
-         * Generate captcha image html tag
+         * 
          *
-         * @param string $config
-         * @param array $attrs $attrs -> HTML attributes supplied to the image tag where key is the attribute and the value is the attribute value
+         * @see display()
+         * @static 
+         */ 
+        public static function displayWidget($attributes = [])
+        {
+                        /** @var \Anhskohbo\NoCaptcha\NoCaptcha $instance */
+                        return $instance->displayWidget($attributes);
+        }
+                    /**
+         * Display a Invisible reCAPTCHA by embedding a callback into a form submit button.
+         *
+         * @param string $formIdentifier the html ID of the form that should be submitted.
+         * @param string $text the text inside the form button
+         * @param array $attributes array of additional html elements
          * @return string 
          * @static 
          */ 
-        public static function img($config = 'default', $attrs = [])
+        public static function displaySubmit($formIdentifier, $text = 'submit', $attributes = [])
         {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->img($config, $attrs);
+                        /** @var \Anhskohbo\NoCaptcha\NoCaptcha $instance */
+                        return $instance->displaySubmit($formIdentifier, $text, $attributes);
+        }
+                    /**
+         * Render js source
+         *
+         * @param null $lang
+         * @param bool $callback
+         * @param string $onLoadClass
+         * @return string 
+         * @static 
+         */ 
+        public static function renderJs($lang = null, $callback = false, $onLoadClass = 'onloadCallBack')
+        {
+                        /** @var \Anhskohbo\NoCaptcha\NoCaptcha $instance */
+                        return $instance->renderJs($lang, $callback, $onLoadClass);
+        }
+                    /**
+         * Verify no-captcha response.
+         *
+         * @param string $response
+         * @param string $clientIp
+         * @return bool 
+         * @static 
+         */ 
+        public static function verifyResponse($response, $clientIp = null)
+        {
+                        /** @var \Anhskohbo\NoCaptcha\NoCaptcha $instance */
+                        return $instance->verifyResponse($response, $clientIp);
+        }
+                    /**
+         * Verify no-captcha response by Symfony Request.
+         *
+         * @param \Request $request
+         * @return bool 
+         * @static 
+         */ 
+        public static function verifyRequest($request)
+        {
+                        /** @var \Anhskohbo\NoCaptcha\NoCaptcha $instance */
+                        return $instance->verifyRequest($request);
+        }
+                    /**
+         * Get recaptcha js link.
+         *
+         * @param string $lang
+         * @param boolean $callback
+         * @param string $onLoadClass
+         * @return string 
+         * @static 
+         */ 
+        public static function getJsLink($lang = null, $callback = false, $onLoadClass = 'onloadCallBack')
+        {
+                        /** @var \Anhskohbo\NoCaptcha\NoCaptcha $instance */
+                        return $instance->getJsLink($lang, $callback, $onLoadClass);
         }
          
     }
@@ -17748,205 +17696,6 @@
         {
                         /** @var \Barryvdh\DomPDF\PDF $instance */
                         return $instance->setEncryption($password);
-        }
-         
-    }
-     
-}
-
-    namespace Biscolab\ReCaptcha\Facades { 
-            /**
-     * Class ReCaptcha
-     *
-     * @package Biscolab\ReCaptcha\Facades
-     * @method static string htmlFormButton(?string $button_label = '', ?array $properties = [])
-     * @method static string htmlFormSnippet()
-     * @method static string getFormId()
-     */ 
-        class ReCaptcha {
-                    /**
-         * Write script HTML tag in you HTML code
-         * Insert before </head> tag
-         *
-         * @param array|null $configuration
-         * @return string 
-         * @static 
-         */ 
-        public static function htmlScriptTagJsApi($configuration = [])
-        {
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->htmlScriptTagJsApi($configuration);
-        }
-                    /**
-         * 
-         *
-         * @param string $api_site_key
-         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
-         * @static 
-         */ 
-        public static function setApiSiteKey($api_site_key)
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->setApiSiteKey($api_site_key);
-        }
-                    /**
-         * 
-         *
-         * @param string $api_secret_key
-         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
-         * @static 
-         */ 
-        public static function setApiSecretKey($api_secret_key)
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->setApiSecretKey($api_secret_key);
-        }
-                    /**
-         * 
-         *
-         * @return int 
-         * @static 
-         */ 
-        public static function getCurlTimeout()
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->getCurlTimeout();
-        }
-                    /**
-         * 
-         *
-         * @param string $version
-         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
-         * @static 
-         */ 
-        public static function setVersion($version)
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->setVersion($version);
-        }
-                    /**
-         * 
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getVersion()
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->getVersion();
-        }
-                    /**
-         * 
-         *
-         * @param bool $skip_by_ip
-         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
-         * @static 
-         */ 
-        public static function setSkipByIp($skip_by_ip)
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->setSkipByIp($skip_by_ip);
-        }
-                    /**
-         * 
-         *
-         * @param null|string $api_domain
-         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
-         * @static 
-         */ 
-        public static function setApiDomain($api_domain = null)
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->setApiDomain($api_domain);
-        }
-                    /**
-         * 
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getApiDomain()
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->getApiDomain();
-        }
-                    /**
-         * 
-         *
-         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
-         * @static 
-         */ 
-        public static function setApiUrls()
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->setApiUrls();
-        }
-                    /**
-         * 
-         *
-         * @return array|mixed 
-         * @static 
-         */ 
-        public static function getIpWhitelist()
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->getIpWhitelist();
-        }
-                    /**
-         * Checks whether the user IP address is among IPs "to be skipped"
-         *
-         * @return boolean 
-         * @static 
-         */ 
-        public static function skipByIp()
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->skipByIp();
-        }
-                    /**
-         * Call out to reCAPTCHA and process the response
-         *
-         * @param string $response
-         * @return boolean|array 
-         * @static 
-         */ 
-        public static function validate($response)
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->validate($response);
-        }
-                    /**
-         * 
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getApiSiteKey()
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->getApiSiteKey();
-        }
-                    /**
-         * 
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getApiSecretKey()
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->getApiSecretKey();
-        }
-                    /**
-         * 
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getOnLoadCallback()
-        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
-                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV3 $instance */
-                        return $instance->getOnLoadCallback();
         }
          
     }
@@ -24641,7 +24390,6 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class DataTables extends \Yajra\DataTables\Facades\DataTables {}
-            class Captcha extends \Mews\Captcha\Facades\Captcha {}
             class GoogleMaps extends \GoogleMaps\Facade\GoogleMapsFacade {}
             class JWTAuth extends \Tymon\JWTAuth\Facades\JWTAuth {}
             class JWTFactory extends \Tymon\JWTAuth\Facades\JWTFactory {}
@@ -24651,7 +24399,6 @@ namespace  {
             class NoCaptcha extends \Anhskohbo\NoCaptcha\Facades\NoCaptcha {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class PDF extends \Barryvdh\DomPDF\Facade {}
-            class ReCaptcha extends \Biscolab\ReCaptcha\Facades\ReCaptcha {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Browser extends \hisorange\BrowserDetect\Facade {}
             class Clockwork extends \Clockwork\Support\Laravel\Facade {}

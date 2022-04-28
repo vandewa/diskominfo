@@ -62,6 +62,8 @@
   
   {{-- <script src="{{ asset ('css/import/gtag.js')}}"></script> --}}
 
+   {!! NoCaptcha::renderJs() !!}
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -74,19 +76,7 @@
 
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
-  {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
 
-
-    <script type="text/javascript">
-      var onloadCallback = function() {
-        grecaptcha.render('html_element', {
-          'sitekey' : '6LcBS4AfAAAAALZsrroTukVR8pViMfU8QwIa0qYb'
-        });
-      };
-    </script>
-  {!! ReCaptcha::htmlScriptTagJsApi() !!}
-
-  {{-- {!! htmlScriptTagJsApi()  !!} --}}
 
     <style>
       .buttonnya {
