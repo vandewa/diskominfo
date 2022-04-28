@@ -134,7 +134,7 @@ class PinjamPeralatanController extends Controller
 
 
         $path = public_path('/template/surat_pernyataan_pinjam_barang.docx');
-        $pathSave = storage_path('app/public/'.'Surat-Pernyataan-'.$tiket.'.docx');
+        $pathSave = storage_path('app/public/');
         // $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
@@ -154,7 +154,7 @@ class PinjamPeralatanController extends Controller
         //  return $notif;
 
         // $this->notification($nohape, $tiket);
-        $this->sendMedia($nohape, $tiket);
+        // $this->sendMedia($nohape, $tiket);
         // $this->sendGroupWA($notif);
         // $this->notificationStakeholder($notif);
 
