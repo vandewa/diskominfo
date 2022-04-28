@@ -155,7 +155,7 @@ class PinjamPeralatanController extends Controller
         //  return $notif;
 
         // $this->notification($nohape, $tiket);
-        // $this->sendMedia($nohape, $tiket);
+        $this->sendMedia($nohape, $tiket);
         // $this->sendGroupWA($notif);
         // $this->notificationStakeholder($notif);
 
@@ -288,7 +288,7 @@ class PinjamPeralatanController extends Controller
     {
         Http::asForm()->post('http://10.0.1.21:8000/send-media', [
             'number' => $nohape, 
-            'file' => url('storage/Surat_Pernyataan_'.$tiket.'.docx'),
+            'file' => url('Surat_Pernyataan_'.$tiket.'.docx'),
         ]);
 
     }
