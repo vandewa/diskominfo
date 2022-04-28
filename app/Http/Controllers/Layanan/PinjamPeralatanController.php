@@ -149,13 +149,13 @@ class PinjamPeralatanController extends Controller
             'tahun' => date('Y', strtotime($a->created_at))
         ]);
 
-        $templateProcessor->saveAs($pathSave);
+        $templateProcessor->saveAs(public_path('Surat-Pernyataan-'.$tiket.'.docx'));
  
 
         //  return $notif;
 
         // $this->notification($nohape, $tiket);
-        $this->sendMedia($nohape, $tiket);
+        // $this->sendMedia($nohape, $tiket);
         // $this->sendGroupWA($notif);
         // $this->notificationStakeholder($notif);
 
