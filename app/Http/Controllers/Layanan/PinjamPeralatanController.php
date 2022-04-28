@@ -132,10 +132,29 @@ class PinjamPeralatanController extends Controller
          $id_alat = $a->id;;
          $tiket = $a->no;
 
+
+        $path = public_path('/template/surat_pernyataan_pinjam_barang.docx');
+        $pathSave = storage_path('app/public/'.'Surat-Pernyataan-'.$tiket.'.docx');
+        // $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
+        $templateProcessor = new TemplateProcessor($path);
+        $templateProcessor->setValues([
+            'no' => strtoupper($a->no),
+            'nama' => strtoupper($a->nama),
+            'nomor' => strtoupper($a->nomor),
+            'instansi' => strtoupper($a->instansi),
+            'alat' => strtoupper($a->alat),
+            'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y'),
+            'tanggal_mulai' => \Carbon\Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y'),
+            'tanggal_selesai' => \Carbon\Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y'),
+            'tahun' => date('Y', strtotime($a->created_at))
+        ]);
+
+        $templateProcessor->saveAs($pathSave,'Surat-Pernyataan-'.$tiket.'.docx');
+
         //  return $notif;
 
         // $this->notification($nohape, $tiket);
-        $this->sendMedia($nohape, $id_alat);
+        $this->sendMedia($nohape, $tiket);
         // $this->sendGroupWA($notif);
         // $this->notificationStakeholder($notif);
 
@@ -264,11 +283,11 @@ class PinjamPeralatanController extends Controller
     
     }
 
-     public function sendMedia($nohape, $id_alat)
+     public function sendMedia($nohape, $tiket)
     {
         Http::asForm()->post('http://10.0.1.21:8000/send-media', [
             'number' => $nohape, 
-            'file' =>  route('perijinan:cetak.surat.alat', $id_alat).urldecode('%0D%0A%0D%0A'),
+            'file' =>  url('storage/app/public/Surat-Pernyataan-'.$tiket),
         ]);
 
     }
@@ -277,7 +296,7 @@ class PinjamPeralatanController extends Controller
     {
        $data = PinjamPeralatan::find($id_alat);
         $path = public_path('/template/surat_pernyataan_pinjam_barang.docx');
-        $pathSave = storage_path('app/public/'.$data->id.'.docx');
+        $pathSave = storage_path('app/public/'.'Surat-Pernyataan-'.$data->no.'.docx');
         $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
@@ -293,7 +312,8 @@ class PinjamPeralatanController extends Controller
         ]);
 
         $templateProcessor->saveAs($pathSave);
-       return response()->download($pathSave,'Surat Pernyataan Peminjaman Alat'.$data->instansi.'.docx')->deleteFileAfterSend(true);
+
+       return response()->download($pathSave,'Surat-Pernyataan-'.$data->no.'.docx')->deleteFileAfterSend(true);
 
     }
 }
