@@ -134,7 +134,7 @@ class PinjamPeralatanController extends Controller
 
 
         $path = public_path('/template/surat_pernyataan_pinjam_barang.docx');
-        $pathSave = storage_path('app/public/');
+        $pathSave = storage_path('app/public/Surat-Pernyataan-'.$tiket.'.docx');
         // $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
@@ -149,12 +149,13 @@ class PinjamPeralatanController extends Controller
             'tahun' => date('Y', strtotime($a->created_at))
         ]);
 
-        $templateProcessor->saveAs($pathSave,'Surat-Pernyataan-'.$tiket.'.docx');
+        $templateProcessor->saveAs($pathSave);
+ 
 
         //  return $notif;
 
         // $this->notification($nohape, $tiket);
-        // $this->sendMedia($nohape, $tiket);
+        $this->sendMedia($nohape, $tiket);
         // $this->sendGroupWA($notif);
         // $this->notificationStakeholder($notif);
 
@@ -287,7 +288,7 @@ class PinjamPeralatanController extends Controller
     {
         Http::asForm()->post('http://10.0.1.21:8000/send-media', [
             'number' => $nohape, 
-            'file' =>  url('storage/app/public/Surat-Pernyataan-'.$tiket),
+            'file' => url('storage/Surat_Pernyataan_'.$tiket.'.docx'),
         ]);
 
     }
@@ -313,7 +314,7 @@ class PinjamPeralatanController extends Controller
 
         $templateProcessor->saveAs($pathSave);
 
-       return response()->download($pathSave,'Surat-Pernyataan-'.$data->no.'.docx')->deleteFileAfterSend(true);
+       return response()->download($pathSave,'Surat-Pernyataan-'.$data->no.'.docx')->deleteFileAfterSend(false);
 
     }
 }
