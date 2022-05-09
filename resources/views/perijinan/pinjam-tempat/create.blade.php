@@ -127,13 +127,20 @@
                                     <label class="custom-file-label" for="customFile">Pilih file</label>
                                 </div>
                             </div>
-                            <div class="row form-group d-flex justify-content-center">
-                                {!! htmlFormSnippet() !!}
-                                @if ($errors->has('g-recaptcha-response'))
-                                <span class="help-block label label-danger">
-                                    <strong style="color: red;">{{ $errors->first('g-recaptcha-response') }}</strong>
-                                </span>
-                             @endif
+                            <div class="row form-group">
+                                <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
+                                <div class="col-sm-7 captcha">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                    &#x21bb;
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                            <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
+                                <div class="col-sm-7">
+                                    <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                </div>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
@@ -153,6 +160,20 @@
 @push('css')
   <link rel="stylesheet" href="{{ asset('js/datatable/bootstrap.css') }}">
   <link rel="stylesheet" href="{{ asset('js/datatable/dataTables.bootstrap4.min.css') }}">
+@endpush
+
+@push('scripts')
+    <script type="text/javascript">
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 @endpush
 
 @push('js')

@@ -78,13 +78,13 @@ class PinjamPeralatanController extends Controller
     public function store(Request $request)
     {
 
-          $request->validate([
-                'captcha' => 'required','captcha',
-            ],
-            [
-                'required' => 'Please verify that you are not a robot.',
-                'captcha' => 'Captcha error! try again later or contact site admin.',
-            ]);
+        $request->validate([
+            'captcha' => 'required','captcha',
+        ],
+        [
+            'required' => 'Please verify that you are not a robot.',
+            'captcha' => 'Captcha error! try again later or contact site admin.',
+        ]);
         
         $nohape = $request->nomor;
 
@@ -134,7 +134,7 @@ class PinjamPeralatanController extends Controller
 
 
         $path = public_path('/template/surat_pernyataan_pinjam_barang.docx');
-        $pathSave = storage_path('app/public/Surat-Pernyataan-'.$tiket.'.docx');
+        $pathSave = public_path('/storage/surat-peminjaman-alat/Surat-Pernyataan-'.$tiket.'.docx');
         // $pathPdf =    $pathSave =storage_path('app/public/'.$data->no.'.pdf');
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
@@ -149,15 +149,15 @@ class PinjamPeralatanController extends Controller
             'tahun' => date('Y', strtotime($a->created_at))
         ]);
 
-        $templateProcessor->saveAs(public_path('Surat-Pernyataan-'.$tiket.'.docx'));
+        $templateProcessor->saveAs(public_path('storage/surat-peminjaman-alat/Surat-Pernyataan-'.$tiket.'.docx'));
  
 
         //  return $notif;
 
-        // $this->notification($nohape, $tiket);
+        $this->notification($nohape, $tiket);
         $this->sendMedia($nohape, $tiket);
-        // $this->sendGroupWA($notif);
-        // $this->notificationStakeholder($notif);
+        $this->sendGroupWA($notif);
+        $this->notificationStakeholder($notif);
 
       
         return redirect(route('pengajuanizin'))->with(['statuss' => 'oke', 'id_alat' => $id_alat]);
@@ -288,7 +288,7 @@ class PinjamPeralatanController extends Controller
     {
         Http::asForm()->post('http://10.0.1.21:8000/send-media', [
             'number' => $nohape, 
-            'file' => url('Surat-Pernyataan-'.$tiket.'.docx'),
+            'file' => url('/storage/surat-peminjaman-alat/Surat-Pernyataan-'.$tiket.'.docx'),
         ]);
 
     }

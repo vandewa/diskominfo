@@ -26,8 +26,7 @@
                         </div>
 
                         <div class="card-body">
-                            {{Form::open(['route' => 'perijinan:pinjam.peralatan.post', 'files' => true, 'id' =>
-                            "form-simpan"])}}
+                            {{Form::open(['route' => 'perijinan:pinjam.peralatan.post', 'files' => true, 'id' =>"form-simpan"])}}
                             {{Form::hidden('status_st','STATUS_ST_01')}}
                             <div class="row form-group">
                                 <label for="currentPasswordLabel"
@@ -70,7 +69,6 @@
                                         aria-label="From" data-rp-wrapper="#datepickerWrapperFrom" id="tanggal">
                                 </div>
                             </div>
-
                             <div class="row form-group">
                                 <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Kontak
                                     Person<small style="color: red;"><b> (*WhatsApp) </b></small></label>
@@ -89,7 +87,6 @@
                                     <label class="custom-file-label" for="customFile">Pilih file</label>
                                 </div>
                             </div>
-
                             <div class="row form-group">
                                <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
                                 <div class="col-sm-7 captcha">
@@ -99,14 +96,12 @@
                                     </button>
                                 </div>
                             </div>
-
                              <div class="row form-group">
                                <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
                                 <div class="col-sm-7">
                                     <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
                                 </div>
                             </div>
-
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
                                         <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
@@ -120,19 +115,19 @@
     </main>
     @endsection
 
-@push('scripts')
-<script type="text/javascript">
-    $('#reload').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: 'reload-captcha',
-            success: function (data) {
-                $(".captcha span").html(data.captcha);
-            }
-        });
-    });
-</script>
-@endpush
+    @push('scripts')
+        <script type="text/javascript">
+            $('#reload').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'reload-captcha',
+                    success: function (data) {
+                        $(".captcha span").html(data.captcha);
+                    }
+                });
+            });
+        </script>
+    @endpush
 
     @push('js')
     <script>

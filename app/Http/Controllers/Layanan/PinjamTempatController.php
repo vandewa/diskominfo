@@ -88,12 +88,12 @@ class PinjamTempatController extends Controller
     public function store(Request $request)
     {
           $request->validate([
-                'g-recaptcha-response' => 'required|recaptcha',
-            ],
-            [
-                'g-recaptcha-response.required' => 'Captcha harus benar.',
-                'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
-            ]);
+            'captcha' => 'required','captcha',
+        ],
+        [
+            'required' => 'Please verify that you are not a robot.',
+            'captcha' => 'Captcha error! try again later or contact site admin.',
+        ]);
         
         if($request->acara == 'ACARA_ST_01'){
             $acara = 'Daring';

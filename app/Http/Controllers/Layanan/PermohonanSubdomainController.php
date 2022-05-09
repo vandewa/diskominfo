@@ -76,11 +76,11 @@ class PermohonanSubdomainController extends Controller
 
         // return $request->all();
         $request->validate([
-            'g-recaptcha-response' => 'required|recaptcha',
+            'captcha' => 'required','captcha',
         ],
         [
-            'g-recaptcha-response.required' => 'Captcha harus benar.',
-            'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
+            'required' => 'Please verify that you are not a robot.',
+            'captcha' => 'Captcha error! try again later or contact site admin.',
         ]);
 
         if($request->jenislayanan_tp == 'JENISLAYANAN_TP_02'){

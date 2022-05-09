@@ -73,13 +73,13 @@ class ColocationServerController extends Controller
              ;
         }
 
-          $request->validate([
-                'g-recaptcha-response' => 'required|recaptcha',
-            ],
-            [
-                'g-recaptcha-response.required' => 'Captcha harus benar.',
-                'g-recaptcha-response.recaptcha' => 'Captcha harus benar.',
-            ]);
+        $request->validate([
+            'captcha' => 'required','captcha',
+        ],
+        [
+            'required' => 'Please verify that you are not a robot.',
+            'captcha' => 'Captcha error! try again later or contact site admin.',
+        ]);
             
         PermintaanColocation::create([
                 'nama' => $request->nama,

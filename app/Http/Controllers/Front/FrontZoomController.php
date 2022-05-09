@@ -40,6 +40,13 @@ class FrontZoomController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'captcha' => 'required','captcha',
+        ],
+        [
+            'required' => 'Please verify that you are not a robot.',
+            'captcha' => 'Captcha error! try again later or contact site admin.',
+        ]);
 
         if( $request->waktu > '07:30:00' && $request->waktu < '16:00:00'){
 

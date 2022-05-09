@@ -175,18 +175,24 @@
                             <label class="custom-file-label" for="customFile">Pilih file</label>
                         </div>
                     </div>
-
-                    <div class="row form-group d-flex justify-content-center">
-                        {!! htmlFormSnippet() !!}
-                        @if ($errors->has('g-recaptcha-response'))
-                        <span class="help-block label label-danger">
-                            <strong style="color: red;">{{ $errors->first('g-recaptcha-response') }}</strong>
-                        </span>
-                        @endif
+                    <div class="row form-group">
+                        <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
+                        <div class="col-sm-7 captcha">
+                            <span>{!! captcha_img() !!}</span>
+                            <button type="button" class="btn btn-danger" class="reload" id="reload">
+                            &#x21bb;
+                            </button>
+                        </div>
                     </div>
-
+                    <div class="row form-group">
+                        <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
+                        <div class="col-sm-7">
+                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                        </div>
+                    </div>
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-lg btn-block btn-primary">Kirim</button>
+                        <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
+                        <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
                     </div>
                     {{Form::close()}}
                 </div>
@@ -225,6 +231,20 @@
 @push('css')
   <link rel="stylesheet" href="{{ asset('js/datatable/bootstrap.css') }}">
   <link rel="stylesheet" href="{{ asset('js/datatable/dataTables.bootstrap4.min.css') }}">
+@endpush
+
+@push('scripts')
+    <script type="text/javascript">
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 @endpush
 
 @push('js')
@@ -298,22 +318,22 @@
 </script>
 
 <script type="text/javascript">
-        function sweetAlert() 
-        {  
+    function sweetAlert() 
+    {  
 
-            Swal.fire({
-            title: 'Berhasil!',
-            text: 'Silahkan cek WhatsApp / Email untuk notifikasi berikutnya',
-            imageWidth: 300,
-            imageHeight: 239,
-            imageUrl: "{{ asset('front/assets/images/okk.gif')}}",
-            })
-        }
+        Swal.fire({
+        title: 'Berhasil!',
+        text: 'Silahkan cek WhatsApp / Email untuk notifikasi berikutnya',
+        imageWidth: 300,
+        imageHeight: 239,
+        imageUrl: "{{ asset('front/assets/images/okk.gif')}}",
+        })
+    }
 
-        @if(session('status'))
-        sweetAlert();
-        @endif
+    @if(session('status'))
+    sweetAlert();
+    @endif
 
-    </script>
+</script>
 
 @endpush

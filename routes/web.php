@@ -143,26 +143,26 @@ Route::get('/tamu', [FrontBukuTamuController::class, 'index'])->name('front.tamu
 
 Route::group([], function () {
     Route::group(['prefix' => 'perijinan', 'as' => 'perijinan:'], function () {
-        Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
-        Route::post('akses/data-center', [AksesDcController::class, 'store'])->name('akses.dc.post');
-        Route::get('akses/data-center/{id}/cetak', [AksesDcController::class, 'cetakSurat'])->name('cetak.surat.akses.dc');
-        Route::get('permohonan/vps-baru', [PenambahanVpsController::class, 'create'])->name('vps.baru.create');
-        Route::post('permohonan/vps-baru', [PenambahanVpsController::class, 'store'])->name('vps.baru.post');
-        Route::get('permohonan/vps-baru/{id}/cetak', [PenambahanVpsController::class, 'cetakSurat'])->name('cetak.surat.vps.baru');
-        Route::get('permohonan/perubahan-vps', [PerubahanVpsController::class, 'create'])->name('perubahan.vps.create');
-        Route::post('permohonan/perubahan-vps', [PerubahanVpsController::class, 'store'])->name('perubahan.vps.post');
-        Route::get('permohonan/perubahan-vps/{id}/cetak', [PerubahanVpsController::class, 'cetakSurat'])->name('cetak.surat.perubahan.vps');
-        Route::get('permohonan/pengajuan-server', [PengajuanServerController::class, 'create'])->name('pengajuan.server.create');
-        Route::post('permohonan/pengajuan-server', [PengajuanServerController::class, 'store'])->name('pengajuan.server.post');
-        Route::get('permohonan/pengajuan-server/{id}/cetak', [PengajuanServerController::class, 'cetakSurat'])->name('cetak.surat.pengajuan.server');
-        Route::get('permohonan/layanan-server', [LayananServerController::class, 'create'])->name('layanan.server.create');
-        Route::post('permohonan/layanan-server', [LayananServerController::class, 'store'])->name('layanan.server.post');
-        Route::get('permohonan/layanan-server/{id}/cetak', [LayananServerController::class, 'cetakSurat'])->name('cetak.surat.layanan.server');
-        Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
-        Route::post('permintaan/colocation', [PerminColController::class, 'store'])->name('permintaan.col.post');
-        Route::get('permintaan/colocation/{id}/cetak', [PerminColController::class, 'cetakSurat'])->name('cetak.surat.colocation.server');
-        Route::get('kunjungan/data-center', [KunjunganDcController::class, 'create'])->name('kunjungan.dc.create');
-        Route::post('kunjungan/data-center', [KunjunganDcController::class, 'store'])->name('kunjungan.dc.post');
+        // Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
+        // Route::post('akses/data-center', [AksesDcController::class, 'store'])->name('akses.dc.post');
+        // Route::get('akses/data-center/{id}/cetak', [AksesDcController::class, 'cetakSurat'])->name('cetak.surat.akses.dc');
+        // Route::get('permohonan/vps-baru', [PenambahanVpsController::class, 'create'])->name('vps.baru.create');
+        // Route::post('permohonan/vps-baru', [PenambahanVpsController::class, 'store'])->name('vps.baru.post');
+        // Route::get('permohonan/vps-baru/{id}/cetak', [PenambahanVpsController::class, 'cetakSurat'])->name('cetak.surat.vps.baru');
+        // Route::get('permohonan/perubahan-vps', [PerubahanVpsController::class, 'create'])->name('perubahan.vps.create');
+        // Route::post('permohonan/perubahan-vps', [PerubahanVpsController::class, 'store'])->name('perubahan.vps.post');
+        // Route::get('permohonan/perubahan-vps/{id}/cetak', [PerubahanVpsController::class, 'cetakSurat'])->name('cetak.surat.perubahan.vps');
+        // Route::get('permohonan/pengajuan-server', [PengajuanServerController::class, 'create'])->name('pengajuan.server.create');
+        // Route::post('permohonan/pengajuan-server', [PengajuanServerController::class, 'store'])->name('pengajuan.server.post');
+        // Route::get('permohonan/pengajuan-server/{id}/cetak', [PengajuanServerController::class, 'cetakSurat'])->name('cetak.surat.pengajuan.server');
+        // Route::get('permohonan/layanan-server', [LayananServerController::class, 'create'])->name('layanan.server.create');
+        // Route::post('permohonan/layanan-server', [LayananServerController::class, 'store'])->name('layanan.server.post');
+        // Route::get('permohonan/layanan-server/{id}/cetak', [LayananServerController::class, 'cetakSurat'])->name('cetak.surat.layanan.server');
+        // Route::get('permintaan/colocation', [PerminColController::class, 'create'])->name('permintaan.col.create');
+        // Route::post('permintaan/colocation', [PerminColController::class, 'store'])->name('permintaan.col.post');
+        // Route::get('permintaan/colocation/{id}/cetak', [PerminColController::class, 'cetakSurat'])->name('cetak.surat.colocation.server');
+        // Route::get('kunjungan/data-center', [KunjunganDcController::class, 'create'])->name('kunjungan.dc.create');
+        // Route::post('kunjungan/data-center', [KunjunganDcController::class, 'store'])->name('kunjungan.dc.post');
         Route::get('pembuatan/media-publikasi', [MediaPublikasiController::class, 'create'])->name('media.publikasi.create');
         Route::post('pembuatan/media-publikasi', [MediaPublikasiController::class, 'store'])->name('media.publikasi.post');
         Route::get('permohonan/liputan', [LiputanController::class, 'create'])->name('liputan.create');
@@ -188,9 +188,8 @@ Route::group([], function () {
         Route::post('permohonan/colocation-server', [ColocationServerController::class, 'store'])->name('colocation.server.post');
         Route::get('permohonan/pinjam-peralatan/{id}/cetak', [PinjamPeralatanController::class, 'cetakSurat'])->name('cetak.surat.alat');
         Route::get('permohonan/reload-captcha', [HomeController::class, 'reloadCaptcha']);
-
-
-
+        Route::get('pembuatan/reload-captcha', [HomeController::class, 'reloadCaptcha']);
+        Route::get('/reload-captcha', [HomeController::class, 'reloadCaptcha']);
 
     });
     Route::resource('akses-data-center', AksesDcController::class);

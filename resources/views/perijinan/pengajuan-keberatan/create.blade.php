@@ -27,75 +27,79 @@
                     <div class="card-body">
                     {{Form::open(['route' => 'perijinan:pengajuan.keberatan.post'])}}
                     {{Form::hidden('status_st','STATUS_ST_01')}}
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama</label>
+                            <div class="col-sm-7">
+                                {{Form::text('nama', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama','required'])}}
+                            </div>
+                        </div>
                             <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama</label>
-                                <div class="col-sm-7">
-                                    {{Form::text('nama', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama','required'])}}
-                                </div>
+                            <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Alamat</label>
+                            <div class="col-sm-7">
+                                {{Form::text('alamat', null, ['class' => 'form-control ','placeholder' => 'Masukkan alamat','required'])}}
                             </div>
-                                <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Alamat</label>
-                                <div class="col-sm-7">
-                                    {{Form::text('alamat', null, ['class' => 'form-control ','placeholder' => 'Masukkan alamat','required'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Pekerjaan</label>
+                            <div class="col-sm-7">
+                                {{Form::text('pekerjaan', null, ['class' => 'form-control ','placeholder' => 'Masukkan pekerjaan','required'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Pekerjaan</label>
-                                <div class="col-sm-7">
-                                    {{Form::text('pekerjaan', null, ['class' => 'form-control ','placeholder' => 'Masukkan pekerjaan','required'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nomor Telepon<small style="color: red;"> (*Whatsapp)</small></label>
+                            <div class="col-sm-7">
+                                {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nomor WhatsApp','required'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nomor Telepon<small style="color: red;"> (*Whatsapp)</small></label>
-                                <div class="col-sm-7">
-                                    {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nomor WhatsApp','required'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Email</label>
+                            <div class="col-sm-7">
+                                {{Form::email('email', null, ['class' => 'form-control ','placeholder' => 'Masukkan email','required'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Email</label>
-                                <div class="col-sm-7">
-                                    {{Form::email('email', null, ['class' => 'form-control ','placeholder' => 'Masukkan email','required'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nomor Pendaftaran Permintaan Informasi Publik</label>
+                            <div class="col-sm-7">
+                                {{Form::text('nomor_pendaftaran', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nomor Pendaftaran Permintaan Informasi Publik','required'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nomor Pendaftaran Permintaan Informasi Publik</label>
-                                <div class="col-sm-7">
-                                    {{Form::text('nomor_pendaftaran', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nomor Pendaftaran Permintaan Informasi Publik','required'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tujuan Penggunaan Informasi Publik</label>
+                            <div class="col-sm-7">
+                                {{Form::textarea('tujuan', null, ['class' => 'form-control ','rows' => 2, 'cols' => 100, ])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tujuan Penggunaan Informasi Publik</label>
-                                <div class="col-sm-7">
-                                    {{Form::textarea('tujuan', null, ['class' => 'form-control ','rows' => 2, 'cols' => 100, ])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Alasan Pengajuan Keberatan</label>
+                            <div class="col-sm-7">
+                                {{Form::textarea('alasan_pengajuan', null, ['class' => 'form-control ','rows' => 2, 'cols' => 100, ])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Alasan Pengajuan Keberatan</label>
-                                <div class="col-sm-7">
-                                    {{Form::textarea('alasan_pengajuan', null, ['class' => 'form-control ','rows' => 2, 'cols' => 100, ])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Kasus Posisi (kronologi kasus)</label>
+                            <div class="col-sm-7">
+                                {{Form::textarea('kasus', null, ['class' => 'form-control ','rows' => 2, 'cols' => 100, ])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Kasus Posisi (kronologi kasus)</label>
-                                <div class="col-sm-7">
-                                    {{Form::textarea('kasus', null, ['class' => 'form-control ','rows' => 2, 'cols' => 100, ])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
+                            <div class="col-sm-7 captcha">
+                                <span>{!! captcha_img() !!}</span>
+                                <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                &#x21bb;
+                                </button>
                             </div>
-                            <div class="row form-group">
-                              <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label"></label>
-                                <div class="col-sm-7">
-                                    {!! htmlFormSnippet() !!}
-                                    @if ($errors->has('g-recaptcha-response'))
-                                    <span class="help-block label label-danger">
-                                        <strong style="color: red;">{{ $errors->first('g-recaptcha-response') }}</strong>
-                                    </span>
-                                     @endif
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                        <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
+                            <div class="col-sm-7">
+                                <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
                             </div>
-                            <div class="d-flex justify-content-end">
-                                <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
-                                        <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
-                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
+                                    <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
+                        </div>
                     {{Form::close()}}
                     </div>
                 </div>
@@ -111,6 +115,19 @@
     <link rel="stylesheet" href="{{ asset('js/datatable/dataTables.bootstrap4.min.css') }}">
 @endpush
 
+@push('scripts')
+    <script type="text/javascript">
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
+@endpush
 
 @push('js')
     <script>

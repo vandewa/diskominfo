@@ -28,152 +28,149 @@
                     {{Form::open(['route' => 'perijinan:permohonan.subdomain.post', 'files' => true])}}
                     {{Form::hidden('status_st','STATUS_ST_01')}}
                     {{Form::hidden('waktu',\Carbon\Carbon::now()->format('H:i:s'))}}
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Nama </label>
-                                <div class="col-sm-8">
-                                {{Form::text('nama', null, ['class' => 'form-control ', 'placeholder' => 'Nama pemohon (ASN)'])}}
-                                </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Nama </label>
+                            <div class="col-sm-8">
+                            {{Form::text('nama', null, ['class' => 'form-control ', 'placeholder' => 'Nama pemohon (ASN)'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">NIP </label>
-                                <div class="col-sm-8">
-                                {{Form::number('nip', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan NIP'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">NIP </label>
+                            <div class="col-sm-8">
+                            {{Form::number('nip', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan NIP'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">OPD </label>
-                                <div class="col-sm-8">
-                                {{Form::text('instansi', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan OPD'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">OPD </label>
+                            <div class="col-sm-8">
+                            {{Form::text('instansi', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan OPD'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Bidang / Bagian / UPTD</label>
-                                <div class="col-sm-8">
-                                {{Form::text('bidang', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan nama bidang / bagian / UPTD'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Bidang / Bagian / UPTD</label>
+                            <div class="col-sm-8">
+                            {{Form::text('bidang', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan nama bidang / bagian / UPTD'])}}
                             </div>
-                            
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Alamat </label>
-                                <div class="col-sm-8">
-                                {{Form::text('alamat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan alamat kantor'])}}
-                                </div>
+                        </div>
+                        
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Alamat </label>
+                            <div class="col-sm-8">
+                            {{Form::text('alamat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan alamat kantor'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">No. Telepon<small style="color: red;"><b> (*WhatsApp) </b></small></label>
-                                <div class="col-sm-8">
-                                {{Form::number('nomor', null, ['class' => 'form-control ', 'placeholder' => 'Nomor kontak person pemohon'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">No. Telepon<small style="color: red;"><b> (*WhatsApp) </b></small></label>
+                            <div class="col-sm-8">
+                            {{Form::number('nomor', null, ['class' => 'form-control ', 'placeholder' => 'Nomor kontak person pemohon'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Email</label>
-                                <div class="col-sm-8">
-                                {{Form::text('email', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan email OPD'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Email</label>
+                            <div class="col-sm-8">
+                            {{Form::text('email', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan email OPD'])}}
                             </div>
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Jenis Layanan</label>
-                                <div class="col-sm-8">
-                                {{Form::select('jenislayanan_tp',get_code_group('JENISLAYANAN_TP'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Layanan -'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Jenis Layanan</label>
+                            <div class="col-sm-8">
+                            {{Form::select('jenislayanan_tp',get_code_group('JENISLAYANAN_TP'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Layanan -'])}}
                             </div>
-                            <div class="row form-group devan" style="display: none">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Nama Subdomain</label>
-                                <div class="col-sm-8">
-                                {{Form::text('nama_subdomain', null, ['class' => 'form-control ', 'placeholder' => 'Nama Subdomain'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group devan" style="display: none">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Nama Subdomain</label>
+                            <div class="col-sm-8">
+                            {{Form::text('nama_subdomain', null, ['class' => 'form-control ', 'placeholder' => 'Nama Subdomain'])}}
                             </div>
-                            <div class="row form-group devan" style="display: none">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Pilihan Subdomain</label>
-                                <div class="col-sm-8">
-                                {{Form::select('domain_st',get_code_group('DOMAIN_ST'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Subdomain -'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group devan" style="display: none">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Pilihan Subdomain</label>
+                            <div class="col-sm-8">
+                            {{Form::select('domain_st',get_code_group('DOMAIN_ST'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Subdomain -'])}}
                             </div>
-                            <div class="row form-group devan" style="display: none">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Hosting</label>
-                                <div class="col-sm-8">
-                                    <div class="input-group input-group-md-down-break">
-                                        <!-- Custom Radio -->
-                                        <div class="form-control">
-                                            <div class="custom-control custom-radio">
-                                            {{Form::radio('hosting', '0', true), null,['class' => '"custom-control-input '] }} Ya
-                                            {{-- <input type="radio" class="custom-control-input" name="hosting" id="genderTypeRadio1" value="0" checked> --}}
-                                            {{-- <label class="custom-control-label" for="genderTypeRadio1"></label> --}}
-                                            </div>
+                        </div>
+                        <div class="row form-group devan" style="display: none">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Hosting</label>
+                            <div class="col-sm-8">
+                                <div class="input-group input-group-md-down-break">
+                                    <!-- Custom Radio -->
+                                    <div class="form-control">
+                                        <div class="custom-control custom-radio">
+                                        {{Form::radio('hosting', '0', true), null,['class' => '"custom-control-input '] }} Ya
+                                        {{-- <input type="radio" class="custom-control-input" name="hosting" id="genderTypeRadio1" value="0" checked> --}}
+                                        {{-- <label class="custom-control-label" for="genderTypeRadio1"></label> --}}
                                         </div>
-                                        <!-- End Custom Radio -->
+                                    </div>
+                                    <!-- End Custom Radio -->                                       
 
-                                       
-
-                                        <!-- Custom Radio -->
-                                        <div class="form-control">
-                                            <div class="custom-control custom-radio">
-                                            {{-- <input type="radio" class="custom-control-input" name="hosting" id="genderTypeRadio2" value="1"> --}}
-                                             {{Form::radio('hosting', '1'), null,['class' => '"custom-control-input '] }} Tidak
-                                            {{-- <label class="custom-control-label" for="genderTypeRadio2"></label> --}}
-                                            </div>
+                                    <!-- Custom Radio -->
+                                    <div class="form-control">
+                                        <div class="custom-control custom-radio">
+                                        {{-- <input type="radio" class="custom-control-input" name="hosting" id="genderTypeRadio2" value="1"> --}}
+                                            {{Form::radio('hosting', '1'), null,['class' => '"custom-control-input '] }} Tidak
+                                        {{-- <label class="custom-control-label" for="genderTypeRadio2"></label> --}}
                                         </div>
-                                        <!-- End Custom Radio -->
-                                        </div>
-                                </div>
+                                    </div>
+                                    <!-- End Custom Radio -->
+                                    </div>
                             </div>
-
-                            <div class="row form-group devanganteng" style="display: none">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Nama Subdomain</label>
-                                <div class="col-sm-8">
-                                {{Form::text('nama_subdomain_cpanel', null, ['class' => 'form-control ', 'placeholder' => 'Nama Subdomain'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group devanganteng" style="display: none">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Nama Subdomain</label>
+                            <div class="col-sm-8">
+                            {{Form::text('nama_subdomain_cpanel', null, ['class' => 'form-control ', 'placeholder' => 'Nama Subdomain'])}}
                             </div>
-                            <div class="row form-group devanganteng" style="display: none">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Pilihan Subdomain</label>
-                                <div class="col-sm-8">
-                                {{Form::select('domain_st_cpanel',get_code_group('DOMAIN_ST'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Subdomain -'])}}
-                                </div>
+                        </div>
+                        <div class="row form-group devanganteng" style="display: none">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Pilihan Subdomain</label>
+                            <div class="col-sm-8">
+                            {{Form::select('domain_st_cpanel',get_code_group('DOMAIN_ST'), null, ['class' => 'form-control ', 'placeholder' => '- Pilih Subdomain -'])}}
                             </div>
-
-                            <div class="row form-group devangantengsekali" style="display: none">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">
-                                    Nama Email
-                                </label>
-                                <div class="col-8">
-                                    <div class="input-group input-group-sm">
-                                            {{Form::text('nama_email', null, ['class' => 'form-control ', 'placeholder' => 'Nama email'])}}
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <span>@wonosobokab.go.id</span>
-                                            </span>
-                                        </div>
+                        </div>
+                        <div class="row form-group devangantengsekali" style="display: none">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">
+                                Nama Email
+                            </label>
+                            <div class="col-8">
+                                <div class="input-group input-group-sm">
+                                        {{Form::text('nama_email', null, ['class' => 'form-control ', 'placeholder' => 'Nama email'])}}
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <span>@wonosobokab.go.id</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Lampiran <small style="color: red;"><b>(*pdf)</small></b></label>
-                                <div class="col-sm-8 custom-file">
-                                    <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
-                                            data-hs-file-attach-options='{
-                                            "textTarget": "[for=\"customFile\"]"
-                                        }' accept="application/pdf">
-                                    <label class="custom-file-label" for="customFile">Pilih file</label>
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Lampiran <small style="color: red;"><b>(*pdf)</small></b></label>
+                            <div class="col-sm-8 custom-file">
+                                <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
+                                        data-hs-file-attach-options='{
+                                        "textTarget": "[for=\"customFile\"]"
+                                    }' accept="application/pdf">
+                                <label class="custom-file-label" for="customFile">Pilih file</label>
                             </div>
-
-                            <div class="row form-group">
-                              <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label"></label>
-                                <div class="col-sm-8">
-                                    {!! htmlFormSnippet() !!}
-                                    @if ($errors->has('g-recaptcha-response'))
-                                    <span class="help-block label label-danger">
-                                        <strong style="color: red;">{{ $errors->first('g-recaptcha-response') }}</strong>
-                                    </span>
-                                     @endif
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="captcha" class="col-sm-4 col-form-label input-label">Captcha</label>
+                            <div class="col-sm-8 captcha">
+                                <span>{!! captcha_img() !!}</span>
+                                <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                &#x21bb;
+                                </button>
                             </div>
-
-                            <div class="d-flex justify-content-end">
-                                <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
-                                        <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
+                        </div>
+                        <div class="row form-group">
+                        <label for="captcha" class="col-sm-4 col-form-label input-label">Enter Captcha</label>
+                            <div class="col-sm-8">
+                                <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
                             </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
+                                    <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
+                        </div>
                     {{Form::close()}}
                     </div>
                 </div>
@@ -182,6 +179,20 @@
     </div>
 </main>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
+@endpush
 
 @push('js')
     <script>
@@ -216,10 +227,8 @@
                 $('.devangantengsekali').hide('slow');
             }
         });
-
     
     });
 </script>
 
-    
-    @endpush
+ @endpush
