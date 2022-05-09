@@ -288,7 +288,7 @@ class PinjamPeralatanController extends Controller
     {
         Http::asForm()->post('http://10.0.1.21:8000/send-media', [
             'number' => $nohape, 
-            'file' => url('Surat_Pernyataan_'.$tiket.'.docx'),
+            'file' => url('Surat-Pernyataan-'.$tiket.'.docx'),
         ]);
 
     }
