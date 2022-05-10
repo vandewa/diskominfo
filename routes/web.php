@@ -188,8 +188,8 @@ Route::group([], function () {
         Route::post('permohonan/colocation-server', [ColocationServerController::class, 'store'])->name('colocation.server.post');
         Route::get('permohonan/pinjam-peralatan/{id}/cetak', [PinjamPeralatanController::class, 'cetakSurat'])->name('cetak.surat.alat');
         Route::get('permohonan/reload-captcha', [HomeController::class, 'reloadCaptcha']);
-        Route::get('pembuatan/reload-captcha', [HomeController::class, 'reloadCaptcha']);
-        Route::get('/reload-captcha', [HomeController::class, 'reloadCaptcha']);
+        // Route::get('pembuatan/reload-captcha', [HomeController::class, 'reloadCaptcha']);
+        // Route::get('/reload-captcha', [HomeController::class, 'reloadCaptcha']);
 
     });
     Route::resource('akses-data-center', AksesDcController::class);

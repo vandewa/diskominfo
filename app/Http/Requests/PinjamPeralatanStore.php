@@ -26,8 +26,8 @@ class PinjamPeralatanStore extends FormRequest
         return [
             'nama' => 'required',
             'instansi' => 'required',
-            'tanggal_mulai' => 'required|date', 
-            'tanggal_selesai' => 'required|date', 
+            'tanggal_mulai' => 'required|date|before_or_equal:tanggal_selesai', 
+            'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai', 
             'alat' => 'required',
             'lama_pinjam' => 'required', 
             'nomor' => 'required', 

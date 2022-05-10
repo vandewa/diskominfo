@@ -30,7 +30,7 @@ class ZoomCreateValidation extends FormRequest
             'topik' => 'required', 
             'tanggal' => 'required', 
             'jam_mulai' => 'required', 
-            'jam_selesai' => 'required', 
+            'jam_selesai' => 'required|after:jam_mulai', 
             'peserta' => 'required', 
             'file_name'=>'mimes:pdf',
 

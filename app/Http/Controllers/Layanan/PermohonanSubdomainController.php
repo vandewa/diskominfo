@@ -76,7 +76,7 @@ class PermohonanSubdomainController extends Controller
 
         // return $request->all();
         $request->validate([
-            'captcha' => 'required','captcha',
+            'captcha' => 'required|captcha',
         ],
         [
             'required' => 'Please verify that you are not a robot.',

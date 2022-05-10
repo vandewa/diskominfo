@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.83.10.
+ * Generated for Laravel 8.83.11.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -16896,6 +16896,83 @@
      
 }
 
+    namespace Mews\Captcha\Facades { 
+            /**
+     * 
+     *
+     * @see \Mews\Captcha\Captcha
+     */ 
+        class Captcha {
+                    /**
+         * Create captcha image
+         *
+         * @param string $config
+         * @param bool $api
+         * @return array|mixed 
+         * @throws Exception
+         * @static 
+         */ 
+        public static function create($config = 'default', $api = false)
+        {
+                        /** @var \Mews\Captcha\Captcha $instance */
+                        return $instance->create($config, $api);
+        }
+                    /**
+         * Captcha check
+         *
+         * @param string $value
+         * @return bool 
+         * @static 
+         */ 
+        public static function check($value)
+        {
+                        /** @var \Mews\Captcha\Captcha $instance */
+                        return $instance->check($value);
+        }
+                    /**
+         * Captcha check
+         *
+         * @param string $value
+         * @param string $key
+         * @param string $config
+         * @return bool 
+         * @static 
+         */ 
+        public static function check_api($value, $key, $config = 'default')
+        {
+                        /** @var \Mews\Captcha\Captcha $instance */
+                        return $instance->check_api($value, $key, $config);
+        }
+                    /**
+         * Generate captcha image source
+         *
+         * @param string $config
+         * @return string 
+         * @static 
+         */ 
+        public static function src($config = 'default')
+        {
+                        /** @var \Mews\Captcha\Captcha $instance */
+                        return $instance->src($config);
+        }
+                    /**
+         * Generate captcha image html tag
+         *
+         * @param string $config
+         * @param array $attrs $attrs -> HTML attributes supplied to the image tag where key is the attribute and the value is the attribute value
+         * @return string 
+         * @static 
+         */ 
+        public static function img($config = 'default', $attrs = [])
+        {
+                        /** @var \Mews\Captcha\Captcha $instance */
+                        return $instance->img($config, $attrs);
+        }
+         
+    }
+     
+}
+
     namespace Barryvdh\Debugbar\Facades { 
             /**
      * 
@@ -20212,83 +20289,6 @@
         {
                         /** @var \Livewire\LivewireManager $instance */
                         return $instance->flushState();
-        }
-         
-    }
-     
-}
-
-    namespace Mews\Captcha\Facades { 
-            /**
-     * 
-     *
-     * @see \Mews\Captcha\Captcha
-     */ 
-        class Captcha {
-                    /**
-         * Create captcha image
-         *
-         * @param string $config
-         * @param bool $api
-         * @return array|mixed 
-         * @throws Exception
-         * @static 
-         */ 
-        public static function create($config = 'default', $api = false)
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->create($config, $api);
-        }
-                    /**
-         * Captcha check
-         *
-         * @param string $value
-         * @return bool 
-         * @static 
-         */ 
-        public static function check($value)
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->check($value);
-        }
-                    /**
-         * Captcha check
-         *
-         * @param string $value
-         * @param string $key
-         * @param string $config
-         * @return bool 
-         * @static 
-         */ 
-        public static function check_api($value, $key, $config = 'default')
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->check_api($value, $key, $config);
-        }
-                    /**
-         * Generate captcha image source
-         *
-         * @param string $config
-         * @return string 
-         * @static 
-         */ 
-        public static function src($config = 'default')
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->src($config);
-        }
-                    /**
-         * Generate captcha image html tag
-         *
-         * @param string $config
-         * @param array $attrs $attrs -> HTML attributes supplied to the image tag where key is the attribute and the value is the attribute value
-         * @return string 
-         * @static 
-         */ 
-        public static function img($config = 'default', $attrs = [])
-        {
-                        /** @var \Mews\Captcha\Captcha $instance */
-                        return $instance->img($config, $attrs);
         }
          
     }
@@ -24343,6 +24343,7 @@ namespace  {
             class Image extends \Intervention\Image\Facades\Image {}
             class Analytics extends \Spatie\Analytics\AnalyticsFacade {}
             class GeoIP extends \Torann\GeoIP\Facades\GeoIP {}
+            class Captcha extends \Mews\Captcha\Facades\Captcha {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class PDF extends \Barryvdh\DomPDF\Facade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
@@ -24352,7 +24353,6 @@ namespace  {
             class Form extends \Collective\Html\FormFacade {}
             class Html extends \Collective\Html\HtmlFacade {}
             class Livewire extends \Livewire\Livewire {}
-            class Captcha extends \Mews\Captcha\Facades\Captcha {}
             class JsValidator extends \Proengsoft\JsValidation\Facades\JsValidatorFacade {}
             class Laratrust extends \Laratrust\LaratrustFacade {}
             class Iseed extends \Orangehill\Iseed\Facades\Iseed {}

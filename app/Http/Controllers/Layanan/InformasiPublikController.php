@@ -61,7 +61,7 @@ class InformasiPublikController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'captcha' => 'required','captcha',
+            'captcha' => 'required|captcha',
         ],
         [
             'required' => 'Please verify that you are not a robot.',

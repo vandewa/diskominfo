@@ -100,11 +100,16 @@
                                <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
                                 <div class="col-sm-7">
                                     <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                    @if ($errors->has('captcha'))
+                                        <span class="help-block" style="color: red;">
+                                            <strong>{{ $errors->first('captcha') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
-                                        <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
+                                <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
                             </div>
                             {{Form::close()}}
                         </div>

@@ -184,10 +184,15 @@
                             </button>
                         </div>
                     </div>
-                    <div class="row form-group">
+                        <div class="row form-group">
                         <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
                         <div class="col-sm-7">
                             <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                            @if ($errors->has('captcha'))
+                                <span class="help-block" style="color: red;">
+                                    <strong>{{ $errors->first('captcha') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
@@ -254,6 +259,9 @@
 <script src="{{ asset ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{ asset('js/datatable/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\ZoomCreateValidation') !!}
 
 
 </script>
