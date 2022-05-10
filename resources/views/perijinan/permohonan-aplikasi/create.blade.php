@@ -4,6 +4,7 @@
 @section('isi')
 @section('kondisi')
 <header id="header" 
+class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent header-white-nav-links-lg header-show-hide"
             data-hs-header-options='{
               "fixMoment": 1000,
               "fixEffect": "slide"
@@ -15,7 +16,7 @@
 @endsection
 
 <main id="content" role="main" style="background-image:url({{ asset('front/assets/images/arjuna.jpg') }}); background-size: cover; background-repeat:   no-repeat; background-position: center center; object-fit:cover">
-    <div class="container space-top-1 space-bottom-2">
+    <div class="container space-top-2 space-bottom-2">
         <div class="w-100 sm-6 mx-lg-auto">
            <h3 class="mb-4 mt-4" style="color: white;"><center>Form Permohonan Aplikasi</center></h3>
             <div class="w-lg-80 mx-auto">
@@ -81,7 +82,7 @@
                             </div>
                             <div class="col-sm-4"></div>
                             <div class="col-sm-8">
-                                <span class="text-muted font-size-1">Format BRD (Business Requirements Document) : <a href="{{ asset('uploads/layanan/Draf Usulan BRD-Template.docx') }}" target="_blank">Download</a></span>
+                                <span class="text-muted font-size-1">Format BRD (Business Requirements Document) : <a href="{{ asset('uploads/layanan/Draf_Usulan_BRD_Template.docx') }}" target="_blank">Download</a></span>
                             </div>
                         </div>
                         <div class="row form-group">
