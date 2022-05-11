@@ -78,6 +78,13 @@ class PinjamPeralatanController extends Controller
     public function store(Request $request)
     {
 
+        $path = 'uploads/layanan';
+        
+        if (!file_exists($path)) {
+              mkdir($path);
+             }
+
+
         $request->validate([
             'captcha' => 'required|captcha',
         ],
