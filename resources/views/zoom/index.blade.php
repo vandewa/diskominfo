@@ -40,7 +40,7 @@
                         <th>Peserta</th>
                         <th>Link Zoom</th>
                         <th>Action</th>
-                     
+                        <th style="display:none;">Tanggalnya</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,18 +57,18 @@
         processing: true,
         serverSide: true,
         ajax: "{{ route('zoom.list') }}",
-         "order": [[ 1, "desc" ]],
+         "order": [[ 9, "desc" ]],
         columns: [
            { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-            { data: 'tanggal-buat', name: 'tanggal' },
-            { data: 'jam_mulai', nama: 'jam_mulai' },
+            { data: 'tanggal-buat', name: 'tanggal-buat', orderable: false, searchable: false },
+            { data: 'jam_mulai', nama: 'jam_mulai', orderable: false, searchable: false },
             { data: 'peminjam', name: 'peminjam' },
             { data: 'nama_opd', name: 'nama_opd' },
             { data: 'topik', name: 'topik' },
             { data: 'peserta', name: 'peserta' },
             { data: 'link_zoom', name: 'link_zoom' },
-          
             { data: 'action', },
+            { data: 'tanggal', name:'tanggal', visible: false},
         ]
     });
 </script>

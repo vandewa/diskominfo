@@ -26,11 +26,11 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Tanggal</th>
                     <th>Nama</th>
                     <th>Alamat</th>
                     <th>Pekerjaan</th>
                     <th>Alasan Pengajuan</th>
-                    <th>Tanggal</th>
                     <th>Status</th>
                     <th class="text-center">Aksi</th>
                     <th style="display:none;">Tanggalnya</th>
@@ -53,14 +53,14 @@
         "order": [[ 8, "desc" ]],
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+            {data: 'tanggalnya', name:'tanggalnya',orderable: false, searchable: false,},
             {data: 'nama', name:'nama'},
             {data: 'alamat', name:'alamat'},
             {data: 'pekerjaan', name:'pekerjaan'},
             {data: 'alasan_pengajuan', name:'alasan_pengajuan'},
-            {data: 'tanggalnya', name:'tanggalnya',orderable: false, searchable: false,},
             {data: 'status.code_nm', name:'status.code_cd',orderable: false, searchable: false,},
             {data: 'action', },
-            {data: 'created_at', name:'created_at', visible: false, orderable: false,},
+            {data: 'created_at', name:'created_at', visible: false},
         ]
     });
 </script>
