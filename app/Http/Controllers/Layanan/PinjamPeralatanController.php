@@ -14,7 +14,6 @@ use PhpOffice\PhpWord\TemplateProcessor;
 use Illuminate\Support\Facades\File;
 
 
-
 class PinjamPeralatanController extends Controller
 {
     /**
