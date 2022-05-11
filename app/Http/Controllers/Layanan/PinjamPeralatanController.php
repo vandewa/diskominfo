@@ -239,7 +239,21 @@ class PinjamPeralatanController extends Controller
      */
     public function destroy($id)
     {
+
+        $oke = PinjamPeralatan::where('id',$id)->first();
+
+        if(!empty($oke->bukti)) {
+            $path =  public_path('uploads/bukti/'.$oke->bukti);
+            File::delete($path);
+        }
+
+        if(!empty($oke->file_name)) {
+            $paths =  public_path('uploads/layanan/'.$oke->file_name);
+            File::delete($paths);
+        }
+
         PinjamPeralatan::destroy($id);
+
     }
 
     public function notification($nohape, $tiket)
