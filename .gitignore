@@ -8,5 +8,5 @@ npm-debug.log
 .htaccess
 /public/uploads.zip
 /uploads.zip
-
+error_log
 
