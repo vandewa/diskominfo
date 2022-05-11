@@ -76,8 +76,10 @@
     </div>
 </div>
 
-@if(!empty($lampiran))
+@if(!empty($lampiran) || !empty($bukti) )
 <div class="form-group row">
+
+    @if(!empty($lampiran))
     <div class="col-6">
         <label class="col-form-label col-lg-6">Lampiran<span class="text-danger">*</span></label>
         <div class="col-lg-12">
@@ -86,6 +88,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     @if(!empty($bukti))
     <div class="col-6">
@@ -98,10 +101,8 @@
     </div>
     @endif
 
-
 </div>
 @endif
-
 
 <hr>
 
