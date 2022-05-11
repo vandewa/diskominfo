@@ -315,7 +315,7 @@ class PinjamPeralatanController extends Controller
 
         $templateProcessor->saveAs($pathSave);
 
-       return response()->download($pathSave,'Surat-Pernyataan-'.$data->no.'.docx')->deleteFileAfterSend(false);
+       return response()->download($pathSave,'Surat-Pernyataan-'.$data->no.'.docx')->deleteFileAfterSend(true);
 
     }
 }
