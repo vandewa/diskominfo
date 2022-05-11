@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use NcJoes\OfficeConverter\OfficeConverter;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Illuminate\Support\Facades\File;
 
 
 
