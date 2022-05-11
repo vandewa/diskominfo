@@ -219,7 +219,6 @@
     <script type="text/javascript">
         function sweetAlert() 
         {  
-
             Swal.fire({
             title: 'Berhasil!',
             text: 'Silahkan cek WhatsApp / Email untuk notifikasi berikutnya',
