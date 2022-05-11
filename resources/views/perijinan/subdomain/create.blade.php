@@ -95,25 +95,21 @@ class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent h
                             <div class="col-sm-8">
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
-                                    <div class="form-control">
-                                        <div class="custom-control custom-radio">
-                                        {{Form::radio('hosting', '0', true), null,['class' => '"custom-control-input '] }} Ya
-                                        {{-- <input type="radio" class="custom-control-input" name="hosting" id="genderTypeRadio1" value="0" checked> --}}
-                                        {{-- <label class="custom-control-label" for="genderTypeRadio1"></label> --}}
-                                        </div>
-                                    </div>
-                                    <!-- End Custom Radio -->                                       
+                                    <label class="form-control" for="formControlRadioEg1">
+                                        <span class="form-check">
+                                            <input name="hosting" type="radio" class="form-check-input" id="formControlRadioEg1" value="0" required>
+                                            <span class="form-check-label">Ya</span>
+                                        </span>
+                                    </label>
 
-                                    <!-- Custom Radio -->
-                                    <div class="form-control">
-                                        <div class="custom-control custom-radio">
-                                        {{-- <input type="radio" class="custom-control-input" name="hosting" id="genderTypeRadio2" value="1"> --}}
-                                            {{Form::radio('hosting', '1'), null,['class' => '"custom-control-input '] }} Tidak
-                                        {{-- <label class="custom-control-label" for="genderTypeRadio2"></label> --}}
-                                        </div>
-                                    </div>
-                                    <!-- End Custom Radio -->
-                                    </div>
+                                    <label class="form-control" for="formControlRadioEg2">
+                                        <span class="form-check">
+                                            <input name="hosting" type="radio" class="form-check-input" id="formControlRadioEg2" value="1">
+                                            <span class="form-check-label">Tidak</span>
+                                        </span>
+                                    </label>
+                        
+                                </div>
                             </div>
                         </div>
                         <div class="row form-group devanganteng" style="display: none">

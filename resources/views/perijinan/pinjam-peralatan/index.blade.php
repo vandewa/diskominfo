@@ -26,10 +26,10 @@
             <thead>
                 <tr>
                     <th>No Tiket</th>
+                    <th>Lama Pinjam</th>
                     <th>Nama</th>
                     <th>Instansi/Lembaga</th>
                     <th>Alat</th>
-                    <th>Lama Pinjam</th>
                     <th>Surat Ditandatangani</th>
                     <th>Status</th>
                     <th class="text-center">Aksi</th>
@@ -55,10 +55,10 @@
         columns: [
             // {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
             {data: 'no', name:'no',},
+            {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
             {data: 'nama', name:'nama',},
             {data: 'instansi', name:'instansi'},
             {data: 'alat', name:'alat'},
-            {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
             {data: 'bukti', name:'bukti', orderable: false, searchable: false,},
             {data: 'status.code_nm', name:'status.code_cd', orderable: false, searchable: false,},
             {data: 'action', },

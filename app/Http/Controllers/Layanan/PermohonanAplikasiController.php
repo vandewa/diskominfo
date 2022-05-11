@@ -31,6 +31,9 @@ class PermohonanAplikasiController extends Controller
                     <a href="'.route('permohonan-aplikasi.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                 </div>';
                 })
+                ->addColumn('tanggalnya', function ($a) {
+                    return Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y');
+                })
                 ->rawColumns(['action'])
                 ->make(true);
         }

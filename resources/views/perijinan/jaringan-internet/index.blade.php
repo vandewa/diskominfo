@@ -26,11 +26,11 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Tanggal</th>
                     <th>Nama</th>
                     <th>Instansi</th>
                     <th>Jenis layanan</th>
                     <th>Jenis jaringan</th>
-                    <th>Tanggal</th>
                     <th>Status</th>
                     <th class="text-center">Aksi</th>
                     <th style="display:none;">Tanggalnya</th>
@@ -53,11 +53,11 @@
                 "order": [[ 8, "desc" ]],
 				columns: [
 				    {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+                    {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
 					{data: 'nama', name:'nama'},
 					{data: 'instansi', name:'instansi'},
 					{data: 'layanan.code_nm', name:'layanan.code_cd'},
 					{data: 'jaringan.code_nm', name:'jaringan.code_cd'},
-					{data: 'tanggalnya', name:'tanggalnya'},
 					{data: 'status.code_nm', name:'status.code_cd'},
                     {data: 'action', },
 					{data: 'created_at', name:'created_at', visible: false},

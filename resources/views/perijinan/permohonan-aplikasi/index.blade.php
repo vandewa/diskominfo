@@ -26,6 +26,7 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Tanggal</th>
                     <th>Nama</th>
                     <th>OPD</th>
                     <th>NIP</th>
@@ -49,9 +50,10 @@
 				processing: true,
 				serverSide: true,
                 ajax: window.location.href,
-                "order": [[ 7, "desc" ]],
+                "order": [[ 8, "desc" ]],
 				columns: [
 				    {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+                    {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
 					{data: 'nama', name:'nama'},
 					{data: 'instansi', name:'instansi'},
 					{data: 'nip', name:'nip'},
