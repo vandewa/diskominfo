@@ -37,6 +37,7 @@ Tambah InfoGrafis
                     <th>Judul</th>
                     <th>Oleh</th>
                     <th>Tanggal</th>
+                    <th style="display:none;">Tanggalnya</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -55,19 +56,15 @@ Tambah InfoGrafis
 				processing: true,
 				serverSide: true,
 				ajax: "{{ route('infografis.list') }}",
+                "order": [[ 5, "desc" ]],
 				columns: [
 					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-					{data: 'file_name',},
-                    {data: 'judul',},
-                    {data: 'created_by', },
-                    {data: 'created_at', },
-                  
-					{
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-					},
+					{ data: 'file_name', orderable: false, searchable: false,},
+                    { data: 'judul',},
+                    { data: 'created_by', },
+                    { data: 'tanggal',  orderable: false, searchable: false, },
+                    { data: 'created_at', name:'created_at', visible: false},
+					{ data: 'action', name: 'action', orderable: false, searchable: false },
 				]
 			});
 </script>

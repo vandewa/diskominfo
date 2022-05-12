@@ -37,6 +37,7 @@ Tambah Penguman
                     <th>Foto</th>
                     <th>Judul</th>
                     <th>Tanggal</th>
+                    <th style="display:none;">Tanggalnya</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -55,18 +56,14 @@ Tambah Penguman
         processing: true,
         serverSide: true,
         ajax: "{{ route('pengumumans.list') }}",
-        "order": [[ 3, "desc" ]],
+        "order": [[ 4, "desc" ]],
 				columns: [
-					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
-                    {data: 'nama_lampiran', },
-                    {data: 'judul', },
-                    {data: 'created_at', },
-					{
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-            },
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-left"},
+                    { data: 'nama_lampiran', name:'nama_lampiran', orderable: false, searchable: false},
+                    { data: 'judul', name:'judul'},
+                    { data: 'tanggal', name:'tanggal', orderable: false, searchable: false},
+                    { data: 'created_at', name:'created_at', visible: false},
+					{ data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 

@@ -171,7 +171,7 @@ class InfografisController extends Controller
                 ->editColumn('judul', function($a){
                     return $a->judul;
                 })
-                ->editColumn('created_at', function($a){
+                ->addColumn('tanggal', function($a){
                     return \Carbon\Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y');
                     // return date('d F Y', strtotime($a->created_at));
                 })

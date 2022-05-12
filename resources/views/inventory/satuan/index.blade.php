@@ -51,17 +51,11 @@
         processing: true,
         serverSide: true,
         ajax: window.location.href,
-        columns: [{
-            data: 'DT_RowIndex',
-            name: 'DT_RowIndex'
-        },
-        {
-            data: 'name',
-            name: 'name'
-        },
-        {
-            data: 'action',
-        },
+        "order": [[ 1, "desc" ]],
+        columns: [
+            { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-center"},
+            { data: 'name', name: 'name'},
+            { data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
         ]
     });
 </script>

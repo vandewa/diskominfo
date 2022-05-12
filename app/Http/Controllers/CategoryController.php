@@ -133,6 +133,7 @@ class CategoryController extends Controller
                 {
                     return $data->nama_kategori;
                 })
+                
                 ->rawColumns(['action', 'status'])
                 ->make(true);
         

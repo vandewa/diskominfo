@@ -36,6 +36,7 @@ Tambah Halaman Menu
                     <th>Halaman Menu (Url)</th>
                     <th>Oleh</th>
                     <th>Tanggal</th>
+                    <th style="display:none;">Tanggalnya</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -54,18 +55,14 @@ Tambah Halaman Menu
 				processing: true,
 				serverSide: true,
 				ajax: "{{ route('halaman.list') }}",
-		        "order": [[ 1, "asc" ]],
+		        "order": [[ 4, "desc" ]],
 				columns: [
-					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
-					{data: 'halaman',  name: 'slug',},
-                    {data: 'nama.name', name: 'nama.name', defaultContent: '-'},
-                    {data: 'created_at', },
-					{
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-					},
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-left"},
+					{ data: 'halaman',  name: 'slug',},
+                    { data: 'nama.name', name: 'nama.name', defaultContent: '-'},
+                    { data: 'tanggal',  orderable: false, searchable: false, },
+                    { data: 'created_at', name:'created_at', visible: false},
+					{ data: 'action', name: 'action', orderable: false, searchable: false},
 				]
 			});
 </script>

@@ -65,7 +65,7 @@
             { data: 'jamMulai', name: 'jamMulai' },
             { data: 'keterangan', name: 'keterangan' },
             { data: 'oleh.name', name: 'oleh.name',  orderable: false, searchable: false, },
-            { data: 'action', },
+            { data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
         ]
     });
 </script>

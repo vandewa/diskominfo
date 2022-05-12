@@ -157,7 +157,7 @@ class LampiranController extends Controller
                     $file = '<a href="'.asset('uploads/lampiran/'.$data->nama_lampiran).'" target="_blank">'.$data->nama_lampiran.'</a>';
                     return $file;
                 })
-                ->editColumn('created_at', function($data){
+                ->addColumn('tanggal', function($data){
                     return \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y');
                     
                 })

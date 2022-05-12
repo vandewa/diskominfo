@@ -31,7 +31,7 @@ class BukuTamuController extends Controller
                         return $actionBtn;
                     }
                 )
-                ->editColumn('tanggal', function ($a) {
+                ->addColumn('tanggal', function ($a) {
                         return \Carbon\Carbon::createFromFormat('Y-m-d', $a->tanggal)->isoFormat('dddd, D MMMM Y');
                  
                 })

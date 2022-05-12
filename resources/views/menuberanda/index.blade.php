@@ -58,16 +58,11 @@ Tambah Menu ( Khusus File )
         "order": [[ 1, "asc" ]],
 				columns: [
 					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
-                    {data: 'nama', },
-                    {data: 'url', },
-                     {data: 'parent', },
-                      {data: 'lampiran', },
-					{
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-            },
+                    { data: 'nama', },
+                    { data: 'url', orderable: false},
+                    { data: 'parent', orderable: false},
+                    { data: 'lampiran', orderable: true, searchable: false},
+					{ data: 'action', name: 'action', orderable: false, searchable: false,},
         ]
     });
 

@@ -62,7 +62,7 @@
             { data: 'satuan.name', name: 'satuan.name' },
             { data: 'tahun_anggaran', name: 'tahun_anggaran' },
             { data: 'status.code_nm', name: 'status.code_nm' },
-            { data: 'action', },
+            { data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
         ]
     });
 </script>

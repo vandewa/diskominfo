@@ -56,16 +56,11 @@ Tambah Role
         ajax: "{{ route('role.list') }}",
         "order": [[ 1, "asc" ]],
 				columns: [
-					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
-                    {data: 'name', },
-                    {data: 'display_name', },
-                    {data: 'description', },
-					{
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-            },
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-left"},
+                    { data: 'name', },
+                    { data: 'display_name', },
+                    { data: 'description', },
+					{ data: 'action', name: 'action', orderable: false, searchable: false },
         ]
     });
 

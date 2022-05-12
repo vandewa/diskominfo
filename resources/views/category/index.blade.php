@@ -34,7 +34,7 @@ Tambah Kategori
                 <tr>
                     <th>No</th>
                     <th>Nama Kategori</th>
-                    <th class="text-center">Aksi</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,17 +51,12 @@ Tambah Kategori
 		var table = $('.devan').DataTable({
         processing: true,
         serverSide: true,
+         "order": [[ 1, "asc" ]],
         ajax: "{{ route('category.list') }}",
         columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'nama_kategori', },
-                    // {data: 'nama_lampiran', },
-					{
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-            },
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+                    { data: 'nama_kategori', },
+					{ data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 

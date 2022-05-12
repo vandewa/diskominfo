@@ -17,32 +17,28 @@
 <main id="content" role="main">
     <!-- Article Description Section -->
     <div class="container space-top-1 space-bottom-2">
-   
-    
       <div class="w-100 sm-6 mx-lg-auto">
-      <h3 class="mb-4 mt-10"><center>Agenda Harian Diskominfo</center></h3>
-      <table class="table table-light table-striped devan w-100" >
-        <thead class="thead-dark">
-            <tr>
-            <th>No</th>
-                <th>Nama</th>
-                <th>Tanggal</th>
-                <th>Acara</th>
-                <th>Tempat</th>
-                <th>Jam</th>
-                <th>Keterangan</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+        <h3 class="mb-4 mt-10"><center>Agenda Harian Diskominfo</center></h3>
+        <table class="table table-light table-striped devan w-100" >
+          <thead class="thead-dark">
+              <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Tanggal</th>
+                  <th>Acara</th>
+                  <th>Tempat</th>
+                  <th>Jam</th>
+                  <th>Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
         <div class="mb-4">
-         
-        </div>
       </div>
     </div>
-
-    </main>
+  </div>
+</main>
 
 @endsection
 

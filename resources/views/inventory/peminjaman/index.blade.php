@@ -65,7 +65,7 @@
             { data: 'petugas_id', name: 'petugas_id' },
             { data: 'penerima_id', name: 'penerima_id' },
             // { data: 'peminjamanst', },
-            { data: 'action', },
+            { data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
 
         ]
     });

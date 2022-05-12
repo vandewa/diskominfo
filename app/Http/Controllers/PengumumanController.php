@@ -219,7 +219,7 @@ class PengumumanController extends Controller
                     return $foto;
                 })
 
-                ->editColumn('created_at', function($data)
+                ->addColumn('tanggal', function($data)
                 {
                      return \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y');
                 })

@@ -217,7 +217,7 @@ class HalamanController extends Controller
                     <span class="badge badge-success">Active</span>';
                     return $actionBtn;
                 })
-                ->editColumn('created_at', function($a){
+                ->addColumn('tanggal', function($a){
                     return \Carbon\Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y');
                     // return date('d F Y', strtotime($a->created_at));
                 })

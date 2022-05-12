@@ -57,16 +57,11 @@ Tambah User
         ajax: "{{ route('user.list') }}",
         "order": [[ 1, "asc" ]],
         columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
-                    {data: 'name', },
-                    {data: 'email', },
-                    {data: 'role', searchable: false },
-					    {
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-                         },
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false},
+                    { data: 'name', },
+                    { data: 'email', },
+                    { data: 'role', searchable: false },
+					{ data: 'action', name: 'action', orderable: false, searchable: false },
         ]
     });
 </script>

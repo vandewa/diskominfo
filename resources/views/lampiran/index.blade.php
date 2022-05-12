@@ -37,6 +37,7 @@ Tambah Lampiran
                     <th>Keterangan</th>
                     <th>Nama File</th>
                     <th>Tanggal</th>
+                    <th style="display:none;">Tanggalnya</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -55,18 +56,14 @@ Tambah Lampiran
         processing: true,
         serverSide: true,
         ajax: "{{ route('lampirans.list') }}",
-        "order": [[ 1, "asc" ]],
+        "order": [[ 4, "asc" ]],
 				columns: [
-					{data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: true, searchable: false, className: "text-left"},
-                    {data: 'keterangan', },
-                    {data: 'nama_lampiran', },
-                    {data: 'created_at', },
-					{
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-            },
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-left"},
+                    { data: 'keterangan', },
+                    { data: 'nama_lampiran', orderable: false, searchable: false},
+                    { data: 'tanggal', orderable: false, searchable: false},
+                    { data: 'created_at', name:'created_at', visible: false},
+					{ data: 'action', name: 'action', orderable: false, searchable: false },
         ]
     });
 

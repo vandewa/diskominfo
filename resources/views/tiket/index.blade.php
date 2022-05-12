@@ -55,6 +55,7 @@
         var table = $('.devan').DataTable({
             processing: true,
             serverSide: true,
+            "order": [[ 0, "desc" ]],
             ajax: window.location.href,
             columns: [
                 { data: 'no', name: 'no'},
@@ -64,7 +65,7 @@
                 { data: 'status.code_nm', name: 'status.code_nm'},
                 { data: 'deskripsi_masalah', name: 'deskripsi_masalah'},
                 { data: 'petugas.name', name: 'petugas.name', defaultContent: '-'},
-                {data: 'action', },
+                { data: 'action', name: 'action', orderable: false, searchable: false },
 
             ]
         });

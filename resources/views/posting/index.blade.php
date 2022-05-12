@@ -38,6 +38,7 @@ Tambah Posting
                     <th>Posisi</th>
                     <th>Oleh</th>
                     <th>Tanggal</th>
+                    <th style="display:none;">Tanggalnya</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -56,21 +57,16 @@ Tambah Posting
 				processing: true,
 				serverSide: true,
 				ajax: "{{ route('posting.list') }}",
-                  "order": [[ 5, "desc" ]],
+                  "order": [[ 6, "desc" ]],
 				columns: [
 					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-					{data: 'judul_posting'},
-                    {data: 'id_kategori', },
-					{data: 'posisi', },
-                    {data: 'nama.name', name: 'nama.name', defaultContent: '-'},
-                    {data: 'created_at', },
-                    // {data: 'created_by', },
-					{
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-					},
+					{ data: 'judul_posting'},
+                    { data: 'id_kategori', },
+					{ data: 'posisi', },
+                    { data: 'nama.name', name: 'nama.name', defaultContent: '-'},
+                    { data: 'tanggal',  orderable: false, searchable: false, },
+                    { data: 'created_at', name:'created_at', visible: false},
+					{ data: 'action', name: 'action', orderable: false, searchable: false},
 				]
 			});
 </script>

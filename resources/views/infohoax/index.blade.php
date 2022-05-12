@@ -28,21 +28,22 @@ Tambah Info Hoax
 <div class="content">
     <!-- Basic datatable -->
     <div class="card">
-    <div class="card-body">    
-    <table class="table datatable-basic devan">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Judul</th>
-                    <th>Oleh</th>
-                    <th>Tanggal</th>
-                    <th class="text-center">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
+        <div class="card-body">    
+        <table class="table datatable-basic devan">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Judul</th>
+                        <th>Oleh</th>
+                        <th>Tanggal</th>
+                        <th style="display:none;">Tanggalnya</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
     <!-- /basic datatable -->
 </div>
@@ -54,18 +55,14 @@ Tambah Info Hoax
 				processing: true,
 				serverSide: true,
 				ajax: "{{ route('infohoax.list') }}",
+                "order": [[ 4, "desc" ]],
 				columns: [
 					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-					{data: 'judul_posting',},
-                    {data: 'created_by', },
-                    {data: 'created_at', },
-                  
-					{
-						data: 'action', 
-						name: 'action', 
-						orderable: true, 
-						searchable: true
-					},
+					{ data: 'judul_posting',},
+                    { data: 'created_by', },
+                    { data: 'tanggal',  orderable: false, searchable: false, },
+                    { data: 'created_at', name:'created_at', visible: false},
+					{ data: 'action', name: 'action', orderable: false, searchable: false },
 				]
 			});
 </script>
