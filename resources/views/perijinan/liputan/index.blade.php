@@ -61,7 +61,7 @@
             {data: 'tempat', name:'tempat'},
             {data: 'waktu', name:'waktu'},
             {data: 'status.code_nm', name:'status.code_cd'},
-            {data: 'action', },
+            {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'tanggal', name:'tanggal', visible: false},
         ]
     });

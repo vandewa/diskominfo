@@ -66,8 +66,8 @@
             { data: 'nama_opd', name: 'nama_opd' },
             { data: 'topik', name: 'topik' },
             { data: 'peserta', name: 'peserta' },
-            { data: 'link_zoom', name: 'link_zoom' },
-            { data: 'action', },
+            { data: 'link_zoom', name: 'link_zoom',  orderable: false, searchable: false},
+             {data: 'action', name: 'action', orderable: false, searchable: false}, 
             { data: 'tanggal', name:'tanggal', visible: false},
         ]
     });

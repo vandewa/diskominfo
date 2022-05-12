@@ -58,8 +58,8 @@
 					{data: 'instansi', name:'instansi'},
 					{data: 'nip', name:'nip'},
 					{data: 'nomor', name:'nomor'},
-					{data: 'status.code_nm', name:'status.code_cd'},
-                    {data: 'action',},
+					{data: 'status.code_nm', name:'status.code_cd',  orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false}, 
 					{data: 'created_at', name:'created_at', visible: false},
 				]
 			});

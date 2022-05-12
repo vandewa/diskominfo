@@ -51,7 +51,7 @@
         processing: true,
         serverSide: true,
         ajax: window.location.href,
-        "order": [[ 7, "desc" ]],
+        "order": [[ 0, "desc" ]],
         columns: [
             // {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
             {data: 'no', name:'no',},
@@ -61,7 +61,7 @@
             {data: 'alat', name:'alat'},
             {data: 'bukti', name:'bukti', orderable: false, searchable: false,},
             {data: 'status.code_nm', name:'status.code_cd', orderable: false, searchable: false,},
-            {data: 'action', },
+            {data: 'action', name: 'action', orderable: false, searchable: false}, 
             {data: 'tanggal_mulai', name:'tanggal_mulai', visible: false},
         ]
     });

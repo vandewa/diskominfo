@@ -54,14 +54,14 @@
                 "order": [[ 9, "desc" ]],
 				columns: [
 				    {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-					{data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
+					{data: 'tanggal', name:'tanggal', orderable: false, searchable: false,},
 					{data: 'nama', name:'nama'},
 					{data: 'alamat', name:'alamat'},
 					{data: 'pekerjaan', name:'pekerjaan'},
 					{data: 'nomor', name:'nomor'},
 					{data: 'email', name:'email'},
 					{data: 'status.code_nm', name:'status.code_cd'},
-                    {data: 'action', },
+                    {data: 'action', name: 'action', orderable: false, searchable: false}, 
 					{data: 'created_at', name:'created_at', visible: false},
 				]
 			});

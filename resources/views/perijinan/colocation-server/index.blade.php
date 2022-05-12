@@ -51,7 +51,7 @@
 				processing: true,
 				serverSide: true,
                 ajax: window.location.href,
-                "order": [[ 8, "desc" ]],
+                "order": [[ 9, "desc" ]],
 				columns: [
 				    {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
                     {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
@@ -60,8 +60,8 @@
 					{data: 'bidang', name:'bidang'},
 					{data: 'nomor', name:'nomor'},
 					{data: 'email', name:'email'},
-					{data: 'status.code_nm', name:'status.code_cd'},
-                    {data: 'action', },
+					{data: 'status.code_nm', name:'status.code_cd',  orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false}, 
 					{data: 'created_at', name:'created_at', visible: false},
 				]
 			});

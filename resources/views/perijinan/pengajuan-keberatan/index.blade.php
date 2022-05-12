@@ -58,8 +58,8 @@
             {data: 'alamat', name:'alamat'},
             {data: 'pekerjaan', name:'pekerjaan'},
             {data: 'alasan_pengajuan', name:'alasan_pengajuan'},
-            {data: 'status.code_nm', name:'status.code_cd',orderable: false, searchable: false,},
-            {data: 'action', },
+            {data: 'status.code_nm', name:'status.code_cd'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}, 
             {data: 'created_at', name:'created_at', visible: false},
         ]
     });
