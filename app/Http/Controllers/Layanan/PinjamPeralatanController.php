@@ -151,8 +151,8 @@ class PinjamPeralatanController extends Controller
             'instansi' => strtoupper($a->instansi),
             'alat' => strtoupper($a->alat),
             'tanggal' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y')),
-            'tanggal_mulai' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y')),
-            'tanggal_selesai' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($a->created_at))->isoFormat('D MMMM Y')),
+            'tanggal_mulai' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($a->tanggal_mulai))->isoFormat('D MMMM Y')),
+            'tanggal_selesai' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($a->tanggal_selesai))->isoFormat('D MMMM Y')),
             'tahun' => date('Y', strtotime($a->created_at))
         ]);
 
@@ -329,8 +329,8 @@ class PinjamPeralatanController extends Controller
             'instansi' => strtoupper($data->instansi),
             'alat' => strtoupper($data->alat),
             'tanggal' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y')),
-            'tanggal_mulai' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y')),
-            'tanggal_selesai' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y')),
+            'tanggal_mulai' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($data->tanggal_mulai))->isoFormat('D MMMM Y')),
+            'tanggal_selesai' => strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($data->tanggal_selesai))->isoFormat('D MMMM Y')),
             'tahun' => date('Y', strtotime($data->created_at))
         ]);
 
