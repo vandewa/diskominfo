@@ -232,7 +232,7 @@ class PinjamPeralatanController extends Controller
             $notif = 'Status permintaan layanan Pinjam Peralatan '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
         }
 
-        $this->notification($nohape, $notif);
+        $this->notificationUpdate($nohape, $notif);
         $this->sendGroupWA($notif);
 
         return redirect(route('pinjam-peralatan.index'))->with('status','Data berhasil diubah');
@@ -268,12 +268,22 @@ class PinjamPeralatanController extends Controller
 
         $notif = 'Terima kasih, permintaan layanan pinjam peralatan berhasil dikirim.'.urldecode('%0D%0A%0D%0A').
         
-        'Mohon surat pernyataan yang sudah ditandatangani diupload pada :'.urldecode('%0D%0A').
-        url('/pengajuanizin?q='.$tiket).urldecode('%0D%0A').
+        'Mohon surat pernyataan yang sudah ditandatangani diupload pada :'.urldecode('%0D%0A%0D%0A').
+        url('/pengajuanizin?q='.$tiket).urldecode('%0D%0A%0D%0A').
         
         'Download surat pernyataan dibawah ini :'.urldecode('%0D%0A').
 
         urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
+
+        $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => $nohape,
+            'message' => $notif,
+        ]);
+
+    }
+
+    public function notificationUpdate($nohape, $notif)
+    {
 
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
             'number' => $nohape,

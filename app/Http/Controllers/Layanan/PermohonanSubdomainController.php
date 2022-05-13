@@ -220,7 +220,7 @@ class PermohonanSubdomainController extends Controller
             $notif = 'Status permintaan layanan Permohonan Subdomain '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
         }
      
-        $this->notification($nohape, $notif);
+        $this->notificationUpdate($nohape, $notif);
         $this->sendGroupWA($notif);
     
         return redirect()->route('permohonan-subdomain.index');
@@ -235,6 +235,16 @@ class PermohonanSubdomainController extends Controller
     public function destroy($id)
     {
         PermohonanSubdomain::destroy($id);
+    }
+
+    public function notificationUpdate($nohape, $notif)
+    {
+
+        $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => $nohape,
+            'message' => $notif,
+        ]);
+
     }
 
     public function notification($nohape, $notifikasi)

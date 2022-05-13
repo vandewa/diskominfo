@@ -183,7 +183,7 @@ class MediaPublikasiController extends Controller
             $notif = 'Status permintaan layanan Pembuatan Media Publikasi '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
         }
      
-        $this->notification($nohape);
+        $this->notificationUpdate($nohape, $notif);
         $this->sendGroupWA($notif);
     
         return redirect()->route('media-publikasi.index');
@@ -205,6 +205,16 @@ class MediaPublikasiController extends Controller
     {
         $notif = 'Terima kasih, permintaan layanan pembuatan media publikasi berhasil dikirim.'.urldecode('%0D%0A').'Mohon ditunggu notifikasi berikutnya. '. urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
         
+        $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
+            'number' => $nohape,
+            'message' => $notif,
+        ]);
+
+    }
+
+    public function notificationUpdate($nohape, $notif)
+    {
+
         $response = Http::asForm()->post('http://10.0.1.21:8000/send-message', [
             'number' => $nohape,
             'message' => $notif,
