@@ -50,7 +50,7 @@
 
      <!-- =============FORM============= -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document" >
+        <div class="modal-dialog modal-xl" role="document" >
             <div class="modal-content">
                 <div class="card-header">
                 <h5 class="modal-title" id="exampleModalLabel">Pinjam Akun Zoom</h5>
@@ -62,139 +62,142 @@
                     {{Form::open(['route' => 'perijinan:zoom.store', 'files' => true])}}
                     {{Form::hidden('status_st','STATUS_ST_01')}}
                     {{Form::hidden('waktu',\Carbon\Carbon::now()->format('H:i:s'))}}
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama OPD / Instansi</label>
-                        <div class="col-sm-7">
-                            {{Form::text('nama_opd', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama OPD','required'])}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama Peminjam</label>
-                        <div class="col-sm-7">
-                            {{Form::text('peminjam', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama Peminjam'])}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">No Handphone</label>
-                        <div class="col-sm-7">
-                            {{Form::number('no_hp', null, ['class' => 'form-control ','placeholder' => 'Masukkan No HP'])}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tanggal</label>
-                        <div class="col-sm-7">
-                                <div id="datepickerWrapperFrom" class="u-datepicker input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <span class="fas fa-calendar"></span>
-                                        </span>
-                                    </div>
-                                    <input required class="js-range-datepicker form-control bg-transparent rounded-right" type="datetime-local" name="tanggal" placeholder="Masukkan Tanggal" aria-label="From" data-rp-wrapper="#datepickerWrapperFrom">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-6">
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama OPD / Instansi</label>
+                                <div class="col-sm-7">
+                                    {{Form::text('nama_opd', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama OPD','required'])}}
                                 </div>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Topik</label>
-                        <div class="col-sm-7">
-                            {{Form::text('topik', null, ['class' => 'form-control ','placeholder' => 'Masukkan Topik'])}}
-                        </div>
-                    </div>
-                    
-                    <div class="row form-group">
-                            <label id="cardholderNameLabel" class="col-sm-5 col-form-label input-label">
-                                Jam Mulai
-                            </label>
-                        <div class="col-sm-7">
-                            <div class="js-form-message">
-                                <div class="input-group input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <span class="fas fa-clock"></span>
-                                        </span>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama Peminjam</label>
+                                <div class="col-sm-7">
+                                    {{Form::text('peminjam', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama Peminjam'])}}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">No Handphone</label>
+                                <div class="col-sm-7">
+                                    {{Form::number('no_hp', null, ['class' => 'form-control ','placeholder' => 'Masukkan No HP'])}}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tanggal</label>
+                                <div class="col-sm-7">
+                                        <div id="datepickerWrapperFrom" class="u-datepicker input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span class="fas fa-calendar"></span>
+                                                </span>
+                                            </div>
+                                            <input required class="js-range-datepicker form-control bg-transparent rounded-right" type="datetime-local" name="tanggal" placeholder="Masukkan Tanggal" aria-label="From" data-rp-wrapper="#datepickerWrapperFrom">
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Topik</label>
+                                <div class="col-sm-7">
+                                    {{Form::text('topik', null, ['class' => 'form-control ','placeholder' => 'Masukkan Topik'])}}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                    <label id="cardholderNameLabel" class="col-sm-5 col-form-label input-label">
+                                        Jam Mulai
+                                    </label>
+                                <div class="col-sm-7">
+                                    <div class="js-form-message">
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span class="fas fa-clock"></span>
+                                                </span>
+                                            </div>
+                                            <input class="form-control" type="waktu" id="single-input" name="jam_mulai" placeholder="Jam">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span>WIB</span>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <input class="form-control" type="waktu" id="single-input" name="jam_mulai" placeholder="Jam">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <span>WIB</span>
-                                        </span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                    <label id="cardholderNameLabel" class="col-sm-5 col-form-label input-label">
+                                        Jam Selesai
+                                    </label>
+                                <div class="col-sm-7">
+                                    <div class="js-form-message">
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span class="fas fa-clock"></span>
+                                                </span>
+                                            </div>
+                                            <input class="form-control" type="waktu" id="single-input" name="jam_selesai" placeholder="Jam">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span>WIB</span>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-md-12 col-sm-12 col-lg-6">
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Akun Maks Peserta</label>
+                                <div class="col-sm-7">
+                                    <label class="form-control" for="formControlRadioEg1">
+                                        <span class="form-check">
+                                            <input type="radio" class="form-check-input" name="peserta" id="formControlRadioEg1" value="100" required>
+                                            <span class="form-check-label">100</span>
+                                        </span>
+                                    </label>
 
-                    <div class="row form-group">
-                            <label id="cardholderNameLabel" class="col-sm-5 col-form-label input-label">
-                                Jam Selesai
-                            </label>
-                        <div class="col-sm-7">
-                            <div class="js-form-message">
-                                <div class="input-group input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <span class="fas fa-clock"></span>
+                                <label class="form-control" for="formControlRadioEg2">
+                                        <span class="form-check">
+                                            <input type="radio" class="form-check-input" name="peserta" id="formControlRadioEg2" value="500">
+                                            <span class="form-check-label">500</span>
                                         </span>
-                                    </div>
-                                    <input class="form-control" type="waktu" id="single-input" name="jam_selesai" placeholder="Jam">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <span>WIB</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Lampiran <small style="color: red;"><b>(*pdf)</small></b></label>
+                                <div class="col-sm-7 custom-file">
+                                    <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
+                                            data-hs-file-attach-options='{
+                                            "textTarget": "[for=\"customFile\"]"
+                                        }' accept="application/pdf">
+                                    <label class="custom-file-label" for="customFile">Pilih file</label>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
+                                <div class="col-sm-7 captcha">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                    &#x21bb;
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
+                                <div class="col-sm-7">
+                                    <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                    @if ($errors->has('captcha'))
+                                        <span class="help-block" style="color: red;">
+                                            <strong>{{ $errors->first('captcha') }}</strong>
                                         </span>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Akun Maks Peserta</label>
-                        <div class="col-sm-7">
-                            <label class="form-control" for="formControlRadioEg1">
-                                <span class="form-check">
-                                    <input type="radio" class="form-check-input" name="peserta" id="formControlRadioEg1" value="100" required>
-                                    <span class="form-check-label">100</span>
-                                </span>
-                            </label>
-
-                           <label class="form-control" for="formControlRadioEg2">
-                                <span class="form-check">
-                                    <input type="radio" class="form-check-input" name="peserta" id="formControlRadioEg2" value="500">
-                                    <span class="form-check-label">500</span>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
                     
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Lampiran <small style="color: red;"><b>(*pdf)</small></b></label>
-                        <div class="col-sm-7 custom-file">
-                            <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
-                                    data-hs-file-attach-options='{
-                                    "textTarget": "[for=\"customFile\"]"
-                                }' accept="application/pdf">
-                            <label class="custom-file-label" for="customFile">Pilih file</label>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
-                        <div class="col-sm-7 captcha">
-                            <span>{!! captcha_img() !!}</span>
-                            <button type="button" class="btn btn-danger" class="reload" id="reload">
-                            &#x21bb;
-                            </button>
-                        </div>
-                    </div>
-                        <div class="row form-group">
-                        <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
-                        <div class="col-sm-7">
-                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
-                            @if ($errors->has('captcha'))
-                                <span class="help-block" style="color: red;">
-                                    <strong>{{ $errors->first('captcha') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
                     <div class="d-flex justify-content-end">
                         <a href="{{ route('pengajuanizin') }}" class="btn btn-secondary ml-3 buttonnya">Batal</a>
                         <button type="submit" class="btn btn-primary ml-3 buttonnya">Submit</button>
@@ -206,29 +209,29 @@
     </div>    
     <!-- ============= END FORM ================== -->
     
-<!-- Modal -->
-<div class="modal fade" id="modalZoomLink" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Link Zoom</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-            <p class="link-zoomss" id="cuks" style="display: none"></p>
-            <input class="form-control" id="username" autocomplete="off" type="number" required placeholder="Masukkan nomor HP untuk melihat Link" data-msg="Silahkan Masukkan Nomor HP" data-error-class="u-has-error" data-success-class="u-has-success">
-            <span id="errornomor" style="color: red;" hidden>Nomor tidak sesuai</span>
-            <div id="result" hidden></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-       <button id="btn_copy" onclick="salinLink()" class="btn btn-sm btn-primary transition-3d-hover mr-1" hidden>Copy</button>
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalZoomLink" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Link Zoom</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <p class="link-zoomss" id="cuks" style="display: none"></p>
+                    <input class="form-control" id="username" autocomplete="off" type="number" required placeholder="Masukkan nomor HP untuk melihat Link" data-msg="Silahkan Masukkan Nomor HP" data-error-class="u-has-error" data-success-class="u-has-success">
+                    <span id="errornomor" style="color: red;" hidden>Nomor tidak sesuai</span>
+                    <div id="result" hidden></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+            <button id="btn_copy" onclick="salinLink()" class="btn btn-sm btn-primary transition-3d-hover mr-1" hidden>Copy</button>
+            </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 </main>
 @endsection
 
