@@ -167,7 +167,7 @@ data-hs-header-options='{
                 <div class="row text-center">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 py-2">
                         <img class="card-img transition-zoom-hover"
-                            src="{{ asset('front/assets/images/maklumat.jgp') }}" style="width: 100%;">
+                            src="{{ asset('front/assets/images/maklumat.jpg') }}" style="width: 100%;">
                     </div>
                 </div>
 
