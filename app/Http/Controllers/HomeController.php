@@ -124,32 +124,33 @@ class HomeController extends Controller
      public function informasiPublik(Request $request)
     {
        
-        $data1 = Mbuh::with(['anak' => function($z)use($request) {
-             if($request->filled('tahun')){
-                 $z->where('tahun', $request->tahun);
-             }
+        // $data1 = Mbuh::with(['anak' => function($z)use($request) {
+        //      if($request->filled('tahun')){
+        //          $z->where('tahun', $request->tahun);
+        //      }
 
-        }])->where('root', null)->where('type',1);
+        // }])->where('root', null)->where('type',1);
 
-        $data2 = Mbuh::with(['anak'=> function($z)use($request) {
-             if($request->filled('tahun')){
-                 $z->where('tahun', $request->tahun);
-             }
+        // $data2 = Mbuh::with(['anak'=> function($z)use($request) {
+        //      if($request->filled('tahun')){
+        //          $z->where('tahun', $request->tahun);
+        //      }
 
-        }])->where('root', null)->where('type',2);
-         if($request->filled('tahun')){
-             $data1->wherehas('anak', function($a) use ($request) {
-                    $a->where('tahun', $request->tahun);
-             });
-            $data2->wherehas('anak', function($a) use ($request) {
-                    $a->where('tahun', $request->tahun);
-             });
+        // }])->where('root', null)->where('type',2);
+        //  if($request->filled('tahun')){
+        //      $data1->wherehas('anak', function($a) use ($request) {
+        //             $a->where('tahun', $request->tahun);
+        //      });
+        //     $data2->wherehas('anak', function($a) use ($request) {
+        //             $a->where('tahun', $request->tahun);
+        //      });
             
-        }
-        $data1 = $data1->get();
-        $data2=$data2->get();
+        // }
+        // $data1 = $data1->get();
+        // $data2=$data2->get();
         // return $data;
-        return view('home.informasipublik', compact('data1','data2'));
+        // return view('home.informasipublik', compact('data1','data2'));
+        return view('home.informasipublik');
     }
 
     public function getInformasiPublik(Request $request)
