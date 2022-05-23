@@ -160,7 +160,7 @@ class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent h
                             <div class="row form-group">
                             <label for="captcha" class="col-sm-3 col-form-label input-label">Enter Captcha</label>
                                 <div class="col-sm-9">
-                                    <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                    <input id="captcha" type="text" class="form-control" placeholder="Hasil Penjumlahan" name="captcha">
                                     @if ($errors->has('captcha'))
                                         <span class="help-block" style="color: red;">
                                             <strong>{{ $errors->first('captcha') }}</strong>

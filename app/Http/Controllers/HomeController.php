@@ -36,6 +36,7 @@ use Carbon\Carbon;
 use Browser;
 use App\Models\PinjamPeralatan;
 use Illuminate\Support\Facades\Http;
+use App\Models\Mbuh;
 
 
 
@@ -120,9 +121,35 @@ class HomeController extends Controller
         return view('home.lampiran');
     }
 
-     public function informasiPublik()
+     public function informasiPublik(Request $request)
     {
-        return view('home.informasipublik');
+       
+        $data1 = Mbuh::with(['anak' => function($z)use($request) {
+             if($request->filled('tahun')){
+                 $z->where('tahun', $request->tahun);
+             }
+
+        }])->where('root', null)->where('type',1);
+
+        $data2 = Mbuh::with(['anak'=> function($z)use($request) {
+             if($request->filled('tahun')){
+                 $z->where('tahun', $request->tahun);
+             }
+
+        }])->where('root', null)->where('type',2);
+         if($request->filled('tahun')){
+             $data1->wherehas('anak', function($a) use ($request) {
+                    $a->where('tahun', $request->tahun);
+             });
+            $data2->wherehas('anak', function($a) use ($request) {
+                    $a->where('tahun', $request->tahun);
+             });
+            
+        }
+        $data1 = $data1->get();
+        $data2=$data2->get();
+        // return $data;
+        return view('home.informasipublik', compact('data1','data2'));
     }
 
     public function getInformasiPublik(Request $request)
@@ -136,7 +163,12 @@ class HomeController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
                     if(substr($data->nama_lampiran,-4,1) == '.' || substr($data->nama_lampiran,-5,1) == '.') {
-                    $actionBtn = '<a href="/uploads/lampiran/'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Tampil</a>';
+                        if(substr($data->nama_lampiran,0,18) == '/uploads/lampiran/') {
+                            $actionBtn = '<a href="'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Tampil</a>';
+                        } else {
+                            $actionBtn = '<a href="/uploads/lampiran/'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Tampil</a>';
+                        }
+                    
                       return $actionBtn;
                     } else{
                          if(substr($data->nama_lampiran,0,6) == '/page/' ) {

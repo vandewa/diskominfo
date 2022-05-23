@@ -140,7 +140,7 @@ class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent h
                             </div>
                         </div>
                         <div class="row form-group">
-                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Lampiran <small style="color: red;"><b>(*pdf)</small></b></label>
+                            <label for="currentPasswordLabel" class="col-sm-4 col-form-label input-label">Surat Permohonan <small style="color: red;"><b>(*pdf)</small></b></label>
                             <div class="col-sm-8 custom-file">
                                 <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
                                         data-hs-file-attach-options='{
@@ -161,7 +161,7 @@ class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent h
                         <div class="row form-group">
                         <label for="captcha" class="col-sm-4 col-form-label input-label">Enter Captcha</label>
                             <div class="col-sm-8">
-                                <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                <input id="captcha" type="text" class="form-control" placeholder="Hasil Penjumlahan" name="captcha">
                                 @if ($errors->has('captcha'))
                                     <span class="help-block" style="color: red;">
                                         <strong>{{ $errors->first('captcha') }}</strong>
