@@ -108,14 +108,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-lg-6">
                             <div class="row form-group">
                                 <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tempat</label>
                                 <div class="col-sm-7">
                                     {{Form::text('tempat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan Tempat','required'])}}
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-lg-6">
+                            
                             <div class="row form-group">
                                 <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Penanggung jawab kegiatan</label>
                                 <div class="col-sm-7">

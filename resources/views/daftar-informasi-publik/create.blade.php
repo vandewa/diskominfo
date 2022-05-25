@@ -20,25 +20,7 @@
         </div>
         <div class="card-body">
             {{Form::open(['route' => 'inventory:kategori.store','method' => 'post', 'files' => 'true', ''])}}
-            <div class="form-group row">
-                <label class="col-form-label col-lg-2">Nama Kategori<span class="text-danger">*</span></label>
-                <div class="col-lg-10">
-                    <div class="form-group-feedback form-group-feedback-right">
-                        {{ form::text('name', null,['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' :
-                        ''),
-                        'placeholder' => 'Nama Satuan']) }}
-                        @error('name')
-                        <div class="form-control-feedback text-danger">
-                            <i class="icon-cancel-circle2"></i>
-                        </div>
-                        <span class="badge d-block badge-danger form-text">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
-            </div>
+            @include('daftar-informasi-publik.form')
             {{Form::close()}}
         </div>
     </div>
