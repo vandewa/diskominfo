@@ -149,8 +149,8 @@ class HomeController extends Controller
         // $data1 = $data1->get();
         // $data2=$data2->get();
         // return $data;
-        // return view('home.informasipublik', compact('data1','data2'));
-        return view('home.informasipublik');
+        // return view('home.daftarinformasipublik', compact('data1','data2'));
+        return view('home.daftarinformasipublik');
     }
 
     public function getInformasiPublik(Request $request)

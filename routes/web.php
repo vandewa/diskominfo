@@ -53,6 +53,8 @@ use App\Http\Controllers\Layanan\PermohonanAplikasiController;
 use App\Http\Controllers\Layanan\ColocationServerController;
 use App\Http\Controllers\Layanan\PermohonanSubdomainController;
 use Spatie\Analytics\Period;
+use App\Http\Controllers\DaftarInformasiPublikController;
+
 
 
 
@@ -244,6 +246,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('category', CategoryController::class);
         Route::resource('infohoax', InfohoaxController::class);
         Route::resource('infografis', InfografisController::class);
+        Route::resource('daftar_informasi_publikP', DaftarInformasiPublikController::class);
     });
 
     Route::group(['middleware' => ['permission:menu_depan-read'], 'prefix' => "admin"], function () {

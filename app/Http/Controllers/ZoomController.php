@@ -120,16 +120,16 @@ class ZoomController extends Controller
         if(isset($request->alasan)) {
             $notif = 'Status permintaan layanan Pinjam Akun Zoom '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.
                     '%0D%0A'.'( ' .$request->alasan . ' )' . '%0D%0A' .
-                    '%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
+                    '%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60');
         } else {
            
-            $notif = 'Status permintaan layanan Pinjam Akun Zoom '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20Diskominfo%20Wonosobo%20');
+            $notif = 'Status permintaan layanan Pinjam Akun Zoom '.urldecode('%0D%0A'.'%2A'.strtoupper($status->code_nm).'%2A'.'%0D%0A'.'%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60');
         }
 
         $link = strip_tags($request->link_zoom);
         
         $this->notification($nohape, $notif, $link);
-        $this->sendGroupWA($notif, $link);
+        $this->sendGroupWA($link);
 
         return redirect()->route('link_zoom.index');
     }

@@ -233,12 +233,15 @@
 										Berita</a></li>
 								<li class="nav-item"><a href="{{ route('halaman.index') }}" class="nav-link">Halaman Menu</a>
 								</li>
+								<li class="nav-item"><a href="{{ route('daftar_informasi_publik.create') }}"
+										class="nav-link">Daftar Informasi Publik</a></li>
 								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link">Info
 										Hoax</a></li>
 								<li class="nav-item"><a href="{{ route('infografis.index') }}"
 										class="nav-link">InfoGrafis</a></li>
 								<li class="nav-item"><a href="{{ route('category.index') }}"
 										class="nav-link">Kategori</a></li>
+								
 							</ul>
 						</li>
 						@endpermission

@@ -77,9 +77,9 @@
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">No Handphone</label>
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">WhatsApp</label>
                                 <div class="col-sm-7">
-                                    {{Form::number('no_hp', null, ['class' => 'form-control ','placeholder' => 'Masukkan No HP'])}}
+                                    {{Form::number('no_hp', null, ['class' => 'form-control ','placeholder' => 'Masukkan WhatsApp'])}}
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -165,7 +165,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="row form-group">
+                            {{-- <div class="row form-group">
                                 <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Lampiran <small style="color: red;"><b>(*pdf)</small></b></label>
                                 <div class="col-sm-7 custom-file">
                                     <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
@@ -174,7 +174,7 @@
                                         }' accept="application/pdf">
                                     <label class="custom-file-label" for="customFile">Pilih file</label>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row form-group">
                                 <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
                                 <div class="col-sm-7 captcha">

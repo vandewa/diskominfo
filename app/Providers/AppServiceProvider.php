@@ -159,9 +159,6 @@ class AppServiceProvider extends ServiceProvider
       ->count();
     View::share('colocation', $colocation);
 
-    $total_layanan = $media_publikasi + $liputan + $informasi_publik + $pengajuan_keberatan + $tempat_rapat + $pinjam_peralatan + $magang + $zoom + $internet + $aplikasi + $subdomain + $colocation;
-    View::share('total_layanan', $total_layanan);
-
     $total_pengunjung = DB::table('visitor')
     ->count();
     View::share('total_pengunjung', $total_pengunjung);
@@ -173,5 +170,58 @@ class AppServiceProvider extends ServiceProvider
     $file_download = DB::table('lampiran')
     ->count();
     View::share('file_download', $file_download);
+
+    $media_publikasi1 = DB::table('media_publikasi')
+    ->count();
+    View::share('media_publikasi1', $media_publikasi1);
+
+    $liputan1 = DB::table('liputan')
+    ->count();
+    View::share('liputan1', $liputan1);
+
+    $informasi_publik1 = DB::table('informasi_publik')
+    ->count();
+    View::share('informasi_publik1', $informasi_publik1);
+
+    $pengajuan_keberatan1 = DB::table('pengajuan_keberatan')
+    ->count();
+    View::share('pengajuan_keberatan1', $pengajuan_keberatan1);
+
+    $tempat_rapat1 = DB::table('pinjam_tempat')
+    ->count();
+    View::share('tempat_rapat1', $tempat_rapat1);
+
+    $pinjam_peralatan1 = DB::table('pinjam_peralatan')
+    ->count();
+    View::share('pinjam_peralatan1', $pinjam_peralatan1);
+
+    $magang1 = DB::table('magang')
+    ->count();
+    View::share('magang1', $magang1);
+
+    $zoom1 = DB::table('zooms')
+    ->count();
+    View::share('zoom1', $zoom1);
+
+    $internet1 = DB::table('jaringan_internet')
+    ->count();
+    View::share('internet1', $internet1);
+
+    $aplikasi1 = DB::table('permohonan_aplikasi')
+    ->count();
+    View::share('aplikasi1', $aplikasi1);
+
+    $subdomain1 = DB::table('permohonan_subdomain')
+    ->count();
+    View::share('subdomain1', $subdomain1);
+
+    $colocation1 = DB::table('permintaan_colocation')
+    ->count();
+    View::share('colocation1', $colocation1);
+
+    $total_layanan = $media_publikasi1 + $liputan1 + $informasi_publik1 + $pengajuan_keberatan1 + $tempat_rapat1 + $pinjam_peralatan1 + $zoom1 + $zoom1 + $internet1 + $aplikasi1 + $subdomain1 + $colocation1;
+    View::share('total_layanan', $total_layanan);
+
+
   }
 }
