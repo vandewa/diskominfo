@@ -49,7 +49,7 @@
           
     <!-- =============FORM============= -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document" >
+        <div class="modal-dialog modal-xl" role="document" >
             <div class="modal-content">
                 <div class="card-header">
                 <h5 class="modal-title" id="exampleModalLabel">Permohonan Liputan</h5>
@@ -60,98 +60,104 @@
                 <div class="card-body">
                     {{Form::open(['route' => 'perijinan:liputan.post', 'files' => true])}}
                     {{Form::hidden('status_st','STATUS_ST_01')}}
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama</label>
-                        <div class="col-sm-7">
-                            {{Form::text('nama', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama','required'])}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Institusi / Lembaga</label>
-                        <div class="col-sm-7">
-                            {{Form::text('instansi', null, ['class' => 'form-control ','placeholder' => 'Masukkan Institusi / lembaga','required'])}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Informasi acara</label>
-                        <div class="col-sm-7">
-                            {{Form::textarea('informasi', null, ['class' => 'form-control ','rows' => 2, 'cols' => 100,])}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tanggal</label>
-                        <div class="col-sm-7">
-                                <input required class="js-range-datepicker form-control bg-transparent rounded-right" type="datetime-local" name="tanggal" placeholder="Masukkan Tanggal" aria-label="From" data-rp-wrapper="#datepickerWrapperFrom">
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                            <label id="cardholderNameLabel" class="col-sm-5 col-form-label input-label">
-                                Waktu
-                            </label>
-                        <div class="col-sm-7">
-                            <div class="js-form-message">
-                                <div class="input-group input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <span class="fas fa-clock"></span>
-                                        </span>
-                                    </div>
-                                    <input class="form-control" type="waktu" id="single-input" name="waktu" placeholder="Jam">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <span>WIB</span>
-                                        </span>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-6">
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nama</label>
+                                <div class="col-sm-7">
+                                    {{Form::text('nama', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nama','required'])}}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Institusi / Lembaga</label>
+                                <div class="col-sm-7">
+                                    {{Form::text('instansi', null, ['class' => 'form-control ','placeholder' => 'Masukkan Institusi / lembaga','required'])}}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Informasi acara</label>
+                                <div class="col-sm-7">
+                                    {{Form::textarea('informasi', null, ['class' => 'form-control ','rows' => 2, 'cols' => 100,])}}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tanggal</label>
+                                <div class="col-sm-7">
+                                        <input required class="js-range-datepicker form-control bg-transparent rounded-right" type="datetime-local" name="tanggal" placeholder="Masukkan Tanggal" aria-label="From" data-rp-wrapper="#datepickerWrapperFrom">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                    <label id="cardholderNameLabel" class="col-sm-5 col-form-label input-label">
+                                        Waktu
+                                    </label>
+                                <div class="col-sm-7">
+                                    <div class="js-form-message">
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span class="fas fa-clock"></span>
+                                                </span>
+                                            </div>
+                                            <input class="form-control" type="waktu" id="single-input" name="waktu" placeholder="Jam">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <span>WIB</span>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tempat</label>
-                        <div class="col-sm-7">
-                            {{Form::text('tempat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan Tempat','required'])}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Penanggung jawab kegiatan</label>
-                        <div class="col-sm-7">
-                            {{Form::text('cp', null, ['class' => 'form-control ', 'placeholder' => 'Nama penanggung jawab','required'])}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nomor telepon kontak person <small style="color: red;"> (*Whatsapp)</small></label>
-                        <div class="col-sm-7">
-                            {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Nomor telepon penanggung jawab','required'])}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Surat Permohonan <small style="color: red;"><b>(*pdf)</small></b></label>
-                        <div class="col-sm-7 custom-file">
-                            <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
-                                    data-hs-file-attach-options='{
-                                    "textTarget": "[for=\"customFile\"]"
-                                }' accept="application/pdf">
-                            <label class="custom-file-label" for="customFile">Pilih file</label>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
-                        <div class="col-sm-7 captcha">
-                            <span>{!! captcha_img() !!}</span>
-                            <button type="button" class="btn btn-danger" class="reload" id="reload">
-                            &#x21bb;
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                    <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
-                        <div class="col-sm-7">
-                            <input id="captcha" type="text" class="form-control" placeholder="Hasil Penjumlahan" name="captcha">
-                            @if ($errors->has('captcha'))
-                                <span class="help-block" style="color: red;">
-                                    <strong>{{ $errors->first('captcha') }}</strong>
-                                </span>
-                            @endif
+                        <div class="col-md-12 col-sm-12 col-lg-6">
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Tempat</label>
+                                <div class="col-sm-7">
+                                    {{Form::text('tempat', null, ['class' => 'form-control ', 'placeholder' => 'Masukkan Tempat','required'])}}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Penanggung jawab kegiatan</label>
+                                <div class="col-sm-7">
+                                    {{Form::text('cp', null, ['class' => 'form-control ', 'placeholder' => 'Nama penanggung jawab','required'])}}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nomor telepon kontak person <small style="color: red;"> (*Whatsapp)</small></label>
+                                <div class="col-sm-7">
+                                    {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Nomor telepon penanggung jawab','required'])}}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Surat Permohonan <small style="color: red;"><b>(*pdf)</small></b></label>
+                                <div class="col-sm-7 custom-file">
+                                    <input name ="file_name" type="file" class="js-file-attach custom-file-input" id="customFile"
+                                            data-hs-file-attach-options='{
+                                            "textTarget": "[for=\"customFile\"]"
+                                        }' accept="application/pdf">
+                                    <label class="custom-file-label" for="customFile">Pilih file</label>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="captcha" class="col-sm-5 col-form-label input-label">Captcha</label>
+                                <div class="col-sm-7 captcha">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                    &#x21bb;
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                            <label for="captcha" class="col-sm-5 col-form-label input-label">Enter Captcha</label>
+                                <div class="col-sm-7">
+                                    <input id="captcha" type="text" class="form-control" placeholder="Hasil Penjumlahan" name="captcha">
+                                    @if ($errors->has('captcha'))
+                                        <span class="help-block" style="color: red;">
+                                            <strong>{{ $errors->first('captcha') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">

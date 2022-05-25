@@ -79,7 +79,7 @@
                             <div class="row form-group">
                                 <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">WhatsApp</label>
                                 <div class="col-sm-7">
-                                    {{Form::number('no_hp', null, ['class' => 'form-control ','placeholder' => 'Masukkan WhatsApp'])}}
+                                    {{Form::number('no_hp', null, ['class' => 'form-control ','placeholder' => 'Masukkan Nomor WhatsApp'])}}
                                 </div>
                             </div>
                             <div class="row form-group">
