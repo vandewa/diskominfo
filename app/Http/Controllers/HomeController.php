@@ -37,6 +37,7 @@ use Browser;
 use App\Models\PinjamPeralatan;
 use Illuminate\Support\Facades\Http;
 use App\Models\Mbuh;
+use Illuminate\Support\Facades\Cache;
 
 
 
@@ -59,7 +60,7 @@ class HomeController extends Controller
 
         return view('home.visimisi', compact('visimisi'));
     }
-    
+
 
     public function tugasppid()
     {
@@ -83,7 +84,7 @@ class HomeController extends Controller
 
         $struktur = Menu::where('id',6)
         ->first();
-    
+
         return view('home.struktur', compact('struktur'));
     }
 
@@ -113,9 +114,9 @@ class HomeController extends Controller
 
                 ->rawColumns(['action', 'status'])
                 ->make(true);
-        
+
     }
-    
+
     public function lampiran()
     {
         return view('home.lampiran');
@@ -123,7 +124,7 @@ class HomeController extends Controller
 
      public function informasiPublik(Request $request)
     {
-       
+
         // $data1 = Mbuh::with(['anak' => function($z)use($request) {
         //      if($request->filled('tahun')){
         //          $z->where('tahun', $request->tahun);
@@ -144,7 +145,7 @@ class HomeController extends Controller
         //     $data2->wherehas('anak', function($a) use ($request) {
         //             $a->where('tahun', $request->tahun);
         //      });
-            
+
         // }
         // $data1 = $data1->get();
         // $data2=$data2->get();
@@ -156,7 +157,7 @@ class HomeController extends Controller
     public function getInformasiPublik(Request $request)
 
     {
-        
+
             $data = InformasiPublik::select('*');
 
             // return $data;
@@ -169,7 +170,7 @@ class HomeController extends Controller
                         } else {
                             $actionBtn = '<a href="/uploads/lampiran/'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Tampil</a>';
                         }
-                    
+
                       return $actionBtn;
                     } else{
                          if(substr($data->nama_lampiran,0,6) == '/page/' ) {
@@ -180,7 +181,7 @@ class HomeController extends Controller
                         $actionBtn = '<a href="/detail/'.$data->nama_lampiran.'" class="edit btn btn-success btn-sm" target="_blank">Tampil</a>';
                       return $actionBtn;
                     }
-                  
+
                 })
                 ->editColumn('keterangan', function($data)
                 {
@@ -200,19 +201,19 @@ class HomeController extends Controller
                 ->rawColumns(['action', 'status'])
                 ->make(true);
 
-        
+
     }
 
      public function kominfo($id)
     {
         $kominfo = Menu::where('id', $id)
         ->first();
-    
+
         return view('home.kominfo', compact('kominfo'));
     }
 
     public function pengajuanizin(Request $request)
-    {   
+    {
         $data = '';
         $datanya = '';
         $jenis = '';
@@ -222,7 +223,7 @@ class HomeController extends Controller
                         // case "ADC":
                         //     $data = AksesDc::with(['status'])->whereNo($request->q)->first();
                         //     break;
-                        // case "LSV":  
+                        // case "LSV":
                         //     $data = LayananServer::with(['status'])->whereNo($request->q)->first();
                         //     break;
                         // case "VPB":
@@ -244,7 +245,7 @@ class HomeController extends Controller
                             $data = PinjamPeralatan::with(['status'])->whereNo($request->q)->first();
                         break;
                         }
-                
+
                 // if($a != 'ADC' || 'LSV' || 'VPB' || 'CSV' || 'KDC' || 'PSV' || 'PVP' || 'PPE'){
                 //              $datanya = 'Data tidak ditemukan';
                 // }
@@ -267,14 +268,14 @@ class HomeController extends Controller
 
 
     public function pengajuanizinPost(Request $request)
-    {   
-        
+    {
+
 
         $path = public_path('uploads/bukti');
-        
+
         if (!file_exists($path)) {
               mkdir($path);
-         } 
+         }
 
        if($request->hasFile('bukti')){
             $files = $request->file('bukti');
@@ -293,7 +294,7 @@ class HomeController extends Controller
             'Terima Kasih :)'.
             urldecode('%0D%0A%0D%0A'.'%C2%A9%20%60%60%60Diskominfo%20Wonosobo%60%60%60%20');
 
-      
+
             PinjamPeralatan::find($request->id)
             ->update([
                 'bukti' => $filename,
@@ -319,20 +320,20 @@ class HomeController extends Controller
     {
 
         Posting::find($post->id_posting)->increment('views');
-        
+
         $detail = Posting::with(['attachment', 'gambarMuka', 'nama'])
         ->where('slug', '=', $post->slug)
         ->first();
-        
+
 
         $kategori = Posting::where('id_kategori',$detail->id_kategori)
         ->wherenotin('id_posting', [$post->id_posting])
         ->orderBy('created_at', 'desc')
         ->limit(2)
-        ->get(); 
+        ->get();
 
         // return $detail;
-   
+
 
         return view('home.detail', compact('detail', 'kategori'));
     }
@@ -351,7 +352,7 @@ class HomeController extends Controller
         ->wherenotin('id', [$post])
         ->orderBy('created_at', 'desc')
         ->limit(2)
-        ->get();  
+        ->get();
 
         $lampiran = Lampiran::where('nama_lampiran', $details->nama_lampiran)->first();
 
@@ -365,8 +366,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-    
+
+
         $youtube =  Youtube::orderBy('created_at', 'desc')
         ->limit(3)
         ->get();
@@ -379,35 +380,42 @@ class HomeController extends Controller
             $cek =  Posting::where('posisi', '=', 'highlight')
             ->orderBy('created_at', 'asc')
             ->first();
-    
+
             Posting::where('id_posting', $cek->id_posting)->update([
                 'posisi' => 'menu_atas'
             ]);
         }
+        $populer = Cache::remember('populer', 3600, function () {
+            return Posting::with(['gambarMuka'])
+                ->orderBy('views', 'desc')
+                ->limit(3)
+                ->get();
+        });
+        $posting2 = Cache::remember('posting2', 3600, function () {
+            return  Posting::with(['attachment', 'gambarMuka','nama', 'kategori'])
+                ->where('posisi', '=', 'menu_atas')
+                ->orderBy('created_at', 'desc')
+                ->simplePaginate(2);
+        });
+        $postingg = Cache::remember('postingg', 3600, function () {
+            return Posting::with(['attachment', 'gambarMuka', 'nama'])
+                ->where('posisi', '=', 'highlight')
+                ->orderBy('created_at', 'desc')
+                ->get();
+        });
+        $posting = Cache::remember('posting', 3600, function () {
+            return DB::table('posting')
+                ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
+                ->join('users', 'created_by', '=', 'users.id')
+                ->select('posting.*','attachment.*', 'users.*')
+                ->orderBy('posting.created_at', 'desc')->get();
+        });
+        $sampul = Cache::remember('sampul', 3600, function () {
+            return Sampul::where('id',1)
+                ->first();
+        });
 
-        $populer = Posting::with(['gambarMuka'])
-        ->orderBy('views', 'desc')
-        ->limit(3)
-        ->get();
 
-        $posting2 = Posting::with(['attachment', 'gambarMuka','nama', 'kategori'])
-        ->where('posisi', '=', 'menu_atas')
-        ->orderBy('created_at', 'desc')
-        ->simplePaginate(2);
-
-        $postingg = Posting::with(['attachment', 'gambarMuka', 'nama'])
-        ->where('posisi', '=', 'highlight')
-        ->orderBy('created_at', 'desc')
-        ->get();
-
-        $posting = DB::table('posting') 
-        ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
-        ->join('users', 'created_by', '=', 'users.id')
-        ->select('posting.*','attachment.*', 'users.*')
-        ->orderBy('posting.created_at', 'desc');
-
-        $sampul = Sampul::where('id',1)
-        ->first();
 
         $infohoax = Posting::with(['gambarMuka'])
         ->where('id_kategori', 7)
@@ -438,7 +446,7 @@ class HomeController extends Controller
                     if(Browser::isMobile() == 1){
                          $jenis = 'Mobile';
                     }
-                    
+
                     Visitor::create([
                     'ip' => $checkLocation->ip,
                     'kota' => $checkLocation->city,
@@ -449,7 +457,7 @@ class HomeController extends Controller
                     'platform_name' =>  Browser::platformName(),
                     'jenis' =>  $jenis,
                 ]);
-            // } 
+            // }
         //  }
 
         return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul', 'infohoax', 'infografis'));
@@ -522,7 +530,7 @@ class HomeController extends Controller
         ->orderBy('views', 'desc')
         ->limit(3)
         ->get();
-        
+
         $kategori = Posting::with(['gambarMuka','kategori'])
         ->where('id_kategori','=', $post->id)
         ->orderBy('created_at','desc')
@@ -545,7 +553,7 @@ class HomeController extends Controller
         ->orderBy('views', 'desc')
         ->limit(3)
         ->get();
-        
+
         $uploadby = Posting::with(['gambarMuka','kategori'])
         ->where('created_by','=', $post->id)
         ->orderBy('created_at','desc')
@@ -557,8 +565,8 @@ class HomeController extends Controller
 
         $jml_post = Posting::where('created_by', $post->id)
         ->orderBy('created_at','desc')
-        ->count();    
-        
+        ->count();
+
 
         return view('home.uploadby', compact('uploadby','populers','upload','jml_post'));
     }

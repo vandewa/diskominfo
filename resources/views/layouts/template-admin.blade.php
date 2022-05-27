@@ -241,7 +241,7 @@
 										class="nav-link">InfoGrafis</a></li>
 								<li class="nav-item"><a href="{{ route('category.index') }}"
 										class="nav-link">Kategori</a></li>
-								
+
 							</ul>
 						</li>
 						@endpermission
@@ -350,7 +350,7 @@
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('pinjam-tempat.index') }}" class="nav-link ">Tempat Rapat
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$tempat_rapat}}</span>
+									<span class="badge bg-orange-400 align-self-center ml-auto">{{tempat_rapat()}}</span>
 									</a>
 								</li>
 								<li class="nav-item">
