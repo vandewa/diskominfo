@@ -1,12 +1,12 @@
-@section('title', 'Tambah Posting')
+@section('title', 'Daftar Informasi Publik')
 @section('menu','Posting')
-@section('submenu','Tambah Posting')
+@section('submenu','Daftar Informasi Publik')
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
-<span class="breadcrumb-item active">Posting Berita</span>
+<span class="breadcrumb-item active">Daftar Informasi Publik</span>
 @endsection
 
 
@@ -16,10 +16,10 @@
     <!-- CKEditor default -->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5>FORM INPUT KATEGORI</h5>
+            <h5>FORM INPUT DAFTAR INFORMASI PUBLIK</h5>
         </div>
         <div class="card-body">
-            {{Form::open(['route' => 'inventory:kategori.store','method' => 'post', 'files' => 'true', ''])}}
+            {{Form::open(['route' => 'daftar-informasi-publik.store','method' => 'post', 'files' => 'true', ''])}}
             @include('daftar-informasi-publik.form')
             {{Form::close()}}
         </div>

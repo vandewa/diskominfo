@@ -233,7 +233,7 @@
 										Berita</a></li>
 								<li class="nav-item"><a href="{{ route('halaman.index') }}" class="nav-link">Halaman Menu</a>
 								</li>
-								<li class="nav-item"><a href="{{ route('daftar-informasi-publik.create') }}"
+								<li class="nav-item"><a href="{{ route('daftar-informasi-publik.index') }}"
 										class="nav-link">Daftar Informasi Publik</a></li>
 								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link">Info
 										Hoax</a></li>

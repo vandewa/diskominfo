@@ -69,6 +69,10 @@ class ComCodeSeeder extends Seeder
             ['code_cd' => 'DOMAIN_ST_02', 'code_nm' => 'wonosobokab.com', 'code_group' => 'DOMAIN_ST', 'code_value' => ''],
             ['code_cd' => 'ALAT_TP_01', 'code_nm' => 'TV', 'code_group' => 'ALAT_TP', 'code_value' => ''],
             ['code_cd' => 'ALAT_TP_02', 'code_nm' => 'Kamera Zoom', 'code_group' => 'ALAT_TP', 'code_value' => ''],
+            ['code_cd' => 'JENIS_INFORMASI_PUBLIK_TP_01', 'code_nm' => 'INFORMASI WAJIB DIUMUMKAN SECARA BERKALA', 'code_group' => 'JENIS_INFORMASI_PUBLIK_TP', 'code_value' => ''],
+            ['code_cd' => 'JENIS_INFORMASI_PUBLIK_TP_02', 'code_nm' => 'INFORMASI WAJIB TERSEDIA SETIAP SAAT', 'code_group' => 'JENIS_INFORMASI_PUBLIK_TP', 'code_value' => ''],
+            ['code_cd' => 'JENIS_INFORMASI_PUBLIK_TP_03', 'code_nm' => 'INFORMASI WAJIB DIUMUMKAN SECARA SERTA MERTA', 'code_group' => 'JENIS_INFORMASI_PUBLIK_TP', 'code_value' => ''],
+            ['code_cd' => 'JENIS_INFORMASI_PUBLIK_TP_04', 'code_nm' => 'DAFTAR INFORMASI YANG DIKECUALIKAN', 'code_group' => 'JENIS_INFORMASI_PUBLIK_TP', 'code_value' => ''],
         ];
 
         foreach ($data as $datum) {
