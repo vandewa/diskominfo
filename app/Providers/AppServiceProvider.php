@@ -28,6 +28,7 @@ use App\Models\PermohonanAplikasi;
 use App\Models\PermintaanColocation;
 use App\Models\PermohonanSubdomain;
 use App\Models\Zoom;
+use Illuminate\Support\Facades\Cache;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -58,15 +59,22 @@ class AppServiceProvider extends ServiceProvider
       ->count();
     View::share('key', $total);
 
-    $categories = Menu::with(['childs'])
-      ->where('parent', '=', '47')
-      ->get();
+
+    $categories = Cache::remember('categories', 3600, function () {
+          return Menu::with(['childs'])
+              ->where('parent', '=', '47')
+              ->get();
+      });
     View::share('menu_categories', $categories);
 
-    $categories = Menu::with(['childs'])
-      ->where('parent', '=', '9')
-      ->get();
-    View::share('menu_categoriess', $categories);
+
+
+      $categoriess = Cache::remember('categoriess', 3600, function () {
+          return Menu::with(['childs'])
+              ->where('parent', '=', '9')
+              ->get();
+      });
+    View::share('menu_categoriess', $categoriess);
 
     $ppid = Menu::with(['childs'])
       ->where('parent', '=', '120')

@@ -28,6 +28,7 @@
         "ncjoes/office-converter": "^1.0",
         "orangehill/iseed": "^3.0",
         "phpoffice/phpword": "^0.18.2",
+        "predis/predis": "^1.1",
         "proengsoft/laravel-jsvalidation": "^4.4",
         "santigarcor/laratrust": "^6.3",
         "spatie/laravel-analytics": "^3.11",

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostingcreateValidation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posting;
@@ -14,7 +15,7 @@ use App\Models\ComCode;
 use DataTables;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
-use \Cviebrock\EloquentSluggable\Services\SlugService; 
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 
 class PostingController extends Controller
@@ -26,10 +27,10 @@ class PostingController extends Controller
      */
     public function index()
     {
-       
+
         return view('posting.index');
 
-        
+
     }
 
     /**
@@ -58,13 +59,13 @@ class PostingController extends Controller
     {
         $path = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y');
         $paths = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
-        
+
         if (!file_exists($paths)) {
              if (!file_exists($path)) {
               mkdir($path);
              }
             mkdir($paths);
-         } 
+         }
     //     Posting::create([
     //        'posisi' => $request->posisi,
     //        'judul_posting' => $request->judul_posting,
@@ -81,7 +82,7 @@ class PostingController extends Controller
         $no = 1;
 
         if($request->hasFile('file_name')){
-                $files = $request->file('file_name'); 
+                $files = $request->file('file_name');
             foreach($files as $a){
                 $prefix = date('Ymdhis');
                 $by = $request->created_by;
@@ -103,6 +104,8 @@ class PostingController extends Controller
                 $attachment->file_name = 'diskominfowonosobo.jpg';
                 $attachment->save();
             }
+
+        Cache::flush();
 
         return redirect ( route('posting.index'))->with('status', 'Data posting berhasil ditambahkan.');
 
@@ -132,7 +135,7 @@ class PostingController extends Controller
         ->get();
         $informasi = ComCode::where('code_group', 'INFORMASI_ST')
         ->get();
-        
+
 
         return view('posting.edit', compact('posting', 'kategori', 'informasi'));
     }
@@ -185,7 +188,7 @@ class PostingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {      
+    {
         $oke = Attachment::where('id_tabel',$id)->get();
         if(!empty($oke)) {
             foreach($oke as $okee){
@@ -198,7 +201,7 @@ class PostingController extends Controller
         }
 
         Posting::destroy($id);
-        
+
     }
 
     public function getPosting(Request $request)
@@ -208,7 +211,7 @@ class PostingController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = 
+                    $actionBtn =
                     '<div class="list-icons">
                         <a href="'.route('posting.edit', $row->id_posting ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
                         <a href="'.route('posting.destroy', $row->id_posting ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
@@ -233,7 +236,7 @@ class PostingController extends Controller
                     }
 
                 })
-                
+
                 ->editColumn('id_kategori', function($a)
                 {
                     return $a->kategori->nama_kategori ?? '';
@@ -244,7 +247,7 @@ class PostingController extends Controller
                 // })
                 ->rawColumns(['action', 'status'])
                 ->make(true);
-        
+
     }
 
     public function logout(Request $request)
@@ -269,19 +272,19 @@ class PostingController extends Controller
             return redirect()->back();
 
         } else {
-            
+
             $path = public_path($oke->path).$oke->file_name;
             File::delete($path);
             Attachment::where('id_attachment',$id)->delete();
             return redirect()->back();
 
         }
-        
+
     }
     public function checkSlug(Request $request)
     {
         $slug = SlugService::createSlug(Posting::class, 'slug', $request->judul_posting);
-        return response()->json(['slug' => $slug]); 
+        return response()->json(['slug' => $slug]);
     }
 
 }

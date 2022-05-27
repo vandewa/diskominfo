@@ -1,6 +1,9 @@
 <?php
 
 
+use App\Models\PinjamTempat;
+use Illuminate\Support\Facades\Cache;
+
 if (!function_exists('get_code_group')) {
     function get_code_group($code)
     {
@@ -136,5 +139,14 @@ if (!function_exists('label_prioritas')) {
             return 'badge badge-purple';
         }
     }
-    
+
+}if (!function_exists('tempat_rapat')) {
+    function tempat_rapat()
+    {
+        $value = Cache::remember('users', 60, function () {
+            return PinjamTempat::where('status_st', '=', 'STATUS_ST_01')->count();
+        });
+        return $value;
+    }
+
 }
