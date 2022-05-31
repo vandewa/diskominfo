@@ -57,11 +57,11 @@
         serverSide: true,
         ajax: window.location.href,
         columns: [
-            { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+            { data: 'DT_RowIndex', name: 'DT_RowIndex',  orderable: false, searchable: false, className: "text-center" },
             { data: 'tanggal_peminjaman', name: 'tanggal_peminjaman' },
             { data: 'tanggal_pengembalian', name: 'tanggal_pengembalian' },
             { data: 'peminjam_id', name: 'peminjam_id' },
-            { data: 'peminjaman_st', name: 'peminjaman_st' },
+            { data: 'status_pinjam.code_nm', name: 'statusPinjam' },
             { data: 'petugas_id', name: 'petugas_id' },
             { data: 'penerima_id', name: 'penerima_id' },
             // { data: 'peminjamanst', },

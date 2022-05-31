@@ -17,6 +17,9 @@ class ComCodeSeeder extends Seeder
     {
         DB::table('com_codes')->truncate();
         $data = [
+            ['code_cd' => 'PEMINJAMAN_ST_01', 'code_nm' => 'Telah Dikembalikan', 'code_group' => 'PEMINJAMAN_ST', 'code_value' => ''],
+            ['code_cd' => 'PEMINJAMAN_ST_02', 'code_nm' => 'Belum Dikembalikan', 'code_group' => 'PEMINJAMAN_ST', 'code_value' => ''],
+            ['code_cd' => 'PEMINJAMAN_ST_03', 'code_nm' => 'Dikembalikan Sebagian', 'code_group' => 'PEMINJAMAN_ST', 'code_value' => ''],
             ['code_cd' => 'KEPERLUAN_TP_01', 'code_nm' => 'Server Hardware Maintanace', 'code_group' => 'KEPERLUAN_TP', 'code_value' => ''],
             ['code_cd' => 'KEPERLUAN_TP_02', 'code_nm' => 'Server Software Maintanace', 'code_group' => 'KEPERLUAN_TP', 'code_value' => ''],
             ['code_cd' => 'KEPERLUAN_TP_03', 'code_nm' => 'Hanya Berkunjung', 'code_group' => 'KEPERLUAN_TP', 'code_value' => ''],

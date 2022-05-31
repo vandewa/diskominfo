@@ -7,6 +7,7 @@ use App\Models\MasterAsset;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Session;
 
 class PeminjamanController extends Controller
 {
@@ -18,13 +19,13 @@ class PeminjamanController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Peminjaman::all();
+            $data = Peminjaman::with(['statusPinjam'])->select('*');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn(
                     'action',
                     function ($data) {
-                        $actionBtn = 
+                        $actionBtn =
                     '<div class="list-icons">
                         <a href="'.route('inventory:peminjaman.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
                         <a href="'.route('inventory:peminjaman.destroy', $data->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
@@ -57,24 +58,34 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        // $items = $request->get('barang_id');
-        $items = ['1', '2', '3'];
-        $selected_items = '';
-        foreach ($items as $item) {
-            echo   $item . ',';
-        }
-        // dd($items);
-        // $validated = $request->validate([
-        //     'tanggal_peminjaman' => 'required',
-        //     'tanggal_pengembalian' => 'required',
-        //     'peminjam_id' => 'required',
-        //     'peminjaman_st' => 'required',
-        //     'petugas_id' => 'required',
-        //     'penerima_id' => 'required',
-        // ]);
+
+
+         $validated = $request->validate([
+             'tanggal_peminjaman' => 'required',
+             'peminjam_id' => 'required',
+             'petugas_id' => 'required',
+         ]);
+       $a =  Peminjaman::create(
+             [
+                 'tanggal_peminjaman' => $request->tanggal_peminjaman.date(' H:i:s'),
+                 'peminjam_id' => $request->peminjam_id,
+                 'petugas_id' => $request->petugas_id,
+                 'peminjaman_st' => 'PEMINJAMAN_ST_02',
+             ]
+         );
+       foreach ($request->barang_id as $row){
+           $a->peminjamanDetail()->create(
+               [
+                   'master_asset_id' => $row,
+                   'peminjaman_st' => 'PEMINJAMAN_ST_02'
+               ]
+           );
+
+           MasterAsset::find($row)->update(['peminjamanst' => 'PEMINJAMAN_ST_02']);
+       }
         // MasterAsset::create($validated + ['peminjamanst' => 'PEMINJAMANST_00']);
-        // Session::flash('keterangan', 'Data berhasil disimpan');
-        // return redirect(route('inventory:barang.index'));
+         Session::flash('keterangan', 'Data berhasil disimpan');
+         return redirect(route('inventory:peminjaman.index'));
     }
 
     /**
@@ -94,9 +105,10 @@ class PeminjamanController extends Controller
      * @param  \App\Models\Peminjaman  $peminjaman
      * @return \Illuminate\Http\Response
      */
-    public function edit(Peminjaman $peminjaman)
+    public function edit($id)
     {
-        //
+        $data = Peminjaman::with(['peminjamanDetail.master_asset', 'penerima', 'petugas', 'peminjam'])->find($id);
+        return view('inventory.peminjaman.create', compact('data'));
     }
 
     /**
