@@ -36,7 +36,7 @@ use Carbon\Carbon;
 use Browser;
 use App\Models\PinjamPeralatan;
 use Illuminate\Support\Facades\Http;
-use App\Models\Mbuh;
+use App\Models\DaftarInformasiPublik;
 use Illuminate\Support\Facades\Cache;
 
 
@@ -125,33 +125,57 @@ class HomeController extends Controller
      public function informasiPublik(Request $request)
     {
 
-        // $data1 = Mbuh::with(['anak' => function($z)use($request) {
-        //      if($request->filled('tahun')){
-        //          $z->where('tahun', $request->tahun);
-        //      }
+        $tahunini =  \Carbon\Carbon::now()->isoFormat('Y');
 
-        // }])->where('root', null)->where('type',1);
+        $data1 = DaftarInformasiPublik::with(['anak' => function($z)use($request) {
+             if($request->filled('waktu_pembuatan')){
+                 $z->where('waktu_pembuatan', $request->waktu_pembuatan);
+             }
+            }])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_01')->where('waktu_pembuatan', '=', $tahunini);
 
-        // $data2 = Mbuh::with(['anak'=> function($z)use($request) {
-        //      if($request->filled('tahun')){
-        //          $z->where('tahun', $request->tahun);
-        //      }
+        $data2 = DaftarInformasiPublik::with(['anak'=> function($z)use($request) {
+             if($request->filled('waktu_pembuatan')){
+                 $z->where('waktu_pembuatan', $request->waktu_pembuatan);
+             }
+            }])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_02')->where('waktu_pembuatan', '=', $tahunini);
 
-        // }])->where('root', null)->where('type',2);
-        //  if($request->filled('tahun')){
-        //      $data1->wherehas('anak', function($a) use ($request) {
-        //             $a->where('tahun', $request->tahun);
-        //      });
-        //     $data2->wherehas('anak', function($a) use ($request) {
-        //             $a->where('tahun', $request->tahun);
-        //      });
+        $data3 = DaftarInformasiPublik::with(['anak'=> function($z)use($request) {
+            if($request->filled('waktu_pembuatan')){
+                $z->where('waktu_pembuatan', $request->waktu_pembuatan);
+            }
+            }])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_03')->where('waktu_pembuatan', '=', $tahunini);
 
-        // }
-        // $data1 = $data1->get();
-        // $data2=$data2->get();
-        // return $data;
-        // return view('home.daftarinformasipublik', compact('data1','data2'));
-        return view('home.daftarinformasipublik');
+         $data4 = DaftarInformasiPublik::with(['anak'=> function($z)use($request) {
+            if($request->filled('waktu_pembuatan')){
+                $z->where('waktu_pembuatan', $request->waktu_pembuatan);
+            }
+            }])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_04')->where('waktu_pembuatan', '=', $tahunini);
+
+
+         if($request->filled('waktu_pembuatan')){
+             $data1->wherehas('anak', function($a) use ($request) {
+                    $a->where('waktu_pembuatan', $request->waktu_pembuatan);
+             });
+            $data2->wherehas('anak', function($a) use ($request) {
+                    $a->where('waktu_pembuatan', $request->waktu_pembuatan);
+             });
+            $data3->wherehas('anak', function($a) use ($request) {
+                    $a->where('waktu_pembuatan', $request->waktu_pembuatan);
+             });
+            $data4->wherehas('anak', function($a) use ($request) {
+                    $a->where('waktu_pembuatan', $request->waktu_pembuatan);
+             });
+
+        }
+        $data1 = $data1->get();
+        $data2 = $data2->get();
+        $data3 = $data3->get();
+        $data4 = $data4->get();
+
+        // return $data1;
+        
+        return view('home.daftarinformasipublik', compact('data1','data2', 'data3', 'data4'));
+        // return view('home.daftarinformasipublik');
     }
 
     public function getInformasiPublik(Request $request)

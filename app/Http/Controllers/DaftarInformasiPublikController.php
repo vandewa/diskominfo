@@ -17,14 +17,15 @@ class DaftarInformasiPublikController extends Controller
     {
         if($request->ajax()){
 
-            $data = DaftarInformasiPublik::with(['type'])->select('*');
+            $data = DaftarInformasiPublik::with(['type'])->whereNull('root');
 
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     return
                 '<div class="list-icons">
-                    <a href="'.route('daftar-informasi-publik.show', $row->id ).'" class="btn btn-outline-primary rounded-round"><i class="icon-eye mr-2"></i>Tambah Child</a>
+                    <a href="'.route('daftar.informasi.publik.index', ["root"=>$row->id]).'" class="btn btn-outline-primary rounded-round"><i class="icon-eye mr-2"></i>Tambah Child</a>
+                     <a href="'.route('daftar-informasi-publik.edit', $row->id).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Edit</a>
                    <a href="'.route('daftar-informasi-publik.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                 </div>';
                     })
@@ -33,6 +34,30 @@ class DaftarInformasiPublikController extends Controller
         }
 
         return view('daftar-informasi-publik.index');
+    }
+
+    public function indexChild(Request $request)
+    {
+        if($request->ajax()){
+
+            $data = DaftarInformasiPublik::with(['type'])->where('root', $request->root);
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    return
+                '<div class="list-icons">
+                    <a href="'.route('daftar.informasi.publik.edit', $row->id).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Edit</a>
+                   <a href="'.route('daftar-informasi-publik.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
+                </div>';
+                    })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        $root = DaftarInformasiPublik::find($request->root);
+
+        return view('daftar-informasi-publik.indexChild', compact('root'));
     }
 
     /**
@@ -46,6 +71,14 @@ class DaftarInformasiPublikController extends Controller
         
     }
 
+    public function createChild(Request $request)
+    {
+
+        $root = DaftarInformasiPublik::find($request->root);
+        return view('daftar-informasi-publik.createChild',compact('root'));
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -55,12 +88,24 @@ class DaftarInformasiPublikController extends Controller
     public function store(Request $request)
     {
         DaftarInformasiPublik::create([
-            'type' => $request->type,
+            'root' => $request->root,
             'nomor' => $request->nomor,
             'jenis_informasi' => $request->jenis_informasi,
+            'ringkasan_informasi' => $request->ringkasan_informasi,
+            'pejabat_yg_menguasai' => $request->pejabat_yg_menguasai,
+            'penanggungjawab_informasi' => $request->penanggungjawab_informasi,
+            'waktu_pembuatan' => $request->waktu_pembuatan,
+            'bentuk_informasi' => $request->bentuk_informasi,
+            'retensi' => $request->retensi,
+            'link' => $request->link,
+            'type' => $request->type,
         ]);
 
-         return redirect(route('daftar-informasi-publik.index'))->with('status','oke');
+        if($request->filled('root')) {
+            return redirect(route('daftar.informasi.publik.index',['root'=> $request->root]))->with('status','oke');
+        }
+
+        return redirect(route('daftar-informasi-publik.index'))->with('status','oke');
     }
 
     /**
@@ -82,7 +127,17 @@ class DaftarInformasiPublikController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DaftarInformasiPublik::find($id);
+    
+        return view('daftar-informasi-publik.edit', compact('data'));
+    }
+
+    public function editChild($id)
+    {
+
+        $data = DaftarInformasiPublik::find($id);
+    
+        return view('daftar-informasi-publik.editChild', compact('data'));
     }
 
     /**
@@ -94,7 +149,27 @@ class DaftarInformasiPublikController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request->all();
+        DaftarInformasiPublik::find($id)
+        ->update([
+            'root' => $request->root,
+            'nomor' => $request->nomor,
+            'jenis_informasi' => $request->jenis_informasi,
+            'ringkasan_informasi' => $request->ringkasan_informasi,
+            'pejabat_yg_menguasai' => $request->pejabat_yg_menguasai,
+            'penanggungjawab_informasi' => $request->penanggungjawab_informasi,
+            'waktu_pembuatan' => $request->waktu_pembuatan,
+            'bentuk_informasi' => $request->bentuk_informasi,
+            'retensi' => $request->retensi,
+            'link' => $request->link,
+            'type' => $request->type,
+        ]);
+
+        if($request->filled('root')) {
+            return redirect(route('daftar.informasi.publik.index',['root'=> $request->root]))->with('status','oke');
+        }
+
+        return redirect(route('daftar-informasi-publik.index'))->with('status','oke');
     }
 
     /**
@@ -104,6 +179,21 @@ class DaftarInformasiPublikController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        DaftarInformasiPublik::destroy($id);
+        $oke = DaftarInformasiPublik::where('root',$id)->get();
+
+            if(!empty($oke)) {
+                foreach($oke as $okee){
+                    $okee->delete();
+            }
+
+        }
+       
+
+    }
+
+    public function destroyChild( $id)
     {
         DaftarInformasiPublik::destroy($id);
     }

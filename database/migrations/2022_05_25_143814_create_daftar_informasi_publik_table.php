@@ -16,14 +16,15 @@ class CreateDaftarInformasiPublikTable extends Migration
         Schema::create('daftar_informasi_publik', function (Blueprint $table) {
             $table->id();
             $table->integer('root')->nullable();
-            $table->integer('nomor')->nullable();
+            $table->string('nomor')->nullable();
             $table->string('jenis_informasi')->nullable();
-            $table->string('ringkasan_informasi')->nullable();
+            $table->longText('ringkasan_informasi')->nullable();
             $table->string('pejabat_yg_menguasai')->nullable();
             $table->string('penanggungjawab_informasi')->nullable();
+            $table->string('waktu_pembuatan')->nullable();
             $table->string('bentuk_informasi')->nullable();
             $table->string('retensi')->nullable();
-            $table->string('link')->nullable();
+            $table->longText('link')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();
         });

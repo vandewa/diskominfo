@@ -7,12 +7,13 @@
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
 <span class="breadcrumb-item active">Daftar Informasi Publik</span>
+<span class="breadcrumb-item active">{{ $root->jenis_informasi }}</span>
 @endsection
 
 @section('tambah_data')
-<a href="{{route('daftar-informasi-publik.create')}}" class="btn btn-primary">
+<a href="{{route('daftar.informasi.publik.create', ["root"=>request('root')])}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
-Tambah Parent
+Tambah Child
 </a>
 @endsection
 
@@ -32,10 +33,10 @@ Tambah Parent
         <table class="table datatable-basic devan">
             <thead>
                 <tr>
-                    <th>Tahun</th>
                     <th>No</th>
-                    <th>Judul</th>
-                    <th>Jenis Informasi Publik</th>
+                    <th>Tipe Informasi Publik</th>
+                    <th>Jenis Informasi</th>
+                    <th>Waktu Pembuatan Informasi</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -54,10 +55,10 @@ Tambah Parent
 				serverSide: true,
                 ajax: window.location.href,
 				columns: [
-					{data: 'waktu_pembuatan', name:'waktu_pembuatan', },
 					{data: 'nomor', name:'nomor', },
-					{data: 'jenis_informasi', name:'jenis_informasi',},
 					{data: 'type.code_nm', name:'type.code_cd'},
+					{data: 'jenis_informasi', name:'jenis_informasi',},
+					{data: 'waktu_pembuatan', name:'waktu_pembuatan',},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
 				]
 			});
