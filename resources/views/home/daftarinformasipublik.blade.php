@@ -23,13 +23,13 @@
     <div class="d-flex justify-content-center text-center ">
         <ul class="nav nav-pills mb-7" role="tablist">
             <li class="nav-item">
-                <a class="nav-link  @if(request('q') == '') active @endif "
+                <a class="nav-link  @if(request('waktu_pembuatan') == '') active @endif "
                     id="pills-one-code-features-example2-tab" data-toggle="pill"
                     href="#pills-one-code-features-example2" role="tab"
                     aria-controls="pills-one-code-features-example2" aria-selected="true">Informasi Berkala / Setiap Saat / Serta Merta / Dikecualikan</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if(request('q') != '') active @endif"
+                <a class="nav-link @if(request('waktu_pembuatan') != '') active @endif"
                     id="pills-two-code-features-example2-tab" data-toggle="pill"
                     href="#pills-two-code-features-example2" role="tab"
                     aria-controls="pills-two-code-features-example2" aria-selected="false">Daftar Informasi Publik</a>
@@ -41,7 +41,7 @@
     <!-- Tab Content -->
     <div class="tab-content">
             <!-- TAB 1 -->
-        <div class="tab-pane fade @if(request('q') == '') show active @endif"
+        <div class="tab-pane fade @if(request('waktu_pembuatan') == '') show active @endif"
             id="pills-one-code-features-example2" role="tabpanel"
             aria-labelledby="pills-one-code-features-example2-tab">
             <div class="row justify-content-center">
@@ -52,11 +52,11 @@
         <!-- END TAB 1 -->
 
         <!-- TAB 2 -->
-        <div class="tab-pane fade @if(request('q') != '') show active @endif"
+        <div class="tab-pane fade @if(request('waktu_pembuatan') != '') show active @endif"
             id="pills-two-code-features-example2" role="tabpanel"
             aria-labelledby="pills-two-code-features-example2-tab">
             <div class="row d-flex justify-content-center">
-            {{-- @include('home.informasipublik2') --}}
+            @include('home.informasipublik2')
 
                 
             </div>

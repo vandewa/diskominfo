@@ -7,7 +7,7 @@
                            Tahun
                         </label>
                         <div class="col-md-6">
-                            {{Form::number('tahun',request('tahun'),['class' => 'name form-control', 'placeholder' => "Masukkan Tahun"])}}
+                            {{Form::number('waktu_pembuatan',request('waktu_pembuatan'),['class' => 'name form-control', 'placeholder' => "Masukkan Tahun"])}}
                         </div>
                         <div class="col-md-3">
                           <button type="submit" class="btn btn-primary"> Cari</button>
@@ -22,14 +22,15 @@
         <table class="table table-bordered">
 			<thead>
 				<tr class="active">
-					<th class="th-tengah" width="25">No</th>
-					<th class="th-tengah" width="15%">Judul Informasi</th>
-					<th class="th-tengah" width="15%">Ringkasan Isi Informasi</th>
-					<th class="th-tengah" width="10%">Penanggungjawab Pembuat Informasi</th>
-					<th class="th-tengah" width="10%">Waktu Pembuatan / Penerbitan Informasi</th>
-					<th class="th-tengah" width="10%">Bentuk Informasi Yang Tersedia</th>
-					<th class="th-tengah" width="10%">Jangka Waktu Penyimpanan</th>
-					<th class="th-tengah" width="30%">Jenis Media Yang Memuat Informasi</th>
+					<th class="th-tengah">NO.</th>
+					<th class="th-tengah">JENIS INFORMASI</th>
+					<th class="th-tengah">RINGKASAN INFORMASI</th>
+					<th class="th-tengah">PEJABAT/UNIT/SATKER YANG MENGUASAI INFORMASI</th>
+					<th class="th-tengah">PENANGGUNG JAWAB</th>
+					<th class="th-tengah">WAKTU PENERBITAN INFORMASI</th>
+					<th class="th-tengah">BENTUK INFORMASI</th>
+					<th class="th-tengah">RETENSI ARSIP</th>
+					<th class="th-tengah">LINK</th>
 				</tr>
 				<tr class="active">
 					<th class="th-tengah">(1)</th>
@@ -39,46 +40,45 @@
 					<th class="th-tengah">(5)</th>
 					<th class="th-tengah">(6)</th>
 					<th class="th-tengah">(7)</th>
-					<th class="th-tengah">(8)</th>
+					<th class="th-tengah">(13)</th>
+					<th class="th-tengah">(14)</th>
 				</tr>
 			</thead>
 			<tbody>
 			@foreach ($data1 as $row )
 			<tr>
-				<td style="text-align:left"><b>{{ $row->nomer }}</b></td>
-				<td colspan="7"><b>{{ $row->judul }}</b></td>
+				<td style="text-align:left"><b>{{ $row->nomor }}</b></td>
+				<td colspan="8"><b>{{ $row->jenis_informasi }}</b></td>
 			</tr>
 			@foreach ($row->anak as $anakan )
-				<td style="text-align:left">{{ $anakan->nomer }}</td>
-				<td>{{ $anakan->judul }}</td>
-				<td><div style="text-align: left;">{{ $anakan->ringkasan }}</div><small></small></td>
-				<td>{{ $anakan->tg_jawab }}</td>
-				<td>{{ $anakan->tahun }}</td>
-				<td>{{ $anakan->bentuk }}</td>
+				<td style="text-align:left">{{ $anakan->nomor }}</td>
+				<td>{{ $anakan->jenis_informasi }}</td>
+				<td><div style="text-align: left;">{{ $anakan->ringkasan_informasi }}</div><small></small></td>
+				<td>{{ $anakan->pejabat_yg_menguasai }}</td>
+				<td>{{ $anakan->penanggungjawab_informasi }}</td>
+				<td>{{ $anakan->waktu_pembuatan }}</td>
+				<td>{{ $anakan->bentuk_informasi }}</td>
 				<td>{{ $anakan->retensi }}</td>
-				<td>
-					Detail : <br><i class="fa fa-link"></i> <a href="?p=31&amp;id=2">https://kominfo.batangkab.go.id/ppid/?p=31&amp;id=2</a><br><br>
-					Website : <br><i class="fa fa-link"></i> <a href="https://kominfo.batangkab.go.id/?p=1&amp;id=1" target="_blank">https://kominfo.batangkab.go.id/?p=1&amp;id=1</a><br><br>							
-				</td>
-			</tr>
+				<td>{!! $anakan->link !!}</td>
 			@endforeach
 			@endforeach
 		    <tr>
 			</tbody>
 		</table>
 
-        <h3>II. INFORMASI WAJIB DIUMUMKAN SECARA SERTA MERTA</h3>
+        <h3>II. INFORMASI WAJIB TERSEDIA SETIAP SAAT</h3>
         <table class="table table-bordered">
 			<thead>
 				<tr class="active">
-					<th class="th-tengah" width="25">No</th>
-					<th class="th-tengah" width="15%">Judul Informasi</th>
-					<th class="th-tengah" width="15%">Ringkasan Isi Informasi</th>
-					<th class="th-tengah" width="10%">Penanggungjawab Pembuat Informasi</th>
-					<th class="th-tengah" width="10%">Waktu Pembuatan / Penerbitan Informasi</th>
-					<th class="th-tengah" width="10%">Bentuk Informasi Yang Tersedia</th>
-					<th class="th-tengah" width="10%">Jangka Waktu Penyimpanan</th>
-					<th class="th-tengah" width="30%">Jenis Media Yang Memuat Informasi</th>
+					<th class="th-tengah">NO.</th>
+					<th class="th-tengah">JENIS INFORMASI</th>
+					<th class="th-tengah">RINGKASAN INFORMASI</th>
+					<th class="th-tengah">PEJABAT/UNIT/SATKER YANG MENGUASAI INFORMASI</th>
+					<th class="th-tengah">PENANGGUNG JAWAB</th>
+					<th class="th-tengah">WAKTU PENERBITAN INFORMASI</th>
+					<th class="th-tengah">BENTUK INFORMASI</th>
+					<th class="th-tengah">RETENSI ARSIP</th>
+					<th class="th-tengah">LINK</th>
 				</tr>
 				<tr class="active">
 					<th class="th-tengah">(1)</th>
@@ -88,28 +88,27 @@
 					<th class="th-tengah">(5)</th>
 					<th class="th-tengah">(6)</th>
 					<th class="th-tengah">(7)</th>
-					<th class="th-tengah">(8)</th>
+					<th class="th-tengah">(13)</th>
+					<th class="th-tengah">(14)</th>
 				</tr>
 			</thead>
 			<tbody>
                   @foreach ($data2 as $row )
                   	<tr>
-						<td style="text-align:left"><b>{{ $row->nomer }}</b></td>
-						<td colspan="7"><b>{{ $row->judul }}</b></td>
+						<td style="text-align:left"><b>{{ $row->nomor }}</b></td>
+						<td colspan="8"><b>{{ $row->jenis_informasi }}</b></td>
 					</tr>
               
                     @foreach ($row->anak as $anakan )
-	                  	<td style="text-align:left">{{ $anakan->nomer }}</td>
-						<td>{{ $anakan->judul }}</td>
-						<td><div style="text-align: left;">{{ $anakan->ringkasan }}</div><small></small></td>
-						<td>{{ $anakan->tg_jawab }}</td>
-						<td>{{ $anakan->tahun }}</td>
-						<td>{{ $anakan->bentuk }}</td>
+	                  	<td style="text-align:left">{{ $anakan->nomor }}</td>
+						<td>{{ $anakan->jenis_informasi }}</td>
+						<td><div style="text-align: left;">{{ $anakan->ringkasan_informasi }}</div><small></small></td>
+						<td>{{ $anakan->pejabat_yg_menguasai }}</td>
+						<td>{{ $anakan->penanggungjawab_informasi }}</td>
+						<td>{{ $anakan->waktu_pembuatan }}</td>
+						<td>{{ $anakan->bentuk_informasi }}</td>
 						<td>{{ $anakan->retensi }}</td>
-						<td>
-							Detail : <br><i class="fa fa-link"></i> <a href="?p=31&amp;id=2">https://kominfo.batangkab.go.id/ppid/?p=31&amp;id=2</a><br><br>
-							Website : <br><i class="fa fa-link"></i> <a href="https://kominfo.batangkab.go.id/?p=1&amp;id=1" target="_blank">https://kominfo.batangkab.go.id/?p=1&amp;id=1</a><br><br>							
-						</td>
+						<td>{!! $anakan->link !!}</td>
 					</tr>
                       
                     @endforeach
@@ -119,18 +118,19 @@
 			</tbody>
 		</table>
 
-		<h3>III. INFORMASI WAJIB TERSEDIA SETIAP SAAT</h3>
+		<h3>III. INFORMASI WAJIB DIUMUMKAN SECARA SERTA MERTA</h3>
         <table class="table table-bordered">
 			<thead>
 				<tr class="active">
-					<th class="th-tengah" width="25">No</th>
-					<th class="th-tengah" width="15%">Judul Informasi</th>
-					<th class="th-tengah" width="15%">Ringkasan Isi Informasi</th>
-					<th class="th-tengah" width="10%">Penanggungjawab Pembuat Informasi</th>
-					<th class="th-tengah" width="10%">Waktu Pembuatan / Penerbitan Informasi</th>
-					<th class="th-tengah" width="10%">Bentuk Informasi Yang Tersedia</th>
-					<th class="th-tengah" width="10%">Jangka Waktu Penyimpanan</th>
-					<th class="th-tengah" width="30%">Jenis Media Yang Memuat Informasi</th>
+					<th class="th-tengah">NO.</th>
+					<th class="th-tengah">JENIS INFORMASI</th>
+					<th class="th-tengah">RINGKASAN INFORMASI</th>
+					<th class="th-tengah">PEJABAT/UNIT/SATKER YANG MENGUASAI INFORMASI</th>
+					<th class="th-tengah">PENANGGUNG JAWAB</th>
+					<th class="th-tengah">WAKTU PENERBITAN INFORMASI</th>
+					<th class="th-tengah">BENTUK INFORMASI</th>
+					<th class="th-tengah">RETENSI ARSIP</th>
+					<th class="th-tengah">LINK</th>
 				</tr>
 				<tr class="active">
 					<th class="th-tengah">(1)</th>
@@ -140,28 +140,27 @@
 					<th class="th-tengah">(5)</th>
 					<th class="th-tengah">(6)</th>
 					<th class="th-tengah">(7)</th>
-					<th class="th-tengah">(8)</th>
+					<th class="th-tengah">(13)</th>
+					<th class="th-tengah">(14)</th>
 				</tr>
 			</thead>
 			<tbody>
-                  @foreach ($data2 as $row )
+                  @foreach ($data3 as $row )
                   	<tr>
-						<td style="text-align:left"><b>{{ $row->nomer }}</b></td>
-						<td colspan="7"><b>{{ $row->judul }}</b></td>
+						<td style="text-align:left"><b>{{ $row->nomor }}</b></td>
+						<td colspan="8"><b>{{ $row->jenis_informasi }}</b></td>
 					</tr>
               
                     @foreach ($row->anak as $anakan )
-	                  	<td style="text-align:left">{{ $anakan->nomer }}</td>
-						<td>{{ $anakan->judul }}</td>
-						<td><div style="text-align: left;">{{ $anakan->ringkasan }}</div><small></small></td>
-						<td>{{ $anakan->tg_jawab }}</td>
-						<td>{{ $anakan->tahun }}</td>
-						<td>{{ $anakan->bentuk }}</td>
+	                  	<td style="text-align:left">{{ $anakan->nomor }}</td>
+						<td>{{ $anakan->jenis_informasi }}</td>
+						<td><div style="text-align: left;">{{ $anakan->ringkasan_informasi }}</div><small></small></td>
+						<td>{{ $anakan->pejabat_yg_menguasai }}</td>
+						<td>{{ $anakan->penanggungjawab_informasi }}</td>
+						<td>{{ $anakan->waktu_pembuatan }}</td>
+						<td>{{ $anakan->bentuk_informasi }}</td>
 						<td>{{ $anakan->retensi }}</td>
-						<td>
-							Detail : <br><i class="fa fa-link"></i> <a href="?p=31&amp;id=2">https://kominfo.batangkab.go.id/ppid/?p=31&amp;id=2</a><br><br>
-							Website : <br><i class="fa fa-link"></i> <a href="https://kominfo.batangkab.go.id/?p=1&amp;id=1" target="_blank">https://kominfo.batangkab.go.id/?p=1&amp;id=1</a><br><br>							
-						</td>
+						<td>{!! $anakan->link !!}</td>
 					</tr>
     
                     @endforeach
@@ -175,14 +174,15 @@
         <table class="table table-bordered">
 			<thead>
 				<tr class="active">
-					<th class="th-tengah" width="25">No</th>
-					<th class="th-tengah" width="15%">Judul Informasi</th>
-					<th class="th-tengah" width="15%">Ringkasan Isi Informasi</th>
-					<th class="th-tengah" width="10%">Penanggungjawab Pembuat Informasi</th>
-					<th class="th-tengah" width="10%">Waktu Pembuatan / Penerbitan Informasi</th>
-					<th class="th-tengah" width="10%">Bentuk Informasi Yang Tersedia</th>
-					<th class="th-tengah" width="10%">Jangka Waktu Penyimpanan</th>
-					<th class="th-tengah" width="30%">Jenis Media Yang Memuat Informasi</th>
+					<th class="th-tengah">NO.</th>
+					<th class="th-tengah">JENIS INFORMASI</th>
+					<th class="th-tengah">RINGKASAN INFORMASI</th>
+					<th class="th-tengah">PEJABAT/UNIT/SATKER YANG MENGUASAI INFORMASI</th>
+					<th class="th-tengah">PENANGGUNG JAWAB</th>
+					<th class="th-tengah">WAKTU PENERBITAN INFORMASI</th>
+					<th class="th-tengah">BENTUK INFORMASI</th>
+					<th class="th-tengah">RETENSI ARSIP</th>
+					<th class="th-tengah">LINK</th>
 				</tr>
 				<tr class="active">
 					<th class="th-tengah">(1)</th>
@@ -192,28 +192,27 @@
 					<th class="th-tengah">(5)</th>
 					<th class="th-tengah">(6)</th>
 					<th class="th-tengah">(7)</th>
-					<th class="th-tengah">(8)</th>
+					<th class="th-tengah">(13)</th>
+					<th class="th-tengah">(14)</th>
 				</tr>
 			</thead>
 			<tbody>
-                  @foreach ($data2 as $row )
+                  @foreach ($data3 as $row )
                   	<tr>
-						<td style="text-align:left"><b>{{ $row->nomer }}</b></td>
-						<td colspan="7"><b>{{ $row->judul }}</b></td>
+						<td style="text-align:left"><b>{{ $row->nomor }}</b></td>
+						<td colspan="8"><b>{{ $row->jenis_informasi }}</b></td>
 					</tr>
               
                     @foreach ($row->anak as $anakan )
-	                  	<td style="text-align:left">{{ $anakan->nomer }}</td>
-						<td>{{ $anakan->judul }}</td>
-						<td><div style="text-align: left;">{{ $anakan->ringkasan }}</div><small></small></td>
-						<td>{{ $anakan->tg_jawab }}</td>
-						<td>{{ $anakan->tahun }}</td>
-						<td>{{ $anakan->bentuk }}</td>
+	                  	<td style="text-align:left">{{ $anakan->nomor }}</td>
+						<td>{{ $anakan->jenis_informasi }}</td>
+						<td><div style="text-align: left;">{{ $anakan->ringkasan_informasi }}</div><small></small></td>
+						<td>{{ $anakan->pejabat_yg_menguasai }}</td>
+						<td>{{ $anakan->penanggungjawab_informasi }}</td>
+						<td>{{ $anakan->waktu_pembuatan }}</td>
+						<td>{{ $anakan->bentuk_informasi }}</td>
 						<td>{{ $anakan->retensi }}</td>
-						<td>
-							Detail : <br><i class="fa fa-link"></i> <a href="?p=31&amp;id=2">https://kominfo.batangkab.go.id/ppid/?p=31&amp;id=2</a><br><br>
-							Website : <br><i class="fa fa-link"></i> <a href="https://kominfo.batangkab.go.id/?p=1&amp;id=1" target="_blank">https://kominfo.batangkab.go.id/?p=1&amp;id=1</a><br><br>							
-						</td>
+						<td>{!! $anakan->link !!}</td>
 					</tr>
                       
                     @endforeach

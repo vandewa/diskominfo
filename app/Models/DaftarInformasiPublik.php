@@ -16,4 +16,9 @@ class DaftarInformasiPublik extends Model
     {
         return $this->belongsTo(ComCode::class,'type');
     }
+
+    public function anak()
+    {
+        return $this->hasMany(DaftarInformasiPublik::class, 'root');
+    }
 }

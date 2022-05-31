@@ -246,6 +246,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('category', CategoryController::class);
         Route::resource('infohoax', InfohoaxController::class);
         Route::resource('infografis', InfografisController::class);
+        Route::get('daftar-informasi-publik-child', [DaftarInformasiPublikController::class, 'indexChild'])->name('daftar.informasi.publik.index');
+        Route::get('daftar-informasi-publik-child/create', [DaftarInformasiPublikController::class, 'createChild'])->name('daftar.informasi.publik.create');
+        Route::get('daftar-informasi-publik-child/{id}', [DaftarInformasiPublikController::class, 'editChild'])->name('daftar.informasi.publik.edit');
         Route::resource('daftar-informasi-publik', DaftarInformasiPublikController::class);
     });
 
