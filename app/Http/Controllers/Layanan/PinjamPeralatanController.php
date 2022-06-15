@@ -12,6 +12,7 @@ use NcJoes\OfficeConverter\OfficeConverter;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\PinjamPeralatanStore;
 
 
 class PinjamPeralatanController extends Controller
@@ -75,7 +76,7 @@ class PinjamPeralatanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PinjamPeralatanStore $request)
     {
 
         $path = 'uploads/layanan';
@@ -161,10 +162,10 @@ class PinjamPeralatanController extends Controller
 
         //  return $notif;
 
-        $this->notification($nohape, $tiket);
-        $this->sendMedia($nohape, $tiket);
-        $this->sendGroupWA($notif);
-        $this->notificationStakeholder($notif);
+        // $this->notification($nohape, $tiket);
+        // $this->sendMedia($nohape, $tiket);
+        // $this->sendGroupWA($notif);
+        // $this->notificationStakeholder($notif);
 
       
         return redirect(route('pengajuanizin'))->with(['statuss' => 'oke', 'id_alat' => $id_alat]);

@@ -87,6 +87,9 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/table_elements.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/contextmenu.js')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/echarts/echarts.min.js')}}"></script>
+	{{-- <script src="{{ url ('limitless/Template/global_assets/js/demo_pages/charts/echarts/pies_donuts.js')}}"></script> --}}
+
 	{{-- <script src="{{ url ('limitless/Documentation/assets/ckeditor/ckeditor.js')}}"></script> --}}
 
 	<!-- /theme JS files Datatable-->
@@ -461,6 +464,20 @@
 						<a href="{{ route('buku:tamu.index') }}" class="nav-link @yield('kondisi12')">
 							<i class="icon-man-woman"></i>
 							<span>Buku Tamu</span>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="{{ route('skm.index') }}" class="nav-link @yield('kondisi13')">
+							<i class="icon-pie-chart2"></i>
+							<span>Rekap Data SKM</span>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="{{ route('daily-work-recap.index') }}" class="nav-link @yield('kondisi14')">
+							<i class="icon-stack"></i>
+							<span>Daily Work Recap</span>
 						</a>
 					</li>
 

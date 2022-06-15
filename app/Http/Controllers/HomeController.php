@@ -38,6 +38,8 @@ use App\Models\PinjamPeralatan;
 use Illuminate\Support\Facades\Http;
 use App\Models\DaftarInformasiPublik;
 use Illuminate\Support\Facades\Cache;
+use App\Models\Soal;
+
 
 
 
@@ -125,31 +127,44 @@ class HomeController extends Controller
      public function informasiPublik(Request $request)
     {
 
-        $tahunini =  \Carbon\Carbon::now()->isoFormat('Y');
+        $terbaru = DaftarInformasiPublik::max('waktu_pembuatan');
 
-        $data1 = DaftarInformasiPublik::with(['anak' => function($z)use($request) {
+        $data1 = DaftarInformasiPublik::with(['anak'=> function($z)use($request) {
              if($request->filled('waktu_pembuatan')){
                  $z->where('waktu_pembuatan', $request->waktu_pembuatan);
-             }
-            }])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_01')->where('waktu_pembuatan', '=', $tahunini);
+             }}])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_01');
+            
+            if(!$request->filled('waktu_pembuatan')){
+                $data1->where('waktu_pembuatan', '=', $terbaru);
+            }
+
 
         $data2 = DaftarInformasiPublik::with(['anak'=> function($z)use($request) {
              if($request->filled('waktu_pembuatan')){
                  $z->where('waktu_pembuatan', $request->waktu_pembuatan);
-             }
-            }])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_02')->where('waktu_pembuatan', '=', $tahunini);
+             }}])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_02');
+            
+            if(!$request->filled('waktu_pembuatan')){
+                $data2->where('waktu_pembuatan', '=', $terbaru);
+            }
 
         $data3 = DaftarInformasiPublik::with(['anak'=> function($z)use($request) {
-            if($request->filled('waktu_pembuatan')){
-                $z->where('waktu_pembuatan', $request->waktu_pembuatan);
+             if($request->filled('waktu_pembuatan')){
+                 $z->where('waktu_pembuatan', $request->waktu_pembuatan);
+             }}])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_03');
+            
+            if(!$request->filled('waktu_pembuatan')){
+                $data3->where('waktu_pembuatan', '=', $terbaru);
             }
-            }])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_03')->where('waktu_pembuatan', '=', $tahunini);
 
-         $data4 = DaftarInformasiPublik::with(['anak'=> function($z)use($request) {
-            if($request->filled('waktu_pembuatan')){
-                $z->where('waktu_pembuatan', $request->waktu_pembuatan);
+        $data4 = DaftarInformasiPublik::with(['anak'=> function($z)use($request) {
+             if($request->filled('waktu_pembuatan')){
+                 $z->where('waktu_pembuatan', $request->waktu_pembuatan);
+             }}])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_04');
+            
+            if(!$request->filled('waktu_pembuatan')){
+                $data4->where('waktu_pembuatan', '=', $terbaru);
             }
-            }])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_04')->where('waktu_pembuatan', '=', $tahunini);
 
 
          if($request->filled('waktu_pembuatan')){
@@ -167,6 +182,7 @@ class HomeController extends Controller
              });
 
         }
+
         $data1 = $data1->get();
         $data2 = $data2->get();
         $data3 = $data3->get();
@@ -287,7 +303,13 @@ class HomeController extends Controller
 
         //  return $data;
 
-        return view('home.pengajuanizin', compact('data', 'datanya', 'jenis'));
+        $soal = Soal::with(['jawaban'])->get();
+
+        // return $soal;
+        
+
+        // return view('home.pengajuanizin', compact('data', 'datanya', 'jenis'));
+        return view('home.pengajuanizin', compact('soal'));
     }
 
 

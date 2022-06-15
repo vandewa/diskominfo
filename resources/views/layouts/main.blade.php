@@ -41,6 +41,7 @@
   <link rel="stylesheet" href="{{ url('front/custombox/jquery.mCustomScrollbar.css')}}">
   <link rel="stylesheet" href="{{ url('front/custombox/custombox.min.css')}}">
   <link rel="stylesheet" href="{{ asset('css/hover-master/css/hover.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
   {{-- https://ianlunn.github.io/Hover/ dokummentasi animasi  --}}
 
   @stack('css')
@@ -101,6 +102,7 @@
             -webkit-filter: grayscale(0);
             -webkit-transform: scale(1);
       }
+      
     </style>
 </head>
 
@@ -146,8 +148,6 @@
         <div id="navBar" class="navbar-collapse collapse">
           <div class="navbar-body header-abs-top-inner">
             <ul class="navbar-nav">
-
-
               <!-- Profil -->
               <li class="hs-has-sub-menu navbar-nav-item">
 
@@ -173,13 +173,14 @@
                   <!-- Company -->
 
                   @foreach($menu_categories as $category)
+                  
                   <div class="hs-has-sub-menu">
                     <a @if(count($category->childs))href="#"
                       @else href="{{$category->url}}"
-                      @endif
-
+                      @endif @if($category->lampiran == 'y') target="_blank" @endif
                       id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item
                       @if(count($category->childs))dropdown-item-toggle @endif ">{{ $category->nama }}</a>
+
                     <div id="navSubmenuPagesCompany"
                       class="hs-sub-menu @if(count($category->childs)) dropdown-menu @endif"
                       aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
@@ -188,10 +189,10 @@
                       <div class="hs-has-sub-menu">
                         <a @if(count($child->childs))href="#"
                           @else href="{{$child->url}}"
-                          @endif
-
+                          @endif @if($child->lampiran == 'y') target="_blank" @endif
                           id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item
                           @if(count($child->childs))dropdown-item-toggle @endif" >{{ $child->nama }}</a>
+
                         <div id="navSubmenuPagesCompany"
                           class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif"
                           aria-labelledby="navLinkPagesCompany">
@@ -199,7 +200,7 @@
                           @foreach($child->childs as $child1)
                           <a @if(count($child1->childs))href="#"
                             @else href="{{$child1->url}}"
-                            @endif
+                            @endif @if($child1->lampiran == 'y') target="_blank" @endif
                             id="navLinkPagesCompany" class="hs-mega-menu-invoker dropdown-item
                             @if(count($child1->childs))dropdown-item-toggle @endif " href="javascript:;"
                             aria-haspopup="true" aria-expanded="false" aria-controls="navSubmenuPagesCompany">{{
@@ -239,6 +240,7 @@
                       @endif @if($ppids->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
                       class="hs-mega-menu-invoker dropdown-item @if(count($ppids->childs))dropdown-item-toggle
                       @endif">{{ $ppids->nama }}</a>
+
                     <div id="navSubmenuPagesCompany" class="hs-sub-menu @if(count($ppids->childs)) dropdown-menu @endif"
                       aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
                       @if(count($ppids->childs))
@@ -249,6 +251,7 @@
                           @endif @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
                           class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle
                           @endif" >{{ $child->nama }}</a>
+
                         <div id="navSubmenuPagesCompany"
                           class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif"
                           aria-labelledby="navLinkPagesCompany">
@@ -294,6 +297,7 @@
                       @if($category->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
                       class="hs-mega-menu-invoker dropdown-item @if(count($category->childs))dropdown-item-toggle
                       @endif">{{ $category->nama }}</a>
+
                     <div id="navSubmenuPagesCompany"
                       class="hs-sub-menu @if(count($category->childs)) dropdown-menu @endif"
                       aria-labelledby="navLinkPagesCompany" style="min-width: 230px;">
@@ -306,6 +310,7 @@
                           @if($child->lampiran == 'y') target="_blank" @endif id="navLinkPagesCompany"
                           class="hs-mega-menu-invoker dropdown-item @if(count($child->childs))dropdown-item-toggle
                           @endif" >{{ $child->nama }}</a>
+                          
                         <div id="navSubmenuPagesCompany"
                           class="hs-sub-menu @if(count($child->childs)) dropdown-menu @endif"
                           aria-labelledby="navLinkPagesCompany">
@@ -377,7 +382,7 @@
               <li class="hs-has-sub-menu navbar-nav-item">
                 <a href="{{ route('pengajuanizin')}}" id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold"
                   href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu"
-                  @yield('warna')>Layanan</a>
+                  @yield('warna')>Layanan </a>
 
                 <!-- Blog - Submenu -->
                 {{-- <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu"
@@ -793,6 +798,25 @@
       
     });
   </script>
+
+  {{-- <script>
+    var increment = document.getElementById('up'),
+    decrement = document.getElementById('down'),
+    fsize     = document.getElementById('pagenya'),
+    step      = 2;
+
+    fsize.style.fontSize = '30px';
+
+    increment.onclick = function(){
+      // $( "body" ).addClass( "setan" )
+      fsize.style.fontSize =  parseInt(fsize.style.fontSize) + step + 'px'; 
+    };
+
+    decrement.onclick = function(){
+      //  $( "body" ).removeClass( "setan" )
+      fsize.style.fontSize =  parseInt(fsize.style.fontSize) - step + 'px';
+    };
+  </script> --}}
   <script src="{{ url ('front/assets/vendor/hs-header/dist/hs-header.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-go-to/dist/hs-go-to.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/hs-unfold/dist/hs-unfold.min.js')}}"></script>
@@ -988,6 +1012,8 @@
         duration: 650,
         once: true
       });
+
+      
 
 
       // INITIALIZATION OF GO TO

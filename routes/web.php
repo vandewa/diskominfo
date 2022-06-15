@@ -54,6 +54,8 @@ use App\Http\Controllers\Layanan\ColocationServerController;
 use App\Http\Controllers\Layanan\PermohonanSubdomainController;
 use Spatie\Analytics\Period;
 use App\Http\Controllers\DaftarInformasiPublikController;
+use App\Http\Controllers\SKMController;
+use App\Http\Controllers\DailyWorkRecapController;
 
 
 
@@ -142,6 +144,8 @@ Route::get('/zoom/list', [ZoomController::class, 'getZoom'])->name('zoom.list');
 Route::get('/permintaan/zoom/list', [FrontZoomController::class, 'getZoom'])->name('front.zoom.list');
 Route::get('/agenda', [AgendaController::class, 'front'])->name('front.agenda');
 Route::get('/tamu', [FrontBukuTamuController::class, 'index'])->name('front.tamu');
+Route::get('/skm', [SKMController::class, 'indexFront'])->name('front.skm');
+Route::post('/skm', [SKMController::class, 'store'])->name('front.skm.post');
 
 Route::group([], function () {
     Route::group(['prefix' => 'perijinan', 'as' => 'perijinan:'], function () {
@@ -231,6 +235,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['prefix' => 'buku', 'as' => 'buku:'], function () {
             Route::resource('tamu', BukuTamuController::class);
         });
+
+        Route::resource('skm', SKMController::class);
+        Route::resource('daily-work-recap', DailyWorkRecapController::class);
     });
 
     Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function () {
@@ -286,9 +293,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
-    Route::group(['middleware' => ['auth'], 'prefix' => "admin"], function () {
-        Route::resource('media', MediaController::class);
-    });
+    // Route::group(['middleware' => ['auth'], 'prefix' => "admin"], function () {
+    //     Route::resource('media', MediaController::class);
+    // });
 
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();

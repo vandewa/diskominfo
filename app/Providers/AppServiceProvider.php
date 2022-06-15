@@ -68,8 +68,7 @@ class AppServiceProvider extends ServiceProvider
     View::share('menu_categories', $categories);
 
 
-
-      $categoriess = Cache::remember('categoriess', 3600, function () {
+    $categoriess = Cache::remember('categoriess', 3600, function () {
           return Menu::with(['childs'])
               ->where('parent', '=', '9')
               ->get();

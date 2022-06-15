@@ -69,12 +69,12 @@ data-hs-header-options='{
                             <h2 class="text-white">
                                 <span class=" text-white">
                                     <span class="js-text-animation" data-hs-typed-options='{
-                        "strings": ["Spirit Perubahan Menuju Pelayanan Prima.", "Wonosobo Menuju SmartCity."],
-                        "typeSpeed": 90,
-                        "loop": true,
-                        "backSpeed": 44,
-                        "backDelay": 2500
-                        }'></span>
+                                    "strings": ["Diskominfo H.A.N.D.A.L (Humanis, Akuntabel, Nyaman, Digital, Agile, Literate)", "Terwujudnya Pelayanan Yang Handal dan Inklusif Untuk Semua. "],
+                                    "typeSpeed": 90,
+                                    "loop": true,
+                                    "backSpeed": 44,
+                                    "backDelay": 2500
+                                    }'></span>
                                 </span>
                             </h2>
                         </div>
@@ -232,6 +232,15 @@ data-hs-header-options='{
                 </div>
 
                 <!-- End Blog -->
+
+                {{-- <div class="container">
+                <h1 id='test'>Resize Me</h1>
+                <p class="font-size-label">Font Size</p>
+                <button id="up">+</button>
+                <p id="font-size"></p>
+                <span>px</span>
+                <button id="down">-</button>
+                </div> --}}
 
                 @foreach($posting2 as $post)
                 <!-- Blog -->
