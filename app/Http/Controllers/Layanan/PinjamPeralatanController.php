@@ -76,7 +76,7 @@ class PinjamPeralatanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PinjamPeralatanStore $request)
+    public function store(Request $request)
     {
 
         $path = 'uploads/layanan';
@@ -162,10 +162,10 @@ class PinjamPeralatanController extends Controller
 
         //  return $notif;
 
-        // $this->notification($nohape, $tiket);
-        // $this->sendMedia($nohape, $tiket);
-        // $this->sendGroupWA($notif);
-        // $this->notificationStakeholder($notif);
+        $this->notification($nohape, $tiket);
+        $this->sendMedia($nohape, $tiket);
+        $this->sendGroupWA($notif);
+        $this->notificationStakeholder($notif);
 
       
         return redirect(route('pengajuanizin'))->with(['statuss' => 'oke', 'id_alat' => $id_alat]);

@@ -32,7 +32,7 @@ class PinjamPeralatanStore extends FormRequest
             'lama_pinjam' => 'required', 
             'nomor' => 'required', 
             'file_name'=>'mimes:pdf',
-            'captcha' => 'required|captcha',
+            // 'captcha' => 'required|captcha',
         ];
     }
 }
