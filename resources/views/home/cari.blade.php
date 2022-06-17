@@ -101,14 +101,14 @@
                       <div class="avatar avatar-lg mr-3">
                         <a href="/detail/{{ $populer->slug }}">
                             @if (!empty($populer->gambarMuka->path) || !empty($populer->gambarMuka->file_name))
-                            <img class="card-img transition-zoom-hover"
+                              <img class="card-img transition-zoom-hover"
                                   src="{{ asset($populer->gambarMuka->path.$populer->gambarMuka->file_name??'') }}"
                                   alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
-                                    @else
-                                    <img class="card-img transition-zoom-hover"
-                                    src="{{ asset('uploads/diskominfowonosobo.jpg') }}"
-                                    alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
-                                    @endif
+                              @else
+                                <img class="card-img transition-zoom-hover"
+                                src="{{ asset('uploads/diskominfowonosobo.jpg') }}"
+                                alt="Image Description" style="height:100%;width:100%;object-fit:cover"> 
+                              @endif
                           </a>
                         </div>
                         <div class="media-body">
@@ -139,8 +139,11 @@
 
 @push('js')
 <script>
+
+  <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+
 </script>
 @endpush
 

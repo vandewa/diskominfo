@@ -21,9 +21,9 @@ class UserController extends Controller
      */
     public function index()
     {
-       if(!auth()->user()->hasPermission('users-read')){
-        abort(403);
-       }
+    //    if(!auth()->user()->hasPermission('users-read')){
+    //     abort(403);
+    //    }
         return view('user.index');
     }
 
@@ -34,9 +34,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        if(!auth()->user()->hasPermission('users-read')){
-        abort(403);
-       }
+    //     if(!auth()->user()->hasPermission('users-read')){
+    //     abort(403);
+    //    }
 
        $role = Role::with(['permissions'])->get();
 
@@ -51,25 +51,25 @@ class UserController extends Controller
      */
     public function store(UsercreateValidation $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'email' => 'required|email',
-            'level' => 'required',
-            'nip' => 'required',
-            'jabatan' => 'required',
-            'opd' => 'required',
-            'no_hp' => 'required',
+        // $request->validate([
+        //     'nama' => 'required',
+        //     'email' => 'required|email',
+        //     'level' => 'required',
+        //     'nip' => 'required',
+        //     'jabatan' => 'required',
+        //     'opd' => 'required',
+        //     'no_hp' => 'required',
             
-        ],
-        [
-            'nama.required' => 'Nama harus diisi.',
-            'email.required' =>'Email harus diisi.',
-            'level.required' => 'Level harus dipilih.',
-            'nip.required' => 'Nip harus diisi.',
-            'jabatan.required' => 'Jabatan harus diisi.',
-            'opd.required' => 'OPD harus diisi.',
-            'no_hp.required' => 'No Hp harus diisi.',
-        ]);
+        // ],
+        // [
+        //     'nama.required' => 'Nama harus diisi.',
+        //     'email.required' =>'Email harus diisi.',
+        //     'level.required' => 'Level harus dipilih.',
+        //     'nip.required' => 'Nip harus diisi.',
+        //     'jabatan.required' => 'Jabatan harus diisi.',
+        //     'opd.required' => 'OPD harus diisi.',
+        //     'no_hp.required' => 'No Hp harus diisi.',
+        // ]);
 
           $user = User::create([
             'name' => $request->nama,
@@ -108,9 +108,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
         
-        if(!auth()->user()->hasPermission('users-update')){
-        abort(403);
-        }
+        // if(!auth()->user()->hasPermission('users-update')){
+        // abort(403);
+        // }
        
         $role = Role::with(['permissions'])->get();
 
@@ -165,8 +165,9 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->syncRoles([$request->level]);
-
+        
         return redirect(route('user.index'))->with('status', 'Data user berhasil diubah.');
+
     }
 
     /**
@@ -181,7 +182,6 @@ class UserController extends Controller
         abort(403);
        }
         Users::destroy($id);
-    
        
     }
 

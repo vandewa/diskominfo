@@ -155,17 +155,17 @@
 				<label class="col-form-label col-lg-2">Level<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
-							<select name="level" class="form-control select-icons @error('level') is-invalid @enderror" data-fouc>
-							<option>-- Pilih --</option>
-							@foreach($role as $role )
-							<option value="{{ $role->id }}" {{$user->level == $role->id  ? 'selected' : ''}}>{{ $role->display_name}}</option>
-							@endforeach
-						</select>
-								@error('level')
-								<div class="invalid-feedback">
-								{{ $message }}
-								</div>
-								@enderror
+							<select name="level" class="form-control select-icons @error('level') is-invalid @enderror" data-fouc placeholder="Masukkkan No Hp">
+								{{-- <option>-- Pilih --</option> --}}
+								@foreach($role as $role )
+								<option value="{{ $role->id }}" {{$user->level == $role->id  ? 'selected' : ''}}>{{ $role->display_name}}</option>
+								@endforeach
+							</select>
+								{{-- @error('level')
+									<div class="invalid-feedback">
+										{{ $message }}
+									</div>
+								@enderror --}}
 							<div class="form-control-feedback form-control-feedback-lg">
 								<i class="icon-wrench3"></i>
 							</div>
@@ -213,6 +213,11 @@
 @endsection
 
 @push('js')
+<script>
+<script src=" {{ asset('js/validation/jquery.min.js') }}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}</script>
 <script> 
 	function change()
 		{
@@ -248,19 +253,16 @@
 		}
 		}
 </script>
-<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-{!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}
 
 <script>
+	const nama = document.querySelector('#nama');
+	const slug = document.querySelector('#slug');
 
-const nama = document.querySelector('#nama');
-const slug = document.querySelector('#slug');
-
-nama.addEventListener('change', function() {
-fetch('/user/checkSlug?nama=' + nama.value)
-.then(response => response.json())
-.then(data => slug.value = data.slug);
-});
-
+	nama.addEventListener('change', function() {
+	fetch('/user/checkSlug?nama=' + nama.value)
+	.then(response => response.json())
+	.then(data => slug.value = data.slug);
+	});
 </script>
+
 @endpush

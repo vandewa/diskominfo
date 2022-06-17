@@ -8,11 +8,12 @@ use Session;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
 
 class AgendaController extends Controller
 {
     public $botTele = 'bot2110552489:AAFPRxSbkJtY06IVLKcU44GKVcnz3pm4NUM';
-    // // uji coba grup tele
+    // uji coba grup tele
     public $chatIdTeleDev = '1343623060';
     // // id grup aim tele
     public $chatIdTeleGrup = '-697674877';
@@ -38,7 +39,11 @@ class AgendaController extends Controller
                             </div>';
                         return $actionBtn;
                     }
-                )->addColumn('tanggal', function ($a) {
+                )
+                ->addColumn('jamMulai', function ($a) {
+                   return \Carbon\Carbon::createFromFormat('H:i:s',$a->jamMulai)->format('H:i').' WIB';
+                })
+                ->addColumn('tanggal', function ($a) {
                     if ($a->tanggalBerangkat == $a->tanggalPulang) {
                         return \Carbon\Carbon::createFromFormat('Y-m-d', $a->tanggalPulang)->isoFormat('dddd, D MMMM Y');
                     } else {
@@ -103,78 +108,99 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
+        // $username = User::where('id', $request->post('nama_id'))->first();
+        // $string3 = $request->tanggalBerangkat;
+        // $string4 = $request->tanggalPulang;
+
+        // if ($string3 == $string4) {
+        //     $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . ' WIB' . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+        // } else {
+        //     $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . " - " . \Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . ' WIB' . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+        // }
+       
+        // $url = 'https://api.telegram.org/' . $this->botTele . '/sendMessage?chat_id=' . $this->chatIdTeleGrup . '&text=' . $pesan . '&parse_mode=html';
+       
+        // $response = json_decode(file_get_contents($url));
+
+        // if ($response->ok) {
+        //     $message_id = $response->result->message_id;
+        //     Agenda::create([
+        //         'nama_id' =>  $username->id,
+        //         'tanggalBerangkat' => Carbon::createFromFormat('d/m/Y', $request->tanggalBerangkat)->format('Y-m-d'),
+        //         'tanggalPulang' => Carbon::createFromFormat('d/m/Y', $request->tanggalPulang)->format('Y-m-d'),
+        //         'acara' => $request->acara,
+        //         'tempat' => $request->tempat,
+        //         'keterangan' => $request->keterangan,
+        //         'jamMulai' => $request->jamMulai,
+        //         'oleh' => auth()->user()->id,
+        //         'message_id' => $message_id,
+        //     ]);
+        // }
+
+        // <!--- LEWAT TELEGRAM ----!>
+
         $username = User::where('id', $request->post('nama_id'))->first();
         $string3 = $request->tanggalBerangkat;
         $string4 = $request->tanggalPulang;
 
-        // $validated = $request->validate([
-        //     'nama_id' => 'required',
-        //     'tanggal' => 'required',
-        //     'acara' => 'required',
-        //     'tempat' => 'required',
-        //     'jamMulai' => 'required',
-        //     'keterangan' => 'required'
-        // ]);
-        if ($string3 == $string4) {
-            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . ' WIB' . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
-        } else {
-            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . " - " . \Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . ' WIB' . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+        Agenda::create([
+            'nama_id' =>  $username->id,
+            'tanggalBerangkat' => Carbon::createFromFormat('d/m/Y', $request->tanggalBerangkat)->format('Y-m-d'),
+            'tanggalPulang' => Carbon::createFromFormat('d/m/Y', $request->tanggalPulang)->format('Y-m-d'),
+            'acara' => $request->acara,
+            'tempat' => $request->tempat,
+            'keterangan' => $request->keterangan,
+            'jamMulai' => $request->jamMulai,
+            'oleh' => auth()->user()->id,
+            'message_id' => NULL,
+        ]);
+
+        if ($string3 == $string4 && isset($request->keterangan)) {
+            $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
+                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                        'Keterangan : '. '*'.$request->keterangan. '*'
+                        ;
+        } else if ($string3 == $string4 && !isset($request->keterangan)) {
+           $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
+                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                        'Keterangan : *-*'
+                        ;
+        } else if ($string3 != $string4 && isset($request->keterangan)) {
+             $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
+                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                        'Keterangan : '. '*'.$request->keterangan. '*'
+                        ;
+
+        } else if ($string3 != $string4 && !isset($request->keterangan)) {
+             $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
+                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                        'Keterangan : *-*'
+                        ;
+
         }
 
-        //  if (request()->secure()) {
-            $url = 'https://api.telegram.org/' . $this->botTele . '/sendMessage?chat_id=' . $this->chatIdTeleGrup . '&text=' . $pesan . '&parse_mode=html';
-        // } else {
-        //     $url = 'https://api.telegram.org/' . $this->botTele . '/sendMessage?chat_id=' . $this->chatIdTeleDev . '&text=' . $pesan . '&parse_mode=html';
-        // }
-        // $response = file_get_contents($url, true);
-        $response = json_decode(file_get_contents($url));
+        $this->sendGroupWA($pesan);
 
-        if ($response->ok) {
-            $message_id = $response->result->message_id;
-            Agenda::create([
-                'nama_id' =>  $username->id,
-                'tanggalBerangkat' => Carbon::createFromFormat('d/m/Y', $request->tanggalBerangkat)->format('Y-m-d'),
-                'tanggalPulang' => Carbon::createFromFormat('d/m/Y', $request->tanggalPulang)->format('Y-m-d'),
-                'acara' => $request->acara,
-                'tempat' => $request->tempat,
-                'keterangan' => $request->keterangan,
-                'jamMulai' => $request->jamMulai,
-                'oleh' => auth()->user()->id,
-                'message_id' => $message_id,
-            ]);
-        }
-
-
-        // $this->kirim($pesan, $validated, $string3, $string4);
         return redirect(route('agenda:harian.index'));
     }
 
-    // public function kirim($pesan, $validated, $string3, $string4)
-    // {
-    //     if (request()->secure()) {
-    //         $url = 'https://api.telegram.org/' . $this->botTele . '/sendMessage?chat_id=' . $this->chatIdTeleGrup . '&text=' . $pesan . '&parse_mode=html';
-    //     } else {
-    //         $url = 'https://api.telegram.org/' . $this->botTele . '/sendMessage?chat_id=' . $this->chatIdTeleDev . '&text=' . $pesan . '&parse_mode=html';
-    //     }
-    //     // $response = file_get_contents($url, true);
-    //     $response = json_decode(file_get_contents($url));
-
-    //     if ($response->ok) {
-    //         $string3 = substr($tgl, 0, 10);
-    //         $string4 = substr($tgl, 13, 24);
-    //         $tgl3 = date('Y/m/d', strtotime($string3));
-    //         $tgl4 = date('Y/m/d', strtotime($string4));
-    //         $message_id = $response->result->message_id;
-    //         Agenda::create($validated + [
-    //             'oleh' => auth()->user()->id,
-    //             'tanggalBerangkat' => $tgl3,
-    //             'tanggalPulang' => $tgl4,
-    //             'tanggal' => $tgl3 . ' - ' . $tgl4,
-    //             'message_id' => $message_id
-    //         ]);
-    //     }
-    //     return $response;
-    // }
+  
 
     /**
      * Display the specified resource.
@@ -211,33 +237,93 @@ class AgendaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $username = User::where('id', $request->post('nama_id'))->first();
+        // $string3 = $request->tanggalBerangkat;
+        // $string4 = $request->tanggalPulang;
+        // $msg_id = Agenda::find($id);
+
+        // if ($string3 == $string4) {
+        //     $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . ' WIB' . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+        // } else {
+        //     $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . " - " . \Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . ' WIB' . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+        // }
+
+        // if (request()->secure()) {
+        //     $url = 'https://api.telegram.org/' . $this->botTele .  "/editMessageText?chat_id=" . $this->chatIdTeleGrup . "&message_id=" . $msg_id->message_id . "&text=" . $pesan . '&parse_mode=html';
+        // } else {
+        //     $url = 'https://api.telegram.org/' . $this->botTele .  "/editMessageText?chat_id=" . $this->chatIdTeleDev . "&message_id=" . $msg_id->message_id . "&text=" . $pesan . '&parse_mode=html';
+        // }
+        
+        // $response = json_decode(file_get_contents($url));
+
+        // if ($response->ok) {
+        //     $data = [
+        //         'tanggalBerangkat' =>  Carbon::createFromFormat('d/m/Y', $request->tanggalBerangkat)->format('Y-m-d'),
+        //         'tanggalPulang' =>  Carbon::createFromFormat('d/m/Y', $request->tanggalPulang)->format('Y-m-d'),
+        //     ];
+        //     Agenda::find($id)->update(
+        //         $data +  $request->except(['_token']),
+        //     );
+        // }
+        // <!--- LEWAT TELEGRAM ----!>
+
         $username = User::where('id', $request->post('nama_id'))->first();
         $string3 = $request->tanggalBerangkat;
         $string4 = $request->tanggalPulang;
-        $msg_id = Agenda::find($id);
 
-        if ($string3 == $string4) {
-            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . ' WIB' . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
-        } else {
-            $pesan = "Nama : <b>" . $username->name . urlencode("</b>\nAcara : <b>") . $request->post('acara') . urlencode("</b>\nTanggal : <b>") . \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . " - " . \Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y') . urlencode("</b>\nTempat : <b>") . $request->post('tempat') . urlencode("</b>\nJam Mulai : <b>") . $request->post('jamMulai') . ' WIB' . urlencode("</b>\nKeterangan : <b>") . $request->post('keterangan') . "</b>";
+        Agenda::find($id)->update([
+            'nama_id' =>  $username->id,
+            'tanggalBerangkat' => Carbon::createFromFormat('d/m/Y', $request->tanggalBerangkat)->format('Y-m-d'),
+            'tanggalPulang' => Carbon::createFromFormat('d/m/Y', $request->tanggalPulang)->format('Y-m-d'),
+            'acara' => $request->acara,
+            'tempat' => $request->tempat,
+            'keterangan' => $request->keterangan,
+            'jamMulai' => $request->jamMulai,
+            'oleh' => auth()->user()->id,
+        ]);
+
+        if ($string3 == $string4 && isset($request->keterangan)) {
+            $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
+                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                        'Keterangan : '. '*'.$request->keterangan. '*'
+                        ;
+        } else if ($string3 == $string4 && !isset($request->keterangan)) {
+           $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
+                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                        'Keterangan : *-*'
+                        ;
+        } else if ($string3 != $string4 && isset($request->keterangan)) {
+             $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
+                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                        'Keterangan : '. '*'.$request->keterangan. '*'
+                        ;
+
+        } else if ($string3 != $string4 && !isset($request->keterangan)) {
+             $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
+                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                        'Keterangan : *-*'
+                        ;
+
         }
 
-        if (request()->secure()) {
-            $url = 'https://api.telegram.org/' . $this->botTele .  "/editMessageText?chat_id=" . $this->chatIdTeleGrup . "&message_id=" . $msg_id->message_id . "&text=" . $pesan . '&parse_mode=html';
-        } else {
-            $url = 'https://api.telegram.org/' . $this->botTele .  "/editMessageText?chat_id=" . $this->chatIdTeleDev . "&message_id=" . $msg_id->message_id . "&text=" . $pesan . '&parse_mode=html';
-        }
-        $response = json_decode(file_get_contents($url));
+        $this->sendGroupWA($pesan);
 
-        if ($response->ok) {
-            $data = [
-                'tanggalBerangkat' =>  Carbon::createFromFormat('d/m/Y', $request->tanggalBerangkat)->format('Y-m-d'),
-                'tanggalPulang' =>  Carbon::createFromFormat('d/m/Y', $request->tanggalPulang)->format('Y-m-d'),
-            ];
-            Agenda::find($id)->update(
-                $data +  $request->except(['_token']),
-            );
-        }
         return redirect()->route('agenda:harian.index');
     }
 
@@ -249,16 +335,28 @@ class AgendaController extends Controller
      */
     public function destroy($id)
     {
-        $msg_id =  Agenda::where('id', $id)->first();
-        if (request()->secure()) {
-            $url = 'https://api.telegram.org/' . $this->botTele . '/deleteMessage?chat_id=' . $this->chatIdTeleGrup . '&message_id=' . $msg_id->message_id . '';
-        } else {
-            $url = 'https://api.telegram.org/' . $this->botTele . '/deleteMessage?chat_id=' . $this->chatIdTeleDev . '&message_id=' . $msg_id->message_id . '';
-        }
-        $response = json_decode(file_get_contents($url));
-        $data = [
-            Agenda::destroy($id)
-        ];
-        return $data;
+        // $msg_id =  Agenda::where('id', $id)->first();
+
+        // $url = 'https://api.telegram.org/' . $this->botTele . '/deleteMessage?chat_id=' . $this->chatIdTeleGrup . '&message_id=' . $msg_id->message_id . '';
+
+        // $response = json_decode(file_get_contents($url));
+
+        // HAPUS CHAT TELEGRAM
+    
+        Agenda::destroy($id);
+        
     }
+
+     public function sendGroupWA($pesan)
+    {
+        $pesan = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
+            
+                'name' => 'COBA',
+                'message' => $pesan,
+        ]);
+    
+    }
+
+
+
 }

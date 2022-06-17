@@ -202,10 +202,6 @@
 
 @endsection 
 
-@push('css')
-
-@endpush
-
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>

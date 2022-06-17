@@ -70,15 +70,15 @@
          <center><h1 class="h2">{{ $detail->judul_posting}}</h1>
 
          <div class="js-slick-carousel mb-3 slick "
-          data-hs-slick-carousel-options='{
-            "fade": true,
-            "infinite": true,
-            "autoplay": true,
-            "autoplaySpeed": 4000,
-            "dots": true,
-            "dotsAsProgressLine": true,
-            "dotsClass": "slick-dots mt-n4"
-          }' >
+            data-hs-slick-carousel-options='{
+              "fade": true,
+              "infinite": true,
+              "autoplay": true,
+              "autoplaySpeed": 4000,
+              "dots": true,
+              "dotsAsProgressLine": true,
+              "dotsClass": "slick-dots mt-n4"
+            }' >
             @foreach($detail->attachment as $slide)
             <div class="js-slide">
             <a href="{{ '/'.$slide->path.$slide->file_name??'' }}" target="_blank">
@@ -86,7 +86,7 @@
                 </a>
             </div>
             @endforeach
-            </div>
+          </div>
          <!-- End Author -->
         <div class="mt-5" style="text-align:justify; text-justify:auto;text-indent: 40px;  color:black;">
         {!! $detail->isi_posting !!}

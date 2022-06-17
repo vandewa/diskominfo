@@ -14,6 +14,6 @@ class DailyWorkRecap extends Model
 
     public function nama()
     {
-        return $this->belongsTo(Users::class, 'name');
+        return $this->belongsTo(User::class, 'name');
     }
 }

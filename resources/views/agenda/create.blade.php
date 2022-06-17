@@ -76,7 +76,7 @@
                 <label class="col-form-label col-lg-2">Jam Mulai<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
                     <div class="form-group-feedback form-group-feedback-right">
-                        {{Form::time('jamMulai', null,['class' => 'form-control'.($errors->has('jamMulai') ?' border-danger' :''), 'placeholder' =>'Jam Mulai'])}}
+                        {{Form::time('jamMulai', null,['class' => 'form-control'.($errors->has('jamMulai') ?' border-danger' :''), 'placeholder' =>'WIB'])}}
                         @error('jamMulai')
                         <div class="form-control-feedback text-danger">
                             <i class="icon-cancel-circle2"></i>
@@ -155,4 +155,13 @@
     time_24hr: true
   });
   </script>
+  <script>
+    <script src="{{ asset ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{ asset ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
+    <script src="{{ asset ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! JsValidator::formRequest('App\Http\Requests\AgendaStore') !!}
+
+    </script>
 @endpush

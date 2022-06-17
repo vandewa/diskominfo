@@ -522,6 +522,8 @@ class HomeController extends Controller
         ->limit(3)
         ->get();
 
+        // return $posting_samping;
+
         $cari = $request->q;
 
         $posting = Posting::with(['kategori', 'nama'])

@@ -38,8 +38,8 @@
                         <th>Tempat</th>
                         <th>Jam Mulai</th>
                         <th>Keterangan</th>
-                        <th>Oleh</th>
                         <th>Action</th>
+                        <th style="display: none">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,6 +56,7 @@
         processing: true,
         serverSide: true,
         ajax: window.location.href,
+        "order": [[ 8, "desc" ]],
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
             { data: 'user.name', nama: 'user.name' },
@@ -64,8 +65,8 @@
             { data: 'tempat', name: 'tempat' },
             { data: 'jamMulai', name: 'jamMulai' },
             { data: 'keterangan', name: 'keterangan' },
-            { data: 'oleh.name', name: 'oleh.name',  orderable: false, searchable: false, },
             { data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
+            { data: 'tanggalBerangkat', name: 'tanggalBerangkat', visible: false},
         ]
     });
 </script>
