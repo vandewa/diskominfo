@@ -283,7 +283,7 @@ class AgendaController extends Controller
         ]);
 
         if ($string3 == $string4 && isset($request->keterangan)) {
-            $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+            $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
                         'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
                         'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
                         'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
@@ -292,7 +292,7 @@ class AgendaController extends Controller
                         'Keterangan : '. '*'.$request->keterangan. '*'
                         ;
         } else if ($string3 == $string4 && !isset($request->keterangan)) {
-           $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+           $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
                         'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
                         'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
                         'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
@@ -301,7 +301,7 @@ class AgendaController extends Controller
                         'Keterangan : *-*'
                         ;
         } else if ($string3 != $string4 && isset($request->keterangan)) {
-             $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+             $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
                         'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
                         'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
                         'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
@@ -311,7 +311,7 @@ class AgendaController extends Controller
                         ;
 
         } else if ($string3 != $string4 && !isset($request->keterangan)) {
-             $pesan =    '*Agenda Diskominfo*' . urldecode('%0D%0A%0D%0A') .
+             $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
                         'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
                         'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
                         'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
@@ -351,7 +351,7 @@ class AgendaController extends Controller
     {
         $pesan = Http::asForm()->post('http://10.0.1.21:8000/send-group-message', [
             
-                'name' => 'COBA',
+                'name' => 'DISKOMINFO',
                 'message' => $pesan,
         ]);
     

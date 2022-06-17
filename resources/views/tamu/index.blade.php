@@ -39,6 +39,7 @@
                         <th>Instansi</th>
                         <th>Jumlah Tamu</th>
                         <th>Action</th>
+                        <th style="display: none">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +56,7 @@
         processing: true,
         serverSide: true,
         ajax: window.location.href,
-         "order": [[ 2, "desc" ]],
+         "order": [[ 8, "desc" ]],
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
             { data: 'tanggal', nama: 'tanggal', orderable: false, searchable: false },
@@ -65,6 +66,7 @@
             { data: 'instansi', name: 'instansi' },
             { data: 'jumlah', name: 'jumlah' },
             { data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
+            { data: 'tanggal', nama: 'tanggal', visible:false },
         ]
     });
 </script>
