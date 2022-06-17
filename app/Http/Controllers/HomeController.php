@@ -303,13 +303,13 @@ class HomeController extends Controller
 
         //  return $data;
 
-        $soal = Soal::with(['jawaban'])->get();
+        // $soal = Soal::with(['jawaban'])->get();
 
         // return $soal;
         
 
-        // return view('home.pengajuanizin', compact('data', 'datanya', 'jenis'));
-        return view('home.pengajuanizin', compact('soal'));
+        return view('home.pengajuanizin', compact('data', 'datanya', 'jenis'));
+        // return view('home.pengajuanizin', compact('soal'));
     }
 
 
