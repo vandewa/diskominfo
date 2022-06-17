@@ -33,7 +33,6 @@
                     <tr>
                         <th>No</th>
                         <th>Tanggal</th>
-                        <th style="display: none">Tanggal</th>
                         <th>Nama Tamu</th>
                         <th>Keperluan</th>
                         <th>Instansi</th>
@@ -56,17 +55,16 @@
         processing: true,
         serverSide: true,
         ajax: window.location.href,
-         "order": [[ 8, "desc" ]],
+         "order": [[ 7, "desc" ]],
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
             { data: 'tanggalnya', nama: 'tanggalnya', orderable: false, searchable: false },
-            { data: 'created_at', nama: 'created_at', visible:false },
             { data: 'nama', name: 'nama' },
             { data: 'keperluan', name: 'keperluan' },
             { data: 'instansi', name: 'instansi' },
             { data: 'jumlah', name: 'jumlah' },
             { data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
-            { data: 'tanggal', nama: 'tanggal', visible:false },
+            { data: 'tanggal', nama: 'tanggal', visible: false },
         ]
     });
 </script>

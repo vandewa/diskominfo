@@ -29,6 +29,7 @@
                   <th>Tempat</th>
                   <th>Jam</th>
                   <th>Keterangan</th>
+                  <th style="display: none">Keterangan</th>
               </tr>
             </thead>
             <tbody>
@@ -62,6 +63,7 @@
         processing: true,
         serverSide: true,
         ajax: window.location.href,
+        "order": [[ 7, "desc" ]],
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
             { data: 'user.name', nama: 'user.name' },
@@ -70,6 +72,7 @@
             { data: 'tempat', name: 'tempat' },
             { data: 'jamMulai', name: 'jamMulai' },
             { data: 'keterangan', name: 'keterangan' },
+            { data: 'tanggalBerangkat', name: 'tanggalBerangkat', visible: false },
         ]
     });
     

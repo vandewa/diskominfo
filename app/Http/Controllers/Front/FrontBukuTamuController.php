@@ -32,7 +32,7 @@ class FrontBukuTamuController extends Controller
                         return $actionBtn;
                     }
                 )
-                ->editColumn('tanggal', function ($a) {
+                ->addColumn('tanggalnya', function ($a) {
                         return \Carbon\Carbon::createFromFormat('Y-m-d', $a->tanggal)->isoFormat('dddd, D MMMM Y');
                  
                 })

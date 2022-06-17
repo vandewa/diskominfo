@@ -36,6 +36,7 @@
               <th>Keperluan</th>
               <th>Instansi</th>
               <th>Jumlah Tamu</th>
+              <th style="display: none">Jumlah Tamu</th>
             </tr>
         </thead>
         <tbody>
@@ -201,14 +202,15 @@ sweetAlert();
         processing: true,
         serverSide: true,
         ajax: window.location.href,
-         "order": [[ 1, "desc" ]],
+         "order": [[ 6, "desc" ]],
         columns: [
-           { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-            { data: 'tanggal', nama: 'tanggal' },
+            { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+            { data: 'tanggalnya', nama: 'tanggalnya', orderable: false, searchable: false },
             { data: 'nama', name: 'nama' },
             { data: 'keperluan', name: 'keperluan' },
             { data: 'instansi', name: 'instansi' },
             { data: 'jumlah', name: 'jumlah' },
+            { data: 'tanggal', nama: 'tanggal', visible: false },
         ]
     });
     
