@@ -59,7 +59,7 @@
          "order": [[ 8, "desc" ]],
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
-            { data: 'tanggal', nama: 'tanggal', orderable: false, searchable: false },
+            { data: 'tanggalnya', nama: 'tanggalnya', orderable: false, searchable: false },
             { data: 'created_at', nama: 'created_at', visible:false },
             { data: 'nama', name: 'nama' },
             { data: 'keperluan', name: 'keperluan' },
