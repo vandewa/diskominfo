@@ -55,7 +55,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314083452_1.pdf') }}" width="100%"></iframe>
+                            <embed height="600" src="{{ url('/uploads/lampiran/20220620023342_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -78,7 +78,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084031_1.pdf') }}" width="100%"></iframe>
+                            <embed height="600" src="{{ url('/uploads/lampiran/20220620023520_1.pdf') }}" width="100%"></iframe>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
