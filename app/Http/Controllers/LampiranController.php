@@ -7,6 +7,7 @@ use App\Models\Lampiran;
 use DataTables;
 use App\Http\Requests\LampirancreateValidation;
 use App\Models\ComCode;
+use Illuminate\Support\Facades\File; 
 
 class LampiranController extends Controller
 {
@@ -97,19 +98,37 @@ class LampiranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'keterangan' => 'required'
-        ],
-        [
-            'keterangan.required' => 'Keterangan harus diisi.'
-        ]
-        );
+
+        // return $request->all();
 
         Lampiran::find($id)
         ->update([
             'keterangan' => $request->keterangan,
             'informasi_st' => $request->informasi_st,
+            'updated_by' => $request->updated_by,
         ]);
+
+        if($request->hasFile('nama_lampiran')){
+            $oke = Lampiran::where('id',$id)->first();
+        
+            $path = public_path('uploads/lampiran/').$oke->nama_lampiran;
+            if (file_exists($path)) {
+                File::delete($path);
+            }
+           
+            $files = $request->file('nama_lampiran');
+            $prefix = date('Ymdhis');
+            $by = $request->updated_by;
+            $extension = $files->getClientOriginalExtension();
+            $filename = $prefix.'_'. $by.'.'.$extension;
+            $request->file('nama_lampiran')->move(public_path('uploads/lampiran'), $filename);
+
+            Lampiran::where('id',$id)
+                ->update([
+                    'nama_lampiran' => $filename
+                ]);
+
+        }
 
         return redirect(route('lampirans.index'))->with('status', 'Data berhasil diubah.');
 
@@ -124,9 +143,9 @@ class LampiranController extends Controller
     public function destroy($id)
     {
         $oke = Lampiran::where('id',$id)->first();
-        $path = public_path('uploads/lampiran').$oke->nama_lampiran;
+        $path = public_path('uploads/lampiran/').$oke->nama_lampiran;
         if (file_exists($path)) {
-            unlink($path);
+            File::delete($path);
         }
        
         Lampiran::destroy($id);

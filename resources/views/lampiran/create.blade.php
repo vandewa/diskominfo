@@ -1,12 +1,12 @@
-@section('title', 'Tambah Lampiran')
-@section('menu','Lampiran')
+@section('title', 'Tambah Download Area')
+@section('menu','Download Area')
 @section('submenu','Tambah Data ')
 @extends('layouts/template-admin')
 @section('kondisi5','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Menu Depan</span>
-<span class="breadcrumb-item active">Lampiran</span>
+<span class="breadcrumb-item active">Download Area</span>
 @endsection
 
 @section('container')
@@ -16,7 +16,7 @@
 				<!-- CKEditor default -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-                    <h5 >TAMBAH LAMPIRAN</h5>
+                    <h5 >TAMBAH DATA DOWNLOAD AREA</h5>
 				</div>
 
 					<div class="card-body">

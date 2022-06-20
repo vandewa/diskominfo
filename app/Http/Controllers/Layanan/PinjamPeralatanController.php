@@ -112,6 +112,7 @@ class PinjamPeralatanController extends Controller
                     'alat' => implode(' dan ', $request->alat),
                     'lama_pinjam' => $request->lama_pinjam,
                     'nomor' => $request->nomor,
+                    'keterangan' => $request->keterangan,
                     'status_st' => $request->status_st,
                     'file_name' => $filename,
             ]);
@@ -131,6 +132,7 @@ class PinjamPeralatanController extends Controller
                     'alat' => implode(' dan ', $request->alat),
                     'lama_pinjam' => $request->lama_pinjam,
                     'nomor' => $request->nomor,
+                    'keterangan' => $request->keterangan,
                     'status_st' => $request->status_st,
                 ]);
 

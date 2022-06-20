@@ -76,6 +76,17 @@
     </div>
 </div>
 
+<div class="form-group row" style="margin-bottom: 0.25rem">
+    <div class="col-6">
+        <label class="col-form-label col-lg-6">Keterangan<span class="text-danger">*</span></label>
+        <div class="col-lg-12">
+            <div class="form-group">
+                {{Form::text('keterangan', null, ['class' => 'form-control', 'required', 'readonly' => true])}}
+            </div>
+        </div>
+    </div>
+</div>
+
 @if(!empty($lampiran) || !empty($bukti) )
 <div class="form-group row">
 

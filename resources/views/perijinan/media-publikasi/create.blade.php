@@ -95,7 +95,7 @@ class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent h
                         <div class="row form-group">
                             <label for="currentPasswordLabel" class="col-sm-5 col-form-label input-label">Nomor telepon kontak person<small style="color: red;"><b> (*WhatsApp) </b></small></label>
                             <div class="col-sm-7">
-                                {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Masukkan nomor telepon kontak person','required'])}}
+                                {{Form::number('nomor', null, ['class' => 'form-control ','placeholder' => 'Masukkan nomor WhatsApp','required'])}}
                             </div>
                         </div>
                         <div class="row form-group"  >
