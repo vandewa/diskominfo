@@ -72,7 +72,6 @@
 
 
   <link rel="stylesheet" href="{{ url('front/assets/style.css')}}" />
-
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ url('front/assets/css/theme.min.css')}}">
 
@@ -349,7 +348,7 @@
 
               <!-- Profil -->
               <!-- <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('profil')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Profil</a> -->
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Profil</a> -->
               <!-- Pages - Submenu -->
               <!-- <div class="hs-sub-menu ">
                   </div> -->
@@ -359,7 +358,7 @@
 
               <!-- Visi Misi -->
               <!-- <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('visimisi')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Visi & Misi</a> -->
+                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Visi & Misi</a> -->
               <!-- Pages - Submenu -->
               <!-- <div class="hs-sub-menu ">
                   </div> -->
@@ -369,7 +368,7 @@
 
               <!-- Tupoksi -->
               <!-- <li class="hs-has-sub-menu navbar-nav-item"> -->
-              <!-- <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('tupoksi')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Tupoksi</a> -->
+              <!-- <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Tupoksi</a> -->
               <!-- Pages - Submenu -->
               <!-- <div class="hs-sub-menu ">
                   </div> -->
@@ -478,86 +477,6 @@
               </li>
               <!-- End Lampiran -->
 
-
-              <!-- Lampiran -->
-              <!-- <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="{{ route('lampiran')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Sitemap</a> -->
-              <!-- Pages - Submenu -->
-              <!-- <div class="hs-sub-menu ">
-                  </div> -->
-              <!-- End Pages - Submenu -->
-              <!-- </li> -->
-              <!-- End Lampiran -->
-
-              <!-- Buku Tamu -->
-              <!-- <li class="hs-has-sub-menu navbar-nav-item"> -->
-              <!-- <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link font-weight-bold" href="" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu" @yield('warna')>Hubungi Kami</a> -->
-              <!-- Pages - Submenu -->
-              <!-- <div class="hs-sub-menu ">
-                  </div> -->
-              <!-- End Pages - Submenu -->
-              <!-- </li> -->
-              <!-- End Tamu -->
-
-              <!-- Blog -->
-              <!-- <li class="hs-has-sub-menu navbar-nav-item">
-                  <a id="blogMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle active" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu">Blog</a> -->
-
-              <!-- Blog - Submenu -->
-              <!-- <div id="blogSubMenu" class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu" style="min-width: 230px;">
-                    <a class="dropdown-item active" href="front/blog-journal.html">Journal</a>
-                    <a class="dropdown-item " href="front/blog-metro.html">Metro</a>
-                    <a class="dropdown-item " href="front/blog-newsroom.html">Newsroom</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item " href="front/blog-profile.html">Blog Profile</a>
-                    <a class="dropdown-item " href="front/blog-single-article.html">Single Article</a>
-                  </div> -->
-              <!-- End Submenu -->
-              <!-- </li> -->
-              <!-- End Blog -->
-
-              <!-- Docs -->
-              <!-- <li class="hs-has-mega-menu navbar-nav-item"
-                    data-hs-mega-menu-item-options='{
-                      "desktop": {
-                        "position": "right",
-                        "maxWidth": "200px"
-                      }
-                    }'>
-                  <a id="docsMegaMenu" class="hs-mega-menu-invoker nav-link nav-link-toggle font-weight-bold" href="javascript:;" aria-haspopup="true" aria-expanded="false" @yield('warna')>Galeri</a> -->
-
-              <!-- Docs - Submenu -->
-              <!-- <div class="hs-mega-menu dropdown-menu" aria-labelledby="docsMegaMenu" style="min-width: 250px;"> -->
-              <!-- Promo Item -->
-              <!-- <div class="navbar-promo-item">
-                      <a class="navbar-promo-link" href="{{ route('galeri')}}">
-                        <div class="media align-items-center">
-                          <img class="navbar-promo-icon" src="{{ url('front/assets/svg/icons/icon-2.svg')}}" alt="SVG">
-                          <div class="media-body">
-                            <span class="navbar-promo-title">
-                              Documentation
-                            </span>
-                          </div>
-                        </div>
-                      </a>
-                    </div> -->
-              <!-- End Promo Item -->
-              <!-- </div> -->
-              <!-- End Docs - Submenu -->
-              <!-- </li> -->
-              <!-- End Docs -->
-
-
-              <!-- Account Login -->
-
-              {{-- <li class="list-inline-item">
-                <div class="hs-unfold">
-                  <a class="js-hs-unfold-invoker btn btn-icon btn-xs btn-ghost-secondary" href="{{ route('login')}}">
-                    @yield('kondisi2')
-                  </a>
-                </div>
-              </li> --}}
-              <!-- End Account Login -->
             </ul>
           </div>
         </div>
@@ -569,7 +488,6 @@
   </header>
   <!-- ========== END HEADER ========== -->
 
-  <!-- ========== END HEADER ========== -->
 
   @yield('isi')
 

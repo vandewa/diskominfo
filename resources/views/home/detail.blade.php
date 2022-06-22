@@ -79,13 +79,22 @@
               "dotsAsProgressLine": true,
               "dotsClass": "slick-dots mt-n4"
             }' >
-            @foreach($detail->attachment as $slide)
+            @if (!empty($detail->attachment))
+              @foreach($detail->attachment as $slide)
+              <div class="js-slide">
+              <a href="{{ url($slide->path.$slide->file_name??'') }}" target="_blank">
+                  <img class="img-fluid transition-zoom-hover width: 100%;height: 100%;object-fit: scale-down" src="{{ asset($slide->path.$slide->file_name??'') }}" alt="Image Description" height="150px;">
+                  </a>
+              </div>
+              @endforeach
+            @else
             <div class="js-slide">
-            <a href="{{ '/'.$slide->path.$slide->file_name??'' }}" target="_blank">
-                <img class="img-fluid transition-zoom-hover width: 100%;height: 100%;object-fit: scale-down" src="{{ asset($slide->path.$slide->file_name??'') }}" alt="Image Description" height="150px;">
-                </a>
+              <a href="{{ url('uploads/diskominfowonosobo.jpg') }}" target="_blank">
+                  <img class="img-fluid transition-zoom-hover width: 100%;height: 100%;object-fit: scale-down" src="{{ asset('uploads/diskominfowonosobo.jpg') }}" alt="Image Description" height="150px;">
+                  </a>
             </div>
-            @endforeach
+            @endif
+            
           </div>
          <!-- End Author -->
         <div class="mt-5" style="text-align:justify; text-justify:auto;text-indent: 40px;  color:black;">
@@ -127,14 +136,19 @@
             @foreach($kategori as $beritaterkait)
            <div class="card-body p-4" data-aos="zoom-out-right">
             <!-- Project -->
-            <a class="card text-body transition-3d-hover mb-2 bg-info" href="/detail/{{$beritaterkait->slug}}">
-            <img class="card-img-top" src="{{ asset($beritaterkait->gambarMuka->path.$beritaterkait->gambarMuka->file_name??'')}}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
-            <div class="card-body text-left">
-            <small>
-            <p class="mb-0 text-white text-left" style="font-size:11px;"><b>{{ Carbon\Carbon::parse($beritaterkait->created_at)->isoFormat('LLLL') }} WIB</b></p>
-            <p class="mb-0 text-white">{{ $beritaterkait->judul_posting }}</p>
-            </small>
-            </div>
+            <a class="card text-body transition-3d-hover mb-2 bg-info" href="{{ url('detail/'.$beritaterkait->slug) }}">
+              @if (!empty($beritaterkait->file_name))
+                <img class="card-img-top" src="{{ asset($beritaterkait->gambarMuka->path.$beritaterkait->gambarMuka->file_name??'')}}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
+              @else
+                <img class="card-img-top" src="{{ asset('uploads/diskominfowonosobo.jpg') }}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
+              @endif
+              
+              <div class="card-body text-left">
+                <small>
+                  <p class="mb-0 text-white text-left" style="font-size:11px;"><b>{{ Carbon\Carbon::parse($beritaterkait->created_at)->isoFormat('LLLL') }} WIB</b></p>
+                  <p class="mb-0 text-white">{{ $beritaterkait->judul_posting }}</p>
+                </small>
+              </div>
             </a>
             <!-- End Project -->
             </div>
@@ -167,11 +181,9 @@
 
 @push('js')
 <script>
-
   <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-
 </script>
 @endpush
 

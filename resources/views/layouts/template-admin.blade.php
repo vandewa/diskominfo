@@ -244,67 +244,22 @@
 										class="nav-link">InfoGrafis</a></li>
 								<li class="nav-item"><a href="{{ route('category.index') }}"
 										class="nav-link">Kategori</a></li>
-
 							</ul>
 						</li>
 						@endpermission
 
-						{{-- @permission('perizinan-read')
-						<li class="nav-item nav-item-submenu @yield('kondisi7')">
-							<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Perizinan</span>
-								<span class="badge bg-orange-400 align-self-center ml-auto">{{$total_perizinan}}</span>
-							</a>
-							<ul class="nav nav-group-sub" data-submenu-title="Perizinan">
-								<li class="nav-item">
-									<a href="{{ route('akses-data-center.index') }}" class="nav-link">Akses Data Center
-										<span class="badge bg-orange-400 align-self-center ml-auto">{{$akses_dc}}</span>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{{ route('colocation-server.index') }}" class="nav-link">Colocation Server
-										<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$colocation_server}}</span>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{{ route('kunjungan-data-center.index') }}" class="nav-link">Kunjungan Data
-										Center
-										<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$kunjungan_dc}}</span>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{{ route('layanan-server.index') }}" class="nav-link">Layanan Server
-										<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$layanan_server}}</span>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{{ route('vps-baru.index') }}" class="nav-link">VPS Baru
-										<span class="badge bg-orange-400 align-self-center ml-auto">{{$vps_baru}}</span>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{{ route('perubahan-vps.index') }}" class="nav-link">Perubahan VPS
-										<span
-											class="badge bg-orange-400 align-self-center ml-auto">{{$perubahan_vps}}</span>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{{ route('pengajuan-server.index') }}" class="nav-link">Pengantar Pengajuan
-										Server</a>
-								</li>
-							</ul>
-						</li>
-						@endpermission --}}
 
 						@permission('users-read')
-						<li class="nav-item nav-item-submenu @yield('kondisi3')">
+						<li class="nav-item nav-item-submenu @yield('kondisi3') @yield('kondisi4') @yield('kondisi11') ">
 							<a href="#" class="nav-link"><i class="icon-user"></i> <span>User</span></a>
-
 							<ul class="nav nav-group-sub" data-submenu-title="User">
-								<li class="nav-item"><a href="{{route('user.index')}}" class="nav-link ">Management
-										User</a></li>
+								<li class="nav-item nav-item-submenu @yield('kondisi11')">
+									<a href="#" class="nav-link "> Management User</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item "><a href="{{route('user.index')}}" class="nav-link"> Diskominfo</a></li>
+										<li class="nav-item"><a href="{{route('user-integrasi.index')}}" class="nav-link">Integrasi</a></li>
+									</ul>
+								</li>
 								<li class="nav-item"><a href="{{route('role.index')}}" class="nav-link ">Role</a></li>
 							</ul>
 						</li>
@@ -431,34 +386,12 @@
 						</ul>
 					</li>
 
-
-					<!-- <li class="nav-item-header">
-							<div class="text-uppercase font-size-xs line-height-xs">Agenda</div> <i class="icon-menu"
-								title="tiket"></i>
-						</li>
-						<li class="nav-item nav-item-submenu @yield('kondisi10')">
-							<a href="#" class="nav-link"><i class="icon-book"></i> <span>Agenda</span></a>
-							<ul class="nav nav-group-sub" data-submenu-title="Agenda">
-								<li class="nav-item"><a href="{{ route('agenda:harian.index') }}"
-										class="nav-link">Agenda Harian</a></li>
-							</ul>
-						</li> -->
-
 					<li class="nav-item">
 						<a href="{{ route('agenda:harian.index') }}" class="nav-link @yield('kondisi10')">
 							<i class="icon-bookmark"></i>
 							<span>Agenda</span>
 						</a>
 					</li>
-
-					{{-- @permission('zoom-read')
-					<li class="nav-item">
-						<a href="{{ route('link_zoom.index') }}" class="nav-link @yield('kondisi11')">
-							<i class="icon-laptop"></i>
-							<span>Link Zoom</span>
-						</a>
-					</li>
-					@endpermission --}}
 
 					<li class="nav-item">
 						<a href="{{ route('buku:tamu.index') }}" class="nav-link @yield('kondisi12')">

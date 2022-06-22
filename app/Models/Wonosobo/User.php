@@ -12,4 +12,22 @@ class User extends Model
     protected $connection = 'wonosobokab';
     protected $table ='users';
     protected $primaryKey ='id_users';
+    protected $guarded = [];
+    public $timestamps = false;
+
+    public function skpd()
+    {
+        return $this->belongsTo(SKPD::class, 'id_skpd');
+    }
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class, 'id_kecamatan');
+    }
+
+    public function desa()
+    {
+        return $this->belongsTo(Desa::class, 'id_desa');
+    }
+
 }

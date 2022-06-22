@@ -2,7 +2,7 @@
 @section('menu','User')
 @section('submenu','Tambah User')
 @extends('layouts/template-admin')
-@section('kondisi3','nav-item-expanded nav-item-open')
+@section('kondisi11','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">User</span>

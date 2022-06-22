@@ -8,11 +8,11 @@
               "fixMoment": 1000,
               "fixEffect": "slide"
             }'>
-    @endsection
+@endsection
 
-    @section('kondisi2')
-    <i class="fas fa-user-circle fa-lg" style="color:black"></i>
-    @endsection
+@section('kondisi2')
+<i class="fas fa-user-circle fa-lg" style="color:black"></i>
+@endsection
 
 <br>
   <!-- ========== MAIN ========== -->
@@ -22,36 +22,39 @@
       <div class="w-lg-60 mx-lg-auto">
         <!-- Author -->
         <center><h1 class="h2">{{ ucwords($halaman->judul_posting??'')}}</h1>
-
         <br>
+        <div class="zoom"> 
           @if (!empty($attachment->path) || !empty($attachment->file_name))
-        <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="{{ asset($attachment->path.$attachment->file_name??'') }}" alt="Image Description">
+            <img class="img-fluid rounded mx-auto d-block width: 100%;height: 100%;object-fit: scale-down" src="{{ asset($attachment->path.$attachment->file_name??'') }}" alt="Image Description">
           @endif 
-          <br>
+        <br>
+        </div>
         
-        <div style="text-align:justify; text-justify:auto;   color:black;">  <!-- text-indent: 40px;-->
+        <div style="text-align:justify; text-justify:auto; color:black;" >  <!-- text-indent: 40px;-->
          {!! $halaman->isi_posting??'' !!} 
         </div>
+
       </div>
-
-            <div class="w-lg-60 mx-lg-auto">
-                <div class="w-lg-60 mx-lg-auto">
-                    <div class="w-lg-40 mx-lg-auto">
-
-                    </div>
-                </div>
-                <!-- End Subscribe Section -->
-    </main>
-    <!-- ========== END MAIN ========== -->
-
-
-    @endsection
+    </div>
+  </main>
+  <!-- ========== END MAIN ========== -->
+  @endsection
     
+  @push('js')
+      <script>
+      <script src = "{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}" ></script>
+      <script src = "{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
+      <script src = "{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+      </script>
+  @endpush
 
-    @push('js')
-        <script>
-        <script src = "{{ url ('front/assets/vendor/jquery/dist/jquery.min.js') }}" ></script>
-        <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
-        <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-        </script>
-    @endpush
+  @push('css')
+  <style>
+    .zoom:hover {
+      -ms-transform: scale(1.5); /* IE 9 */
+      -webkit-transform: scale(1.5); /* Safari 3-8 */
+      transform: scale(1.7); 
+    }
+  </style>
+    
+  @endpush

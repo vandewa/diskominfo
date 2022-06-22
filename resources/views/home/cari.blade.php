@@ -25,16 +25,20 @@
           <article class="row mb-7" data-aos="zoom-out-left">
             <div class="col-md-5">
               <a href="/detail/{{$post->slug}}">
-                <img class="card-img transition-zoom-hover" src="{{ asset($post->gambarMuka->path.$post->gambarMuka->file_name??'') }}" alt="Image Description" style="height:100%">
+                @if (!empty($post->gambarMuka->path) || !empty($post->gambarMuka->file_name))
+                  <img class="card-img transition-zoom-hover" src="{{ asset($post->gambarMuka->path.$post->gambarMuka->file_name??'') }}" alt="Image Description" style="height:100%">
+                @else
+                  <img class="card-img transition-zoom-hover" src="{{ asset('uploads/diskominfowonosobo.jpg') }}" alt="Image Description" style="height:100%">
+                @endif
               </a>
             </div>
             <div class="col-md-7">
               <div class="card-body d-flex flex-column h-100 px-0">
-                  <span class="d-block mb-2">
-                    <a class="font-weight-bold" href="/kategori/{{$post->kategori->slug}}">{{ $post->kategori->nama_kategori }}</a>
-                  </span>
-                    <h3><a class="text-inherit" href="/detail/{{$post->slug}}">{{ $post->judul_posting }}</a></h3>
-                    <p>{{ $post->keterangan }}</p>
+                <span class="d-block mb-2">
+                  <a class="font-weight-bold" href="/kategori/{{$post->kategori->slug}}">{{ $post->kategori->nama_kategori }}</a>
+                </span>
+                  <h3><a class="text-inherit" href="/detail/{{$post->slug}}">{{ $post->judul_posting }}</a></h3>
+                  <p>{{ $post->keterangan }}</p>
                 <div class="media align-items-center mt-auto">
                   <a class="avatar avatar-sm avatar-circle mt-2">
                     <img class="avatar-img" src="{{ asset('uploads/'.$post->nama->profile_photo_path) }}" alt="Image Description" style="max-width: 80%; height: 80%;">
@@ -54,8 +58,7 @@
           {{ $posting->links() }}
         
           <!-- Sticky Block End Point -->
-          <div id="stickyBlockEndPoint">
-          </div>
+          <div id="stickyBlockEndPoint"></div>
         </div>
 
         <div class="col-lg-3">
@@ -99,7 +102,7 @@
                   <article class="mb-5 mt-3" data-aos="zoom-out-right">
                     <div class="media align-items-center text-inherit">
                       <div class="avatar avatar-lg mr-3">
-                        <a href="/detail/{{ $populer->slug }}">
+                        <a href="{{ url('detail/'.$populer->slug) }}">
                             @if (!empty($populer->gambarMuka->path) || !empty($populer->gambarMuka->file_name))
                               <img class="card-img transition-zoom-hover"
                                   src="{{ asset($populer->gambarMuka->path.$populer->gambarMuka->file_name??'') }}"
@@ -113,7 +116,7 @@
                         </div>
                         <div class="media-body">
                             <h4 class="h6 mb-0"><a class="text-inherit"
-                                    href="/detail/{{ $populer->slug }}">{{ $populer->judul_posting }}</a>
+                                    href="{{ url('detail/'.$populer->slug) }}">{{ $populer->judul_posting }}</a>
                             </h4>
                         </div>
                       </div>
@@ -139,11 +142,9 @@
 
 @push('js')
 <script>
-
   <script src="{{ url ('front/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js')}}"></script>
   <script src="{{ url ('front/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-
 </script>
 @endpush
 

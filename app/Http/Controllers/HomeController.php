@@ -244,13 +244,13 @@ class HomeController extends Controller
 
     }
 
-     public function kominfo($id)
-    {
-        $kominfo = Menu::where('id', $id)
-        ->first();
+    // public function kominfo($id)
+    // {
+    //     $kominfo = Menu::where('id', $id)
+    //     ->first();
 
-        return view('home.kominfo', compact('kominfo'));
-    }
+    //     return view('home.kominfo', compact('kominfo'));
+    // }
 
     public function pengajuanizin(Request $request)
     {
@@ -413,10 +413,9 @@ class HomeController extends Controller
     public function index()
     {
 
-
-        $youtube =  Youtube::orderBy('created_at', 'desc')
-        ->limit(3)
-        ->get();
+        // $youtube =  Youtube::orderBy('created_at', 'desc')
+        // ->limit(3)
+        // ->get();
 
         $cek_highlight = Posting::where('posisi', '=', 'highlight')
         ->count();
@@ -431,24 +430,28 @@ class HomeController extends Controller
                 'posisi' => 'menu_atas'
             ]);
         }
+
         $populer = Cache::remember('populer', 3600, function () {
             return Posting::with(['gambarMuka'])
                 ->orderBy('views', 'desc')
                 ->limit(3)
                 ->get();
         });
+
         $posting2 = Cache::remember('posting2', 3600, function () {
             return  Posting::with(['attachment', 'gambarMuka','nama', 'kategori'])
                 ->where('posisi', '=', 'menu_atas')
                 ->orderBy('created_at', 'desc')
                 ->simplePaginate(2);
         });
+
         $postingg = Cache::remember('postingg', 3600, function () {
             return Posting::with(['attachment', 'gambarMuka', 'nama'])
                 ->where('posisi', '=', 'highlight')
                 ->orderBy('created_at', 'desc')
                 ->get();
         });
+
         $posting = Cache::remember('posting', 3600, function () {
             return DB::table('posting')
                 ->join('attachment', 'id_posting', '=', 'attachment.id_tabel')
@@ -456,12 +459,11 @@ class HomeController extends Controller
                 ->select('posting.*','attachment.*', 'users.*')
                 ->orderBy('posting.created_at', 'desc')->get();
         });
+
         $sampul = Cache::remember('sampul', 3600, function () {
             return Sampul::where('id',1)
                 ->first();
         });
-
-
 
         $infohoax = Posting::with(['gambarMuka'])
         ->where('id_kategori', 7)
@@ -506,7 +508,7 @@ class HomeController extends Controller
             // }
         //  }
 
-        return view('home.index', compact('posting2', 'posting', 'postingg', 'populer', 'youtube','sampul', 'infohoax', 'infografis'));
+        return view('home.index', compact('posting2', 'posting', 'postingg', 'populer','sampul', 'infohoax', 'infografis'));
     }
 
     /**
@@ -535,9 +537,7 @@ class HomeController extends Controller
 
         $jumlah = Posting::with(['kategori', 'nama'])
         ->where('judul_posting', 'like', "%".$cari."%")
-        ->select('judul_posting', 'id_posting', 'id_kategori', 'created_by', 'isi_posting')
-        ->paginate(5)
-        ->appends(['q' => $request->q])
+        ->select('judul_posting', 'id_posting', 'id_kategori', 'created_by', 'isi_posting', 'slug') 
         ->count();
 
 

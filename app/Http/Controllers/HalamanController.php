@@ -187,7 +187,7 @@ class HalamanController extends Controller
         $posting = Posting::find($id);
 
         if(!empty($oke)){
-        $path = public_path('uploads/').$oke->file_name;
+        $path = $oke->path.$oke->file_name;
         if (file_exists($path) || isset($oke->file_name)) {
             unlink($path);
             }

@@ -55,7 +55,7 @@ use App\Http\Controllers\Layanan\PermohonanSubdomainController;
 use Spatie\Analytics\Period;
 use App\Http\Controllers\DaftarInformasiPublikController;
 use App\Http\Controllers\SKMController;
-use App\Http\Controllers\DailyWorkRecapController;
+use App\Http\Controllers\Integrasi\UserIntegrasiController;
 
 
 
@@ -84,16 +84,17 @@ Route::get('/cek', function(){
     return $cek;
 });
 Route::post('/', [HomeController::class, 'index']);
-Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
+Route::get('/page/agenda-pimpinan', [AgendaController::class, 'front'])->name('front.agenda');
+// Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 // PPID
-Route::get('/tugasppid', [HomeController::class, 'tugasppid'])->name('tugasppid');
-Route::get('/strukturppid', [HomeController::class, 'strukturppid'])->name('strukturppid');
+// Route::get('/tugasppid', [HomeController::class, 'tugasppid'])->name('tugasppid');
+// Route::get('/strukturppid', [HomeController::class, 'strukturppid'])->name('strukturppid');
 // END PPID
 Route::get('/page/daftar-informasi-publik', [HomeController::class, 'informasiPublik'])->name('informasi.publik');
 Route::get('/page/{id}', [HalamanController::class, 'dinamis'])->name('dinamis');
-Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
+// Route::get('/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/personil', [HomeController::class, 'personil'])->name('personil');
-Route::get('/tupoksi', [HomeController::class, 'tupoksi'])->name('tupoksi');
+// Route::get('/tupoksi', [HomeController::class, 'tupoksi'])->name('tupoksi');
 Route::get('/lampiran', [HomeController::class, 'lampiran'])->name('lampiran');
 Route::get('/pengaduan', [HomeController::class, 'pengaduan'])->name('pengaduan');
 Route::get('/pengajuan', [HomeController::class, 'pengajuan'])->name('pengajuan');
@@ -101,8 +102,8 @@ Route::get('/pengajuanizin', [HomeController::class, 'pengajuanizin'])->name('pe
 Route::post('/pengajuanizin/simpan', [HomeController::class, 'pengajuanizinPost'])->name('upload.surat');
 Route::post('/pengajuan/simpan', [HomeController::class, 'simpan'])->name('pengajuan.simpan');
 Route::get('/website/user', [HomeController::class, 'getWebsite'])->name('website.list');
-Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
-Route::get('/kominfo/{id}', [HomeController::class, 'kominfo'])->name('kominfo');
+// Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
+// Route::get('/kominfo/{id}', [HomeController::class, 'kominfo'])->name('kominfo');
 Route::get('/detail/{post:slug}', [HomeController::class, 'detail'])->name('detail.posting');
 Route::get('/details/{post}', [HomeController::class, 'details'])->name('details.pengumuman');
 Route::get('/search', [HomeController::class, 'cari'])->name('search');
@@ -146,6 +147,9 @@ Route::get('/agenda', [AgendaController::class, 'front'])->name('front.agenda');
 Route::get('/tamu', [FrontBukuTamuController::class, 'index'])->name('front.tamu');
 Route::get('/skm', [SKMController::class, 'indexFront'])->name('front.skm');
 Route::post('/skm', [SKMController::class, 'store'])->name('front.skm.post');
+Route::get('user-integrasi-create', [UserIntegrasiController::class, 'desa'])->name('desa');
+
+
 
 Route::group([], function () {
     Route::group(['prefix' => 'perijinan', 'as' => 'perijinan:'], function () {
@@ -273,6 +277,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
     Route::resource('account', AccountController::class);
     Route::resource('role', RoleController::class);
+    Route::resource('user-integrasi', UserIntegrasiController::class);
 
 
     Route::group(['middleware' => ['permission:layanan-read'], 'prefix' => "admin"], function () {
@@ -311,3 +316,5 @@ Route::group(['prefix' => 'tower'], function () {
 // Route::get('/admin', function() {
 //     return view('admin');
 // });
+
+
