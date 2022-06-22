@@ -56,9 +56,7 @@ use Spatie\Analytics\Period;
 use App\Http\Controllers\DaftarInformasiPublikController;
 use App\Http\Controllers\SKMController;
 use App\Http\Controllers\Integrasi\UserIntegrasiController;
-
-
-
+use App\Http\Controllers\DailyWorkRecapController;
 
 
 /*
