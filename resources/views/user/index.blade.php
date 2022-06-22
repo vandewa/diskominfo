@@ -37,6 +37,7 @@ Tambah User
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th class="text-center">Status</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -61,9 +62,109 @@ Tambah User
                     { data: 'name', },
                     { data: 'email', },
                     { data: 'role', searchable: false },
+					{ data: 'tombol', name: 'tombol', orderable: false, searchable: false },
 					{ data: 'action', name: 'action', orderable: false, searchable: false },
         ]
     });
 </script>
-@endpush
 
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    function centang(submenu) {
+
+    
+        // e.preventDefault();
+        // const { pathname } = window.location;
+        // const paths = pathname.split("/").filter(entry => entry !== "");
+        // const lastPath = parseInt(paths[paths.length - 1]);
+        var url = "{{ url('sendCentang') }}";
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: {
+                id: submenu
+                // roleId: lastPath
+            },
+            success: function (response) {
+                if (response.success) {
+                    // alert(response.message) //Message come from controller
+                    demo.showNotification('top', 'center', response.message)
+                    location.reload();
+                } else {
+                    alert("Error")
+                }
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+    };
+</script>
+@endpush
+@push('css')
+<style>
+    .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+@endpush

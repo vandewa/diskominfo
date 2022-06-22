@@ -22,7 +22,7 @@
 	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
 	<!-- /global stylesheets -->
-
+	@stack('css')
 	<!-- Core JS files -->
 	<script src="{{ url ('limitless/Template/global_assets/js/main/jquery.min.js ')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/main/bootstrap.bundle.min.js')}}"></script>
@@ -32,13 +32,11 @@
 	<!-- Theme JS files -->
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/d3/d3_tooltip.js')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/ui/moment/moment.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/editors/ckeditor/ckeditor.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/inputmask.js')}}"></script>
-	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/core.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/tags/tagsinput.min.js')}}"></script>
@@ -88,6 +86,10 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/extensions/contextmenu.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/visualization/echarts/echarts.min.js')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switch.min.js')}}"></script>
+	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_checkboxes_radios.js')}}"></script>
 	{{-- <script src="{{ url ('limitless/Template/global_assets/js/demo_pages/charts/echarts/pies_donuts.js')}}"></script> --}}
 
 	{{-- <script src="{{ url ('limitless/Documentation/assets/ckeditor/ckeditor.js')}}"></script> --}}

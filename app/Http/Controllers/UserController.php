@@ -22,7 +22,7 @@ class UserController extends Controller
     public function index()
     {
     //    if(!auth()->user()->hasPermission('users-read')){
-    //     abort(403);
+    //     abort(4'off'3);
     //    }
         return view('user.index');
     }
@@ -203,6 +203,34 @@ class UserController extends Controller
                     return $actionBtn;
                    
                 })
+
+                ->addColumn('tombol',function ($data) {
+
+                    $check =  $data->status ? "checked": "";
+                    return '<label class="switch">
+                        <input type="checkbox" '.$check.' onclick="centang('  . $data->id . ')">
+                        <span class="slider round"></span>
+                        </label>';
+                        // if ($data->status == 'on') {
+                        //     $actionBtn = 
+                        //     '<div class="form-check form-check-switchery">
+						// 			<label class="form-check-label">
+						// 				<input type="checkbox" class="form-check-input-switchery" data-fouc>
+						// 				Unchecked switch
+						// 			</label>
+						// 		</div>';
+                        // } else {
+                        //     $actionBtn = 
+                        //     '<div class="form-check form-check-switchery">
+						// 			<label class="form-check-label">
+						// 				<input type="checkbox" class="form-check-input-switchery" data-fouc>
+						// 				Checked switch
+						// 			</label>
+						// 	</div>';
+                        // }
+                        // return $actionBtn;
+                    }
+                )
                 ->addColumn('role', function($a){
                     $data = $a->roles;
                     $tampung = '';
@@ -224,12 +252,7 @@ class UserController extends Controller
                     return $data->email;
                 })
 
-                // ->editColumn('level', function($data)
-                // {
-                //     $level = '<span class="badge badge-flat border-primary text-primary-600">'.ucwords($data->roles[0]->display_name??'').'</span>';
-                //     return $level;
-                // })
-                ->rawColumns(['action', 'status','role'])
+                ->rawColumns(['action', 'tombol','role'])
                 ->make(true);
         
     }
@@ -238,5 +261,19 @@ class UserController extends Controller
     {
         $slug = SlugService::createSlug(Users::class, 'slug', $request->nama);
         return response()->json(['slug' => $slug]); 
+    }
+
+    public function changeAccess(Request $request)
+    {
+        $comp = User::find($request->id);
+        $comp->status = !$comp->status;
+        $comp->save();
+    
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Data has been successfully changed!'
+            ], 200
+        );
     }
 }

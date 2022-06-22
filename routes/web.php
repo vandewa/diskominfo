@@ -272,6 +272,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 
+    Route::post('sendCentang', [UserController::class, 'changeAccess']);
     Route::resource('user', UserController::class);
     Route::resource('account', AccountController::class);
     Route::resource('role', RoleController::class);

@@ -137,7 +137,7 @@
            <div class="card-body p-4" data-aos="zoom-out-right">
             <!-- Project -->
             <a class="card text-body transition-3d-hover mb-2 bg-info" href="{{ url('detail/'.$beritaterkait->slug) }}">
-              @if (!empty($beritaterkait->file_name))
+              @if (!empty($beritaterkait->gambarMuka->file_name))
                 <img class="card-img-top" src="{{ asset($beritaterkait->gambarMuka->path.$beritaterkait->gambarMuka->file_name??'')}}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
               @else
                 <img class="card-img-top" src="{{ asset('uploads/diskominfowonosobo.jpg') }}" style="width:100%;height:200px;object-fit:cover" alt="Image Description">
