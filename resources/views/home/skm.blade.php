@@ -35,12 +35,10 @@ class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent h
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p class="font-size-1" style="text-transform: capitalize; color: black;">tanggal survei : <b>{{ Carbon\Carbon::now()->isoFormat('dddd,D MMMM Y') }}</b>
-                                     </p>
-                                <input type="hidden" name="tanggal_responden" value="<?= date('Y-m-d H:i:s'); ?>">
+                                <p class="font-size-1" style="text-transform: capitalize; color: black;">tanggal survei : <b>{{ Carbon\Carbon::now()->isoFormat('dddd,D MMMM Y') }}</b></p>
                             </div>
-                            <div class="col">
-                                <p class="font-size-1" style="text-transform: capitalize; color: black; text-align: end;">jam survei : <b>{{ Carbon\Carbon::now()->format('H : i') }} WIB</b></p>
+                            <div class="col" >
+                                <p class="font-size-1" style="text-transform: capitalize; color: black; text-align: end;" id="runningTime">jam survei : <b>{{ Carbon\Carbon::now()->format('H : i') }} WIB</b></p> 
                             </div>
                         </div>
                         <div class="row">
@@ -307,6 +305,20 @@ class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent h
             $("#exampleFormControlInput1").prop('disabled', false);
         }
     });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    setInterval(runningTime, 1000);
+    });
+    function runningTime() {
+    $.ajax({
+        url: 'timeScript.php',
+        success: function(data) {
+        $('#runningTime').html(data);
+        },
+    });
+    }
 </script>
     
 @endpush

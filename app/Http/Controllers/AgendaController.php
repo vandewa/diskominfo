@@ -96,7 +96,7 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        $user = User::orderBy('name', 'asc')->pluck('name', 'id');
+        $user = User::where('status', 1)->orderBy('name', 'asc')->pluck('name', 'id');
         return view('agenda.create', compact('user'));
     }
 

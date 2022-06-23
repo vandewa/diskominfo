@@ -113,13 +113,6 @@
                 </div>
             </div>
 
-            <div class="form-check form-check-switchery">
-									<label class="form-check-label">
-										<input type="checkbox" class="form-check-input-switchery" data-fouc>
-										Unchecked switch
-									</label>
-								</div>
-
             <div class="text-right mt-5">
                 <a href="{{route('user-integrasi.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
                 <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
