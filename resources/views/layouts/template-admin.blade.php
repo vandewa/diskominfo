@@ -294,63 +294,111 @@
 								</li> --}}
 								<li class="nav-item">
 									<a href="{{ route('media-publikasi.index') }}" class="nav-link ">Media Publikasi
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$media_publikasi}}</span>
+										@if ($media_publikasi == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$media_publikasi}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$media_publikasi}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('liputan.index') }}" class="nav-link ">Liputan
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$liputan}}</span>
+										@if ($liputan == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$liputan}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$liputan}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('informasi-publik.index') }}" class="nav-link ">Informasi Publik
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$informasi_publik}}</span>
+										@if ($informasi_publik == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$informasi_publik}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$informasi_publik}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('pengajuan-keberatan.index') }}" class="nav-link ">Keberatan
 										Informasi Publik
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$pengajuan_keberatan}}</span>
+										@if ($pengajuan_keberatan == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$pengajuan_keberatan}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$pengajuan_keberatan}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('pinjam-tempat.index') }}" class="nav-link ">Tempat Rapat
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{tempat_rapat()}}</span>
+										@if ($tempat_rapat == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$tempat_rapat}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$tempat_rapat}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('pinjam-peralatan.index') }}" class="nav-link ">Pinjam Peralatan
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$pinjam_peralatan}}</span>
+										@if ($pinjam_peralatan == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$pinjam_peralatan}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$pinjam_peralatan}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('magang.index') }}" class="nav-link ">Magang
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$magang}}</span>
+										@if ($magang == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$magang}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$magang}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('link_zoom.index') }}" class="nav-link ">Link Zoom
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$zoom}}</span>
+										@if ($zoom == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$zoom}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$zoom}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('jaringan-internet.index') }}" class="nav-link ">Jaringan Internet
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$internet}}</span>
+										@if ($internet == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$internet}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$internet}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('permohonan-aplikasi.index') }}" class="nav-link ">Aplikasi
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$aplikasi}}</span>
+										@if ($aplikasi == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$aplikasi}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$aplikasi}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('permohonan-subdomain.index') }}" class="nav-link ">Subdomain
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$subdomain}}</span>
+										@if ($subdomain == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$subdomain}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$subdomain}}</span>
+										@endif
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="{{ route('permintaan-colocation.index') }}" class="nav-link ">Colocation Server
-									<span class="badge bg-orange-400 align-self-center ml-auto">{{$colocation	}}</span>
+										@if ($colocation == 0)
+											<span class="badge bg-grey-400 align-self-center ml-auto">{{$colocation}}</span>
+										@else
+											<span class="badge bg-green-400 align-self-center ml-auto">{{$colocation}}</span>
+										@endif
 									</a>
 								</li>
 							</ul>

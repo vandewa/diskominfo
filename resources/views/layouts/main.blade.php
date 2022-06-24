@@ -546,7 +546,7 @@
                   <span class="media">
                     <span class="icon-office mt-1 mr-2"></span>
                     <span class="media-body">
-                      Jl. Sabuk Alu No. 2A
+                      Jalan Sabuk Alu No. 2A, Wonosobo Timur, Wonosobo
                     </span>
                   </span>
                 </a>
@@ -570,6 +570,17 @@
                     </span>
                   </span>
                 </a>
+              </li>
+              <li class="nav-item">
+                {{-- <a class="nav-link media" href="mailto:diskominfo@wonosobokab.go.id">
+                  <span class="media">
+                    <span class="icon-mail5 mt-1 mr-2"></span>
+                    <span class="media-body">
+                      diskominfo@wonosobokab.go.id
+                    </span>
+                  </span>
+                </a> --}}
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3956.974287202423!2d109.9036709!3d-7.3567786!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aa1e023aaf2df%3A0x3fa1aea0b0ca3abc!2sDINAS%20KOMINFO!5e0!3m2!1sid!2sid!4v1656048898821!5m2!1sid!2sid" width="400" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </li>
             </ul>
             <!-- End Nav Link -->
