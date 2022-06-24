@@ -13,7 +13,7 @@
 @section('kondisi2')
 <i class="fas fa-user-circle fa-lg" style="color:black"></i>
 @endsection
- 
+<meta http-equiv="refresh" content="1800" >
 <main id="content" role="main">
     <!-- Article Description Section -->
     <div class="container space-top-1 space-bottom-2">

@@ -57,6 +57,7 @@ use App\Http\Controllers\DaftarInformasiPublikController;
 use App\Http\Controllers\SKMController;
 use App\Http\Controllers\Integrasi\UserIntegrasiController;
 use App\Http\Controllers\DailyWorkRecapController;
+use App\Http\Controllers\DaftarInformasiPublikDikecualikanController;
 
 
 /*
@@ -260,6 +261,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('daftar-informasi-publik-child/create', [DaftarInformasiPublikController::class, 'createChild'])->name('daftar.informasi.publik.create');
         Route::get('daftar-informasi-publik-child/{id}', [DaftarInformasiPublikController::class, 'editChild'])->name('daftar.informasi.publik.edit');
         Route::resource('daftar-informasi-publik', DaftarInformasiPublikController::class);
+        Route::resource('dip-dikecualikan', DaftarInformasiPublikDikecualikanController::class);
     });
 
     Route::group(['middleware' => ['permission:menu_depan-read'], 'prefix' => "admin"], function () {

@@ -230,7 +230,7 @@
 						@endpermission
 
 						@permission('posting-read')
-						<li class="nav-item nav-item-submenu @yield('kondisi2')">
+						<li class="nav-item nav-item-submenu @yield('kondisi2')  @yield('kondisi7')">
 							<a href="#" class="nav-link"><i class="icon-newspaper"></i> <span>Posting</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
@@ -238,8 +238,13 @@
 										Berita</a></li>
 								<li class="nav-item"><a href="{{ route('halaman.index') }}" class="nav-link">Halaman Menu</a>
 								</li>
-								<li class="nav-item"><a href="{{ route('daftar-informasi-publik.index') }}"
-										class="nav-link">Daftar Informasi Publik</a></li>
+								<li class="nav-item nav-item-submenu @yield('kondisi7')">
+									<a href="#" class="nav-link ">Daftar Informasi Publik</a>
+									<ul class="nav nav-group-sub">
+										<li class="nav-item "><a href="{{ route('daftar-informasi-publik.index') }}" class="nav-link"> Berkala | Setiap Saat | Serta Merta</a></li>
+										<li class="nav-item"><a href="{{ route('dip-dikecualikan.index') }}" class="nav-link">Dikecualikan</a></li>
+									</ul>
+								</li>
 								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link">Info
 										Hoax</a></li>
 								<li class="nav-item"><a href="{{ route('infografis.index') }}"

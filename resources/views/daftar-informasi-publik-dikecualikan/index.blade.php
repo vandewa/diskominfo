@@ -1,20 +1,19 @@
-@section('title', 'Daftar Informasi Publik')
+@section('title', 'Daftar Informasi Publik Dikecualikan')
 @section('menu','Posting')
-@section('submenu','Daftar Informasi Publik')
+@section('submenu','Daftar Informasi Publik Dikecualikan')
 @extends('layouts/template-admin')
-@section('kondisi2','nav-item-expanded nav-item-open')
+@section('kondisi7','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
 <span class="breadcrumb-item active">Daftar Informasi Publik</span>
-<span class="breadcrumb-item active">Berkala | Setiap Saat | Serta Merta</span>
-<span class="breadcrumb-item active">{{ $root->jenis_informasi }}</span>
+<span class="breadcrumb-item active">Dikecualikan</span>
 @endsection
 
 @section('tambah_data')
-<a href="{{route('daftar.informasi.publik.create', ["root"=>request('root')])}}" class="btn btn-primary">
+<a href="{{route('dip-dikecualikan.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
-Tambah Child
+Tambah Data
 </a>
 @endsection
 
@@ -34,10 +33,9 @@ Tambah Child
         <table class="table datatable-basic devan">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Tipe Informasi Publik</th>
-                    <th>Jenis Informasi</th>
-                    <th>Waktu Pembuatan Informasi</th>
+                    <th>Tahun</th>
+                    <th>Nomor</th>
+                    <th>Informasi Yang Dikecualikan</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -56,10 +54,9 @@ Tambah Child
 				serverSide: true,
                 ajax: window.location.href,
 				columns: [
+					{data: 'waktu_pembuatan', name:'waktu_pembuatan', },
 					{data: 'nomor', name:'nomor', },
-					{data: 'type.code_nm', name:'type.code_cd'},
-					{data: 'jenis_informasi', name:'jenis_informasi',},
-					{data: 'waktu_pembuatan', name:'waktu_pembuatan',},
+					{data: 'informasi_dikecualikan', name:'informasi_dikecualikan', },
                     {data: 'action', name: 'action', orderable: false, searchable: false},
 				]
 			});

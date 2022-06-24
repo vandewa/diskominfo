@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\DaftarInformasiPublik;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Soal;
+use App\Models\DIPDikecualikan;
 
 
 
@@ -156,15 +157,11 @@ class HomeController extends Controller
             if(!$request->filled('waktu_pembuatan')){
                 $data3->where('waktu_pembuatan', '=', $terbaru);
             }
-
-        $data4 = DaftarInformasiPublik::with(['anak'=> function($z)use($request) {
-             if($request->filled('waktu_pembuatan')){
-                 $z->where('waktu_pembuatan', $request->waktu_pembuatan);
-             }}])->where('root', null)->where('type', 'JENIS_INFORMASI_PUBLIK_TP_04');
             
-            if(!$request->filled('waktu_pembuatan')){
-                $data4->where('waktu_pembuatan', '=', $terbaru);
-            }
+
+        if(!$request->filled('waktu_pembuatan')){
+            $data4 = DIPDikecualikan::where('waktu_pembuatan', '=', $terbaru);
+        }
 
 
          if($request->filled('waktu_pembuatan')){
@@ -177,9 +174,7 @@ class HomeController extends Controller
             $data3->wherehas('anak', function($a) use ($request) {
                     $a->where('waktu_pembuatan', $request->waktu_pembuatan);
              });
-            $data4->wherehas('anak', function($a) use ($request) {
-                    $a->where('waktu_pembuatan', $request->waktu_pembuatan);
-             });
+            $data4 = DIPDikecualikan::where('waktu_pembuatan', $request->waktu_pembuatan);
 
         }
 

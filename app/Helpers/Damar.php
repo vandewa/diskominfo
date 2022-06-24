@@ -150,3 +150,12 @@ if (!function_exists('label_prioritas')) {
     }
 
 }
+
+if (!function_exists('get_daftar_informasi_publik')) {
+    function get_daftar_informasi_publik()
+    {
+        return \App\Models\ComCode::where('code_group', 'JENIS_INFORMASI_PUBLIK_TP')
+        ->where('code_cd', '!=', 'JENIS_INFORMASI_PUBLIK_TP_04')
+        ->pluck('code_nm', 'code_cd');
+    }
+}

@@ -14,8 +14,7 @@ class="header header-box-shadow-on-scroll header-abs-top header-bg-transparent h
     <i class="fas fa-user-circle fa-lg" style="color:black"></i>
 @endsection
 
-
-
+<meta http-equiv="refresh" content="1800" >
 <!-- ========== MAIN ========== -->
 <main id="content" role="main" style="background-image:url({{ asset('front/assets/images/arjuna.jpg') }}); background-size: cover; background-repeat:   no-repeat; background-position: center center; object-fit:cover">
     <!-- Content Section -->

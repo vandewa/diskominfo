@@ -26,13 +26,13 @@
                 <a class="nav-link  @if(request('waktu_pembuatan') == '') active @endif "
                     id="pills-one-code-features-example2-tab" data-toggle="pill"
                     href="#pills-one-code-features-example2" role="tab"
-                    aria-controls="pills-one-code-features-example2" aria-selected="true">Informasi Berkala / Setiap Saat / Serta Merta / Dikecualikan</a>
+                    aria-controls="pills-one-code-features-example2" aria-selected="true">Informasi Berkala | Setiap Saat | Serta Merta | Dikecualikan</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link @if(request('waktu_pembuatan') != '') active @endif"
                     id="pills-two-code-features-example2-tab" data-toggle="pill"
                     href="#pills-two-code-features-example2" role="tab"
-                    aria-controls="pills-two-code-features-example2" aria-selected="false">Daftar Informasi Publik</a>
+                    aria-controls="pills-two-code-features-example2" aria-selected="false">Daftar Informasi Publik (DIP)</a>
             </li>
         </ul>
     </div>

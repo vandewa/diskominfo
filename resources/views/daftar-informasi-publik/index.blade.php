@@ -2,11 +2,12 @@
 @section('menu','Posting')
 @section('submenu','Daftar Informasi Publik')
 @extends('layouts/template-admin')
-@section('kondisi2','nav-item-expanded nav-item-open')
+@section('kondisi7','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>
 <span class="breadcrumb-item active">Daftar Informasi Publik</span>
+<span class="breadcrumb-item active">Berkala | Setiap Saat | Serta Merta</span>
 @endsection
 
 @section('tambah_data')
