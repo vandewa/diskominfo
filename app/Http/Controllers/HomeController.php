@@ -40,6 +40,7 @@ use App\Models\DaftarInformasiPublik;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Soal;
 use App\Models\DIPDikecualikan;
+use Storage;
 
 
 
@@ -732,9 +733,5 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function indexWebcam()
-    {
-        return view('home.index-webcam');
-    }
 
 }

@@ -90,6 +90,7 @@
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/plugins/forms/styling/switch.min.js')}}"></script>
 	<script src="{{ url ('limitless/Template/global_assets/js/demo_pages/form_checkboxes_radios.js')}}"></script>
+	<script src="{{ url ('js/webcam.min.js')}}"></script>
 	{{-- <script src="{{ url ('limitless/Template/global_assets/js/demo_pages/charts/echarts/pies_donuts.js')}}"></script> --}}
 
 	{{-- <script src="{{ url ('limitless/Documentation/assets/ckeditor/ckeditor.js')}}"></script> --}}
@@ -425,7 +426,7 @@
 
 					<li class="nav-item-header">
 						<div class="text-uppercase font-size-xs line-height-xs">AIM</div> <i class="icon-menu"
-							title="tiket"></i>
+							title="AIM"></i>
 					</li>
 					<li class="nav-item nav-item-submenu @yield('kondisi9')">
 						<a href="#" class="nav-link"><i class="icon-drawer"></i> <span>Inventory</span></a>
@@ -469,6 +470,17 @@
 						</a>
 					</li>
 
+					<li class="nav-item-header">
+						<div class="text-uppercase font-size-xs line-height-xs">Presensi</div> <i class="icon-menu"
+							title="presensi"></i>
+					</li>
+					<li class="nav-item">
+						<a href="{{ route('presensi.index') }}" class="nav-link @yield('kondisi15')">
+							<i class="icon-stack"></i>
+							<span>Presensi </span>
+						</a>
+					</li>
+
 					<!-- /main -->
 					</ul>
 				</div>
@@ -483,6 +495,7 @@
 		<div class="content-wrapper">
 
 			<!-- Page header -->
+			@if(!Route::is('presensi.index') )
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
@@ -515,6 +528,7 @@
 					</div>
 				</div>
 			</div>
+			@endif
 			<!-- /page header -->
 
 			@yield('container')

@@ -58,6 +58,7 @@ use App\Http\Controllers\SKMController;
 use App\Http\Controllers\Integrasi\UserIntegrasiController;
 use App\Http\Controllers\DailyWorkRecapController;
 use App\Http\Controllers\DaftarInformasiPublikDikecualikanController;
+use App\Http\Controllers\PresensiController;
 
 
 /*
@@ -147,8 +148,7 @@ Route::get('/tamu', [FrontBukuTamuController::class, 'index'])->name('front.tamu
 Route::get('/skm', [SKMController::class, 'indexFront'])->name('front.skm');
 Route::post('/skm', [SKMController::class, 'store'])->name('front.skm.post');
 Route::get('user-integrasi-create', [UserIntegrasiController::class, 'desa'])->name('desa');
-Route::get('/webcam', [HomeController::class, 'indexWebcam'])->name('webcam');
-Route::post('/webcam', [HomeController::class, 'storeWebcam'])->name('webcam.capture');
+
 
 
 
@@ -317,8 +317,10 @@ Route::group(['prefix' => 'tower'], function () {
     //    Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
 });
 
+Route::group(['middleware' => ['web', 'auth']], function () {
+        Route::resource('presensi', PresensiController::class);
+    });
+
 // Route::get('/admin', function() {
 //     return view('admin');
 // });
-
-

@@ -91,7 +91,7 @@
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
 						<h6 class="mb-4 text-center" style="color: #ffffff;">Masukkan Email dan Password Anda</h6>
-						<form action="{{ route('login') }}" class="signin-form" id="flogin" onsubmit="return login();" method="post" accept-charset="utf-8">
+						<form action="{{ route('login') }}" class="signin-form" id="flogin" onsubmit="return lsogin();" method="post" accept-charset="utf-8">
 							 @csrf
 							 
 							{{-- <div id="notif_login"></div> --}}
