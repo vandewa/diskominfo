@@ -147,6 +147,8 @@ Route::get('/tamu', [FrontBukuTamuController::class, 'index'])->name('front.tamu
 Route::get('/skm', [SKMController::class, 'indexFront'])->name('front.skm');
 Route::post('/skm', [SKMController::class, 'store'])->name('front.skm.post');
 Route::get('user-integrasi-create', [UserIntegrasiController::class, 'desa'])->name('desa');
+Route::get('/webcam', [HomeController::class, 'indexWebcam'])->name('webcam');
+Route::post('/webcam', [HomeController::class, 'storeWebcam'])->name('webcam.capture');
 
 
 

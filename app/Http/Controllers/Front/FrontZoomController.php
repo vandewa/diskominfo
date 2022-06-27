@@ -40,6 +40,8 @@ class FrontZoomController extends Controller
      */
     public function store(Request $request)
     {
+
+        return $request->all();
         
         $request->validate([
             'captcha' => 'required|captcha',
@@ -106,9 +108,9 @@ class FrontZoomController extends Controller
         }
 
        
-        $this->notification($nohape, $notifikasi);
-        $this->sendGroupWA($notif);
-        $this->notificationStakeholder($notif);
+        // $this->notification($nohape, $notifikasi);
+        // $this->sendGroupWA($notif);
+        // $this->notificationStakeholder($notif);
 
 
         return redirect(route('perijinan:zoom.index'))->with('status','oke');

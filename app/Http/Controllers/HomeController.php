@@ -732,4 +732,9 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function indexWebcam()
+    {
+        return view('home.index-webcam');
+    }
+
 }
