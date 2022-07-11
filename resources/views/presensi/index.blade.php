@@ -7,23 +7,27 @@
 <div class="content">
 	<div class="container">
     <h1 class="text-center">Presensi Hari ini</h1>
-		<div class="col col-12 jam-digital">
+		<div class="row">
+		<div class="col-12 ">
+			<div class="jam-digital">
 			<div id="jam"></div>
 			<div id="unit">
 				<span>Jam</span>
 				<span>Menit</span>
 				<span>Detik</span>
 			</div>
+			</div>
 		</div>
-     
+	</div>
+
 		<form name="myForm" method="POST" action="{{ route('presensi.store') }}" onsubmit="return validateForm()">
 			@csrf
 			<div class="row">
-				<div class="col col-6">
+				<div class="col-md-6 col-sm-12">
 					<div id="my_camera"></div><br/>
 					<input type="hidden" name="image" class="image-tag">
 				</div>
-				<div class="col col-6">
+				<div class="col-md-6 col-sm-12">
 					<div id="results">Your captured image will appear here...</div>
 				</div>
 				<div class="col-md-12 text-center">
@@ -47,29 +51,27 @@
 				</div>
 			</div>
 		</form>
+		
 	</div>
-
-	
 	<!-- Basic datatable -->
-		<div class="card mt-4">
-			<center><h2 style="color: #000000;" class="mt-2"> History Presensi Terakhir</h2></center>
-			<div class="card-body">
-				<table class="table datatable-basic devan" width="100%">
-					<thead>
-						<tr>
-							<th>Tanggal</th>
-							<th>Pukul</th>
-							<th>Keterangan</th>
-							<th style="display: none;">Nama Tamu</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
+	<div class="card mt-4">
+		<center><h2 style="color: #000000;" class="mt-2"> History Presensi Terakhir</h2></center>
+		<div class="card-body">
+			<table class="table datatable-basic devan" width="100%">
+				<thead>
+					<tr>
+						<th>Tanggal</th>
+						<th>Pukul</th>
+						<th>Keterangan</th>
+						<th style="display: none;">Nama Tamu</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
 		</div>
-		<!-- /basic datatable -->
-
+	</div>
+	<!-- /basic datatable -->
 </div>
 @endsection
 
@@ -122,6 +124,7 @@ h1 {
    text-transform: uppercase;
    letter-spacing: 2px;
    font-size: 18px;
+   color: #fff;
    text-shadow: 1px 1px 1px rgba(10, 10, 10, 0.7)
 }
 span.turn {
@@ -160,7 +163,7 @@ span.turn {
 <script language="JavaScript">
     Webcam.set({
         width: 490,
-        height: 350,
+        height: 300,
         image_format: 'jpeg',
         jpeg_quality: 90
     });
@@ -232,15 +235,40 @@ jam();
 <script type="text/javascript">
 	function sweetAlert() 
 	{  
-
 		Swal.fire(
 		'Berhasil!',
 		'Anda telah melakukan presensi.',
 		'success')
-		}
+	}
 
+	function sweetAlert2() 
+	{  
+		Swal.fire({
+		icon: 'error',
+		title: 'Anda sudah absen masuk hari ini!',
+		text: 'Terima kasih :)',
+		})
+	}
+
+	function sweetAlert3() 
+	{  
+		Swal.fire({
+		icon: 'error',
+		title: 'Anda sudah absen keluar hari ini!',
+		text: 'Terima kasih :)',
+		})
+	}
+	
 	@if(session('status'))
 	sweetAlert();
+	@endif
+
+	@if(session('status_duplicate'))
+	sweetAlert2();
+	@endif
+
+	@if(session('status_duplicate_keluar'))
+	sweetAlert3();
 	@endif
 </script>
 

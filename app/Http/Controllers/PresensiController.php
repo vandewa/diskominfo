@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
 use App\Models\Tamu;
+use App\Models\Presensi;
 
 
 class PresensiController extends Controller
@@ -19,6 +20,9 @@ class PresensiController extends Controller
      */
     public function index(Request $request)
     {
+        $hari_ini =  Carbon::now()->format('Y-m-d');
+        $cek = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->first();
+        $cek_duplicate = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->get();
 
         if ($request->ajax()) {
             $data = Tamu::select('*');
@@ -42,7 +46,7 @@ class PresensiController extends Controller
                 ->make(true);
         }
 
-        return view('presensi.index');
+        return view('presensi.index', compact('cek', 'cek_duplicate'));
 
     }
 
@@ -64,10 +68,41 @@ class PresensiController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
-            $img = $request->image;
-            $folderPath = 'public/';
+
+            $path = storage_path('app/public/presensi/');
+            if (!file_exists($path)) {
+                    mkdir($path);
+                }
+
+
+            $hari_ini =  Carbon::now()->format('Y-m-d');
+            $jam_sekarang =  Carbon::now()->format('H:i:s');
+            $cek = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->first();
+            $cek_duplicate = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->get();
             
+            if(empty($cek)) {
+                $keterangan = 'Masuk';
+            }
+
+            if(!empty($cek)) {
+
+                if(count($cek_duplicate) != 0 && $cek->jam > '16:00:00' ) {
+                    return redirect(route('presensi.index'))->with('status_duplicate_keluar', 'oke');
+                }
+
+                if($cek->tanggal == $hari_ini && $cek->jam < '16:00:00') {
+                    $keterangan = 'Keluar';
+                } else if(count($cek_duplicate) == 1 && $cek->jam < '16:00:00' ) {
+                    return redirect(route('presensi.index'))->with('status_duplicate', 'oke');
+                }
+
+                
+            }
+        
+    
+            $img = $request->image;
+            $folderPath = 'public/presensi/';
+
             $image_parts = explode(";base64,", $img);
             $image_type_aux = explode("image/", $image_parts[0]);
             $image_type = $image_type_aux[1];
@@ -78,6 +113,14 @@ class PresensiController extends Controller
             
             $file = $folderPath . $fileName;
             Storage::put($file, $image_base64);
+
+            Presensi::create([
+                'id_user' => auth()->user()->id,
+                'tanggal' => $hari_ini,
+                'jam' =>$jam_sekarang,
+                'keterangan' => $keterangan,
+
+            ]);
 
             return redirect(route('presensi.index'))->with('status', 'oke');
     }
