@@ -50,19 +50,20 @@
 				<td class="besar"><b>{{ $row->nomor }}</b></td>
 				<td colspan="8" class="besar"><b>{{ $row->jenis_informasi }}</b></td>
 			</tr>
-			@foreach ($row->anak as $anakan )
-				<td class="kecil">{{ $anakan->nomor }}</td>
-				<td class="kecil">{{ $anakan->jenis_informasi }}</td>
-				<td class="kecil">{{ $anakan->ringkasan_informasi }}</td>
-				<td class="kecil">{{ $anakan->pejabat_yg_menguasai }}</td>
-				<td class="kecil">{{ $anakan->penanggungjawab_informasi }}</td>
-				<td class="kecil">{{ $anakan->waktu_pembuatan }}</td>
-				<td class="kecil">{{ $anakan->bentuk_informasi }}</td>
-				<td class="kecil">{{ $anakan->retensi }}</td>
-				<td class="kecil">{!! $anakan->link !!}</td>
+				@foreach ($row->anak as $anakan )
+				<tr>
+					<td class="kecil">{{ $anakan->nomor }}</td>
+					<td class="kecil">{{ $anakan->jenis_informasi }}</td>
+					<td class="kecil">{{ $anakan->ringkasan_informasi }}</td>
+					<td class="kecil">{{ $anakan->pejabat_yg_menguasai }}</td>
+					<td class="kecil">{{ $anakan->penanggungjawab_informasi }}</td>
+					<td class="kecil">{{ $anakan->waktu_pembuatan }}</td>
+					<td class="kecil">{{ $anakan->bentuk_informasi }}</td>
+					<td class="kecil">{{ $anakan->retensi }}</td>
+					<td class="kecil">{!! $anakan->link !!}</td>
+				</tr>
+				@endforeach
 			@endforeach
-			@endforeach
-		    <tr>
 			</tbody>
 		</table>
 
@@ -99,22 +100,20 @@
 						<td colspan="8" class="besar"><b>{{ $row->jenis_informasi }}</b></td>
 					</tr>
               
-                    @foreach ($row->anak as $anakan )
-	                  	<td class="kecil">{{ $anakan->nomor }}</td>
-						<td class="kecil">{{ $anakan->jenis_informasi }}</td>
-						<td class="kecil">{{ $anakan->ringkasan_informasi }}</td>
-						<td class="kecil">{{ $anakan->pejabat_yg_menguasai }}</td>
-						<td class="kecil">{{ $anakan->penanggungjawab_informasi }}</td>
-						<td class="kecil">{{ $anakan->waktu_pembuatan }}</td>
-						<td class="kecil">{{ $anakan->bentuk_informasi }}</td>
-						<td class="kecil">{{ $anakan->retensi }}</td>
-						<td class="kecil">{!! $anakan->link !!}</td>
-					</tr>
-                      
-                    @endforeach
-                 	@endforeach
-		                           									
-					<tr>
+						@foreach ($row->anak as $anakan )
+						<tr>
+							<td class="kecil">{{ $anakan->nomor }}</td>
+							<td class="kecil">{{ $anakan->jenis_informasi }}</td>
+							<td class="kecil">{{ $anakan->ringkasan_informasi }}</td>
+							<td class="kecil">{{ $anakan->pejabat_yg_menguasai }}</td>
+							<td class="kecil">{{ $anakan->penanggungjawab_informasi }}</td>
+							<td class="kecil">{{ $anakan->waktu_pembuatan }}</td>
+							<td class="kecil">{{ $anakan->bentuk_informasi }}</td>
+							<td class="kecil">{{ $anakan->retensi }}</td>
+							<td class="kecil">{!! $anakan->link !!}</td>
+						</tr>
+						@endforeach
+                 	@endforeach                     								
 			</tbody>
 		</table>
 
@@ -151,22 +150,20 @@
 						<td colspan="8" class="besar"><b>{{ $row->jenis_informasi }}</b></td>
 					</tr>
               
-                    @foreach ($row->anak as $anakan )
-	                  	<td class="kecil">{{ $anakan->nomor }}</td>
-						<td class="kecil">{{ $anakan->jenis_informasi }}</td>
-						<td class="kecil">{{ $anakan->ringkasan_informasi }}</td>
-						<td class="kecil">{{ $anakan->pejabat_yg_menguasai }}</td>
-						<td class="kecil">{{ $anakan->penanggungjawab_informasi }}</td>
-						<td class="kecil">{{ $anakan->waktu_pembuatan }}</td>
-						<td class="kecil">{{ $anakan->bentuk_informasi }}</td>
-						<td class="kecil">{{ $anakan->retensi }}</td>
-						<td class="kecil">{!! $anakan->link !!}</td>
-					</tr>
-    
-                    @endforeach
+						@foreach ($row->anak as $anakan )
+						<tr>
+							<td class="kecil">{{ $anakan->nomor }}</td>
+							<td class="kecil">{{ $anakan->jenis_informasi }}</td>
+							<td class="kecil">{{ $anakan->ringkasan_informasi }}</td>
+							<td class="kecil">{{ $anakan->pejabat_yg_menguasai }}</td>
+							<td class="kecil">{{ $anakan->penanggungjawab_informasi }}</td>
+							<td class="kecil">{{ $anakan->waktu_pembuatan }}</td>
+							<td class="kecil">{{ $anakan->bentuk_informasi }}</td>
+							<td class="kecil">{{ $anakan->retensi }}</td>
+							<td class="kecil">{!! $anakan->link !!}</td>
+						</tr>
+						@endforeach
                  	@endforeach
-		                           									
-					<tr>
 			</tbody>
 		</table>
 
@@ -197,6 +194,7 @@
 			</thead>
 			<tbody>
                   @foreach ($data4 as $row )
+				  <tr>
 	                  	<td style="text-align:left" class="kecil">{{ $row->nomor }}</td>
 						<td class="kecil">{{ $row->informasi_dikecualikan }}</td>
 						<td class="kecil">{!! $row->dasar_hukum !!}</td>
@@ -204,9 +202,7 @@
 						<td class="kecil">{{ $row->ditutup }}</td>
 						<td class="kecil">{{ $row->jangka_waktu }}</td>
 					</tr>
-                 	@endforeach
-		                           									
-					<tr>
+                 	@endforeach	                           									
 			</tbody>
 		</table>
 

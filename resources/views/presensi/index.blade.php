@@ -137,21 +137,21 @@ span.turn {
 @media screen and (max-width: 980px){
    #jam span {
       float: left;
-      text-align: center;
-      font-size: 50px;
-      margin: 0 1.5%;
+      text-align: left;
+      font-size: 40px;
+      margin: 0 0.5%;
       padding: 20px;
-      width: 20%;
+      width: 25%;
    }
    h1 {
       margin: 20px 5%;
    }
    .jam-digital {
       width: 100%;
-      margin: 10% 20%;
+      margin: 5% 10%;
    }
    #unit span {
-      width: 23%;
+      width: 25%;
    }
 }
 </style>
