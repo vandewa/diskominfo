@@ -10,4 +10,9 @@ class Presensi extends Model
     use HasFactory;
     protected $table ='presensi';
     protected $guarded = [];
+
+      public function nama()
+    {
+        return $this->belongsTo(Users::class, 'id_user');
+    }
 }

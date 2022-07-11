@@ -59,6 +59,7 @@ use App\Http\Controllers\Integrasi\UserIntegrasiController;
 use App\Http\Controllers\DailyWorkRecapController;
 use App\Http\Controllers\DaftarInformasiPublikDikecualikanController;
 use App\Http\Controllers\PresensiController;
+use App\Http\Controllers\PresensiAdminController;
 
 
 /*
@@ -319,6 +320,8 @@ Route::group(['prefix' => 'tower'], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
         Route::resource('presensi', PresensiController::class);
+        Route::resource('presensi-admin', PresensiAdminController::class);
+        
     });
 
 // Route::get('/admin', function() {

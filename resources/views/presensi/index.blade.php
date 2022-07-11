@@ -40,13 +40,15 @@
 								transition: all .15s ease;
 								box-shadow: none;
 								color: #fff;">
-							<button type="submit" class="form-control btn btn-primary btn-lg ml-4 mr-4" style="background-color: rgb(51, 88, 244) !important;
-								background-image: linear-gradient(to left bottom, rgb(55, 62, 155), rgb(30, 149, 218), rgb(56, 112, 168)) !important;
-								background-size: 210% 210%;
-								background-position: 100% 0;
-								transition: all .15s ease;
-								box-shadow: none;
-								color: #fff;">Presensi Sekarang</button>
+
+                      <button type="submit" class="form-control btn btn-primary btn-lg ml-4 mr-4" style="background-color: rgb(51, 88, 244) !important;
+                              background-image: linear-gradient(to left bottom, rgb(55, 62, 155), rgb(30, 149, 218), rgb(56, 112, 168)) !important;
+                              background-size: 210% 210%;
+                              background-position: 100% 0;
+                              transition: all .15s ease;
+                              box-shadow: none;
+                              color: #fff;">Presensi Sekarang</button>
+
 						</div>
 				</div>
 			</div>
@@ -139,19 +141,19 @@ span.turn {
       float: left;
       text-align: left;
       font-size: 40px;
-      margin: 0 0.5%;
-      padding: 20px;
-      width: 25%;
+      margin: 0 1.0%;
+      padding: 10px;
+      width: 20%;
    }
    h1 {
-      margin: 20px 5%;
+      margin: 5px 5%;
    }
    .jam-digital {
       width: 100%;
-      margin: 5% 10%;
+      margin: 10% 15%;
    }
    #unit span {
-      width: 25%;
+      width: 22%;
    }
 }
 </style>
@@ -278,12 +280,12 @@ jam();
         serverSide: true,
         'sDom': 't',
         ajax: window.location.href,
-         "order": [[ 2, "desc" ]],
+         "order": [[ 3, "desc" ]],
         columns: [
             { data: 'tanggalnya', nama: 'tanggalnya', orderable: false, searchable: false },
-            { data: 'nama', name: 'nama', orderable: false, searchable: false },
-            { data: 'nama', name: 'nama', orderable: false, searchable: false },
-            { data: 'tanggal', nama: 'tanggal', visible: false },
+            { data: 'jamnya', name: 'jamnya', orderable: false, searchable: false },
+            { data: 'keterangan', name: 'keterangan', orderable: false, searchable: false },
+            { data: 'created_at', nama: 'created_at', visible: false },
         ]
     });
 </script>

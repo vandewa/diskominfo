@@ -474,12 +474,24 @@
 						<div class="text-uppercase font-size-xs line-height-xs">Presensi</div> <i class="icon-menu"
 							title="presensi"></i>
 					</li>
+					{{-- @permission('presensi-read') --}}
 					<li class="nav-item">
 						<a href="{{ route('presensi.index') }}" class="nav-link @yield('kondisi15')">
-							<i class="icon-stack"></i>
+							<i class="icon-stack-text"></i>
 							<span>Presensi </span>
 						</a>
 					</li>
+					{{-- @endpermission --}}
+					@permission('presensi-admin-read')
+					<li class="nav-item">
+						<a href="{{ route('presensi-admin.index') }}" class="nav-link @yield('kondisi16')">
+							<i class="icon-stack-text"></i>
+							<span>Laporan Presensi </span>
+						</a>
+					</li>
+					@endpermission
+
+					
 
 					<!-- /main -->
 					</ul>

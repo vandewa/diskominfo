@@ -23,6 +23,7 @@ return [
             'inventory' => 'c,r,u,d', 
             'agenda' => 'c,r,u,d',
             'zoom' => 'c,r,u,d',
+            'presensi-admin' => 'c,r,u,d',
         ],
         'writer' => [
             'profile' => 'r,u',
@@ -44,6 +45,35 @@ return [
             'inventory' => 'c,r,u,d',
             'agenda' => 'c,r,u,d',
             'zoom' => 'c,r,u,d',
+        ],
+        'kepala_dinas' => [
+            'profile' => 'r,u',
+            'perizinan' => 'c,r,u',
+            'layanan' => 'c,r,u,',
+            'tiket' => 'c,r,u',
+            'inventory' => 'c,r,u',
+            'agenda' => 'c,r,u',
+            'zoom' => 'c,r,u',
+        ],
+        'sekretariat' => [
+            'profile' => 'r,u',
+            'perizinan' => 'c,r,u,d',
+            'layanan' => 'c,r,u,d',
+            'tiket' => 'c,r,u,d',
+            'inventory' => 'c,r,u,d', 
+            'agenda' => 'c,r,u,d',
+            'zoom' => 'c,r,u,d',
+            'presensi-admin' => 'c,r,u,d',
+        ],
+        'non_asn' => [
+            'profile' => 'r,u',
+            'perizinan' => 'c,r,u,d',
+            'layanan' => 'c,r,u,d',
+            'tiket' => 'c,r,u,d',
+            'inventory' => 'c,r,u,d', 
+            'agenda' => 'c,r,u,d',
+            'zoom' => 'c,r,u,d',
+            'presensi' => 'c,r,u,d',
         ]
     ],
 

@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
-use App\Models\Tamu;
 use App\Models\Presensi;
 
 
@@ -20,35 +19,29 @@ class PresensiController extends Controller
      */
     public function index(Request $request)
     {
-        $hari_ini =  Carbon::now()->format('Y-m-d');
-        $cek = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->first();
-        $cek_duplicate = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->get();
+        // $jam_sekarang =  Carbon::now()->format('H:i:s');
+        // $hari_ini =  Carbon::now()->format('Y-m-d');
+        // $cek = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->first();
+        // $cek_duplicate = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->get();
 
         if ($request->ajax()) {
-            $data = Tamu::select('*');
+            $data = Presensi::with(['nama'])->where('id_user', auth()->user()->id);
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn(
-                    'action',
-                    function ($data) {
-                        $actionBtn = 
-                        '<div class="list-icons">
-                            <a href="'.route('buku:tamu.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
-                            <a href="'.route('buku:tamu.destroy', $data->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
-                        </div>';
-                        return $actionBtn;
-                    }
-                )
                 ->addColumn('tanggalnya', function ($a) {
-                        return \Carbon\Carbon::createFromFormat('Y-m-d', $a->tanggal)->isoFormat('dddd, D MMMM Y');
+                    return \Carbon\Carbon::createFromFormat('Y-m-d', $a->tanggal)->isoFormat('dddd, D MMMM Y');
                  
+                })
+                ->addColumn('jamnya', function ($a) {
+                    return Carbon::createFromFormat('H:i:s',$a->jam)->format('H:i').' WIB ';
                 })
                 ->make(true);
         }
 
-        return view('presensi.index', compact('cek', 'cek_duplicate'));
+        return view('presensi.index');
 
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -69,60 +62,60 @@ class PresensiController extends Controller
     public function store(Request $request)
     {
 
-            $path = storage_path('app/public/presensi/');
-            if (!file_exists($path)) {
-                    mkdir($path);
-                }
-
-
-            $hari_ini =  Carbon::now()->format('Y-m-d');
-            $jam_sekarang =  Carbon::now()->format('H:i:s');
-            $cek = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->first();
-            $cek_duplicate = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->get();
-            
-            if(empty($cek)) {
-                $keterangan = 'Masuk';
+        $path = storage_path('app/public/presensi/');
+        if (!file_exists($path)) {
+                mkdir($path);
             }
 
-            if(!empty($cek)) {
 
-                if(count($cek_duplicate) != 0 && $cek->jam > '16:00:00' ) {
-                    return redirect(route('presensi.index'))->with('status_duplicate_keluar', 'oke');
-                }
+        $hari_ini =  Carbon::now()->format('Y-m-d');
+        $jam_sekarang =  Carbon::now()->format('H:i:s');
+        $cek = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->first();
+        $cek_duplicate = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->orderBy('created_at', 'desc')->get();
+        
+        if(empty($cek)) {
+            $keterangan = 'Masuk';
+        }
 
-                if($cek->tanggal == $hari_ini && $cek->jam < '16:00:00') {
-                    $keterangan = 'Keluar';
-                } else if(count($cek_duplicate) == 1 && $cek->jam < '16:00:00' ) {
+        if(!empty($cek)) {
+
+            foreach ($cek_duplicate as $cek_duplikasi) { 
+                if($cek_duplikasi->jam < '16:00:00' && $jam_sekarang < '16:00:00' ) {
                     return redirect(route('presensi.index'))->with('status_duplicate', 'oke');
                 }
 
-                
+                if($cek_duplikasi->jam >= '16:00:00') {
+                    return redirect(route('presensi.index'))->with('status_duplicate_keluar', 'oke');
+                }
             }
+
+            $keterangan = 'Keluar';
+        }
+            
+
+        $img = $request->image;
+        $folderPath = 'public/presensi/';
+
+        $image_parts = explode(";base64,", $img);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
         
-    
-            $img = $request->image;
-            $folderPath = 'public/presensi/';
+        $image_base64 = base64_decode($image_parts[1]);
+        // $fileName = uniqid() . '.png';
+        $fileName = Auth::user()->slug.'-'.date('Ymdhis'). '.png';
+        
+        $file = $folderPath . $fileName;
+        Storage::put($file, $image_base64);
 
-            $image_parts = explode(";base64,", $img);
-            $image_type_aux = explode("image/", $image_parts[0]);
-            $image_type = $image_type_aux[1];
-            
-            $image_base64 = base64_decode($image_parts[1]);
-            // $fileName = uniqid() . '.png';
-            $fileName = Auth::user()->slug.'-'.date('Ymdhis'). '.png';
-            
-            $file = $folderPath . $fileName;
-            Storage::put($file, $image_base64);
+        Presensi::create([
+            'id_user' => auth()->user()->id,
+            'tanggal' => $hari_ini,
+            'jam' =>$jam_sekarang,
+            'keterangan' => $keterangan,
 
-            Presensi::create([
-                'id_user' => auth()->user()->id,
-                'tanggal' => $hari_ini,
-                'jam' =>$jam_sekarang,
-                'keterangan' => $keterangan,
+        ]);
 
-            ]);
-
-            return redirect(route('presensi.index'))->with('status', 'oke');
+        return redirect(route('presensi.index'))->with('status', 'oke');
     }
 
     /**
