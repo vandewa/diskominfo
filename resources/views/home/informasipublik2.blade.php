@@ -40,8 +40,8 @@
 					<th class="text-center">(5)</th>
 					<th class="text-center">(6)</th>
 					<th class="text-center">(7)</th>
-					<th class="text-center">(13)</th>
-					<th class="text-center">(14)</th>
+					<th class="text-center">(8)</th>
+					<th class="text-center">(9)</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -89,8 +89,8 @@
 					<th class="text-center">(5)</th>
 					<th class="text-center">(6)</th>
 					<th class="text-center">(7)</th>
-					<th class="text-center">(13)</th>
-					<th class="text-center">(14)</th>
+					<th class="text-center">(8)</th>
+					<th class="text-center">(9)</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -139,8 +139,8 @@
 					<th class="text-center">(5)</th>
 					<th class="text-center">(6)</th>
 					<th class="text-center">(7)</th>
-					<th class="text-center">(13)</th>
-					<th class="text-center">(14)</th>
+					<th class="text-center">(8)</th>
+					<th class="text-center">(9)</th>
 				</tr>
 			</thead>
 			<tbody>
