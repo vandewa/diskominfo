@@ -170,6 +170,7 @@ return [
         Spatie\Analytics\AnalyticsServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
 
         /*
@@ -248,6 +249,7 @@ return [
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

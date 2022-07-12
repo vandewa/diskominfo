@@ -13,6 +13,7 @@ use Storage;
 use NcJoes\OfficeConverter\OfficeConverter;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotifikasiTiketMasuk;
+use PhpOffice\PhpWord\IOFactory;
 
 class TiketController extends Controller
 {
@@ -157,28 +158,41 @@ class TiketController extends Controller
 
     public function cetakSuratTugas($id)
     {
-        $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
-        $path = public_path('/template/surat_tugas_tiket.docx');
-        $pathSave = storage_path('app/public/' . $data->no . '.docx');
-        $pathPdf =    $pathSave = storage_path('app/public/' . $data->no . '.pdf');
-        $templateProcessor = new TemplateProcessor($path);
-        $templateProcessor->setValues([
-            'no' => $data->no,
-            'pelapor' => $data->pelapor,
-            'instansi' => $data->instansi,
-            'email' => $data->email,
-            'telepon' => $data->cp,
-            'petugas' => $data->petugas->name ?? '',
-            'nip' => $data->petugas->nip ?? '',
-            'jabatan' => $data->petugas->jabatan ?? '',
-            'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
-            'tahun' => date('Y', strtotime($data->created_at))
-        ]);
+    //    $exists = Storage::disk('public')->allFiles();
 
-        $templateProcessor->saveAs($pathSave);
-        // $converter = new OfficeConverter($pathSave);
-        // $converter->convertTo('aaaa.pdf'); //generates pdf file in same directory as test-file.docx
-        //        $converter = new OfficeConverter('test-file.docx', 'path-to-outdir');
-        return response()->download($pathSave, $data->no . '.docx')->deleteFileAfterSend(true);
+    //    return Storage::path('public\\TKT-22-05-001.docx');
+
+        // $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
+        // $path = public_path('/template/surat_tugas_tiket.docx');
+        // $pathSave = storage_path('app/public/' . $data->no . '.docx');
+        // // $pathPdf =    $pathSave = storage_path('app/public/' . $data->no . '.pdf');
+        // $pathPdf = storage_path('app/public/' . $data->no . '.pdf');
+        // $templateProcessor = new TemplateProcessor($path);
+        // $templateProcessor->setValues([
+        //     'no' => $data->no,
+        //     'pelapor' => $data->pelapor,
+        //     'instansi' => $data->instansi,
+        //     'email' => $data->email,
+        //     'telepon' => $data->cp,
+        //     'petugas' => $data->petugas->name ?? '',
+        //     'nip' => $data->petugas->nip ?? '',
+        //     'jabatan' => $data->petugas->jabatan ?? '',
+        //     'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
+        //     'tahun' => date('Y', strtotime($data->created_at))
+        // ]);
+
+        // $templateProcessor->saveAs($pathSave);
+
+        // return response()->download($pathSave, $data->no . '.docx')->deleteFileAfterSend(false);
+
+        $converter = new OfficeConverter(Storage::path('public\\TKT-22-05-001.docx'));
+        
+    //    new OfficeConverter( Storage::path('public\\TKT-22-05-001.docx'),Storage::path('public'));
+        $converter->convertTo(storage_path('app/public/aaaa.pdf')); //generates pdf file in same directory as test-file.docx
+
+        
     }
+
+
+
 }

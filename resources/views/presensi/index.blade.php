@@ -22,36 +22,39 @@
 
 		<form name="myForm" method="POST" action="{{ route('presensi.store') }}" onsubmit="return validateForm()">
 			@csrf
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<div id="my_camera"></div><br/>
-					<input type="hidden" name="image" class="image-tag">
-				</div>
-				<div class="col-md-6 col-sm-12">
-					<div id="results">Your captured image will appear here...</div>
-				</div>
-				<div class="col-md-12 text-center">
-					<br/>
-					<div class="d-flex justify-content-center">
-							<input type = button value="Ambil Gambar" onClick="take_snapshot()" class="form-control btn-lg ml-4 mr-4" style="background-color: rgb(51, 88, 244) !important;
-								background-image: linear-gradient(to left bottom, rgb(103, 233, 157), rgb(122, 121, 20), rgb(29, 140, 248)) !important;
-								background-size: 210% 210%;
-								background-position: 100% 0;
-								transition: all .15s ease;
-								box-shadow: none;
-								color: #fff;">
-
-                      <button type="submit" class="form-control btn btn-primary btn-lg ml-4 mr-4" style="background-color: rgb(51, 88, 244) !important;
-                              background-image: linear-gradient(to left bottom, rgb(55, 62, 155), rgb(30, 149, 218), rgb(56, 112, 168)) !important;
+         <div class="container">
+            <div class="row">
+               <div class="col-md-2 col-sm-2"></div>
+                  <div class="col-md-6 col-sm-6">
+                     <div id="my_camera"></div><br/>
+                     <input type="hidden" name="image" class="image-tag">
+                  </div>
+                  <div class="col-md-4 col-sm-4">
+                     <div id="results">Your captured image will appear here...</div>
+                  </div>
+                  <div class="col-md-12 text-center">
+                     <br/>
+                     <div class="d-flex justify-content-center">
+                           <input type = button value="Ambil Gambar" onClick="take_snapshot()" class="form-control btn-lg ml-4 mr-4" style="background-color: rgb(51, 88, 244) !important;
+                              background-image: linear-gradient(to left bottom, rgb(103, 233, 157), rgb(122, 121, 20), rgb(29, 140, 248)) !important;
                               background-size: 210% 210%;
                               background-position: 100% 0;
                               transition: all .15s ease;
                               box-shadow: none;
-                              color: #fff;">Presensi Sekarang</button>
+                              color: #fff;">
 
-						</div>
-				</div>
-			</div>
+                           <button type="submit" class="form-control btn btn-primary btn-lg ml-4 mr-4" style="background-color: rgb(51, 88, 244) !important;
+                                    background-image: linear-gradient(to left bottom, rgb(55, 62, 155), rgb(30, 149, 218), rgb(56, 112, 168)) !important;
+                                    background-size: 210% 210%;
+                                    background-position: 100% 0;
+                                    transition: all .15s ease;
+                                    box-shadow: none;
+                                    color: #fff;">Presensi Sekarang</button>
+
+                        </div>
+                  </div>
+            </div>
+         </div>
 		</form>
 		
 	</div>
@@ -164,10 +167,13 @@ span.turn {
 
 <script language="JavaScript">
     Webcam.set({
-        width: 490,
-        height: 300,
+        width: 320,
+		height: 240,
+		crop_width: 260,
+		crop_height: 260,
         image_format: 'jpeg',
-        jpeg_quality: 90
+        jpeg_quality: 90,
+        fps: 60   
     });
     
     Webcam.attach( '#my_camera' );

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
 use App\Models\Presensi;
+use DB;
 
 class PresensiAdminController extends Controller
 {
@@ -18,6 +19,22 @@ class PresensiAdminController extends Controller
      */
     public function index(Request $request)
     {
+
+        $data = DB::
+
+        $a = Presensi::with('nama')->get();
+
+        $list=array();
+        $month = 12;
+        $year = 2014;
+
+        for($d=1; $d<=31; $d++)
+        {
+            $time=mktime(12, 0, 0, $month, $d, $year);          
+            if (date('m', $time)==$month)       
+                $list[]=date('Y-m-d', $time);
+        }
+        return $list;
 
         if ($request->ajax()) {
             $data = Presensi::with(['nama'])->select('*');
