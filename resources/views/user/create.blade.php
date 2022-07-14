@@ -101,7 +101,7 @@
 					<label class="col-form-label col-lg-6">Bidang<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
-							<input type="text" name="opd" class="form-control" placeholder="Masukkan OPD" value="{{ old('opd') }}">
+							<input type="text" name="opd" class="form-control" placeholder="Masukkan Bidang" value="{{ old('opd') }}">
 							@error('opd')
 							<div class="invalid-feedback">
 							{{ $message }}
