@@ -98,7 +98,7 @@
 
 			<div class="form-group row" style="margin-bottom: 0.25rem">
 				<div class="col-6">
-					<label class="col-form-label col-lg-6">OPD<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-6">Bidang<span class="text-danger">*</span></label>
 					<div class="col-lg-12">
 						<div class="form-group form-group-feedback form-group-feedback-left">
 							<input type="text" name="opd" class="form-control" placeholder="Masukkan OPD" value="{{ old('opd') }}">

@@ -13,6 +13,6 @@ class Presensi extends Model
 
       public function nama()
     {
-        return $this->belongsTo(Users::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

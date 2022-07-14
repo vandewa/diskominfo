@@ -8,6 +8,13 @@
 <span class="breadcrumb-item active">Laporan Presensi</span>
 @endsection
 
+@section('tambah_data')
+<a href="{{route('presensi-admin.create')}}" class="btn btn-primary">
+<i class="icon-printer2 mr-2"></i>
+Cetak Presensi 
+</a>
+@endsection
+
 @section('container')
 
 <div class="content">

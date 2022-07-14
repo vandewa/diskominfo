@@ -20,7 +20,7 @@
 
         <h3>I. INFORMASI WAJIB DIUMUMKAN SECARA BERKALA</h3>
         <table class="table table-bordered">
-			<thead>
+			<thead class="thead-light">
 				<tr class="active">
 					<th class="text-center">NO.</th>
 					<th class="text-center">JENIS INFORMASI</th>
@@ -69,7 +69,7 @@
 
 		<h3>II. INFORMASI WAJIB DIUMUMKAN SECARA SERTA MERTA</h3>
         <table class="table table-bordered">
-			<thead>
+			<thead class="thead-light">
 				<tr class="active">
 					<th class="text-center">NO.</th>
 					<th class="text-center">JENIS INFORMASI</th>
@@ -119,7 +119,7 @@
 
 		<h3>III. INFORMASI WAJIB TERSEDIA SETIAP SAAT</h3>
         <table class="table table-bordered">
-			<thead>
+			<thead class="thead-light">
 				<tr class="active">
 					<th class="text-center">NO.</th>
 					<th class="text-center">JENIS INFORMASI</th>
@@ -169,7 +169,7 @@
 
 		<h3>IV. DAFTAR INFORMASI YANG DIKECUALIKAN</h3>
         <table class="table table-bordered">
-			<thead>
+			<thead class="thead-light">
 					<tr class="active">
 						<th class="text-center" rowspan="2" >NO.</th>
 						<th class="text-center" rowspan="2">INFORMASI YANG DIKECUALIKAN</th>

@@ -14,6 +14,7 @@ use NcJoes\OfficeConverter\OfficeConverter;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotifikasiTiketMasuk;
 use PhpOffice\PhpWord\IOFactory;
+use setasign\Fpdi\Fpdi;
 
 class TiketController extends Controller
 {
@@ -162,36 +163,59 @@ class TiketController extends Controller
 
     //    return Storage::path('public\\TKT-22-05-001.docx');
 
-        // $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
-        // $path = public_path('/template/surat_tugas_tiket.docx');
-        // $pathSave = storage_path('app/public/' . $data->no . '.docx');
-        // // $pathPdf =    $pathSave = storage_path('app/public/' . $data->no . '.pdf');
-        // $pathPdf = storage_path('app/public/' . $data->no . '.pdf');
-        // $templateProcessor = new TemplateProcessor($path);
-        // $templateProcessor->setValues([
-        //     'no' => $data->no,
-        //     'pelapor' => $data->pelapor,
-        //     'instansi' => $data->instansi,
-        //     'email' => $data->email,
-        //     'telepon' => $data->cp,
-        //     'petugas' => $data->petugas->name ?? '',
-        //     'nip' => $data->petugas->nip ?? '',
-        //     'jabatan' => $data->petugas->jabatan ?? '',
-        //     'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
-        //     'tahun' => date('Y', strtotime($data->created_at))
-        // ]);
+        $data = Tiket::with(['prioritas', 'kategori', 'status', 'penerima', 'petugas'])->find($id);
+        $path = public_path('/template/surat_tugas_tiket.docx');
+        $pathSave = storage_path('app/public/' . $data->no . '.docx');
+        // $pathPdf =    $pathSave = storage_path('app/public/' . $data->no . '.pdf');
+        $pathPdf = storage_path('app/public/' . $data->no . '.pdf');
+        $templateProcessor = new TemplateProcessor($path);
+        $templateProcessor->setValues([
+            'no' => $data->no,
+            'pelapor' => $data->pelapor,
+            'instansi' => $data->instansi,
+            'email' => $data->email,
+            'telepon' => $data->cp,
+            'petugas' => $data->petugas->name ?? '',
+            'nip' => $data->petugas->nip ?? '',
+            'jabatan' => $data->petugas->jabatan ?? '',
+            'tanggal' => \Carbon\Carbon::createFromTimeStamp(strtotime($data->created_at))->isoFormat('D MMMM Y'),
+            'tahun' => date('Y', strtotime($data->created_at))
+        ]);
 
-        // $templateProcessor->saveAs($pathSave);
+        $templateProcessor->saveAs($pathSave);
 
-        // return response()->download($pathSave, $data->no . '.docx')->deleteFileAfterSend(false);
+        return response()->download($pathSave, $data->no . '.docx')->deleteFileAfterSend(true);
 
-        $converter = new OfficeConverter(Storage::path('public\\TKT-22-05-001.docx'));
+        // $converter = new OfficeConverter(Storage::path('public\\TKT-22-05-001.docx'));
         
     //    new OfficeConverter( Storage::path('public\\TKT-22-05-001.docx'),Storage::path('public'));
-        $converter->convertTo(storage_path('app/public/aaaa.pdf')); //generates pdf file in same directory as test-file.docx
+        // $converter->convertTo(storage_path('app/public/aaaa.pdf')); //generates pdf file in same directory as test-file.docx
 
-        
+        // $nama = 'DEVAN DEWANANTA UYEEEE';
+        // $outputfile = storage_path('app/public/tess.pdf');
+        // $this->fillPDF(storage_path('app/public/tes.pdf'), $outputfile, $nama);
+
+        // return response()->file($outputfile);
     }
+
+    // public function fillPDF($file, $outputfile, $nama)
+    // {
+    //     $fpdi = new FPDI;
+    //     $fpdi->setSourceFile($file);
+    //     $template = $fpdi->importPage(1);
+    //     $size = $fpdi->getTemplateSize($template);
+    //     $fpdi->AddPage($size['orientation'], array($size['width'], $size['height']));
+    //     $fpdi->useTemplate($template);
+    //     $top = 105;
+    //     $right = 135;
+    //     $name = $nama;
+    //     $fpdi->SetFont("helvetica", "", 17);
+    //     $fpdi->SetTextColor(25,26,25);
+    //     $fpdi->Text($right, $top, $name);
+
+    //     return $fpdi->Output($outputfile, 'F');
+
+    // }
 
 
 
