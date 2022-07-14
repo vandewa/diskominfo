@@ -483,11 +483,22 @@
 					</li>
 					{{-- @endpermission --}}
 					@permission('presensi-admin-read')
-					<li class="nav-item">
+					{{-- <li class="nav-item">
 						<a href="{{ route('presensi-admin.index') }}" class="nav-link @yield('kondisi16')">
 							<i class="icon-stack-text"></i>
 							<span>Laporan Presensi </span>
 						</a>
+					</li> --}}
+					<li class="nav-item nav-item-submenu @yield('kondisi16')">
+						<a href="#" class="nav-link"><i class="icon-stack-text"></i> <span>Presensi</span></a>
+						<ul class="nav nav-group-sub" data-submenu-title="Presensi">
+							<li class="nav-item"><a href="{{ route('presensi-admin.index') }}" class="nav-link @yield('kondisi16')">
+									<span>Laporan Presensi </span></a>
+							</li>
+							<li class="nav-item"><a href="{{ route('setting-tanggal.index') }}" class="nav-link @yield('kondisi16')">
+									<span>Setting Tanggal </span></a>
+							</li>
+						</ul>
 					</li>
 					@endpermission
 

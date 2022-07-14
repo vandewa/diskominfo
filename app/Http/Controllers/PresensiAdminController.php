@@ -23,22 +23,6 @@ class PresensiAdminController extends Controller
     public function index(Request $request)
     {
 
-        // $data = DB::
-
-        // $a = Presensi::with('nama')->get();
-
-        // $list=array();
-        // $month = 12;
-        // $year = 2014;
-
-        // for($d=1; $d<=31; $d++)
-        // {
-        //     $time=mktime(12, 0, 0, $month, $d, $year);          
-        //     if (date('m', $time)==$month)       
-        //         $list[]=date('Y-m-d', $time);
-        // }
-        // return $list;
-
         if ($request->ajax()) {
             $data = Presensi::with(['nama'])->select('*');
             return DataTables::of($data)
@@ -101,14 +85,6 @@ class PresensiAdminController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->all();
-        // $tahun = substr($data->tanggal,0,4);
-
-
-        // $join = DB::select(DB::raw("SELECT *, b.jam AS pulang, a.jam AS berangkat FROM presensi a left JOIN presensi b ON a.id_user = b.id_user AND a.tanggal = b.tanggal WHERE a.keterangan = 'Masuk' AND b.keterangan = 'Keluar'"))
-        // ->where('id_user', $request->id_user)
-        // ->whereRaw("year(tanggal) = ? and month(tanggal) = ?", [$request->tahun, $request->bulan]);
-
         $data = DB::table('presensi as a')
         ->select('*', 'a.jam as berangkat', 'b.jam as pulang')
         ->join('presensi as b',function($join) {
@@ -129,6 +105,35 @@ class PresensiAdminController extends Controller
                 ->where('id_user', $request->id_user)
                 ->orderBy('created_at', 'asc')
                 ->first();
+        
+        if($nama->nama->opd == 'Informatika'){
+            $nama_atasan = User::where('jabatan', 'Kepala Bidang Informatika Dinas Komunikasi Dan Informatika')
+                                ->where('status', 1)
+                                ->first()
+                                ->name;
+            $nip = User::where('jabatan', 'Kepala Bidang Informatika Dinas Komunikasi Dan Informatika')
+                        ->where('status', 1)
+                        ->first()
+                        ->nip;
+        } else if($nama->nama->opd == 'Informasi dan Komunikasi Publik'){
+            $nama_atasan = User::where('jabatan', 'Kepala Bidang Informasi Dan Komunikasi Publik Dinas Komunikasi Dan Informatika')
+                                ->where('status', 1)
+                                ->first()
+                                ->name;
+            $nip = User::where('jabatan', 'Kepala Bidang Informasi Dan Komunikasi Publik Dinas Komunikasi Dan Informatika')
+                        ->where('status', 1)
+                        ->first()
+                        ->nip;
+        } else if($nama->nama->opd == 'Sekretariat'){
+            $nama_atasan = User::where('jabatan', 'Kepala Sub Bagian Umum, Kepegawaian Dan Keuangan Sekretariat Dinas Komunikasi Dan Informatika')
+                                ->where('status', 1)
+                                ->first()
+                                ->name;
+            $nip = User::where('jabatan', 'Kepala Sub Bagian Umum, Kepegawaian Dan Keuangan Sekretariat Dinas Komunikasi Dan Informatika')
+                        ->where('status', 1)
+                        ->first()
+                        ->nip;
+        }
 
         $bulan = substr($nama->tanggal,5,2);
         $bulan_tahun = ($request->tahun.'-'.$request->bulan);
@@ -139,6 +144,8 @@ class PresensiAdminController extends Controller
         $templateProcessor->setValues([
             'nama' => $nama->nama->name,
             'jabatan' => $nama->nama->jabatan,
+            'nama_atasan' => $nama_atasan,
+            'nip' => $nip,
             'bulan' => strtoupper(\Carbon\Carbon::createFromFormat('Y-m', $bulan_tahun)->isoFormat('MMMM Y')),
         ]);
         $kampret= [];

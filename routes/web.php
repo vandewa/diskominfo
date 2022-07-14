@@ -60,6 +60,7 @@ use App\Http\Controllers\DailyWorkRecapController;
 use App\Http\Controllers\DaftarInformasiPublikDikecualikanController;
 use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\PresensiAdminController;
+use App\Http\Controllers\SettingTanggalController;
 
 
 /*
@@ -321,6 +322,7 @@ Route::group(['prefix' => 'tower'], function () {
 Route::group(['middleware' => ['web', 'auth']], function () {
         Route::resource('presensi', PresensiController::class);
         Route::resource('presensi-admin', PresensiAdminController::class);
+        Route::resource('setting-tanggal', SettingTanggalController::class);
         
     });
 
