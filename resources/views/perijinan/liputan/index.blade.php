@@ -53,7 +53,7 @@
         ajax: window.location.href,
         "order": [[ 9, "desc" ]],
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-left"},
             {data: 'tanggalnya', name:'tanggalnya', orderable: false, searchable: false,},
             {data: 'nama', name:'nama'},
             {data: 'instansi', name:'instansi'},
@@ -61,7 +61,7 @@
             {data: 'tempat', name:'tempat'},
             {data: 'waktu', name:'waktu'},
             {data: 'status.code_nm', name:'status.code_cd'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
             {data: 'tanggal', name:'tanggal', visible: false},
         ]
     });

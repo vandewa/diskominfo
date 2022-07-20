@@ -45,7 +45,7 @@ var CKEditor = function() {
 
         // Setup
         var editorReadOnly = CKEDITOR.replace('editor-readonly', {
-            height: 400,
+            height: 300,
             extraPlugins: 'forms'
         });
 

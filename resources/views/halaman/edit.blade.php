@@ -12,7 +12,6 @@
 @section('container')
 
 <div class="content">
-	<!-- CKEditor default -->
 	<div class="card">
 		<div class="card-header header-elements-inline">
 		<h5 >FORM EDIT HALAMAN MENU</h5>
@@ -92,27 +91,25 @@
 				</div>
 
 				<div class="text-right">
+					<a href="{{route('halaman.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
 					<button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 				</div>
 			</form>
 		</div>
 	</div>		
-	<!-- /CKEditor default -->
 </div>
 @endsection
 
 @push('js')
 <script>
+	const judul_posting = document.querySelector('#judul_posting');
+	const slug = document.querySelector('#slug');
 
-const judul_posting = document.querySelector('#judul_posting');
-const slug = document.querySelector('#slug');
-
-judul_posting.addEventListener('change', function() {
-fetch('/posting/checkSlug?judul_posting=' + judul_posting.value)
-.then(response => response.json())
-.then(data => slug.value = data.slug);
-});
-
+	judul_posting.addEventListener('change', function() {
+	fetch('/posting/checkSlug?judul_posting=' + judul_posting.value)
+	.then(response => response.json())
+	.then(data => slug.value = data.slug);
+	});
 </script>
 
 @endpush

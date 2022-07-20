@@ -37,8 +37,8 @@
                         <th>Keperluan</th>
                         <th>Instansi</th>
                         <th>Jumlah Tamu</th>
-                        <th>Action</th>
-                        <th style="display: none">Action</th>
+                        <th>Aksi</th>
+                        <th style="display: none"></th>
                     </tr>
                 </thead>
                 <tbody>

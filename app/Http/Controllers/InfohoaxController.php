@@ -18,7 +18,7 @@ class InfohoaxController extends Controller
      */
     public function index()
     {
-        return view ('infohoax.index');
+        return view('infohoax.index');
     }
 
     /**
@@ -159,7 +159,7 @@ class InfohoaxController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = 
                     '<div class="list-icons">
-                        <a href="'.route('infohoax.edit', $row->id_posting ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                        <a href="'.route('infohoax.edit', $row->id_posting ).'" class="btn btn-outline-success rounded-round"><i class="icon-zoomin3 mr-2"></i>Detail</a>
                         <a href="'.route('infohoax.destroy', $row->id_posting ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                     </div>';
                     return $actionBtn;

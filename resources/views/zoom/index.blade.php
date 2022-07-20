@@ -39,8 +39,8 @@
                         <th>Topik</th>
                         <th>Peserta</th>
                         <th>Link Zoom</th>
-                        <th>Action</th>
-                        <th style="display:none;">Tanggalnya</th>
+                        <th>Aksi</th>
+                        <th style="display:none;"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +67,7 @@
             { data: 'topik', name: 'topik' },
             { data: 'peserta', name: 'peserta' },
             { data: 'link_zoom', name: 'link_zoom',  orderable: false, searchable: false},
-             {data: 'action', name: 'action', orderable: false, searchable: false}, 
+             {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"}, 
             { data: 'tanggal', name:'tanggal', visible: false},
         ]
     });

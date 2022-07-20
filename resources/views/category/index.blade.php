@@ -54,9 +54,9 @@ Tambah Kategori
          "order": [[ 1, "asc" ]],
         ajax: "{{ route('category.list') }}",
         columns: [
-					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+					{ data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-left"},
                     { data: 'nama_kategori', },
-					{ data: 'action', name: 'action', orderable: false, searchable: false},
+					{ data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
         ]
     });
 

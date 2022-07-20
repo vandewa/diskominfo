@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tanggal;
+use Carbon\Carbon;
+use DataTables;
 
 class SettingTanggalController extends Controller
 {
@@ -11,23 +14,29 @@ class SettingTanggalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $data = DB::
+        // return Tanggal::where('keterangan', '!=', NULL)->get();
+        if ($request->ajax()) {
+            $data = Tanggal::where('keterangan', '!=', NULL);
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = 
+                        '<div class="list-icons">
+                            <a href="'.route('setting-tanggal.destroy', $row->tanggal ).'" class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
+                        </div>';
+                        return $actionBtn;
+                })
+                ->addColumn('tanggalnya', function ($a) {
+                    return Carbon::createFromFormat('Y-m-d', $a->tanggal)->isoFormat('dddd, D MMMM Y');
+                 
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
 
-        // $a = Presensi::with('nama')->get();
-
-        // $list=array();
-        // $month = 12;
-        // $year = 2014;
-
-        // for($d=1; $d<=31; $d++)
-        // {
-        //     $time=mktime(12, 0, 0, $month, $d, $year);          
-        //     if (date('m', $time)==$month)       
-        //         $list[]=date('Y-m-d', $time);
-        // }
-        // return $list;
+        return view('tanggal.index');
 
     }
 
@@ -38,7 +47,7 @@ class SettingTanggalController extends Controller
      */
     public function create()
     {
-        //
+        return view('tanggal.create');
     }
 
     /**
@@ -49,7 +58,13 @@ class SettingTanggalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tanggal = Carbon::createFromFormat('d/m/Y', $request->tanggal)->format('Y-m-d');
+        Tanggal::find($tanggal)
+        ->update([
+            'keterangan' => $request->keterangan,
+        ]);
+
+        return redirect ( route('setting-tanggal.index'))->with('status', 'Data tanggal berhasil ditambah.');
     }
 
     /**
@@ -94,6 +109,9 @@ class SettingTanggalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tanggal::find($id)
+        ->update([
+            'keterangan' => null,
+        ]);
     }
 }

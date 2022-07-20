@@ -67,8 +67,8 @@ class PresensiController extends Controller
                 mkdir($path);
             }
 
-
         $hari_ini =  Carbon::now()->format('Y-m-d');
+        $cek_hari_jumat =  Carbon::now()->isoFormat('dddd');
         $jam_sekarang =  Carbon::now()->format('H:i:s');
         $cek = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->first();
         $cek_duplicate = Presensi::where('id_user', auth()->user()->id)->where('tanggal', '=', $hari_ini)->orderBy('created_at', 'desc')->get();
@@ -80,13 +80,25 @@ class PresensiController extends Controller
         if(!empty($cek)) {
 
             foreach ($cek_duplicate as $cek_duplikasi) { 
-                if($cek_duplikasi->jam < '16:00:00' && $jam_sekarang < '16:00:00' ) {
-                    return redirect(route('presensi.index'))->with('status_duplicate', 'oke');
-                }
+                    if($cek_hari_jumat == 'Jumat'){
+                        if($cek_duplikasi->jam < '11:00:00' && $jam_sekarang < '11:00:00' ) {
+                            return redirect(route('presensi.index'))->with('status_duplicate', 'oke');
+                        }
 
-                if($cek_duplikasi->jam >= '16:00:00') {
-                    return redirect(route('presensi.index'))->with('status_duplicate_keluar', 'oke');
-                }
+                        if($cek_duplikasi->jam >= '11:00:00') {
+                            return redirect(route('presensi.index'))->with('status_duplicate_keluar', 'oke');
+                        }
+
+                    } else {
+                        if($cek_duplikasi->jam < '16:00:00' && $jam_sekarang < '16:00:00' ) {
+                            return redirect(route('presensi.index'))->with('status_duplicate', 'oke');
+                        }
+
+                        if($cek_duplikasi->jam >= '16:00:00') {
+                            return redirect(route('presensi.index'))->with('status_duplicate_keluar', 'oke');
+                        }
+                    }
+                        
             }
 
             $keterangan = 'Keluar';
@@ -110,9 +122,9 @@ class PresensiController extends Controller
         Presensi::create([
             'id_user' => auth()->user()->id,
             'tanggal' => $hari_ini,
-            'jam' =>$jam_sekarang,
+            'jam' => $jam_sekarang,
             'keterangan' => $keterangan,
-
+            'foto' => $fileName,
         ]);
 
         return redirect(route('presensi.index'))->with('status', 'oke');

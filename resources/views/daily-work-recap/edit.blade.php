@@ -1,11 +1,11 @@
-@section('title', 'Daily Work Recap ')
+@section('title', 'Laporan Kegiatan Harian ')
 @section('menu','Layanan')
-@section('submenu','List Daily Work Recap')
+@section('submenu','List Laporan Kegiatan Harian')
 @extends('layouts/template-admin')
 @section('kondisi14','active')
 
 @section('halaman')
-<span class="breadcrumb-item active">Daily Work Recap</span>
+<span class="breadcrumb-item active">Laporan Kegiatan Harian</span>
 @endsection
 
 @section('container')
@@ -13,7 +13,7 @@
 <div class="content">
 	<div class="card">
 		<div class="card-header header-elements-inline">
-		<h5 >Detail Daily Work Recap</h5>
+		<h5 >Detail Laporan Kegiatan Harian</h5>
 		</div>
 
 		<div class="card-body">

@@ -64,7 +64,7 @@ Tambah InfoGrafis
                     { data: 'created_by', },
                     { data: 'tanggal',  orderable: false, searchable: false, },
                     { data: 'created_at', name:'created_at', visible: false},
-					{ data: 'action', name: 'action', orderable: false, searchable: false },
+					{ data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center" },
 				]
 			});
 </script>

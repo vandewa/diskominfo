@@ -33,7 +33,7 @@
                     <th>Jenis Layanan</th>
                     <th>Status</th>
                     <th class="text-center">Aksi</th>
-                    <th style="display:none;">Tanggalnya</th>
+                    <th style="display:none;"></th>
                 </tr>
             </thead>
             <tbody>
@@ -59,7 +59,7 @@
 					{data: 'nip', name:'nip'},
 					{data: 'layanan.code_nm', name:'layanan.code_cd'},
 					{data: 'status.code_nm', name:'status.code_cd',  orderable: false, searchable: false},
-                    {data: 'action', name: 'action', orderable: false, searchable: false}, 
+                    {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"}, 
 					{data: 'created_at', name:'created_at', visible: false},
 				]
 			});

@@ -59,8 +59,8 @@
             {data: 'instansi', name:'instansi'},
             {data: 'acara.code_nm', name:'acara.code_cd'},
             {data: 'peserta', name:'peserta'},
-            {data: 'status.code_nm', name:'status.code_cd', orderable: false, searchable: false,},
-            {data: 'action', name: 'action', orderable: false, searchable: false}, 
+            {data: 'status.code_nm', name:'status.code_cd', orderable: false, searchable: false, },
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"}, 
             {data: 'tanggal', name:'tanggal', visible: false},
         ]
     });

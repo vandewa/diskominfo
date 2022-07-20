@@ -150,6 +150,7 @@ Route::get('/tamu', [FrontBukuTamuController::class, 'index'])->name('front.tamu
 Route::get('/skm', [SKMController::class, 'indexFront'])->name('front.skm');
 Route::post('/skm', [SKMController::class, 'store'])->name('front.skm.post');
 Route::get('user-integrasi-create', [UserIntegrasiController::class, 'desa'])->name('desa');
+Route::post('/usernya/list', [UserController::class, 'getUsernya'])->name('usernya.list');
 
 
 
@@ -245,8 +246,11 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::resource('skm', SKMController::class);
-        Route::resource('daily-work-recap', DailyWorkRecapController::class);
     });
+
+    Route::get('daily-work-recap/cetak', [DailyWorkRecapController::class, 'cetakLKH'])->name('daily-work-recap.cetak');
+    Route::post('daily-work-recap/cetak', [DailyWorkRecapController::class, 'storeLKH'])->name('daily-work-recap.post');
+    Route::resource('daily-work-recap', DailyWorkRecapController::class);
 
     Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function () {
         Route::resource('satuan', SatuanController::class);

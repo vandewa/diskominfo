@@ -14,8 +14,7 @@ class CreateTanggalTable extends Migration
     public function up()
     {
         Schema::create('tanggal', function (Blueprint $table) {
-            $table->id();
-            $table->date('tanggal')->nullable();
+            $table->date('tanggal')->primary();
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });

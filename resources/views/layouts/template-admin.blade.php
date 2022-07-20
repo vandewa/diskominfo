@@ -466,7 +466,7 @@
 					<li class="nav-item">
 						<a href="{{ route('daily-work-recap.index') }}" class="nav-link @yield('kondisi14')">
 							<i class="icon-stack"></i>
-							<span>Daily Work Recap</span>
+							<span>Laporan Kegiatan Harian</span>
 						</a>
 					</li>
 

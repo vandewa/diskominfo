@@ -59,7 +59,7 @@ Tambah Parent
 					{data: 'nomor', name:'nomor', },
 					{data: 'jenis_informasi', name:'jenis_informasi',},
 					{data: 'type.code_nm', name:'type.code_cd'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false,className: "text-center"},
 				]
 			});
 

@@ -121,7 +121,16 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group row">
+                <label class="col-form-label col-lg-2">Surat <span class="text-danger">*<small>(pdf)</small></span></label>
+                <div class="col-lg-10">
+                    <div class="form-group-feedback form-group-feedback-right">
+                        <iframe height="500" src="{{ asset('uploads/agenda/'.$data->surat) }}" width="100%"></iframe>
+                    </div>
+                </div>
+            </div>
             <div class="text-right">
+                <a href="{{route('agenda:harian.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
                 <button type="submit" class="btn bg-teal-400">
                     Submit form <i class="icon-paperplane ml-2"></i>
                 </button>
@@ -131,7 +140,9 @@
     </div>
     <!-- /CKEditor default -->
 </div>
-@endsection @push('js')
+@endsection
+
+@push('js')
 <script>
     $('#barang_id').on('select2:select', function (e) {
         var data = e.params.data;

@@ -53,7 +53,7 @@
                 ajax: window.location.href,
                 "order": [[ 9, "desc" ]],
 				columns: [
-				    {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+				    {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-left"},
 					{data: 'tanggal', name:'tanggal', orderable: false, searchable: false,},
 					{data: 'nama', name:'nama'},
 					{data: 'alamat', name:'alamat'},

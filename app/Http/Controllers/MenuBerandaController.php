@@ -147,7 +147,7 @@ class MenuBerandaController extends Controller
                 ->addColumn('action', function($data){
                     $actionBtn = 
                     '<div class="list-icons">
-                        <a href="'.route('menuberanda.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                        <a href="'.route('menuberanda.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-zoomin3 mr-2"></i>Detail</a>
                         <a href="'.route('menuberanda.destroy', $data->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                     </div>';
                     return $actionBtn;

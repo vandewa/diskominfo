@@ -29,6 +29,7 @@
                   <th>Tempat</th>
                   <th>Jam</th>
                   <th>Keterangan</th>
+                  <th>Detail</th>
                   <th style="display: none">Keterangan</th>
               </tr>
             </thead>
@@ -40,6 +41,50 @@
     </div>
   </div>
 </main>
+
+<div class="modal fade" id="modalZoomLink" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Masukkan PIN</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+          {{-- <form action="{{ route('usernya.list') }}" method="post"> --}}
+              @csrf
+              <input name="nip" id="nip" class="form-control" autocomplete="off" type="number" required  placeholder="Masukkan PIN">
+              <input type="hidden" name="agenda_id" id="agenda_id" class="form-control">
+                {{-- <button type="submit" class="btn btn-sm btn-primary">Cari</button> --}}
+          {{-- </form> --}}
+        </div>
+        <div class="modal-footer">
+            <button type="submit" id="kirim" class="btn btn-sm btn-primary">Submit</button>
+            {{-- <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button> --}}
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPDF" tabindex="-1" aria-labelledby="modalPDF" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="card-header">
+            <h5 class="modal-title" id="modalPDF">Surat Agenda Diskominfo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="card-body ">
+                <embed height="600" src="" id="penampil" width="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="btn_tutup">Close</button>
+            </div>
+        </div>
+    </div>
+</div>    
 
 @endsection
 
@@ -58,6 +103,40 @@
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript">
   $(function () {
+
+    var id_agenda = "";
+    
+    $(document).on('click', '.ambil-data', function(){
+      var data = table.row($(this).parents('tr')).data();
+     id_agenda  = data.id
+    });
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+     $('#kirim').click(function(){
+        var nip = $('#nip').val();
+        $.ajax({
+          type: "POST",
+          url: "{{ route('usernya.list') }}",
+          data: {'nip': nip, 'id_agenda': id_agenda},
+          success: function(a){
+             if(a != "tidak ditemukan"){
+              // tutup modal 
+              // $('#modalZoomLink').attr('hidden', true);
+               $('#modalZoomLink').modal('hide');
+
+              $('#penampil').attr('src', a);
+
+              $("#modalPDF").modal('show');
+
+             } else {
+              alert('PIN Salah');
+             }
+          },
+      });
+    });
     
    var table = $('.devan').DataTable({
         processing: true,
@@ -72,9 +151,13 @@
             { data: 'tempat', name: 'tempat' },
             { data: 'jamMulai', name: 'jamMulai' },
             { data: 'keterangan', name: 'keterangan' },
+            { data: 'action', name: 'action', orderable: false, searchable: false,},
             { data: 'tanggalBerangkat', name: 'tanggalBerangkat', visible: false },
         ]
     });
+   
+    
+
     
   });
 </script>

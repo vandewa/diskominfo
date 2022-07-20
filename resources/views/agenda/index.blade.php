@@ -38,8 +38,8 @@
                         <th>Tempat</th>
                         <th>Jam Mulai</th>
                         <th>Keterangan</th>
-                        <th>Action</th>
-                        <th style="display: none">Action</th>
+                        <th>Aksi</th>
+                        <th style="display: none"></th>
                     </tr>
                 </thead>
                 <tbody>

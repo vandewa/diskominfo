@@ -54,7 +54,7 @@ Cetak Presensi
             { data: 'nama.name', name: 'nama.name', defaultContent: '-', orderable: false, searchable: false},
             { data: 'jamnya', nama: 'jamnya', orderable: false, searchable: false },
             { data: 'keterangan', name: 'keterangan', orderable: false, searchable: false },
-            { data: 'action', name: 'action', orderable: false, searchable: false},
+            { data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
             { data: 'created_at', nama: 'created_at', visible: false },
 
         ]

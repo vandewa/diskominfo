@@ -61,7 +61,7 @@
             {data: 'alat', name:'alat'},
             {data: 'bukti', name:'bukti', orderable: false, searchable: false,},
             {data: 'status.code_nm', name:'status.code_cd', orderable: false, searchable: false,},
-            {data: 'action', name: 'action', orderable: false, searchable: false}, 
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"}, 
             {data: 'tanggal_mulai', name:'tanggal_mulai', visible: false},
         ]
     });

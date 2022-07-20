@@ -12,7 +12,6 @@
 @section('container')
 
 <div class="content">
-	<!-- CKEditor default -->
 	<div class="card">
 		<div class="card-header header-elements-inline">
 		<h5 >FORM EDIT INFOGRAFIS</h5>
@@ -36,11 +35,11 @@
 				</div>
 
 				<div class="text-right">
+					<a href="{{route('infografis.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
 					<button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 				</div>
 			</form>
 		</div>
 	</div>
-	<!-- /CKEditor default -->
 </div>
 @endsection

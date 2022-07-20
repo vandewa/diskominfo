@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Users;
 use App\Models\Role;
 use DataTables;
+use App\Models\Agenda;
 use App\Http\Requests\UsercreateValidation;
 use Illuminate\Support\Facades\Hash;
 use \Cviebrock\EloquentSluggable\Services\SlugService; 
@@ -197,7 +198,7 @@ class UserController extends Controller
                   
                     $actionBtn = 
                     '<div class="list-icons">
-                        <a href="'.route('user.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                        <a href="'.route('user.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-zoomin3 mr-2"></i>Detail</a>
                         <a href="'.route('user.destroy', $data->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                     </div>';
                     return $actionBtn;
@@ -255,6 +256,23 @@ class UserController extends Controller
                 ->rawColumns(['action', 'tombol','role'])
                 ->make(true);
         
+    }
+
+    public function getUsernya(Request $request)
+    {
+       $a = User::where('nip', $request->nip)->first();
+       if($a){
+            $agenda = Agenda::find($request->id_agenda);
+
+            if($agenda->surat == '' || $agenda->surat == NULL) {
+                return url('/uploads/agenda/notfound.pdf'); 
+            } else {
+                return url('/uploads/agenda/'.$agenda->surat); 
+            }
+       }
+
+       return "tidak ditemukan";
+
     }
 
     public function checkSlug(Request $request)

@@ -27,7 +27,7 @@ class PinjamTempatController extends Controller
                  ->addColumn('action', function($row){
                     return
                 '<div class="list-icons">
-                    <a href="'.route('pinjam-tempat.show', $row->id ).'" class="btn btn-outline-primary rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                    <a href="'.route('pinjam-tempat.show', $row->id ).'" class="btn btn-outline-primary rounded-round"><i class="icon-zoomin3 mr-2"></i>Detail</a>
                    <a href="'.route('pinjam-tempat.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                 </div>';
                     })

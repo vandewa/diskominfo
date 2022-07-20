@@ -52,14 +52,14 @@
         ajax: window.location.href,
         "order": [[ 8, "desc" ]],
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-right"},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false, className: "text-left"},
             {data: 'tanggalnya', name:'tanggalnya',orderable: false, searchable: false,},
             {data: 'nama', name:'nama'},
             {data: 'alamat', name:'alamat'},
             {data: 'pekerjaan', name:'pekerjaan'},
             {data: 'alasan_pengajuan', name:'alasan_pengajuan'},
             {data: 'status.code_nm', name:'status.code_cd'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}, 
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"}, 
             {data: 'created_at', name:'created_at', visible: false},
         ]
     });

@@ -16,13 +16,27 @@
  </div>
 
 <div class="mb-4">
-   <label class="col-form-label col-lg-2">Deskripsi<span class="text-danger">*</span></label>
-    <div class="col-lg-12">
-         @if(!empty($date))
-            <textarea name="description" id="editor-full" >{{ $data->description }}</textarea>
-        @else
-            <textarea name="description" id="editor-full" ></textarea>
-        @endif
+    <div class="form-group row" style="margin-bottom: 0.25rem">
+        <div class="col-6">
+            <label class="col-form-label col-lg-2">Uraian Kegiatan<span class="text-danger">*</span></label>
+            <div class="col-lg-12">
+                @if(!empty($date))
+                    <textarea name="description" id="editor-full" >{{ $data->description }}</textarea>
+                @else
+                    <textarea name="description" id="editor-full" ></textarea>
+                @endif
+            </div>
+        </div>
+        <div class="col-6">
+            <label class="col-form-label col-lg-2">Realisasi Output<span class="text-danger">*</span></label>
+            <div class="col-lg-12">
+                @if(!empty($date))
+                    <textarea name="output" class="form-control" id="editor-readonly">{{ $data->output }}</textarea>
+                @else
+                    <textarea name="output" class="form-control" id="editor-readonly"></textarea>
+                @endif
+            </div>
+        </div>
     </div>
 </div>
 
@@ -40,5 +54,4 @@
         "locale": "id"
     });
     </script>
-
 @endpush

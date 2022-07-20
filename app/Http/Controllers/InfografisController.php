@@ -18,7 +18,7 @@ class InfografisController extends Controller
      */
     public function index()
     {
-        return view ('infografis.index');
+        return view('infografis.index');
     }
 
     /**
@@ -28,7 +28,7 @@ class InfografisController extends Controller
      */
     public function create()
     {
-        return view ('infografis.create');
+        return view('infografis.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class InfografisController extends Controller
         }
 
 
-          return redirect (route('infografis.index'))->with('status', 'Data berhasil ditambahkan.');
+        return redirect (route('infografis.index'))->with('status', 'Data berhasil ditambahkan.');
 
     }
 
@@ -149,7 +149,7 @@ class InfografisController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = 
                     '<div class="list-icons">
-                        <a href="'.route('infografis.edit', $row->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                        <a href="'.route('infografis.edit', $row->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-zoomin3 mr-2"></i>Detail</a>
                         <a href="'.route('infografis.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                     </div>';
                     return $actionBtn;

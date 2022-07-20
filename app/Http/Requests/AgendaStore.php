@@ -30,6 +30,7 @@ class AgendaStore extends FormRequest
             'nama_id' => 'required', 
             'acara' => 'required', 
             'tempat' => 'required', 
+            'surat' => 'required|mimes:pdf', 
         ];
     }
 }

@@ -26,7 +26,7 @@ class AddForeignKeysToPresensiTable extends Migration
     public function down()
     {
         Schema::table('presensi', function (Blueprint $table) {
-            //
+            // $table->foreign('tanggal')->references('tanggal')->on('tanggal');
         });
     }
 }

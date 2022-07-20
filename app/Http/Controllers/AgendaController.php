@@ -34,7 +34,7 @@ class AgendaController extends Controller
                     function ($data) {
                         $actionBtn = 
                             '<div class="list-icons">
-                                <a href="'.route('agenda:harian.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                                <a href="'.route('agenda:harian.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-zoomin3 mr-2"></i>Detail</a>
                                 <a href="'.route('agenda:harian.destroy', $data->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                             </div>';
                         return $actionBtn;
@@ -66,9 +66,8 @@ class AgendaController extends Controller
                     'action',
                     function ($data) {
                         $actionBtn = '
-                            <div class="list-icons d-flex justify-content-center">
-                                <a href="' . route('agenda:harian.edit', $data->id) . ' " class="list-icons-item text-primary-600"><i class="icon-pencil7"></i></a>
-                                <a href="' . route('agenda:harian.destroy', $data->id) . ' " class="list-icons-item text-danger-600 delete-data-table"><i class="icon-trash"></i></a>
+                            <div class="d-flex justify-content-center ambil-data">
+                                <a data-toggle="modal" data-target="#modalZoomLink"  href="" class="badge badge-success">Lihat Surat</a>
                             </div>';
                         return $actionBtn;
                     }
@@ -83,6 +82,7 @@ class AgendaController extends Controller
                  ->addColumn('jamMulai', function ($a) {
                    return \Carbon\Carbon::createFromFormat('H:i:s',$a->jamMulai)->format('H:i').' WIB';
                 })
+                ->rawColumns(['action'])
                 ->make(true);
         }
 
@@ -108,6 +108,14 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
+
+        $path = 'uploads/agenda/';
+
+        if (!file_exists($path)) {
+              mkdir($path);
+        }
+
+                
         // $username = User::where('id', $request->post('nama_id'))->first();
         // $string3 = $request->tanggalBerangkat;
         // $string4 = $request->tanggalPulang;
@@ -143,6 +151,13 @@ class AgendaController extends Controller
         $string3 = $request->tanggalBerangkat;
         $string4 = $request->tanggalPulang;
 
+        $files = $request->file('surat');
+        $prefix = date('Ymdhis');
+        $by = $request->created_by;
+        $extension = $files->extension();
+        $filename = $prefix.'.'.$extension;
+        $files->move(public_path($path), $filename);
+
         Agenda::create([
             'nama_id' =>  $username->id,
             'tanggalBerangkat' => Carbon::createFromFormat('d/m/Y', $request->tanggalBerangkat)->format('Y-m-d'),
@@ -153,6 +168,7 @@ class AgendaController extends Controller
             'jamMulai' => $request->jamMulai,
             'oleh' => auth()->user()->id,
             'message_id' => NULL,
+            'surat' => $filename,
         ]);
 
         if ($string3 == $string4 && isset($request->keterangan)) {

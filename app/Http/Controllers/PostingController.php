@@ -55,7 +55,7 @@ class PostingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        public function store(PostingcreateValidation $request)
+    public function store(PostingcreateValidation $request)
     {
         $path = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y');
         $paths = 'uploads/'.\Carbon\Carbon::now()->isoFormat('Y').'/'.\Carbon\Carbon::now()->isoFormat('MMMM').'/';
@@ -213,7 +213,7 @@ class PostingController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn =
                     '<div class="list-icons">
-                        <a href="'.route('posting.edit', $row->id_posting ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                        <a href="'.route('posting.edit', $row->id_posting ).'" class="btn btn-outline-success rounded-round"><i class="icon-zoomin3 mr-2"></i>Detail</a>
                         <a href="'.route('posting.destroy', $row->id_posting ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                     </div>';
                     return $actionBtn;

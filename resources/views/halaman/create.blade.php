@@ -12,8 +12,6 @@
 @section('container')
 
 <div class="content">
-
-	<!-- CKEditor default -->
 	<div class="card">
 		<div class="card-header header-elements-inline">
 			<h5>FORM INPUT HALAMAN MENU</h5>
@@ -93,16 +91,13 @@
 					@enderror
 				</div>
 
-				
-
 				<div class="text-right">
-					<button type="submit" class="btn bg-teal-400">Submit form <i
-							class="icon-paperplane ml-2"></i></button>
+					<a href="{{route('halaman.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
+					<button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 				</div>
 			</form>
 		</div>
 	</div>
-	<!-- /CKEditor default -->
 </div>
 @endsection
 

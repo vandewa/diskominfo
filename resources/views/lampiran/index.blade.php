@@ -1,12 +1,12 @@
-@section('title', 'Data Lampiran')
-@section('menu','Lampiran')
-@section('submenu','Data ')
+@section('title', 'Download Area')
+@section('menu','Menu Depan')
+@section('submenu','Download Area ')
 @extends('layouts/template-admin')
 @section('kondisi5','nav-item-expanded nav-item-open')
 
 @section('halaman')
 <span class="breadcrumb-item active">Menu Depan</span>
-<span class="breadcrumb-item active">Lampiran</span>
+<span class="breadcrumb-item active">Download Area</span>
 @endsection
 
 @section('tambah_data')

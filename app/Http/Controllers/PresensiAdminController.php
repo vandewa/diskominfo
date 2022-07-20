@@ -11,6 +11,7 @@ use App\Models\Presensi;
 use DB;
 use App\Models\User;
 use PhpOffice\PhpWord\TemplateProcessor;
+use App\Models\Tanggal;
 
 
 class PresensiAdminController extends Controller
@@ -30,12 +31,13 @@ class PresensiAdminController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = 
                         '<div class="list-icons">
+                            <a href="'.route('presensi-admin.edit', $row->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-zoomin3 mr-2"></i>Detail</a>
                             <a href="'.route('presensi-admin.destroy', $row->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                         </div>';
                         return $actionBtn;
                 })
                 ->addColumn('tanggalnya', function ($a) {
-                    return \Carbon\Carbon::createFromFormat('Y-m-d', $a->tanggal)->isoFormat('dddd, D MMMM Y');
+                    return Carbon::createFromFormat('Y-m-d', $a->tanggal)->isoFormat('dddd, D MMMM Y');
                  
                 })
                 ->addColumn('jamnya', function ($a) {
@@ -58,21 +60,26 @@ class PresensiAdminController extends Controller
     {
         
         $tahun = Presensi::select(DB::raw("year(tanggal) as tahun"))->distinct()->pluck('tahun', 'tahun');  
+        $bulannya = Presensi::select(DB::raw("LPAD(MONTH(tanggal),2,'0') as bulan"))->distinct()->pluck('bulan', 'bulan'); 
+        $bulan = $bulannya->map(function ($date) {
+        return Carbon::createFromFormat('m', $date)->isoFormat('MMMM');
+        })->toArray(); 
         $user = User::where('level', 6)->orderBy('name', 'asc')->pluck('name', 'id');
-        $bulan = array(
-                    '01' => "Januari",
-                    '02' => "Februari",
-                    '03' => "Maret",
-                    '04' => "April",
-                    '05' => "Mei",
-                    '06' => "Juni",
-                    '07' => "Juli",
-                    '08' => "Agustus",
-                    '09' => "September",
-                    '10' => "Oktober",
-                    '11' => "November",
-                    '12' => "Desember",
-                );
+        
+        // $bulan = array(
+        //             '01' => "Januari",
+        //             '02' => "Februari",
+        //             '03' => "Maret",
+        //             '04' => "April",
+        //             '05' => "Mei",
+        //             '06' => "Juni",
+        //             '07' => "Juli",
+        //             '08' => "Agustus",
+        //             '09' => "September",
+        //             '10' => "Oktober",
+        //             '11' => "November",
+        //             '12' => "Desember",
+        //         );
 
         return view('presensi.create', compact('tahun', 'user', 'bulan'));
     }
@@ -85,19 +92,16 @@ class PresensiAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $data = DB::table('presensi as a')
-        ->select('*', 'a.jam as berangkat', 'b.jam as pulang')
-        ->join('presensi as b',function($join) {
-            $join->on('a.id_user','=','b.id_user')
-            ->on('a.tanggal','=','b.tanggal')
-            ->where('a.keterangan', '=', 'Masuk')
-            ->where('b.keterangan', '=', 'Keluar');
-            })
-                ->whereYear('a.tanggal',$request->tahun)
-                ->whereMonth('a.tanggal', $request->bulan)
-                ->where('a.id_user', $request->id_user)
-                ->orderBy('a.created_at', 'asc')
-                ->get();
+        
+        $data = Tanggal::with(['masuk' => function($a) use($request) {
+                            $a->where('id_user', $request->id_user);
+                    }, 'keluar'=> function($a) use($request) {
+                            $a->where('id_user', $request->id_user);
+                    }])
+                    ->whereYear('tanggal',$request->tahun)
+                    ->whereMonth('tanggal', $request->bulan)->get();
+        
+                    // return $data;
 
         $nama = Presensi::with(['nama'])
                 ->whereYear('tanggal',$request->tahun)
@@ -139,32 +143,58 @@ class PresensiAdminController extends Controller
         $bulan_tahun = ($request->tahun.'-'.$request->bulan);
 
         $path = public_path('/template/form_absen.docx');
-        $pathSave = storage_path('app/public/' . $nama->nama->name.'-'.$this->konversiTanggal($bulan).'-'.$request->tahun. '.docx');
+        $pathSave = storage_path('app/public/' . 'Presensi-'.$nama->nama->name.'-'.$this->konversiTanggal($bulan).'-'.$request->tahun. '.docx');
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
             'nama' => $nama->nama->name,
             'jabatan' => $nama->nama->jabatan,
             'nama_atasan' => $nama_atasan,
             'nip' => $nip,
-            'bulan' => strtoupper(\Carbon\Carbon::createFromFormat('Y-m', $bulan_tahun)->isoFormat('MMMM Y')),
+            'disetujui' => strtoupper(Carbon::createFromFormat('d/m/Y', $request->disetujui)->isoFormat('D MMMM Y')),
+            'bulan' => strtoupper(Carbon::createFromFormat('Y-m', $bulan_tahun)->isoFormat('MMMM Y')),
         ]);
         $kampret= [];
+        $keterangan = '';
         foreach($data as $index => $a1){
-                if($a1->keterangan == 'Masuk' || $a1->keterangan == 'Keluar' ){
-                    $keterangan = '';
-                }
+                // if($a1->keterangan != ""){
+                //     $keterangan = "Tidak kosong";
+                    if(date('w', strtotime($a1->tanggal)) == 6 or date('w', strtotime($a1->tanggal)) == 0){
+                        $keterangan = Carbon::createFromFormat('Y-m-d', $a1->tanggal)->isoFormat('dddd');
+                    }else {
+                    $keterangan = $a1->keterangan; 
+                    }
+
+                    if(!empty($a1->masuk->jam)){
+                        $masuk = Carbon::createFromFormat('H:i:s',$a1->masuk->jam)->format('H:i').' WIB' ;
+                    } else {
+                        $masuk = '';
+                    }
+
+                    if(!empty($a1->keluar->jam)){
+                        $keluar = Carbon::createFromFormat('H:i:s',$a1->keluar->jam)->format('H:i').' WIB ';
+                    } else {
+                        $keluar = '';
+                    }
+
+                // } 
                 array_push($kampret, [ 
                     'no'=> $index+1, 
-                    'tanggal' => \Carbon\Carbon::createFromFormat('Y-m-d', $a1->tanggal)->format('d/m/Y'), 
+                    'tanggal' => Carbon::createFromFormat('Y-m-d', $a1->tanggal)->format('d/m/Y'), 
                     'keterangan' => $keterangan, 
-                    'berangkat' => \Carbon\Carbon::createFromFormat('H:i:s',$a1->berangkat)->format('H:i').' WIB ', 
-                    'pulang' =>\Carbon\Carbon::createFromFormat('H:i:s',$a1->pulang)->format('H:i').' WIB ']);
+                    // 'berangkat' => $a1->masuk->jam??"" != NULL ? Carbon::createFromFormat('H:i:s',$a1->masuk->jam)->format('H:i').' WIB ': "", 
+                    // 'pulang' => $a1->keluar->jam??"" != NULL ? Carbon::createFromFormat('H:i:s',$a1->keluar->jam)->format('H:i').' WIB ': ""
+                    'berangkat' => $masuk,
+                    'pulang' => $keluar
                     
+                ]);
+        
         } 
+
+        // return  $kampret;
         $templateProcessor->cloneRowAndSetValues('no', $kampret);
         $templateProcessor->saveAs($pathSave);
 
-        return response()->download($pathSave, $nama->nama->name.'-'.$this->konversiTanggal($bulan).'-'.$request->tahun. '.docx')->deleteFileAfterSend(false);
+        return response()->download($pathSave, 'Presensi-'.$nama->nama->name.'-'.$this->konversiTanggal($bulan).'-'.$request->tahun. '.docx')->deleteFileAfterSend(false);
     }
 
     private function konversiTanggal($bulan){
@@ -226,7 +256,11 @@ class PresensiAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Presensi::find($id);
+        $user = User::where('id', $data->id_user)->first();
+        $tanggal = Carbon::createFromFormat('Y-m-d', $data->tanggal)->format('d/m/Y');
+
+        return view('presensi.edit', compact('data', 'user', 'tanggal'));
     }
 
     /**

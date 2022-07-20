@@ -12,7 +12,6 @@
 @section('container')
 
 <div class="content">
-	<!-- CKEditor default -->
 	<div class="card">
 		<div class="card-header header-elements-inline">
 		<h5 >TAMBAH USER</h5>
@@ -200,30 +199,30 @@
 			</div>
 
 			<div class="text-right">
+				<a href="{{route('user.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
 				<button type="submit" class="btn bg-teal-400 mt-2">Submit form <i class="icon-paperplane ml-2"></i></button>
 			</div>
 			</form>
 		</div>
-	<!-- /CKEditor default -->
 	</div>
 </div>
 @endsection
 
 @push('js')
 <script>
-<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-{!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}
+	<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+	{!! JsValidator::formRequest('App\Http\Requests\UsercreateValidation') !!}
 </script>
 <script>
-		const nama_kategori = document.querySelector('#nama');
-		const slug = document.querySelector('#slug');
+	const nama_kategori = document.querySelector('#nama');
+	const slug = document.querySelector('#slug');
 
-		nama.addEventListener('change', function() {
-		fetch('/user/checkSlug?nama=' + nama.value)
-		.then(response => response.json())
-		.then(data => slug.value = data.slug);
-		});
-		</script>
+	nama.addEventListener('change', function() {
+	fetch('/user/checkSlug?nama=' + nama.value)
+	.then(response => response.json())
+	.then(data => slug.value = data.slug);
+	});
+</script>
 
 <script> 
 	function change()

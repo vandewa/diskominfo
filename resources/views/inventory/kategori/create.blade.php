@@ -12,7 +12,6 @@
 @section('container')
 
 <div class="content">
-    <!-- CKEditor default -->
     <div class="card">
         <div class="card-header header-elements-inline">
             <h5>FORM INPUT KATEGORI</h5>
@@ -41,7 +40,6 @@
             {{Form::close()}}
         </div>
     </div>
-    <!-- /CKEditor default -->
 </div>
 @endsection
 

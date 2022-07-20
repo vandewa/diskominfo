@@ -60,7 +60,7 @@ Tambah Role
                     { data: 'name', },
                     { data: 'display_name', },
                     { data: 'description', },
-					{ data: 'action', name: 'action', orderable: false, searchable: false },
+					{ data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center" },
         ]
     });
 

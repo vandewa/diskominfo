@@ -23,14 +23,7 @@
                     <label class="col-form-label col-lg-2">Nama<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <div class="form-group-feedback form-group-feedback-right">
-                            {{Form::select('id_user', $user, null,['class' => 'form-control select-search',
-                            'data-container-css-class' => ($errors->has('id_user') ?
-                            ' border-danger' :
-                            ''),
-                            'placeholder' => 'Silahkan Pilih Nama'])}}
-                            @error('id_user')
-                            <span class="form-text text-danger">{{ $message }}</span>
-                            @enderror
+                            {{Form::select('id_user', $user, null,['class' => 'form-control select-search','placeholder' => 'Silahkan Pilih Nama'])}}
                         </div>
                     </div>
                 </div>
@@ -38,14 +31,7 @@
                     <label class="col-form-label col-lg-2">Bulan<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <div class="form-group-feedback form-group-feedback-right">
-                            {{Form::select('bulan', $bulan, null,['class' => 'form-control select-search',
-                            'data-container-css-class' => ($errors->has('id_user') ?
-                            ' border-danger' :
-                            ''),
-                            'placeholder' => 'Silahkan Pilih Bulan'])}}
-                            @error('id_user')
-                            <span class="form-text text-danger">{{ $message }}</span>
-                            @enderror
+                            {{Form::select('bulan', $bulan, null,['class' => 'form-control select-search','placeholder' => 'Silahkan Pilih Bulan'])}}
                         </div>
                     </div>
                 </div>
@@ -53,14 +39,15 @@
                     <label class="col-form-label col-lg-2">Tahun<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <div class="form-group-feedback form-group-feedback-right">
-                            {{Form::select('tahun', $tahun, null,['class' => 'form-control select-search',
-                            'data-container-css-class' => ($errors->has('id_user') ?
-                            ' border-danger' :
-                            ''),
-                            'placeholder' => 'Silahkan Pilih Tahun'])}}
-                            @error('id_user')
-                            <span class="form-text text-danger">{{ $message }}</span>
-                            @enderror
+                            {{Form::select('tahun', $tahun, null,['class' => 'form-control select-search','placeholder' => 'Silahkan Pilih Tahun'])}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-2">Disetujui<span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                        <div class="form-group-feedback form-group-feedback-right">
+                           {{Form::text('disetujui', null,['class' => 'form-control daterange-single'])}}
                         </div>
                     </div>
                 </div>
@@ -74,4 +61,9 @@
 </div>
 @endsection
 
-
+@push('js')
+<script>
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! JsValidator::formRequest('App\Http\Requests\PresensiAdminStoreValidation') !!}
+</script>
+@endpush

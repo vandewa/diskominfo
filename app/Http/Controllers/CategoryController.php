@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
 
-        return view ('category.index');
+        return view('category.index');
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view ('category.create');
+        return view('category.create');
     }
 
     /**
@@ -124,7 +124,7 @@ class CategoryController extends Controller
                 ->addColumn('action', function($data){
                     $actionBtn = 
                     '<div class="list-icons">
-                        <a href="'.route('category.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-eye mr-2"></i>Lihat</a>
+                        <a href="'.route('category.edit', $data->id ).'" class="btn btn-outline-success rounded-round"><i class="icon-zoomin3 mr-2"></i>Detail</a>
                         <a href="'.route('category.destroy', $data->id ).' " class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
                     </div>';
                     return $actionBtn;

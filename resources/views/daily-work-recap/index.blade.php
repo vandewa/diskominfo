@@ -1,19 +1,28 @@
-@section('title', 'Daily Work Recap ')
-@section('menu','Layanan')
-@section('submenu','List Daily Work Recap')
+@section('title', 'Laporan Kegiatan Harian ')
+@section('menu','Laporan Kegiatan Harian')
+@section('submenu','List Laporan Kegiatan Harian')
 @extends('layouts/template-admin')
 @section('kondisi14','active')
 
 @section('halaman')
-<span class="breadcrumb-item active">Daily Work Recap</span>
+<span class="breadcrumb-item active">Laporan Kegiatan Harian</span>
 @endsection
 
 @section('tambah_data')
+@if(auth()->user()->level == 6)
 <a href="{{route('daily-work-recap.create')}}" class="btn btn-primary">
 <i class="icon-file-plus mr-2"></i>
-Tambah Data
+Tambah Kegiatan
 </a>
+@endif
+@if(!auth()->user()->level == 6)
+<a href="{{route('daily-work-recap.cetak')}}" class="btn btn-primary">
+<i class="icon-printer2 mr-2"></i>
+Cetak Laporan Kegiatan Harian (LKH)
+</a>
+@endif
 @endsection
+
 
 @section('container')
 
@@ -59,7 +68,7 @@ Tambah Data
 					{data: 'nama.name', name: 'nama.name', defaultContent: '-'},
 					{data: 'tanggalnya', name:'tanggalnya'},
 					{data: 'description', name:'description'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false, className: "text-center"},
 					{data: 'date', name:'date', visible: false},
 				]
 			});
