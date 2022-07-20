@@ -125,7 +125,11 @@
                 <label class="col-form-label col-lg-2">Surat <span class="text-danger">*<small>(pdf)</small></span></label>
                 <div class="col-lg-10">
                     <div class="form-group-feedback form-group-feedback-right">
-                        <iframe height="500" src="{{ asset('uploads/agenda/'.$data->surat) }}" width="100%"></iframe>
+                        @if (!is_null($data->surat))
+                            <iframe height="500" src="{{ asset('uploads/agenda/'.$data->surat) }}" width="100%"></iframe>
+                        @else
+                            <iframe height="500" src="{{ asset('uploads/agenda/notfound.pdf') }}" width="100%"></iframe>
+                        @endif
                     </div>
                 </div>
             </div>
