@@ -32,7 +32,8 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314083904_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314083904_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
+                            {{-- <embed height="600" src="{{ url('/uploads/lampiran/20220314083904_1.pdf') }}" width="100%"></iframe> --}}
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>

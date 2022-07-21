@@ -10,16 +10,16 @@
 
 @section('tambah_data')
 @if(auth()->user()->level == 6)
-<a href="{{route('daily-work-recap.create')}}" class="btn btn-primary">
-<i class="icon-file-plus mr-2"></i>
-Tambah Kegiatan
-</a>
+    <a href="{{route('daily-work-recap.create')}}" class="btn btn-primary">
+        <i class="icon-file-plus mr-2"></i>
+        Tambah Kegiatan
+    </a>
 @endif
-@if(!auth()->user()->level == 6)
-<a href="{{route('daily-work-recap.cetak')}}" class="btn btn-primary">
-<i class="icon-printer2 mr-2"></i>
-Cetak Laporan Kegiatan Harian (LKH)
-</a>
+@if(auth()->user()->level != 6)
+    <a href="{{route('daily-work-recap.cetak')}}" class="btn btn-primary">
+        <i class="icon-printer2 mr-2"></i>
+        Cetak Laporan Kegiatan Harian (LKH)
+    </a>
 @endif
 @endsection
 

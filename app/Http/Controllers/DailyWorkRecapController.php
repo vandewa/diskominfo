@@ -163,22 +163,21 @@ class DailyWorkRecapController extends Controller
                     ->whereMonth('tanggal', $request->bulan)
                     ->get();
 
-        $nama = DailyWorkRecap::with(['nama'])
-                ->whereYear('date',$request->tahun)
-                ->whereMonth('date', $request->bulan)
-                ->where('name', $request->id_user)
+        $nama = User::where('id', $request->id_user)
                 ->first();
+        
+        // return $nama;
 
         $bulan = substr($nama->date,5,2);
         $bulan_tahun = ($request->tahun.'-'.$request->bulan);
 
         $path = public_path('/template/form_lkh.docx');
-        $pathSave = storage_path('app/public/' . 'LKH-'.$nama->nama->name.'-'.$this->konversiTanggal($bulan).'-'.$request->tahun. '.docx');
+        $pathSave = storage_path('app/public/' . 'LKH-'.$nama->name.'-'.$this->konversiTanggal($bulan).'-'.$request->tahun. '.docx');
         $templateProcessor = new TemplateProcessor($path);
         $templateProcessor->setValues([
-            'nama' => $nama->nama->name,
-            'jabatan' => $nama->nama->jabatan,
-            'bidang' => $nama->nama->opd,
+            'nama' => $nama->name,
+            'jabatan' => $nama->jabatan,
+            'bidang' => $nama->opd,
             'bulan' => strtoupper(Carbon::createFromFormat('Y-m', $bulan_tahun)->isoFormat('MMMM Y')),
         ]);
         $kampret= [];
@@ -203,7 +202,7 @@ class DailyWorkRecapController extends Controller
         $templateProcessor->cloneRowAndSetValues('no', $kampret);
         $templateProcessor->saveAs($pathSave);
 
-        return response()->download($pathSave, 'LKH-'.$nama->nama->name.'-'.$this->konversiTanggal($bulan).'-'.$request->tahun. '.docx')->deleteFileAfterSend(false);
+        return response()->download($pathSave, 'LKH-'.$nama->name.'-'.$this->konversiTanggal($bulan).'-'.$request->tahun. '.docx')->deleteFileAfterSend(false);
     }
 
     private function konversiTanggal($bulan){

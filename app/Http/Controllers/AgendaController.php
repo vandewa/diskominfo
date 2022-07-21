@@ -237,11 +237,13 @@ class AgendaController extends Controller
      */
     public function edit($id)
     {
-        $user = User::orderBy('name', 'asc')->pluck('name', 'id');
         $data = Agenda::find($id);
+        $user = User::where('id', $data->nama_id)->first();
         $tanggalBerangkat = Carbon::createFromFormat('Y-m-d', $data->tanggalBerangkat)->format('d/m/Y');
         $tanggalPulang = Carbon::createFromFormat('Y-m-d', $data->tanggalPulang)->format('d/m/Y');
+
         return view('agenda.edit', compact('data', 'user', 'tanggalBerangkat', 'tanggalPulang'));
+
     }
 
     /**
@@ -283,12 +285,65 @@ class AgendaController extends Controller
         // }
         // <!--- LEWAT TELEGRAM ----!>
 
-        $username = User::where('id', $request->post('nama_id'))->first();
+        $username = User::where('id', $request->nama_id)->first();
         $string3 = $request->tanggalBerangkat;
         $string4 = $request->tanggalPulang;
 
+        $agenda = Agenda::find($id);
+
+        // return $agenda->id;
+
+        $berangkat = Carbon::createFromFormat('d/m/Y', $request->tanggalBerangkat)->format('Y-m-d');
+        $pulang =  Carbon::createFromFormat('d/m/Y', $request->tanggalPulang)->format('Y-m-d');
+        $jam = $request->jamMulai.':00';
+
+        if($agenda->nama_id != $request->nama_id || $agenda->tanggalBerangkat != $berangkat || $agenda->tanggalPulang != $pulang || $agenda->acara != $request->acara || $agenda->tempat != $request->tempat || $agenda->keterangan != $request->keterangan || $agenda->jamMulai != $jam ){
+
+                if ($string3 == $string4 && isset($request->keterangan)) {
+                    $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
+                                'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                                'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                                'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
+                                'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                                'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                                'Keterangan : '. '*'.$request->keterangan. '*'
+                                ;
+                } else if ($string3 == $string4 && !isset($request->keterangan)) {
+                $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
+                                'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                                'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                                'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
+                                'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                                'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                                'Keterangan : *-*'
+                                ;
+                } else if ($string3 != $string4 && isset($request->keterangan)) {
+                    $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
+                                'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                                'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                                'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
+                                'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                                'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                                'Keterangan : '. '*'.$request->keterangan. '*'
+                                ;
+
+                } else if ($string3 != $string4 && !isset($request->keterangan)) {
+                    $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
+                                'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
+                                'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
+                                'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
+                                'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
+                                'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
+                                'Keterangan : *-*'
+                                ;
+
+                }
+
+                $this->sendGroupWA($pesan);
+        } 
+
         Agenda::find($id)->update([
-            'nama_id' =>  $username->id,
+            // 'nama_id' =>  $username->id,
             'tanggalBerangkat' => Carbon::createFromFormat('d/m/Y', $request->tanggalBerangkat)->format('Y-m-d'),
             'tanggalPulang' => Carbon::createFromFormat('d/m/Y', $request->tanggalPulang)->format('Y-m-d'),
             'acara' => $request->acara,
@@ -298,48 +353,19 @@ class AgendaController extends Controller
             'oleh' => auth()->user()->id,
         ]);
 
-        if ($string3 == $string4 && isset($request->keterangan)) {
-            $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
-                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
-                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
-                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
-                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
-                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
-                        'Keterangan : '. '*'.$request->keterangan. '*'
-                        ;
-        } else if ($string3 == $string4 && !isset($request->keterangan)) {
-           $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
-                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
-                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
-                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM Y') . '*' . urldecode('%0D%0A') .
-                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
-                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
-                        'Keterangan : *-*'
-                        ;
-        } else if ($string3 != $string4 && isset($request->keterangan)) {
-             $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
-                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
-                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
-                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
-                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
-                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
-                        'Keterangan : '. '*'.$request->keterangan. '*'
-                        ;
+        if($request->hasFile('surat')){
+            $files = $request->file('surat');
+            $prefix = date('Ymdhis');
+            $by = $request->created_by;
+            $extension = $files->extension();
+            $filename = $prefix.'.'.$extension;
+            $files->move(public_path('uploads/agenda/'), $filename);
 
-        } else if ($string3 != $string4 && !isset($request->keterangan)) {
-             $pesan =    '*Agenda Diskominfo Update*' . urldecode('%0D%0A%0D%0A') .
-                        'Nama : '. '*'. $username->name .'*' . urldecode('%0D%0A') .
-                        'Acara : '. '*'. $request->acara . '*' . urldecode('%0D%0A') .
-                        'Tanggal : '. '*'. \Carbon\Carbon::createFromFormat('d/m/Y', $string3)->isoFormat('dddd, D MMMM') .  '* *-* ' . '*' .\Carbon\Carbon::createFromFormat('d/m/Y', $string4)->isoFormat('dddd, D MMMM Y'). '*' .urldecode('%0D%0A') .
-                        'Tempat : '. '*'.$request->tempat . '*' . urldecode('%0D%0A') .
-                        'Jam Mulai : '. '*'.$request->jamMulai.' WIB*' . urldecode('%0D%0A') .
-                        'Keterangan : *-*'
-                        ;
-
+            Agenda::find($id)->update([
+                'surat' => $filename
+            ]);
         }
-
-        $this->sendGroupWA($pesan);
-
+     
         return redirect()->route('agenda:harian.index');
     }
 

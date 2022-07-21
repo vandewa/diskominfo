@@ -153,9 +153,6 @@ Route::get('user-integrasi-create', [UserIntegrasiController::class, 'desa'])->n
 Route::post('/usernya/list', [UserController::class, 'getUsernya'])->name('usernya.list');
 
 
-
-
-
 Route::group([], function () {
     Route::group(['prefix' => 'perijinan', 'as' => 'perijinan:'], function () {
         // Route::get('akses/data-center', [AksesDcController::class, 'create'])->name('akses.dc.create');
@@ -217,7 +214,7 @@ Route::group([], function () {
     Route::resource('buku_tamu', FrontBukuTamuController::class);
 });
 
-Route::group(['middleware' => ['permission:perizinan-update']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::patch('akses-data-center/{id}/persetujuan', [AksesDcController::class, 'persetujuan'])->name('akses-data-center.persetujuan');
     Route::patch('layanan-server/{id}/persetujuan', [LayananServerController::class, 'persetujuan'])->name('layanan-server.persetujuan');
     Route::patch('vps-baru/{id}/persetujuan', [PenambahanVpsController::class, 'persetujuan'])->name('vps-baru.persetujuan');
@@ -236,27 +233,36 @@ Route::group(['middleware' => ['permission:tiket-read']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-
-    Route::group(['prefix' => 'admin', 'middleware' => ['permission:posting-read']], function () {
-        Route::group(['prefix' => 'agenda', 'as' => 'agenda:'], function () {
+   
+    Route::group(['prefix' => 'agenda', 'as' => 'agenda:'], function () {
+        Route::group(['middleware' => ['permission:agenda-read']], function () {
             Route::resource('harian', AgendaController::class);
         });
-        Route::group(['prefix' => 'buku', 'as' => 'buku:'], function () {
+    });
+
+    Route::group(['prefix' => 'buku', 'as' => 'buku:'], function () {
+        Route::group(['middleware' => ['permission:tamu-read']], function () {
             Route::resource('tamu', BukuTamuController::class);
         });
+    });
 
+    Route::group(['middleware' => ['permission:skm-read']], function () {
         Route::resource('skm', SKMController::class);
     });
 
-    Route::get('daily-work-recap/cetak', [DailyWorkRecapController::class, 'cetakLKH'])->name('daily-work-recap.cetak');
-    Route::post('daily-work-recap/cetak', [DailyWorkRecapController::class, 'storeLKH'])->name('daily-work-recap.post');
-    Route::resource('daily-work-recap', DailyWorkRecapController::class);
+    Route::group(['middleware' => ['permission:lkh-read']], function () {
+        Route::get('daily-work-recap/cetak', [DailyWorkRecapController::class, 'cetakLKH'])->name('daily-work-recap.cetak');
+        Route::post('daily-work-recap/cetak', [DailyWorkRecapController::class, 'storeLKH'])->name('daily-work-recap.post');
+        Route::resource('daily-work-recap', DailyWorkRecapController::class);
+    });
 
     Route::group(['prefix' => 'inventory', 'as' => 'inventory:'], function () {
-        Route::resource('satuan', SatuanController::class);
-        Route::resource('barang', BarangController::class);
-        Route::resource('peminjaman', PeminjamanController::class);
-        Route::resource('kategori', KategoriController::class);
+        Route::group(['middleware' => ['permission:inventory-read']], function () {
+            Route::resource('satuan', SatuanController::class);
+            Route::resource('barang', BarangController::class);
+            Route::resource('peminjaman', PeminjamanController::class);
+            Route::resource('kategori', KategoriController::class);
+        });
     });
 
     Route::group(['middleware' => ['permission:posting-read']], function () {
@@ -282,13 +288,16 @@ Route::group(['middleware' => ['auth']], function () {
         // Route::resource('youtube', YoutubeController::class);
     });
 
+    Route::group(['middleware' => ['permission:profile-read']], function () {
+        Route::resource('account', AccountController::class);
+    });
 
-    Route::post('sendCentang', [UserController::class, 'changeAccess']);
-    Route::resource('user', UserController::class);
-    Route::resource('account', AccountController::class);
-    Route::resource('role', RoleController::class);
-    Route::resource('user-integrasi', UserIntegrasiController::class);
-
+    Route::group(['middleware' => ['permission:users-read']], function () {
+        Route::post('sendCentang', [UserController::class, 'changeAccess']);
+        Route::resource('user', UserController::class);
+        Route::resource('user-integrasi', UserIntegrasiController::class);
+        Route::resource('role', RoleController::class);
+    });
 
     Route::group(['middleware' => ['permission:layanan-read'], 'prefix' => "admin"], function () {
         // Route::resource('komentar', KomentarController::class);
@@ -323,12 +332,14 @@ Route::group(['prefix' => 'tower'], function () {
     //    Route::get('peta', [\App\Http\Controllers\Tower\PetaController::class, 'index']);
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {
-        Route::resource('presensi', PresensiController::class);
-        Route::resource('presensi-admin', PresensiAdminController::class);
-        Route::resource('setting-tanggal', SettingTanggalController::class);
-        
-    });
+Route::group(['middleware' => ['permission:presensi-read']], function () {
+    Route::resource('presensi', PresensiController::class);
+});
+
+Route::group(['middleware' => ['permission:presensi_admin-read']], function () {
+    Route::resource('presensi-admin', PresensiAdminController::class);
+    Route::resource('setting-tanggal', SettingTanggalController::class);
+});
 
 // Route::get('/admin', function() {
 //     return view('admin');

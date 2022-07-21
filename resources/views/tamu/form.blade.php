@@ -80,7 +80,6 @@
 </div>
 
 <div class="text-right">
-    <button type="submit" class="btn bg-teal-400">
-        Submit form <i class="icon-paperplane ml-2"></i>
-    </button>
+    <a href="{{route('buku:tamu.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
+    <button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 </div>

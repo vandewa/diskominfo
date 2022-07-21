@@ -428,6 +428,8 @@
 						<div class="text-uppercase font-size-xs line-height-xs">AIM</div> <i class="icon-menu"
 							title="AIM"></i>
 					</li>
+
+					@permission('inventory-read')
 					<li class="nav-item nav-item-submenu @yield('kondisi9')">
 						<a href="#" class="nav-link"><i class="icon-drawer"></i> <span>Inventory</span></a>
 						<ul class="nav nav-group-sub" data-submenu-title="Posting">
@@ -441,54 +443,59 @@
 									class="nav-link">Peminjaman</a></li>
 						</ul>
 					</li>
+					@endpermission
 
+					@permission('agenda-read')
 					<li class="nav-item">
 						<a href="{{ route('agenda:harian.index') }}" class="nav-link @yield('kondisi10')">
 							<i class="icon-bookmark"></i>
 							<span>Agenda</span>
 						</a>
 					</li>
+					@endpermission
 
+					@permission('tamu-read')
 					<li class="nav-item">
 						<a href="{{ route('buku:tamu.index') }}" class="nav-link @yield('kondisi12')">
 							<i class="icon-man-woman"></i>
 							<span>Buku Tamu</span>
 						</a>
 					</li>
+					@endpermission	
 
+					@permission('skm-read')
 					<li class="nav-item">
 						<a href="{{ route('skm.index') }}" class="nav-link @yield('kondisi13')">
 							<i class="icon-pie-chart2"></i>
 							<span>Rekap Data SKM</span>
 						</a>
 					</li>
+					@endpermission
 
+					@permission('lkh-read')
 					<li class="nav-item">
 						<a href="{{ route('daily-work-recap.index') }}" class="nav-link @yield('kondisi14')">
 							<i class="icon-stack"></i>
 							<span>Laporan Kegiatan Harian</span>
 						</a>
 					</li>
+					@endpermission
 
 					<li class="nav-item-header">
 						<div class="text-uppercase font-size-xs line-height-xs">Presensi</div> <i class="icon-menu"
 							title="presensi"></i>
 					</li>
-					{{-- @permission('presensi-read') --}}
+
+					@permission('presensi-read')
 					<li class="nav-item">
 						<a href="{{ route('presensi.index') }}" class="nav-link @yield('kondisi15')">
 							<i class="icon-stack-text"></i>
 							<span>Presensi </span>
 						</a>
 					</li>
-					{{-- @endpermission --}}
-					@permission('presensi-admin-read')
-					{{-- <li class="nav-item">
-						<a href="{{ route('presensi-admin.index') }}" class="nav-link @yield('kondisi16')">
-							<i class="icon-stack-text"></i>
-							<span>Laporan Presensi </span>
-						</a>
-					</li> --}}
+					@endpermission
+
+					@permission('presensi_admin-read')
 					<li class="nav-item nav-item-submenu @yield('kondisi16')">
 						<a href="#" class="nav-link"><i class="icon-stack-text"></i> <span>Presensi</span></a>
 						<ul class="nav nav-group-sub" data-submenu-title="Presensi">
@@ -501,9 +508,6 @@
 						</ul>
 					</li>
 					@endpermission
-
-					
-
 					<!-- /main -->
 					</ul>
 				</div>
@@ -516,7 +520,6 @@
 
 		<!-- Main content -->
 		<div class="content-wrapper">
-
 			<!-- Page header -->
 			@if(!Route::is('presensi.index') )
 			<div class="page-header page-header-light">
@@ -526,8 +529,6 @@
 								class="font-weight-semibold">@yield('menu')</span> - @yield('submenu')</h4>
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 					</div>
-
-
 				</div>
 
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">

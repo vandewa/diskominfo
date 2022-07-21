@@ -18,18 +18,12 @@
         <div class="card-body">
             {{Form::model($data, ['route' => ['agenda:harian.update', $data->id],'method' => 'put', 'files' =>
             'true', ''])}}
+            <input type="hidden" name="nama_id" value="{{ $data->nama_id }}">
             <div class="form-group row">
                 <label class="col-form-label col-lg-2">Nama<span class="text-danger">*</span></label>
                 <div class="col-lg-10">
                     <div class="form-group-feedback form-group-feedback-right">
-                        {{Form::select('nama_id', $user, null,['class' => 'form-control select-search',
-                        'data-container-css-class' => ($errors->has('nama_id') ?
-                        ' border-danger' :
-                        ''),
-                        'placeholder' => 'Silahkan Pilih Nama'])}}
-                        @error('nama_id')
-                        <span class="form-text text-danger">{{ $message }}</span>
-                        @enderror
+                        {{Form::text('', $user->name,['class' => 'form-control', 'readonly' => 'true'])}}
                     </div>
                 </div>
             </div>
@@ -133,6 +127,15 @@
                     </div>
                 </div>
             </div>
+            <legend class="text-uppercase font-size-sm font-weight-bold mt-3">Ganti Surat</legend>
+			<div class="form-group row">
+                <label class="col-form-label col-lg-2">Surat <span class="text-danger">*<small>(pdf)</small></span></label>
+                <div class="col-lg-10">
+                    <div class="form-group-feedback form-group-feedback-right">
+                       <input type="file" name="surat" class="file-input-advanced" accept="application/pdf"  data-fouc>
+                    </div>
+                </div>
+			</div>
             <div class="text-right">
                 <a href="{{route('agenda:harian.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
                 <button type="submit" class="btn bg-teal-400">

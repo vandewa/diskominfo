@@ -167,13 +167,15 @@ span.turn {
 
 <script language="JavaScript">
     Webcam.set({
-        width: 320,
-		height: 240,
-		crop_width: 200,
-		crop_height: 260,
-        image_format: 'jpeg',
-        jpeg_quality: 90,
-        fps: 60   
+         width: 320,
+         height: 240,
+         dest_width: 320,
+		   dest_height: 240,
+         // crop_width: 200,
+         // crop_height: 260,
+         image_format: 'jpeg',
+         jpeg_quality: 90,
+         fps: 60   
     });
     
     Webcam.attach( '#my_camera' );
