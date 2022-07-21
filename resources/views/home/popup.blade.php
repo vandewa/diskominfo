@@ -9,7 +9,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084001_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314084001_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -33,7 +33,6 @@
                         </div>
                         <div class="card-body ">
                             <object data="{{ url('/uploads/lampiran/20220314083904_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
-                            {{-- <embed height="600" src="{{ url('/uploads/lampiran/20220314083904_1.pdf') }}" width="100%"></iframe> --}}
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -56,7 +55,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220620023342_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220620023342_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -79,7 +78,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220620023520_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220620023520_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -102,7 +101,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084421_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314084421_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -125,7 +124,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084421_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314084440_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -148,7 +147,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084503_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314084503_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -171,7 +170,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084147_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314084147_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -194,7 +193,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084216_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314084216_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -217,7 +216,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084254_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314084254_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -240,7 +239,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084319_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314084319_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>
@@ -263,7 +262,7 @@
                         </button>
                         </div>
                         <div class="card-body ">
-                            <embed height="600" src="{{ url('/uploads/lampiran/20220314084347_1.pdf') }}" width="100%"></iframe>
+                            <object data="{{ url('/uploads/lampiran/20220314084347_1.pdf') }}" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"></object>
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('index') }}" class="btn btn-secondary ml-3 buttonnya">Kembali</a>

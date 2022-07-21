@@ -71,13 +71,13 @@
     <div class="modal-dialog" >
         <div class="modal-content">
             <div class="card-header">
-            <h5 class="modal-title" id="modalPDF">Surat Agenda Diskominfo</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+              <h5 class="modal-title" id="modalPDF">Surat Agenda Diskominfo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="card-body ">
-                <embed height="600" src="" id="penampil" width="100%"></iframe>
+              <object data="" type="application/pdf" width="100%" height="600" style="border: solid 1px #ccc;"  id="penampil"></object>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="btn_tutup">Close</button>
@@ -127,7 +127,7 @@
               // $('#modalZoomLink').attr('hidden', true);
                $('#modalZoomLink').modal('hide');
 
-              $('#penampil').attr('src', a);
+              $('#penampil').attr('data', a);
 
               $("#modalPDF").modal('show');
 
