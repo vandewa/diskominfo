@@ -71,7 +71,20 @@ return [
             'profile' => 'r,u',
             'lkh' => 'c,r,u,d',
             'presensi' => 'c,r,u,d',
-        ]
+        ],
+        'ikp' => [
+            'profile' => 'r,u',
+            'menu_depan' => 'c,r,u,d',
+            'layanan' => 'c,r,u,d',
+            'tiket' => 'c,r,u,d',
+            'inventory' => 'c,r,u,d', 
+            'agenda' => 'c,r,u,d',
+            'tamu' => 'c,r,u,d',
+            'skm' => 'c,r,u,d',
+            'lkh' => 'c,r,u,d',
+            'presensi_admin' => 'c,r,u,d',
+        ],
+        
     ],
 
     'permissions_map' => [
