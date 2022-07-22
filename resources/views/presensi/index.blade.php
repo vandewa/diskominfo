@@ -24,14 +24,16 @@
 			@csrf
          <div class="container">
             <div class="row">
-               <div class="col-md-2 col-sm-2"></div>
+               <div class="col-md-1 col-sm-1"></div>
                   <div class="col-md-6 col-sm-6">
                      <div id="my_camera"></div><br/>
                      <input type="hidden" name="image" class="image-tag">
                   </div>
+      
                   <div class="col-md-4 col-sm-4">
                      <div id="results">Your captured image will appear here...</div>
                   </div>
+                      <div class="col-md-1 col-sm-1"></div>
                   <div class="col-md-12 text-center">
                      <br/>
                      <div class="d-flex justify-content-center">
@@ -167,10 +169,10 @@ span.turn {
 
 <script language="JavaScript">
     Webcam.set({
-         width: 240,
-         height: 320,
-         dest_width: 240, 
-		   dest_height: 320,
+         width: 320,
+         height: 400,
+         // dest_width: 240, 
+		   // dest_height: 320,
          // crop_width: 200,
          // crop_height: 260,
          image_format: 'jpeg',
