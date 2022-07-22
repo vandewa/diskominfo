@@ -3,6 +3,8 @@
 @section('submenu','Laporan Presensi')
 @extends('layouts/template-admin')
 @section('kondisi16','nav-item-expanded nav-item-open')
+@section('active-laporan-presensi','active')
+
 
 @section('halaman')
 <span class="breadcrumb-item active">Laporan Presensi</span>

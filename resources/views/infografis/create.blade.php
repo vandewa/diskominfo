@@ -3,6 +3,7 @@
 @section('submenu','Tambah InfoGrafis')
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
+@section('active-infografis','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>

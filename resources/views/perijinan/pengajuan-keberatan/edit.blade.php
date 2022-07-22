@@ -3,6 +3,7 @@
 @section('submenu','Detail Pengajuan Keberatan Informasi Publik')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
+@section('active-pengajuankeberatan','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Layanan</span>

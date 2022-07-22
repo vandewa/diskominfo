@@ -3,6 +3,7 @@
 @section('submenu','List Permohonan Aplikasi')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
+@section('active-aplikasi','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Layanan</span>

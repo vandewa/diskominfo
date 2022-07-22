@@ -3,6 +3,7 @@
 @section('submenu','Tambah Role')
 @extends('layouts/template-admin')
 @section('kondisi3','nav-item-expanded nav-item-open')
+@section('active-role','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">User</span>

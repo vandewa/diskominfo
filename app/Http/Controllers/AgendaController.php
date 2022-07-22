@@ -66,7 +66,7 @@ class AgendaController extends Controller
                     'action',
                     function ($data) {
                         $actionBtn = '
-                            <div class="d-flex justify-content-center ambil-data">
+                            <div class=" ambil-data ">
                                 <a data-toggle="modal" data-target="#modalZoomLink"  href="" class="badge badge-success">Lihat Surat</a>
                             </div>';
                         return $actionBtn;

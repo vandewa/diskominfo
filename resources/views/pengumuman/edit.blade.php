@@ -3,6 +3,7 @@
 @section('submenu','Pengumuman ')
 @extends('layouts/template-admin')
 @section('kondisi5','nav-item-expanded nav-item-open')
+@section('active-pengumuman','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Menu Depan</span>

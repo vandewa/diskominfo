@@ -3,6 +3,7 @@
 @section('submenu','Download Area ')
 @extends('layouts/template-admin')
 @section('kondisi5','nav-item-expanded nav-item-open')
+@section('active-download-area','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Menu Depan</span>

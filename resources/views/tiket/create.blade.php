@@ -3,6 +3,7 @@
 @section('submenu','Tambah Posting')
 @extends('layouts/template-admin')
 @section('kondisi8','nav-item-expanded nav-item-open')
+@section('active-tambah-tiket','active')
 
 @section('halaman')
     <span class="breadcrumb-item active">Tiket</span>

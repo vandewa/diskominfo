@@ -3,6 +3,7 @@
 @section('submenu','Detail Pinjam Tempat Rapat')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
+@section('active-tempatrapat','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Layanan</span>

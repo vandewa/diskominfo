@@ -64,7 +64,7 @@ class PresensiAdminController extends Controller
         $bulan = $bulannya->map(function ($date) {
         return Carbon::createFromFormat('m', $date)->isoFormat('MMMM');
         })->toArray(); 
-        $user = User::where('level', 6)->orderBy('name', 'asc')->pluck('name', 'id');
+        $user = User::where('level', 6)->where('level', 8)->where('status', 1)->orderBy('name', 'asc')->pluck('name', 'id');
         
         // $bulan = array(
         //             '01' => "Januari",

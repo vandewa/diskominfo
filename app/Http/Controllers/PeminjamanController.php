@@ -58,14 +58,13 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-
-
-         $validated = $request->validate([
+        $validated = $request->validate([
              'tanggal_peminjaman' => 'required',
              'peminjam_id' => 'required',
              'petugas_id' => 'required',
          ]);
-       $a =  Peminjaman::create(
+
+        $a =  Peminjaman::create(
              [
                  'tanggal_peminjaman' => $request->tanggal_peminjaman.date(' H:i:s'),
                  'peminjam_id' => $request->peminjam_id,
@@ -73,7 +72,8 @@ class PeminjamanController extends Controller
                  'peminjaman_st' => 'PEMINJAMAN_ST_02',
              ]
          );
-       foreach ($request->barang_id as $row){
+
+        foreach ($request->barang_id as $row){
            $a->peminjamanDetail()->create(
                [
                    'master_asset_id' => $row,

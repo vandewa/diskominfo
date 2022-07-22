@@ -3,6 +3,7 @@
 @section('submenu','Data Role')
 @extends('layouts/template-admin')
 @section('kondisi3','nav-item-expanded nav-item-open')
+@section('active-role','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">User</span>
@@ -11,8 +12,8 @@
 
 @section('tambah_data')
 <a href="{{route('role.create')}}" class="btn btn-primary">
-<i class="icon-file-plus mr-2"></i>
-Tambah Role
+    <i class="icon-file-plus mr-2"></i>
+    Tambah Role
 </a>
 @endsection
 

@@ -3,6 +3,7 @@
 @section('submenu','Tambah User')
 @extends('layouts/template-admin')
 @section('kondisi11','nav-item-expanded nav-item-open')
+@section('active-user-diskominfo','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">User</span>
@@ -198,9 +199,9 @@
 				</div>
 			</div>
 
-			<div class="text-right">
-				<a href="{{route('user.index') }}" class="btn bg-grey-400">Kembali <i class="icon-square-left ml-2"></i></a>
-				<button type="submit" class="btn bg-teal-400 mt-2">Submit form <i class="icon-paperplane ml-2"></i></button>
+			<div class="text-right mt-4">
+				<a href="{{route('user.index') }}" class="btn bg-grey-400">Kembali<i class="icon-square-left ml-2"></i></a>
+				<button type="submit" class="btn bg-teal-400">Submit form <i class="icon-paperplane ml-2"></i></button>
 			</div>
 			</form>
 		</div>

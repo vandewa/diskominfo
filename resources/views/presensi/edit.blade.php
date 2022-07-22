@@ -3,6 +3,7 @@
 @section('submenu','Detail Presensi')
 @extends('layouts/template-admin')
 @section('kondisi16','nav-item-expanded nav-item-open')
+@section('active-laporan-presensi','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Laporan Presensi</span>
@@ -83,9 +84,9 @@
 @endsection
 
 @push('js')
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+  <script src="{{ asset ('css/import/flatpickr.js')}}"></script>
+  <script src="{{ asset ('css/import/flatpickr.min.js')}}"></script>
+  <script src="{{ asset ('css/import/id.js')}}"></script></script>
   <script>
   flatpickr("input[type=datetime-local]", {
     "locale": "id"

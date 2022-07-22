@@ -3,6 +3,7 @@
 @section('submenu','Daftar Informasi Publik')
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
+@section('active-berkala','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>

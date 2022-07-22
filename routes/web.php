@@ -247,7 +247,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['middleware' => ['permission:skm-read']], function () {
-        Route::resource('skm', SKMController::class);
+        Route::get('/rekap-data-skm', [SKMController::class, 'index'])->name('skm.index');
     });
 
     Route::group(['middleware' => ['permission:lkh-read']], function () {

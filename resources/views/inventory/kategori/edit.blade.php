@@ -3,6 +3,7 @@
 @section('submenu','Ubah Kategori')
 @extends('layouts/template-admin')
 @section('kondisi9','nav-item-expanded nav-item-open')
+@section('active-kategori','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Inventory</span>

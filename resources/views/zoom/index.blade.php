@@ -3,6 +3,7 @@
 @section('submenu','List Permintaan Link Zoom')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
+@section('active-zoom','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Link Zoom</span>

@@ -3,6 +3,7 @@
 @section('submenu','List Tiket')
 @extends('layouts/template-admin')
 @section('kondisi8','nav-item-expanded nav-item-open')
+@section('active-list-tiket','active')
 
 @section('halaman')
     <span class="breadcrumb-item active">Tiket</span>

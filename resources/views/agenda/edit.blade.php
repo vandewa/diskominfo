@@ -150,26 +150,20 @@
 @endsection
 
 @push('js')
-<script>
-    $('#barang_id').on('select2:select', function (e) {
-        var data = e.params.data;
-        console.log(data);
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+  <script src="{{ asset ('css/import/flatpickr.js')}}"></script>
+  <script src="{{ asset ('css/import/flatpickr.min.js')}}"></script>
+  <script src="{{ asset ('css/import/id.js')}}"></script>
   <script>
-  flatpickr("input[type=datetime-local]", {
-    "locale": "id"
-  });
+    flatpickr("input[type=datetime-local]", {
+        "locale": "id"
+    });
   </script>
   <script>
-  flatpickr("input[type=time]", {
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-    time_24hr: true
-  });
+    flatpickr("input[type=time]", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true
+    });
   </script>
 @endpush

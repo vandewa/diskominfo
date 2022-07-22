@@ -118,7 +118,6 @@ class HalamanController extends Controller
             ]);
         }
         
-
         return redirect ( route('halaman.index'))->with('status', 'Data halaman berhasil ditambahkan.');
     }
 
@@ -145,7 +144,6 @@ class HalamanController extends Controller
         $informasi = ComCode::where('code_group', 'INFORMASI_ST')
         ->get();
 
-        
         return view('halaman.edit', compact('halaman','informasi'));
     }
 

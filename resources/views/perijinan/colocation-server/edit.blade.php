@@ -3,6 +3,7 @@
 @section('submenu','Detail Permintaan Colocation Server')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
+@section('active-colocation','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Layanan</span>

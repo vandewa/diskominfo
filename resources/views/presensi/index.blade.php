@@ -169,8 +169,8 @@ span.turn {
     Webcam.set({
          width: 320,
          height: 240,
-         dest_width: 320,
-		   dest_height: 240,
+         dest_width: 240, 
+		   dest_height: 320,
          // crop_width: 200,
          // crop_height: 260,
          image_format: 'jpeg',

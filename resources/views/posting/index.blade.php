@@ -3,6 +3,7 @@
 @section('submenu','Posting Berita')
 @extends('layouts/template-admin')
 @section('kondisi2','nav-item-expanded nav-item-open')
+@section('active-posting','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>

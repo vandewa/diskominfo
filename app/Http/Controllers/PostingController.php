@@ -27,10 +27,7 @@ class PostingController extends Controller
      */
     public function index()
     {
-
         return view('posting.index');
-
-
     }
 
     /**

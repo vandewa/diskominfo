@@ -3,6 +3,7 @@
 @section('submenu','Daftar Informasi Publik Dikecualikan')
 @extends('layouts/template-admin')
 @section('kondisi7','nav-item-expanded nav-item-open')
+@section('active-dikecualikan','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Posting</span>

@@ -3,6 +3,7 @@
 @section('submenu','Detail Permohonan Subdomain')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
+@section('active-subdomain','active')
 
 @section('halaman')
 <span class="breadcrumb-item active">Layanan</span>

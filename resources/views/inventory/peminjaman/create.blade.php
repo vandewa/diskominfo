@@ -1,6 +1,11 @@
-@section('title', 'Inventory') @section('menu','Inventory')
-@section('submenu','Tambah Peminjaman') @extends('layouts/template-admin')
-@section('kondisi9','nav-item-expanded nav-item-open') @section('halaman')
+@section('title', 'Inventory') 
+@section('menu','Inventory')
+@section('submenu','Tambah Peminjaman') 
+@extends('layouts/template-admin')
+@section('kondisi9','nav-item-expanded nav-item-open')
+@section('active-peminjaman','active')
+
+@section('halaman')
 <span class="breadcrumb-item active">Inventory</span>
 <span class="breadcrumb-item active">Tambah Peminjaman</span>
 @endsection @section('container')
@@ -40,8 +45,6 @@
                             @enderror
                         </div>
                     </div>
-
-
 
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Petugas<span class="text-danger">*</span></label>

@@ -149,7 +149,7 @@ class DailyWorkRecapController extends Controller
         $bulan = $bulannya->map(function ($date) {
         return Carbon::createFromFormat('m', $date)->isoFormat('MMMM');
         })->toArray(); 
-        $user = User::where('level', 6)->orderBy('name', 'asc')->pluck('name', 'id');
+        $user = User::where('level', 6)->orWhere('level', 8)->where('status', 1)->orderBy('name', 'asc')->pluck('name', 'id');
 
         return view('daily-work-recap.cetak', compact('tahun', 'bulan', 'user'));
     }

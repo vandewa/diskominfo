@@ -20,7 +20,7 @@
 	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/layout.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{ url ('limitless/Template/layout_1/LTR/default/full/assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
+	<link rel="stylesheet" href="{{ asset ('css/import/material_red.css')}}">
 	<!-- /global stylesheets -->
 	@stack('css')
 	<!-- Core JS files -->
@@ -214,14 +214,10 @@
 							<ul class="nav nav-group-sub" data-submenu-title="Menu Depan">
 								{{-- <li class="nav-item"><a href="{{ route('gallery.index') }}"
 										class="nav-link">Galeri</a></li> --}}
-								<li class="nav-item"><a href="{{ route('menuberanda.index') }}"
-										class="nav-link">Menu</a></li>
-								<li class="nav-item"><a href="{{ route('lampirans.index') }}"
-										class="nav-link">Download Area</a></li>
-								<li class="nav-item"><a href="{{ route('pengumumans.index') }}"
-										class="nav-link">Pengumuman</a></li>
-								<li class="nav-item"><a href="{{ route('sampul.index') }}" class="nav-link">Sampul
-										Beranda</a></li>
+								<li class="nav-item"><a href="{{ route('menuberanda.index') }}" class="nav-link @yield('active-menu')">Menu</a></li>
+								<li class="nav-item"><a href="{{ route('lampirans.index') }}" class="nav-link @yield('active-download-area')">Download Area</a></li>
+								<li class="nav-item"><a href="{{ route('pengumumans.index') }}" class="nav-link @yield('active-pengumuman')">Pengumuman</a></li>
+								<li class="nav-item"><a href="{{ route('sampul.index') }}" class="nav-link  @yield('active-sampul')">Sampul Beranda</a></li>
 								{{-- <li class="nav-item"><a href="{{ route('website.index') }}"
 										class="nav-link">Website Kelurahan</a></li> --}}
 								{{-- <li class="nav-item"><a href="{{ route('youtube.index') }}"
@@ -235,23 +231,18 @@
 							<a href="#" class="nav-link"><i class="icon-newspaper"></i> <span>Posting</span></a>
 
 							<ul class="nav nav-group-sub" data-submenu-title="Posting">
-								<li class="nav-item"><a href="{{ route('posting.index') }}" class="nav-link">Posting
-										Berita</a></li>
-								<li class="nav-item"><a href="{{ route('halaman.index') }}" class="nav-link">Halaman Menu</a>
-								</li>
+								<li class="nav-item"><a href="{{ route('posting.index') }}" class="nav-link @yield('active-posting')">Posting Berita</a></li>
+								<li class="nav-item"><a href="{{ route('halaman.index') }}" class="nav-link @yield('active-halaman')">Halaman Menu</a></li>
 								<li class="nav-item nav-item-submenu @yield('kondisi7')">
 									<a href="#" class="nav-link ">Daftar Informasi Publik</a>
 									<ul class="nav nav-group-sub">
-										<li class="nav-item "><a href="{{ route('daftar-informasi-publik.index') }}" class="nav-link"> Berkala | Setiap Saat | Serta Merta</a></li>
-										<li class="nav-item"><a href="{{ route('dip-dikecualikan.index') }}" class="nav-link">Dikecualikan</a></li>
+										<li class="nav-item "><a href="{{ route('daftar-informasi-publik.index') }}" class="nav-link @yield('active-berkala')"> Berkala | Setiap Saat | Serta Merta</a></li>
+										<li class="nav-item"><a href="{{ route('dip-dikecualikan.index') }}" class="nav-link @yield('active-dikecualikan')">Dikecualikan</a></li>
 									</ul>
 								</li>
-								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link">Info
-										Hoax</a></li>
-								<li class="nav-item"><a href="{{ route('infografis.index') }}"
-										class="nav-link">InfoGrafis</a></li>
-								<li class="nav-item"><a href="{{ route('category.index') }}"
-										class="nav-link">Kategori</a></li>
+								<li class="nav-item"><a href="{{ route('infohoax.index') }}" class="nav-link @yield('active-infohoax')">Info Hoax</a></li>
+								<li class="nav-item"><a href="{{ route('infografis.index') }}" class="nav-link @yield('active-infografis')">InfoGrafis</a></li>
+								<li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link @yield('active-category')">Kategori</a></li>
 							</ul>
 						</li>
 						@endpermission
@@ -264,11 +255,11 @@
 								<li class="nav-item nav-item-submenu @yield('kondisi11')">
 									<a href="#" class="nav-link "> Management User</a>
 									<ul class="nav nav-group-sub">
-										<li class="nav-item "><a href="{{route('user.index')}}" class="nav-link"> Diskominfo</a></li>
-										<li class="nav-item"><a href="{{route('user-integrasi.index')}}" class="nav-link">Integrasi</a></li>
+										<li class="nav-item "><a href="{{route('user.index')}}" class="nav-link @yield('active-user-diskominfo')"> Diskominfo</a></li>
+										<li class="nav-item"><a href="{{route('user-integrasi.index')}}" class="nav-link @yield('active-user-integrasi')">Integrasi</a></li>
 									</ul>
 								</li>
-								<li class="nav-item"><a href="{{route('role.index')}}" class="nav-link ">Role</a></li>
+								<li class="nav-item"><a href="{{route('role.index')}}" class="nav-link @yield('active-role')">Role</a></li>
 							</ul>
 						</li>
 						@endpermission
@@ -294,7 +285,7 @@
 									</a>
 								</li> --}}
 								<li class="nav-item">
-									<a href="{{ route('media-publikasi.index') }}" class="nav-link ">Media Publikasi
+									<a href="{{ route('media-publikasi.index') }}" class="nav-link @yield('active-media-publikasi')">Media Publikasi
 										@if ($media_publikasi == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$media_publikasi}}</span>
 										@else
@@ -303,7 +294,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('liputan.index') }}" class="nav-link ">Liputan
+									<a href="{{ route('liputan.index') }}" class="nav-link @yield('active-liputan')">Liputan
 										@if ($liputan == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$liputan}}</span>
 										@else
@@ -312,7 +303,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('informasi-publik.index') }}" class="nav-link ">Informasi Publik
+									<a href="{{ route('informasi-publik.index') }}" class="nav-link @yield('active-informasipublik')">Informasi Publik
 										@if ($informasi_publik == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$informasi_publik}}</span>
 										@else
@@ -321,7 +312,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('pengajuan-keberatan.index') }}" class="nav-link ">Keberatan
+									<a href="{{ route('pengajuan-keberatan.index') }}" class="nav-link @yield('active-pengajuankeberatan')">Keberatan
 										Informasi Publik
 										@if ($pengajuan_keberatan == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$pengajuan_keberatan}}</span>
@@ -331,7 +322,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('pinjam-tempat.index') }}" class="nav-link ">Tempat Rapat
+									<a href="{{ route('pinjam-tempat.index') }}" class="nav-link @yield('active-tempatrapat')">Tempat Rapat
 										@if ($tempat_rapat == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$tempat_rapat}}</span>
 										@else
@@ -340,7 +331,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('pinjam-peralatan.index') }}" class="nav-link ">Pinjam Peralatan
+									<a href="{{ route('pinjam-peralatan.index') }}" class="nav-link @yield('active-pinjamperalatan')">Pinjam Peralatan
 										@if ($pinjam_peralatan == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$pinjam_peralatan}}</span>
 										@else
@@ -349,7 +340,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('magang.index') }}" class="nav-link ">Magang
+									<a href="{{ route('magang.index') }}" class="nav-link @yield('active-magang')">Magang
 										@if ($magang == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$magang}}</span>
 										@else
@@ -358,7 +349,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('link_zoom.index') }}" class="nav-link ">Link Zoom
+									<a href="{{ route('link_zoom.index') }}" class="nav-link @yield('active-zoom')">Link Zoom
 										@if ($zoom == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$zoom}}</span>
 										@else
@@ -367,7 +358,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('jaringan-internet.index') }}" class="nav-link ">Jaringan Internet
+									<a href="{{ route('jaringan-internet.index') }}" class="nav-link @yield('active-jaringan')">Jaringan Internet
 										@if ($internet == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$internet}}</span>
 										@else
@@ -376,7 +367,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('permohonan-aplikasi.index') }}" class="nav-link ">Aplikasi
+									<a href="{{ route('permohonan-aplikasi.index') }}" class="nav-link @yield('active-aplikasi')">Aplikasi
 										@if ($aplikasi == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$aplikasi}}</span>
 										@else
@@ -385,7 +376,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('permohonan-subdomain.index') }}" class="nav-link ">Subdomain
+									<a href="{{ route('permohonan-subdomain.index') }}" class="nav-link @yield('active-subdomain')">Subdomain
 										@if ($subdomain == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$subdomain}}</span>
 										@else
@@ -394,7 +385,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="{{ route('permintaan-colocation.index') }}" class="nav-link ">Colocation Server
+									<a href="{{ route('permintaan-colocation.index') }}" class="nav-link @yield('active-colocation')">Colocation Server
 										@if ($colocation == 0)
 											<span class="badge bg-grey-400 align-self-center ml-auto">{{$colocation}}</span>
 										@else
@@ -410,37 +401,29 @@
 
 					@permission('tiket-read')
 					<li class="nav-item-header">
-						<div class="text-uppercase font-size-xs line-height-xs">Tiket</div> <i class="icon-menu"
-							title="tiket"></i>
+						<div class="text-uppercase font-size-xs line-height-xs">Tiket</div> <i class="icon-menu" title="tiket"></i>
 					</li>
 					<li class="nav-item nav-item-submenu @yield('kondisi8')">
 						<a href="#" class="nav-link"><i class="icon-pencil5"></i> <span>Tiket</span></a>
-						<ul class="nav nav-group-sub" data-submenu-title="Posting">
-							<li class="nav-item"><a href="{{ route('tiket:tiket.create') }}" class="nav-link">Tambah
-									Tiket</a></li>
-							<li class="nav-item"><a href="{{ route('tiket:tiket.index') }}" class="nav-link">List
-									Tiket</a></li>
+						<ul class="nav nav-group-sub" data-submenu-title="Tiket">
+							<li class="nav-item"><a href="{{ route('tiket:tiket.create') }}" class="nav-link @yield('active-tambah-tiket')">Tambah Tiket</a></li>
+							<li class="nav-item"><a href="{{ route('tiket:tiket.index') }}" class="nav-link" @yield('active-list-tiket')>List Tiket</a></li>
 						</ul>
 					</li>
 					@endpermission
 
 					<li class="nav-item-header">
-						<div class="text-uppercase font-size-xs line-height-xs">AIM</div> <i class="icon-menu"
-							title="AIM"></i>
+						<div class="text-uppercase font-size-xs line-height-xs">AIM</div> <i class="icon-menu" title="AIM"></i>
 					</li>
 
 					@permission('inventory-read')
 					<li class="nav-item nav-item-submenu @yield('kondisi9')">
 						<a href="#" class="nav-link"><i class="icon-drawer"></i> <span>Inventory</span></a>
 						<ul class="nav nav-group-sub" data-submenu-title="Posting">
-							<li class="nav-item"><a href="{{ route('inventory:satuan.index') }}"
-									class="nav-link">Satuan</a></li>
-							<li class="nav-item"><a href="{{ route('inventory:kategori.index') }}"
-									class="nav-link">Kategori</a></li>
-							<li class="nav-item"><a href="{{ route('inventory:barang.index') }}"
-									class="nav-link">Barang</a></li>
-							<li class="nav-item"><a href="{{ route('inventory:peminjaman.index') }}"
-									class="nav-link">Peminjaman</a></li>
+							<li class="nav-item"><a href="{{ route('inventory:satuan.index') }}" class="nav-link @yield('active-satuan')">Satuan</a></li>
+							<li class="nav-item"><a href="{{ route('inventory:kategori.index') }}" class="nav-link @yield('active-kategori')">Kategori</a></li>
+							<li class="nav-item"><a href="{{ route('inventory:barang.index') }}" class="nav-link @yield('active-barang')">Barang</a></li>
+							<li class="nav-item"><a href="{{ route('inventory:peminjaman.index') }}" class="nav-link @yield('active-peminjaman')">Peminjaman</a></li>
 						</ul>
 					</li>
 					@endpermission
@@ -482,15 +465,14 @@
 					@endpermission
 
 					<li class="nav-item-header">
-						<div class="text-uppercase font-size-xs line-height-xs">Presensi</div> <i class="icon-menu"
-							title="presensi"></i>
+						<div class="text-uppercase font-size-xs line-height-xs">Presensi</div> <i class="icon-menu" title="Presensi"></i>
 					</li>
 
 					@permission('presensi-read')
 					<li class="nav-item">
 						<a href="{{ route('presensi.index') }}" class="nav-link @yield('kondisi15')">
 							<i class="icon-stack-text"></i>
-							<span>Presensi </span>
+								<span>Presensi </span>
 						</a>
 					</li>
 					@endpermission
@@ -499,11 +481,11 @@
 					<li class="nav-item nav-item-submenu @yield('kondisi16')">
 						<a href="#" class="nav-link"><i class="icon-stack-text"></i> <span>Presensi</span></a>
 						<ul class="nav nav-group-sub" data-submenu-title="Presensi">
-							<li class="nav-item"><a href="{{ route('presensi-admin.index') }}" class="nav-link @yield('kondisi16')">
-									<span>Laporan Presensi </span></a>
+							<li class="nav-item"><a href="{{ route('presensi-admin.index') }}" class="nav-link @yield('active-laporan-presensi')">
+								<span>Laporan Presensi </span></a>
 							</li>
-							<li class="nav-item"><a href="{{ route('setting-tanggal.index') }}" class="nav-link @yield('kondisi16')">
-									<span>Setting Tanggal </span></a>
+							<li class="nav-item"><a href="{{ route('setting-tanggal.index') }}" class="nav-link @yield('active-setting-tanggal')">
+								<span>Setting Tanggal </span></a>
 							</li>
 						</ul>
 					</li>

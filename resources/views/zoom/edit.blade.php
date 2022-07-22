@@ -3,10 +3,13 @@
 @section('submenu','Edit Link Zoom')
 @extends('layouts/template-admin')
 @section('kondisi6','nav-item-expanded nav-item-open')
+@section('active-zoom','active')
+
 @section('halaman')
 <a class="breadcrumb-item" href="{{ route('link_zoom.index') }}">Link Zoom</a>
 <span class="breadcrumb-item active">Edit Link Zoom</span>
 @endsection
+
 @section('container')
 <div class="content">
     <!-- CKEditor default -->
@@ -258,9 +261,9 @@
 @endsection 
 
 @push('js')
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+  <script src="{{ asset ('css/import/flatpickr.js')}}"></script>
+  <script src="{{ asset ('css/import/flatpickr.min.js')}}"></script>
+  <script src="{{ asset ('css/import/id.js')}}"></script></script>
   <script>
   flatpickr("input[type=datetime-local]", {
     "locale": "id"

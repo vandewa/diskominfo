@@ -689,11 +689,11 @@
 
   <!-- JS Implementing Plugins -->
 
-  {{-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> --}}
+  {{-- <script src="{{ asset ('css/import/flatpickr.js')}}"></script> --}}
   <script src="{{ asset ('css/import/flatpickr.js')}}"></script>
-  {{-- <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script> --}}
+  {{-- <script src="{{ asset ('css/import/flatpickr.min.js')}}"></script> --}}
   <script src="{{ asset ('css/import/flatpickr.min.js')}}"></script>
-  {{-- <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script> --}}
+  {{-- <script src="{{ asset ('css/import/id.js')}}"></script></script> --}}
   <script src="{{ asset ('css/import/id.js')}}"></script>
 
   <script>
