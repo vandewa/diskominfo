@@ -167,8 +167,8 @@ span.turn {
 
 <script language="JavaScript">
     Webcam.set({
-         width: 320,
-         height: 240,
+         width: 240,
+         height: 320,
          dest_width: 240, 
 		   dest_height: 320,
          // crop_width: 200,
